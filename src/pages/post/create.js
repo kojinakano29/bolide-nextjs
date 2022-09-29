@@ -2,7 +2,7 @@ import styles from '@/styles/components/CreatePost.module.scss'
 import axios from '@/lib/axios'; // カスタムフック
 import { useCallback, useRef, useState } from 'react'
 import "react-draft-wysiwyg/dist/react-draft-wysiwyg.css";
-import { ContentState, convertToRaw, EditorState } from "draft-js";
+import { ContentState, convertToRaw, convertFromRaw, EditorState } from "draft-js";
 import dynamic from "next/dynamic";
 const Editor = dynamic(
   () => import("react-draft-wysiwyg").then(mod => mod.Editor),
@@ -103,11 +103,29 @@ const CreatePost = ({posts}) => {
     }))
   }
 
+  // エディター
   const [editorState, setEditorState] = useState()
 
   const handleImageUpload = useCallback(async (file) => {
-    return true
+    await csrf()
+
+    await axios.post('/api/liondor/post/store', file)
+    .then((res) => {
+      console.log(res)
+      // const link = `${process.env.API_DOMAIN_IMAGE_PATH}/`
+      return {data: {link: res}}
+    })
+    .catch((e) => {
+      console.error(e)
+    })
   }, [])
+
+  const onSave = async (ContentState) => {
+    const Object = convertToRaw(ContentState)
+    const data = JSON.stringify(Object)
+    console.log(data)
+  }
+  // エディター
 
   return (
     <section className={styles.createSection}>
@@ -171,7 +189,7 @@ const CreatePost = ({posts}) => {
                 options: ["center"],
               },
               image: {
-                // uploadCallback: handleImageUpload,
+                uploadCallback: handleImageUpload,
                 alt: { present: true, mandatory: true },
                 previewImage: true,
               },
