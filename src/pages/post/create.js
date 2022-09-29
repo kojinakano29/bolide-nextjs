@@ -1,37 +1,31 @@
 import styles from '@/styles/components/CreatePost.module.scss'
 import axios from '@/lib/axios'; // カスタムフック
 import { useCallback, useRef, useState } from 'react'
-import "react-draft-wysiwyg/dist/react-draft-wysiwyg.css";
-import { ContentState, convertToRaw, convertFromRaw, EditorState } from "draft-js";
-import dynamic from "next/dynamic";
-const Editor = dynamic(
-  () => import("react-draft-wysiwyg").then(mod => mod.Editor),
-  { ssr: false }
-)
+import { PostEditor } from '@/components';
 
 // SSG
-export const getStaticProps = async () => {
-  const res = await fetch(`${process.env.API_DOMAIN}/api/liondor/post/create`)
-  const data = await res.json()
-
-  return {
-    props: {
-      posts: data
-    }
-  }
-}
-
-// SSR
-// export const getServerSideProps = async () => {
+// export const getStaticProps = async () => {
 //   const res = await fetch(`${process.env.API_DOMAIN}/api/liondor/post/create`)
 //   const data = await res.json()
 
 //   return {
-//       props: {
-//           posts: data
-//       }
+//     props: {
+//       posts: data
+//     }
 //   }
 // }
+
+// SSR
+export const getServerSideProps = async () => {
+  const res = await fetch(`${process.env.API_DOMAIN}/api/liondor/post/create`)
+  const data = await res.json()
+
+  return {
+      props: {
+          posts: data
+      }
+  }
+}
 
 const CreatePost = ({posts}) => {
   const csrf = () => axios.get('/sanctum/csrf-cookie')
@@ -103,30 +97,6 @@ const CreatePost = ({posts}) => {
     }))
   }
 
-  // エディター
-  const [editorState, setEditorState] = useState()
-
-  const handleImageUpload = useCallback(async (file) => {
-    await csrf()
-
-    await axios.post('/api/liondor/post/store', file)
-    .then((res) => {
-      console.log(res)
-      // const link = `${process.env.API_DOMAIN_IMAGE_PATH}/`
-      return {data: {link: res}}
-    })
-    .catch((e) => {
-      console.error(e)
-    })
-  }, [])
-
-  const onSave = async (ContentState) => {
-    const Object = convertToRaw(ContentState)
-    const data = JSON.stringify(Object)
-    console.log(data)
-  }
-  // エディター
-
   return (
     <section className={styles.createSection}>
       <form onSubmit={onSubmitHandler}>
@@ -152,53 +122,7 @@ const CreatePost = ({posts}) => {
         <textarea name="sub_title" ref={subTtlRefs} onChange={log}></textarea>
         <textarea name="discription" ref={discRefs} onChange={log}></textarea>
         <div>エディター</div>
-        <div>
-          <Editor
-            // editorState={editorState}
-            // onEditorStateChange={handleEditorStateChange}
-            toolbarClassName="toolbarClassName"
-            wrapperClassName="wrapperClassName"
-            editorClassName="editorClassName"
-            editorStyle={{
-              boxSizing: "border-box",
-              border: "1px solid #ddd",
-              cursor: "text",
-              padding: "16px",
-              borderRadius: "2px",
-              marginBottom: "2em",
-              boxShadow: "inset 0px 1px 8px -3px #ababab",
-              background: "#fefefe",
-              // minHeight: editorMinHeight,
-            }}
-            localization={{ locale: "ja" }}
-            toolbar={{
-              options: ["inline", "blockType", "list", "textAlign", "link", "image", "history"],
-              inline: {
-                options: [
-                  "bold",
-                  "italic",
-                  "underline",
-                  "strikethrough",
-                  "monospace",
-                ],
-              },
-              list: {
-                options: ["unordered", "ordered"],
-              },
-              textAlign: {
-                options: ["center"],
-              },
-              image: {
-                uploadCallback: handleImageUpload,
-                alt: { present: true, mandatory: true },
-                previewImage: true,
-              },
-              link: {
-                options: ["link"],
-              },
-            }}
-          />
-        </div>
+        <PostEditor />
         <select name="state" ref={stateRefs} onChange={log}>
           <option value="0">下書き</option>
           <option value="1">公開済み</option>
