@@ -1,0 +1,28 @@
+@import '../variables.scss';
+
+.iconBox {
+  @include width(80px);
+  @include height(28px);
+  @include flex(center, center);
+  @include gap(2px);
+  @include br(17px);
+  border: 1px solid $b1;
+  cursor: pointer;
+  transition: .2s ease-out;
+
+  &:hover {
+    opacity: .5;
+  }
+
+  p {
+    @include fs(13px);
+  }
+
+  &.open {
+    border: 1px solid $w1;
+
+    p {
+      color: $w1;
+    }
+  }
+}

@@ -1,0 +1,32 @@
+@import '../variables.scss';
+
+.article {
+  margin: auto;
+  @include max-width(900px, 100%);
+}
+
+.box {
+  @include mb(48px);
+
+  h3 {
+    font-size: var(--fs20-18);
+    @include mb(24px);
+    font-weight: 500;
+  }
+
+  p {
+    font-size: var(--fs16-14);
+    font-weight: 300;
+  }
+}
+
+.info {
+  font-size: var(--fs16-14);
+  font-weight: 500;
+
+  a {
+    &:hover {
+      text-decoration: underline;
+    }
+  }
+}

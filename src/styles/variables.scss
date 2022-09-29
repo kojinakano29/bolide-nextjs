@@ -1,0 +1,236 @@
+/* フォント */
+$jp: 'Noto Sans JP', sans-serif;
+$en: 'Prompt', sans-serif;
+$ivy: ivymode, sans-serif;
+$gothic: 'YuGothic', 'Yu Gothic Medium', 'Yu Gothic', 'MS PGothic', 'Hiragino Kaku Gothic ProN', 'Meiryo', sans-serif;
+$mintyo: 'YuMincho', 'Yu Mincho', 'MS PMincho', 'Hiragino Mincho ProN', serif;
+
+/* カラー（色） */
+$w1: #fff;
+$b1: #000;
+$b2: #222;
+$g1: #888;
+$g2: #F2F2F2;
+$g3: #CCC;
+$g4: #555;
+$g5: #707070;
+$red1: #FF0000;
+$rgba1: rgba(0, 0, 0, .5);
+
+/* グラデーション */
+$gd1: linear-gradient(transparent 10%, rgba(88, 88, 88, .82) 70%, $b2);
+
+/*-------------------------     mixin1    -------------------------*/
+$pc: 1341px;
+$tab1: 1340px;
+$tab2: 768px;
+$sp: 767px;
+
+// @media
+$breakpoints: (
+  'pc': $pc,
+  'tab1': $tab1,
+  'tab2': $tab2,
+  'sp': $sp,
+);
+
+// max
+@mixin media1($size) {
+  @media screen and (max-width: #{map-get($breakpoints, $size)}) {
+    @content;
+  }
+}
+
+// min
+@mixin media2($size) {
+  @media screen and (min-width: #{map-get($breakpoints, $size)}) {
+    @content;
+  }
+}
+
+/*-------------------------     mixin2    -------------------------*/
+// position
+@mixin position($pc:absolute, $tab:$pc, $sp:$tab) {
+  position: $pc;
+  @include media1(tab1) {position: $tab;}
+  @include media1(sp) {position: $sp;}
+}
+
+@mixin top($pc:0, $tab:$pc, $sp:$tab) {
+  top: $pc;
+  @include media1(tab1) {top: $tab;}
+  @include media1(sp) {top: $sp;}
+}
+
+@mixin right($pc:0, $tab:$pc, $sp:$tab) {
+  right: $pc;
+  @include media1(tab1) {right: $tab;}
+  @include media1(sp) {right: $sp;}
+}
+
+@mixin bottom($pc:0, $tab:$pc, $sp:$tab) {
+  bottom: $pc;
+  @include media1(tab1) {bottom: $tab;}
+  @include media1(sp) {bottom: $sp;}
+}
+
+@mixin left($pc:0, $tab:$pc, $sp:$tab) {
+  left: $pc;
+  @include media1(tab1) {left: $tab;}
+  @include media1(sp) {left: $sp;}
+}
+
+// translate
+@mixin tx($pc:0, $tab:$pc, $sp:$tab) {
+  transform: translateX($pc);
+  @include media1(tab1) {transform: translateX($tab);}
+  @include media1(sp) {transform: translateX($sp);}
+}
+
+@mixin ty($pc:0, $tab:$pc, $sp:$tab) {
+  transform: translateY($pc);
+  @include media1(tab1) {transform: translateY($tab);}
+  @include media1(sp) {transform: translateY($sp);}
+}
+
+// font
+@mixin fs($pc:0, $tab:$pc, $sp:$tab) {
+  font-size: $pc;
+  @include media1(tab1) {font-size: $tab;}
+  @include media1(sp) {font-size: $sp;}
+}
+
+@mixin ls($pc:0, $tab:$pc, $sp:$tab) {
+  letter-spacing: $pc;
+  @include media1(tab1) {letter-spacing: $tab;}
+  @include media1(sp) {letter-spacing: $sp;}
+}
+
+@mixin lh($pc:0, $tab:$pc, $sp:$tab) {
+  line-height: $pc;
+  @include media1(tab1) {line-height: $tab;}
+  @include media1(sp) {line-height: $sp;}
+}
+
+// size
+@mixin width($pc:0, $tab:$pc, $sp:$tab) {
+  width: $pc;
+  @include media1(tab1) {width: $tab;}
+  @include media1(sp) {width: $sp;}
+}
+
+@mixin height($pc:0, $tab:$pc, $sp:$tab) {
+  height: $pc;
+  @include media1(tab1) {height: $tab;}
+  @include media1(sp) {height: $sp;}
+}
+
+@mixin max-width($pc:0, $tab:$pc, $sp:$tab) {
+  max-width: $pc;
+  @include media1(tab1) {max-width: $tab;}
+  @include media1(sp) {max-width: $sp;}
+}
+
+// padding
+@mixin p($pc:0, $tab:$pc, $sp:$tab) {
+  padding: $pc;
+  @include media1(tab1) {padding: $tab;}
+  @include media1(sp) {padding: $sp;}
+}
+
+@mixin pt($pc:0, $tab:$pc, $sp:$tab) {
+  padding-top: $pc;
+  @include media1(tab1) {padding-top: $tab;}
+  @include media1(sp) {padding-top: $sp;}
+}
+
+@mixin pr($pc:0, $tab:$pc, $sp:$tab) {
+  padding-right: $pc;
+  @include media1(tab1) {padding-right: $tab;}
+  @include media1(sp) {padding-right: $sp;}
+}
+
+@mixin pb($pc:0, $tab:$pc, $sp:$tab) {
+  padding-bottom: $pc;
+  @include media1(tab1) {padding-bottom: $tab;}
+  @include media1(sp) {padding-bottom: $sp;}
+}
+
+@mixin pl($pc:0, $tab:$pc, $sp:$tab) {
+  padding-left: $pc;
+  @include media1(tab1) {padding-left: $tab;}
+  @include media1(sp) {padding-left: $sp;}
+}
+
+// margin
+@mixin m($pc:0, $tab:$pc, $sp:$tab) {
+  margin: $pc;
+  @include media1(tab1) {margin: $tab;}
+  @include media1(sp) {margin: $sp;}
+}
+
+@mixin mt($pc:0, $tab:$pc, $sp:$tab) {
+  margin-top: $pc;
+  @include media1(tab1) {margin-top: $tab;}
+  @include media1(sp) {margin-top: $sp;}
+}
+
+@mixin mr($pc:0, $tab:$pc, $sp:$tab) {
+  margin-right: $pc;
+  @include media1(tab1) {margin-right: $tab;}
+  @include media1(sp) {margin-right: $sp;}
+}
+
+@mixin mb($pc:0, $tab:$pc, $sp:$tab) {
+  margin-bottom: $pc;
+  @include media1(tab1) {margin-bottom: $tab;}
+  @include media1(sp) {margin-bottom: $sp;}
+}
+
+@mixin ml($pc:0, $tab:$pc, $sp:$tab) {
+  margin-left: $pc;
+  @include media1(tab1) {margin-left: $tab;}
+  @include media1(sp) {margin-left: $sp;}
+}
+
+// display
+@mixin display($pc:block, $tab:$pc, $sp:$tab) {
+  display: $pc;
+  @include media1(tab1) {display: $tab;}
+  @include media1(sp) {display: $sp;}
+}
+
+// text-align
+@mixin text-align($pc:left, $tab:$pc, $sp:$tab) {
+  text-align: $pc;
+  @include media1(tab1) {text-align: $tab;}
+  @include media1(sp) {text-align: $sp;}
+}
+
+// etc
+@mixin br($pc:0, $tab:$pc, $sp:$tab) {
+  border-radius: $pc;
+  @include media1(tab1) {border-radius: $tab;}
+  @include media1(sp) {border-radius: $sp;}
+}
+
+@mixin tf($pc:0, $tab:$pc, $sp:$tab) {
+  transform: $pc;
+  @include media1(tab1) {transform: $tab;}
+  @include media1(sp) {transform: $sp;}
+}
+
+/*-------------------------     mixin3    -------------------------*/
+@mixin flex($ai:flex-start,$jc:space-between) {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: $ai;
+  justify-content: $jc;
+}
+
+@mixin gap($pc:0, $tab:$pc, $sp:$tab) {
+  gap: $pc;
+  @include media1(tab1) {gap: $tab;}
+  @include media1(sp) {gap: $sp;}
+}
+/*-------------------------     mixin5    -------------------------*/

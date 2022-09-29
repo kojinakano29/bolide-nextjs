@@ -1,0 +1,25 @@
+@import '../variables.scss';
+
+.ttl {
+  padding: 0;
+  border: none;
+  text-align: center;
+}
+
+.flex {
+  @include flex(stretch);
+}
+
+.blogLink {
+  composes: blogLink from './parts.scss';
+  @include width(412px);
+  @include flex(stretch);
+}
+
+.imgBox {
+  @include width(124px);
+}
+
+.txtBox {
+  @include width(calc(100% - (124px + 24px)));
+}

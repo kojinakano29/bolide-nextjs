@@ -1,0 +1,38 @@
+@import '../variables.scss';
+
+.button2 {
+  @include width(260px);
+  @include height(64px);
+  background-color: $b1;
+  @include flex(center, center);
+  margin: auto;
+  position: relative;
+  @include mt(64px);
+
+  &::after {
+    content: "";
+    width: 100%;
+    height: 100%;
+    background-color: $g3;
+    position: absolute;
+    top: 0;
+    left: 0;
+    display: block;
+    transition: transform .6s cubic-bezier(0.8, 0, 0.2, 1) 0s;
+    transform: scaleX(0);
+    transform-origin: right;
+  }
+
+  span {
+    position: relative;
+    z-index: 1;
+    color: $w1;
+  }
+
+  &:hover {
+    &::after {
+      transform: scaleX(1);
+      transform-origin: left;
+    }
+  }
+}

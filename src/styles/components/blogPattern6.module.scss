@@ -1,0 +1,26 @@
+@import '../variables.scss';
+
+.article {
+  @include flex(stretch);
+}
+
+.imgBox {
+  @include mb(16px);
+}
+
+.singleTxt {
+  h3 {
+    font-size: var(--fs18-16);
+    font-weight: 500;
+    @include mb(16px);
+  }
+
+  p {
+    font-size: var(--fs14-12);
+  }
+}
+
+.blogLink {
+  composes: blogLink from './parts.scss';
+  @include width(300px);
+}

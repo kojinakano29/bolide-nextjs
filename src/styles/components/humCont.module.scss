@@ -1,0 +1,122 @@
+@import '../variables.scss';
+
+.humBox {
+  width: 100%;
+  height: 100vh;
+  @include p(110px 0 56px);
+  position: fixed;
+  top: -100vh;
+  left: 0;
+  background-color: $b1;
+  opacity: 0;
+  pointer-events: none;
+  transition: .5s ease-in;
+  overflow: auto;
+
+  &.slideIn {
+    top: 0;
+    opacity: 1;
+    pointer-events: all;
+  }
+}
+
+.humNav {
+  display: flex;
+  @include gap(120px);
+  @include pb(64px);
+  @include mb(32px);
+  border-bottom: 1.5px solid $g4;
+}
+
+.humUl {
+  display: flex;
+  flex-direction: column;
+  @include gap(40px);
+
+  li {
+    a {
+      font-size: var(--fs56-38);
+      color: $w1;
+      letter-spacing: 0;
+      transition: .2s ease-out;
+
+      &:hover {
+        opacity: .5;
+      }
+    }
+  }
+}
+
+.humNav2 {
+  @include mb(32px);
+
+  ul {
+    display: flex;
+    align-items: center;
+    @include gap(16px);
+
+    li {
+      a {
+        font-size: var(--fs24-22);
+        color: $g1;
+        letter-spacing: 0;
+        transition: .2s ease-out;
+
+        &:hover {
+          opacity: .5;
+        }
+      }
+    }
+
+    .hr {
+      width: 1px;
+      height: var(--fs24-22);
+      background-color: $g1;
+      transform: rotate(20deg);
+    }
+  }
+}
+
+.flex {
+  @include flex(flex-end);
+
+  .left {
+    p {
+      font-size: 16px;
+      font-weight: 300;
+      color: $w1;
+      letter-spacing: 0;
+      @include mb(8px);
+    }
+
+    .bannarBox {
+      display: flex;
+      @include gap(16px);
+
+      a {
+        @include width(228px);
+        display: block;
+        transition: .2s ease-out;
+
+        &:hover {
+          opacity: .5;
+        }
+      }
+    }
+  }
+}
+
+.humNav,
+.humNav2,
+.flex {
+  opacity: 0;
+  pointer-events: none;
+  transform: translateY(40px);
+
+  &.lazyIn {
+    opacity: 1;
+    pointer-events: all;
+    transform: translateY(0);
+    transition: .4s .55s ease-in;
+  }
+}

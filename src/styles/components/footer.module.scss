@@ -1,0 +1,119 @@
+@import '../variables.scss';
+
+.bannarArea {
+  @include p(152px 0 96px);
+
+  p {
+    font-size: var(--fs24-16);
+    font-weight: 300;
+    letter-spacing: 0;
+    text-align: center;
+    @include mb(32px);
+  }
+
+  .bannarFlex {
+    @include flex(center, center);
+    @include gap(8px);
+
+    .bannarLink {
+      @include width(214px);
+      transition: .2s ease-out;
+
+      &:hover {
+        opacity: .5;
+      }
+    }
+  }
+}
+
+.pageFooter {
+  @include p(40px 0 48px);
+  background-color: $b1;
+}
+
+.topArea {
+  @include flex(stretch);
+  @include pb(24px);
+  @include mb(20px);
+  border-bottom: 1.5px solid $g5;
+
+  .left {
+    @include width(224px);
+
+    .logo {
+      transition: .2s ease-out;
+      @include mb(24px);
+
+      &:hover {
+        opacity: .5;
+      }
+
+      span {
+        display: block;
+        line-height: 1;
+
+        &.big {
+          font-size: 40px;
+          color: $w1;
+          letter-spacing: 0;
+        }
+
+        &.small {
+          font-size: 11px;
+          color: $g3;
+          letter-spacing: .2px;
+        }
+      }
+    }
+  }
+
+  .right {
+    @include width(calc(100% - (224px + 80px)));
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+
+    .privacy {
+      font-size: 12px;
+      color: $g1;
+      width: fit-content;
+      @include ml(auto);
+
+      a {
+        text-decoration: underline;
+        color: $g1;
+
+        &:hover {
+          text-decoration: none;
+        }
+      }
+    }
+  }
+}
+
+.bottomArea {
+  @include flex();
+
+  .bottomLeft {
+    @include width(calc(100% - (128px + 80px)));
+    display: flex;
+    flex-wrap: wrap;
+    @include gap(4px 16px);
+
+    a {
+      font-size: 13px;
+      font-weight: 500;
+      color: $g1;
+
+      &:hover {
+        text-decoration: underline;
+      }
+    }
+  }
+
+  .copy {
+    @include width(128px);
+    font-size: 12px;
+    color: $w1;
+  }
+}

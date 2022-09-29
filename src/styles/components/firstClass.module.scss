@@ -1,0 +1,22 @@
+@import '../variables.scss';
+
+.article {
+  position: relative;
+
+  .imgBox {
+    overflow: hidden;
+    width: 100%;
+
+    img {
+      transition: .3s ease-out;
+    }
+  }
+}
+
+.blogLink {
+  composes: blogLink from './parts.scss';
+}
+
+.txtBox {
+  composes: txtBox from './parts.scss';
+}

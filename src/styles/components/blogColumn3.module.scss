@@ -1,0 +1,14 @@
+@import '../variables.scss';
+
+.bottomArea {
+  @include flex(stretch);
+}
+
+.imgBox {
+  @include mb(16px);
+}
+
+.blogLink {
+  composes: blogLink from './parts.scss';
+  @include width(412px);
+}

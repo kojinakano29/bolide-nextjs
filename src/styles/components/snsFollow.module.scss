@@ -1,0 +1,36 @@
+@import '../variables.scss';
+
+.followBox {
+  p {
+    font-size: 14px;
+    color: $w1;
+    @include mb(8px);
+
+    &.textRight {
+      text-align: right;
+    }
+  }
+
+  .flex {
+    display: flex;
+    align-items: center;
+    @include gap(16px);
+
+    a {
+      @include width(32px);
+      @include height(32px);
+      border-radius: 50%;
+      border: 2px solid $g1;
+      @include flex(center, center);
+      transition: .2s ease-out;
+
+      &:hover {
+        opacity: .5;
+      }
+
+      & > span {
+        width: 14px;
+      }
+    }
+  }
+}

@@ -1,0 +1,57 @@
+@import '../variables.scss';
+
+.pageHeader {
+  position: sticky;
+  top: 0;
+  width: 100%;
+  background-color: $w1;
+  z-index: 999;
+  transition: .5s ease-out;
+
+  &.headerHidden {
+    @include top(-222px);
+    transition: .3s ease-in;
+  }
+
+  &.headerFixed {
+    top: 0;
+  }
+
+  .topArea {
+    @include p(32px 0);
+    position: relative;
+    border-bottom: 1px solid $g3;
+  }
+
+  .bottomArea {
+    border-bottom: 1px solid $g3;
+  }
+
+  h1 {
+    @include width(300px, 300px, 160px);
+    margin: auto;
+
+    .logo {
+      display: block;
+      transition: .3s ease-out;
+
+      &:hover {
+        opacity: .5;
+      }
+    }
+  }
+
+  .leftAbs {
+    position: absolute;
+    @include top(24px);
+    @include left(40px);
+    @include flex(center);
+    @include gap(40px);
+  }
+
+  .rightAbs {
+    position: absolute;
+    @include top(24px);
+    @include right(40px);
+  }
+}

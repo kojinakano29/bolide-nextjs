@@ -1,0 +1,109 @@
+@import '../variables.scss';
+
+.cat {
+  display: flex;
+  align-items: center;
+  @include gap(.5em);
+  @include mb(16px);
+
+  span {
+    font-size: 14px;
+  }
+
+  .hr {
+    width: 1px;
+    height: 12px;
+    background-color: $b1;
+    transform: rotate(20deg);
+  }
+}
+
+.singleTtl {
+  font-size: var(--fs18-16);
+  font-weight: 500;
+  @include mb(16px);
+}
+
+.name {
+  @include mb(4px);
+
+  span {
+    font-size: 14px;
+    color: $g1;
+  }
+}
+
+.time {
+  font-size: 12px;
+  color: $g1;
+}
+
+.white {
+  * {
+    color: $w1 !important;
+  }
+
+  .cat {
+    .hr {
+      background-color: $w1;
+    }
+  }
+}
+
+.tac {
+  text-align: center;
+
+  .cat {
+    justify-content: center;
+  }
+}
+
+.smallMb {
+  .cat {
+    @include mb(8px);
+  }
+
+  .singleTtl {
+    @include mb(8px);
+  }
+
+  .name {
+    @include mb(2px);
+  }
+}
+
+.blogTxt {
+  &.fs24 {
+    .singleTtl {
+      font-size: var(--fs24-18);
+    }
+  }
+
+  &.fs22 {
+    .singleTtl {
+      font-size: var(--fs22-18);
+    }
+  }
+
+  &.fs14 {
+    .cat {
+      span {
+        font-size: 12px;
+      }
+    }
+
+    .singleTtl {
+      font-size: var(--fs14-12);
+    }
+
+    .name {
+      span {
+        font-size: 12px;
+      }
+    }
+
+    .time {
+      font-size: 10px;
+    }
+  }
+}

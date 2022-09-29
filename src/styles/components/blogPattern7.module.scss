@@ -1,0 +1,16 @@
+@import '../variables.scss';
+
+.bottomArea {
+  @include flex(stretch);
+}
+
+.imgBox {
+  @include mb(16px);
+  border-radius: 50%;
+  overflow: hidden;
+}
+
+.blogLink {
+  composes: blogLink from './parts.scss';
+  @include width(412px);
+}

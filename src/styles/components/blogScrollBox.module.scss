@@ -1,0 +1,21 @@
+@import '../variables.scss';
+
+.scrollBox {
+  @include width(calc(100% - (612px + 32px)));
+  @include flex();
+}
+
+.scrollCont {
+  @include width(312px);
+  display: flex;
+  flex-direction: column;
+  @include gap(64px);
+
+  .imgBox {
+    @include mb(16px);
+  }
+}
+
+.blogLink {
+  composes: blogLink from './parts.scss';
+}

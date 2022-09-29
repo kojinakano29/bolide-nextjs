@@ -1,0 +1,20 @@
+@import '../variables.scss';
+
+.section2 {
+  @include pt(112px);
+}
+
+.section3 {
+  @include pt(112px);
+}
+
+.wrapper {
+  border-top: 1px solid $g3;
+  border-bottom: 1px solid $g3;
+  @include p(40px 0 64px);
+}
+
+.flex {
+  @include flex();
+  position: relative;
+}

@@ -1,0 +1,21 @@
+@import '../variables.scss';
+
+.pickUp {
+  @include width(612px);
+  height: 100vh;
+  position: sticky;
+  top: 0;
+
+  .imgBox {
+    height: 100vh;
+  }
+}
+
+.txtBox {
+  composes: txtBox from './parts.scss';
+  @include p(80px 80px 40px);
+}
+
+.blogLink {
+  composes: blogLink from './parts.scss';
+}

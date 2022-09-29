@@ -1,0 +1,26 @@
+@import '../variables.scss';
+
+.txtBox {
+  width: 100%;
+  @include p(64px 24px 40px);
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  background-image: $gd1;
+}
+
+.blogLink {
+  display: block;
+  overflow: hidden;
+
+  &:hover {
+    img {
+      transform: scale(1.1);
+      opacity: .5;
+    }
+  }
+
+  img {
+    transition: .2s ease-out;
+  }
+}

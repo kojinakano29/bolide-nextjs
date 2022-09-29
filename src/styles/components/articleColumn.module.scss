@@ -1,0 +1,16 @@
+@import '../variables.scss';
+
+.article {
+  @include width(925px);
+  @include flex(stretch, flex-start);
+  @include gap(64px 30px);
+}
+
+.blogLink {
+  composes: blogLink from './parts.scss';
+  @include width(288px);
+}
+
+.imgBox {
+  @include mb(16px);
+}

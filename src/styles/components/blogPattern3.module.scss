@@ -1,0 +1,14 @@
+@import '../variables.scss';
+
+.imgFlex {
+  @include mb(16px);
+  @include flex();
+}
+
+.imgBox {
+  @include width(25%);
+}
+
+.blogLink {
+  composes: blogLink from './parts.scss';
+}
