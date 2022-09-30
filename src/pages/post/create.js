@@ -73,6 +73,7 @@ const CreatePost = ({posts}) => {
       mv: mvRefs.current.files[0],
       sub_title: subTtlRefs.current.value,
       discription: discRefs.current.value,
+      content: editorContent,
       state: stateRefs.current.value,
     })
   }, [onPostForm])
@@ -87,6 +88,7 @@ const CreatePost = ({posts}) => {
     console.log(mvRefs.current.files[0]);
     console.log(subTtlRefs.current.value);
     console.log(discRefs.current.value);
+    console.log(editorContent)
     console.log(stateRefs.current.value);
   }
 
@@ -96,6 +98,8 @@ const CreatePost = ({posts}) => {
       return item.id.toString() === e.target.value
     }))
   }
+
+  const [editorContent, setEditorContent] = useState()
 
   return (
     <section className={styles.createSection}>
@@ -122,7 +126,7 @@ const CreatePost = ({posts}) => {
         <textarea name="sub_title" ref={subTtlRefs} onChange={log}></textarea>
         <textarea name="discription" ref={discRefs} onChange={log}></textarea>
         <div>エディター</div>
-        <PostEditor />
+        <PostEditor setEditorContent={setEditorContent} />
         <select name="state" ref={stateRefs} onChange={log}>
           <option value="0">下書き</option>
           <option value="1">公開済み</option>
