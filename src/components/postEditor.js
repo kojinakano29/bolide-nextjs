@@ -44,9 +44,9 @@ const PostEditor = ({setEditorContent}) => {
 
   const onEditorStateChange = async (state) => {
     const data = convertToRaw(editorState.getCurrentContent())
-    // console.log(JSON.stringify(data))
     // saveContent(data)
-    await setEditorContent(JSON.stringify(data))
+    // await setEditorContent(JSON.stringify(data))
+    await setEditorContent(data)
     await setEditorState(state)
   }
 
