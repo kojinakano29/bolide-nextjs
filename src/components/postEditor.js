@@ -46,7 +46,7 @@ const PostEditor = ({setEditorContent}) => {
     const data = convertToRaw(editorState.getCurrentContent())
     // console.log(JSON.stringify(data))
     // saveContent(data)
-    await setEditorContent(data)
+    await setEditorContent(JSON.stringify(data))
     await setEditorState(state)
   }
 
@@ -75,7 +75,6 @@ const PostEditor = ({setEditorContent}) => {
   }, [])
 
   const ImageComponent = (props) => {
-    console.log(props);
     return <img src={props.blockProps.src.src} alt={props.blockProps.src.alt} />
   }
 
