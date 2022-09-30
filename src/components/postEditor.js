@@ -44,9 +44,9 @@ const PostEditor = ({setEditorContent}) => {
 
   const onEditorStateChange = async (state) => {
     const data = convertToRaw(editorState.getCurrentContent())
+    const strData = JSON.stringify(data)
     // saveContent(data)
-    // await setEditorContent(JSON.stringify(data))
-    await setEditorContent(data)
+    await setEditorContent(strData)
     await setEditorState(state)
   }
 
@@ -98,9 +98,8 @@ const PostEditor = ({setEditorContent}) => {
     <div>
       <Editor
         editorState={editorState}
-        blockRendererFn={blockRendererFn}
-        handleDroppedFiles={handleImageUpload}
         onEditorStateChange={onEditorStateChange}
+        blockRendererFn={blockRendererFn}
         toolbarClassName="toolbarClassName"
         wrapperClassName="wrapperClassName"
         editorClassName="editorClassName"
