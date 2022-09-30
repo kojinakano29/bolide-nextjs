@@ -2,19 +2,81 @@ import axios from '@/lib/axios'; // カスタムフック
 import "react-draft-wysiwyg/dist/react-draft-wysiwyg.css";
 import { ContentState, convertToRaw, convertFromRaw, EditorState } from "draft-js";
 import dynamic from "next/dynamic";
-import { useCallback, useState } from "react";
+import { useCallback, useEffect, useState } from "react";
 const Editor = dynamic(
   () => import("react-draft-wysiwyg").then(mod => mod.Editor),
   { ssr: false }
 )
 
-const PostEditor = () => {
+const PostEditor = ({setEditorContent}) => {
   const csrf = () => axios.get('/sanctum/csrf-cookie')
 
-  const [editorState, setEditorState] = useState()
+  const [editorState, setEditorState] = useState(() => EditorState.createEmpty())
 
-  const onEditorStateChange = (editorState) => {
-    setEditorState(editorState)
+  // useEffect(() => {
+  //   const content = JSON.parse(window.localStorage.getItem('content'))
+
+  //   if (content) {
+  //     setEditorState(EditorState.createWithContent(convertFromRaw(content)))
+  //   } else {
+  //     setEditorState(EditorState.createEmpty())
+  //   }
+  // }, [])
+
+  // const saveContent = (content) => {
+  //   window.localStorage.setItem('content', JSON.stringify(content))
+  // }
+
+  // const saveContent = useCallback(async (content) => {
+  //   await csrf()
+
+  //   const saveData = new FormData
+  //   saveData.append('content', content)
+
+  //   return await axios.post('/api/liondor/post/store', saveData)
+  //   .then((res) => {
+  //     console.log(res)
+  //   })
+  //   .catch((e) => {
+  //     console.error(e)
+  //   })
+  // }, [])
+
+  const onEditorStateChange = async (state) => {
+    const data = convertToRaw(editorState.getCurrentContent())
+    // console.log(JSON.stringify(data))
+    // saveContent(data)
+    await setEditorContent(data)
+    await setEditorState(state)
+  }
+
+  const blockRendererFn = useCallback((contnetBlock) => {
+    if (contnetBlock.getType() === "atomic") {
+      const entityKey = contnetBlock.getEntityAt(0)
+      if (!entityKey) {
+        return null
+      }
+      const entity = editorState.getCurrentContent().getEntity(entityKey)
+      if (!entity) {
+        return null
+      }
+      if (entity.getType() === "IMAGE") {
+        const data = entity.getData()
+        return {
+          component: ImageComponent,
+          editable: false,
+          props: {
+            src: data
+          }
+        }
+      }
+    }
+    return null
+  }, [])
+
+  const ImageComponent = (props) => {
+    console.log(props);
+    return <img src={props.blockProps.src.src} alt={props.blockProps.src.alt} />
   }
 
   const handleImageUpload = useCallback(async (file) => {
@@ -23,27 +85,22 @@ const PostEditor = () => {
     const data = new FormData();
     data.append('image', file)
 
-    await axios.post('/api/liondor/post/imagesave', data)
+    return await axios.post('/api/liondor/post/imagesave', data)
     .then((res) => {
-      console.log(res)
-      // const link = `${process.env.API_DOMAIN_IMAGE_PATH}/`
-      return {data: {link: res}}
+      const link = `http://localhost:8000/storage/${res.data}`
+      return {data: {link: link}}
     })
     .catch((e) => {
       console.error(e)
     })
   }, [])
 
-  // const onSave = async (ContentState) => {
-  //   const Object = convertToRaw(ContentState)
-  //   const data = JSON.stringify(Object)
-  //   console.log(data)
-  // }
-
   return (
     <div>
       <Editor
         editorState={editorState}
+        blockRendererFn={blockRendererFn}
+        handleDroppedFiles={handleImageUpload}
         onEditorStateChange={onEditorStateChange}
         toolbarClassName="toolbarClassName"
         wrapperClassName="wrapperClassName"
@@ -58,7 +115,6 @@ const PostEditor = () => {
           marginBottom: "2em",
           boxShadow: "inset 0px 1px 8px -3px #ababab",
           background: "#fefefe",
-          // minHeight: editorMinHeight,
         }}
         localization={{ locale: "ja" }}
         toolbar={{
