@@ -1,21 +1,11 @@
 @import '../variables.scss';
 
 .cat {
-  display: flex;
-  align-items: center;
-  @include gap(.5em);
-  @include mb(16px);
+  composes: cat from './parts.scss';
+}
 
-  span {
-    font-size: 14px;
-  }
-
-  .hr {
-    width: 1px;
-    height: 12px;
-    background-color: $b1;
-    transform: rotate(20deg);
-  }
+.hr {
+  composes: hr from './parts.scss';
 }
 
 .singleTtl {
@@ -25,17 +15,11 @@
 }
 
 .name {
-  @include mb(4px);
-
-  span {
-    font-size: 14px;
-    color: $g1;
-  }
+  composes: name from './parts.scss';
 }
 
 .time {
-  font-size: 12px;
-  color: $g1;
+  composes: time from './parts.scss';
 }
 
 .white {

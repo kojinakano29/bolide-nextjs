@@ -1,11 +1,10 @@
-import { useRouter } from "next/router";
 import PageLayout from '@/components/Layouts/PageLayout'
 import Container from '@/components/Layouts/container'
 import { ArticleColumn, BlogPattern8, BlogSideBar, CatNavi, PageTitle } from "@/components";
 import styles from '@/styles/components/pageSingle.module.scss'
 
 export const getServerSideProps = async ({params}) => {
-  const res = await fetch(`${process.env.API_DOMAIN}/api/liondor/post/${params.category}`)
+  const res = await fetch(`${process.env.NEXT_PUBLIC_BACKEND_URL}/api/liondor/post/${params.category}`)
   const data = await res.json()
 
   return {
@@ -18,14 +17,15 @@ export const getServerSideProps = async ({params}) => {
 const Post = ({posts}) => {
   const pickupData = posts.pickups
 
-  const router = useRouter();
-  const { category, cat } = router.query
-  const upperCat = category.toUpperCase()
+  const parentSlug = posts.posts[0].l_category.parent_slug
+  const upperParentSlug = parentSlug?.toUpperCase()
+  const slug = posts.posts[0].l_category.slug
+  const upperSlug = slug?.toUpperCase()
 
   return (
     <section className="cont1">
-      <PageTitle title={upperCat} ivy mb0 />
-      <CatNavi />
+      <PageTitle title={parentSlug !== null ? upperParentSlug : upperSlug} ivy mb0 />
+      <CatNavi parentSlug={parentSlug !== null ? parentSlug : slug} />
       <Container>
         <section className={styles.section}>
           <div className={styles.flex}>

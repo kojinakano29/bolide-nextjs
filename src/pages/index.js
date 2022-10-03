@@ -4,7 +4,7 @@ import PageLayout from '@/components/Layouts/PageLayout'
 import Container from '@/components/Layouts/container'
 
 export const getServerSideProps = async () => {
-    const res = await fetch(`${process.env.API_DOMAIN}/api/liondor/`)
+    const res = await fetch(`${process.env.NEXT_PUBLIC_BACKEND_URL}/api/liondor/`)
     const data = await res.json()
 
     return {
