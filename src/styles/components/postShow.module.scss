@@ -1,0 +1,73 @@
+@import '../variables.scss';
+
+.headline {
+  @include p(32px 0 96px);
+  border-bottom: 1px solid $g3;
+}
+
+.headlineMv {
+  position: relative;
+  width: 100%;
+  @include mb(48px);
+
+  img {
+    width: 100%;
+  }
+}
+
+.headlineBox {
+  text-align: center;
+}
+
+.cat {
+  composes: cat from './parts.scss';
+  justify-content: center;
+  @include mb(24px);
+}
+
+.hr {
+  composes: hr from './parts.scss';
+}
+
+.ttl {
+  font-size: var(--fs32-18);
+  @include mb(40px);
+  font-weight: 500;
+}
+
+.subTtl {
+  font-size: var(--fs24-16);
+  font-weight: 500;
+  @include mb(16px);
+}
+
+.desc {
+  font-size: var(--fs14-12);
+  font-weight: 300;
+  @include mb(24px);
+}
+
+.series {
+  @include mb(24px);
+
+  .seriesLink {
+    @include fs(11px);
+    font-weight: 500;
+    color: $g3;
+    text-decoration: underline;
+
+    &:hover {
+      text-decoration: none;
+    }
+  }
+}
+
+.name {
+  composes: name from './parts.scss';
+  @include mb(4px);
+}
+
+.time {
+  composes: time from './parts.scss';
+  @include mb(32px);
+}

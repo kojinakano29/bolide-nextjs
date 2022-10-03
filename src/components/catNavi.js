@@ -3,22 +3,17 @@ import { useRouter } from 'next/router';
 import { catNavData } from '@/lib/constants'
 import Link from 'next/link';
 
-const CatNavi = () => {
+const CatNavi = ({parentSlug}) => {
   const router = useRouter();
-  const { category, cat } = router.query
+  const { category } = router.query
 
   return (
     <nav className={styles.nav}>
       <ul>
-        {catNavData[category].map((nav, index) => (
+        {catNavData[parentSlug].map((nav, index) => (
           <li key={index}>
             <Link href={nav.link}>
-              <a className={
-                `
-                  ${cat === nav.name ? styles.current : ''}
-                  ${cat === undefined ? styles.all : ''}
-                `
-              }>
+              <a className={`${category === nav.slug ? styles.current : ''}`}>
                 {nav.name}
               </a>
             </Link>

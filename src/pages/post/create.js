@@ -5,7 +5,7 @@ import { PostEditor } from '@/components';
 
 // SSG
 // export const getStaticProps = async () => {
-//   const res = await fetch(`${process.env.API_DOMAIN}/api/liondor/post/create`)
+//   const res = await fetch(`${process.env.NEXT_PUBLIC_BACKEND_URL}/api/liondor/post/create`)
 //   const data = await res.json()
 
 //   return {
@@ -17,7 +17,7 @@ import { PostEditor } from '@/components';
 
 // SSR
 export const getServerSideProps = async () => {
-  const res = await fetch(`${process.env.API_DOMAIN}/api/liondor/post/create`)
+  const res = await fetch(`${process.env.NEXT_PUBLIC_BACKEND_URL}/api/liondor/post/create`)
   const data = await res.json()
 
   return {

@@ -36,14 +36,7 @@
       }
     }
 
-    li:first-of-type {
-      a.all {
-        font-weight: 600;
-      }
-    }
-
-    a.current::after,
-    li:first-of-type a.all::after {
+    a.current::after {
       transform: scaleX(1);
     }
   }

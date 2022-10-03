@@ -24,3 +24,35 @@
     transition: .2s ease-out;
   }
 }
+
+.cat {
+  display: flex;
+  align-items: center;
+  @include gap(.5em);
+  @include mb(16px);
+
+  span {
+    font-size: 14px;
+  }
+
+  .hr {
+    width: 1px;
+    height: 12px;
+    background-color: $b1;
+    transform: rotate(20deg);
+  }
+}
+
+.name {
+  @include mb(4px);
+
+  span {
+    font-size: 14px;
+    color: $g1;
+  }
+}
+
+.time {
+  font-size: 12px;
+  color: $g1;
+}
