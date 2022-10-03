@@ -43,9 +43,9 @@ const CreatePost = ({posts}) => {
   const discRefs = useRef(null)
   const stateRefs = useRef(null)
 
-  const onPostForm = useCallback(async (data, editorContent) => {
+  const onPostForm = useCallback(async (data) => {
     await csrf()
-    console.log(editorContent)
+    console.log(data)
 
     const params = new FormData();
     Object.keys(data).forEach(function(key) {
@@ -78,7 +78,7 @@ const CreatePost = ({posts}) => {
       discription: discRefs.current.value,
       content: editorContent,
       state: stateRefs.current.value,
-    }, editorContent)
+    })
   }, [onPostForm, editorContent])
 
   const log = () => {
