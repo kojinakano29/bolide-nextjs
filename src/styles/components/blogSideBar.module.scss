@@ -1,8 +1,0 @@
-@import '../variables.scss';
-
-.sideBar {
-  @include width(320px);
-  @include height(100vh);
-  position: sticky;
-  top: 0;
-}

@@ -1,6 +1,6 @@
 import PageLayout from '@/components/Layouts/PageLayout'
 import Container from '@/components/Layouts/container'
-import { ArticleColumn, BlogPattern8, BlogSideBar, CatNavi, PageTitle } from "@/components";
+import { ArticleColumn, BlogPattern8, CatNavi, PageTitle, Sidebar } from "@/components";
 import styles from '@/styles/components/pageSingle.module.scss'
 
 export const getServerSideProps = async ({params}) => {
@@ -30,7 +30,7 @@ const Post = ({posts}) => {
         <section className={styles.section}>
           <div className={styles.flex}>
             <ArticleColumn posts={posts} />
-            <BlogSideBar pickup={pickupData} />
+            <Sidebar posts={posts} />
           </div>
         </section>
       </Container>
@@ -45,7 +45,7 @@ const Post = ({posts}) => {
         <section className={styles.section3}>
           <div className={styles.flex}>
             <ArticleColumn posts={posts} type2 />
-            <BlogSideBar pickup={pickupData} />
+            <Sidebar posts={posts} />
           </div>
         </section>
       </Container>

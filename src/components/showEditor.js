@@ -1,3 +1,4 @@
+import styles from '@/styles/components/showEditor.module.scss'
 import { convertFromRaw, EditorState } from "draft-js";
 import dynamic from "next/dynamic";
 import { useEffect, useState } from "react";
@@ -7,19 +8,20 @@ const Editor = dynamic(
 )
 
 const ShowEditor = ({posts}) => {
-  const content = JSON.parse(posts.posts.content)
   const [editorState, setEditorState] = useState(() => EditorState.createEmpty())
 
   useEffect(() => {
+    const content = posts.posts.content
+
     if (content) {
-      setEditorState(EditorState.createWithContent(convertFromRaw(content)))
+      setEditorState(EditorState.createWithContent(convertFromRaw(JSON.parse(content))))
     } else {
       setEditorState(EditorState.createEmpty())
     }
   }, [])
 
   return (
-    <div>
+    <div className={styles.editorBody}>
       <Editor
         editorState={editorState}
         readOnly

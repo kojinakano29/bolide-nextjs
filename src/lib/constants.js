@@ -2,26 +2,11 @@ import bannar1 from '@/images/common/bannar1.png'
 import bannar2 from '@/images/common/bannar2.png'
 import bannar3 from '@/images/common/bannar3.png'
 import bannar4 from '@/images/common/bannar4.png'
-import dummy3 from '@/images/cms/dummy3.png'
-import dummy4 from '@/images/cms/dummy4.png'
-import dummy5 from '@/images/cms/dummy5.png'
-import dummy6 from '@/images/cms/dummy6.png'
-import dummy7 from '@/images/cms/dummy7.png'
-import dummy8 from '@/images/cms/dummy8.png'
-import dummy9 from '@/images/cms/dummy9.png'
-import dummy10 from '@/images/cms/dummy10.png'
-import dummy11 from '@/images/cms/dummy11.png'
-import dummy12 from '@/images/cms/dummy12.png'
-import dummy13 from '@/images/cms/dummy13.png'
 import dummy14 from '@/images/cms/dummy14.png'
 import dummy15 from '@/images/cms/dummy15.png'
 import dummy16 from '@/images/cms/dummy16.png'
 import dummy17 from '@/images/cms/dummy17.png'
 import dummy18 from '@/images/cms/dummy18.png'
-import dummy19 from '@/images/cms/dummy19.png'
-import dummy20 from '@/images/cms/dummy20.png'
-import dummy21 from '@/images/cms/dummy21.png'
-import dummy22 from '@/images/cms/dummy22.png'
 
 // サイト情報
 export const siteMeta = {
@@ -44,7 +29,6 @@ export const pageNaviData = [
   {slug: 'topleader', name: 'Top Leader', link: '/post/topleader'},
   {slug: 'fortune', name: 'Fortune', link: '/post/fortune'},
   {slug: 'video', name: 'Video', link: '/post/video'},
-  {slug: 'pickupinformation', name: 'Pick Up Information', link: '/post/pickUpInformation'},
 ]
 
 // カテゴリナビ
@@ -121,35 +105,11 @@ export const bannarData = [
 ]
 
 // ダミー画像（削除予定）
-export const dummyImage = [
-  {num: 2, src: dummy3},
-  {num: 3, src: dummy4},
-  {num: 4, src: dummy5},
-  {num: 5, src: dummy6},
-  {num: 6, src: dummy3},
-  {num: 7, src: dummy4},
-  {num: 8, src: dummy5},
-  {num: 9, src: dummy6},
-]
-
-export const dummyImage2 = [
-  {src: dummy7},
-  {src: dummy8},
-  {src: dummy9},
-]
-
 export const dummyImage3 = [
   {src: dummy14},
   {src: dummy15},
   {src: dummy16},
   {src: dummy17},
-]
-
-export const dummyImage4 = [
-  {src: dummy10},
-  {src: dummy11},
-  {src: dummy12},
-  {src: dummy13},
 ]
 
 export const dummyImage5 = [
@@ -173,16 +133,4 @@ export const dummyImage5 = [
     ttl: '風水師黒門のオンライン開運塾',
     txt: 'テキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキス…'
   },
-]
-
-export const dummyImage6 = [
-  {src: dummy19},
-  {src: dummy20},
-  {src: dummy21},
-]
-
-export const dummyImage7 = [
-  {src: dummy22},
-  {src: dummy22},
-  {src: dummy22},
 ]

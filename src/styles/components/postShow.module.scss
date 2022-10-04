@@ -71,3 +71,19 @@
   composes: time from './parts.scss';
   @include mb(32px);
 }
+
+.showBody {
+  @include pt(40px);
+}
+
+.bodyFlex {
+  @include flex(stretch);
+  @include gap(0 64px);
+}
+
+.recoCont {
+  @include mt(112px);
+  @include p(56px 0 96px);
+  background-color: $g2;
+  overflow: hidden;
+}
