@@ -8,44 +8,14 @@ const Editor = dynamic(
   { ssr: false }
 )
 
-const PostEditor = ({setEditorContent}) => {
+const SidebarEditor = ({setEditorContent}) => {
   const csrf = () => axios.get('/sanctum/csrf-cookie')
 
   const [editorState, setEditorState] = useState(() => EditorState.createEmpty())
 
-  // useEffect(() => {
-  //   const content = JSON.parse(window.localStorage.getItem('content'))
-
-  //   if (content) {
-  //     setEditorState(EditorState.createWithContent(convertFromRaw(content)))
-  //   } else {
-  //     setEditorState(EditorState.createEmpty())
-  //   }
-  // }, [])
-
-  // const saveContent = (content) => {
-  //   window.localStorage.setItem('content', JSON.stringify(content))
-  // }
-
-  // const saveContent = useCallback(async (content) => {
-  //   await csrf()
-
-  //   const saveData = new FormData
-  //   saveData.append('content', content)
-
-  //   return await axios.post('/api/liondor/post/store', saveData)
-  //   .then((res) => {
-  //     console.log(res)
-  //   })
-  //   .catch((e) => {
-  //     console.error(e)
-  //   })
-  // }, [])
-
   const onEditorStateChange = async (state) => {
     const data = convertToRaw(editorState.getCurrentContent())
     const strData = JSON.stringify(data)
-    // saveContent(data)
     await setEditorContent(strData)
     await setEditorState(state)
   }
@@ -84,7 +54,7 @@ const PostEditor = ({setEditorContent}) => {
     const data = new FormData();
     data.append('image', file)
 
-    return await axios.post('/api/liondor/post/imagesave', data)
+    return await axios.post('/api/liondor/sidebar/imagesave', data)
     .then((res) => {
       const link = `http://localhost:8000/storage/${res.data}`
       return {data: {link: link}}
@@ -146,4 +116,4 @@ const PostEditor = ({setEditorContent}) => {
   )
 }
 
-export default PostEditor;
+export default SidebarEditor;

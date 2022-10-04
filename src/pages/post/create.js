@@ -45,7 +45,6 @@ const CreatePost = ({posts}) => {
 
   const onPostForm = useCallback(async (data) => {
     await csrf()
-    console.log(data)
 
     const params = new FormData();
     Object.keys(data).forEach(function(key) {
@@ -81,20 +80,6 @@ const CreatePost = ({posts}) => {
     })
   }, [onPostForm, editorContent])
 
-  const log = () => {
-    console.log(userIdRef.current.value);
-    console.log(catIdRefs.current.value);
-    console.log(catChildIdRefs.current.value);
-    console.log(seriesIdRefs.current.value);
-    console.log(ttlRefs.current.value);
-    console.log(thumbRefs.current.files[0]);
-    console.log(mvRefs.current.files[0]);
-    console.log(subTtlRefs.current.value);
-    console.log(discRefs.current.value);
-    console.log(editorContent)
-    console.log(stateRefs.current.value);
-  }
-
   const [cat, setCat] = useState([posts.category[0]])
   const handleCat = (e) => {
     setCat(posts.category.filter((item) => {
@@ -105,30 +90,30 @@ const CreatePost = ({posts}) => {
   return (
     <section className={styles.createSection}>
       <form onSubmit={onSubmitHandler}>
-        <input type="text" name="user_id" value="1" ref={userIdRef} onChange={log} />
+        <input type="text" name="user_id" value="1" ref={userIdRef} />
         <select name="l_category_id" ref={catIdRefs} onChange={handleCat}>
           {posts.category.map((cat, index) => (
             <option value={index+1} key={index+1}>{cat.name}</option>
           ))}
         </select>
-        <select name="child_category" ref={catChildIdRefs} onChange={log}>
+        <select name="child_category" ref={catChildIdRefs}>
           {cat[0]?.child_category?.map((cat) => (
             <option value={cat.id} key={cat.id}>{cat.name}</option>
           ))}
         </select>
-        <select name="l_series_id" ref={seriesIdRefs} onChange={log}>
+        <select name="l_series_id" ref={seriesIdRefs}>
           {posts.series.map((series, index) => (
             <option value={index+1} key={index+1}>{series.name}</option>
           ))}
         </select>
-        <input type="text" name="title" ref={ttlRefs} onChange={log} />
-        <input type="file" name="thumbs" accept="image/*" ref={thumbRefs} onChange={log} />
-        <input type="file" name="mv" accept="image/*" ref={mvRefs} onChange={log} />
-        <textarea name="sub_title" ref={subTtlRefs} onChange={log}></textarea>
-        <textarea name="discription" ref={discRefs} onChange={log}></textarea>
+        <input type="text" name="title" ref={ttlRefs} />
+        <input type="file" name="thumbs" accept="image/*" ref={thumbRefs} />
+        <input type="file" name="mv" accept="image/*" ref={mvRefs} />
+        <textarea name="sub_title" ref={subTtlRefs}></textarea>
+        <textarea name="discription" ref={discRefs}></textarea>
         <div>エディター</div>
         <PostEditor setEditorContent={setEditorContent} />
-        <select name="state" ref={stateRefs} onChange={log}>
+        <select name="state" ref={stateRefs}>
           <option value="0">下書き</option>
           <option value="1">公開済み</option>
         </select>
