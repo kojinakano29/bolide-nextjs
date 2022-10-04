@@ -1,4 +1,4 @@
-import { Date, ShowEditor, Sidebar } from "@/components";
+import { Button2, Date, Recommends, ShowEditor, Sidebar } from "@/components";
 import Container from "@/components/Layouts/container";
 import PageLayout from "@/components/Layouts/PageLayout";
 import styles from '@/styles/components/postShow.module.scss'
@@ -21,6 +21,7 @@ const DetailPage = ({posts}) => {
   const upperParentSlug = parentSlug?.toUpperCase()
   const slugName = posts.posts.l_category.name
   const upperSlugName = slugName?.toUpperCase()
+  const slug = posts.posts.l_category.slug
   const ttl = posts.posts.title
   const subTtl = posts.posts.sub_title
   const desc = posts.posts.discription
@@ -80,8 +81,15 @@ const DetailPage = ({posts}) => {
         <Container>
           <div className={styles.bodyFlex}>
             <ShowEditor posts={posts} />
-            <Sidebar />
+            <Sidebar posts={posts} />
           </div>
+          <Button2 link={`/post/${slug}`} name="back to list" left />
+        </Container>
+      </section>
+
+      <section className={styles.recoCont}>
+        <Container>
+          <Recommends posts={posts} />
         </Container>
       </section>
     </>

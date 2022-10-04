@@ -9,6 +9,10 @@
   position: relative;
   @include mt(64px);
 
+  &.left {
+    margin-left: 0;
+  }
+
   &::after {
     content: "";
     width: 100%;

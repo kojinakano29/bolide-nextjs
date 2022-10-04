@@ -1,0 +1,47 @@
+@import '../variables.scss';
+
+.slideWrap {
+  @include width(calc(100vw - ((100vw - 1300px) / 2)));
+  max-width: unset;
+
+  div {
+    div {
+      div {
+        @include width(300px !important);
+      }
+    }
+  }
+}
+
+.imgBox {
+  @include mb(16px);
+}
+
+.blogLink {
+  composes: blogLink from './parts.scss';
+  @include width(300px);
+}
+
+.slideNav {
+  position: relative;
+
+  button {
+    color: $b1;
+    width: unset;
+    height: unset;
+    @include top(60px);
+
+    &::after {
+      @include fs(24px);
+    }
+  }
+
+  .prev {
+    @include right(calc(48px));
+    left: unset;
+  }
+
+  .next {
+    right: 0;
+  }
+}

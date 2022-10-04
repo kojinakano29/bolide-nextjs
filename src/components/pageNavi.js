@@ -17,6 +17,11 @@ const PageNavi = ({white = false}) => {
             </Link>
           </li>
         ))}
+        <li>
+          <Link href="/#pickUp">
+            <a className="en">Pick Up Information</a>
+          </Link>
+        </li>
       </ul>
     </nav>
   );

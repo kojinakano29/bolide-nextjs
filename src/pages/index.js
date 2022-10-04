@@ -113,11 +113,11 @@ export default function Home({posts}) {
                 <Container>
                     <h2 className="ttl1 ivy">ON-LINE SALON</h2>
                     <BlogPattern6 />
-                    <Button2 link="/" />
+                    <Button2 link="/" name="view all" />
                 </Container>
             </section>
 
-            <section className={`cont ${styles.cont13}`}>
+            <section id="pickUp" className={`cont ${styles.cont13}`}>
                 <div className={styles.wrapper}>
                     <Container>
                         <BlogPattern8 pattern={pickupData} />
@@ -129,7 +129,7 @@ export default function Home({posts}) {
                 <Container>
                     <h2 className="ttl1 ivy">PRESENT</h2>
                     <BlogPattern9 pattern={presentData} />
-                    <Button2 link="/" />
+                    <Button2 link="/" name="view all" />
                 </Container>
             </section>
         </>

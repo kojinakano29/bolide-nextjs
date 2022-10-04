@@ -1,0 +1,5 @@
+@import '../variables.scss';
+
+.editorBody {
+  @include width(calc(100% - (320px + 64px)));
+}

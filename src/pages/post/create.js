@@ -45,6 +45,7 @@ const CreatePost = ({posts}) => {
 
   const onPostForm = useCallback(async (data) => {
     await csrf()
+    console.log(data)
 
     const params = new FormData();
     Object.keys(data).forEach(function(key) {
@@ -90,7 +91,7 @@ const CreatePost = ({posts}) => {
   return (
     <section className={styles.createSection}>
       <form onSubmit={onSubmitHandler}>
-        <input type="text" name="user_id" value="1" ref={userIdRef} />
+        <input type="text" name="user_id" defaultValue="1" ref={userIdRef} />
         <select name="l_category_id" ref={catIdRefs} onChange={handleCat}>
           {posts.category.map((cat, index) => (
             <option value={index+1} key={index+1}>{cat.name}</option>

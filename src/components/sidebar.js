@@ -1,8 +1,13 @@
 import styles from '@/styles/components/sidebar.module.scss'
+import { SidebarShowEditor } from '@/components';
 
-const Sidebar = () => {
+const Sidebar = ({posts}) => {
   return (
-    <article className={styles.sidebar}></article>
+    <article className={styles.sidebar}>
+      <div className={`${styles.editorBox} readonly`}>
+        <SidebarShowEditor posts={posts} />
+      </div>
+    </article>
   );
 }
 

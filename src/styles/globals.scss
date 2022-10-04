@@ -25,7 +25,7 @@
 *,
 *::before,
 *::after {
-  // max-width: 100%;
+  max-width: 100%;
   outline: none;
   box-sizing: border-box;
   padding: 0;
@@ -154,5 +154,17 @@ span > img {
   border-top: 1px solid $g3;
   border-bottom: 1px solid $g3;
   @include mb(24px);
+}
+
+.readonly {
+  .rdw-editor-toolbar {
+    display: none;
+  }
+
+  .public-DraftEditor-content {
+    * {
+      margin: 0;
+    }
+  }
 }
 /* 共通部分 */
