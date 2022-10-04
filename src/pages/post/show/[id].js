@@ -1,4 +1,4 @@
-import { Date, ShowEditor } from "@/components";
+import { Date, ShowEditor, Sidebar } from "@/components";
 import Container from "@/components/Layouts/container";
 import PageLayout from "@/components/Layouts/PageLayout";
 import styles from '@/styles/components/postShow.module.scss'
@@ -80,6 +80,7 @@ const DetailPage = ({posts}) => {
         <Container>
           <div className={styles.bodyFlex}>
             <ShowEditor posts={posts} />
+            <Sidebar />
           </div>
         </Container>
       </section>
