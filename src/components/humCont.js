@@ -13,51 +13,51 @@ const HumCont = ({humOpen, clickHumClose}) => {
         <nav className={`${styles.humNav} ${humOpen ? styles.lazyIn : ''}`}>
           <ul className={styles.humUl}>
             <li>
-              <Link href="/">
+              <Link href="/post/fashion">
                 <a className="ivy" onClick={clickHumClose}>Fashion</a>
               </Link>
             </li>
             <li>
-              <Link href="/">
+              <Link href="/post/beauty">
                 <a className="ivy" onClick={clickHumClose}>Beauty</a>
               </Link>
             </li>
             <li>
-              <Link href="/">
+              <Link href="/post/trend">
                 <a className="ivy" onClick={clickHumClose}>Trend</a>
               </Link>
             </li>
           </ul>
           <ul className={styles.humUl}>
             <li>
-              <Link href="/">
+              <Link href="/post/lifestyle">
                 <a className="ivy" onClick={clickHumClose}>Life Style</a>
               </Link>
             </li>
             <li>
-              <Link href="/">
+              <Link href="/post/wedding">
                 <a className="ivy" onClick={clickHumClose}>Wedding</a>
               </Link>
             </li>
             <li>
-              <Link href="/">
+              <Link href="/post/topleader">
                 <a className="ivy" onClick={clickHumClose}>Top Leader</a>
               </Link>
             </li>
           </ul>
           <ul className={styles.humUl}>
             <li>
-              <Link href="/">
+              <Link href="/post/fortune">
                 <a className="ivy" onClick={clickHumClose}>Fortune</a>
               </Link>
             </li>
             <li>
-              <Link href="/">
+              <Link href="/post/video">
                 <a className="ivy" onClick={clickHumClose}>Video</a>
               </Link>
             </li>
             <li>
-              <Link href="/">
+              <Link href="/#pickUp">
                 <a className="ivy" onClick={clickHumClose}>Pickup Infomation</a>
               </Link>
             </li>

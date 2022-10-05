@@ -109,6 +109,10 @@ span > img {
   transition: .2s;
 }
 
+*.red {
+  color: $red1;
+}
+
 .pc {
   @include media1(sp) {
     display: none !important;

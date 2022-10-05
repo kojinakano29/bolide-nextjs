@@ -1,1 +1,5 @@
 @import '../variables.scss';
+
+.createSection {
+  @include pt(64px);
+}

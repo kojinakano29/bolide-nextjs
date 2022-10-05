@@ -1,8 +1,11 @@
 import styles from '@/styles/components/container.module.scss'
 
-const Container = ({children, small = false}) => {
+const Container = ({children, small = false, small900 = false}) => {
   return (
-    <div className={small ? styles.small : styles.default}>
+    <div className={`
+      ${small ? styles.small : styles.default}
+      ${small900 ? styles.small900 : ''}
+    `}>
       {children}
     </div>
   );

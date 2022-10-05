@@ -28,8 +28,18 @@
         opacity: .5;
       }
 
-      & > span {
-        width: 14px;
+      svg {
+        color: $w1;
+      }
+    }
+
+    &.gray {
+      a {
+        border: 1px solid $g1;
+
+        svg {
+          color: $g1;
+        }
       }
     }
   }
