@@ -1,26 +1,22 @@
 import styles from '@/styles/components/articleColumn.module.scss'
 import Image from 'next/image';
 import Link from 'next/link';
-import { useRouter } from 'next/router';
 import dummy11 from '@/images/cms/dummy11.png'
 import BlogTxt from './blogTxt';
 
-const ArticleColumn = ({posts, type2 = false}) => {
-  const router = useRouter();
-  const { category, cat } = router.query
-
-  const sort = posts?.posts?.filter((e, index) => {
+const ArticleColumn = ({posts, type2 = false, present = false}) => {
+  const sort = posts?.filter((e, index) => {
     if (type2) {
-      return e?.l_category.name === cat || undefined === cat && index > 14 && index < 30
+      return index > 14 && index < 30
     } else {
-      return e?.l_category.name === cat || undefined === cat && index < 15
+      return index < 15
     }
   })
 
   return (
     <article className={styles.article}>
       {sort.map((item) => (
-        <Link href={`/post/show/${item.id}`} key={item.id}>
+        <Link href={`/${present ? 'present' : 'post/show'}/${item.id}`} key={item.id}>
           <a className={styles.blogLink}>
             <div className={styles.imgBox}>
               <Image

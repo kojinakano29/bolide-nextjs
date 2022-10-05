@@ -11,3 +11,8 @@
   composes: default;
   @include max-width(1140px, 720px, 100%);
 }
+
+.small900 {
+  composes: default;
+  @include max-width(900px, 720px, 100%);
+}

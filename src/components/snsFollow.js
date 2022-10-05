@@ -1,47 +1,26 @@
 import styles from '@/styles/components/snsFollow.module.scss'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { faFacebookF, faInstagram, faTwitter, faYoutube } from '@fortawesome/free-brands-svg-icons'
-import Image from 'next/image';
-import line from '@/images/common/line.svg'
+import { faFacebookF, faInstagram, faTwitter, faLine, faYoutube } from '@fortawesome/free-brands-svg-icons'
 
-const SnsFollow = ({right = false}) => {
+const SnsFollow = ({right = false, gray = false}) => {
   return (
     <div className={styles.followBox}>
       <p className={`en ${right ? styles.textRight : ''}`}>FOLLOW US</p>
-      <div className={styles.flex}>
+      <div className={`${styles.flex} ${gray ? styles.gray : ''}`}>
         <a href="/" target="_blank">
-          <FontAwesomeIcon
-            icon={faFacebookF}
-            style={{color: "#fff"}}
-          />
+          <FontAwesomeIcon icon={faFacebookF} />
         </a>
         <a href="/" target="_blank">
-          <FontAwesomeIcon
-            icon={faInstagram}
-            style={{color: "#fff"}}
-          />
+          <FontAwesomeIcon icon={faInstagram} />
         </a>
         <a href="/" target="_blank">
-          <FontAwesomeIcon
-            icon={faTwitter}
-            style={{color: "#fff"}}
-          />
+          <FontAwesomeIcon icon={faTwitter} />
         </a>
         <a href="/" target="_blank">
-          <span>
-            <Image
-              src={line}
-              alt=""
-              layout="responsive"
-              sizes="28px"
-            />
-          </span>
+          <FontAwesomeIcon icon={faLine} />
         </a>
         <a href="/" target="_blank">
-          <FontAwesomeIcon
-            icon={faYoutube}
-            style={{color: "#fff"}}
-          />
+          <FontAwesomeIcon icon={faYoutube} />
         </a>
       </div>
     </div>

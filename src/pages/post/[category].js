@@ -21,41 +21,42 @@ const Post = ({posts}) => {
   const upperParentSlug = parentSlug?.toUpperCase()
   const slug = posts.posts[0].l_category.slug
   const upperSlug = slug?.toUpperCase()
+  const post = posts.posts
 
   return (
     <section className="cont1">
       <PageTitle title={parentSlug !== null ? upperParentSlug : upperSlug} ivy mb0 />
       <CatNavi parentSlug={parentSlug !== null ? parentSlug : slug} />
       <Container>
-        <section className={styles.section}>
+        <article className={styles.section}>
           <div className={styles.flex}>
-            <ArticleColumn posts={posts} />
+            <ArticleColumn posts={post} />
             <Sidebar posts={posts} />
           </div>
-        </section>
+        </article>
       </Container>
-      <section className={styles.section2}>
+      <article className={styles.section2}>
         <div className={styles.wrapper}>
           <Container>
               <BlogPattern8 pattern={pickupData} must />
           </Container>
         </div>
-      </section>
+      </article>
       <Container>
-        <section className={styles.section3}>
+        <article className={styles.section3}>
           <div className={styles.flex}>
-            <ArticleColumn posts={posts} type2 />
+            <ArticleColumn posts={post} type2 />
             <Sidebar posts={posts} />
           </div>
-        </section>
+        </article>
       </Container>
-      <section className={styles.section2}>
+      <article className={styles.section2}>
         <div className={styles.wrapper}>
           <Container>
               <BlogPattern8 pattern={pickupData} must />
           </Container>
         </div>
-      </section>
+      </article>
     </section>
   );
 }

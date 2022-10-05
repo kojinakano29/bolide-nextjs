@@ -22,6 +22,7 @@
     "react": "^17.0.2",
     "react-dom": "^17.0.2",
     "react-draft-wysiwyg": "^1.15.0",
+    "react-hook-form": "^7.36.1",
     "sass": "^1.54.9",
     "swiper": "^8.4.2",
     "swr": "^1.2.2"

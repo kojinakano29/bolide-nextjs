@@ -1,19 +1,9 @@
-import styles from '@/styles/components/CreatePost.module.scss'
+import styles from '@/styles/components/createPost.module.scss'
 import axios from '@/lib/axios'; // カスタムフック
-import { useCallback, useRef, useState } from 'react'
+import { useCallback, useState } from 'react'
 import { PostEditor } from '@/components';
-
-// SSG
-// export const getStaticProps = async () => {
-//   const res = await fetch(`${process.env.NEXT_PUBLIC_BACKEND_URL}/api/liondor/post/create`)
-//   const data = await res.json()
-
-//   return {
-//     props: {
-//       posts: data
-//     }
-//   }
-// }
+import { useForm } from 'react-hook-form';
+import Container from '@/components/Layouts/container';
 
 // SSR
 export const getServerSideProps = async () => {
@@ -32,20 +22,13 @@ const CreatePost = ({posts}) => {
 
   const [editorContent, setEditorContent] = useState()
 
-  const userIdRef = useRef(null)
-  const catIdRefs = useRef(null)
-  const catChildIdRefs = useRef(null)
-  const seriesIdRefs = useRef(null)
-  const ttlRefs = useRef(null)
-  const thumbRefs = useRef(null)
-  const mvRefs = useRef(null)
-  const subTtlRefs = useRef(null)
-  const discRefs = useRef(null)
-  const stateRefs = useRef(null)
+  const { register, handleSubmit, watch, formState: { errors } } = useForm()
+
+  const catArray = posts.category
+  const seriesArray = posts.series
 
   const onPostForm = useCallback(async (data) => {
     await csrf()
-    console.log(data)
 
     const params = new FormData();
     Object.keys(data).forEach(function(key) {
@@ -65,61 +48,75 @@ const CreatePost = ({posts}) => {
     })
   }, [])
 
-  const onSubmitHandler = useCallback((e) => {
-    e.preventDefault()
+  const onSubmit = useCallback((data) => {
+    console.log(data)
+
     onPostForm({
-      user_id: userIdRef.current.value,
-      l_category_id: catChildIdRefs.current.value,
-      l_series_id: seriesIdRefs.current.value,
-      title: ttlRefs.current.value,
-      thumbs: thumbRefs.current.files[0],
-      mv: mvRefs.current.files[0],
-      sub_title: subTtlRefs.current.value,
-      discription: discRefs.current.value,
+      user_id: data.user_id,
+      l_category_id: data.child_category,
+      l_series_id: data.l_series_id,
+      title: data.title,
+      thumbs: data.thumbs[0],
+      mv: data.mv[0],
+      sub_title: data.sub_title,
+      discription: data.discription,
       content: editorContent,
-      state: stateRefs.current.value,
+      state: data.state,
     })
   }, [onPostForm, editorContent])
 
-  const [cat, setCat] = useState([posts.category[0]])
+  const [cat, setCat] = useState([catArray[0]])
   const handleCat = (e) => {
-    setCat(posts.category.filter((item) => {
+    setCat(catArray.filter((item) => {
       return item.id.toString() === e.target.value
     }))
   }
 
+  const [state, setState] = useState(false)
+  const handleState = useCallback(() => {
+    setState((prevState) => !prevState)
+  }, [])
+
   return (
     <section className={styles.createSection}>
-      <form onSubmit={onSubmitHandler}>
-        <input type="text" name="user_id" defaultValue="1" ref={userIdRef} />
-        <select name="l_category_id" ref={catIdRefs} onChange={handleCat}>
-          {posts.category.map((cat, index) => (
-            <option value={index+1} key={index+1}>{cat.name}</option>
-          ))}
-        </select>
-        <select name="child_category" ref={catChildIdRefs}>
-          {cat[0]?.child_category?.map((cat) => (
-            <option value={cat.id} key={cat.id}>{cat.name}</option>
-          ))}
-        </select>
-        <select name="l_series_id" ref={seriesIdRefs}>
-          {posts.series.map((series, index) => (
-            <option value={index+1} key={index+1}>{series.name}</option>
-          ))}
-        </select>
-        <input type="text" name="title" ref={ttlRefs} />
-        <input type="file" name="thumbs" accept="image/*" ref={thumbRefs} />
-        <input type="file" name="mv" accept="image/*" ref={mvRefs} />
-        <textarea name="sub_title" ref={subTtlRefs}></textarea>
-        <textarea name="discription" ref={discRefs}></textarea>
-        <div>エディター</div>
-        <PostEditor setEditorContent={setEditorContent} />
-        <select name="state" ref={stateRefs}>
-          <option value="0">下書き</option>
-          <option value="1">公開済み</option>
-        </select>
-        <button>新規作成</button>
-      </form>
+      <Container>
+        <form onSubmit={handleSubmit(onSubmit)}>
+          <input type="text" defaultValue="1" {...register("user_id")} />
+          <select {...register("l_category_id")} onChange={handleCat}>
+            {catArray.map((cat, index) => (
+              <option value={index+1} key={index+1}>{cat.name}</option>
+            ))}
+          </select>
+          <select {...register("child_category")}>
+            {cat[0].child_category.map((cat) => (
+              <option value={cat.id} key={cat.id}>{cat.name}</option>
+            ))}
+          </select>
+          <select {...register("l_series_id")}>
+            {seriesArray.map((series, index) => (
+              <option value={index+1} key={index+1}>{series.name}</option>
+            ))}
+          </select>
+          <label htmlFor="title">タイトル</label>
+          <input type="text" id="title" {...register("title", { required: state })} />
+          {errors.title && <p className="red">必須項目を入力してください</p>}
+          <input type="file" accept="image/*" {...register("thumbs", { required: state })} />
+          {errors.thumbs && <p className="red">必須項目を入力してください</p>}
+          <input type="file" accept="image/*" {...register("mv", { required: state })} />
+          {errors.mv && <p className="red">必須項目を入力してください</p>}
+          <textarea {...register("sub_title", { required: state })}></textarea>
+          {errors.sub_title && <p className="red">必須項目を入力してください</p>}
+          <textarea {...register("discription", { required: state })}></textarea>
+          {errors.discription && <p className="red">必須項目を入力してください</p>}
+          <div>エディター</div>
+          <PostEditor setEditorContent={setEditorContent} />
+          <select {...register("state")} onChange={handleState}>
+            <option value="0">下書き</option>
+            <option value="1">公開済み</option>
+          </select>
+          <button>新規作成</button>
+        </form>
+      </Container>
     </section>
   );
 }
