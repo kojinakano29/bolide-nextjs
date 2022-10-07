@@ -101,7 +101,6 @@ a,
 span,
 dt,
 dd {
-  color: $b1;
   letter-spacing: .6px;
 }
 
@@ -160,15 +159,44 @@ span > img {
   @include mb(24px);
 }
 
-.readonly {
-  .rdw-editor-toolbar {
-    display: none;
-  }
+.btn2 {
+  @include width(160px);
+  @include height(40px);
+  @include flex(center, center);
+  background-color: $b1;
+  color: $w1;
+  border-radius: 4px;
+  @include mb(40px);
+  transition: .2s ease-out;
 
-  .public-DraftEditor-content {
-    * {
-      margin: 0;
-    }
+  &:hover {
+    opacity: .5;
   }
 }
 /* 共通部分 */
+
+/* エディター部分 */
+.rdw-editor-wrapper {
+  * {
+    max-width: unset;
+  }
+
+  .rdw-editor-toolbar {
+    border-radius: 0;
+    border: 1px solid $b1;
+    font-size: 12px;
+    margin-bottom: 0;
+    border-bottom: none;
+  }
+
+  .rdw-editor-main {
+    * {
+      margin: 0;
+      padding: 0;
+    }
+
+    img {
+      max-width: 100%;
+    }
+  }
+}

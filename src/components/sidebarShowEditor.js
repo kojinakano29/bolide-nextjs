@@ -17,6 +17,7 @@ const SidebarShowEditor = ({posts}) => {
       <article key={index}>
         <Editor
           editorState={showState(item.content)}
+          toolbarHidden
           readOnly
           localization={{ locale: "ja" }}
           toolbar={{
