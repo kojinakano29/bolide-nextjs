@@ -8,44 +8,28 @@ const Editor = dynamic(
   { ssr: false }
 )
 
-const PostEditor = ({setEditorContent}) => {
+const PostEditor = ({setEditorContent, content, edit = false}) => {
   const csrf = () => axios.get('/sanctum/csrf-cookie')
 
-  const [editorState, setEditorState] = useState(() => EditorState.createEmpty())
+  const [editorState, setEditorState] = useState(() => {
+    if (edit) {
+      return EditorState.createWithContent(convertFromRaw(JSON.parse(content)))
+    } else {
+      return EditorState.createEmpty()
+    }
+  })
 
-  // useEffect(() => {
-  //   const content = JSON.parse(window.localStorage.getItem('content'))
-
-  //   if (content) {
-  //     setEditorState(EditorState.createWithContent(convertFromRaw(content)))
-  //   } else {
-  //     setEditorState(EditorState.createEmpty())
-  //   }
-  // }, [])
-
-  // const saveContent = (content) => {
-  //   window.localStorage.setItem('content', JSON.stringify(content))
-  // }
-
-  // const saveContent = useCallback(async (content) => {
-  //   await csrf()
-
-  //   const saveData = new FormData
-  //   saveData.append('content', content)
-
-  //   return await axios.post('/api/liondor/post/store', saveData)
-  //   .then((res) => {
-  //     console.log(res)
-  //   })
-  //   .catch((e) => {
-  //     console.error(e)
-  //   })
-  // }, [])
+  if (edit) {
+    useEffect(() => {
+      const data = convertToRaw(editorState.getCurrentContent())
+      const strData = JSON.stringify(data)
+      setEditorContent(strData)
+    }, [])
+  }
 
   const onEditorStateChange = async (state) => {
     const data = convertToRaw(editorState.getCurrentContent())
     const strData = JSON.stringify(data)
-    // saveContent(data)
     await setEditorContent(strData)
     await setEditorState(state)
   }
@@ -104,19 +88,17 @@ const PostEditor = ({setEditorContent}) => {
         wrapperClassName="wrapperClassName"
         editorClassName="editorClassName"
         placeholder="Writting Here!!"
+        onFocus={(event) => {}}
         editorStyle={{
           boxSizing: "border-box",
-          border: "1px solid #ddd",
+          border: "1px solid #000",
           cursor: "text",
           padding: "16px",
-          borderRadius: "2px",
-          marginBottom: "2em",
-          boxShadow: "inset 0px 1px 8px -3px #ababab",
-          background: "#fefefe",
+          minHeight: "400px",
         }}
         localization={{ locale: "ja" }}
         toolbar={{
-          options: ["inline", "blockType", "list", "textAlign", "link", "image", "history"],
+          options: ["inline", "blockType", "fontSize", "list", "textAlign", "colorPicker", "link", "image", "history"],
           inline: {
             options: [
               "bold",
@@ -126,16 +108,23 @@ const PostEditor = ({setEditorContent}) => {
               "monospace",
             ],
           },
+          blockType: {
+            options: ['Normal', 'H3', 'H4', 'H5', 'H6', 'Blockquote', 'Code'],
+          },
           list: {
-            options: ["unordered", "ordered"],
+            inDropdown: true,
+            options: ['unordered', 'ordered', 'indent', 'outdent'],
           },
           textAlign: {
-            options: ["center"],
+            inDropdown: true,
+            options: ['left', 'center', 'right'],
           },
           image: {
             uploadCallback: handleImageUpload,
             alt: { present: true, mandatory: true },
             previewImage: true,
+            alignmentEnabled: false,
+            inputAccept: 'image/webp,image/jpeg,image/jpg,image/png',
           },
           link: {
             options: ["link"],

@@ -74,19 +74,17 @@ const SidebarEditor = ({setEditorContent}) => {
         wrapperClassName="wrapperClassName"
         editorClassName="editorClassName"
         placeholder="Writting Here!!"
+        onFocus={(event) => {}}
         editorStyle={{
           boxSizing: "border-box",
-          border: "1px solid #ddd",
+          border: "1px solid #000",
           cursor: "text",
           padding: "16px",
-          borderRadius: "2px",
-          marginBottom: "2em",
-          boxShadow: "inset 0px 1px 8px -3px #ababab",
-          background: "#fefefe",
+          minHeight: "400px",
         }}
         localization={{ locale: "ja" }}
         toolbar={{
-          options: ["inline", "blockType", "list", "textAlign", "link", "image", "history"],
+          options: ["inline", "blockType", "fontSize", "list", "textAlign", "colorPicker", "link", "image", "history"],
           inline: {
             options: [
               "bold",
@@ -96,16 +94,23 @@ const SidebarEditor = ({setEditorContent}) => {
               "monospace",
             ],
           },
+          blockType: {
+            options: ['Normal', 'H3', 'H4', 'H5', 'H6', 'Blockquote', 'Code'],
+          },
           list: {
-            options: ["unordered", "ordered"],
+            inDropdown: true,
+            options: ['unordered', 'ordered', 'indent', 'outdent'],
           },
           textAlign: {
-            options: ["center"],
+            inDropdown: true,
+            options: ['left', 'center', 'right'],
           },
           image: {
             uploadCallback: handleImageUpload,
             alt: { present: true, mandatory: true },
             previewImage: true,
+            alignmentEnabled: false,
+            inputAccept: 'image/webp,image/jpeg,image/jpg,image/png',
           },
           link: {
             options: ["link"],

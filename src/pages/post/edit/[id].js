@@ -6,18 +6,18 @@ import { useForm } from 'react-hook-form';
 import Container from '@/components/Layouts/container';
 
 // SSR
-export const getServerSideProps = async () => {
-  const res = await fetch(`${process.env.NEXT_PUBLIC_BACKEND_URL}/api/liondor/post/create`)
+export const getServerSideProps = async ({params}) => {
+  const res = await fetch(`${process.env.NEXT_PUBLIC_BACKEND_URL}/api/liondor/post/edit/${params.id}`)
   const data = await res.json()
 
   return {
     props: {
-        posts: data
+      posts: data
     }
   }
 }
 
-const CreatePost = ({posts}) => {
+const PostEdit = ({posts}) => {
   const csrf = () => axios.get('/sanctum/csrf-cookie')
 
   const [editorContent, setEditorContent] = useState()
@@ -26,6 +26,12 @@ const CreatePost = ({posts}) => {
 
   const catArray = posts.category
   const seriesArray = posts.series
+  const post = posts.posts
+  const parentCat = posts.parent_category
+  const content = posts.posts.content
+
+  const [defaultThumb, setDefaultThumb] = useState(post.thumbs)
+  const [defaultMv, setDefaultMv] = useState(post.mv)
 
   const onPostForm = useCallback(async (data) => {
     await csrf()
@@ -35,7 +41,7 @@ const CreatePost = ({posts}) => {
       params.append(key, this[key])
     }, data)
 
-    await axios.post('/api/liondor/post/store', params, {
+    await axios.post(`/api/liondor/post/edit/${post.id}`, params, {
       headers: {
         'Content-Type': 'multipart/form-data',
       },
@@ -56,36 +62,51 @@ const CreatePost = ({posts}) => {
       l_category_id: data.child_category,
       l_series_id: data.l_series_id,
       title: data.title,
-      thumbs: data.thumbs[0],
-      mv: data.mv[0],
+      thumbs: defaultThumb,
+      mv: defaultMv,
       sub_title: data.sub_title,
       discription: data.discription,
       content: editorContent,
       state: data.state,
     })
-  }, [onPostForm, editorContent])
+  }, [onPostForm, editorContent, defaultThumb, defaultMv])
 
-  const [cat, setCat] = useState([catArray[0]])
+  const parentNum = parseInt(parentCat.id)
+  const arrayNum = parentNum - 1
+  const [cat, setCat] = useState([catArray[arrayNum]])
   const handleCat = (e) => {
     setCat(catArray.filter((item) => {
       return item.id.toString() === e.target.value
     }))
   }
 
-  const [state, setState] = useState(false)
+  const [state, setState] = useState(() => {
+    return post.state === 1 ? true : false
+  })
   const handleState = useCallback(() => {
     setState((prevState) => !prevState)
   }, [])
 
-  const [preview, setPreview] = useState()
+  const defaultThumbsPreview = `${process.env.NEXT_PUBLIC_BACKEND_URL}/storage/${post.thumbs}`
+  const [preview, setPreview] = useState(defaultThumbsPreview)
   const handleChangeFile = useCallback((e) => {
     const { files } = e.target
-    setPreview(window.URL.createObjectURL(files[0]))
+
+    if (files[0] !== undefined) {
+      setPreview(window.URL.createObjectURL(files[0]))
+      setDefaultThumb(files[0])
+    }
   }, [])
-  const [preview2, setPreview2] = useState()
+
+  const defaultMvPreview = `${process.env.NEXT_PUBLIC_BACKEND_URL}/storage/${post.mv}`
+  const [preview2, setPreview2] = useState(defaultMvPreview)
   const handleChangeFile2 = useCallback((e) => {
     const { files } = e.target
-    setPreview2(window.URL.createObjectURL(files[0]))
+
+    if (files[0] !== undefined) {
+      setPreview2(window.URL.createObjectURL(files[0]))
+      setDefaultMv(files[0])
+    }
   }, [])
 
   return (
@@ -100,7 +121,7 @@ const CreatePost = ({posts}) => {
                   <label htmlFor="title">タイトル</label>
                 </dt>
                 <dd className={styles.dd}>
-                  <input type="text" id="title" {...register("title", { required: state })} />
+                  <input type="text" id="title" defaultValue={post.title} {...register("title", { required: state })} />
                   {errors.title && <p className={`red ${styles.error}`}>必須項目を入力してください</p>}
                 </dd>
               </dl>
@@ -109,7 +130,7 @@ const CreatePost = ({posts}) => {
                   <label htmlFor="subtitle">サブタイトル</label>
                 </dt>
                 <dd className={styles.dd}>
-                  <textarea id="subtitle" {...register("sub_title", { required: state })}></textarea>
+                  <textarea id="subtitle" defaultValue={post.sub_title} {...register("sub_title", { required: state })}></textarea>
                   {errors.sub_title && <p className={`red ${styles.error}`}>必須項目を入力してください</p>}
                 </dd>
               </dl>
@@ -118,14 +139,14 @@ const CreatePost = ({posts}) => {
                   <label htmlFor="desc">ディスクリプション</label>
                 </dt>
                 <dd className={styles.dd}>
-                  <textarea id="desc" {...register("discription", { required: state })}></textarea>
+                  <textarea id="desc" defaultValue={post.discription} {...register("discription", { required: state })}></textarea>
                   {errors.discription && <p className={`red ${styles.error}`}>必須項目を入力してください</p>}
                 </dd>
               </dl>
               <dl className={styles.dl}>
                 <dt className={styles.dt}>本文</dt>
                 <dd className={styles.dd}>
-                  <PostEditor setEditorContent={setEditorContent} />
+                  <PostEditor setEditorContent={setEditorContent} content={content} edit />
                 </dd>
               </dl>
               <dl className={styles.dl}>
@@ -133,9 +154,8 @@ const CreatePost = ({posts}) => {
                   <label htmlFor="thumb">サムネイル画像</label>
                 </dt>
                 <dd className={styles.dd}>
-                  <input id="thumb" type="file" accept="image/*" {...register("thumbs", { required: state })} onChange={handleChangeFile} />
+                  <input id="thumb" type="file" accept="image/*" {...register("thumbs")} onChange={handleChangeFile} />
                   <img src={preview} alt="" />
-                  {errors.thumbs && <p className={`red ${styles.error}`}>必須項目を入力してください</p>}
                 </dd>
               </dl>
               <dl className={styles.dl}>
@@ -143,9 +163,8 @@ const CreatePost = ({posts}) => {
                   <label htmlFor="mv">メインビジュアル</label>
                 </dt>
                 <dd className={styles.dd}>
-                  <input id="mv" type="file" accept="image/*" {...register("mv", { required: state })} onChange={handleChangeFile2} />
+                  <input id="mv" type="file" accept="image/*" {...register("mv")} onChange={handleChangeFile2} />
                   <img src={preview2} alt="" />
-                  {errors.mv && <p className={`red ${styles.error}`}>必須項目を入力してください</p>}
                 </dd>
               </dl>
             </div>
@@ -153,18 +172,18 @@ const CreatePost = ({posts}) => {
               <dl className={styles.dl}>
                 <dt className={styles.dt}>公開状態</dt>
                 <dd className={styles.dd}>
-                  <select {...register("state")} onChange={handleState}>
+                  <select defaultValue={post.state} {...register("state")} onChange={handleState}>
                     <option value="0">下書き</option>
                     <option value="1">公開済み</option>
                   </select>
                 </dd>
               </dl>
-              <button className="btn2">新規作成</button>
+              <button className="btn2">更新</button>
               <div className={styles.hr}></div>
               <dl className={styles.dl}>
                 <dt className={styles.dt}>大カテゴリー</dt>
                 <dd className={styles.dd}>
-                  <select {...register("l_category_id")} onChange={handleCat}>
+                  <select defaultValue={parentNum} {...register("l_category_id")} onChange={handleCat}>
                     {catArray.map((cat, index) => (
                       <option value={index+1} key={index+1}>{cat.name}</option>
                     ))}
@@ -174,7 +193,7 @@ const CreatePost = ({posts}) => {
               <dl className={styles.dl}>
                 <dt className={styles.dt}>子カテゴリー</dt>
                 <dd className={styles.dd}>
-                  <select {...register("child_category")}>
+                  <select defaultValue={post.l_category_id} {...register("child_category")}>
                     {cat[0].child_category.map((cat) => (
                       <option value={cat.id} key={cat.id}>{cat.name}</option>
                     ))}
@@ -184,7 +203,7 @@ const CreatePost = ({posts}) => {
               <dl className={styles.dl}>
                 <dt className={styles.dt}>シリーズ選択</dt>
                 <dd className={styles.dd}>
-                  <select {...register("l_series_id")}>
+                  <select defaultValue={post.l_series_id} {...register("l_series_id")}>
                     {seriesArray.map((series, index) => (
                       <option value={index+1} key={index+1}>{series.name}</option>
                     ))}
@@ -199,4 +218,4 @@ const CreatePost = ({posts}) => {
   );
 }
 
-export default CreatePost;
+export default PostEdit;
