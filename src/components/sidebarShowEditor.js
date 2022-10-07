@@ -20,9 +20,6 @@ const SidebarShowEditor = ({posts}) => {
           toolbarHidden
           readOnly
           localization={{ locale: "ja" }}
-          toolbar={{
-            options: [],
-          }}
         />
       </article>
     ))

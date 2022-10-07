@@ -8,10 +8,24 @@ const Editor = dynamic(
   { ssr: false }
 )
 
-const SidebarEditor = ({setEditorContent}) => {
+const SidebarEditor = ({setEditorContent, content, edit = false}) => {
   const csrf = () => axios.get('/sanctum/csrf-cookie')
 
-  const [editorState, setEditorState] = useState(() => EditorState.createEmpty())
+  const [editorState, setEditorState] = useState(() => {
+    if (edit) {
+      return EditorState.createWithContent(convertFromRaw(JSON.parse(content)))
+    } else {
+      return EditorState.createEmpty()
+    }
+  })
+
+  if (edit) {
+    useEffect(() => {
+      const data = convertToRaw(editorState.getCurrentContent())
+      const strData = JSON.stringify(data)
+      setEditorContent(strData)
+    }, [])
+  }
 
   const onEditorStateChange = async (state) => {
     const data = convertToRaw(editorState.getCurrentContent())
