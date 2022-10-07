@@ -1,7 +1,7 @@
 import styles from '@/styles/components/showEditor.module.scss'
 import { convertFromRaw, EditorState } from "draft-js";
 import dynamic from "next/dynamic";
-import { useCallback, useEffect, useState } from "react";
+import { useState } from "react";
 const Editor = dynamic(
   () => import("react-draft-wysiwyg").then(mod => mod.Editor),
   { ssr: false }
@@ -24,9 +24,6 @@ const ShowEditor = ({posts}) => {
         toolbarHidden
         readOnly
         localization={{ locale: "ja" }}
-        toolbar={{
-          options: [],
-        }}
       />
     </div>
   )

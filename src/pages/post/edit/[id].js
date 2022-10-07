@@ -41,7 +41,7 @@ const PostEdit = ({posts}) => {
       params.append(key, this[key])
     }, data)
 
-    await axios.post(`/api/liondor/post/edit/${post.id}`, params, {
+    await axios.post(`/api/liondor/post/update/${post.id}`, params, {
       headers: {
         'Content-Type': 'multipart/form-data',
       },
