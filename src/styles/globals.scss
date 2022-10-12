@@ -173,6 +173,21 @@ span > img {
     opacity: .5;
   }
 }
+
+.btn3 {
+  @include width(260px);
+  @include height(64px);
+  @include flex(center, center);
+  background-color: $b1;
+  color: $w1;
+  font-family: "平成明朝 Std", sans-serif;
+  margin: auto;
+  transition: .2s ease-out;
+
+  &:hover {
+    opacity: .5;
+  }
+}
 /* 共通部分 */
 
 /* エディター部分 */

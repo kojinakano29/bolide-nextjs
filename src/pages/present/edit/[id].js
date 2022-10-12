@@ -19,9 +19,20 @@ export const getServerSideProps = async ({params}) => {
 const PresentEdit = ({posts}) => {
   const csrf = () => axios.get('/sanctum/csrf-cookie')
 
-  const { register, handleSubmit, watch, formState: { errors } } = useForm()
-
   const [defaultThumb, setDefaultThumb] = useState(posts.thumbs)
+
+  const formatDate = useCallback((date) => {
+    return date.substr(0, 10)
+  }, [])
+
+  const { register, handleSubmit, watch, formState: { errors } } = useForm({
+    defaultValues: {
+      title: posts.title,
+      offer: posts.offer,
+      limit: formatDate(posts.limit),
+    }
+  })
+
 
   const onPostForm = useCallback(async(data) => {
     await csrf()
@@ -66,10 +77,6 @@ const PresentEdit = ({posts}) => {
     }
   }, [])
 
-  const formatDate = useCallback((date) => {
-    return date.substr(0, 10)
-  })
-
   return (
     <section className={styles.createSection}>
       <Container small>
@@ -81,7 +88,7 @@ const PresentEdit = ({posts}) => {
                   <label htmlFor="title">タイトル</label>
                 </dt>
                 <dd className={styles.dd}>
-                  <input type="text" id="title" defaultValue={posts.title} {...register("title", { required: true })} />
+                  <input type="text" id="title" {...register("title", { required: true })} />
                   {errors.title && <p className={`red ${styles.error}`}>必須項目を入力してください</p>}
                 </dd>
               </dl>
@@ -90,7 +97,7 @@ const PresentEdit = ({posts}) => {
                   <label htmlFor="offer">オファー</label>
                 </dt>
                 <dd className={styles.dd}>
-                  <input type="text" id="offer" defaultValue={posts.offer} {...register("offer", { required: true })} />
+                  <input type="text" id="offer" {...register("offer", { required: true })} />
                   {errors.offer && <p className={`red ${styles.error}`}>必須項目を入力してください</p>}
                 </dd>
               </dl>
@@ -112,7 +119,7 @@ const PresentEdit = ({posts}) => {
                   <label htmlFor="limit">期限</label>
                 </dt>
                 <dd className={styles.dd}>
-                  <input type="date" id="limit" defaultValue={formatDate(posts.limit)} {...register("limit", { required: true })} />
+                  <input type="date" id="limit" {...register("limit", { required: true })} />
                   {errors.limit && <p className={`red ${styles.error}`}>必須項目を入力してください</p>}
                 </dd>
               </dl>

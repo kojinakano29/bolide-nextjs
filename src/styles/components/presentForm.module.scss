@@ -13,7 +13,6 @@
   display: flex;
   flex-direction: column;
   align-items: center;
-  @include mb(48px);
 
   * {
     font-weight: 500;
@@ -47,6 +46,10 @@
   }
 }
 
+.cont2 {
+  @include pt(48px);
+}
+
 .presentForm {
   .desc {
     font-size: var(--fs16-14);
@@ -54,5 +57,264 @@
     letter-spacing: 0;
     text-align: center;
     @include mb(64px);
+  }
+}
+
+.formContent {
+  input[type="text"],
+  select {
+    display: block;
+    width: 100%;
+    @include height(56px);
+    @include p(16px);
+    border: 1px solid $g3;
+    font-size: var(--fs16-14);
+  }
+
+  .dl {
+    @include mb(48px);
+    @include flex(stretch, left);
+
+    &:last-of-type {
+      @include mb(64px);
+    }
+
+    dt {
+      @include width(200px, 100%);
+      font-size: var(--fs16-14);
+      font-weight: 500;
+
+      &.inputDt {
+        @include lh(56px, 1);
+      }
+
+      &.brandDt {
+        @include lh(36px, 1);
+      }
+    }
+
+    dd {
+      @include width(calc(100% - 200px), 100%);
+
+      .supplement {
+        font-size: var(--fs16-14);
+        font-weight: 500;
+        letter-spacing: 0;
+        color: $g1;
+      }
+
+      &.radioArea {
+        @include flex(center, left);
+        @include gap(32px);
+
+        label {
+          font-size: var(--fs16-14);
+          font-weight: 500;
+          @include flex(center, left);
+          @include gap(8px);
+        }
+      }
+
+      &.selectArea {
+        @include width(240px);
+
+        select {
+          font-weight: 300;
+        }
+      }
+
+      &.hobbyArea {
+        .inDl {
+          align-items: stretch;
+
+          dd {
+            @include flex(center, left);
+            @include gap(16px 32px);
+
+            label {
+              @include flex(center, left);
+              @include gap(8px);
+
+              font-weight: 300;
+            }
+          }
+        }
+      }
+    }
+  }
+
+  .inDl {
+    @include flex(center);
+    @include mb(32px);
+
+    &:last-of-type {
+      @include mb(16px);
+    }
+
+    dt {
+      @include width(160px);
+    }
+
+    dd {
+      @include width(calc(100% - 160px));
+    }
+  }
+
+  .descBox {
+    @include mb(64px);
+
+    p {
+      font-size: var(--fs14-12);
+      font-weight: 500;
+      @include lh(30px);
+
+      a {
+        text-decoration: underline;
+
+        &:hover {
+          text-decoration: none;
+        }
+      }
+    }
+  }
+
+  .desc2 {
+    font-size: var(--fs16-14);
+    font-weight: 500;
+    text-align: center;
+    @include mb(24px);
+  }
+
+  .consentArea {
+    @include mb(64px);
+
+    label {
+      @include flex(center, center);
+      @include gap(16px);
+      font-size: var(--fs16-14);
+      font-weight: 500;
+      width: fit-content;
+      margin: auto;
+
+      input {
+        @include ty(1px);
+      }
+    }
+
+    .error {
+      text-align: center;
+    }
+  }
+
+  button[type="submit"]:disabled {
+    background-color: $g3;
+
+    &:hover {
+      opacity: 1;
+    }
+  }
+}
+
+.lastError {
+  text-align: center;
+}
+
+.popupBtn {
+  @include p(8px 18px);
+  background-color: $g2;
+  @include flex(center, center);
+  @include gap(0 20px);
+  transition: .2s ease-out;
+  @include mb(24px);
+
+  span {
+    @include fs(13px);
+    font-weight: 500;
+
+    &.arrow {
+      @include fs(20px);
+      line-height: 1;
+      @include ty(-2px);
+    }
+  }
+
+  &:hover {
+    opacity: .5;
+  }
+}
+
+.selectBrand {
+  @include flex(center, left);
+  @include gap(16px);
+
+  button {
+    @include p(14px 18px);
+    border: 1px solid $g3;
+    @include flex(center, center);
+    @include gap(10px);
+    transition: .2s ease-out;
+
+    &:hover {
+      opacity: .5;
+    }
+
+    span {
+      display: block;
+
+      &.brandName {
+        font-size: var(--fs16-14);
+        font-weight: 500;
+      }
+
+      &.brandDelete {
+        @include width(20px);
+        @include height(20px);
+        border-radius: 50%;
+        background-color: $g1;
+        color: $w1;
+        @include flex(center, center);
+        line-height: 1;
+        font-weight: bold;
+        @include fs(12px);
+      }
+    }
+  }
+}
+
+.confirmContent {
+  .dl {
+    @include mb(32px);
+    @include pb(32px);
+    border-bottom: 1px solid $g3;
+
+    &:first-of-type {
+      @include pt(32px);
+      border-top: 1px solid $g3;
+    }
+  }
+
+  .ul {
+    @include flex(center, left);
+    @include gap(12px 48px);
+    list-style: disc;
+
+    li {
+      font-size: var(--fs16-14);
+      font-weight: 300;
+      @include ml(1.3em);
+    }
+  }
+
+  .btnFlex {
+    @include flex(center, center);
+    @include gap(40px);
+
+    button {
+      margin: 0;
+
+      &:first-of-type {
+        background-color: $g1;
+      }
+    }
   }
 }

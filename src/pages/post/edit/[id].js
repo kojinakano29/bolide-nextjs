@@ -20,18 +20,37 @@ export const getServerSideProps = async ({params}) => {
 const PostEdit = ({posts}) => {
   const csrf = () => axios.get('/sanctum/csrf-cookie')
 
-  const [editorContent, setEditorContent] = useState()
-
-  const { register, handleSubmit, watch, formState: { errors } } = useForm()
-
   const catArray = posts.category
   const seriesArray = posts.series
   const post = posts.posts
   const parentCat = posts.parent_category
   const content = posts.posts.content
 
+  const [editorContent, setEditorContent] = useState()
   const [defaultThumb, setDefaultThumb] = useState(post.thumbs)
   const [defaultMv, setDefaultMv] = useState(post.mv)
+
+  const parentNum = parseInt(parentCat.id)
+  const arrayNum = parentNum - 1
+  const [cat, setCat] = useState([catArray[arrayNum]])
+  const handleCat = (e) => {
+    setCat(catArray.filter((item) => {
+      return item.id.toString() === e.target.value
+    }))
+  }
+
+  const { register, handleSubmit, watch, formState: { isDirty, errors } } = useForm({
+    defaultValues: {
+      user_id: "1",
+      title: post.title,
+      sub_title: post.sub_title,
+      discription: post.discription,
+      state: post.state,
+      l_category_id: parentNum,
+      child_category: post.l_category_id,
+      l_series_id: post.l_series_id,
+    }
+  })
 
   const onPostForm = useCallback(async (data) => {
     await csrf()
@@ -71,15 +90,6 @@ const PostEdit = ({posts}) => {
     })
   }, [onPostForm, editorContent, defaultThumb, defaultMv])
 
-  const parentNum = parseInt(parentCat.id)
-  const arrayNum = parentNum - 1
-  const [cat, setCat] = useState([catArray[arrayNum]])
-  const handleCat = (e) => {
-    setCat(catArray.filter((item) => {
-      return item.id.toString() === e.target.value
-    }))
-  }
-
   const [state, setState] = useState(() => {
     return post.state === 1 ? true : false
   })
@@ -113,7 +123,7 @@ const PostEdit = ({posts}) => {
     <section className={styles.createSection}>
       <Container small>
         <form onSubmit={handleSubmit(onSubmit)}>
-          <input type="hidden" defaultValue="1" {...register("user_id")} />
+          <input type="hidden" {...register("user_id")} />
           <article className={styles.flex}>
             <div className={styles.left}>
               <dl className={styles.dl}>
@@ -121,7 +131,7 @@ const PostEdit = ({posts}) => {
                   <label htmlFor="title">タイトル</label>
                 </dt>
                 <dd className={styles.dd}>
-                  <input type="text" id="title" defaultValue={post.title} {...register("title", { required: state })} />
+                  <input type="text" id="title" {...register("title", { required: state })} />
                   {errors.title && <p className={`red ${styles.error}`}>必須項目を入力してください</p>}
                 </dd>
               </dl>
@@ -130,7 +140,7 @@ const PostEdit = ({posts}) => {
                   <label htmlFor="subtitle">サブタイトル</label>
                 </dt>
                 <dd className={styles.dd}>
-                  <textarea id="subtitle" defaultValue={post.sub_title} {...register("sub_title", { required: state })}></textarea>
+                  <textarea id="subtitle" {...register("sub_title", { required: state })}></textarea>
                   {errors.sub_title && <p className={`red ${styles.error}`}>必須項目を入力してください</p>}
                 </dd>
               </dl>
@@ -139,7 +149,7 @@ const PostEdit = ({posts}) => {
                   <label htmlFor="desc">ディスクリプション</label>
                 </dt>
                 <dd className={styles.dd}>
-                  <textarea id="desc" defaultValue={post.discription} {...register("discription", { required: state })}></textarea>
+                  <textarea id="desc" {...register("discription", { required: state })}></textarea>
                   {errors.discription && <p className={`red ${styles.error}`}>必須項目を入力してください</p>}
                 </dd>
               </dl>
@@ -172,18 +182,18 @@ const PostEdit = ({posts}) => {
               <dl className={styles.dl}>
                 <dt className={styles.dt}>公開状態</dt>
                 <dd className={styles.dd}>
-                  <select defaultValue={post.state} {...register("state")} onChange={handleState}>
+                  <select {...register("state")} onChange={handleState}>
                     <option value="0">下書き</option>
                     <option value="1">公開済み</option>
                   </select>
                 </dd>
               </dl>
-              <button className="btn2">更新</button>
+              <button className="btn2" disabled={!isDirty}>更新</button>
               <div className={styles.hr}></div>
               <dl className={styles.dl}>
                 <dt className={styles.dt}>大カテゴリー</dt>
                 <dd className={styles.dd}>
-                  <select defaultValue={parentNum} {...register("l_category_id")} onChange={handleCat}>
+                  <select {...register("l_category_id")} onChange={handleCat}>
                     {catArray.map((cat, index) => (
                       <option value={index+1} key={index+1}>{cat.name}</option>
                     ))}
@@ -193,7 +203,7 @@ const PostEdit = ({posts}) => {
               <dl className={styles.dl}>
                 <dt className={styles.dt}>子カテゴリー</dt>
                 <dd className={styles.dd}>
-                  <select defaultValue={post.l_category_id} {...register("child_category")}>
+                  <select {...register("child_category")}>
                     {cat[0].child_category.map((cat) => (
                       <option value={cat.id} key={cat.id}>{cat.name}</option>
                     ))}
@@ -203,7 +213,7 @@ const PostEdit = ({posts}) => {
               <dl className={styles.dl}>
                 <dt className={styles.dt}>シリーズ選択</dt>
                 <dd className={styles.dd}>
-                  <select defaultValue={post.l_series_id} {...register("l_series_id")}>
+                  <select {...register("l_series_id")}>
                     {seriesArray.map((series, index) => (
                       <option value={index+1} key={index+1}>{series.name}</option>
                     ))}
