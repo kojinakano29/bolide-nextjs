@@ -22,7 +22,11 @@ const CreatePost = ({posts}) => {
 
   const [editorContent, setEditorContent] = useState()
 
-  const { register, handleSubmit, watch, formState: { errors } } = useForm()
+  const { register, handleSubmit, watch, formState: { errors } } = useForm({
+    defaultValues: {
+      user_id: "1",
+    }
+  })
 
   const catArray = posts.category
   const seriesArray = posts.series
@@ -92,7 +96,7 @@ const CreatePost = ({posts}) => {
     <section className={styles.createSection}>
       <Container small>
         <form onSubmit={handleSubmit(onSubmit)}>
-          <input type="hidden" defaultValue="1" {...register("user_id")} />
+          <input type="hidden" {...register("user_id")} />
           <article className={styles.flex}>
             <div className={styles.left}>
               <dl className={styles.dl}>

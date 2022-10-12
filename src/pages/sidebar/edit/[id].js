@@ -22,7 +22,13 @@ const SidebarEdit = ({posts}) => {
 
   const [editorContent, setEditorContent] = useState()
 
-  const { register, handleSubmit, watch, formState: { errors } } = useForm()
+  const { register, handleSubmit, watch, formState: { errors } } = useForm({
+    defaultValues: {
+      title: posts.title,
+      state: posts.state,
+      order: posts.order,
+    }
+  })
 
   const onPostForm = useCallback(async (data) => {
     await csrf()
@@ -74,7 +80,7 @@ const SidebarEdit = ({posts}) => {
                   <label htmlFor="title">タイトル</label>
                 </dt>
                 <dd className={styles.dd}>
-                  <input type="text" id="title" defaultValue={posts.title} {...register("title", { required: state })} />
+                  <input type="text" id="title" {...register("title", { required: state })} />
                   {errors.title && <p className={`red ${styles.error}`}>必須項目を入力してください</p>}
                 </dd>
               </dl>
@@ -89,7 +95,7 @@ const SidebarEdit = ({posts}) => {
               <dl className={styles.dl}>
                 <dt className={styles.dt}>公開状態</dt>
                 <dd className={styles.dd}>
-                  <select defaultValue={posts.state} {...register("state")} onChange={handleState}>
+                  <select {...register("state")} onChange={handleState}>
                     <option value="0">下書き</option>
                     <option value="1">公開済み</option>
                   </select>
@@ -102,7 +108,7 @@ const SidebarEdit = ({posts}) => {
                   <label htmlFor="order">順番</label>
                 </dt>
                 <dd className={styles.dd}>
-                  <input type="number" id="order" defaultValue={posts.order} {...register("order")} />
+                  <input type="number" id="order" {...register("order")} />
                 </dd>
               </dl>
             </div>

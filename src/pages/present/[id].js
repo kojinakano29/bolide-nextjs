@@ -1,7 +1,9 @@
-import { PageTitle, SnsFollow } from "@/components";
+import styles from '@/styles/components/presentForm.module.scss'
+import { ConfirmPresent, InputPresent, PageTitle, SnsFollow } from "@/components";
+import { FormProvider, useForm } from 'react-hook-form';
 import Container from "@/components/Layouts/container";
 import PageLayout from "@/components/Layouts/PageLayout";
-import styles from '@/styles/components/presentForm.module.scss'
+import { useRouter } from 'next/router';
 
 // SSR
 export const getServerSideProps = async ({params}) => {
@@ -17,80 +19,51 @@ export const getServerSideProps = async ({params}) => {
 
 const PresentForm = (posts) => {
   const present = posts.posts.presents
+  const router = useRouter()
+  const isConfirm = router.query.confirm
+
+  const methods = useForm({
+    defaultValues: {
+      user_id: "1",
+      facebook: "",
+      insta: "",
+      twitter: "",
+    },
+    mode: "onChange",
+    criteriaMode: "all",
+  })
+
 
   return (
-    <section className="cont1">
-      <PageTitle title="PRESENT" ivy />
-      <Container small900>
-        <h3 className={styles.presentTtl}>{present?.title}</h3>
-        <div className={styles.termsBox}>
-          <p className={styles.termsTxt}>応募条件</p>
-          <p className={styles.txt}>&#9312;Bolide's JAPAN IDメンバー登録が必要です。</p>
-          <a className={styles.addon} href="" target="_blank">まだ登録がお済みでない方はこちら</a>
-          <p className={styles.txt}>&#9313;リオンドール各種SNSアカウントのいずれかをフォローしていること。</p>
-          <SnsFollow gray />
-        </div>
-        <div className={styles.presentForm}>
-          <p className={styles.desc}>
-            <span className="red">＊</span>
-            は必須項目です。必ずご入力ください。
-          </p>
-          <div className={styles.formContent}>
-            <dl className={styles.dlForm}>
-              <dt className={styles.dtForm}>
-                SNSアカウント
-                <span className="red">＊</span>
-              </dt>
-              <dd className={styles.ddForm}>
-                <dl className={styles.inDlForm}>
-                  <dt className={styles.inDtForm}>Facebook ID</dt>
-                  <dd className={styles.inDdForm}>
-                    <input type="text" placeholder="test@sample.com" />
-                  </dd>
-                </dl>
-                <dl className={styles.inDlForm}>
-                  <dt className={styles.inDtForm}>Instagram ID</dt>
-                  <dd className={styles.inDdForm}>
-                    <input type="text" placeholder="株式会社サンプル" />
-                  </dd>
-                </dl>
-                <dl className={styles.inDlForm}>
-                  <dt className={styles.inDtForm}>Twitter ID</dt>
-                  <dd className={styles.inDdForm}>
-                    <input type="text" placeholder="000-0000-0000" />
-                  </dd>
-                </dl>
-                <p className={styles.supplement}>※Facebook・Instagram・Twitterのいずれかにご入力ください</p>
-              </dd>
-            </dl>
-            <dl className={styles.dlForm}>
-              <dt className={styles.dtForm}>
-                <span className="red">＊</span>
-              </dt>
-              <dd className={styles.ddForm}></dd>
-            </dl>
-            <dl className={styles.dlForm}>
-              <dt className={styles.dtForm}>
-                <span className="red">＊</span>
-              </dt>
-              <dd className={styles.ddForm}></dd>
-            </dl>
-            <dl className={styles.dlForm}>
-              <dt className={styles.dtForm}>
-                <span className="red">＊</span>
-              </dt>
-              <dd className={styles.ddForm}></dd>
-            </dl>
-            <dl className={styles.dlForm}>
-              <dt className={styles.dtForm}>
-                <span className="red">＊</span>
-              </dt>
-              <dd className={styles.ddForm}></dd>
-            </dl>
+    <>
+      <section className="cont1">
+        <PageTitle title="PRESENT" ivy />
+          <Container small900>
+            <h3 className={styles.presentTtl}>{present?.title}</h3>
+            {
+              !isConfirm ?
+                <div className={styles.termsBox}>
+                  <p className={styles.termsTxt}>応募条件</p>
+                  <p className={styles.txt}>&#9312;Bolide's JAPAN IDメンバー登録が必要です。</p>
+                  <a className={styles.addon} href="" target="_blank">まだ登録がお済みでない方はこちら</a>
+                  <p className={styles.txt}>&#9313;リオンドール各種SNSアカウントのいずれかをフォローしていること。</p>
+                  <SnsFollow gray />
+                </div>
+              : null
+            }
+          </Container>
+      </section>
+
+      <section className={styles.cont2}>
+        <Container small900>
+          <div className={styles.presentForm}>
+            <FormProvider {...methods}>
+              {!isConfirm ? <InputPresent present={present} /> : <ConfirmPresent present={present} />}
+            </FormProvider>
           </div>
-        </div>
-      </Container>
-    </section>
+        </Container>
+      </section>
+    </>
   );
 }
 

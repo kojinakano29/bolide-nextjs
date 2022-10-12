@@ -104,6 +104,445 @@ export const bannarData = [
   {src: bannar4, link: "/"},
 ]
 
+// プレゼントの趣味のチェックボックス
+export const hobby = [
+  {
+    name: "スポーツ系",
+    group: [
+      {name: "サイクリング"},
+      {name: "ヨガ"},
+      {name: "筋トレ"},
+      {name: "ゴルフ"},
+      {name: "マラソン"},
+    ],
+  },
+  {
+    name: "芸術・鑑賞系",
+    group: [
+      {name: "読書"},
+      {name: "映画鑑賞"},
+      {name: "音楽鑑賞"},
+      {name: "カメラ"},
+      {name: "楽器演奏"},
+      {name: "美術館・博物館巡り"},
+      {name: "カラオケ"},
+    ],
+  },
+  {
+    name: "美容・健康系",
+    group: [
+      {name: "メイク"},
+      {name: "ショッピング"},
+      {name: "アロマ"},
+      {name: "ジョギング"},
+    ],
+  },
+  {
+    name: "旅行・お出かけ",
+    group: [
+      {name: "旅行"},
+      {name: "ドライブ"},
+    ],
+  },
+  {
+    name: "自然・アウトドア",
+    group: [
+      {name: "車"},
+      {name: "バイク"},
+      {name: "キャンプ"},
+      {name: "登山"},
+      {name: "釣り"},
+    ],
+  },
+  {
+    name: "つくる・育てる",
+    group: [
+      {name: "料理"},
+      {name: "ガーデニング"},
+      {name: "片付け"},
+      {name: "陶芸"},
+      {name: "絵画"},
+    ],
+  },
+  {
+    name: "食べる・飲む",
+    group: [
+      {name: "食べ歩き"},
+      {name: "スイーツ巡り"},
+      {name: "ワイン"},
+    ],
+  },
+  {
+    name: "ゲーム",
+    group: [
+      {name: "ゲーム"},
+    ],
+  },
+  {
+    name: "その他",
+    group: [
+      {name: "その他"},
+    ],
+  },
+]
+
+// ブランド一覧
+export const brand = [
+  {
+    initial: "A",
+    group: [
+      {name: "ALAIA"},
+      {name: "ARMANI"},
+    ]
+  },
+  {
+    initial: "B",
+    group: [
+      {name: "BALENCIAGA"},
+      {name: "BOTTEGA VENETA"},
+      {name: "BOUCHERON"},
+      {name: "BURBERRY"},
+      {name: "BVLGARI"},
+    ]
+  },
+  {
+    initial: "C",
+    group: [
+      {name: "Cartier"},
+      {name: "CELINE"},
+      {name: "CHANEL"},
+      {name: "CHAUMET"},
+      {name: "Chloé"},
+      {name: "Christian Louboutin"},
+      {name: "Chopard"},
+    ]
+  },
+  {
+    initial: "D",
+    group: [
+      {name: "DAMIANI"},
+      {name: "DELVAUX"},
+      {name: "Dior"},
+      {name: "Dolce & Gabbana"},
+    ]
+  },
+  {
+    initial: "E",
+    group: []
+  },
+  {
+    initial: "F",
+    group: [
+      {name: "FENDI"},
+      {name: "FURLA"},
+    ]
+  },
+  {
+    initial: "G",
+    group: [
+      {name: "GIVENCHY"},
+      {name: "GOYARD"},
+      {name: "GRAFF"},
+      {name: "GUCCI"},
+    ]
+  },
+  {
+    initial: "H",
+    group: [
+      {name: "HARRY WINSTON"},
+      {name: "Hermès"},
+    ]
+  },
+  {
+    initial: "I",
+    group: []
+  },
+  {
+    initial: "J",
+    group: [
+      {name: "JIL SANDER"},
+      {name: "Jimmy Choo"},
+    ]
+  },
+  {
+    initial: "K",
+    group: []
+  },
+  {
+    initial: "L",
+    group: [
+      {name: "LANVIN"},
+      {name: "LOEWE"},
+      {name: "LONGCHAMP"},
+      {name: "Louis Vuitton"},
+    ]
+  },
+  {
+    initial: "M",
+    group: [
+      {name: "Manolo Blahnik"},
+      {name: "MICHAEL KORS"},
+      {name: "MISSONI"},
+      {name: "MIU MIU"},
+      {name: "MONCLER"},
+      {name: "MORABITO"},
+      {name: "MOYNAT"},
+    ]
+  },
+  {
+    initial: "N",
+    group: []
+  },
+  {
+    initial: "O",
+    group: []
+  },
+  {
+    initial: "P",
+    group: [
+      {name: "PRADA"},
+    ]
+  },
+  {
+    initial: "Q",
+    group: []
+  },
+  {
+    initial: "R",
+    group: [
+      {name: "Roger Vivier"},
+    ]
+  },
+  {
+    initial: "S",
+    group: [
+      {name: "Saint Laurent"},
+      {name: "Salvatore Ferragamo"},
+      {name: "sergio rossi"},
+      {name: "Stella McCartney"},
+    ]
+  },
+  {
+    initial: "T",
+    group: [
+      {name: "Tiffany & Co"},
+    ]
+  },
+  {
+    initial: "U",
+    group: []
+  },
+  {
+    initial: "V",
+    group: [
+      {name: "VALENTINO"},
+      {name: "Valextra"},
+      {name: "Van Cleef & Arpels"},
+      {name: "VERSACE"},
+    ]
+  },
+  {
+    initial: "W",
+    group: []
+  },
+  {
+    initial: "X",
+    group: []
+  },
+  {
+    initial: "Y",
+    group: []
+  },
+  {
+    initial: "Z",
+    group: [
+      {name: "ZANELLATO"},
+    ]
+  },
+  {
+    initial: "OTHER",
+    group: [
+      {name: "宝飾"},
+    ]
+  },
+]
+
+// コスメブランド一覧
+export const cosmetic = [
+  {
+    initial: "A",
+    group: [
+      {name: "ADDICTION"},
+      {name: "ALBION"},
+      {name: "ANNASUI"},
+    ]
+  },
+  {
+    initial: "B",
+    group: [
+      {name: "BOBBI BROWN"},
+    ]
+  },
+  {
+    initial: "C",
+    group: [
+      {name: "CHANEL"},
+      {name: "CLARINS"},
+      {name: "Cle de Peau Beaute"},
+      {name: "CLINIQUE"},
+      {name: "cover mark"},
+    ]
+  },
+  {
+    initial: "D",
+    group: [
+      {name: "DECORTE"},
+      {name: "DE LA MER"},
+      {name: "Dior"},
+      {name: "Dolce & Gabbana"},
+    ]
+  },
+  {
+    initial: "E",
+    group: [
+      {name: "est"},
+      {name: "ESTEELAUDER"},
+      {name: "ETVOS"},
+    ]
+  },
+  {
+    initial: "F",
+    group: []
+  },
+  {
+    initial: "G",
+    group: [
+      {name: "GIORGIO ARMANI"},
+      {name: "GIVENCHY"},
+      {name: "GUERLAIN"},
+    ]
+  },
+  {
+    initial: "H",
+    group: [
+      {name: "HELENA RUBINSTEIN"},
+    ]
+  },
+  {
+    initial: "I",
+    group: [
+      {name: "IPSA"},
+    ]
+  },
+  {
+    initial: "J",
+    group: [
+      {name: "JILLSTUART"},
+    ]
+  },
+  {
+    initial: "K",
+    group: [
+      {name: "KesalanPatharan"},
+    ]
+  },
+  {
+    initial: "L",
+    group: [
+      {name: "LA PRAIRIE"},
+      {name: "LANCOME"},
+      {name: "Laura mercier"},
+      {name: "LUNASOL"},
+      {name: "L'OCCITANE"},
+    ]
+  },
+  {
+    initial: "M",
+    group: [
+      {name: "MAKE UP FOEVER"},
+      {name: "M・A・C"},
+    ]
+  },
+  {
+    initial: "N",
+    group: [
+      {name: "NARS"},
+      {name: "NOEVIR"},
+    ]
+  },
+  {
+    initial: "O",
+    group: [
+      {name: "ORLANE"},
+    ]
+  },
+  {
+    initial: "P",
+    group: [
+      {name: "POLA"},
+      {name: "PAUL&JOE"},
+    ]
+  },
+  {
+    initial: "Q",
+    group: []
+  },
+  {
+    initial: "R",
+    group: [
+      {name: "RMK"},
+    ]
+  },
+  {
+    initial: "S",
+    group: [
+      {name: "shiseido"},
+      {name: "shuuemura"},
+      {name: "sisley"},
+      {name: "SK-2"},
+      {name: "SUQQU"},
+    ]
+  },
+  {
+    initial: "T",
+    group: [
+      {name: "THREE"},
+      {name: "TOMFORD"},
+      {name: "TWANY"},
+    ]
+  },
+  {
+    initial: "U",
+    group: []
+  },
+  {
+    initial: "V",
+    group: []
+  },
+  {
+    initial: "W",
+    group: []
+  },
+  {
+    initial: "X",
+    group: []
+  },
+  {
+    initial: "Y",
+    group: [
+      {name: "YVES SAINT LAURENT"},
+    ]
+  },
+  {
+    initial: "Z",
+    group: []
+  },
+  {
+    initial: "OTHER",
+    group: []
+  },
+]
+
 // ダミー画像（削除予定）
 export const dummyImage3 = [
   {src: dummy14},
