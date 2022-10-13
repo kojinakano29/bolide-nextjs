@@ -247,7 +247,7 @@
   @include flex(center, left);
   @include gap(16px);
 
-  button {
+  label {
     @include p(14px 18px);
     border: 1px solid $g3;
     @include flex(center, center);

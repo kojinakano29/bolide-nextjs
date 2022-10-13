@@ -47,6 +47,7 @@ const ModalBrand = ({show, close, brands, setBrands}) => {
                       <label key={gr.name}>
                         <input
                           type="checkbox"
+                          id={gr.name}
                           value={gr.name}
                           {...register("brand", {required: true})}
                           onChange={handleCheckBrand}
