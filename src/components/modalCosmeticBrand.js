@@ -47,6 +47,7 @@ const ModalCosmeticBrand = ({show, close, cosmetics, setCosmetics}) => {
                       <label key={gr.name}>
                         <input
                           type="checkbox"
+                          id={gr.name}
                           value={gr.name}
                           {...register("cosmetic", {required: true})}
                           onChange={handleCheckCosmeBrand}

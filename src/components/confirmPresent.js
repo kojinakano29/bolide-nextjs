@@ -1,9 +1,8 @@
 import styles from '@/styles/components/presentForm.module.scss'
 import axios from '@/lib/axios'; // カスタムフック
-import { useCallback } from 'react';
+import { useCallback, useEffect } from 'react';
 import { useFormContext } from "react-hook-form"
 import { useRouter } from 'next/router';
-import Link from 'next/link';
 
 const ConfirmPresent = ({present}) => {
   const csrf = () => axios.get('/sanctum/csrf-cookie')
@@ -13,10 +12,16 @@ const ConfirmPresent = ({present}) => {
   const { handleSubmit, getValues, formState: { isValid } } = useFormContext()
 
   const values = getValues()
+  const marriageInt = parseInt(values.marriage)
+  const childInt = parseInt(values.child)
+  const marriage = marriageInt === 0 ? "未婚" : "既婚";
+  const child = childInt === 0 ? "なし" : "あり";
 
-  if (!isValid) {
-    router.push(`/present/${present.id}`)
-  }
+  useEffect(() => {
+    if (!isValid) {
+      router.push(`/present/${present.id}`)
+    }
+  }, [])
 
   const handleBack = useCallback(() => {
     router.push(`/present/${present.id}`)
@@ -37,15 +42,17 @@ const ConfirmPresent = ({present}) => {
 
   const onSubmit = useCallback(async (data) => {
     console.log(data)
+    const sns = `${values.facebook ? values.facebook : ''},${values.insta ? values.insta : ''},${values.twitter ? values.twitter : ''}`
 
     onPresentForm({
       user_id: values.user_id,
       l_present_id: present.id,
+      account: sns,
       hobby: values.hobby,
       brand: values.brand,
       cosmetic: values.cosmetic,
-      marriage: values.marriage,
-      child: values.child,
+      marriage: marriageInt,
+      child: childInt,
       income: values.income,
     })
   }, [onPresentForm])
@@ -80,11 +87,11 @@ const ConfirmPresent = ({present}) => {
           </dl>
           <dl className={styles.dl}>
             <dt>未婚/既婚</dt>
-            <dd className={styles.radioArea}>{values.marriage}</dd>
+            <dd className={styles.radioArea}>{marriage}</dd>
           </dl>
           <dl className={styles.dl}>
             <dt>子ども</dt>
-            <dd className={styles.radioArea}>{values.child}</dd>
+            <dd className={styles.radioArea}>{child}</dd>
           </dl>
           <dl className={styles.dl}>
             <dt>年収</dt>
@@ -94,7 +101,7 @@ const ConfirmPresent = ({present}) => {
             <dt>趣味</dt>
             <dd className={styles.hobbyArea}>
               <ul className={styles.ul}>
-                {values.hobby.map((hobby, index) => (
+                {values.hobby?.map((hobby, index) => (
                   <li key={index}>{hobby}</li>
                 ))}
               </ul>
@@ -104,7 +111,7 @@ const ConfirmPresent = ({present}) => {
             <dt>好きなブランド</dt>
             <dd>
               <ul className={styles.ul}>
-                {values.brand.map((item, index) => (
+                {values.brand?.map((item, index) => (
                   <li key={index}>{item}</li>
                 ))}
               </ul>
@@ -114,7 +121,7 @@ const ConfirmPresent = ({present}) => {
             <dt>好きなコスメブランド</dt>
             <dd>
               <ul className={styles.ul}>
-                {values.cosmetic.map((item, index) => (
+                {values.cosmetic?.map((item, index) => (
                   <li key={index}>{item}</li>
                 ))}
               </ul>

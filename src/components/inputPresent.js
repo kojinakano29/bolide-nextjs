@@ -9,26 +9,18 @@ import Link from 'next/link'
 const InputPresent = ({present}) => {
   const router = useRouter()
 
-  const { register, handleSubmit, watch, formState: { errors, isValid, dirtyFields } } = useFormContext()
+  const { register, handleSubmit, getValues, formState: { errors, isValid, dirtyFields } } = useFormContext()
 
-  const [brands, setBrands] = useState([])
-  const handleDeleteBrand = useCallback((name) => {
-    setBrands(
-      brands.filter((item) => (item !== name))
-    )
-  }, [brands, setBrands])
+  const defaultBrandValue = getValues("brand")
+  const defaultCosmeticValue = getValues("cosmetic")
+
+  const [brands, setBrands] = useState(defaultBrandValue !== undefined ? defaultBrandValue : [])
+  const [cosmetics, setCosmetics] = useState(defaultCosmeticValue !== undefined ? defaultCosmeticValue : [])
 
   const [modalBrand, setModalBrand] = useState(false)
   const toggleModalBrand = useCallback(() => {
     setModalBrand(!modalBrand)
   }, [setModalBrand, modalBrand])
-
-  const [cosmetics, setCosmetics] = useState([])
-  const handleDeleteCosmetic = useCallback((name) => (
-    setCosmetics(
-      cosmetics.filter((item) => (item !== name))
-    )
-  ), [cosmetics, setCosmetics])
 
   const [modalCosmetic, setModalCosmetic] = useState(false)
   const toggleModalCosmetic = useCallback(() => {
@@ -124,17 +116,17 @@ const InputPresent = ({present}) => {
             </dt>
             <dd className={styles.selectArea}>
               <select {...register("income")}>
-                <option value="0">～100万円</option>
-                <option value="1">100～200万円</option>
-                <option value="2">200～300万円</option>
-                <option value="3">300～400万円</option>
-                <option value="4">400～500万円</option>
-                <option value="5">500～600万円</option>
-                <option value="6">600～700万円</option>
-                <option value="7">700～800万円</option>
-                <option value="8">800～900万円</option>
-                <option value="9">900～1000万円</option>
-                <option value="10">1000万円～</option>
+                <option value="～100万円">～100万円</option>
+                <option value="100～200万円">100～200万円</option>
+                <option value="200～300万円">200～300万円</option>
+                <option value="300～400万円">300～400万円</option>
+                <option value="400～500万円">400～500万円</option>
+                <option value="500～600万円">500～600万円</option>
+                <option value="600～700万円">600～700万円</option>
+                <option value="700～800万円">700～800万円</option>
+                <option value="800～900万円">800～900万円</option>
+                <option value="900～1000万円">900～1000万円</option>
+                <option value="1000万円～">1000万円～</option>
               </select>
             </dd>
           </dl>
@@ -173,10 +165,10 @@ const InputPresent = ({present}) => {
               <ModalBrand show={modalBrand} close={toggleModalBrand} brands={brands} setBrands={setBrands} />
               <div className={styles.selectBrand}>
                 {brands.map((item, index) => (
-                  <button type="button" key={index} onClick={() => handleDeleteBrand(item)}>
+                  <label htmlFor={item} key={index}>
                     <span className={styles.brandName}>{item}</span>
                     <span className={styles.brandDelete}>&#10005;</span>
-                  </button>
+                  </label>
                 ))}
               </div>
               {errors.brand && <p className={`red ${styles.error}`}>必須項目を選択してください</p>}
@@ -195,10 +187,10 @@ const InputPresent = ({present}) => {
               <ModalCosmeticBrand show={modalCosmetic} close={toggleModalCosmetic} cosmetics={cosmetics} setCosmetics={setCosmetics} />
               <div className={styles.selectBrand}>
                 {cosmetics.map((item, index) => (
-                  <button type="button" key={index} onClick={() => handleDeleteCosmetic(item)}>
+                  <label htmlFor={item} key={index}>
                     <span className={styles.brandName}>{item}</span>
                     <span className={styles.brandDelete}>&#10005;</span>
-                  </button>
+                  </label>
                 ))}
               </div>
               {errors.cosmetic && <p className={`red ${styles.error}`}>必須項目を選択してください</p>}
