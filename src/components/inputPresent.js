@@ -1,4 +1,4 @@
-import styles from '@/styles/components/presentForm.module.scss'
+import styles from '@/styles/components/form.module.scss'
 import { useRouter } from "next/router"
 import { useCallback, useState } from "react"
 import { useFormContext } from "react-hook-form"
@@ -14,8 +14,8 @@ const InputPresent = ({present}) => {
   const defaultBrandValue = getValues("brand")
   const defaultCosmeticValue = getValues("cosmetic")
 
-  const [brands, setBrands] = useState(defaultBrandValue !== undefined ? defaultBrandValue : [])
-  const [cosmetics, setCosmetics] = useState(defaultCosmeticValue !== undefined ? defaultCosmeticValue : [])
+  const [brands, setBrands] = useState(defaultBrandValue)
+  const [cosmetics, setCosmetics] = useState(defaultCosmeticValue)
 
   const [modalBrand, setModalBrand] = useState(false)
   const toggleModalBrand = useCallback(() => {

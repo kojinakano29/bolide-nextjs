@@ -1,4 +1,4 @@
-import styles from '@/styles/components/presentForm.module.scss'
+import styles from '@/styles/components/form.module.scss'
 import axios from '@/lib/axios'; // カスタムフック
 import { useCallback, useEffect } from 'react';
 import { useFormContext } from "react-hook-form"
@@ -33,7 +33,8 @@ const ConfirmPresent = ({present}) => {
     await axios.post(`/api/liondor/present/app/${present.id}`, data)
     .then((res) => {
       console.log(res)
-      // router.push("/present/thanks")
+      sessionStorage.setItem('comp', true)
+      router.push("/present/thanks")
     })
     .catch((e) => {
       console.error(e)

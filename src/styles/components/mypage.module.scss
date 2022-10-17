@@ -1,0 +1,73 @@
+@import '../variables.scss';
+
+.mypageFlex {
+  @include flex();
+}
+
+.mypageForm {
+  @include width(755px);
+
+  .dl {
+    @include mb(40px);
+
+    &:last-of-type {
+      @include mb(64px);
+    }
+
+    dt {
+      font-size: var(--fs16-14);
+      font-weight: 500;
+      @include mb(16px);
+    }
+
+    dd {
+      input[type="text"],
+      input[type="number"],
+      select {
+        display: block;
+        width: 100%;
+        @include height(56px);
+        @include p(16px);
+        border: 1px solid $g3;
+        font-size: var(--fs16-14);
+      }
+
+      &.nameArea,
+      &.industryArea,
+      &.occupationArea {
+        @include width(480px);
+      }
+
+      &.zipArea,
+      &.ageArea,
+      &.workArea {
+        @include width(240px);
+      }
+
+      &.radioArea {
+        @include flex(center, left);
+        @include gap(12px 32px);
+
+        label {
+          @include flex(center, left);
+          @include gap(8px);
+          font-size: var(--fs16-14);
+          font-weight: 500;
+        }
+      }
+
+      .inDl {
+        @include mb(16px);
+
+        &:last-of-type {
+          margin-bottom: 0;
+        }
+
+        dt {
+          font-size: var(--fs14-12);
+          @include mb(10px);
+        }
+      }
+    }
+  }
+}

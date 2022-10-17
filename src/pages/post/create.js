@@ -84,12 +84,20 @@ const CreatePost = ({posts}) => {
   const [preview, setPreview] = useState()
   const handleChangeFile = useCallback((e) => {
     const { files } = e.target
-    setPreview(window.URL.createObjectURL(files[0]))
+    if (files[0]) {
+      setPreview(window.URL.createObjectURL(files[0]))
+    } else {
+      setPreview("")
+    }
   }, [])
   const [preview2, setPreview2] = useState()
   const handleChangeFile2 = useCallback((e) => {
     const { files } = e.target
-    setPreview2(window.URL.createObjectURL(files[0]))
+    if (files[0]) {
+      setPreview2(window.URL.createObjectURL(files[0]))
+    } else {
+      setPreview("")
+    }
   }, [])
 
   return (
