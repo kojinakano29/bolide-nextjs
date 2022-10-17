@@ -1,4 +1,4 @@
-import styles from '@/styles/components/presentForm.module.scss'
+import styles from '@/styles/components/form.module.scss'
 import { ConfirmPresent, InputPresent, PageTitle, SnsFollow } from "@/components";
 import { FormProvider, useForm } from 'react-hook-form';
 import Container from "@/components/Layouts/container";
@@ -28,6 +28,8 @@ const PresentForm = (posts) => {
       facebook: "",
       insta: "",
       twitter: "",
+      brand: [],
+      cosmetic: [],
     },
     mode: "onChange",
     criteriaMode: "all",
@@ -56,7 +58,7 @@ const PresentForm = (posts) => {
 
       <section className={styles.cont2}>
         <Container small900>
-          <div className={styles.presentForm}>
+          <div className={styles.form}>
             <FormProvider {...methods}>
               {!isConfirm ? <InputPresent present={present} /> : <ConfirmPresent present={present} />}
             </FormProvider>

@@ -1,0 +1,35 @@
+@import '../variables.scss';
+
+.unkerNav {
+  @include flex(center, center);
+  @include gap(64px);
+
+  a {
+    display: block;
+    @include width(320px);
+    font-size: var(--fs18-16);
+    font-weight: 500;
+    letter-spacing: 0;
+    @include pb(16px);
+    border-bottom: 4px solid $b1;
+    background-image: url(../../images/common/arrow-bottom.svg);
+    background-position: right 8px;
+    background-repeat: no-repeat;
+    transition: .2s ease-out;
+
+    &:hover {
+      opacity: .5;
+    }
+  }
+}
+
+.faqBox {
+  @include mt(96px);
+
+  .faqTtl {
+    font-size: var(--fs32-18);
+    font-weight: 500;
+    letter-spacing: 0;
+    @include mb(24px);
+  }
+}

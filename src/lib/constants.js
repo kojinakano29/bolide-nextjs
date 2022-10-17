@@ -68,7 +68,6 @@ export const catNavData = {
     {name: "Travel", slug: "travel", link: "/post/travel"},
     {name: "Entertaiment", slug: "entertaiment", link: "/post/entertaiment"},
     {name: "FirstClass", slug: "firstclass_lifestyle", link: "/post/firstclass_lifestyle"},
-
   ],
   wedding: [
     {name: "All Topics", slug: "wedding", link: "/post/wedding"},
@@ -95,6 +94,93 @@ export const catNavData = {
     {name: "All Topics", slug: "video", link: "/post/video"},
   ],
 }
+
+export const sitemap = [
+  {
+    cat: "FASHION",
+    group: [
+      {name: "All Topics", slug: "fashion", link: "/post/fashion"},
+      {name: "News", slug: "news_fashion", link: "/post/news_fashion"},
+      {name: "Trend", slug: "trend_fashion", link: "/post/trend_fashion"},
+      {name: "Snap", slug: "snap", link: "/post/snap"},
+      {name: "FirstClass", slug: "firstclass_fashion", link: "/post/firstclass_fashion"},
+    ],
+  },
+  {
+    cat: "BEAUTY",
+    group: [
+      {name: "All Topics", slug: "beauty", link: "/post/beauty"},
+      {name: "News", slug: "news_beauty", link: "/post/news_beauty"},
+      {name: "Trend", slug: "trend_beauty", link: "/post/trend_beauty"},
+      {name: "Wellness", slug: "wellness", link: "/post/wellness"},
+      {name: "Expart", slug: "expartt", link: "/post/expartt"},
+      {name: "FirstClass", slug: "firstclass_beauty", link: "/post/firstclass_beauty"},
+    ],
+  },
+  {
+    cat: "TREND",
+    group: [
+      {name: "All Topics", slug: "trend", link: "/post/trend"},
+      {name: "SDGs", slug: "sdgs", link: "/post/sdgs"},
+      {name: "metaverse", slug: "metaverse", link: "/post/metaverse"},
+      {name: "virtualcurrency", slug: "virtualcurrency", link: "/post/virtualcurrency"},
+      {name: "Blockchain", slug: "blockchain", link: "/post/blockchain"},
+      {name: "NFT", slug: "nft", link: "/post/nft"},
+      {name: "spaceBusiness", slug: "spacebusiness", link: "/post/spacebusiness"},
+      {name: "FirstClass", slug: "firstclass_trend", link: "/post/firstclass_trend"},
+    ],
+  },
+  {
+    cat: "LIFESTYLE",
+    group: [
+      {name: "All Topics", slug: "lifestyle", link: "/post/lifestyle"},
+      {name: "News", slug: "news_lifestyle", link: "/post/news_lifestyle"},
+      {name: "Gurmet", slug: "gurmet", link: "/post/gurmet"},
+      {name: "Culture", slug: "culture", link: "/post/culture"},
+      {name: "Interior", slug: "interior", link: "/post/interior"},
+      {name: "RealEstate", slug: "realestate", link: "/post/realestate"},
+      {name: "Travel", slug: "travel", link: "/post/travel"},
+      {name: "Entertaiment", slug: "entertaiment", link: "/post/entertaiment"},
+      {name: "FirstClass", slug: "firstclass_lifestyle", link: "/post/firstclass_lifestyle"},
+    ],
+  },
+  {
+    cat: "WEDDING",
+    group: [
+      {name: "All Topics", slug: "wedding", link: "/post/wedding"},
+      {name: "News", slug: "news_wedding", link: "/post/news_wedding"},
+      {name: "Dress", slug: "dress", link: "/post/dress"},
+      {name: "Weddinghall", slug: "weddinghall", link: "/post/weddinghall"},
+      {name: "Accessory", slug: "accessory", link: "/post/accessory"},
+      {name: "Bouquet", slug: "bouquet", link: "/post/bouquet"},
+      {name: "Bresent", slug: "bresent", link: "/post/bresent"},
+      {name: "FirstClass", slug: "firstclass_wedding", link: "/post/firstclass_wedding"},
+    ],
+  },
+  {
+    cat: "TOPLEADER",
+    group: [
+      {name: "All Topics", slug: "topleader", link: "/post/topleader"},
+      {name: "Interview", slug: "interview", link: "/post/interview"},
+      {name: "Career", slug: "career", link: "/post/career"},
+    ],
+  },
+  {
+    cat: "FORTUNE",
+    group: [
+      {name: "All Topics", slug: "fortune", link: "/post/fortune"},
+      {name: "Daily", slug: "daily", link: "/post/daily"},
+      {name: "Monthly", slug: "monthly", link: "/post/monthly"},
+      {name: "Yealy", slug: "yealy", link: "/post/yealy"},
+    ],
+  },
+  {
+    cat: "VIDEO",
+    group: [
+      {name: "All Topics", slug: "video", link: "/post/video"},
+    ],
+  },
+]
 
 // バナー
 export const bannarData = [
@@ -541,6 +627,56 @@ export const cosmetic = [
     initial: "OTHER",
     group: []
   },
+]
+
+export const zip = [
+  "北海道",
+  "青森",
+  "岩手",
+  "宮城",
+  "秋田",
+  "山形",
+  "福島",
+  "茨城",
+  "栃木",
+  "群馬",
+  "埼玉",
+  "千葉",
+  "東京",
+  "神奈川",
+  "新潟",
+  "富山",
+  "石川",
+  "福井",
+  "山梨",
+  "長野",
+  "岐阜",
+  "静岡",
+  "愛知",
+  "三重",
+  "滋賀",
+  "京都",
+  "大阪",
+  "兵庫",
+  "奈良",
+  "和歌山",
+  "鳥取",
+  "島根",
+  "岡山",
+  "広島",
+  "山口",
+  "徳島",
+  "香川",
+  "愛媛",
+  "高知",
+  "福岡",
+  "佐賀",
+  "長崎",
+  "熊本",
+  "大分",
+  "宮崎",
+  "鹿児島",
+  "沖縄",
 ]
 
 // ダミー画像（削除予定）

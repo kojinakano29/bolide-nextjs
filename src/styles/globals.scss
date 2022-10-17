@@ -188,6 +188,22 @@ span > img {
     opacity: .5;
   }
 }
+
+.btn4 {
+  font-size: var(--fs20-18);
+  font-weight: 500;
+  color: $w1;
+  background-color: $b1;
+  @include width(412px);
+  @include height(110px);
+  @include flex(center, center);
+  margin: auto;
+  transition: .3s ease-out;
+
+  &:hover {
+    opacity: .5;
+  }
+}
 /* 共通部分 */
 
 /* エディター部分 */

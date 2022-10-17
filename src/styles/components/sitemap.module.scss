@@ -1,0 +1,53 @@
+@import '../variables.scss';
+
+.block {
+  @include mb(64px);
+
+  &:last-of-type {
+    @include mb(80px);
+  }
+
+  h3 {
+    font-size: var(--fs40-24);
+    letter-spacing: 0;
+    @include mb(24px);
+  }
+
+  .flex {
+    @include flex(center, left);
+    @include gap(16px 40px);
+
+    a {
+      font-size: var(--fs18-16);
+      font-weight: 500;
+      transition: .2s ease-out;
+
+      &:hover {
+        opacity: .5;
+      }
+    }
+  }
+}
+
+.flex2 {
+  @include flex(center, left);
+  @include gap(24px);
+
+  a {
+    font-size: var(--fs32-18);
+    letter-spacing: 0;
+    transition: .2s ease-out;
+
+    &:hover {
+      opacity: .5;
+    }
+  }
+}
+
+.hr {
+  width: 1px;
+  @include height(40px);
+  background-color: $g5;
+  transform-origin: center;
+  transform: rotate(20deg);
+}
