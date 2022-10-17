@@ -20,7 +20,7 @@ import profile from '@/images/common/mypage.png'
 //   }
 // }
 
-const Mypage = () => {
+const MypageEdit = () => {
   const csrf = () => axios.get('/sanctum/csrf-cookie')
 
   const [user, setUser] = useState(null)
@@ -223,8 +223,8 @@ const Mypage = () => {
   );
 }
 
-export default Mypage;
+export default MypageEdit;
 
-Mypage.getLayout = function getLayout(page) {
+MypageEdit.getLayout = function getLayout(page) {
   return <PageLayout>{page}</PageLayout>
 }
