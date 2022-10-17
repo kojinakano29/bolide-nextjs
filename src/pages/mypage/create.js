@@ -1,6 +1,6 @@
 import styles from '@/styles/components/mypage.module.scss'
 import axios from '@/lib/axios'; // カスタムフック
-import { useCallback, useEffect, useState } from 'react'
+import { useCallback, useState } from 'react'
 import { useForm } from 'react-hook-form';
 import Container from '@/components/Layouts/container';
 import PageLayout from '@/components/Layouts/PageLayout';
@@ -10,42 +10,12 @@ import profile from '@/images/common/mypage.png'
 import { useRouter } from 'next/router';
 import { useAuth } from '@/hooks/auth';
 
-// SSR
-export const getServerSideProps = async () => {
-  const res = await fetch(`${process.env.NEXT_PUBLIC_BACKEND_URL}/api/liondor/mypage/create`)
-  const data = await res.json()
-
-  return {
-    props: {
-        posts: data
-    }
-  }
-}
-
-const MypageCreate = ({posts}) => {
-  console.log(posts)
-  const router = useRouter()
+const MypageCreate = () => {
   const csrf = () => axios.get('/sanctum/csrf-cookie')
 
+  const router = useRouter()
+
   const { user } = useAuth({middleware: 'auth'})
-
-  console.log(user);
-
-  // const onLoadMypageData = useCallback(async (userId) => {
-  //   await csrf()
-
-  //   await axios.post("/api/liondor/mypage/store", userId)
-  //   .then((res) => {
-  //     console.log(res)
-  //   })
-  //   .catch((e) => {
-  //     console.error(e)
-  //   })
-  // }, [])
-
-  // useEffect(() => {
-  //   window.addEventListener("load", onLoadMypageData({user_id: user.id}))
-  // }, [])
 
   const { register, handleSubmit, formState: { errors } } = useForm()
 
@@ -64,11 +34,15 @@ const MypageCreate = ({posts}) => {
     })
     .then((res) => {
       console.log(res)
+      if (typeof res.data === "string") {
+        alert(res.data)
+      }
+      router.push(`/mypage/edit/${user.id}`)
     })
     .catch((e) => {
       console.error(e)
     })
-  }, [])
+  }, [user])
 
   const onSubmit = useCallback((data) => {
     console.log(data)
@@ -86,7 +60,7 @@ const MypageCreate = ({posts}) => {
       industry: data.industry,
       occupation: data.occupation,
     })
-  }, [onPostForm])
+  }, [onPostForm, user])
 
   const [preview, setPreview] = useState(profile.src)
   const handleChangeFile = useCallback((e) => {

@@ -9,54 +9,33 @@ import { zip } from '@/lib/constants'
 import profile from '@/images/common/mypage.png'
 
 // SSR
-// export const getServerSideProps = async () => {
-//   const res = await fetch(`${process.env.NEXT_PUBLIC_BACKEND_URL}/api/liondor/mypage`)
-//   const data = await res.json()
+export const getServerSideProps = async ({params}) => {
+  const res = await fetch(`${process.env.NEXT_PUBLIC_BACKEND_URL}/api/liondor/mypage/edit/${params.profile_id}`)
+  const data = await res.json()
 
-//   return {
-//     props: {
-//         posts: data
-//     }
-//   }
-// }
+  return {
+    props: {
+        posts: data
+    }
+  }
+}
 
-const MypageEdit = () => {
+const MypageEdit = ({posts}) => {
   const csrf = () => axios.get('/sanctum/csrf-cookie')
-
-  const [user, setUser] = useState(null)
-
-  const onLoadMypageData = useCallback(async (userId) => {
-    await csrf()
-
-    await axios.post("/api/liondor/mypage", userId)
-    .then((res) => {
-      console.log(res)
-      setUser(res)
-    })
-    .catch((e) => {
-      console.error(e)
-    })
-  }, [setUser, user])
-
-  useEffect(() => {
-    window.addEventListener("load", onLoadMypageData({user_id: 3}))
-  }, [])
-
-  console.log(user)
-  const userData = user?.data?.l_profile
+  console.log(posts)
 
   const { register, handleSubmit, formState: { errors } } = useForm({
     defaultValues: {
-      name: user !== null ? userData?.nicename : "",
-      thumbs: user !== null ? userData?.thumbs : "",
-      sex: user !== null ? userData?.sex : "",
-      zipcode: user !== null ? userData?.zipcode : "",
-      zip: user !== null ? userData?.zip : "",
-      other_address: user !== null ? userData?.other_address : "",
-      age: user !== null ? userData?.age : "",
-      work_type: user !== null ? userData?.work_type : "",
-      industry: user !== null ? userData?.industry : "",
-      occupation: user !== null ? userData?.occupation : "",
+      // name: user !== null ? userData?.nicename : "",
+      // thumbs: user !== null ? userData?.thumbs : "",
+      // sex: user !== null ? userData?.sex : "",
+      // zipcode: user !== null ? userData?.zipcode : "",
+      // zip: user !== null ? userData?.zip : "",
+      // other_address: user !== null ? userData?.other_address : "",
+      // age: user !== null ? userData?.age : "",
+      // work_type: user !== null ? userData?.work_type : "",
+      // industry: user !== null ? userData?.industry : "",
+      // occupation: user !== null ? userData?.occupation : "",
     }
   })
 
