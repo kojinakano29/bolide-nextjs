@@ -7,58 +7,47 @@ import PageLayout from '@/components/Layouts/PageLayout';
 import { PageTitle } from '@/components';
 import { zip } from '@/lib/constants'
 import profile from '@/images/common/mypage.png'
+import { useRouter } from 'next/router';
+import { useAuth } from '@/hooks/auth';
 
 // SSR
-// export const getServerSideProps = async () => {
-//   const res = await fetch(`${process.env.NEXT_PUBLIC_BACKEND_URL}/api/liondor/mypage`)
-//   const data = await res.json()
+export const getServerSideProps = async () => {
+  const res = await fetch(`${process.env.NEXT_PUBLIC_BACKEND_URL}/api/liondor/mypage/create`)
+  const data = await res.json()
 
-//   return {
-//     props: {
-//         posts: data
-//     }
-//   }
-// }
+  return {
+    props: {
+        posts: data
+    }
+  }
+}
 
-const Mypage = () => {
+const MypageCreate = ({posts}) => {
+  console.log(posts)
+  const router = useRouter()
   const csrf = () => axios.get('/sanctum/csrf-cookie')
 
-  const [user, setUser] = useState(null)
+  const { user } = useAuth({middleware: 'auth'})
 
-  const onLoadMypageData = useCallback(async (userId) => {
-    await csrf()
+  console.log(user);
 
-    await axios.post("/api/liondor/mypage", userId)
-    .then((res) => {
-      console.log(res)
-      setUser(res)
-    })
-    .catch((e) => {
-      console.error(e)
-    })
-  }, [setUser, user])
+  // const onLoadMypageData = useCallback(async (userId) => {
+  //   await csrf()
 
-  useEffect(() => {
-    window.addEventListener("load", onLoadMypageData({user_id: 3}))
-  }, [])
+  //   await axios.post("/api/liondor/mypage/store", userId)
+  //   .then((res) => {
+  //     console.log(res)
+  //   })
+  //   .catch((e) => {
+  //     console.error(e)
+  //   })
+  // }, [])
 
-  console.log(user)
-  const userData = user?.data?.l_profile
+  // useEffect(() => {
+  //   window.addEventListener("load", onLoadMypageData({user_id: user.id}))
+  // }, [])
 
-  const { register, handleSubmit, formState: { errors } } = useForm({
-    defaultValues: {
-      name: user !== null ? userData?.nicename : "",
-      thumbs: user !== null ? userData?.thumbs : "",
-      sex: user !== null ? userData?.sex : "",
-      zipcode: user !== null ? userData?.zipcode : "",
-      zip: user !== null ? userData?.zip : "",
-      other_address: user !== null ? userData?.other_address : "",
-      age: user !== null ? userData?.age : "",
-      work_type: user !== null ? userData?.work_type : "",
-      industry: user !== null ? userData?.industry : "",
-      occupation: user !== null ? userData?.occupation : "",
-    }
-  })
+  const { register, handleSubmit, formState: { errors } } = useForm()
 
   const onPostForm = useCallback(async (data) => {
     await csrf()
@@ -85,7 +74,7 @@ const Mypage = () => {
     console.log(data)
 
     onPostForm({
-      user_id: 3,
+      user_id: user.id,
       nicename: data.name,
       thumbs: data.thumbs[0],
       sex: data.sex,
@@ -223,8 +212,8 @@ const Mypage = () => {
   );
 }
 
-export default Mypage;
+export default MypageCreate;
 
-Mypage.getLayout = function getLayout(page) {
+MypageCreate.getLayout = function getLayout(page) {
   return <PageLayout>{page}</PageLayout>
 }
