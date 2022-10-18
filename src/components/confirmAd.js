@@ -28,7 +28,7 @@ const ConfirmAd = () => {
 
     await axios.post("/api/liondor/ad", data)
     .then((res) => {
-      console.log(res)
+      // console.log(res)
       sessionStorage.setItem('ad', true)
       router.push("/ad/thanks")
     })
@@ -38,7 +38,7 @@ const ConfirmAd = () => {
   }, [router])
 
   const onSubmit = useCallback(async (data) => {
-    console.log(data)
+    // console.log(data)
 
     onPresentForm({
       user_id: values.user_id,

@@ -34,7 +34,7 @@ const FaqEdit = ({posts}) => {
 
     await axios.post(`/api/liondor/faq/update/${post.id}`, data)
     .then((res) => {
-      console.log(res)
+      // console.log(res)
     })
     .catch((e) => {
       console.error(e)
@@ -42,7 +42,7 @@ const FaqEdit = ({posts}) => {
   }, [])
 
   const onSubmit = useCallback((data) => {
-    console.log(data)
+    // console.log(data)
 
     onPostForm({
       question: data.question,

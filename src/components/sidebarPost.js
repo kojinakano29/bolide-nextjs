@@ -7,6 +7,10 @@ import { BlogTxt } from '@/components'
 const SidebarPost = ({pickUp}) => {
   console.log(pickUp)
 
+  const data = pickUp.filter((item, index) => {
+    return index < 4
+  })
+
   return (
     <div>
       Enter

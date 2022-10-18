@@ -28,7 +28,7 @@ const ConfirmContact = () => {
 
     await axios.post("/api/liondor/contact", data)
     .then((res) => {
-      console.log(res)
+      // console.log(res)
       sessionStorage.setItem('contact', true)
       router.push("/contact/thanks")
     })
@@ -38,7 +38,7 @@ const ConfirmContact = () => {
   }, [router])
 
   const onSubmit = useCallback(async (data) => {
-    console.log(data)
+    // console.log(data)
 
     onPresentForm({
       user_id: values.user_id,

@@ -14,7 +14,7 @@ const InputContact = () => {
   const { register, handleSubmit, formState: { errors, isValid } } = useFormContext()
 
   const onSubmit = useCallback(async (data) => {
-    console.log(data)
+    // console.log(data)
 
     router.push(`/contact/?confirm=1`)
   }, [router])

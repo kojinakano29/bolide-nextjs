@@ -32,7 +32,7 @@ const ConfirmPresent = ({present}) => {
 
     await axios.post(`/api/liondor/present/app/${present.id}`, data)
     .then((res) => {
-      console.log(res)
+      // console.log(res)
       sessionStorage.setItem('comp', true)
       router.push("/present/thanks")
     })
@@ -42,7 +42,7 @@ const ConfirmPresent = ({present}) => {
   }, [router])
 
   const onSubmit = useCallback(async (data) => {
-    console.log(data)
+    // console.log(data)
     const sns = `${values.facebook ? values.facebook : ''},${values.insta ? values.insta : ''},${values.twitter ? values.twitter : ''}`
 
     onPresentForm({

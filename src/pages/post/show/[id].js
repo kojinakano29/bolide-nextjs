@@ -61,7 +61,7 @@ const DetailPage = ({posts}) => {
       l_post_id: post.id,
     })
     .then((res) => {
-      console.log(res)
+      // console.log(res)
       setBookmarkClick(() => handleBookmarkDelete)
       setFont(<FontAwesomeIcon icon={bookmarkSolid} />)
     })
@@ -71,12 +71,15 @@ const DetailPage = ({posts}) => {
   }, [user, post])
 
   const handleBookmarkDelete = useCallback(async () => {
+    console.log(user?.id)
     await axios.delete(`/api/liondor/post/bookmark_remove/${post.id}`, {
-      user_id: user?.id,
-      l_post_id: post.id,
+      data: {
+        user_id: user?.id,
+        l_post_id: post.id,
+      }
     })
     .then((res) => {
-      console.log(res)
+      // console.log(res)
       setBookmarkClick(() => handleBookmarkAdd)
       setFont(<FontAwesomeIcon icon={bookmarkRegular} />)
     })

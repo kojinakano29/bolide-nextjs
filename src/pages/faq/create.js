@@ -14,7 +14,7 @@ const CreateFaq = () => {
 
     await axios.post('/api/liondor/faq/store', data)
     .then((res) => {
-      console.log(res)
+      // console.log(res)
     })
     .catch((e) => {
       console.error(e)
@@ -22,7 +22,7 @@ const CreateFaq = () => {
   }, [])
 
   const onSubmit = useCallback((data) => {
-    console.log(data)
+    // console.log(data)
 
     onPostForm({
       question: data.question,

@@ -28,7 +28,7 @@ const InputPresent = ({present}) => {
   }, [setModalCosmetic, modalCosmetic])
 
   const onSubmit = useCallback(async (data) => {
-    console.log(data)
+    // console.log(data)
 
     router.push(`/present/${present.id}/?confirm=1`)
   }, [router])

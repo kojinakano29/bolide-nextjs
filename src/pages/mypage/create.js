@@ -33,7 +33,7 @@ const MypageCreate = () => {
       },
     })
     .then((res) => {
-      console.log(res)
+      // console.log(res)
       if (typeof res.data === "string") {
         alert(res.data)
       }
@@ -45,7 +45,7 @@ const MypageCreate = () => {
   }, [user])
 
   const onSubmit = useCallback((data) => {
-    console.log(data)
+    // console.log(data)
 
     onPostForm({
       user_id: user.id,

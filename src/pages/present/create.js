@@ -23,7 +23,7 @@ const CreatePresent = () => {
       },
     })
     .then((res) => {
-      console.log(res)
+      // console.log(res)
     })
     .catch((e) => {
       console.error(e)
@@ -31,7 +31,7 @@ const CreatePresent = () => {
   }, [])
 
   const onSubmit = useCallback((data) => {
-    console.log(data)
+    // console.log(data)
 
     onPostForm({
       thumbs: data.thumbs[0],
