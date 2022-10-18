@@ -6,7 +6,7 @@ import Container from '@/components/Layouts/container';
 import PageLayout from '@/components/Layouts/PageLayout';
 import { PageTitle } from '@/components';
 import { zip } from '@/lib/constants'
-import profile from '@/images/common/mypage.png'
+import thumb from '@/images/common/mypage.png'
 import { useRouter } from 'next/router';
 import { useAuth } from '@/hooks/auth';
 
@@ -37,7 +37,7 @@ const MypageCreate = () => {
       if (typeof res.data === "string") {
         alert(res.data)
       }
-      router.push(`/mypage/edit/${user.id}`)
+      router.push(`/mypage/edit/${user.l_profile_id}`)
     })
     .catch((e) => {
       console.error(e)
@@ -62,13 +62,13 @@ const MypageCreate = () => {
     })
   }, [onPostForm, user])
 
-  const [preview, setPreview] = useState(profile.src)
+  const [preview, setPreview] = useState(thumb.src)
   const handleChangeFile = useCallback((e) => {
     const { files } = e.target
     if (files[0]) {
       setPreview(window.URL.createObjectURL(files[0]))
     } else {
-      setPreview(profile.src)
+      setPreview(thumb.src)
     }
   }, [])
 
@@ -80,12 +80,15 @@ const MypageCreate = () => {
           <article className={styles.mypageForm}>
             <form onSubmit={handleSubmit(onSubmit)}>
               <dl className={styles.dl}>
-                <dt>
-                  <label htmlFor="thumbs">写真</label>
-                </dt>
+                <dt>写真</dt>
                 <dd className={styles.thumbArea}>
-                  <img src={preview} alt="" />
-                  <input id="thumbs" type="file" accept="image/*" {...register("thumbs")} onChange={handleChangeFile} />
+                  <div className={styles.thumbBox}>
+                    <img src={preview} alt="" />
+                  </div>
+                  <label>
+                    変更する
+                    <input id="thumbs" type="file" accept="image/*" {...register("thumbs")} onChange={handleChangeFile} />
+                  </label>
                 </dd>
               </dl>
               <dl className={styles.dl}>

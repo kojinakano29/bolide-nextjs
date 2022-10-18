@@ -15,8 +15,25 @@
   }
 }
 
+.headlineWrap {
+  position: relative;
+
+  .bookmarkBtn {
+    position: absolute;
+    top: 0;
+    right: 0;
+
+    svg {
+      @include width(24px);
+      height: auto;
+    }
+  }
+}
+
 .headlineBox {
   text-align: center;
+  @include max-width(608px);
+  margin: auto;
 }
 
 .cat {

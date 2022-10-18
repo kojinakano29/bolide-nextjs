@@ -6,7 +6,9 @@ import Container from '@/components/Layouts/container';
 import PageLayout from '@/components/Layouts/PageLayout';
 import { PageTitle } from '@/components';
 import { zip } from '@/lib/constants'
-import profile from '@/images/common/mypage.png'
+import thumb from '@/images/common/mypage.png'
+import { useAuth } from '@/hooks/auth';
+import { useRouter } from 'next/router';
 
 // SSR
 export const getServerSideProps = async ({params}) => {
@@ -24,20 +26,38 @@ const MypageEdit = ({posts}) => {
   const csrf = () => axios.get('/sanctum/csrf-cookie')
   console.log(posts)
 
-  const { register, handleSubmit, formState: { errors } } = useForm({
+  const { user } = useAuth({middleware: 'auth'})
+  const router = useRouter()
+
+  const profile = posts.l_profile
+
+  const [defaultThumb, setDefaultThumb] = useState(profile.thumbs)
+
+  const { register, handleSubmit, formState: { isDirty, errors } } = useForm({
     defaultValues: {
-      // name: user !== null ? userData?.nicename : "",
-      // thumbs: user !== null ? userData?.thumbs : "",
-      // sex: user !== null ? userData?.sex : "",
-      // zipcode: user !== null ? userData?.zipcode : "",
-      // zip: user !== null ? userData?.zip : "",
-      // other_address: user !== null ? userData?.other_address : "",
-      // age: user !== null ? userData?.age : "",
-      // work_type: user !== null ? userData?.work_type : "",
-      // industry: user !== null ? userData?.industry : "",
-      // occupation: user !== null ? userData?.occupation : "",
+      name: profile.nicename,
+      sex: profile.sex,
+      zipcode: profile.zipcode,
+      zip: profile.zip,
+      other_address: profile.other_address,
+      age: profile.age,
+      work_type: profile.work_type,
+      industry: profile.industry,
+      occupation: profile.occupation,
     }
   })
+
+  useEffect(() => {
+    onLoadCheck()
+  }, [user])
+
+  const onLoadCheck = () => {
+    const userIdStr = String(user?.l_profile_id)
+    const routerStr = String(router.query.profile_id)
+    if (user && userIdStr !== routerStr) {
+      router.push("/")
+    }
+  }
 
   const onPostForm = useCallback(async (data) => {
     await csrf()
@@ -47,7 +67,7 @@ const MypageEdit = ({posts}) => {
       params.append(key, this[key])
     }, data)
 
-    await axios.post('/api/liondor/mypage/store', params, {
+    await axios.post(`/api/liondor/mypage/update/${posts.l_profile_id}`, params, {
       headers: {
         'Content-Type': 'multipart/form-data',
       },
@@ -62,11 +82,12 @@ const MypageEdit = ({posts}) => {
 
   const onSubmit = useCallback((data) => {
     console.log(data)
+    console.log(defaultThumb);
 
     onPostForm({
-      user_id: 3,
+      user_id: user.id,
       nicename: data.name,
-      thumbs: data.thumbs[0],
+      thumbs: defaultThumb,
       sex: data.sex,
       zipcode: data.zipcode,
       zip: data.zip,
@@ -76,15 +97,18 @@ const MypageEdit = ({posts}) => {
       industry: data.industry,
       occupation: data.occupation,
     })
-  }, [onPostForm])
+  }, [onPostForm, user, defaultThumb])
 
-  const [preview, setPreview] = useState(profile.src)
+  const defaultThumbsPreview = `${process.env.NEXT_PUBLIC_BACKEND_URL}/storage/${profile.thumbs}`
+  const [preview, setPreview] = useState(defaultThumbsPreview)
   const handleChangeFile = useCallback((e) => {
     const { files } = e.target
     if (files[0]) {
       setPreview(window.URL.createObjectURL(files[0]))
+      setDefaultThumb(files[0])
     } else {
-      setPreview(profile.src)
+      setPreview(thumb.src)
+      setDefaultThumb(profile.thumbs)
     }
   }, [])
 
@@ -96,12 +120,15 @@ const MypageEdit = ({posts}) => {
           <article className={styles.mypageForm}>
             <form onSubmit={handleSubmit(onSubmit)}>
               <dl className={styles.dl}>
-                <dt>
-                  <label htmlFor="thumbs">写真</label>
-                </dt>
+                <dt>写真</dt>
                 <dd className={styles.thumbArea}>
-                  <img src={preview} alt="" />
-                  <input id="thumbs" type="file" accept="image/*" {...register("thumbs")} onChange={handleChangeFile} />
+                  <div className={styles.thumbBox}>
+                    <img src={preview} alt="" />
+                  </div>
+                  <label>
+                    変更する
+                    <input id="thumbs" type="file" accept="image/*" {...register("thumbs")} onChange={handleChangeFile} />
+                  </label>
                 </dd>
               </dl>
               <dl className={styles.dl}>
@@ -193,7 +220,7 @@ const MypageEdit = ({posts}) => {
                   </select>
                 </dd>
               </dl>
-              <button className="btn3">新規作成</button>
+              <button className="btn3" disabled={!isDirty}>変更を保存する</button>
             </form>
           </article>
         </div>
