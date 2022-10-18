@@ -44,7 +44,7 @@ const SidebarEdit = ({posts}) => {
       },
     })
     .then((res) => {
-      console.log(res)
+      // console.log(res)
     })
     .catch((e) => {
       console.error(e)
@@ -52,7 +52,7 @@ const SidebarEdit = ({posts}) => {
   }, [])
 
   const onSubmit = useCallback((data) => {
-    console.log(data)
+    // console.log(data)
 
     onPostForm({
       title: data.title,

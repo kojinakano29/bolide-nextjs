@@ -24,7 +24,6 @@ export const getServerSideProps = async ({params}) => {
 
 const MypageEdit = ({posts}) => {
   const csrf = () => axios.get('/sanctum/csrf-cookie')
-  console.log(posts)
 
   const { user } = useAuth({middleware: 'auth'})
   const router = useRouter()
@@ -73,7 +72,7 @@ const MypageEdit = ({posts}) => {
       },
     })
     .then((res) => {
-      console.log(res)
+      // console.log(res)
     })
     .catch((e) => {
       console.error(e)
@@ -81,8 +80,7 @@ const MypageEdit = ({posts}) => {
   }, [])
 
   const onSubmit = useCallback((data) => {
-    console.log(data)
-    console.log(defaultThumb);
+    // console.log(data)
 
     onPostForm({
       user_id: user.id,

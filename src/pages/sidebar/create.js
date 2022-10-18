@@ -26,7 +26,7 @@ const CreateSidebar = () => {
       },
     })
     .then((res) => {
-      console.log(res)
+      // console.log(res)
     })
     .catch((e) => {
       console.error(e)
@@ -34,7 +34,7 @@ const CreateSidebar = () => {
   }, [])
 
   const onSubmit = useCallback((data) => {
-    console.log(data)
+    // console.log(data)
 
     onPostForm({
       title: data.title,

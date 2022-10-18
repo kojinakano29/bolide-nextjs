@@ -45,7 +45,7 @@ const CreatePost = ({posts}) => {
       },
     })
     .then((res) => {
-      console.log(res)
+      // console.log(res)
     })
     .catch((e) => {
       console.error(e)
@@ -53,7 +53,7 @@ const CreatePost = ({posts}) => {
   }, [])
 
   const onSubmit = useCallback((data) => {
-    console.log(data)
+    // console.log(data)
 
     onPostForm({
       user_id: data.user_id,
