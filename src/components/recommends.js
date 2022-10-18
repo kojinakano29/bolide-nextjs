@@ -9,7 +9,6 @@ import { BlogTxt } from '@/components'
 
 const Recommends = ({posts}) => {
   const pickup = posts.pickups
-  console.log(posts)
 
   return (
     <article className={styles.recoBox}>

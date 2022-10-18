@@ -4,7 +4,9 @@ import Image from 'next/image'
 import dummy10 from '@/images/cms/dummy10.png'
 import { BlogTxt } from '@/components'
 
-const SidebarPost = ({posts}) => {
+const SidebarPost = ({pickUp}) => {
+  console.log(pickUp)
+
   return (
     <div>
       Enter

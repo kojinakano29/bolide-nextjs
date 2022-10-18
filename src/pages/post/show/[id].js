@@ -4,8 +4,9 @@ import PageLayout from "@/components/Layouts/PageLayout";
 import styles from '@/styles/components/postShow.module.scss'
 import Link from "next/link";
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { faBookmark } from '@fortawesome/free-regular-svg-icons'
-import { useCallback } from "react";
+import { faBookmark as bookmarkRegular } from '@fortawesome/free-regular-svg-icons'
+import { faBookmark as bookmarkSolid } from '@fortawesome/free-solid-svg-icons'
+import { useCallback, useEffect, useState } from "react";
 import axios from "@/lib/axios";
 import { useAuth } from "@/hooks/auth";
 
@@ -39,14 +40,45 @@ const DetailPage = ({posts}) => {
   const seriesName = posts.series.series_info.name
   const userName = post.user.name
   const createAt = post.created_at
+  const bookmark = posts.bookmarks
 
-  const handleBookmark = useCallback(async () => {
+  const [bookmarkClick, setBookmarkClick] = useState()
+  const [font, setFont] = useState()
+
+  useEffect(() => {
+    if (bookmark.includes(user?.id)) {
+      setBookmarkClick(() => handleBookmarkDelete)
+      setFont(<FontAwesomeIcon icon={bookmarkSolid} />)
+    } else {
+      setBookmarkClick(() => handleBookmarkAdd)
+      setFont(<FontAwesomeIcon icon={bookmarkRegular} />)
+    }
+  }, [user])
+
+  const handleBookmarkAdd = useCallback(async () => {
     await axios.post(`/api/liondor/post/bookmark/${post.id}`, {
-      user_id: user.id,
+      user_id: user?.id,
       l_post_id: post.id,
     })
     .then((res) => {
       console.log(res)
+      setBookmarkClick(() => handleBookmarkDelete)
+      setFont(<FontAwesomeIcon icon={bookmarkSolid} />)
+    })
+    .catch((e) => {
+      console.error(e)
+    })
+  }, [user, post])
+
+  const handleBookmarkDelete = useCallback(async () => {
+    await axios.delete(`/api/liondor/post/bookmark_remove/${post.id}`, {
+      user_id: user?.id,
+      l_post_id: post.id,
+    })
+    .then((res) => {
+      console.log(res)
+      setBookmarkClick(() => handleBookmarkAdd)
+      setFont(<FontAwesomeIcon icon={bookmarkRegular} />)
     })
     .catch((e) => {
       console.error(e)
@@ -97,8 +129,18 @@ const DetailPage = ({posts}) => {
               </p>
               <p className={`en ${styles.time}`}><Date dateString={createAt} /></p>
             </div>
-            <button type="button" className={styles.bookmarkBtn} onClick={handleBookmark}>
-              <FontAwesomeIcon icon={faBookmark} />
+            {/* {
+              bookmark.includes(user?.id) ?
+              <button className={styles.bookmarkBtn} onClick={handleBookmarkDelete}>
+                <FontAwesomeIcon icon={bookmarkSolid} />
+              </button>
+              :
+              <button className={styles.bookmarkBtn} onClick={handleBookmarkAdd}>
+                <FontAwesomeIcon icon={bookmarkRegular} />
+              </button>
+            } */}
+            <button className={styles.bookmarkBtn} onClick={bookmarkClick}>
+              {font}
             </button>
           </div>
         </Container>
