@@ -9,6 +9,7 @@ import { BlogTxt } from '@/components'
 
 const Recommends = ({posts}) => {
   const pickup = posts.pickups
+  console.log(posts)
 
   return (
     <article className={styles.recoBox}>
@@ -39,11 +40,11 @@ const Recommends = ({posts}) => {
                       />
                     </div>
                     <BlogTxt
-                      cat="FASHION"
-                      cat2="TREND & STORY"
-                      ttl="【インフルエンサーインタビューvol.5】魅せるインスタブランディング×望む未来を創るコーチング・美容ライフ　梅宮翠さん"
-                      name="ARATA HOMMA"
-                      time="2022-09-26T04:54:36.000000Z"
+                      cat={item.l_post.l_category?.parent_slug?.toUpperCase()}
+                      cat2={item.l_post.l_category?.name}
+                      ttl={item.l_post.title}
+                      name={item.l_post.user.name}
+                      time={item.l_post.created_at}
                       smallMb
                     />
                   </a>
