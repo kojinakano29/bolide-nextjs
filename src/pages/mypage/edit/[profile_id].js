@@ -4,7 +4,7 @@ import { useCallback, useEffect, useState } from 'react'
 import { useForm } from 'react-hook-form';
 import Container from '@/components/Layouts/container';
 import PageLayout from '@/components/Layouts/PageLayout';
-import { PageTitle } from '@/components';
+import { MypageSide, PageTitle } from '@/components';
 import { zip } from '@/lib/constants'
 import thumb from '@/images/common/mypage.png'
 import { useAuth } from '@/hooks/auth';
@@ -29,6 +29,7 @@ const MypageEdit = ({posts}) => {
   const router = useRouter()
 
   const profile = posts.l_profile
+  const bookmark = posts.l_bookmark
 
   const [defaultThumb, setDefaultThumb] = useState(profile.thumbs)
 
@@ -220,6 +221,14 @@ const MypageEdit = ({posts}) => {
               </dl>
               <button className="btn3" disabled={!isDirty}>変更を保存する</button>
             </form>
+          </article>
+          <article className={styles.sideBox}>
+            <div className={styles.sideWrap}>
+              <MypageSide posts={bookmark} en="SAVED" jp="保存した記事" />
+            </div>
+            <div className={styles.sideWrap}>
+              <MypageSide posts={bookmark} en="PRESENT" jp="応募したプレゼント" />
+            </div>
           </article>
         </div>
       </Container>

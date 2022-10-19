@@ -13,7 +13,8 @@ const BlogTxt = (
     fs22 = false,
     fs14 = false,
     tac = false,
-    smallMb = false
+    smallMb = false,
+    mb0 = false,
   }
 ) => {
   const upperCat2 = cat2?.toUpperCase()
@@ -25,6 +26,7 @@ const BlogTxt = (
         ${white ? styles.white : ''}
         ${tac ? styles.tac : ''}
         ${smallMb ? styles.smallMb : ''}
+        ${mb0 ? styles.mb0 : ''}
         ${fs24 ? styles.fs24 : ''}
         ${fs22 ? styles.fs22 : ''}
         ${fs14 ? styles.fs14 : ''}

@@ -1,0 +1,56 @@
+@import '../variables.scss';
+
+.modalWrap {
+  composes: modalWrap from './parts.scss';
+  @include p(80px 0);
+  overflow: auto;
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+
+  &::-webkit-scrollbar{
+    display: none;
+  }
+
+  &.open {
+    opacity: 1;
+    pointer-events: all;
+  }
+}
+
+.modalBox {
+  width: 100%;
+  @include max-width(1140px);
+  margin: auto;
+  background-color: $w1;
+  @include p(32px);
+}
+
+.ttl {
+  text-align: center;
+  @include mb(32px);
+
+  span {
+    display: block;
+
+    &.big {
+      font-size: var(--fs32-18);
+      letter-spacing: 0;
+    }
+
+    &.sm {
+      font-size: var(--fs16-14);
+      font-weight: 500;
+      color: $g1;
+    }
+  }
+}
+
+.article {
+  @include flex(center);
+  @include gap(40px 24px);
+
+  a {
+    margin-bottom: 0 !important;
+    @include width(342px);
+  }
+}
