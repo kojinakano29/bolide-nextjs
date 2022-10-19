@@ -1,0 +1,35 @@
+@import '../variables.scss';
+
+.iconBox {
+  position: relative;
+  z-index: 999;
+  cursor: pointer;
+  transition: .2s ease-out;
+}
+
+.searchBtn {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+
+  input {
+    display: block;
+    padding: 0;
+    border: none;
+    width: 0;
+    background-color: transparent;
+    transition: .2s ease-out;
+    outline: none !important;
+    font-size: var(--fs14-12);
+    letter-spacing: 0;
+
+    &:focus {
+      @include width(174px);
+      @include height(24px);
+    }
+
+    &.open {
+      color: $w1;
+    }
+  }
+}

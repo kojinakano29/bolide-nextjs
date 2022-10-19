@@ -1,1 +1,31 @@
 @import '../variables.scss';
+
+.sideWrap {
+  border-top: 2px solid $b1;
+  border-bottom: 2px solid $b1;
+  @include p(16px 0);
+}
+
+.ttl {
+  font-size: var(--fs14-12);
+  @include mb(16px);
+}
+
+.blogLink {
+  composes: blogLink from './parts.scss';
+  width: 100%;
+  @include flex();
+  @include mb(24px);
+
+  &:last-of-type {
+    margin-bottom: 0;
+  }
+}
+
+.imgBox {
+  @include width(100px);
+}
+
+.txtBox {
+  @include width(calc(100% - (100px + 16px)));
+}

@@ -1,0 +1,28 @@
+@import '../variables.scss';
+
+.ttl {
+  @include mb(24px);
+  @include flex(flex-end, left);
+  @include gap(16px);
+
+  span {
+    display: block;
+    line-height: 1;
+
+    &.big {
+      font-size: var(--fs32-18);
+      letter-spacing: 0;
+      @include ty(4px);
+    }
+
+    &.sm {
+      font-size: var(--fs16-14);
+      font-weight: 500;
+      color: $g1;
+    }
+  }
+}
+
+.btn {
+  margin-left: 0;
+}

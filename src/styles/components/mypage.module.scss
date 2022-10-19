@@ -106,3 +106,15 @@
     }
   }
 }
+
+.sideBox {
+  @include width(calc(100% - (755px + 64px)));
+
+  .sideWrap {
+    @include mb(96px);
+
+    &:last-of-type {
+      margin-bottom: 0;
+    }
+  }
+}

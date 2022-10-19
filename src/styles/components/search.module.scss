@@ -1,12 +1,1 @@
 @import '../variables.scss';
-
-.iconBox {
-  position: relative;
-  z-index: 999;
-  cursor: pointer;
-  transition: .2s ease-out;
-
-  &:hover {
-    opacity: .5;
-  }
-}

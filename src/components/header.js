@@ -2,7 +2,7 @@ import styles from '@/styles/components/header.module.scss'
 import Link from 'next/link';
 import hLogo from '@/images/common/h-logo.png'
 import Image from 'next/image';
-import { Hum, Search, LoginBtn, PageNavi } from '@/components'
+import { Hum, SearchIcon, LoginBtn, PageNavi } from '@/components'
 import { useCallback, useEffect, useState } from 'react';
 
 const Header = () => {
@@ -74,7 +74,7 @@ const Header = () => {
         </h1>
         <div className={styles.leftAbs}>
           <Hum humOpen={humOpen} clickHumOpen={clickHumOpen} clickHumClose={clickHumClose} />
-          <Search humOpen={humOpen} />
+          <SearchIcon humOpen={humOpen} />
         </div>
         <div className={styles.rightAbs}>
           <LoginBtn humOpen={humOpen} />
