@@ -9,7 +9,6 @@ const SidebarPost = ({pickUp}) => {
   const data = pickUp.filter((item, index) => {
     return index < 4
   })
-  console.log(data)
 
   return (
     <div className={styles.sideWrap}>
@@ -24,7 +23,7 @@ const SidebarPost = ({pickUp}) => {
                   alt=""
                   layout="responsive"
                   sizes="100px"
-                  priority
+                  // priority
                 />
               </div>
               <div className={styles.txtBox}>

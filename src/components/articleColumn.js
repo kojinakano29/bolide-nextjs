@@ -4,15 +4,7 @@ import Link from 'next/link';
 import dummy11 from '@/images/cms/dummy11.png'
 import BlogTxt from './blogTxt';
 
-const ArticleColumn = ({posts, type2 = false, present = false}) => {
-  const sort = posts?.filter((e, index) => {
-    if (type2) {
-      return index > 14 && index < 30
-    } else {
-      return index < 15
-    }
-  })
-
+const ArticleColumn = ({sort, present = false}) => {
   return (
     <article className={styles.article}>
       {sort.map((item) => (
