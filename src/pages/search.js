@@ -1,6 +1,6 @@
 import styles from '@/styles/components/search.module.scss'
 import PageLayout from "@/components/Layouts/PageLayout";
-import { PageTitle } from '@/components';
+import { ArticleColumn, PageTitle, Sidebar } from '@/components';
 import Container from '@/components/Layouts/container';
 
 // SSR
@@ -16,18 +16,22 @@ export const getServerSideProps = async ({query}) => {
 }
 
 const Search = ({posts}) => {
-  console.log(posts)
+  const post = posts.posts
+
+  const sort3 = post.filter((e, index) => {
+    return index < 30
+  })
 
   return (
     <section className="cont1">
       <PageTitle title="SEARCH" ivy />
       <Container>
-        {/* <article className={styles.section}>
+        <article className={styles.section}>
           <div className={styles.flex}>
-            <ArticleColumn posts={post} />
+            <ArticleColumn sort={sort3} />
             <Sidebar posts={posts} />
           </div>
-        </article> */}
+        </article>
       </Container>
     </section>
   );

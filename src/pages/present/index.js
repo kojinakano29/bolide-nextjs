@@ -17,13 +17,17 @@ export const getServerSideProps = async () => {
 const Present = ({posts}) => {
   const postPresent = posts.presents
 
+  const sort1 = postPresent.filter((e, index) => {
+    return index < 15
+  })
+
   return (
     <section className="cont1">
       <PageTitle title="PRESENT" ivy />
       <Container>
         <article className={styles.section}>
           <div className={styles.flex}>
-            <ArticleColumn posts={postPresent} present />
+            <ArticleColumn sort={sort1} present />
             <Sidebar posts={posts} />
           </div>
         </article>

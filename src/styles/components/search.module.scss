@@ -1,1 +1,6 @@
 @import '../variables.scss';
+
+.flex {
+  @include flex();
+  position: relative;
+}
