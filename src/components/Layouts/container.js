@@ -1,4 +1,4 @@
-import styles from '@/styles/components/container.module.scss'
+import styles from '@/styles/liondor/components/container.module.scss'
 
 const Container = ({children, small = false, small900 = false}) => {
   return (

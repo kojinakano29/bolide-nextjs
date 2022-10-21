@@ -1,5 +1,5 @@
 import { Html, Head, Main, NextScript } from 'next/document'
-import { siteMeta } from '@/lib/constants'
+import { siteMeta } from '@/lib/liondor/constants'
 
 const {siteLang} = siteMeta;
 

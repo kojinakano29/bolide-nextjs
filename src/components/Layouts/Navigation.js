@@ -1,10 +1,10 @@
-import ApplicationLogo from '@/components/ApplicationLogo'
-import Dropdown from '@/components/Dropdown'
+import ApplicationLogo from '@/components/liondor/ApplicationLogo'
+import Dropdown from '@/components/liondor/Dropdown'
 import Link from 'next/link'
-import NavLink from '@/components/NavLink'
-import ResponsiveNavLink, { ResponsiveNavButton } from '@/components/ResponsiveNavLink'
-import { DropdownButton } from '@/components/DropdownLink'
-import { useAuth } from '@/hooks/auth'
+import NavLink from '@/components/liondor/NavLink'
+import ResponsiveNavLink, { ResponsiveNavButton } from '@/components/liondor/ResponsiveNavLink'
+import { DropdownButton } from '@/components/liondor/DropdownLink'
+import { useAuth } from '@/hooks/liondor/auth'
 import { useRouter } from 'next/router'
 import { useState } from 'react'
 
@@ -23,7 +23,7 @@ const Navigation = ({ user }) => {
                     <div className="flex">
                         {/* Logo */}
                         <div className="flex-shrink-0 flex items-center">
-                            <Link href="/dashboard">
+                            <Link href="/liondor/dashboard">
                                 <a>
                                     <ApplicationLogo className="block h-10 w-auto fill-current text-gray-600" />
                                 </a>
@@ -33,7 +33,7 @@ const Navigation = ({ user }) => {
                         {/* Navigation Links */}
                         <div className="hidden space-x-8 sm:-my-px sm:ml-10 sm:flex">
                             <NavLink
-                                href="/dashboard"
+                                href="/liondor/dashboard"
                                 active={router.pathname === '/dashboard'}>
                                 Dashboard
                             </NavLink>
@@ -109,7 +109,7 @@ const Navigation = ({ user }) => {
                 <div className="block sm:hidden">
                     <div className="pt-2 pb-3 space-y-1">
                         <ResponsiveNavLink
-                            href="/dashboard"
+                            href="/liondor/dashboard"
                             active={router.pathname === '/dashboard'}>
                             Dashboard
                         </ResponsiveNavLink>
