@@ -24,7 +24,6 @@ const PresentForm = (posts) => {
 
   const methods = useForm({
     defaultValues: {
-      user_id: "1",
       facebook: "",
       insta: "",
       twitter: "",

@@ -14,9 +14,8 @@ const MypageCreate = () => {
   const csrf = () => axios.get('/sanctum/csrf-cookie')
 
   const router = useRouter()
-
   const { user } = useAuth({middleware: 'auth'})
-
+  const [disabled, setDisabled] = useState(false)
   const { register, handleSubmit, formState: { errors } } = useForm()
 
   const onPostForm = useCallback(async (data) => {
@@ -46,9 +45,10 @@ const MypageCreate = () => {
 
   const onSubmit = useCallback((data) => {
     // console.log(data)
+    setDisabled(true)
 
     onPostForm({
-      user_id: user.id,
+      user_id: user?.id,
       nicename: data.name,
       thumbs: data.thumbs[0],
       sex: data.sex,
@@ -180,7 +180,7 @@ const MypageCreate = () => {
                   </select>
                 </dd>
               </dl>
-              <button className="btn3">新規作成</button>
+              <button className="btn3" disabled={disabled}>新規作成</button>
             </form>
           </article>
         </div>

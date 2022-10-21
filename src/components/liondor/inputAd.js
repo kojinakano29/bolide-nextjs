@@ -36,7 +36,6 @@ const InputAd = () => {
         <br/>担当よりご連絡いたします。
       </p>
       <form onSubmit={handleSubmit(onSubmit)}>
-        <input type="hidden" {...register("user_id")} />
         <article className={styles.formContent}>
           <dl className={styles.dl}>
             <dt>

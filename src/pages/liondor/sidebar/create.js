@@ -4,13 +4,16 @@ import { useCallback, useState } from 'react'
 import { SidebarEditor } from '@/components/liondor';
 import { useForm } from 'react-hook-form';
 import Container from '@/components/Layouts/container';
+import { useRouter } from 'next/router';
 
 const CreateSidebar = () => {
   const csrf = () => axios.get('/sanctum/csrf-cookie')
 
-  const [editorContent, setEditorContent] = useState()
+  const router = useRouter()
 
-  const { register, handleSubmit, watch, formState: { errors } } = useForm()
+  const [editorContent, setEditorContent] = useState()
+  const [disabled, setDisabled] = useState(false)
+  const { register, handleSubmit, formState: { errors } } = useForm()
 
   const onPostForm = useCallback(async (data) => {
     await csrf()
@@ -27,6 +30,12 @@ const CreateSidebar = () => {
     })
     .then((res) => {
       // console.log(res)
+      if (res.data.state === 0) {
+        alert("下書きを作成しました。")
+      } else {
+        alert("サイドバーを作成しました。")
+      }
+      router.push(`/liondor/sidebar/edit/${res.data.id}`)
     })
     .catch((e) => {
       console.error(e)
@@ -35,6 +44,7 @@ const CreateSidebar = () => {
 
   const onSubmit = useCallback((data) => {
     // console.log(data)
+    setDisabled(true)
 
     onPostForm({
       title: data.title,
@@ -81,7 +91,7 @@ const CreateSidebar = () => {
                   </select>
                 </dd>
               </dl>
-              <button className="btn2">新規作成</button>
+              <button className="btn2" disabled={disabled}>新規作成</button>
               <div className={styles.hr}></div>
               <dl className={styles.dl}>
                 <dt className={styles.dt}>

@@ -1,12 +1,15 @@
 import styles from '@/styles/liondor/components/createPost.module.scss'
 import axios from '@/lib/liondor/axios'; // カスタムフック
-import { useCallback } from 'react'
+import { useCallback, useState } from 'react'
 import { useForm } from 'react-hook-form';
 import Container from '@/components/Layouts/container';
+import { useRouter } from 'next/router';
 
 const CreateFaq = () => {
   const csrf = () => axios.get('/sanctum/csrf-cookie')
 
+  const router = useRouter()
+  const [disabled, setDisabled] = useState(false)
   const { register, handleSubmit, formState: { errors } } = useForm()
 
   const onPostForm = useCallback(async (data) => {
@@ -15,6 +18,8 @@ const CreateFaq = () => {
     await axios.post('/api/liondor/faq/store', data)
     .then((res) => {
       // console.log(res)
+      alert("よくあるご質問を作成しました。")
+      router.push(`/liondor/faq/edit/${res.data.id}`)
     })
     .catch((e) => {
       console.error(e)
@@ -23,6 +28,7 @@ const CreateFaq = () => {
 
   const onSubmit = useCallback((data) => {
     // console.log(data)
+    setDisabled(true)
 
     onPostForm({
       question: data.question,
@@ -57,7 +63,7 @@ const CreateFaq = () => {
               </dl>
             </div>
             <div className={styles.right}>
-              <button className="btn2">新規作成</button>
+              <button className="btn2" disabled={disabled}>新規作成</button>
               <div className={styles.hr}></div>
               <dl className={styles.dl}>
                 <dt className={styles.dt}>企業/ユーザー</dt>

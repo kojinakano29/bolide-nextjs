@@ -46,11 +46,11 @@
 }
 
 .article {
-  @include flex(center);
+  @include flex(center, left);
   @include gap(40px 24px);
 
   a {
     margin-bottom: 0 !important;
-    @include width(342px);
+    @include width(calc(100% / 3 - 16px));
   }
 }

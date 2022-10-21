@@ -1,6 +1,6 @@
 import styles from '@/styles/liondor/components/createPost.module.scss'
 import axios from '@/lib/liondor/axios'; // カスタムフック
-import { useCallback } from 'react'
+import { useCallback, useState } from 'react'
 import { useForm } from 'react-hook-form';
 import Container from '@/components/Layouts/container';
 
@@ -20,8 +20,8 @@ const FaqEdit = ({posts}) => {
   const csrf = () => axios.get('/sanctum/csrf-cookie')
 
   const post = posts
-
-  const { register, handleSubmit, formState: { isDirty, errors } } = useForm({
+  const [disabled, setDisabled] = useState(false)
+  const { register, handleSubmit, formState: { errors } } = useForm({
     defaultValues: {
       question: post.question,
       answer: post.answer,
@@ -35,6 +35,8 @@ const FaqEdit = ({posts}) => {
     await axios.post(`/api/liondor/faq/update/${post.id}`, data)
     .then((res) => {
       // console.log(res)
+      alert("更新しました。")
+      setDisabled(false)
     })
     .catch((e) => {
       console.error(e)
@@ -43,6 +45,7 @@ const FaqEdit = ({posts}) => {
 
   const onSubmit = useCallback((data) => {
     // console.log(data)
+    setDisabled(true)
 
     onPostForm({
       question: data.question,
@@ -77,7 +80,7 @@ const FaqEdit = ({posts}) => {
               </dl>
             </div>
             <div className={styles.right}>
-              <button className="btn2" disabled={!isDirty}>更新</button>
+              <button className="btn2" disabled={disabled}>更新</button>
               <div className={styles.hr}></div>
               <dl className={styles.dl}>
                 <dt className={styles.dt}>企業/ユーザー</dt>

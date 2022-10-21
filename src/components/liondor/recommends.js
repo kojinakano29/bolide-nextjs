@@ -35,7 +35,6 @@ const Recommends = ({posts}) => {
                         alt=""
                         layout="responsive"
                         sizes="(min-width: 1340px) 325px, (min-width: 768px) 180px, 25vw"
-                        priority
                       />
                     </div>
                     <BlogTxt

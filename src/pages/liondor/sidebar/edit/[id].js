@@ -21,8 +21,8 @@ const SidebarEdit = ({posts}) => {
   const csrf = () => axios.get('/sanctum/csrf-cookie')
 
   const [editorContent, setEditorContent] = useState()
-
-  const { register, handleSubmit, watch, formState: { errors } } = useForm({
+  const [disabled, setDisabled] = useState(false)
+  const { register, handleSubmit, formState: { errors } } = useForm({
     defaultValues: {
       title: posts.title,
       state: posts.state,
@@ -45,6 +45,8 @@ const SidebarEdit = ({posts}) => {
     })
     .then((res) => {
       // console.log(res)
+      alert("更新しました。")
+      setDisabled(false)
     })
     .catch((e) => {
       console.error(e)
@@ -53,6 +55,7 @@ const SidebarEdit = ({posts}) => {
 
   const onSubmit = useCallback((data) => {
     // console.log(data)
+    setDisabled(true)
 
     onPostForm({
       title: data.title,
@@ -101,7 +104,7 @@ const SidebarEdit = ({posts}) => {
                   </select>
                 </dd>
               </dl>
-              <button className="btn2">更新</button>
+              <button className="btn2" disabled={disabled}>更新</button>
               <div className={styles.hr}></div>
               <dl className={styles.dl}>
                 <dt className={styles.dt}>

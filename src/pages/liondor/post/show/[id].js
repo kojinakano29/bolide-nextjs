@@ -71,7 +71,8 @@ const DetailPage = ({posts}) => {
   }, [user, post])
 
   const handleBookmarkDelete = useCallback(async () => {
-    console.log(user?.id)
+    // console.log(user?.id)
+
     await axios.delete(`/api/liondor/post/bookmark_remove/${post.id}`, {
       data: {
         user_id: user?.id,
@@ -132,16 +133,6 @@ const DetailPage = ({posts}) => {
               </p>
               <p className={`en ${styles.time}`}><Date dateString={createAt} /></p>
             </div>
-            {/* {
-              bookmark.includes(user?.id) ?
-              <button className={styles.bookmarkBtn} onClick={handleBookmarkDelete}>
-                <FontAwesomeIcon icon={bookmarkSolid} />
-              </button>
-              :
-              <button className={styles.bookmarkBtn} onClick={handleBookmarkAdd}>
-                <FontAwesomeIcon icon={bookmarkRegular} />
-              </button>
-            } */}
             <button className={styles.bookmarkBtn} onClick={bookmarkClick}>
               {font}
             </button>

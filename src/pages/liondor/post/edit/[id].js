@@ -4,6 +4,7 @@ import { useCallback, useState } from 'react'
 import { PostEditor } from '@/components/liondor';
 import { useForm } from 'react-hook-form';
 import Container from '@/components/Layouts/container';
+import { useAuth } from '@/hooks/liondor/auth';
 
 // SSR
 export const getServerSideProps = async ({params}) => {
@@ -20,12 +21,15 @@ export const getServerSideProps = async ({params}) => {
 const PostEdit = ({posts}) => {
   const csrf = () => axios.get('/sanctum/csrf-cookie')
 
+  const { user } = useAuth()
+
   const catArray = posts.category
   const seriesArray = posts.series
   const post = posts.posts
   const parentCat = posts.parent_category
   const content = posts.posts.content
 
+  const [disabled, setDisabled] = useState(false)
   const [editorContent, setEditorContent] = useState()
   const [defaultThumb, setDefaultThumb] = useState(post.thumbs)
   const [defaultMv, setDefaultMv] = useState(post.mv)
@@ -39,9 +43,8 @@ const PostEdit = ({posts}) => {
     }))
   }
 
-  const { register, handleSubmit, watch, formState: { isDirty, errors } } = useForm({
+  const { register, handleSubmit, formState: { errors } } = useForm({
     defaultValues: {
-      user_id: "1",
       title: post.title,
       sub_title: post.sub_title,
       discription: post.discription,
@@ -67,6 +70,8 @@ const PostEdit = ({posts}) => {
     })
     .then((res) => {
       // console.log(res)
+      alert("更新しました。")
+      setDisabled(false)
     })
     .catch((e) => {
       console.error(e)
@@ -75,9 +80,10 @@ const PostEdit = ({posts}) => {
 
   const onSubmit = useCallback((data) => {
     // console.log(data)
+    setDisabled(true)
 
     onPostForm({
-      user_id: data.user_id,
+      user_id: user?.id,
       l_category_id: data.child_category,
       l_series_id: data.l_series_id,
       title: data.title,
@@ -88,7 +94,7 @@ const PostEdit = ({posts}) => {
       content: editorContent,
       state: data.state,
     })
-  }, [onPostForm, editorContent, defaultThumb, defaultMv])
+  }, [onPostForm, editorContent, defaultThumb, defaultMv, user])
 
   const [state, setState] = useState(() => {
     return post.state === 1 ? true : false
@@ -123,7 +129,6 @@ const PostEdit = ({posts}) => {
     <section className={styles.createSection}>
       <Container small>
         <form onSubmit={handleSubmit(onSubmit)}>
-          <input type="hidden" {...register("user_id")} />
           <article className={styles.flex}>
             <div className={styles.left}>
               <dl className={styles.dl}>
@@ -188,7 +193,7 @@ const PostEdit = ({posts}) => {
                   </select>
                 </dd>
               </dl>
-              <button className="btn2" disabled={!isDirty}>更新</button>
+              <button className="btn2" disabled={disabled}>更新</button>
               <div className={styles.hr}></div>
               <dl className={styles.dl}>
                 <dt className={styles.dt}>大カテゴリー</dt>
