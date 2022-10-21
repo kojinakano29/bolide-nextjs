@@ -3,23 +3,38 @@ import axios from '@/lib/liondor/axios'; // カスタムフック
 import { useCallback, useState } from 'react'
 import { useForm } from 'react-hook-form';
 import Container from '@/components/Layouts/container';
-import { useRouter } from 'next/router';
 
-const CreateSeries = () => {
+// SSR
+export const getServerSideProps = async ({params}) => {
+  const res = await fetch(`${process.env.NEXT_PUBLIC_BACKEND_URL}/api/liondor/series/edit/${params.id}`)
+  const data = await res.json()
+
+  return {
+    props: {
+      posts: data
+    }
+  }
+}
+
+const EditSeries = ({posts}) => {
   const csrf = () => axios.get('/sanctum/csrf-cookie')
 
-  const router = useRouter()
   const [disabled, setDisabled] = useState(false)
-  const { register, handleSubmit, formState: { errors } } = useForm()
+  const { register, handleSubmit, formState: { errors } } = useForm({
+    defaultValues: {
+      name: posts.name,
+    }
+  })
+
 
   const onPostForm = useCallback(async(data) => {
     await csrf()
 
-    await axios.post('/api/liondor/series/store', data)
+    await axios.post(`/api/liondor/series/update/${posts.id}`, data)
     .then((res) => {
       // console.log(res)
-      alert("シリーズを作成しました。")
-      router.push(`/liondor/series/edit/${res.data.id}`)
+      alert("更新しました。")
+      setDisabled(false)
     })
     .catch((e) => {
       console.error(e)
@@ -52,7 +67,7 @@ const CreateSeries = () => {
               </dl>
             </div>
             <div className={styles.right}>
-              <button className="btn2" disabled={disabled}>新規作成</button>
+              <button className="btn2" disabled={disabled}>更新</button>
             </div>
           </article>
         </form>
@@ -61,4 +76,4 @@ const CreateSeries = () => {
   );
 }
 
-export default CreateSeries;
+export default EditSeries;

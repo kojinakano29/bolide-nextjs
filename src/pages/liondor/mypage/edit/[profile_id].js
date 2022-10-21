@@ -30,7 +30,9 @@ const MypageEdit = ({posts}) => {
 
   const profile = posts.l_profile
   const bookmark = posts.l_bookmark
+  const present = posts.l_present
 
+  const [disabled, setDisabled] = useState(false)
   const [defaultThumb, setDefaultThumb] = useState(profile.thumbs)
 
   const { register, handleSubmit, formState: { isDirty, errors } } = useForm({
@@ -74,6 +76,8 @@ const MypageEdit = ({posts}) => {
     })
     .then((res) => {
       // console.log(res)
+      alert("更新しました。")
+      setDisabled(false)
     })
     .catch((e) => {
       console.error(e)
@@ -82,6 +86,7 @@ const MypageEdit = ({posts}) => {
 
   const onSubmit = useCallback((data) => {
     // console.log(data)
+    setDisabled(true)
 
     onPostForm({
       user_id: user.id,
@@ -219,7 +224,7 @@ const MypageEdit = ({posts}) => {
                   </select>
                 </dd>
               </dl>
-              <button className="btn3" disabled={!isDirty}>変更を保存する</button>
+              <button className="btn3" disabled={disabled}>変更を保存する</button>
             </form>
           </article>
           <article className={styles.sideBox}>
@@ -227,7 +232,7 @@ const MypageEdit = ({posts}) => {
               <MypageSide posts={bookmark} en="SAVED" jp="保存した記事" />
             </div>
             <div className={styles.sideWrap}>
-              <MypageSide posts={bookmark} en="PRESENT" jp="応募したプレゼント" />
+              <MypageSide posts={present} en="PRESENT" jp="応募したプレゼント" present />
             </div>
           </article>
         </div>

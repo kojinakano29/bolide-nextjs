@@ -3,11 +3,14 @@ import axios from '@/lib/liondor/axios'; // カスタムフック
 import { useCallback, useState } from 'react'
 import { useForm } from 'react-hook-form';
 import Container from '@/components/Layouts/container';
+import { useRouter } from 'next/router';
 
 const CreatePresent = () => {
   const csrf = () => axios.get('/sanctum/csrf-cookie')
 
-  const { register, handleSubmit, watch, formState: { errors } } = useForm()
+  const router = useRouter()
+  const [disabled, setDisabled] = useState(false)
+  const { register, handleSubmit, formState: { errors } } = useForm()
 
   const onPostForm = useCallback(async(data) => {
     await csrf()
@@ -24,6 +27,8 @@ const CreatePresent = () => {
     })
     .then((res) => {
       // console.log(res)
+      alert("プレゼントを作成しました。")
+      router.push(`/liondor/present/edit/${res.data.id}`)
     })
     .catch((e) => {
       console.error(e)
@@ -32,6 +37,7 @@ const CreatePresent = () => {
 
   const onSubmit = useCallback((data) => {
     // console.log(data)
+    setDisabled(true)
 
     onPostForm({
       thumbs: data.thumbs[0],
@@ -44,7 +50,11 @@ const CreatePresent = () => {
   const [preview, setPreview] = useState()
   const handleChangeFile = useCallback((e) => {
     const { files } = e.target
-    setPreview(window.URL.createObjectURL(files[0]))
+    if (files[0]) {
+      setPreview(window.URL.createObjectURL(files[0]))
+    } else {
+      setPreview("")
+    }
   }, [])
 
   return (
@@ -83,7 +93,7 @@ const CreatePresent = () => {
               </dl>
             </div>
             <div className={styles.right}>
-              <button className="btn2">新規作成</button>
+              <button className="btn2" disabled={disabled}>新規作成</button>
               <div className={styles.hr}></div>
               <dl className={styles.dl}>
                 <dt className={styles.dt}>

@@ -3,11 +3,11 @@ import Image from "next/image";
 import Link from "next/link";
 import dummy10 from '@/images/liondor/cms/dummy10.png'
 
-const BlogPattern10 = ({posts}) => {
+const BlogPattern10 = ({posts, present = false}) => {
   return (
     <>
       {posts.map((item, index) => (
-        <Link href={`/liondor/post/show/${item.id}`} key={index}>
+        <Link href={present ? `/liondor/present/${item.id}` : `/liondor/post/show/${item.id}`} key={index}>
           <a className={styles.blogLink}>
             <div className={styles.imgBox}>
               <Image

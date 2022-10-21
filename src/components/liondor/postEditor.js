@@ -12,7 +12,7 @@ const PostEditor = ({setEditorContent, content, edit = false}) => {
   const csrf = () => axios.get('/sanctum/csrf-cookie')
 
   const [editorState, setEditorState] = useState(() => {
-    if (edit) {
+    if (content !== "undefined" && edit) {
       return EditorState.createWithContent(convertFromRaw(JSON.parse(content)))
     } else {
       return EditorState.createEmpty()
@@ -87,8 +87,7 @@ const PostEditor = ({setEditorContent, content, edit = false}) => {
         toolbarClassName="toolbarClassName"
         wrapperClassName="wrapperClassName"
         editorClassName="editorClassName"
-        placeholder="Writting Here!!"
-        onFocus={(event) => {}}
+        placeholder="本文"
         editorStyle={{
           boxSizing: "border-box",
           border: "1px solid #000",

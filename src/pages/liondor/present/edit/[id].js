@@ -20,12 +20,13 @@ const PresentEdit = ({posts}) => {
   const csrf = () => axios.get('/sanctum/csrf-cookie')
 
   const [defaultThumb, setDefaultThumb] = useState(posts.thumbs)
+  const [disabled, setDisabled] = useState(false)
 
   const formatDate = useCallback((date) => {
     return date.substr(0, 10)
   }, [])
 
-  const { register, handleSubmit, watch, formState: { errors } } = useForm({
+  const { register, handleSubmit, formState: { errors } } = useForm({
     defaultValues: {
       title: posts.title,
       offer: posts.offer,
@@ -49,6 +50,8 @@ const PresentEdit = ({posts}) => {
     })
     .then((res) => {
       // console.log(res)
+      alert("更新しました。")
+      setDisabled(false)
     })
     .catch((e) => {
       console.error(e)
@@ -57,6 +60,7 @@ const PresentEdit = ({posts}) => {
 
   const onSubmit = useCallback((data) => {
     // console.log(data)
+    setDisabled(true)
 
     onPostForm({
       thumbs: defaultThumb,
@@ -112,7 +116,7 @@ const PresentEdit = ({posts}) => {
               </dl>
             </div>
             <div className={styles.right}>
-              <button className="btn2">更新</button>
+              <button className="btn2" disabled={disabled}>更新</button>
               <div className={styles.hr}></div>
               <dl className={styles.dl}>
                 <dt className={styles.dt}>

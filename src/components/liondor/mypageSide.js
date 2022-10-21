@@ -2,7 +2,11 @@ import styles from '@/styles/liondor/components/mypageSide.module.scss'
 import { useCallback, useState } from 'react';
 import { Modal, BlogPattern10 } from '@/components/liondor';
 
-const MypageSide = ({posts, en, jp}) => {
+const MypageSide = ({posts, en, jp, present = false}) => {
+  const sort = posts.filter((item, index) => {
+    return index < 3
+  })
+
   const [modal, setModal] = useState(false)
   const toggleModal = useCallback(() => {
     setModal(!modal)
@@ -15,7 +19,7 @@ const MypageSide = ({posts, en, jp}) => {
         <span className={styles.sm}>{jp}</span>
       </h3>
       <article className={styles.side}>
-        <BlogPattern10 posts={posts} />
+        <BlogPattern10 posts={sort} present={present} />
       </article>
       <button type="button" className={`btn3 ${styles.btn}`} onClick={toggleModal}>一覧を見る</button>
       <Modal show={modal} close={toggleModal} posts={posts} en={en} jp={jp} />

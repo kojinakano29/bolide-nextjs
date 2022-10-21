@@ -11,7 +11,6 @@ const Contact = () => {
 
   const methods = useForm({
     defaultValues: {
-      user_id: "1",
       content: [],
       name: "",
       furigana: "",

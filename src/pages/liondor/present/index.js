@@ -2,9 +2,16 @@ import { ArticleColumn, PageTitle, Sidebar } from "@/components/liondor";
 import Container from "@/components/Layouts/container";
 import PageLayout from "@/components/Layouts/PageLayout";
 import styles from '@/styles/liondor/components/present.module.scss'
+import { useRouter } from "next/router";
 
-export const getServerSideProps = async () => {
-  const res = await fetch(`${process.env.NEXT_PUBLIC_BACKEND_URL}/api/liondor/present`)
+export const getServerSideProps = async ({query}) => {
+  let page = null
+  if (query.page) {
+    page = query.page
+  } else {
+    page = "1"
+  }
+  const res = await fetch(`${process.env.NEXT_PUBLIC_BACKEND_URL}/api/liondor/present/?page=${page}`)
   const data = await res.json()
 
   return {
@@ -15,11 +22,28 @@ export const getServerSideProps = async () => {
 }
 
 const Present = ({posts}) => {
+  const router = useRouter(null)
+  let current = null
+  if (router.query.page) {
+    current = parseInt(router.query.page)
+  } else {
+    current = 1
+  }
+
   const postPresent = posts.presents
 
   const sort1 = postPresent.filter((e, index) => {
     return index < 15
   })
+
+  const onClickNext = () => {
+    const nextPage = current + 1
+    router.push(`/liondor/present/?page=${nextPage}`)
+  }
+  const onClickPrev = () => {
+    const prevPage = current - 1
+    router.push(`/liondor/present/?page=${prevPage}`)
+  }
 
   return (
     <section className="cont1">
@@ -31,6 +55,11 @@ const Present = ({posts}) => {
             <Sidebar posts={posts} />
           </div>
         </article>
+        <div className="pagerBox">
+          {current === 1 ? '' : <button className="pagerBtn pagerPrev" onClick={onClickPrev}></button>}
+          <p className="pagerCurrent en">{current}/{posts.page_max}</p>
+          {posts.page_max === current ? '' : <button className="pagerBtn pagerNext" onClick={onClickNext}></button>}
+        </div>
       </Container>
     </section>
   );

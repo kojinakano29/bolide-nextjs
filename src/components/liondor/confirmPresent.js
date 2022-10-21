@@ -3,11 +3,13 @@ import axios from '@/lib/liondor/axios'; // カスタムフック
 import { useCallback, useEffect } from 'react';
 import { useFormContext } from "react-hook-form"
 import { useRouter } from 'next/router';
+import { useAuth } from '@/hooks/liondor/auth';
 
 const ConfirmPresent = ({present}) => {
   const csrf = () => axios.get('/sanctum/csrf-cookie')
 
   const router = useRouter()
+  const { user } = useAuth()
 
   const { handleSubmit, getValues, formState: { isValid } } = useFormContext()
 
@@ -46,7 +48,7 @@ const ConfirmPresent = ({present}) => {
     const sns = `${values.facebook ? values.facebook : ''},${values.insta ? values.insta : ''},${values.twitter ? values.twitter : ''}`
 
     onPresentForm({
-      user_id: values.user_id,
+      user_id: user?.id,
       l_present_id: present.id,
       account: sns,
       hobby: values.hobby,
@@ -56,7 +58,7 @@ const ConfirmPresent = ({present}) => {
       child: childInt,
       income: values.income,
     })
-  }, [onPresentForm])
+  }, [onPresentForm, user])
 
   return (
     <>

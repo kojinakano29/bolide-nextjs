@@ -3,11 +3,13 @@ import axios from '@/lib/liondor/axios'; // カスタムフック
 import { useCallback, useEffect } from 'react';
 import { useFormContext } from "react-hook-form"
 import { useRouter } from 'next/router';
+import { useAuth } from '@/hooks/liondor/auth';
 
 const ConfirmAd = () => {
   const csrf = () => axios.get('/sanctum/csrf-cookie')
 
   const router = useRouter()
+  const { user } = useAuth()
 
   const { handleSubmit, getValues, formState: { isValid } } = useFormContext()
 
@@ -41,7 +43,7 @@ const ConfirmAd = () => {
     // console.log(data)
 
     onPresentForm({
-      user_id: values.user_id,
+      user_id: user?.id,
       content: values.content,
       name: values.name,
       furigana: values.furigana,
@@ -50,7 +52,7 @@ const ConfirmAd = () => {
       tel: values.tel,
       message: values.message,
     })
-  }, [onPresentForm])
+  }, [onPresentForm, user])
 
   return (
     <>

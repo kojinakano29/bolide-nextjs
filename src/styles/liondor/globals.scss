@@ -230,5 +230,43 @@ span > img {
       max-width: 100%;
     }
   }
+
+  span {
+    display: inline;
+  }
 }
 /* エディター部分 */
+
+/* ページャー部分 */
+.pagerBox {
+  @include flex(center, center);
+  @include gap(40px);
+  @include mt(96px);
+
+  .pagerBtn {
+    @include width(80px);
+    @include height(80px);
+    border: 1px solid $g3;
+    border-radius: 50%;
+    background-position: center;
+    background-repeat: no-repeat;
+    transition: .2s ease-out;
+
+    &.pagerPrev {
+      background-image: url(../../images/liondor/common/pagerPrev.svg);
+    }
+
+    &.pagerNext {
+      background-image: url(../../images/liondor/common/pagerNext.svg);
+    }
+
+    &:hover {
+      opacity: .5;
+    }
+  }
+
+  .pagerCurrent {
+    font-size: var(--fs18-16);
+  }
+}
+/* ページャー部分 */

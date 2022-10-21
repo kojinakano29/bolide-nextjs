@@ -4,6 +4,8 @@ import { useCallback, useState } from 'react'
 import { PostEditor } from '@/components/liondor';
 import { useForm } from 'react-hook-form';
 import Container from '@/components/Layouts/container';
+import { useAuth } from '@/hooks/liondor/auth';
+import { useRouter } from 'next/router';
 
 // SSR
 export const getServerSideProps = async () => {
@@ -20,13 +22,11 @@ export const getServerSideProps = async () => {
 const CreatePost = ({posts}) => {
   const csrf = () => axios.get('/sanctum/csrf-cookie')
 
+  const { user } = useAuth()
+  const router = useRouter()
+  const [disabled, setDisabled] = useState(false)
   const [editorContent, setEditorContent] = useState()
-
-  const { register, handleSubmit, watch, formState: { errors } } = useForm({
-    defaultValues: {
-      user_id: "1",
-    }
-  })
+  const { register, handleSubmit, formState: { errors } } = useForm()
 
   const catArray = posts.category
   const seriesArray = posts.series
@@ -46,6 +46,12 @@ const CreatePost = ({posts}) => {
     })
     .then((res) => {
       // console.log(res)
+      if (res.data.state === 0) {
+        alert("下書きを作成しました。")
+      } else {
+        alert("記事を作成しました。")
+      }
+      router.push(`/liondor/post/edit/${res.data.id}`)
     })
     .catch((e) => {
       console.error(e)
@@ -54,9 +60,10 @@ const CreatePost = ({posts}) => {
 
   const onSubmit = useCallback((data) => {
     // console.log(data)
+    setDisabled(true)
 
     onPostForm({
-      user_id: data.user_id,
+      user_id: user?.id,
       l_category_id: data.child_category,
       l_series_id: data.l_series_id,
       title: data.title,
@@ -67,7 +74,7 @@ const CreatePost = ({posts}) => {
       content: editorContent,
       state: data.state,
     })
-  }, [onPostForm, editorContent])
+  }, [onPostForm, editorContent, user])
 
   const [cat, setCat] = useState([catArray[0]])
   const handleCat = (e) => {
@@ -96,7 +103,7 @@ const CreatePost = ({posts}) => {
     if (files[0]) {
       setPreview2(window.URL.createObjectURL(files[0]))
     } else {
-      setPreview("")
+      setPreview2("")
     }
   }, [])
 
@@ -104,7 +111,6 @@ const CreatePost = ({posts}) => {
     <section className={styles.createSection}>
       <Container small>
         <form onSubmit={handleSubmit(onSubmit)}>
-          <input type="hidden" {...register("user_id")} />
           <article className={styles.flex}>
             <div className={styles.left}>
               <dl className={styles.dl}>
@@ -171,7 +177,7 @@ const CreatePost = ({posts}) => {
                   </select>
                 </dd>
               </dl>
-              <button className="btn2">新規作成</button>
+              <button className="btn2" disabled={disabled}>新規作成</button>
               <div className={styles.hr}></div>
               <dl className={styles.dl}>
                 <dt className={styles.dt}>大カテゴリー</dt>
