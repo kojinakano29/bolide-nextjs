@@ -1,37 +1,42 @@
-import ApplicationLogo from '@/components/liondor/ApplicationLogo'
-import AuthCard from '@/components/liondor/AuthCard'
-import Button from '@/components/liondor/Button'
+import ApplicationLogo from '@/components/ApplicationLogo'
+import AuthCard from '@/components/AuthCard'
+import AuthSessionStatus from '@/components/AuthSessionStatus'
+import Button from '@/components/Button'
 import GuestLayout from '@/components/Layouts/GuestLayout'
-import Input from '@/components/liondor/Input'
-import InputError from '@/components/liondor/InputError'
-import Label from '@/components/liondor/Label'
+import Input from '@/components/Input'
+import InputError from '@/components/InputError'
+import Label from '@/components/Label'
 import Link from 'next/link'
-import { useAuth } from '@/hooks/liondor/auth'
-import { useState } from 'react'
+import { useAuth } from '@/hooks/auth'
+import { useEffect, useState } from 'react'
+import { useRouter } from 'next/router'
 
-const Register = () => {
-    const { register } = useAuth({
-        middleware: 'guest',
-        redirectIfAuthenticated: '/liondor',
-    })
+const PasswordReset = () => {
+    const router = useRouter()
 
-    const [name, setName] = useState('')
+    const { resetPassword } = useAuth({ middleware: 'guest' })
+
     const [email, setEmail] = useState('')
     const [password, setPassword] = useState('')
     const [passwordConfirmation, setPasswordConfirmation] = useState('')
     const [errors, setErrors] = useState([])
+    const [status, setStatus] = useState(null)
 
     const submitForm = event => {
         event.preventDefault()
 
-        register({
-            name,
+        resetPassword({
             email,
             password,
             password_confirmation: passwordConfirmation,
             setErrors,
+            setStatus,
         })
     }
+
+    useEffect(() => {
+        setEmail(router.query.email || '')
+    }, [router.query.email])
 
     return (
         <GuestLayout>
@@ -43,26 +48,12 @@ const Register = () => {
                         </a>
                     </Link>
                 }>
+                {/* Session Status */}
+                <AuthSessionStatus className="mb-4" status={status} />
+
                 <form onSubmit={submitForm}>
-                    {/* Name */}
-                    <div>
-                        <Label htmlFor="name">Name</Label>
-
-                        <Input
-                            id="name"
-                            type="text"
-                            value={name}
-                            className="block mt-1 w-full"
-                            onChange={event => setName(event.target.value)}
-                            required
-                            autoFocus
-                        />
-
-                        <InputError messages={errors.name} className="mt-2" />
-                    </div>
-
                     {/* Email Address */}
-                    <div className="mt-4">
+                    <div>
                         <Label htmlFor="email">Email</Label>
 
                         <Input
@@ -72,6 +63,7 @@ const Register = () => {
                             className="block mt-1 w-full"
                             onChange={event => setEmail(event.target.value)}
                             required
+                            autoFocus
                         />
 
                         <InputError messages={errors.email} className="mt-2" />
@@ -80,7 +72,6 @@ const Register = () => {
                     {/* Password */}
                     <div className="mt-4">
                         <Label htmlFor="password">Password</Label>
-
                         <Input
                             id="password"
                             type="password"
@@ -88,13 +79,9 @@ const Register = () => {
                             className="block mt-1 w-full"
                             onChange={event => setPassword(event.target.value)}
                             required
-                            autoComplete="new-password"
                         />
 
-                        <InputError
-                            messages={errors.password}
-                            className="mt-2"
-                        />
+                        <InputError messages={errors.password} className="mt-2" />
                     </div>
 
                     {/* Confirm Password */}
@@ -114,20 +101,11 @@ const Register = () => {
                             required
                         />
 
-                        <InputError
-                            messages={errors.password_confirmation}
-                            className="mt-2"
-                        />
+                        <InputError messages={errors.password_confirmation} className="mt-2" />
                     </div>
 
                     <div className="flex items-center justify-end mt-4">
-                        <Link href="/login">
-                            <a className="underline text-sm text-gray-600 hover:text-gray-900">
-                                Already registered?
-                            </a>
-                        </Link>
-
-                        <Button className="ml-4">Register</Button>
+                        <Button>Reset Password</Button>
                     </div>
                 </form>
             </AuthCard>
@@ -135,4 +113,4 @@ const Register = () => {
     )
 }
 
-export default Register
+export default PasswordReset

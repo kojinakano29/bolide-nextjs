@@ -1,5 +1,5 @@
 import styles from '@/styles/liondor/components/createPost.module.scss'
-import axios from '@/lib/liondor/axios'; // カスタムフック
+import axios from '@/lib/axios'; // カスタムフック
 import { useCallback, useState } from 'react'
 import { SidebarEditor } from '@/components/liondor';
 import { useForm } from 'react-hook-form';

@@ -1,6 +1,6 @@
 import styles from '@/styles/liondor/components/mypage.module.scss'
-import axios from '@/lib/liondor/axios'; // カスタムフック
-import { useCallback, useState } from 'react'
+import axios from '@/lib/axios'; // カスタムフック
+import { useCallback, useEffect, useState } from 'react'
 import { useForm } from 'react-hook-form';
 import Container from '@/components/Layouts/container';
 import PageLayout from '@/components/Layouts/PageLayout';
@@ -8,7 +8,7 @@ import { PageTitle } from '@/components/liondor';
 import { zip } from '@/lib/liondor/constants'
 import thumb from '@/images/liondor/common/mypage.png'
 import { useRouter } from 'next/router';
-import { useAuth } from '@/hooks/liondor/auth';
+import { useAuth } from '@/hooks/auth';
 
 const MypageCreate = () => {
   const csrf = () => axios.get('/sanctum/csrf-cookie')
@@ -17,6 +17,16 @@ const MypageCreate = () => {
   const { user } = useAuth({middleware: 'auth'})
   const [disabled, setDisabled] = useState(false)
   const { register, handleSubmit, formState: { errors } } = useForm()
+
+  useEffect(() => {
+    onLoadCheck()
+  }, [user])
+
+  const onLoadCheck = () => {
+    if (user?.l_profile_id) {
+      router.push(`/liondor/mypage/edit/${user?.l_profile_id}`)
+    }
+  }
 
   const onPostForm = useCallback(async (data) => {
     await csrf()

@@ -4,6 +4,7 @@ import { ArticleColumn, BlogPattern8, CatNavi, PageTitle, Sidebar } from "@/comp
 import styles from '@/styles/liondor/components/pageSingle.module.scss'
 import { useRouter } from 'next/router';
 
+// SSR
 export const getServerSideProps = async ({params, query}) => {
   let page = null
   if (query.page) {

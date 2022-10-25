@@ -1,10 +1,10 @@
 import styles from '@/styles/liondor/components/createPost.module.scss'
-import axios from '@/lib/liondor/axios'; // カスタムフック
+import axios from '@/lib/axios'; // カスタムフック
 import { useCallback, useState } from 'react'
 import { PostEditor } from '@/components/liondor';
 import { useForm } from 'react-hook-form';
 import Container from '@/components/Layouts/container';
-import { useAuth } from '@/hooks/liondor/auth';
+import { useAuth } from '@/hooks/auth';
 
 // SSR
 export const getServerSideProps = async ({params}) => {

@@ -1,15 +1,15 @@
-import ApplicationLogo from '@/components/liondor/ApplicationLogo'
-import AuthCard from '@/components/liondor/AuthCard'
-import Button from '@/components/liondor/Button'
+import ApplicationLogo from '@/components/ApplicationLogo'
+import AuthCard from '@/components/AuthCard'
+import Button from '@/components/Button'
 import GuestLayout from '@/components/Layouts/GuestLayout'
 import Link from 'next/link'
-import { useAuth } from '@/hooks/liondor/auth'
+import { useAuth } from '@/hooks/auth'
 import { useState } from 'react'
 
 const VerifyEmail = () => {
     const { logout, resendEmailVerification } = useAuth({
         middleware: 'auth',
-        redirectIfAuthenticated: '/liondor/dashboard',
+        redirectIfAuthenticated: '/dashboard',
     })
 
     const [status, setStatus] = useState(null)

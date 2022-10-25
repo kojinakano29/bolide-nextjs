@@ -1,8 +1,7 @@
 @import '../variables.scss';
 
 .iconBox {
-  @include width(80px);
-  @include height(28px);
+  @include p(4px 12px);
   @include flex(center, center);
   @include gap(2px);
   @include br(17px);

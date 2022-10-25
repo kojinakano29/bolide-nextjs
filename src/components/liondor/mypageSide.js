@@ -22,7 +22,7 @@ const MypageSide = ({posts, en, jp, present = false}) => {
         <BlogPattern10 posts={sort} present={present} />
       </article>
       <button type="button" className={`btn3 ${styles.btn}`} onClick={toggleModal}>一覧を見る</button>
-      <Modal show={modal} close={toggleModal} posts={posts} en={en} jp={jp} />
+      <Modal show={modal} close={toggleModal} posts={posts} en={en} jp={jp} present={present} />
     </>
   );
 }

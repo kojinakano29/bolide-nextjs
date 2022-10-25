@@ -1,4 +1,4 @@
-import axios from '@/lib/liondor/axios'; // カスタムフック
+import axios from '@/lib/axios'; // カスタムフック
 import "react-draft-wysiwyg/dist/react-draft-wysiwyg.css";
 import { convertToRaw, convertFromRaw, EditorState } from "draft-js";
 import dynamic from "next/dynamic";

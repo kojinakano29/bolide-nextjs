@@ -1,9 +1,9 @@
 import styles from '@/styles/liondor/components/form.module.scss'
-import axios from '@/lib/liondor/axios'; // カスタムフック
+import axios from '@/lib/axios'; // カスタムフック
 import { useCallback, useEffect } from 'react';
 import { useFormContext } from "react-hook-form"
 import { useRouter } from 'next/router';
-import { useAuth } from '@/hooks/liondor/auth';
+import { useAuth } from '@/hooks/auth';
 
 const ConfirmPresent = ({present}) => {
   const csrf = () => axios.get('/sanctum/csrf-cookie')

@@ -1,5 +1,5 @@
 import styles from '@/styles/liondor/components/mypage.module.scss'
-import axios from '@/lib/liondor/axios'; // カスタムフック
+import axios from '@/lib/axios'; // カスタムフック
 import { useCallback, useEffect, useState } from 'react'
 import { useForm } from 'react-hook-form';
 import Container from '@/components/Layouts/container';
@@ -7,7 +7,7 @@ import PageLayout from '@/components/Layouts/PageLayout';
 import { MypageSide, PageTitle } from '@/components/liondor';
 import { zip } from '@/lib/liondor/constants'
 import thumb from '@/images/liondor/common/mypage.png'
-import { useAuth } from '@/hooks/liondor/auth';
+import { useAuth } from '@/hooks/auth';
 import { useRouter } from 'next/router';
 
 // SSR
@@ -35,7 +35,7 @@ const MypageEdit = ({posts}) => {
   const [disabled, setDisabled] = useState(false)
   const [defaultThumb, setDefaultThumb] = useState(profile.thumbs)
 
-  const { register, handleSubmit, formState: { isDirty, errors } } = useForm({
+  const { register, handleSubmit, formState: { errors } } = useForm({
     defaultValues: {
       name: profile.nicename,
       sex: profile.sex,
@@ -57,7 +57,7 @@ const MypageEdit = ({posts}) => {
     const userIdStr = String(user?.l_profile_id)
     const routerStr = String(router.query.profile_id)
     if (user && userIdStr !== routerStr) {
-      router.push("/liondor")
+      router.push("/liondor/mypage/create")
     }
   }
 
