@@ -7,8 +7,8 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faBookmark as bookmarkRegular } from '@fortawesome/free-regular-svg-icons'
 import { faBookmark as bookmarkSolid } from '@fortawesome/free-solid-svg-icons'
 import { useCallback, useEffect, useState } from "react";
-import axios from "@/lib/liondor/axios";
-import { useAuth } from "@/hooks/liondor/auth";
+import axios from "@/lib/axios";
+import { useAuth } from "@/hooks/auth";
 
 
 // SSR
@@ -24,6 +24,8 @@ export const getServerSideProps = async ({params}) => {
 }
 
 const DetailPage = ({posts}) => {
+  const csrf = () => axios.get('/sanctum/csrf-cookie')
+
   const { user } = useAuth()
 
   const post = posts.posts
@@ -43,6 +45,7 @@ const DetailPage = ({posts}) => {
   const bookmark = posts.bookmarks
 
   const [bookmarkClick, setBookmarkClick] = useState()
+  const [disabled, setDisabled] = useState(false)
   const [font, setFont] = useState()
 
   useEffect(() => {
@@ -56,6 +59,9 @@ const DetailPage = ({posts}) => {
   }, [user])
 
   const handleBookmarkAdd = useCallback(async () => {
+    setDisabled(true)
+    await csrf()
+
     await axios.post(`/api/liondor/post/bookmark/${post.id}`, {
       user_id: user?.id,
       l_post_id: post.id,
@@ -68,10 +74,14 @@ const DetailPage = ({posts}) => {
     .catch((e) => {
       console.error(e)
     })
+
+    await setDisabled(false)
   }, [user, post])
 
   const handleBookmarkDelete = useCallback(async () => {
     // console.log(user?.id)
+    setDisabled(true)
+    await csrf()
 
     await axios.delete(`/api/liondor/post/bookmark_remove/${post.id}`, {
       data: {
@@ -87,6 +97,8 @@ const DetailPage = ({posts}) => {
     .catch((e) => {
       console.error(e)
     })
+
+    await setDisabled(false)
   }, [user, post])
 
   return (
@@ -133,7 +145,7 @@ const DetailPage = ({posts}) => {
               </p>
               <p className={`en ${styles.time}`}><Date dateString={createAt} /></p>
             </div>
-            <button className={styles.bookmarkBtn} onClick={bookmarkClick}>
+            <button className={styles.bookmarkBtn} onClick={bookmarkClick} disabled={disabled}>
               {font}
             </button>
           </div>

@@ -1,27 +1,24 @@
-import ApplicationLogo from '@/components/liondor/ApplicationLogo'
-import AuthCard from '@/components/liondor/AuthCard'
-import AuthSessionStatus from '@/components/liondor/AuthSessionStatus'
-import Button from '@/components/liondor/Button'
-import GuestLayout from '@/components/Layouts/GuestLayout'
-import Input from '@/components/liondor/Input'
-import InputError from '@/components/liondor/InputError'
-import Label from '@/components/liondor/Label'
+import styles from '@/styles/liondor/components/login.module.scss'
+import AuthSessionStatus from '@/components/AuthSessionStatus'
+import InputError from '@/components/InputError'
 import Link from 'next/link'
-import { useAuth } from '@/hooks/liondor/auth'
+import { useAuth } from '@/hooks/auth'
 import { useEffect, useState } from 'react'
 import { useRouter } from 'next/router'
+import Container from '@/components/Layouts/container'
+import PageLayout from '@/components/Layouts/PageLayout'
+import { PageTitle } from '@/components/liondor'
 
 const Login = () => {
     const router = useRouter()
 
     const { login } = useAuth({
         middleware: 'guest',
-        redirectIfAuthenticated: '/liondor',
+        redirectIfAuthenticated: '/liondor/mypage/create',
     })
 
     const [email, setEmail] = useState('')
     const [password, setPassword] = useState('')
-    const [shouldRemember, setShouldRemember] = useState(false)
     const [errors, setErrors] = useState([])
     const [status, setStatus] = useState(null)
 
@@ -39,97 +36,79 @@ const Login = () => {
         login({
             email,
             password,
-            remember: shouldRemember,
             setErrors,
             setStatus,
         })
     }
 
     return (
-        <GuestLayout>
-            <AuthCard
-                logo={
-                    <Link href="/liondor">
-                        <a>
-                            <ApplicationLogo className="w-20 h-20 fill-current text-gray-500" />
-                        </a>
+        <section className="cont1">
+            <PageTitle title="LOGIN" ivy />
+            <Container small900>
+                <p className={styles.desc}>
+                    ログインすると、好きな記事を保存することができる他、便利な機能を使って
+                    <br/>Liondorをあなた専用にカスタマイズできます。
+                </p>
+                <p className={`${styles.desc} ${styles.desc2}`}>まだ登録がお済みでない方はこちら</p>
+                <div className={styles.register}>
+                    <Link href="/">
+                        <a className="btn5">企業様はこちら</a>
                     </Link>
-                }>
+                    <Link href="/">
+                        <a className="btn5">一般ユーザーの方はこちら</a>
+                    </Link>
+                </div>
                 {/* Session Status */}
                 <AuthSessionStatus className="mb-4" status={status} />
-
                 <form onSubmit={submitForm}>
-                    {/* Email Address */}
-                    <div>
-                        <Label htmlFor="email">Email</Label>
-
-                        <Input
-                            id="email"
-                            type="email"
-                            value={email}
-                            className="block mt-1 w-full"
-                            onChange={event => setEmail(event.target.value)}
-                            required
-                            autoFocus
-                        />
-
-                        <InputError messages={errors.email} className="mt-2" />
-                    </div>
-
-                    {/* Password */}
-                    <div className="mt-4">
-                        <Label htmlFor="password">Password</Label>
-
-                        <Input
-                            id="password"
-                            type="password"
-                            value={password}
-                            className="block mt-1 w-full"
-                            onChange={event => setPassword(event.target.value)}
-                            required
-                            autoComplete="current-password"
-                        />
-
-                        <InputError
-                            messages={errors.password}
-                            className="mt-2"
-                        />
-                    </div>
-
-                    {/* Remember Me */}
-                    <div className="block mt-4">
-                        <label
-                            htmlFor="remember_me"
-                            className="inline-flex items-center">
-                            <input
-                                id="remember_me"
-                                type="checkbox"
-                                name="remember"
-                                className="rounded border-gray-300 text-indigo-600 shadow-sm focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50"
-                                onChange={event =>
-                                    setShouldRemember(event.target.checked)
-                                }
-                            />
-
-                            <span className="ml-2 text-sm text-gray-600">
-                                Remember me
-                            </span>
-                        </label>
-                    </div>
-
-                    <div className="flex items-center justify-end mt-4">
-                        <Link href="/liondor/forgot-password">
-                            <a className="underline text-sm text-gray-600 hover:text-gray-900">
-                                Forgot your password?
-                            </a>
-                        </Link>
-
-                        <Button className="ml-3">Login</Button>
-                    </div>
+                    <article className={styles.loginBox}>
+                        {/* Email Address */}
+                        <dl className={styles.dl}>
+                            <dt><span></span><label className="ivy" htmlFor="email">Email</label></dt>
+                            <dd>
+                                <input
+                                    id="email"
+                                    type="email"
+                                    onChange={event => setEmail(event.target.value)}
+                                    required
+                                    autoFocus
+                                />
+                                <InputError messages={errors.email} className="mt-2" />
+                            </dd>
+                        </dl>
+                        {/* Password */}
+                        <dl className={styles.dl}>
+                            <dt><span></span><label className="ivy" htmlFor="password">Password</label></dt>
+                            <dd>
+                                <input
+                                    id="password"
+                                    type="password"
+                                    onChange={event => setPassword(event.target.value)}
+                                    required
+                                    autoComplete="current-password"
+                                />
+                                <InputError
+                                    messages={errors.password}
+                                    className="mt-2"
+                                />
+                            </dd>
+                        </dl>
+                        <div>
+                            <button className="btn3">ログインする</button>
+                            <p className={styles.forgot}>
+                                ※パスワードをお忘れの方は
+                                <Link href="/forgot-password"><a>こちら</a></Link>
+                            </p>
+                        </div>
+                    </article>
                 </form>
-            </AuthCard>
-        </GuestLayout>
+            </Container>
+        </section>
     )
 }
 
 export default Login
+
+Login.getLayout = function getLayout(page) {
+    return <PageLayout>{page}</PageLayout>
+}

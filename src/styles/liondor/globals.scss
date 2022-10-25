@@ -198,7 +198,22 @@ span > img {
   @include height(110px);
   @include flex(center, center);
   margin: auto;
-  transition: .3s ease-out;
+  transition: .2s ease-out;
+
+  &:hover {
+    opacity: .5;
+  }
+}
+
+.btn5 {
+  @include width(328px);
+  @include height(100px);
+  @include flex(center, center);
+  background-color: $b1;
+  color: $w1;
+  font-size: var(--fs16-14);
+  font-weight: 500;
+  transition: .2s ease-out;
 
   &:hover {
     opacity: .5;
