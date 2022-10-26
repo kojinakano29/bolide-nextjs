@@ -24,7 +24,10 @@ const MypageCreate = () => {
 
   const onLoadCheck = () => {
     if (user?.l_profile_id) {
-      router.push(`/liondor/mypage/edit/${user?.l_profile_id}`)
+      router.push({
+        pathname: '/liondor/mypage/edit/[profid]',
+        query: { profid: user?.l_profile_id }
+      })
     }
   }
 
@@ -43,15 +46,18 @@ const MypageCreate = () => {
     })
     .then((res) => {
       // console.log(res)
-      if (typeof res.data === "string") {
-        alert(res.data)
-      }
-      router.push(`/liondor/mypage/edit/${user.l_profile_id}`)
+      alert("マイページを作成しました。")
+      router.push({
+        pathname: '/liondor/mypage/edit/[pid]',
+        query: { pid: res.data.id }
+      })
     })
     .catch((e) => {
       console.error(e)
     })
-  }, [user])
+
+    setDisabled(false)
+  }, [])
 
   const onSubmit = useCallback((data) => {
     // console.log(data)

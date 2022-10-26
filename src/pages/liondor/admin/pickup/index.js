@@ -45,7 +45,7 @@ const AdminPickup = ({posts}) => {
     .then((res) => {
       // console.log(res)
       alert("ピックアップから外しました。")
-      router.push(`/liondor/admin/pickup`)
+      router.reload()
     })
     .catch((e) => {
       console.error(e)
@@ -58,7 +58,7 @@ const AdminPickup = ({posts}) => {
   return (
     <section className="cont1">
       <PageTitle title="ピックアップ一覧" />
-      {user ?
+      {user?.account_type > 2 ?
         <Container small900>
           <article className={styles.article}>
             <ul>

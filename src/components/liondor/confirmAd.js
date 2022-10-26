@@ -22,7 +22,7 @@ const ConfirmAd = () => {
   }, [])
 
   const handleBack = useCallback(() => {
-    router.push(`/liondor/ad`)
+    router.back()
   }, [router])
 
   const onPresentForm = useCallback(async (data) => {

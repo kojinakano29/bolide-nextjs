@@ -28,7 +28,10 @@ const CreatePresent = () => {
     .then((res) => {
       // console.log(res)
       alert("プレゼントを作成しました。")
-      router.push(`/liondor/present/edit/${res.data.id}`)
+      router.push({
+        pathname: '/liondor/present/edit/[pid]',
+        query: { pid: res.data.id }
+      })
     })
     .catch((e) => {
       console.error(e)

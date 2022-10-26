@@ -45,7 +45,7 @@ const AdminSidebar = ({posts}) => {
     .then((res) => {
       // console.log(res)
       alert("サイドバーを削除しました。")
-      router.push(`/liondor/admin/sidebar`)
+      router.reload()
     })
     .catch((e) => {
       console.error(e)
@@ -58,7 +58,7 @@ const AdminSidebar = ({posts}) => {
   return (
     <section className="cont1">
       <PageTitle title="サイドバー一覧" />
-      {user ?
+      {user?.account_type > 2 ?
         <Container small900>
           <article className={styles.article}>
             <ul>

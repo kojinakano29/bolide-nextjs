@@ -21,12 +21,15 @@ const ConfirmPresent = ({present}) => {
 
   useEffect(() => {
     if (!isValid) {
-      router.push(`/liondor/present/${present.id}`)
+      router.push({
+        pathname: '/liondor/present/[pid]',
+        query: { pid: present.id }
+      })
     }
   }, [])
 
   const handleBack = useCallback(() => {
-    router.push(`/liondor/present/${present.id}`)
+    router.back()
   }, [router])
 
   const onPresentForm = useCallback(async (data) => {
@@ -49,6 +52,7 @@ const ConfirmPresent = ({present}) => {
 
     onPresentForm({
       user_id: user?.id,
+      email: user?.email,
       l_present_id: present.id,
       account: sns,
       hobby: values.hobby,

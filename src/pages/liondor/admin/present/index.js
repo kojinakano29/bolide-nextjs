@@ -59,7 +59,7 @@ const AdminPresent = ({posts}) => {
     .then((res) => {
       // console.log(res)
       alert("プレゼントを削除しました。")
-      router.push(`/liondor/admin/present`)
+      router.reload()
     })
     .catch((e) => {
       console.error(e)
@@ -81,7 +81,7 @@ const AdminPresent = ({posts}) => {
   return (
     <section className="cont1">
       <PageTitle title="プレゼント一覧" />
-      {user ?
+      {user?.account_type > 2 ?
         <Container small900>
           <article className={styles.article}>
             <ul>

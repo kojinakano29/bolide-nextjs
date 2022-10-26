@@ -19,7 +19,10 @@ const CreateSeries = () => {
     .then((res) => {
       // console.log(res)
       alert("シリーズを作成しました。")
-      router.push(`/liondor/series/edit/${res.data.id}`)
+      router.push({
+        pathname: '/liondor/series/edit/[sid]',
+        query: { sid: res.data.id }
+      })
     })
     .catch((e) => {
       console.error(e)

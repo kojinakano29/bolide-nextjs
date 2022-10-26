@@ -6,9 +6,12 @@ import Link from "next/link";
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faBookmark as bookmarkRegular } from '@fortawesome/free-regular-svg-icons'
 import { faBookmark as bookmarkSolid } from '@fortawesome/free-solid-svg-icons'
-import { useCallback, useEffect, useState } from "react";
+import { faStar as starRegular } from '@fortawesome/free-regular-svg-icons'
+import { faStar as starSolid } from '@fortawesome/free-solid-svg-icons'
+import { useEffect, useState } from "react";
 import axios from "@/lib/axios";
 import { useAuth } from "@/hooks/auth";
+import { useRouter } from "next/router";
 
 
 // SSR
@@ -26,6 +29,7 @@ export const getServerSideProps = async ({params}) => {
 const DetailPage = ({posts}) => {
   const csrf = () => axios.get('/sanctum/csrf-cookie')
 
+  const router = useRouter()
   const { user } = useAuth()
 
   const post = posts.posts
@@ -43,63 +47,101 @@ const DetailPage = ({posts}) => {
   const userName = post.user.name
   const createAt = post.created_at
   const bookmark = posts.bookmarks
+  const pickup = post.l_pickup
 
-  const [bookmarkClick, setBookmarkClick] = useState()
   const [disabled, setDisabled] = useState(false)
-  const [font, setFont] = useState()
+
+  // ブックマーク
+  const [bookmarkState, setBookmarkState] = useState(false)
+
+  // ピックアップ
+  const [pickupState, setPickupState] = useState(false)
 
   useEffect(() => {
     if (bookmark.includes(user?.id)) {
-      setBookmarkClick(() => handleBookmarkDelete)
-      setFont(<FontAwesomeIcon icon={bookmarkSolid} />)
+      setBookmarkState(true)
     } else {
-      setBookmarkClick(() => handleBookmarkAdd)
-      setFont(<FontAwesomeIcon icon={bookmarkRegular} />)
+      setBookmarkState(false)
+    }
+
+    if (pickup) {
+      setPickupState(true)
+    } else {
+      setPickupState(false)
     }
   }, [user])
 
-  const handleBookmarkAdd = useCallback(async () => {
+  const handleClickBookmark = async () => {
     setDisabled(true)
     await csrf()
 
-    await axios.post(`/api/liondor/post/bookmark/${post.id}`, {
-      user_id: user?.id,
-      l_post_id: post.id,
-    })
-    .then((res) => {
-      // console.log(res)
-      setBookmarkClick(() => handleBookmarkDelete)
-      setFont(<FontAwesomeIcon icon={bookmarkSolid} />)
-    })
-    .catch((e) => {
-      console.error(e)
-    })
-
-    await setDisabled(false)
-  }, [user, post])
-
-  const handleBookmarkDelete = useCallback(async () => {
-    // console.log(user?.id)
-    setDisabled(true)
-    await csrf()
-
-    await axios.delete(`/api/liondor/post/bookmark_remove/${post.id}`, {
-      data: {
+    if (bookmarkState) {
+      await axios.delete(`/api/liondor/post/bookmark_remove/${post.id}`, {
+        data: {
+          user_id: user?.id,
+          l_post_id: post.id,
+        }
+      })
+      .then((res) => {
+        // console.log(res)
+        alert(res.data)
+        setBookmarkState(false)
+      })
+      .catch((e) => {
+        console.error(e)
+        alert("エラーが発生しました。")
+      })
+    } else {
+      await axios.post(`/api/liondor/post/bookmark/${post.id}`, {
         user_id: user?.id,
         l_post_id: post.id,
-      }
-    })
-    .then((res) => {
-      // console.log(res)
-      setBookmarkClick(() => handleBookmarkAdd)
-      setFont(<FontAwesomeIcon icon={bookmarkRegular} />)
-    })
-    .catch((e) => {
-      console.error(e)
-    })
+      })
+      .then((res) => {
+        // console.log(res)
+        alert(res.data)
+        setBookmarkState(true)
+      })
+      .catch((e) => {
+        console.error(e)
+        alert("エラーが発生しました。")
+      })
+    }
 
     await setDisabled(false)
-  }, [user, post])
+  }
+
+  const handleClickPickup = async () => {
+    setDisabled(true)
+    await csrf()
+
+    if (pickupState) {
+      await axios.delete(`/api/liondor/pickup/delete/${pickup.id}`)
+      .then((res) => {
+        // console.log(res)
+        alert(res.data)
+        setPickupState(false)
+      })
+      .catch((e) => {
+        console.error(e)
+        alert("エラーが発生しました。")
+      })
+    } else {
+      await axios.post(`/api/liondor/pickup/store/${post.id}`)
+      .then((res) => {
+        // console.log(res)
+        alert(res.data)
+        setPickupState(true)
+      })
+      .catch((e) => {
+        console.error(e)
+        alert("エラーが発生しました。")
+      })
+    }
+
+    await router.reload()
+
+    await setDisabled(false)
+  }
 
   return (
     <>
@@ -145,8 +187,29 @@ const DetailPage = ({posts}) => {
               </p>
               <p className={`en ${styles.time}`}><Date dateString={createAt} /></p>
             </div>
-            <button className={styles.bookmarkBtn} onClick={bookmarkClick} disabled={disabled}>
-              {font}
+            <button
+              className={styles.bookmarkBtn}
+              onClick={handleClickBookmark}
+              disabled={disabled}
+            >
+              {
+                bookmarkState ?
+                <FontAwesomeIcon icon={bookmarkSolid} />
+                :
+                <FontAwesomeIcon icon={bookmarkRegular} />
+              }
+            </button>
+            <button
+              className={styles.pickupBtn}
+              onClick={handleClickPickup}
+              disabled={disabled}
+            >
+              {
+                pickupState ?
+                <FontAwesomeIcon icon={starSolid} style={{color: "#ffbb00"}} />
+                :
+                <FontAwesomeIcon icon={starRegular} />
+              }
             </button>
           </div>
         </Container>

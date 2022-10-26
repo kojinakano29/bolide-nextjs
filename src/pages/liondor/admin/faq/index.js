@@ -52,7 +52,7 @@ const AdminFaq = ({posts}) => {
     .then((res) => {
       // console.log(res)
       alert("よくある質問を削除しました。")
-      router.push(`/liondor/admin/faq`)
+      router.reload()
     })
     .catch((e) => {
       console.error(e)
@@ -65,7 +65,7 @@ const AdminFaq = ({posts}) => {
   return (
     <section className="cont1">
       <PageTitle title="よくあるご質問一覧" />
-      {user ?
+      {user?.account_type > 2 ?
         <Container small900>
           <article className={styles.article}>
             <h3 className={styles.faqTtl}>企業様向け</h3>

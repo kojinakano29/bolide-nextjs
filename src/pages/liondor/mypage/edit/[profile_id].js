@@ -33,7 +33,13 @@ const MypageEdit = ({posts}) => {
   const present = posts.l_present
 
   const [disabled, setDisabled] = useState(false)
-  const [defaultThumb, setDefaultThumb] = useState(profile.thumbs)
+  const [defaultThumb, setDefaultThumb] = useState(() => {
+    if (profile.thumbs !== null) {
+      return profile.thumbs
+    } else {
+      return thumb.src
+    }
+  })
 
   const { register, handleSubmit, formState: { errors } } = useForm({
     defaultValues: {
@@ -103,7 +109,12 @@ const MypageEdit = ({posts}) => {
     })
   }, [onPostForm, user, defaultThumb])
 
-  const defaultThumbsPreview = `${process.env.NEXT_PUBLIC_BACKEND_URL}/storage/${profile.thumbs}`
+  let defaultThumbsPreview = null
+  if (profile.thumbs !== null) {
+    defaultThumbsPreview = `${process.env.NEXT_PUBLIC_BACKEND_URL}/storage/${profile.thumbs}`
+  } else {
+    defaultThumbsPreview = thumb.src
+  }
   const [preview, setPreview] = useState(defaultThumbsPreview)
   const handleChangeFile = useCallback((e) => {
     const { files } = e.target
