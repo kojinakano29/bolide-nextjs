@@ -51,7 +51,10 @@ const CreatePost = ({posts}) => {
       } else {
         alert("記事を作成しました。")
       }
-      router.push(`/liondor/post/edit/${res.data.id}`)
+      router.push({
+        pathname: '/liondor/post/edit/[pid]',
+        query: { pid: res.data.id }
+      })
     })
     .catch((e) => {
       console.error(e)

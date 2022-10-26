@@ -35,7 +35,10 @@ const CreateSidebar = () => {
       } else {
         alert("サイドバーを作成しました。")
       }
-      router.push(`/liondor/sidebar/edit/${res.data.id}`)
+      router.push({
+        pathname: '/liondor/sidebar/edit/[sid]',
+        query: { sid: res.data.id }
+      })
     })
     .catch((e) => {
       console.error(e)

@@ -18,14 +18,21 @@
 .headlineWrap {
   position: relative;
 
-  .bookmarkBtn {
+  button {
     position: absolute;
-    top: 0;
     right: 0;
 
     svg {
       @include width(24px);
       height: auto;
+    }
+
+    &.bookmarkBtn {
+      top: 0;
+    }
+
+    &.pickupBtn {
+      @include top(64px);
     }
   }
 }

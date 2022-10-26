@@ -63,7 +63,7 @@ const PostList = ({posts}) => {
       .then((res) => {
         // console.log(res)
         alert("記事を削除しました。")
-        router.push(`/liondor/post/editor_index/${user?.id}`)
+        router.reload()
       })
       .catch((e) => {
         console.error(e)
@@ -88,7 +88,7 @@ const PostList = ({posts}) => {
   return (
     <section className="cont1">
       <PageTitle title="記事一覧" />
-      {user ?
+      {user?.account_type > 1 ?
         <Container small900>
           <article className={styles.article}>
             <ul>

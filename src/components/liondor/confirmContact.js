@@ -22,7 +22,7 @@ const ConfirmContact = () => {
   }, [])
 
   const handleBack = useCallback(() => {
-    router.push(`/liondor/contact`)
+    router.back()
   }, [router])
 
   const onPresentForm = useCallback(async (data) => {

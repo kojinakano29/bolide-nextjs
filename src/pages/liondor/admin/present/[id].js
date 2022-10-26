@@ -20,8 +20,6 @@ export const getServerSideProps = async ({params}) => {
 }
 
 const AdminPresentUserList = ({posts}) => {
-  console.log(posts)
-
   const router = useRouter()
   const { user } = useAuth({middleware: 'auth'})
   const present = posts.presents
@@ -39,14 +37,18 @@ const AdminPresentUserList = ({posts}) => {
   return (
     <section className="cont1">
       <PageTitle title="プレゼント応募者一覧" />
-      {user ?
+      {user?.account_type > 2 ?
         <Container small900>
           <article className={styles.article}>
             <ul>
               {
-                present.user !== null ?
+                present.user.length ?
                 present.user?.map((item, index) => (
-                  <li key={index}>{item.name}</li>
+                  <li key={index}>
+                    ユーザ名：{item.name}
+                    <br/>
+                    メールアドレス：{item.email}
+                  </li>
                 ))
                 : <li>このプレゼントにはまだ応募者はいません。</li>
               }

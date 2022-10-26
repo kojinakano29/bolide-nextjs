@@ -19,7 +19,10 @@ const CreateFaq = () => {
     .then((res) => {
       // console.log(res)
       alert("よくあるご質問を作成しました。")
-      router.push(`/liondor/faq/edit/${res.data.id}`)
+      router.push({
+        pathname: '/liondor/faq/edit/[faqid]',
+        query: { faqid: res.data.id }
+      })
     })
     .catch((e) => {
       console.error(e)
