@@ -1,11 +1,12 @@
 import styles from '@/styles/liondor/components/createPost.module.scss'
 import axios from '@/lib/axios'; // カスタムフック
 import { useCallback, useEffect, useState } from 'react'
-import { PostEditor } from '@/components/liondor';
+import { PageTitle, PostEditor } from '@/components/liondor';
 import { useForm } from 'react-hook-form';
 import Container from '@/components/Layouts/container';
 import { useAuth } from '@/hooks/auth';
 import { useRouter } from 'next/router';
+import PageLayout from '@/components/Layouts/PageLayout';
 
 // SSR
 export const getServerSideProps = async () => {
@@ -124,6 +125,7 @@ const CreatePost = ({posts}) => {
 
   return (
     <section className={styles.createSection}>
+      <PageTitle title="記事作成" />
       {
         user?.account_type > 1 ?
         <Container small>
@@ -237,3 +239,7 @@ const CreatePost = ({posts}) => {
 }
 
 export default CreatePost;
+
+CreatePost.getLayout = function getLayout(page) {
+  return <PageLayout>{page}</PageLayout>
+}

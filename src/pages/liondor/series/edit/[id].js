@@ -5,6 +5,8 @@ import { useForm } from 'react-hook-form';
 import Container from '@/components/Layouts/container';
 import { useRouter } from 'next/router';
 import { useAuth } from '@/hooks/auth';
+import PageLayout from '@/components/Layouts/PageLayout';
+import { PageTitle } from '@/components/liondor';
 
 // SSR
 export const getServerSideProps = async ({params}) => {
@@ -68,6 +70,7 @@ const EditSeries = ({posts}) => {
 
   return (
     <section className={styles.createSection}>
+      <PageTitle title="シリーズ編集" />
       {
         user?.account_type > 1 ?
         <Container small>
@@ -97,3 +100,7 @@ const EditSeries = ({posts}) => {
 }
 
 export default EditSeries;
+
+EditSeries.getLayout = function getLayout(page) {
+  return <PageLayout>{page}</PageLayout>
+}

@@ -11,7 +11,7 @@ const SearchIcon = ({humOpen}) => {
   const { register, handleSubmit } = useForm()
 
   const onSubmit = useCallback((data) => {
-    console.log(data)
+    // console.log(data)
 
     router.push(`/liondor/search/?s=${data.search}`)
   }, [])

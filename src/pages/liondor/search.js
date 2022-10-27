@@ -23,6 +23,7 @@ export const getServerSideProps = async ({query}) => {
 }
 
 const Search = ({posts}) => {
+  console.log(posts);
   const router = useRouter(null)
   let current = null
   if (router.query.page) {
@@ -58,8 +59,8 @@ const Search = ({posts}) => {
         </article>
         <div className="pagerBox">
           {current === 1 ? '' : <button className="pagerBtn pagerPrev" onClick={onClickPrev}></button>}
-          <p className="pagerCurrent en">{current}/{posts.page_max}</p>
-          {posts.page_max === current ? '' : <button className="pagerBtn pagerNext" onClick={onClickNext}></button>}
+          <p className="pagerCurrent en">{current}/{posts.page_max !== 0 ? posts.page_max : "1"}</p>
+          {posts.page_max === 0 || posts.page_max === current ? '' : <button className="pagerBtn pagerNext" onClick={onClickNext}></button>}
         </div>
       </Container>
     </section>

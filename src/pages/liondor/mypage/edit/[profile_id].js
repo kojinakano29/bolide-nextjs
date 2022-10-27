@@ -50,7 +50,7 @@ const MypageEdit = ({posts}) => {
     if (profile.thumbs !== null) {
       return profile.thumbs
     } else {
-      return thumb.src
+      return null
     }
   })
 

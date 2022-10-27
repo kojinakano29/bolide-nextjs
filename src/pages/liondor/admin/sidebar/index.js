@@ -61,7 +61,7 @@ const AdminSidebar = ({posts}) => {
       <PageTitle title="サイドバー一覧" />
       {user?.account_type > 2 ?
         <Container small900>
-          <Link href="/liondor/present/create">
+          <Link href="/liondor/sidebar/create">
             <a className={`btn2 ${styles.create}`}>新規作成</a>
           </Link>
           <article className={styles.article}>
