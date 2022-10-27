@@ -4,12 +4,12 @@ import { faCircleUser } from '@fortawesome/free-solid-svg-icons'
 import Link from 'next/link';
 import { useAuth } from '@/hooks/auth';
 
-const LoginBtn = ({humOpen}) => {
+const LoginBtn = ({humOpen, clickHumClose}) => {
   const { user } = useAuth()
 
   return (
     <Link href={`/liondor/${user ? `mypage/edit/${user.l_profile_id}` : "login"}`}>
-      <a className={`${styles.iconBox} ${humOpen ? styles.open : ''}`}>
+      <a className={`${styles.iconBox} ${humOpen ? styles.open : ''}`} onClick={clickHumClose}>
         <p className="en">{user ? "Mypage" : "Login"}</p>
         <FontAwesomeIcon
           icon={faCircleUser}

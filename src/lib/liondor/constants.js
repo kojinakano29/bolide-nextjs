@@ -19,6 +19,19 @@ export const siteMeta = {
   siteIcon: '/favicon.ico',
 }
 
+// 編集者ナビ
+export const editorNaviData = [
+  {name: '記事管理', link: '/liondor/post/editor_index/',},
+]
+
+// 管理者ナビ
+export const adminNaviData = [
+  {name: 'プレゼント管理', link: '/liondor/admin/present'},
+  {name: 'ピックアップ管理', link: '/liondor/admin/pickup'},
+  {name: 'サイドバー管理', link: '/liondor/admin/sidebar'},
+  {name: 'FAQ管理', link: '/liondor/admin/faq'},
+]
+
 // ページナビ
 export const pageNaviData = [
   {slug: 'fashion', name: 'Fashion', link: '/liondor/post/fashion'},

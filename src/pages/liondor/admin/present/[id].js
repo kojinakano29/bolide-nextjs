@@ -30,6 +30,7 @@ const AdminPresentUserList = ({posts}) => {
 
   const onLoadCheck = () => {
     if (user?.account_type < 2) {
+      alert("このページにはアクセスできません。")
       router.push(`/liondor`)
     }
   }

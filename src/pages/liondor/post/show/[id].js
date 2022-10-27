@@ -187,30 +187,38 @@ const DetailPage = ({posts}) => {
               </p>
               <p className={`en ${styles.time}`}><Date dateString={createAt} /></p>
             </div>
-            <button
-              className={styles.bookmarkBtn}
-              onClick={handleClickBookmark}
-              disabled={disabled}
-            >
-              {
-                bookmarkState ?
-                <FontAwesomeIcon icon={bookmarkSolid} />
-                :
-                <FontAwesomeIcon icon={bookmarkRegular} />
-              }
-            </button>
-            <button
-              className={styles.pickupBtn}
-              onClick={handleClickPickup}
-              disabled={disabled}
-            >
-              {
-                pickupState ?
-                <FontAwesomeIcon icon={starSolid} style={{color: "#ffbb00"}} />
-                :
-                <FontAwesomeIcon icon={starRegular} />
-              }
-            </button>
+            {
+              user ?
+              <button
+                className={styles.bookmarkBtn}
+                onClick={handleClickBookmark}
+                disabled={disabled}
+              >
+                {
+                  bookmarkState ?
+                  <FontAwesomeIcon icon={bookmarkSolid} />
+                  :
+                  <FontAwesomeIcon icon={bookmarkRegular} />
+                }
+              </button>
+              : null
+            }
+            {
+              user?.account_type > 2 ?
+              <button
+                className={styles.pickupBtn}
+                onClick={handleClickPickup}
+                disabled={disabled}
+              >
+                {
+                  pickupState ?
+                  <FontAwesomeIcon icon={starSolid} style={{color: "#ffbb00"}} />
+                  :
+                  <FontAwesomeIcon icon={starRegular} />
+                }
+              </button>
+              : null
+            }
           </div>
         </Container>
       </section>

@@ -15,8 +15,6 @@ const MypageCreate = () => {
 
   const router = useRouter()
   const { user } = useAuth({middleware: 'auth'})
-  const [disabled, setDisabled] = useState(false)
-  const { register, handleSubmit, formState: { errors } } = useForm()
 
   useEffect(() => {
     onLoadCheck()
@@ -30,6 +28,9 @@ const MypageCreate = () => {
       })
     }
   }
+
+  const [disabled, setDisabled] = useState(false)
+  const { register, handleSubmit, formState: { errors } } = useForm()
 
   const onPostForm = useCallback(async (data) => {
     await csrf()

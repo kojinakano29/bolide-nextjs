@@ -1,8 +1,10 @@
 import styles from '@/styles/liondor/components/createPost.module.scss'
 import axios from '@/lib/axios'; // カスタムフック
-import { useCallback, useState } from 'react'
+import { useCallback, useEffect, useState } from 'react'
 import { useForm } from 'react-hook-form';
 import Container from '@/components/Layouts/container';
+import { useRouter } from 'next/router';
+import { useAuth } from '@/hooks/auth';
 
 // SSR
 export const getServerSideProps = async ({params}) => {
@@ -18,6 +20,20 @@ export const getServerSideProps = async ({params}) => {
 
 const EditSeries = ({posts}) => {
   const csrf = () => axios.get('/sanctum/csrf-cookie')
+
+  const router = useRouter()
+  const { user } = useAuth({middleware: 'auth'})
+
+  useEffect(() => {
+    onLoadCheck()
+  }, [user])
+
+  const onLoadCheck = () => {
+    if (user?.account_type < 1) {
+      alert("このページにはアクセスできません。")
+      router.push(`/liondor`)
+    }
+  }
 
   const [disabled, setDisabled] = useState(false)
   const { register, handleSubmit, formState: { errors } } = useForm({
@@ -52,26 +68,30 @@ const EditSeries = ({posts}) => {
 
   return (
     <section className={styles.createSection}>
-      <Container small>
-        <form onSubmit={handleSubmit(onSubmit)}>
-          <article className={styles.flex}>
-            <div className={styles.left}>
-              <dl className={styles.dl}>
-                <dt className={styles.dt}>
-                  <label htmlFor="name">シリーズ名</label>
-                </dt>
-                <dd className={styles.dd}>
-                  <input type="text" id="name" {...register("name", { required: true })} />
-                  {errors.name && <p className={`red ${styles.error}`}>必須項目を入力してください</p>}
-                </dd>
-              </dl>
-            </div>
-            <div className={styles.right}>
-              <button className="btn2" disabled={disabled}>更新</button>
-            </div>
-          </article>
-        </form>
-      </Container>
+      {
+        user?.account_type > 1 ?
+        <Container small>
+          <form onSubmit={handleSubmit(onSubmit)}>
+            <article className={styles.flex}>
+              <div className={styles.left}>
+                <dl className={styles.dl}>
+                  <dt className={styles.dt}>
+                    <label htmlFor="name">シリーズ名</label>
+                  </dt>
+                  <dd className={styles.dd}>
+                    <input type="text" id="name" {...register("name", { required: true })} />
+                    {errors.name && <p className={`red ${styles.error}`}>必須項目を入力してください</p>}
+                  </dd>
+                </dl>
+              </div>
+              <div className={styles.right}>
+                <button className="btn2" disabled={disabled}>更新</button>
+              </div>
+            </article>
+          </form>
+        </Container>
+        : null
+      }
     </section>
   );
 }

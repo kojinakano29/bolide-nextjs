@@ -77,7 +77,7 @@ const Header = () => {
           <SearchIcon humOpen={humOpen} />
         </div>
         <div className={styles.rightAbs}>
-          <LoginBtn humOpen={humOpen} />
+          <LoginBtn humOpen={humOpen} clickHumClose={clickHumClose} />
         </div>
       </div>
       <div className={styles.bottomArea}>
