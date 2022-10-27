@@ -25,6 +25,18 @@ const AdminFaq = ({posts}) => {
 
   const router = useRouter()
   const { user } = useAuth({middleware: 'auth'})
+
+  useEffect(() => {
+    onLoadCheck()
+  }, [user])
+
+  const onLoadCheck = () => {
+    if (user?.account_type < 2) {
+      alert("このページにはアクセスできません。")
+      router.push(`/liondor`)
+    }
+  }
+
   const [disabled, setDisabled] = useState(false)
   const faqs = posts.faq
   const faqCompany = faqs.filter((faq) => {
@@ -33,16 +45,6 @@ const AdminFaq = ({posts}) => {
   const faqUser = faqs.filter((faq) => {
     return faq.type === 0
   })
-
-  useEffect(() => {
-    onLoadCheck()
-  }, [user])
-
-  const onLoadCheck = () => {
-    if (user?.account_type < 2) {
-      router.push(`/liondor`)
-    }
-  }
 
   const onClickDelete = async (post) => {
     setDisabled(true)
@@ -67,6 +69,9 @@ const AdminFaq = ({posts}) => {
       <PageTitle title="よくあるご質問一覧" />
       {user?.account_type > 2 ?
         <Container small900>
+          <Link href="/liondor/present/create">
+            <a className={`btn2 ${styles.create}`}>新規作成</a>
+          </Link>
           <article className={styles.article}>
             <h3 className={styles.faqTtl}>企業様向け</h3>
             <ul>

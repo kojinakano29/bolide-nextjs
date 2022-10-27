@@ -4,6 +4,7 @@ import { FormProvider, useForm } from 'react-hook-form';
 import Container from "@/components/Layouts/container";
 import PageLayout from "@/components/Layouts/PageLayout";
 import { useRouter } from 'next/router';
+import { useAuth } from '@/hooks/auth';
 
 // SSR
 export const getServerSideProps = async ({params}) => {
@@ -22,6 +23,8 @@ const PresentForm = (posts) => {
   const router = useRouter()
   const isConfirm = router.query.confirm
 
+  const { user } = useAuth()
+
   const methods = useForm({
     defaultValues: {
       facebook: "",
@@ -39,30 +42,34 @@ const PresentForm = (posts) => {
     <>
       <section className="cont1">
         <PageTitle title="PRESENT" ivy />
-          <Container small900>
-            <h3 className={styles.presentTtl}>{present?.title}</h3>
-            {
-              !isConfirm ?
-                <div className={styles.termsBox}>
-                  <p className={styles.termsTxt}>応募条件</p>
-                  <p className={styles.txt}>&#9312;Bolide's JAPAN IDメンバー登録が必要です。</p>
-                  <a className={styles.addon} href="" target="_blank">まだ登録がお済みでない方はこちら</a>
-                  <p className={styles.txt}>&#9313;リオンドール各種SNSアカウントのいずれかをフォローしていること。</p>
-                  <SnsFollow gray />
-                </div>
-              : null
-            }
-          </Container>
+        <Container small900>
+          <h3 className={styles.presentTtl}>{present?.title}</h3>
+          {
+            !isConfirm && !user ?
+              <div className={styles.termsBox}>
+                <p className={styles.termsTxt}>応募条件</p>
+                <p className={styles.txt}>&#9312;Bolide's JAPAN IDメンバー登録が必要です。</p>
+                <a className={styles.addon} href="" target="_blank">まだ登録がお済みでない方はこちら</a>
+                <p className={styles.txt}>&#9313;リオンドール各種SNSアカウントのいずれかをフォローしていること。</p>
+                <SnsFollow gray />
+              </div>
+            : null
+          }
+        </Container>
       </section>
 
       <section className={styles.cont2}>
-        <Container small900>
-          <div className={styles.form}>
-            <FormProvider {...methods}>
-              {!isConfirm ? <InputPresent present={present} /> : <ConfirmPresent present={present} />}
-            </FormProvider>
-          </div>
-        </Container>
+        {
+          user ?
+          <Container small900>
+            <div className={styles.form}>
+              <FormProvider {...methods}>
+                {!isConfirm ? <InputPresent present={present} /> : <ConfirmPresent present={present} />}
+              </FormProvider>
+            </div>
+          </Container>
+          : null
+        }
       </section>
     </>
   );

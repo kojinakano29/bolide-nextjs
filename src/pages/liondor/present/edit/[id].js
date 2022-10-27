@@ -1,8 +1,10 @@
 import styles from '@/styles/liondor/components/createPost.module.scss'
 import axios from '@/lib/axios'; // カスタムフック
-import { useCallback, useState } from 'react'
+import { useCallback, useEffect, useState } from 'react'
 import { useForm } from 'react-hook-form';
 import Container from '@/components/Layouts/container';
+import { useRouter } from 'next/router';
+import { useAuth } from '@/hooks/auth';
 
 // SSR
 export const getServerSideProps = async ({params}) => {
@@ -18,6 +20,20 @@ export const getServerSideProps = async ({params}) => {
 
 const PresentEdit = ({posts}) => {
   const csrf = () => axios.get('/sanctum/csrf-cookie')
+
+  const router = useRouter()
+  const { user } = useAuth({middleware: 'auth'})
+
+  useEffect(() => {
+    onLoadCheck()
+  }, [user])
+
+  const onLoadCheck = () => {
+    if (user?.account_type < 2) {
+      alert("このページにはアクセスできません。")
+      router.push(`/liondor`)
+    }
+  }
 
   const [defaultThumb, setDefaultThumb] = useState(posts.thumbs)
   const [disabled, setDisabled] = useState(false)
@@ -83,54 +99,58 @@ const PresentEdit = ({posts}) => {
 
   return (
     <section className={styles.createSection}>
-      <Container small>
-        <form onSubmit={handleSubmit(onSubmit)}>
-          <article className={styles.flex}>
-            <div className={styles.left}>
-              <dl className={styles.dl}>
-                <dt className={styles.dt}>
-                  <label htmlFor="title">タイトル</label>
-                </dt>
-                <dd className={styles.dd}>
-                  <input type="text" id="title" {...register("title", { required: true })} />
-                  {errors.title && <p className={`red ${styles.error}`}>必須項目を入力してください</p>}
-                </dd>
-              </dl>
-              <dl className={styles.dl}>
-                <dt className={styles.dt}>
-                  <label htmlFor="offer">オファー</label>
-                </dt>
-                <dd className={styles.dd}>
-                  <input type="text" id="offer" {...register("offer", { required: true })} />
-                  {errors.offer && <p className={`red ${styles.error}`}>必須項目を入力してください</p>}
-                </dd>
-              </dl>
-              <dl className={styles.dl}>
-                <dt className={styles.dt}>
-                  <label htmlFor="thumbs">サムネイル画像</label>
-                </dt>
-                <dd className={styles.dd}>
-                  <input id="thumbs" type="file" accept="image/*" {...register("thumbs")} onChange={handleChangeFile} />
-                  <img src={preview} alt="" />
-                </dd>
-              </dl>
-            </div>
-            <div className={styles.right}>
-              <button className="btn2" disabled={disabled}>更新</button>
-              <div className={styles.hr}></div>
-              <dl className={styles.dl}>
-                <dt className={styles.dt}>
-                  <label htmlFor="limit">期限</label>
-                </dt>
-                <dd className={styles.dd}>
-                  <input type="date" id="limit" {...register("limit", { required: true })} />
-                  {errors.limit && <p className={`red ${styles.error}`}>必須項目を入力してください</p>}
-                </dd>
-              </dl>
-            </div>
-          </article>
-        </form>
-      </Container>
+      {
+        user?.account_type > 2 ?
+        <Container small>
+          <form onSubmit={handleSubmit(onSubmit)}>
+            <article className={styles.flex}>
+              <div className={styles.left}>
+                <dl className={styles.dl}>
+                  <dt className={styles.dt}>
+                    <label htmlFor="title">タイトル</label>
+                  </dt>
+                  <dd className={styles.dd}>
+                    <input type="text" id="title" {...register("title", { required: true })} />
+                    {errors.title && <p className={`red ${styles.error}`}>必須項目を入力してください</p>}
+                  </dd>
+                </dl>
+                <dl className={styles.dl}>
+                  <dt className={styles.dt}>
+                    <label htmlFor="offer">オファー</label>
+                  </dt>
+                  <dd className={styles.dd}>
+                    <input type="text" id="offer" {...register("offer", { required: true })} />
+                    {errors.offer && <p className={`red ${styles.error}`}>必須項目を入力してください</p>}
+                  </dd>
+                </dl>
+                <dl className={styles.dl}>
+                  <dt className={styles.dt}>
+                    <label htmlFor="thumbs">サムネイル画像</label>
+                  </dt>
+                  <dd className={styles.dd}>
+                    <input id="thumbs" type="file" accept="image/*" {...register("thumbs")} onChange={handleChangeFile} />
+                    <img src={preview} alt="" />
+                  </dd>
+                </dl>
+              </div>
+              <div className={styles.right}>
+                <button className="btn2" disabled={disabled}>更新</button>
+                <div className={styles.hr}></div>
+                <dl className={styles.dl}>
+                  <dt className={styles.dt}>
+                    <label htmlFor="limit">期限</label>
+                  </dt>
+                  <dd className={styles.dd}>
+                    <input type="date" id="limit" {...register("limit", { required: true })} />
+                    {errors.limit && <p className={`red ${styles.error}`}>必須項目を入力してください</p>}
+                  </dd>
+                </dl>
+              </div>
+            </article>
+          </form>
+        </Container>
+        : null
+      }
     </section>
   );
 }

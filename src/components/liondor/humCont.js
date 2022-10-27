@@ -5,8 +5,13 @@ import Image from 'next/image';
 import corapura from '@/images/liondor/common/corapura_bannar.png'
 import dela from '@/images/liondor/common/della-mall_bannar.png'
 import { SnsFollow } from '@/components/liondor'
+import { editorNaviData } from '@/lib/liondor/constants';
+import { adminNaviData } from '@/lib/liondor/constants';
+import { useAuth } from '@/hooks/auth';
 
 const HumCont = ({humOpen, clickHumClose}) => {
+  const { user } = useAuth()
+
   return (
     <div className={`${styles.humBox} ${humOpen ? styles.slideIn : ''}`}>
       <Container>
@@ -124,6 +129,48 @@ const HumCont = ({humOpen, clickHumClose}) => {
             <SnsFollow right />
           </div>
         </div>
+
+        {
+          user?.account_type > 1 ?
+          <div className={`${styles.userBox} ${humOpen ? styles.lazyIn : ''}`}>
+            <h3>編集者</h3>
+            <nav>
+              <ul>
+                {
+                  editorNaviData.map((item, index) => (
+                    <li key={index}>
+                      <Link href={`${item.link}${user?.id}`}>
+                        <a onClick={clickHumClose}>{item.name}</a>
+                      </Link>
+                    </li>
+                  ))
+                }
+              </ul>
+            </nav>
+          </div>
+          : null
+        }
+
+        {
+          user?.account_type > 2 ?
+          <div className={`${styles.userBox} ${humOpen ? styles.lazyIn : ''}`}>
+            <h3>管理者</h3>
+            <nav>
+              <ul>
+                {
+                  adminNaviData.map((item, index) => (
+                    <li key={index}>
+                      <Link href={item.link}>
+                        <a onClick={clickHumClose}>{item.name}</a>
+                      </Link>
+                    </li>
+                  ))
+                }
+              </ul>
+            </nav>
+          </div>
+          : null
+        }
       </Container>
     </div>
   );

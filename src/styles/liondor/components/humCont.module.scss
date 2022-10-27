@@ -12,6 +12,12 @@
   pointer-events: none;
   transition: .5s ease-in;
   overflow: auto;
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+
+  &::-webkit-scrollbar {
+    display: none;
+  }
 
   &.slideIn {
     top: 0;
@@ -79,6 +85,8 @@
 
 .flex {
   @include flex(flex-end);
+  @include pb(64px);
+  border-bottom: 1px solid $g4;
 
   .left {
     p {
@@ -106,9 +114,44 @@
   }
 }
 
+.userBox {
+  @include mt(64px);
+
+  * {
+    color: $w1;
+  }
+
+  h3 {
+    font-size: var(--fs24-18);
+    font-weight: 500;
+    @include pb(12px);
+    border-bottom: 1px solid $g4;
+    @include mb(24px);
+  }
+
+  nav {
+    ul {
+      @include flex(center, left);
+      @include gap(12px 32px);
+
+      li {
+        a {
+          font-size: var(--fs16-14);
+          transition: .2s ease-out;
+
+          &:hover {
+            opacity: .5;
+          }
+        }
+      }
+    }
+  }
+}
+
 .humNav,
 .humNav2,
-.flex {
+.flex,
+.userBox {
   opacity: 0;
   pointer-events: none;
   transform: translateY(40px);

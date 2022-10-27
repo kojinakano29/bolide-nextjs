@@ -1,6 +1,6 @@
 import styles from '@/styles/liondor/components/createPost.module.scss'
 import axios from '@/lib/axios'; // カスタムフック
-import { useCallback, useState } from 'react'
+import { useCallback, useEffect, useState } from 'react'
 import { PostEditor } from '@/components/liondor';
 import { useForm } from 'react-hook-form';
 import Container from '@/components/Layouts/container';
@@ -22,8 +22,20 @@ export const getServerSideProps = async () => {
 const CreatePost = ({posts}) => {
   const csrf = () => axios.get('/sanctum/csrf-cookie')
 
-  const { user } = useAuth()
   const router = useRouter()
+  const { user } = useAuth({middleware: 'auth'})
+
+  useEffect(() => {
+    onLoadCheck()
+  }, [user])
+
+  const onLoadCheck = () => {
+    if (user?.account_type < 1) {
+      alert("このページにはアクセスできません。")
+      router.push(`/liondor`)
+    }
+  }
+
   const [disabled, setDisabled] = useState(false)
   const [editorContent, setEditorContent] = useState()
   const { register, handleSubmit, formState: { errors } } = useForm()
@@ -112,110 +124,114 @@ const CreatePost = ({posts}) => {
 
   return (
     <section className={styles.createSection}>
-      <Container small>
-        <form onSubmit={handleSubmit(onSubmit)}>
-          <article className={styles.flex}>
-            <div className={styles.left}>
-              <dl className={styles.dl}>
-                <dt className={styles.dt}>
-                  <label htmlFor="title">タイトル</label>
-                </dt>
-                <dd className={styles.dd}>
-                  <input type="text" id="title" {...register("title", { required: state })} />
-                  {errors.title && <p className={`red ${styles.error}`}>必須項目を入力してください</p>}
-                </dd>
-              </dl>
-              <dl className={styles.dl}>
-                <dt className={styles.dt}>
-                  <label htmlFor="subtitle">サブタイトル</label>
-                </dt>
-                <dd className={styles.dd}>
-                  <textarea id="subtitle" {...register("sub_title", { required: state })}></textarea>
-                  {errors.sub_title && <p className={`red ${styles.error}`}>必須項目を入力してください</p>}
-                </dd>
-              </dl>
-              <dl className={styles.dl}>
-                <dt className={styles.dt}>
-                  <label htmlFor="desc">ディスクリプション</label>
-                </dt>
-                <dd className={styles.dd}>
-                  <textarea id="desc" {...register("discription", { required: state })}></textarea>
-                  {errors.discription && <p className={`red ${styles.error}`}>必須項目を入力してください</p>}
-                </dd>
-              </dl>
-              <dl className={styles.dl}>
-                <dt className={styles.dt}>本文</dt>
-                <dd className={styles.dd}>
-                  <PostEditor setEditorContent={setEditorContent} />
-                </dd>
-              </dl>
-              <dl className={styles.dl}>
-                <dt className={styles.dt}>
-                  <label htmlFor="thumb">サムネイル画像</label>
-                </dt>
-                <dd className={styles.dd}>
-                  <input id="thumb" type="file" accept="image/*" {...register("thumbs", { required: state })} onChange={handleChangeFile} />
-                  <img src={preview} alt="" />
-                  {errors.thumbs && <p className={`red ${styles.error}`}>必須項目を入力してください</p>}
-                </dd>
-              </dl>
-              <dl className={styles.dl}>
-                <dt className={styles.dt}>
-                  <label htmlFor="mv">メインビジュアル</label>
-                </dt>
-                <dd className={styles.dd}>
-                  <input id="mv" type="file" accept="image/*" {...register("mv", { required: state })} onChange={handleChangeFile2} />
-                  <img src={preview2} alt="" />
-                  {errors.mv && <p className={`red ${styles.error}`}>必須項目を入力してください</p>}
-                </dd>
-              </dl>
-            </div>
-            <div className={styles.right}>
-              <dl className={styles.dl}>
-                <dt className={styles.dt}>公開状態</dt>
-                <dd className={styles.dd}>
-                  <select {...register("state")} onChange={handleState}>
-                    <option value="0">下書き</option>
-                    <option value="1">公開済み</option>
-                  </select>
-                </dd>
-              </dl>
-              <button className="btn2" disabled={disabled}>新規作成</button>
-              <div className={styles.hr}></div>
-              <dl className={styles.dl}>
-                <dt className={styles.dt}>大カテゴリー</dt>
-                <dd className={styles.dd}>
-                  <select {...register("l_category_id")} onChange={handleCat}>
-                    {catArray.map((cat, index) => (
-                      <option value={index+1} key={index+1}>{cat.name}</option>
-                    ))}
-                  </select>
-                </dd>
-              </dl>
-              <dl className={styles.dl}>
-                <dt className={styles.dt}>子カテゴリー</dt>
-                <dd className={styles.dd}>
-                  <select {...register("child_category")}>
-                    {cat[0].child_category.map((cat) => (
-                      <option value={cat.id} key={cat.id}>{cat.name}</option>
-                    ))}
-                  </select>
-                </dd>
-              </dl>
-              <dl className={styles.dl}>
-                <dt className={styles.dt}>シリーズ選択</dt>
-                <dd className={styles.dd}>
-                  <select {...register("l_series_id")}>
-                    {seriesArray.map((series, index) => (
-                      <option value={index+1} key={index+1}>{series.name}</option>
-                    ))}
-                  </select>
-                </dd>
-              </dl>
-            </div>
-          </article>
-        </form>
-      </Container>
+      {
+        user?.account_type > 1 ?
+        <Container small>
+          <form onSubmit={handleSubmit(onSubmit)}>
+            <article className={styles.flex}>
+              <div className={styles.left}>
+                <dl className={styles.dl}>
+                  <dt className={styles.dt}>
+                    <label htmlFor="title">タイトル</label>
+                  </dt>
+                  <dd className={styles.dd}>
+                    <input type="text" id="title" {...register("title", { required: state })} />
+                    {errors.title && <p className={`red ${styles.error}`}>必須項目を入力してください</p>}
+                  </dd>
+                </dl>
+                <dl className={styles.dl}>
+                  <dt className={styles.dt}>
+                    <label htmlFor="subtitle">サブタイトル</label>
+                  </dt>
+                  <dd className={styles.dd}>
+                    <textarea id="subtitle" {...register("sub_title", { required: state })}></textarea>
+                    {errors.sub_title && <p className={`red ${styles.error}`}>必須項目を入力してください</p>}
+                  </dd>
+                </dl>
+                <dl className={styles.dl}>
+                  <dt className={styles.dt}>
+                    <label htmlFor="desc">ディスクリプション</label>
+                  </dt>
+                  <dd className={styles.dd}>
+                    <textarea id="desc" {...register("discription", { required: state })}></textarea>
+                    {errors.discription && <p className={`red ${styles.error}`}>必須項目を入力してください</p>}
+                  </dd>
+                </dl>
+                <dl className={styles.dl}>
+                  <dt className={styles.dt}>本文</dt>
+                  <dd className={styles.dd}>
+                    <PostEditor setEditorContent={setEditorContent} />
+                  </dd>
+                </dl>
+                <dl className={styles.dl}>
+                  <dt className={styles.dt}>
+                    <label htmlFor="thumb">サムネイル画像</label>
+                  </dt>
+                  <dd className={styles.dd}>
+                    <input id="thumb" type="file" accept="image/*" {...register("thumbs", { required: state })} onChange={handleChangeFile} />
+                    <img src={preview} alt="" />
+                    {errors.thumbs && <p className={`red ${styles.error}`}>必須項目を入力してください</p>}
+                  </dd>
+                </dl>
+                <dl className={styles.dl}>
+                  <dt className={styles.dt}>
+                    <label htmlFor="mv">メインビジュアル</label>
+                  </dt>
+                  <dd className={styles.dd}>
+                    <input id="mv" type="file" accept="image/*" {...register("mv", { required: state })} onChange={handleChangeFile2} />
+                    <img src={preview2} alt="" />
+                    {errors.mv && <p className={`red ${styles.error}`}>必須項目を入力してください</p>}
+                  </dd>
+                </dl>
+              </div>
+              <div className={styles.right}>
+                <dl className={styles.dl}>
+                  <dt className={styles.dt}>公開状態</dt>
+                  <dd className={styles.dd}>
+                    <select {...register("state")} onChange={handleState}>
+                      <option value="0">下書き</option>
+                      <option value="1">公開済み</option>
+                    </select>
+                  </dd>
+                </dl>
+                <button className="btn2" disabled={disabled}>新規作成</button>
+                <div className={styles.hr}></div>
+                <dl className={styles.dl}>
+                  <dt className={styles.dt}>大カテゴリー</dt>
+                  <dd className={styles.dd}>
+                    <select {...register("l_category_id")} onChange={handleCat}>
+                      {catArray.map((cat, index) => (
+                        <option value={index+1} key={index+1}>{cat.name}</option>
+                      ))}
+                    </select>
+                  </dd>
+                </dl>
+                <dl className={styles.dl}>
+                  <dt className={styles.dt}>子カテゴリー</dt>
+                  <dd className={styles.dd}>
+                    <select {...register("child_category")}>
+                      {cat[0].child_category.map((cat) => (
+                        <option value={cat.id} key={cat.id}>{cat.name}</option>
+                      ))}
+                    </select>
+                  </dd>
+                </dl>
+                <dl className={styles.dl}>
+                  <dt className={styles.dt}>シリーズ選択</dt>
+                  <dd className={styles.dd}>
+                    <select {...register("l_series_id")}>
+                      {seriesArray.map((series, index) => (
+                        <option value={index+1} key={index+1}>{series.name}</option>
+                      ))}
+                    </select>
+                  </dd>
+                </dl>
+              </div>
+            </article>
+          </form>
+        </Container>
+        : null
+      }
     </section>
   );
 }

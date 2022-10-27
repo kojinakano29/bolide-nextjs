@@ -31,6 +31,18 @@ const AdminPresent = ({posts}) => {
 
   const router = useRouter()
   const { user } = useAuth({middleware: 'auth'})
+
+  useEffect(() => {
+    onLoadCheck()
+  }, [user])
+
+  const onLoadCheck = () => {
+    if (user?.account_type < 2) {
+      alert("このページにはアクセスできません。")
+      router.push(`/liondor`)
+    }
+  }
+
   const [disabled, setDisabled] = useState(false)
   const presents = posts.presents
 
@@ -39,16 +51,6 @@ const AdminPresent = ({posts}) => {
     current = parseInt(router.query.page)
   } else {
     current = 1
-  }
-
-  useEffect(() => {
-    onLoadCheck()
-  }, [user])
-
-  const onLoadCheck = () => {
-    if (user?.account_type < 2) {
-      router.push(`/liondor`)
-    }
   }
 
   const onClickDelete = async (post) => {
@@ -83,6 +85,9 @@ const AdminPresent = ({posts}) => {
       <PageTitle title="プレゼント一覧" />
       {user?.account_type > 2 ?
         <Container small900>
+          <Link href="/liondor/present/create">
+            <a className={`btn2 ${styles.create}`}>新規作成</a>
+          </Link>
           <article className={styles.article}>
             <ul>
               {presents?.map((item, index) => (

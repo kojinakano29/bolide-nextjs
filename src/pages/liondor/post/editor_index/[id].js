@@ -31,6 +31,18 @@ const PostList = ({posts}) => {
 
   const router = useRouter()
   const { user } = useAuth({middleware: 'auth'})
+
+  useEffect(() => {
+    onLoadCheck()
+  }, [user])
+
+  const onLoadCheck = () => {
+    if (user?.account_type < 1) {
+      alert("このページにはアクセスできません。")
+      router.push(`/liondor`)
+    }
+  }
+
   const [disabled, setDisabled] = useState(false)
   const list = posts.posts
 
@@ -39,16 +51,6 @@ const PostList = ({posts}) => {
     current = parseInt(router.query.page)
   } else {
     current = 1
-  }
-
-  useEffect(() => {
-    onLoadCheck()
-  }, [user])
-
-  const onLoadCheck = () => {
-    if (user?.account_type < 1) {
-      router.push(`/liondor`)
-    }
   }
 
   const onClickDelete = async (post) => {
@@ -90,6 +92,9 @@ const PostList = ({posts}) => {
       <PageTitle title="記事一覧" />
       {user?.account_type > 1 ?
         <Container small900>
+          <Link href="/liondor/present/create">
+            <a className={`btn2 ${styles.create}`}>新規作成</a>
+          </Link>
           <article className={styles.article}>
             <ul>
               {list?.map((item, index) => (
