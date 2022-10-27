@@ -5,6 +5,8 @@ import { useForm } from 'react-hook-form';
 import Container from '@/components/Layouts/container';
 import { useRouter } from 'next/router';
 import { useAuth } from '@/hooks/auth';
+import PageLayout from '@/components/Layouts/PageLayout';
+import { PageTitle } from '@/components/liondor';
 
 const CreateSeries = () => {
   const csrf = () => axios.get('/sanctum/csrf-cookie')
@@ -54,6 +56,7 @@ const CreateSeries = () => {
 
   return (
     <section className={styles.createSection}>
+      <PageTitle title="シリーズ作成" />
       {
         user?.account_type > 1 ?
         <Container small>
@@ -83,3 +86,7 @@ const CreateSeries = () => {
 }
 
 export default CreateSeries;
+
+CreateSeries.getLayout = function getLayout(page) {
+  return <PageLayout>{page}</PageLayout>
+}

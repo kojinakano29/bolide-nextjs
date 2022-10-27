@@ -40,4 +40,9 @@ module.exports = {
         semi: ['error', 'never'],
         'prettier/prettier': ['error', { "endOfLine": "off" }, { usePrettierrc: true }],
     },
+    settings: {
+        react: {
+            version: 'detect',
+        },
+    },
 }

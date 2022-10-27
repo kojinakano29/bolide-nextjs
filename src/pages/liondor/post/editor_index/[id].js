@@ -92,7 +92,7 @@ const PostList = ({posts}) => {
       <PageTitle title="記事一覧" />
       {user?.account_type > 1 ?
         <Container small900>
-          <Link href="/liondor/present/create">
+          <Link href="/liondor/post/create">
             <a className={`btn2 ${styles.create}`}>新規作成</a>
           </Link>
           <article className={styles.article}>

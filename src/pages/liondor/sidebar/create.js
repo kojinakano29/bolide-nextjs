@@ -1,11 +1,12 @@
 import styles from '@/styles/liondor/components/createPost.module.scss'
 import axios from '@/lib/axios'; // カスタムフック
 import { useCallback, useEffect, useState } from 'react'
-import { SidebarEditor } from '@/components/liondor';
+import { PageTitle, SidebarEditor } from '@/components/liondor';
 import { useForm } from 'react-hook-form';
 import Container from '@/components/Layouts/container';
 import { useRouter } from 'next/router';
 import { useAuth } from '@/hooks/auth';
+import PageLayout from '@/components/Layouts/PageLayout';
 
 const CreateSidebar = () => {
   const csrf = () => axios.get('/sanctum/csrf-cookie')
@@ -77,6 +78,7 @@ const CreateSidebar = () => {
 
   return (
     <section className={styles.createSection}>
+      <PageTitle title="サイドバー作成" />
       {
         user?.account_type > 2 ?
         <Container small>
@@ -130,3 +132,7 @@ const CreateSidebar = () => {
 }
 
 export default CreateSidebar;
+
+CreateSidebar.getLayout = function getLayout(page) {
+  return <PageLayout>{page}</PageLayout>
+}

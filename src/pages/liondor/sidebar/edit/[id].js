@@ -1,11 +1,12 @@
 import styles from '@/styles/liondor/components/createPost.module.scss'
 import axios from '@/lib/axios'; // カスタムフック
 import { useCallback, useEffect, useState } from 'react'
-import { SidebarEditor } from '@/components/liondor';
+import { PageTitle, SidebarEditor } from '@/components/liondor';
 import { useForm } from 'react-hook-form';
 import Container from '@/components/Layouts/container';
 import { useRouter } from 'next/router';
 import { useAuth } from '@/hooks/auth';
+import PageLayout from '@/components/Layouts/PageLayout';
 
 // SSR
 export const getServerSideProps = async ({params}) => {
@@ -90,6 +91,7 @@ const SidebarEdit = ({posts}) => {
 
   return (
     <section className={styles.createSection}>
+      <PageTitle title="サイドバー編集" />
       {
         user?.account_type > 2 ?
         <Container small>
@@ -143,3 +145,7 @@ const SidebarEdit = ({posts}) => {
 }
 
 export default SidebarEdit;
+
+SidebarEdit.getLayout = function getLayout(page) {
+  return <PageLayout>{page}</PageLayout>
+}
