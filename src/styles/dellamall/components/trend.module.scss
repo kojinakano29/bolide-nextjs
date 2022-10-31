@@ -1,0 +1,31 @@
+@import '../../variables.scss';
+
+.title {
+  font-weight: $regular;
+  @include fs(24px, 22px, 24px);
+  text-align: center;
+  font-family: $Montserrat;
+  @include mb(16px);
+
+  &.mb40 {
+    @include mb(40px);
+  }
+}
+
+.trend__list {
+@include flex(flex-start, left);
+@include gap(24px 20px, 16px, 12px 16px);
+}
+
+.keyWord__item {
+  @include flex(center, center);
+  border-radius: 17px;
+  border: 1px solid $g3;
+  background: $w1;
+  font-weight: $medium;
+
+  a {
+      @include fs(16px, 14px);
+      @include p(4px 16px);
+  }
+}

@@ -3,14 +3,14 @@ import axios from '@/lib/axios'; // カスタムフック
 import { useCallback, useEffect, useState } from 'react'
 import { PageTitle, PostEditor } from '@/components/liondor';
 import { useForm } from 'react-hook-form';
-import Container from '@/components/Layouts/container';
+import Container from '@/components/liondor/Layouts/container';
 import { useAuth } from '@/hooks/auth';
 import { useRouter } from 'next/router';
-import PageLayout from '@/components/Layouts/PageLayout';
+import PageLayoutLiondor from '@/components/Layouts/PageLayoutLiondor';
 
 // SSR
 export const getServerSideProps = async () => {
-  const res = await fetch(`${process.env.NEXT_PUBLIC_BACKEND_URL}/api/liondor/post/create`)
+  const res = await fetch(`${process.env.NEXT_PUBLIC_API_LIONDOR}/post/create`)
   const data = await res.json()
 
   return {
@@ -241,5 +241,5 @@ const CreatePost = ({posts}) => {
 export default CreatePost;
 
 CreatePost.getLayout = function getLayout(page) {
-  return <PageLayout>{page}</PageLayout>
+  return <PageLayoutLiondor>{page}</PageLayoutLiondor>
 }

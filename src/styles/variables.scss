@@ -1,14 +1,16 @@
 /* フォント */
-$jp: 'Noto Sans JP', sans-serif;
-$en: 'Prompt', sans-serif;
+$nsj: 'Noto Sans JP', sans-serif;
+$prompt: 'prompt', sans-serif;
 $ivy: ivymode, sans-serif;
-$gothic: 'YuGothic', 'Yu Gothic Medium', 'Yu Gothic', 'MS PGothic', 'Hiragino Kaku Gothic ProN', 'Meiryo', sans-serif;
+$Montserrat: 'Montserrat', sans-serif;
+$YuGothic: 'YuGothic', 'Yu Gothic Medium', 'Yu Gothic', 'MS PGothic', 'Hiragino Kaku Gothic ProN', 'Meiryo', sans-serif;
 $mintyo: 'YuMincho', 'Yu Mincho', 'MS PMincho', 'Hiragino Mincho ProN', serif;
 
 /* カラー（色） */
 $w1: #fff;
 $b1: #000;
 $b2: #222;
+$b3: #121B2B;
 $g1: #888;
 $g2: #F2F2F2;
 $g3: #CCC;
@@ -16,6 +18,14 @@ $g4: #555;
 $g5: #707070;
 $red1: #FF0000;
 $rgba1: rgba(0, 0, 0, .5);
+
+$black: 900;
+$bold: 700;
+$semibold: 600;
+$Demi: 600;
+$medium :500;
+$regular: 400;
+$light: 300;
 
 /* グラデーション */
 $gd1: linear-gradient(transparent 10%, rgba(88, 88, 88, .82) 70%, $b2);
@@ -232,5 +242,15 @@ $breakpoints: (
   gap: $pc;
   @include media1(tab1) {gap: $tab;}
   @include media1(sp) {gap: $sp;}
+}
+
+@mixin px($pc1: 0, $sp1: $pc1, $pc2: $pc1, $sp2: $sp1) {
+  @include pr($pc1, $sp1);
+  @include pl($pc2, $sp2);
+}
+
+@mixin py($pc1: 0, $sp1: $pc1, $pc2: $pc1, $sp2: $sp1) {
+  @include pt($pc1, $sp1);
+  @include pb($pc2, $sp2);
 }
 /*-------------------------     mixin5    -------------------------*/

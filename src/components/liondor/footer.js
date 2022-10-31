@@ -1,6 +1,6 @@
 import styles from '@/styles/liondor/components/footer.module.scss'
 import Link from 'next/link';
-import Container from '@/components/Layouts/container';
+import Container from '@/components/liondor/Layouts/container';
 import Image from 'next/image';
 import { SnsFollow, PageNavi } from '@/components/liondor'
 import { bannarData } from '@/lib/liondor/constants';

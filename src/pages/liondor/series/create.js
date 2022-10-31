@@ -2,10 +2,10 @@ import styles from '@/styles/liondor/components/createPost.module.scss'
 import axios from '@/lib/axios'; // カスタムフック
 import { useCallback, useEffect, useState } from 'react'
 import { useForm } from 'react-hook-form';
-import Container from '@/components/Layouts/container';
+import Container from '@/components/liondor/Layouts/container';
 import { useRouter } from 'next/router';
 import { useAuth } from '@/hooks/auth';
-import PageLayout from '@/components/Layouts/PageLayout';
+import PageLayoutLiondor from '@/components/Layouts/PageLayoutLiondor';
 import { PageTitle } from '@/components/liondor';
 
 const CreateSeries = () => {
@@ -88,5 +88,5 @@ const CreateSeries = () => {
 export default CreateSeries;
 
 CreateSeries.getLayout = function getLayout(page) {
-  return <PageLayout>{page}</PageLayout>
+  return <PageLayoutLiondor>{page}</PageLayoutLiondor>
 }

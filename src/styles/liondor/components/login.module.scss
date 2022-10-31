@@ -1,4 +1,4 @@
-@import '../variables.scss';
+@import '../../variables.scss';
 
 .desc {
   font-size: var(--fs18-16);
@@ -59,7 +59,7 @@
 
   button {
     @include mb(16px);
-    font-family: $jp;
+    font-family: $nsj;
     font-weight: 500;
   }
 

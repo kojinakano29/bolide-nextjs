@@ -1,5 +1,5 @@
-import Container from '@/components/Layouts/container'
-import PageLayout from '@/components/Layouts/PageLayout'
+import Container from '@/components/liondor/Layouts/container'
+import PageLayoutLiondor from '@/components/Layouts/PageLayoutLiondor'
 import { PageTitle } from '@/components/liondor'
 import { useAuth } from '@/hooks/auth'
 import styles from '@/styles/liondor/components/adminList.module.scss'
@@ -9,7 +9,7 @@ import { useEffect } from 'react'
 
 // SSR
 export const getServerSideProps = async ({params}) => {
-  const res = await fetch(`${process.env.NEXT_PUBLIC_BACKEND_URL}/api/liondor/admin/present/${params.id}`)
+  const res = await fetch(`${process.env.NEXT_PUBLIC_API_LIONDOR}/admin/present/${params.id}`)
   const data = await res.json()
 
   return {
@@ -68,5 +68,5 @@ const AdminPresentUserList = ({posts}) => {
 export default AdminPresentUserList;
 
 AdminPresentUserList.getLayout = function getLayout(page) {
-  return <PageLayout>{page}</PageLayout>
+  return <PageLayoutLiondor>{page}</PageLayoutLiondor>
 }

@@ -10,7 +10,7 @@ import dummy18 from '@/images/liondor/cms/dummy18.png'
 
 // サイト情報
 export const siteMeta = {
-  siteTitle: 'Bolide',
+  siteTitle: 'Liondor',
   siteDesc: 'ディスクリプション',
   siteUrl: 'サイトURL',
   siteLang: 'ja',

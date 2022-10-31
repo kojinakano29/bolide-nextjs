@@ -1,5 +1,5 @@
-import PageLayout from '@/components/Layouts/PageLayout'
-import Container from '@/components/Layouts/container'
+import PageLayoutLiondor from '@/components/Layouts/PageLayoutLiondor'
+import Container from '@/components/liondor/Layouts/container'
 import { ArticleColumn, BlogPattern8, CatNavi, PageTitle, Sidebar } from "@/components/liondor";
 import styles from '@/styles/liondor/components/pageSingle.module.scss'
 import { useRouter } from 'next/router';
@@ -12,7 +12,7 @@ export const getServerSideProps = async ({params, query}) => {
   } else {
     page = "1"
   }
-  const res = await fetch(`${process.env.NEXT_PUBLIC_BACKEND_URL}/api/liondor/post/${params.category}/?page=${page}`)
+  const res = await fetch(`${process.env.NEXT_PUBLIC_API_LIONDOR}/post/${params.category}/?page=${page}`)
   const data = await res.json()
 
   return {
@@ -109,5 +109,5 @@ const Post = ({posts}) => {
 export default Post;
 
 Post.getLayout = function getLayout(page) {
-  return <PageLayout>{page}</PageLayout>
+  return <PageLayoutLiondor>{page}</PageLayoutLiondor>
 }

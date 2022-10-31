@@ -1,6 +1,6 @@
 import { Button2, Date, Recommends, ShowEditor, Sidebar } from "@/components/liondor";
-import Container from "@/components/Layouts/container";
-import PageLayout from "@/components/Layouts/PageLayout";
+import Container from "@/components/liondor/Layouts/container";
+import PageLayoutLiondor from "@/components/Layouts/PageLayoutLiondor";
 import styles from '@/styles/liondor/components/postShow.module.scss'
 import Link from "next/link";
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
@@ -16,7 +16,7 @@ import { useRouter } from "next/router";
 
 // SSR
 export const getServerSideProps = async ({params}) => {
-  const res = await fetch(`${process.env.NEXT_PUBLIC_BACKEND_URL}/api/liondor/post/show/${params.id}`)
+  const res = await fetch(`${process.env.NEXT_PUBLIC_API_LIONDOR}/post/show/${params.id}`)
   const data = await res.json()
 
   return {
@@ -245,5 +245,5 @@ const DetailPage = ({posts}) => {
 export default DetailPage;
 
 DetailPage.getLayout = function getLayout(page) {
-  return <PageLayout>{page}</PageLayout>
+  return <PageLayoutLiondor>{page}</PageLayoutLiondor>
 }

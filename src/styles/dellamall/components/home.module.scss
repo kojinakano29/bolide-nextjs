@@ -1,0 +1,19 @@
+@import '../../variables.scss';
+
+.mv {
+  @include height(620px, 620px, 800px);
+  background: url(../../../images/dellamall/top/fv_bk.webp) no-repeat center center / cover;
+
+  @include media1(sp) {
+    background: url(../../../images/dellamall/top/fv_bk__sp.webp) no-repeat center center / cover;
+  }
+}
+
+.sitename {
+  @include width(400px, 400px, 274px);
+  @include pt(180px, 180px, 238px);
+}
+
+.trend {
+  @include pt(120px, 120px, 180px);
+}

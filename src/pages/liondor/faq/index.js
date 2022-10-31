@@ -1,12 +1,12 @@
 import styles from '@/styles/liondor/components/faq.module.scss'
 import { Accordion, PageTitle } from "@/components/liondor";
-import Container from "@/components/Layouts/container";
-import PageLayout from "@/components/Layouts/PageLayout";
+import Container from "@/components/liondor/Layouts/container";
+import PageLayoutLiondor from "@/components/Layouts/PageLayoutLiondor";
 import {Link as Scroll} from "react-scroll"
 
 // SSG
 export const getServerSideProps = async () => {
-    const res = await fetch(`${process.env.NEXT_PUBLIC_BACKEND_URL}/api/liondor/faq`)
+    const res = await fetch(`${process.env.NEXT_PUBLIC_API_LIONDOR}/faq`)
     const data = await res.json()
 
     return {
@@ -60,5 +60,5 @@ const Faq = ({posts}) => {
 export default Faq;
 
 Faq.getLayout = function getLayout(page) {
-  return <PageLayout>{page}</PageLayout>
+  return <PageLayoutLiondor>{page}</PageLayoutLiondor>
 }

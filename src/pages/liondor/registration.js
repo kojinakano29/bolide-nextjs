@@ -1,6 +1,6 @@
 import { PageTitle } from '@/components/liondor';
-import Container from '@/components/Layouts/container';
-import PageLayout from '@/components/Layouts/PageLayout';
+import Container from '@/components/liondor/Layouts/container';
+import PageLayoutLiondor from '@/components/Layouts/PageLayoutLiondor';
 import styles from '@/styles/liondor/components/registration.module.scss'
 import Image from 'next/image';
 import merit1 from '@/images/liondor/registration/merit1.png'
@@ -108,5 +108,5 @@ const Registration = () => {
 export default Registration;
 
 Registration.getLayout = function getLayout(page) {
-  return <PageLayout>{page}</PageLayout>
+  return <PageLayoutLiondor>{page}</PageLayoutLiondor>
 }

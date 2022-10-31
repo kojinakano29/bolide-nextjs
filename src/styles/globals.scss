@@ -1,0 +1,315 @@
+@import './variables.scss';
+
+/* 変数設定 */
+:root {
+  /* タイポグラフィ（フォントサイズ） */
+  --fs56-38: clamp(2.375rem, 1.0929rem + 2.6746vw, 3.5rem); /* 38-56 */
+  --fs40-24: clamp(1.5rem, 0.3603rem + 2.3774vw, 2.5rem); /* 24-40 */
+  --fs32-18: clamp(1.125rem, 0.1278rem + 2.0802vw, 2rem); /* 18-32 */
+  --fs24-22: clamp(1.375rem, 1.2325rem + 0.2972vw, 1.5rem); /* 22-24 */
+  --fs24-18: clamp(1.125rem, 0.6976rem + 0.8915vw, 1.5rem); /* 18-24 */
+  --fs24-16: clamp(1rem, 0.6674rem + 0.6938vw, 1.5rem); /* 16-24 */
+  --fs22-18: clamp(1.125rem, 0.8401rem + 0.5944vw, 1.375rem); /* 18-22 */
+  --fs20-18: clamp(1.125rem, 1.0418rem + 0.1735vw, 1.25rem); /* 18-20 */
+  --fs18-16: clamp(1rem, 0.8575rem + 0.2972vw, 1.125rem); /* 16-18 */
+  --fs16-14: clamp(0.875rem, 0.7918rem + 0.1735vw, 1rem); /* 14-16 */
+  --fs14-12: clamp(0.75rem, 0.6075rem + 0.2972vw, 0.875rem); /* 12-14 */
+  --fs12-10: clamp(0.625rem, 0.4825rem + 0.2972vw, 0.75rem); /* 10-12 */
+
+  /* スペース（余白・間隔） */
+  --sp24-16: clamp(1rem, 0.6674rem + 0.6938vw, 1.5rem); /* 16-24 */
+}
+/* 変数設定 */
+
+/* リセット */
+*,
+*::before,
+*::after {
+  max-width: 100%;
+  outline: none;
+  box-sizing: border-box;
+  padding: 0;
+  margin: 0;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+a,
+b,
+button,
+em,
+i,
+input,
+mark,
+option,
+select,
+small,
+span,
+strong,
+textarea,
+::before,
+::after {
+  display: inline-block;
+  color: inherit;
+  font: inherit;
+}
+
+a,
+button,
+input[type="button"],
+input[type="submit"] {
+  cursor: pointer;
+  text-decoration: none;
+}
+
+img,
+video {
+  height: auto;
+  display: block;
+}
+
+ol,
+ul {
+  list-style: none;
+}
+/* リセット */
+
+/* 共通部分 */
+p,
+h1,
+h2,
+h3,
+h4,
+h5,
+a,
+span,
+dt,
+dd {
+  letter-spacing: .6px;
+}
+
+span > img {
+  transition: .2s;
+}
+
+*.red {
+  color: $red1;
+}
+
+.pc {
+  @include media1(sp) {
+    display: none !important;
+  }
+}
+
+.tab {
+  @include media2(pc) {
+    display: none !important;
+  }
+}
+
+.sp {
+  @include media2(tab2) {
+    display: none !important;
+  }
+}
+
+.space {
+  width: .5em;
+}
+
+.none {
+  display: none !important;
+}
+
+.fill {
+  position: relative;
+}
+/* 共通部分 */
+
+/* リオンドール共通部分 */
+.liondor {
+  *,
+  *::before,
+  *::after {
+    font-family: $nsj;
+  }
+
+  .en {
+    font-family: $prompt;
+  }
+
+  .ivy {
+    font-family: $ivy;
+  }
+
+  .cont {
+    @include pt(152px);
+  }
+
+  .cont1 {
+    @include pt(64px);
+  }
+
+  .ttl1 {
+    @include p(8px 0);
+    font-size: var(--fs32-18);
+    font-weight: 300;
+    border-top: 1px solid $g3;
+    border-bottom: 1px solid $g3;
+    @include mb(24px);
+  }
+
+  .btn2 {
+    @include width(160px);
+    @include height(40px);
+    @include flex(center, center);
+    background-color: $b1;
+    color: $w1;
+    border-radius: 4px;
+    @include mb(40px);
+    transition: .2s ease-out;
+
+    &:hover {
+      opacity: .5;
+    }
+  }
+
+  .btn3 {
+    @include width(260px);
+    @include height(64px);
+    @include flex(center, center);
+    background-color: $b1;
+    color: $w1;
+    font-family: "平成明朝 Std", sans-serif;
+    margin: auto;
+    transition: .2s ease-out;
+
+    &:hover {
+      opacity: .5;
+    }
+  }
+
+  .btn4 {
+    font-size: var(--fs20-18);
+    font-weight: 500;
+    color: $w1;
+    background-color: $b1;
+    @include width(412px);
+    @include height(110px);
+    @include flex(center, center);
+    margin: auto;
+    transition: .2s ease-out;
+
+    &:hover {
+      opacity: .5;
+    }
+  }
+
+  .btn5 {
+    @include width(328px);
+    @include height(100px);
+    @include flex(center, center);
+    background-color: $b1;
+    color: $w1;
+    font-size: var(--fs16-14);
+    font-weight: 500;
+    transition: .2s ease-out;
+
+    &:hover {
+      opacity: .5;
+    }
+  }
+
+  /* リオンドールページャー部分 */
+  .pagerBox {
+    @include flex(center, center);
+    @include gap(40px);
+    @include mt(96px);
+
+    .pagerBtn {
+      @include width(80px);
+      @include height(80px);
+      border: 1px solid $g3;
+      border-radius: 50%;
+      background-position: center;
+      background-repeat: no-repeat;
+      transition: .2s ease-out;
+
+      &.pagerPrev {
+        background-image: url(../images/liondor/common/pagerPrev.svg);
+      }
+
+      &.pagerNext {
+        background-image: url(../images/liondor/common/pagerNext.svg);
+      }
+
+      &:hover {
+        opacity: .5;
+      }
+    }
+
+    .pagerCurrent {
+      font-size: var(--fs18-16);
+    }
+  }
+  /* リオンドールページャー部分 */
+}
+/* リオンドール共通部分 */
+
+/* デラモール共通部分 */
+.dellamall {
+  *,
+  *::before,
+  *::after {
+    font-family: $YuGothic;
+    color: $b3;
+  }
+
+  .en {
+    font-family: $Montserrat;
+  }
+
+  .hoverEffect {
+    transition: all .2s ease-out;
+
+    &:hover {
+        opacity: .5;
+    }
+  }
+}
+/* デラモール共通部分 */
+
+
+/* エディター部分 */
+.rdw-editor-wrapper {
+  * {
+    max-width: unset;
+  }
+
+  .rdw-editor-toolbar {
+    border-radius: 0;
+    border: 1px solid $b1;
+    font-size: 12px;
+    margin-bottom: 0;
+    border-bottom: none;
+  }
+
+  .rdw-editor-main {
+    * {
+      margin: 0;
+      padding: 0;
+    }
+
+    img {
+      max-width: 100%;
+    }
+  }
+
+  span {
+    display: inline;
+  }
+}
+/* エディター部分 */

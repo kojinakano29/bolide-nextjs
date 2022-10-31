@@ -2,15 +2,15 @@ import styles from '@/styles/liondor/components/createPost.module.scss'
 import axios from '@/lib/axios'; // カスタムフック
 import { useCallback, useEffect, useState } from 'react'
 import { useForm } from 'react-hook-form';
-import Container from '@/components/Layouts/container';
+import Container from '@/components/liondor/Layouts/container';
 import { useRouter } from 'next/router';
 import { useAuth } from '@/hooks/auth';
-import PageLayout from '@/components/Layouts/PageLayout';
+import PageLayoutLiondor from '@/components/Layouts/PageLayoutLiondor';
 import { PageTitle } from '@/components/liondor';
 
 // SSR
 export const getServerSideProps = async ({params}) => {
-  const res = await fetch(`${process.env.NEXT_PUBLIC_BACKEND_URL}/api/liondor/series/edit/${params.id}`)
+  const res = await fetch(`${process.env.NEXT_PUBLIC_API_LIONDOR}/series/edit/${params.id}`)
   const data = await res.json()
 
   return {
@@ -102,5 +102,5 @@ const EditSeries = ({posts}) => {
 export default EditSeries;
 
 EditSeries.getLayout = function getLayout(page) {
-  return <PageLayout>{page}</PageLayout>
+  return <PageLayoutLiondor>{page}</PageLayoutLiondor>
 }

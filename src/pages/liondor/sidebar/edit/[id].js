@@ -3,14 +3,14 @@ import axios from '@/lib/axios'; // カスタムフック
 import { useCallback, useEffect, useState } from 'react'
 import { PageTitle, SidebarEditor } from '@/components/liondor';
 import { useForm } from 'react-hook-form';
-import Container from '@/components/Layouts/container';
+import Container from '@/components/liondor/Layouts/container';
 import { useRouter } from 'next/router';
 import { useAuth } from '@/hooks/auth';
-import PageLayout from '@/components/Layouts/PageLayout';
+import PageLayoutLiondor from '@/components/Layouts/PageLayoutLiondor';
 
 // SSR
 export const getServerSideProps = async ({params}) => {
-  const res = await fetch(`${process.env.NEXT_PUBLIC_BACKEND_URL}/api/liondor/sidebar/edit/${params.id}`)
+  const res = await fetch(`${process.env.NEXT_PUBLIC_API_LIONDOR}/sidebar/edit/${params.id}`)
   const data = await res.json()
 
   return {
@@ -147,5 +147,5 @@ const SidebarEdit = ({posts}) => {
 export default SidebarEdit;
 
 SidebarEdit.getLayout = function getLayout(page) {
-  return <PageLayout>{page}</PageLayout>
+  return <PageLayoutLiondor>{page}</PageLayoutLiondor>
 }

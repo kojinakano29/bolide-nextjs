@@ -1,5 +1,5 @@
-import Container from '@/components/Layouts/container'
-import PageLayout from '@/components/Layouts/PageLayout'
+import Container from '@/components/liondor/Layouts/container'
+import PageLayoutLiondor from '@/components/Layouts/PageLayoutLiondor'
 import { PageTitle } from '@/components/liondor'
 import { useAuth } from '@/hooks/auth'
 import axios from '@/lib/axios'
@@ -16,7 +16,7 @@ export const getServerSideProps = async ({query}) => {
   } else {
     page = "1"
   }
-  const res = await fetch(`${process.env.NEXT_PUBLIC_BACKEND_URL}/api/liondor/admin/present/?page=${page}`)
+  const res = await fetch(`${process.env.NEXT_PUBLIC_API_LIONDOR}/admin/present/?page=${page}`)
   const data = await res.json()
 
   return {
@@ -120,5 +120,5 @@ const AdminPresent = ({posts}) => {
 export default AdminPresent;
 
 AdminPresent.getLayout = function getLayout(page) {
-  return <PageLayout>{page}</PageLayout>
+  return <PageLayoutLiondor>{page}</PageLayoutLiondor>
 }

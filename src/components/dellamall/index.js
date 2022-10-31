@@ -1,0 +1,6 @@
+export {default as Meta} from '@/components/dellamall/meta'
+export {default as Trend} from '@/components/dellamall/trend'
+export {default as Header} from '@/components/dellamall/header'
+export {default as SearchIcon} from '@/components/dellamall/searchIcon'
+export {default as HeaderNav} from '@/components/dellamall/headerNav'
+export {default as Footer} from '@/components/dellamall/footer'

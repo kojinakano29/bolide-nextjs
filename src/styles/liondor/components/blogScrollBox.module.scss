@@ -1,4 +1,4 @@
-@import '../variables.scss';
+@import '../../variables.scss';
 
 .scrollBox {
   @include width(calc(100% - (612px + 32px)));
