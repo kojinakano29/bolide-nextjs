@@ -2,8 +2,8 @@ import styles from '@/styles/liondor/components/mypage.module.scss'
 import axios from '@/lib/axios'; // カスタムフック
 import { useCallback, useEffect, useState } from 'react'
 import { useForm } from 'react-hook-form';
-import Container from '@/components/Layouts/container';
-import PageLayout from '@/components/Layouts/PageLayout';
+import Container from '@/components/liondor/Layouts/container';
+import PageLayoutLiondor from '@/components/Layouts/PageLayoutLiondor';
 import { PageTitle } from '@/components/liondor';
 import { zip } from '@/lib/liondor/constants'
 import thumb from '@/images/liondor/common/mypage.png'
@@ -209,5 +209,5 @@ const MypageCreate = () => {
 export default MypageCreate;
 
 MypageCreate.getLayout = function getLayout(page) {
-  return <PageLayout>{page}</PageLayout>
+  return <PageLayoutLiondor>{page}</PageLayoutLiondor>
 }

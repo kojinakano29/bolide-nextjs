@@ -1,6 +1,6 @@
 import styles from '@/styles/liondor/components/humCont.module.scss'
 import Link from 'next/link';
-import Container from '@/components/Layouts/container';
+import Container from '@/components/liondor/Layouts/container';
 import Image from 'next/image';
 import corapura from '@/images/liondor/common/corapura_bannar.png'
 import dela from '@/images/liondor/common/della-mall_bannar.png'

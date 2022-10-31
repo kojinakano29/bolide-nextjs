@@ -1,10 +1,10 @@
 import styles from '@/styles/liondor/components/home.module.scss'
-import { BlogPattern1, BlogPattern2, BlogPattern3, BlogPattern4, BlogPattern5, BlogPattern6, BlogPattern7, BlogPattern8, BlogPattern9, Button2, FirstClass, Meta } from '@/components/liondor'
-import PageLayout from '@/components/Layouts/PageLayout'
-import Container from '@/components/Layouts/container'
+import { BlogPattern1, BlogPattern2, BlogPattern3, BlogPattern4, BlogPattern5, BlogPattern6, BlogPattern7, BlogPattern8, BlogPattern9, Button2, FirstClass } from '@/components/liondor'
+import PageLayoutLiondor from '@/components/Layouts/PageLayoutLiondor'
+import Container from '@/components/liondor/Layouts/container'
 
 export const getServerSideProps = async () => {
-    const res = await fetch(`${process.env.NEXT_PUBLIC_BACKEND_URL}/api/liondor/`)
+    const res = await fetch(`${process.env.NEXT_PUBLIC_API_LIONDOR}`)
     const data = await res.json()
 
     return {
@@ -30,8 +30,6 @@ export default function Home({posts}) {
 
     return (
         <>
-            <Meta />
-
             <section className="cont1">
                 <Container>
                     <h2 className="ttl1 ivy">FIRST CLASS</h2>
@@ -137,5 +135,5 @@ export default function Home({posts}) {
 }
 
 Home.getLayout = function getLayout(page) {
-    return <PageLayout>{page}</PageLayout>
+    return <PageLayoutLiondor>{page}</PageLayoutLiondor>
 }

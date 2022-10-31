@@ -2,8 +2,8 @@ import styles from '@/styles/liondor/components/mypage.module.scss'
 import axios from '@/lib/axios'; // カスタムフック
 import { useCallback, useEffect, useState } from 'react'
 import { useForm } from 'react-hook-form';
-import Container from '@/components/Layouts/container';
-import PageLayout from '@/components/Layouts/PageLayout';
+import Container from '@/components/liondor/Layouts/container';
+import PageLayoutLiondor from '@/components/Layouts/PageLayoutLiondor';
 import { MypageSide, PageTitle } from '@/components/liondor';
 import { zip } from '@/lib/liondor/constants'
 import thumb from '@/images/liondor/common/mypage.png'
@@ -12,7 +12,7 @@ import { useRouter } from 'next/router';
 
 // SSR
 export const getServerSideProps = async ({params}) => {
-  const res = await fetch(`${process.env.NEXT_PUBLIC_BACKEND_URL}/api/liondor/mypage/edit/${params.profile_id}`)
+  const res = await fetch(`${process.env.NEXT_PUBLIC_API_LIONDOR}/mypage/edit/${params.profile_id}`)
   const data = await res.json()
 
   return {
@@ -268,5 +268,5 @@ const MypageEdit = ({posts}) => {
 export default MypageEdit;
 
 MypageEdit.getLayout = function getLayout(page) {
-  return <PageLayout>{page}</PageLayout>
+  return <PageLayoutLiondor>{page}</PageLayoutLiondor>
 }

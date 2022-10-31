@@ -1,7 +1,7 @@
 import styles from '@/styles/liondor/components/search.module.scss'
-import PageLayout from "@/components/Layouts/PageLayout";
+import PageLayoutLiondor from "@/components/Layouts/PageLayoutLiondor";
 import { ArticleColumn, PageTitle, Sidebar } from '@/components/liondor';
-import Container from '@/components/Layouts/container';
+import Container from '@/components/liondor/Layouts/container';
 import { useRouter } from 'next/router';
 
 // SSR
@@ -12,7 +12,7 @@ export const getServerSideProps = async ({query}) => {
   } else {
     page = "1"
   }
-  const res = await fetch(`${process.env.NEXT_PUBLIC_BACKEND_URL}/api/liondor/search/?s=${query.s}&page=${page}`)
+  const res = await fetch(`${process.env.NEXT_PUBLIC_API_LIONDOR}/search/?s=${query.s}&page=${page}`)
   const data = await res.json()
 
   return {
@@ -70,5 +70,5 @@ const Search = ({posts}) => {
 export default Search;
 
 Search.getLayout = function getLayout(page) {
-  return <PageLayout>{page}</PageLayout>
+  return <PageLayoutLiondor>{page}</PageLayoutLiondor>
 }

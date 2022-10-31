@@ -1,5 +1,5 @@
-import Container from '@/components/Layouts/container'
-import PageLayout from '@/components/Layouts/PageLayout'
+import Container from '@/components/liondor/Layouts/container'
+import PageLayoutLiondor from '@/components/Layouts/PageLayoutLiondor'
 import { PageTitle } from '@/components/liondor'
 import { useAuth } from '@/hooks/auth'
 import axios from '@/lib/axios'
@@ -10,7 +10,7 @@ import { useEffect, useState } from 'react'
 
 // SSR
 export const getServerSideProps = async () => {
-  const res = await fetch(`${process.env.NEXT_PUBLIC_BACKEND_URL}/api/liondor/admin/pickup`)
+  const res = await fetch(`${process.env.NEXT_PUBLIC_API_LIONDOR}/admin/pickup`)
   const data = await res.json()
 
   return {
@@ -88,5 +88,5 @@ const AdminPickup = ({posts}) => {
 export default AdminPickup;
 
 AdminPickup.getLayout = function getLayout(page) {
-  return <PageLayout>{page}</PageLayout>
+  return <PageLayoutLiondor>{page}</PageLayoutLiondor>
 }

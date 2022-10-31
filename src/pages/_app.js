@@ -1,5 +1,5 @@
 import 'tailwindcss/tailwind.css'
-import '@/styles/liondor/globals.scss'
+import '@/styles/globals.scss'
 
 // Font Awesome の設定
 import '@fortawesome/fontawesome-svg-core/styles.css'

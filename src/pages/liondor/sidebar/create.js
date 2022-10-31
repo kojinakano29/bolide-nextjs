@@ -3,10 +3,10 @@ import axios from '@/lib/axios'; // カスタムフック
 import { useCallback, useEffect, useState } from 'react'
 import { PageTitle, SidebarEditor } from '@/components/liondor';
 import { useForm } from 'react-hook-form';
-import Container from '@/components/Layouts/container';
+import Container from '@/components/liondor/Layouts/container';
 import { useRouter } from 'next/router';
 import { useAuth } from '@/hooks/auth';
-import PageLayout from '@/components/Layouts/PageLayout';
+import PageLayoutLiondor from '@/components/Layouts/PageLayoutLiondor';
 
 const CreateSidebar = () => {
   const csrf = () => axios.get('/sanctum/csrf-cookie')
@@ -134,5 +134,5 @@ const CreateSidebar = () => {
 export default CreateSidebar;
 
 CreateSidebar.getLayout = function getLayout(page) {
-  return <PageLayout>{page}</PageLayout>
+  return <PageLayoutLiondor>{page}</PageLayoutLiondor>
 }

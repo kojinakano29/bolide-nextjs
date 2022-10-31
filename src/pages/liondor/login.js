@@ -5,8 +5,8 @@ import Link from 'next/link'
 import { useAuth } from '@/hooks/auth'
 import { useEffect, useState } from 'react'
 import { useRouter } from 'next/router'
-import Container from '@/components/Layouts/container'
-import PageLayout from '@/components/Layouts/PageLayout'
+import Container from '@/components/liondor/Layouts/container'
+import PageLayoutLiondor from '@/components/Layouts/PageLayoutLiondor'
 import { PageTitle } from '@/components/liondor'
 
 const Login = () => {
@@ -110,5 +110,5 @@ const Login = () => {
 export default Login
 
 Login.getLayout = function getLayout(page) {
-    return <PageLayout>{page}</PageLayout>
+    return <PageLayoutLiondor>{page}</PageLayoutLiondor>
 }

@@ -3,13 +3,13 @@ import axios from '@/lib/axios'; // カスタムフック
 import { useCallback, useEffect, useState } from 'react'
 import { PageTitle, PostEditor } from '@/components/liondor';
 import { useForm } from 'react-hook-form';
-import Container from '@/components/Layouts/container';
+import Container from '@/components/liondor/Layouts/container';
 import { useAuth } from '@/hooks/auth';
-import PageLayout from '@/components/Layouts/PageLayout';
+import PageLayoutLiondor from '@/components/Layouts/PageLayoutLiondor';
 
 // SSR
 export const getServerSideProps = async ({params}) => {
-  const res = await fetch(`${process.env.NEXT_PUBLIC_BACKEND_URL}/api/liondor/post/edit/${params.id}`)
+  const res = await fetch(`${process.env.NEXT_PUBLIC_API_LIONDOR}/post/edit/${params.id}`)
   const data = await res.json()
 
   return {
@@ -253,5 +253,5 @@ const PostEdit = ({posts}) => {
 export default PostEdit;
 
 PostEdit.getLayout = function getLayout(page) {
-  return <PageLayout>{page}</PageLayout>
+  return <PageLayoutLiondor>{page}</PageLayoutLiondor>
 }

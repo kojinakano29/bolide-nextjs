@@ -1,0 +1,47 @@
+@import '../../variables.scss';
+
+.flex {
+  @include flex(center, right);
+  @include gap(10px);
+}
+
+.btn1 {
+  @include width(40px);
+  @include height(40px);
+  border-radius: 50%;
+  @include flex(center, center);
+  background-color: $g2;
+}
+
+.btn2 {
+  @include flex(center, center);
+  @include gap(8px);
+  @include p(11px 14px);
+  border-radius: 20px;
+  background-color: $g2;
+
+  @include media1(sp) {
+    border-radius: 50%;
+    padding: 0;
+    width: 40px;
+    height: 40px;
+  }
+
+  &.rev {
+    background-color: $b3;
+
+    * {
+      color: $w1;
+    }
+  }
+
+  svg {
+    transform: scale(1.2);
+  }
+
+  span {
+    font-size: var(--fs14-12);
+    font-weight: bold;
+    letter-spacing: 0;
+  }
+}

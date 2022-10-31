@@ -1,14 +1,14 @@
 import styles from '@/styles/liondor/components/form.module.scss'
 import { ConfirmPresent, InputPresent, PageTitle, SnsFollow } from "@/components/liondor";
 import { FormProvider, useForm } from 'react-hook-form';
-import Container from "@/components/Layouts/container";
-import PageLayout from "@/components/Layouts/PageLayout";
+import Container from "@/components/liondor/Layouts/container";
+import PageLayoutLiondor from "@/components/Layouts/PageLayoutLiondor";
 import { useRouter } from 'next/router';
 import { useAuth } from '@/hooks/auth';
 
 // SSR
 export const getServerSideProps = async ({params}) => {
-  const res = await fetch(`${process.env.NEXT_PUBLIC_BACKEND_URL}/api/liondor/present/${params.id}`)
+  const res = await fetch(`${process.env.NEXT_PUBLIC_API_LIONDOR}/present/${params.id}`)
   const data = await res.json()
 
   return {
@@ -78,5 +78,5 @@ const PresentForm = (posts) => {
 export default PresentForm;
 
 PresentForm.getLayout = function getLayout(page) {
-  return <PageLayout>{page}</PageLayout>
+  return <PageLayoutLiondor>{page}</PageLayoutLiondor>
 }

@@ -1,7 +1,7 @@
 import styles from '@/styles/liondor/components/sitemap.module.scss'
 import { PageTitle } from "@/components/liondor";
-import Container from "@/components/Layouts/container";
-import PageLayout from "@/components/Layouts/PageLayout";
+import Container from "@/components/liondor/Layouts/container";
+import PageLayoutLiondor from "@/components/Layouts/PageLayoutLiondor";
 import Link from 'next/link';
 import { sitemap } from '@/lib/liondor/constants';
 
@@ -68,5 +68,5 @@ const Sitemap = () => {
 export default Sitemap;
 
 Sitemap.getLayout = function getLayout(page) {
-  return <PageLayout>{page}</PageLayout>
+  return <PageLayoutLiondor>{page}</PageLayoutLiondor>
 }

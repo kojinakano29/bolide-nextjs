@@ -1,7 +1,7 @@
 import styles from '@/styles/liondor/components/copyPrivacy.module.scss'
 import { PageTitle } from '@/components/liondor';
-import PageLayout from '@/components/Layouts/PageLayout'
-import Container from '@/components/Layouts/container'
+import PageLayoutLiondor from '@/components/Layouts/PageLayoutLiondor'
+import Container from '@/components/liondor/Layouts/container'
 
 const Copyright = () => {
   return (
@@ -41,5 +41,5 @@ const Copyright = () => {
 export default Copyright;
 
 Copyright.getLayout = function getLayout(page) {
-  return <PageLayout>{page}</PageLayout>
+  return <PageLayoutLiondor>{page}</PageLayoutLiondor>
 }
