@@ -1,0 +1,33 @@
+@import '../../variables.scss';
+
+.btn01 {
+  @include flex(center, center);
+  @include gap(16px);
+  @include fs(20px, 15px, 18px);
+  @include p(24px 60px, 16px 40px);
+  margin: auto;
+  @include mt(40px, 32px);
+  font-weight: 500;
+  width: fit-content;
+  border-radius: 50px;
+  color: $w1;
+  background: $b4;
+  box-shadow: 4px 4px $b3;
+  transition: .3s ease-out;
+
+  &.right {
+    @include mr(0, 0, auto);
+  }
+
+  .logo {
+      @include media1(sp) {
+          width: 20px;
+          height: 20px;
+      }
+  }
+
+  &:hover {
+    box-shadow: 0 0 $b3;
+    transform: translate(4px, 4px);
+  }
+}

@@ -5,6 +5,7 @@
   /* タイポグラフィ（フォントサイズ） */
   --fs56-38: clamp(2.375rem, 1.0929rem + 2.6746vw, 3.5rem); /* 38-56 */
   --fs40-24: clamp(1.5rem, 0.3603rem + 2.3774vw, 2.5rem); /* 24-40 */
+  --fs32-24: clamp(1.5rem, 1.1674rem + 0.6938vw, 2rem); /* 24-32 */
   --fs32-18: clamp(1.125rem, 0.1278rem + 2.0802vw, 2rem); /* 18-32 */
   --fs24-22: clamp(1.375rem, 1.2325rem + 0.2972vw, 1.5rem); /* 22-24 */
   --fs24-18: clamp(1.125rem, 0.6976rem + 0.8915vw, 1.5rem); /* 18-24 */
@@ -277,6 +278,22 @@ span > img {
 
     &:hover {
         opacity: .5;
+    }
+  }
+
+  .ttl1 {
+    font-size: var(--fs32-24);
+    font-weight: 500;
+    letter-spacing: 0;
+    @include mb(16px);
+  }
+
+  .popularBox {
+    width: 100vw;
+    max-width: unset;
+
+    .swiper-slide {
+      @include width(320px !important, calc(240px - 11px) !important, 240px !important);
     }
   }
 }
