@@ -9,6 +9,7 @@
     "start": "next start"
   },
   "dependencies": {
+    "@egjs/react-grid": "^1.12.1",
     "@fortawesome/fontawesome-svg-core": "^6.2.0",
     "@fortawesome/free-brands-svg-icons": "^6.2.0",
     "@fortawesome/free-regular-svg-icons": "^6.2.0",
@@ -18,11 +19,14 @@
     "axios": "^0.21.1",
     "date-fns": "^2.29.3",
     "draft-js": "^0.11.7",
+    "magic-grid": "^3.2.4",
+    "magic-grid-react": "^0.3.1",
     "next": "^12.0.4",
     "react": "^17.0.2",
     "react-dom": "^17.0.2",
     "react-draft-wysiwyg": "^1.15.0",
     "react-hook-form": "^7.36.1",
+    "react-use": "^17.4.0",
     "sass": "^1.54.9",
     "swiper": "^8.4.2",
     "swr": "^1.2.2"

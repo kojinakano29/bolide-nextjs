@@ -17,3 +17,19 @@
 .trend {
   @include pt(120px, 120px, 180px);
 }
+
+.popular {
+  @include pt(64px, 64px, 48px);
+
+  .popularWrap {
+    overflow: hidden;
+  }
+}
+
+.pickup {
+  @include pt(48px);
+}
+
+.storeList {
+  @include pt(72px, 64px, 48px);
+}
