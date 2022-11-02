@@ -281,6 +281,14 @@ span > img {
     }
   }
 
+  .loader-icon {
+    text-align: center;
+
+    svg {
+      transform: scale(3);
+    }
+  }
+
   .ttl1 {
     font-size: var(--fs32-24);
     font-weight: 500;

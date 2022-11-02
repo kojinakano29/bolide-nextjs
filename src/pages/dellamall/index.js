@@ -1,4 +1,4 @@
-import { Btn01, MagicGridComponent, PopularStore, StoreCard, Trend } from '@/components/dellamall';
+import { Btn01, Loader, MasonryGridComponent, PopularStore, Trend } from '@/components/dellamall';
 import Container from '@/components/dellamall/Layouts/container';
 import PageLayoutDellamall from '@/components/Layouts/PageLayoutDellamall';
 import styles from '@/styles/dellamall/components/home.module.scss'
@@ -6,10 +6,9 @@ import fv_text from '@/images/dellamall/top/fv_text.svg'
 import fv_text__sp from '@/images/dellamall/top/fv_text__sp.svg'
 import Image from 'next/image';
 import { faTrophy, faSquarePlus } from '@fortawesome/free-solid-svg-icons'
-import { createContext, useCallback, useState } from 'react';
+import { createContext, useEffect, useRef } from 'react';
 import axios from '@/lib/axios';
 import useSWRInfinite from "swr/infinite"
-import MagicGrid from 'magic-grid-react'
 
 export const StoreData = createContext()
 
@@ -25,15 +24,14 @@ export const getServerSideProps = async () => {
 }
 
 const Home = ({posts}) => {
-  // console.log(posts)
-
   const csrf = () => axios.get('/sanctum/csrf-cookie')
 
-  const [disabled, setDisabled] = useState(false)
+  /* 二度押し監視 */
+  const processing = useRef(false)
 
   const popular = posts.popular
-  const shop = posts.shop
 
+  /* もっと見る useSWRInfinite */
   const limit = 28;
   const getKey = (pageIndex, previousPageData) => {
     csrf()
@@ -51,19 +49,21 @@ const Home = ({posts}) => {
     setSize,
   } = useSWRInfinite(getKey, fetcher)
 
-  console.log(data)
-
   const isEmpty = data?.[0]?.length === 0
   const isReachingEnd = isEmpty || (data?.[data?.length - 1]?.length < limit)
   if (error) return "failed"
-  if (!data) return "loading"
-  const pics = data.flat()
+  const pics = data?.flat()
 
-  const handleClickMore = () => {
-    setDisabled(true)
-    setSize(size + 1)
-    setDisabled(false)
+  const handleClickMore = async () => {
+    if (processing.current) return
+    processing.current = true
+    await setSize(size + 1)
   }
+
+  useEffect(() => {
+    processing.current = false
+  }, [handleClickMore])
+  /* もっと見る useSWRInfinite */
 
   return (
     <>
@@ -116,12 +116,12 @@ const Home = ({posts}) => {
       <section className={styles.storeList}>
         <Container>
           <h2 className="ttl1">ストア一覧</h2>
-        </Container>
-        <Container big>
-          <MagicGridComponent item={pics} />
-          {!isReachingEnd ?
+          <MasonryGridComponent item={pics} />
+          {!data ? <Loader /> : null}
+          {processing.current ? <Loader /> : null}
+          {data && !isReachingEnd && !processing.current ?
           <div className="btnCover" onClick={handleClickMore}>
-            <Btn01 fa={faSquarePlus} txt="さらに見る" state={disabled} />
+            <Btn01 fa={faSquarePlus} txt="さらに見る" />
           </div>
           : null}
         </Container>

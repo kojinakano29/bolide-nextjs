@@ -1,7 +1,7 @@
 @import '../../variables.scss';
 
 .cardBox {
-  @include width(302px, 220px, calc(100% / 2 - 30px));
+  @include width(295px, 220px, calc(100% / 2 - 15px));
 
   &.swiper {
     width: unset;
@@ -156,6 +156,7 @@
     border-radius: 17px;
     border: 1px solid $w1;
     margin: auto;
+    text-align: center;
   }
 
   .type2 {

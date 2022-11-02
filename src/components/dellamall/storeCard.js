@@ -64,7 +64,7 @@ const StoreCard = ({item, swiper = false, none = false}) => {
                     {item.image_permission !== 0 && !item.official_user_id ?
                         <div className={`${styles.btnArea} ${styles.btnArea2}`}>
                             <Link href="">
-                                <a className={styles.type1}>公式ショップ申請はこちら</a>
+                                <a className={styles.type1}>公式ショップ申請は<br className="sp" />こちら</a>
                             </Link>
                         </div>
                     : null}
