@@ -16,3 +16,9 @@
   composes: default;
   @include max-width(900px, 720px, 100%);
 }
+
+.big {
+  composes: default;
+  @include max-width(1330px, 750px, 100%);
+  @include p(0, 0, 0 5px);
+}

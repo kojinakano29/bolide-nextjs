@@ -1,11 +1,15 @@
-import { Btn01, PopularStore, Trend } from '@/components/dellamall';
+import { Btn01, MagicGridComponent, PopularStore, StoreCard, Trend } from '@/components/dellamall';
 import Container from '@/components/dellamall/Layouts/container';
 import PageLayoutDellamall from '@/components/Layouts/PageLayoutDellamall';
 import styles from '@/styles/dellamall/components/home.module.scss'
 import fv_text from '@/images/dellamall/top/fv_text.svg'
 import fv_text__sp from '@/images/dellamall/top/fv_text__sp.svg'
 import Image from 'next/image';
-import { createContext } from 'react';
+import { faTrophy, faSquarePlus } from '@fortawesome/free-solid-svg-icons'
+import { createContext, useCallback, useState } from 'react';
+import axios from '@/lib/axios';
+import useSWRInfinite from "swr/infinite"
+import MagicGrid from 'magic-grid-react'
 
 export const StoreData = createContext()
 
@@ -21,9 +25,45 @@ export const getServerSideProps = async () => {
 }
 
 const Home = ({posts}) => {
-  console.log(posts)
+  // console.log(posts)
+
+  const csrf = () => axios.get('/sanctum/csrf-cookie')
+
+  const [disabled, setDisabled] = useState(false)
 
   const popular = posts.popular
+  const shop = posts.shop
+
+  const limit = 28;
+  const getKey = (pageIndex, previousPageData) => {
+    csrf()
+    if (previousPageData && !previousPageData.length) return null
+    if (pageIndex === 0) return '/api/dellamall/more/1'
+    return `/api/dellamall/more/${pageIndex+1}?limit=${limit}`
+  }
+
+  const fetcher = url => axios.post(url).then(res => res.data.add_page)
+
+  const {
+    data,
+    error,
+    size,
+    setSize,
+  } = useSWRInfinite(getKey, fetcher)
+
+  console.log(data)
+
+  const isEmpty = data?.[0]?.length === 0
+  const isReachingEnd = isEmpty || (data?.[data?.length - 1]?.length < limit)
+  if (error) return "failed"
+  if (!data) return "loading"
+  const pics = data.flat()
+
+  const handleClickMore = () => {
+    setDisabled(true)
+    setSize(size + 1)
+    setDisabled(false)
+  }
 
   return (
     <>
@@ -63,7 +103,7 @@ const Home = ({posts}) => {
           </StoreData.Provider>
         </div>
         <Container>
-          <Btn01 right />
+          <Btn01 fa={faTrophy} txt="ランキングを見る" link="" right />
         </Container>
       </section>
 
@@ -76,6 +116,14 @@ const Home = ({posts}) => {
       <section className={styles.storeList}>
         <Container>
           <h2 className="ttl1">ストア一覧</h2>
+        </Container>
+        <Container big>
+          <MagicGridComponent item={pics} />
+          {!isReachingEnd ?
+          <div className="btnCover" onClick={handleClickMore}>
+            <Btn01 fa={faSquarePlus} txt="さらに見る" state={disabled} />
+          </div>
+          : null}
         </Container>
       </section>
     </>

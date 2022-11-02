@@ -1,5 +1,13 @@
 @import '../../variables.scss';
 
+.cardBox {
+  @include width(302px, 220px, calc(100% / 2 - 30px));
+
+  &.swiper {
+    width: unset;
+  }
+}
+
 .shopImg {
   width: 100%;
   object-fit: cover;
@@ -8,7 +16,7 @@
 
 .name {
   font-weight: $bold;
-  @include fs(20px, 16px, 14px);
+  @include fs(20px, 16px, 12px);
   text-align: center;
   width: 100%;
 }
@@ -16,15 +24,20 @@
 .sub {
   text-align: center;
   font-weight: $bold;
-  @include fs(14px, 12px);
+  @include fs(14px, 12px, 10px);
   color: $g3;
-  @include m(24px 0 110px, 16px 0 32px);
+  @include m(24px 0 110px, 16px 0 32px, 16px 0);
   width: 100%;
 }
 
 .flex {
   @include flex(center);
   width: 100%;
+
+  @include media1(sp) {
+    flex-direction: column;
+    gap: 8px;
+  }
 }
 
 .link {
@@ -83,15 +96,11 @@
 }
 
 .item {
+  position: relative;
   border: 1px solid $g1;
   border-radius: 20px;
-  position: relative;
   cursor: pointer;
   overflow: hidden;
-
-  &.swiper {
-    width: unset;
-  }
 
   .card {
     width: 100%;
@@ -102,6 +111,7 @@
     @include p(20px, 8px);
     @include flex(center, flex-end);
     flex-direction: column;
+    border-radius: 20px;
     transition: .2s ease-out;
 
     &.onMouse {
@@ -129,19 +139,20 @@
 
   * {
     color: $g3;
-    @include fs(13px, 11px);
+    @include fs(13px, 11px, 10px);
     font-weight: bold;
     letter-spacing: 0;
   }
 
   p {
     @include mb(6px);
+    text-align: center;
   }
 
   .type1 {
     display: block;
     width: fit-content;
-    @include p(6px 16px);
+    @include p(6px 16px, 6px 16px, 4px 12px);
     border-radius: 17px;
     border: 1px solid $w1;
     margin: auto;
@@ -158,6 +169,59 @@
     svg {
       @include width(20px, 16px);
       @include height(20px, 16px);
+    }
+  }
+}
+
+.title {
+  @include mt(16px, 8px);
+  @include fs(16px, 14px);
+  font-weight: 500;
+  letter-spacing: 0;
+}
+
+.swiper {
+  @include media1(sp) {
+    .name {
+      font-size: 16px;
+    }
+
+    .sub {
+      margin: 40px 0 32px !important;
+    }
+
+    .flex {
+      @include flex(center);
+      width: 100%;
+    }
+
+    .link {
+      @include flex(center);
+      @include gap(6px);
+
+      svg {
+          width: 16px;
+      }
+
+      span {
+        font-size: 14px;
+      }
+    }
+
+    .flex2 {
+      gap: 8px;
+
+      .box {
+        width: 24px;
+      }
+    }
+
+    .btnArea {
+      margin: 40px 0 32px !important;
+
+      * {
+        font-size: 13px
+      }
     }
   }
 }

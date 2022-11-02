@@ -296,6 +296,11 @@ span > img {
       @include width(320px !important, calc(240px - 11px) !important, 240px !important);
     }
   }
+
+  .btnCover {
+    width: fit-content;
+    margin: auto;
+  }
 }
 /* デラモール共通部分 */
 

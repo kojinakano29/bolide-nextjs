@@ -19,7 +19,7 @@ const PopularStore = () => {
         >
           {popular.map((item, index) => (
             <SwiperSlide key={index}>
-              <StoreCard item={item} swiper />
+              <StoreCard item={item} swiper none />
             </SwiperSlide>
           ))}
         </Swiper>
