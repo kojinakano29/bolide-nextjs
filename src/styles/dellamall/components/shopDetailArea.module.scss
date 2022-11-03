@@ -1,0 +1,225 @@
+@import '../../variables.scss';
+
+.cont1__flex {
+  @include flex(stretch);
+
+  @include media1(sp) {
+      display: block;
+  }
+}
+
+.cont1__flexLeft,
+.cont1__flexRight {
+    @include width(calc(50% - 56px * 1/2), calc(50% - 40px * 1/2), 100%);
+}
+
+.cont1__flexLeft {
+  @include mb(0, 0, 16px);
+
+  .cont1__imgBox {
+    border: 1px solid $g1;
+    border-radius: 20px;
+    overflow: hidden;
+
+    img {
+      object-fit: cover;
+      object-position: top;
+    }
+
+    .imgNone {
+      @include height(90vh, 80vh, calc(140vw - 20px * 2));
+      background-color: $g2;
+    }
+  }
+}
+
+.cont1__flexRight {
+  .cont1__flexRight__icon {
+    @include flex(center);
+    @include mb(32px, 24px);
+  }
+
+  .cont1__flexRight__iconLeft,
+  .cont1__flexRight__iconRight {
+    @include flex(center);
+
+    button {
+      @include icon(40px, 32px);
+    }
+  }
+
+  .cont1__flexRight__iconLeft {
+    @include gap(40px, 16px);
+
+    li {
+      @include flex(center, center);
+      @include gap(4px);
+    }
+
+    button {
+      &:hover {
+        background-color: $g2;
+      }
+    }
+
+    .num {
+      @include fs(20px, 18px, 18px);
+      font-weight: $semibold;
+      color: $b3;
+    }
+  }
+
+  .cont1__flexRight__iconRight {
+    @include gap(16px);
+
+    button {
+      background-color: $g2;
+    }
+  }
+}
+
+.cont1__flexRight__topUrl {
+  a {
+    @include fs(14px, 12px);
+    font-weight: $bold;
+    letter-spacing: 0;
+    color: $b3;
+    text-decoration: underline;
+    @include mb(24px, 16px);
+
+    &:hover {
+      text-decoration: none;
+    }
+  }
+}
+
+.cont1__flexRight__topName {
+  @include fs(40px, 30px);
+  font-weight: $bold;
+  color: $b3;
+  letter-spacing: 0;
+  @include mb(10px);
+}
+
+.cont1__flexRight__topWords {
+  @include flex(flex-start, left);
+  gap: 8px;
+  @include mb(32px, 24px);
+}
+
+.keyWord__item {
+  @include trendIcon;
+}
+
+.cont1__flexRight__middleText {
+  @include fs(16px, 14px);
+  font-weight: $medium;
+  @include mb(28px, 24px);
+}
+
+.cont1__flexRight__middleComment {
+  @include mb(48px, 40px, 32px);
+
+  .total {
+    @include fs(20px, 18px);
+    font-weight: $medium;
+    @include flex(center, left);
+
+    button {
+      @include icon(40px, 32px);
+      @include ml(12px);
+
+      &:hover {
+        background-color: $g2;
+      }
+    }
+  }
+
+  ul {
+    @include mb(40px, 32px);
+    overflow: hidden;
+    transition: .5s ease-out;
+
+    li {
+      @include flex(center, left);
+      @include gap(16px, 12px);
+      @include mt(16px, 12px);
+
+      .user__img {
+        @include userIcon(40px, 40px, 32px);
+      }
+
+      .user__comment {
+        @include width(calc(100% - (40px + 16px)), calc(100% - (40px + 12px)), calc(100% - (32px + 12px)));
+
+        .name,
+        .content {
+          @include fs(12px, 10px);
+          font-weight: $medium;
+        }
+
+        .name {
+          text-decoration: underline;
+
+          &:hover {
+            text-decoration: none;
+          }
+        }
+      }
+    }
+  }
+
+  .comment__input {
+    @include flex(center, left);
+    @include gap(16px, 12px);
+
+    .user__img {
+      @include userIcon(56px, 56px, 40px);
+    }
+
+    input {
+      @include width(calc(100% - (56px + 16px)), calc(100% - (56px + 12px)), calc(100% - (40px + 12px)));
+      @include height(56px);
+      @include p(0 16px);
+      @include fs(14px, 12px);
+      border: 1px solid $g4;
+      border-radius: 20px;
+
+      &::placeholder {
+        color: $g3;
+      }
+    }
+  }
+}
+
+.cont1__flexRight__bottom {
+  background: $g2;
+  border-radius: 20px;
+  text-align: center;
+  @include p(16px 40px 24px, 16px 32px, 16px);
+
+  p {
+    @include fs(16px, 14px);
+    font-weight: $medium;
+    @include mb(16px, 12px);
+  }
+
+  ul {
+    @include flex(center, center);
+    @include gap(16px, 16px, 4px);
+
+    li {
+      @include width(36px, 32px);
+      @include height(36px, 32px);
+    }
+
+    .salon {
+      @include p(6px 10px);
+      background: $b3;
+      color: $w1;
+      @include fs(12px, 10px);
+      font-weight: $bold;
+      border-radius: 20px;
+    }
+  }
+}

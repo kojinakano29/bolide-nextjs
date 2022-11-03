@@ -1,1 +1,16 @@
 @import '../../variables.scss';
+
+.back {
+  @include icon(40px, 32px);
+  @include mb(12px);
+
+  &:hover {
+    background-color: $g2;
+  }
+}
+
+.connectionShop {
+  @include mt(80px, 64px);
+  @include p(64px 0);
+  background-color: $g6;
+}

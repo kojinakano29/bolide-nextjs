@@ -14,15 +14,65 @@ const StoreCard = ({item, swiper = false, none = false}) => {
 
     return (
         <div className={`${styles.cardBox} ${swiper ? styles.swiper : ""}`}>
-            <div className={styles.item}>
-                <img className={styles.shopImg} src={item.image_permission === 0 ? dummyDefault.src : dummyShop.src} alt="" />
-                {item.image_permission === 0 ?
-                    <div className={`${styles.card} ${styles.default}`}>
+            <Link href={`/dellamall/shop/${item.id}`}>
+                <a className={styles.item}>
+                    <img className={styles.shopImg} src={item.image_permission === 0 ? dummyDefault.src : dummyShop.src} alt="" />
+                    {item.image_permission === 0 ?
+                        <div className={`${styles.card} ${styles.default}`}>
+                            <p className={styles.name}>{item.name}</p>
+                            <p className={styles.sub}>
+                                ショップオーナーHPキャプチャ画像
+                                <br/>無料掲載はこちら
+                            </p>
+                            <div className={styles.flex}>
+                                <p className={`${styles.link} en`}>
+                                    <FontAwesomeIcon icon={faLink} />
+                                    <span>{url}</span>
+                                </p>
+                                <div className={styles.flex2}>
+                                    <div className={styles.box}>
+                                        <button className={styles.icon}>
+                                            <FontAwesomeIcon icon={faComment} />
+                                        </button>
+                                        <p className={`${styles.counter} en`}>{item.d_comments_count}</p>
+                                    </div>
+                                    <div className={styles.box}>
+                                        <button className={styles.icon}>
+                                            <FontAwesomeIcon icon={faHeart} />
+                                        </button>
+                                        <p className={`${styles.counter} en`}>{item.d_goods_count}</p>
+                                    </div>
+                                    <div className={styles.box}>
+                                        <button className={styles.icon}>
+                                            <FontAwesomeIcon icon={faBookmark} />
+                                        </button>
+                                        <p className={`${styles.counter} en`}>{item.d_shop_bookmarks_count}</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    : null}
+                    <div className={`${styles.card} ${styles.onMouse}`}>
                         <p className={styles.name}>{item.name}</p>
-                        <p className={styles.sub}>
-                            ショップオーナーHPキャプチャ画像
-                            <br/>無料掲載はこちら
-                        </p>
+                        {item.image_permission === 0 ?
+                            <div className={`${styles.btnArea} ${styles.btnArea1}`}>
+                                <p>ショップオーナーHP<br className="sp" />キャプチャ画像</p>
+                                <p className={styles.type1}>無料掲載はこちら</p>
+                            </div>
+                        : null}
+                        {item.image_permission !== 0 && !item.official_user_id ?
+                            <div className={`${styles.btnArea} ${styles.btnArea2}`}>
+                                <p className={styles.type1}>公式ショップ申請は<br className="sp" />こちら</p>
+                            </div>
+                        : null}
+                        {item.official_user_id ?
+                            <div className={`${styles.btnArea} ${styles.btnArea3}`}>
+                                <p className={styles.type2}>
+                                    <FontAwesomeIcon icon={faCircleCheck} />
+                                    公式ページ
+                                </p>
+                            </div>
+                        : null}
                         <div className={styles.flex}>
                             <p className={`${styles.link} en`}>
                                 <FontAwesomeIcon icon={faLink} />
@@ -50,62 +100,8 @@ const StoreCard = ({item, swiper = false, none = false}) => {
                             </div>
                         </div>
                     </div>
-                : null}
-                <div className={`${styles.card} ${styles.onMouse}`}>
-                    <p className={styles.name}>{item.name}</p>
-                    {item.image_permission === 0 ?
-                        <div className={`${styles.btnArea} ${styles.btnArea1}`}>
-                            <p>ショップオーナーHP<br className="sp" />キャプチャ画像</p>
-                            <Link href="">
-                                <a className={styles.type1}>無料掲載はこちら</a>
-                            </Link>
-                        </div>
-                    : null}
-                    {item.image_permission !== 0 && !item.official_user_id ?
-                        <div className={`${styles.btnArea} ${styles.btnArea2}`}>
-                            <Link href="">
-                                <a className={styles.type1}>公式ショップ申請は<br className="sp" />こちら</a>
-                            </Link>
-                        </div>
-                    : null}
-                    {item.official_user_id ?
-                        <div className={`${styles.btnArea} ${styles.btnArea3}`}>
-                            <Link href="">
-                                <a className={styles.type2}>
-                                    <FontAwesomeIcon icon={faCircleCheck} />
-                                    公式ページ
-                                </a>
-                            </Link>
-                        </div>
-                    : null}
-                    <div className={styles.flex}>
-                        <p className={`${styles.link} en`}>
-                            <FontAwesomeIcon icon={faLink} />
-                            <span>{url}</span>
-                        </p>
-                        <div className={styles.flex2}>
-                            <div className={styles.box}>
-                                <button className={styles.icon}>
-                                    <FontAwesomeIcon icon={faComment} />
-                                </button>
-                                <p className={`${styles.counter} en`}>{item.d_comments_count}</p>
-                            </div>
-                            <div className={styles.box}>
-                                <button className={styles.icon}>
-                                    <FontAwesomeIcon icon={faHeart} />
-                                </button>
-                                <p className={`${styles.counter} en`}>{item.d_goods_count}</p>
-                            </div>
-                            <div className={styles.box}>
-                                <button className={styles.icon}>
-                                    <FontAwesomeIcon icon={faBookmark} />
-                                </button>
-                                <p className={`${styles.counter} en`}>{item.d_shop_bookmarks_count}</p>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
+                </a>
+            </Link>
             {none ?
                 null :
                 <p className={styles.title}>{item.name}</p>
