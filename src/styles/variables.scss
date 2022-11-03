@@ -17,6 +17,7 @@ $g2: #F2F2F2;
 $g3: #CCC;
 $g4: #555;
 $g5: #707070;
+$g6: #F7F7F7;
 $red1: #FF0000;
 $rgba1: rgba(0, 0, 0, .5);
 
@@ -255,3 +256,37 @@ $breakpoints: (
   @include pb($pc2, $sp2);
 }
 /*-------------------------     mixin5    -------------------------*/
+
+/*-------------------------     共通部分    -------------------------*/
+@mixin icon($pc:0, $tab:$pc, $sp:$tab) {
+  @include width($pc, $tab, $sp);
+  @include height($pc, $tab, $sp);
+  border-radius: 50%;
+  transition: .2s ease-out;
+}
+
+@mixin userIcon($pc:0, $tab:$pc, $sp:$tab) {
+  @include width($pc, $tab, $sp);
+  @include height($pc, $tab, $sp);
+  border-radius: 50%;
+  overflow: hidden;
+
+  img {
+    object-fit: cover;
+    object-position: center;
+  }
+}
+
+@mixin trendIcon {
+  @include flex(center, center);
+  border-radius: 17px;
+  border: 1px solid $g3;
+  background: $w1;
+  font-weight: $medium;
+
+  a {
+      @include fs(16px, 14px);
+      @include p(4px 16px);
+  }
+}
+/*-------------------------     共通部分    -------------------------*/
