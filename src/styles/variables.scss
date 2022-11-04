@@ -264,6 +264,19 @@ $breakpoints: (
   @include height($pc, $tab, $sp);
   border-radius: 50%;
   transition: .2s ease-out;
+
+  &.on {
+    background-color: $b3;
+
+    * {
+      color: $w1;
+    }
+
+    &:hover {
+      background-color: $b3;
+      opacity: .5;
+    }
+  }
 }
 
 @mixin userIcon($pc:0, $tab:$pc, $sp:$tab) {
