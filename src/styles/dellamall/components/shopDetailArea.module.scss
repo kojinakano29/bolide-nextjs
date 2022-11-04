@@ -133,7 +133,7 @@
   }
 
   .comment__box {
-    max-height: 300px;
+    max-height: 250px;
     overflow-y: scroll;
     @include mb(40px, 32px);
     @include scrollHidden;
