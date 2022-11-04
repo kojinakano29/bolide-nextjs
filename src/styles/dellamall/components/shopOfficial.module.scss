@@ -1,0 +1,181 @@
+@import '../../variables.scss';
+
+.tabBtnBox {
+  @include flex(center);
+  @include gap(12px);
+
+  .tabBtn {
+    @include width(calc(100% * 1/4 - 9px), calc(100% * 1/4 - 9px), calc(100% * 1/2 - 6px));
+    @include height(70px, 50px, 45px);
+    background: $g2;
+    @include fs(20px, 18px, 16px);
+    font-weight: $bold;
+    border-radius: 35px;
+    transition: .2s ease-out;
+
+    &.current,
+    &:hover {
+        background: $o1;
+        color: $w1;
+    }
+  }
+}
+
+.box {
+  @include mt(48px);
+}
+
+.overview {
+  border-radius: 20px;
+  border: 1px solid $g3;
+  overflow: hidden;
+
+  dl {
+    @include flex(stretch);
+    border-bottom: 1px solid $g3;
+
+    &:last-of-type {
+      border-bottom: none;
+    }
+
+    * {
+      @include p(12px 16px);
+      @include fs(14px, 12px);
+      font-weight: $bold;
+    }
+
+    dt {
+      @include width(158px, 158px, 100%);
+      background: $g2;
+      text-align: center;
+      border-right: 1px solid $g3;
+    }
+
+    dd {
+      @include width(calc(100% - 158px), calc(100% - 158px), 100%);
+    }
+  }
+}
+
+.couponInfo {
+  @include flex(stretch, left);
+  @include gap(24px);
+
+  li {
+    @include p(16px, 8px);
+    @include width(calc(100% * 1/3 - 16px), calc(100% * 1/3 - 16px), calc(50% - 12px));
+    border-radius: 10px;
+    border: 1px solid $g1;
+
+    .txt {
+      @include fs(14px, 12px);
+      @include mb(8px, 4px);
+      font-weight: $bold;
+    }
+
+    .discount {
+      @include mb(16px, 12px);
+      @include fs(14px, 12px);
+      font-weight: $bold;
+      color: $o1;
+    }
+
+    .limit {
+      @include fs(12px, 11px);
+      font-weight: $medium;
+
+      span {
+        color: $g1;
+      }
+    }
+  }
+}
+
+.onlineSalon {
+  @include flex(center);
+  @include gap(56px, 40px, 16px);
+
+  .left {
+    @include width(420px, 300px, 100%);
+  }
+
+  .right {
+    @include width(calc(100% - (420px + 56px)), calc(100% - (300px + 40px)), 100%);
+
+    .ttl {
+      @include fs(24px, 18px);
+      font-weight: $bold;
+      @include mb(16px, 12px);
+    }
+
+    .desc {
+      @include fs(16px, 14px);
+      font-weight: $medium;
+      @include mb(32px, 24px);
+    }
+
+    .btn {
+      @include btn1(240px, 56px, 200px, 40px);
+    }
+  }
+}
+
+.news {
+  li {
+    @include flex();
+    @include p(20px 0);
+    border-bottom: 2px solid $g3;
+
+    .day {
+      @include fs(15px, 13px);
+      @include width(112px, 112px, 90px);
+      font-weight: $semibold;
+    }
+
+    .txt {
+      @include width(calc(100% - 112px), calc(100% - 112px), calc(100% - 90px));
+      @include fs(15px, 13px);
+      font-weight: $bold;
+    }
+  }
+}
+
+.instaArea {
+  @include pt(80px, 64px);
+}
+
+.itemArea {
+  @include pt(80px, 64px);
+
+  .itemList {
+    @include flex(stretch, left);
+    @include gap(20px, 12px, 32px 12px);
+    @include mb(48px, 32px);
+
+    li {
+      @include width(calc(100% * 1/5 - 16px), calc(100% * 1/5 - 12px), calc(50% - 6px));
+
+      .imgBox {
+        border-radius: 20px;
+        overflow: hidden;
+        @include mb(16px);
+      }
+
+      .product {
+        @include fs(14px, 12px);
+        font-weight: $medium;
+        @include mb(16px);
+      }
+
+      .cost {
+        @include fs(18px, 14px);
+        font-weight: $bold;
+
+        span {
+          @include fs(12px, 10px);
+          font-weight: $bold;
+        }
+      }
+    }
+  }
+}

@@ -18,6 +18,7 @@ $g3: #CCC;
 $g4: #555;
 $g5: #707070;
 $g6: #F7F7F7;
+$o1: #FF9933;
 $red1: #FF0000;
 $rgba1: rgba(0, 0, 0, .5);
 
@@ -287,6 +288,42 @@ $breakpoints: (
   a {
       @include fs(16px, 14px);
       @include p(4px 16px);
+  }
+}
+
+@mixin scrollHidden {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+
+  &::-webkit-scrollbar {
+    display: none;
+  }
+}
+
+@mixin btn1($pcw:0, $pch:0, $tabw:$pcw, $tabh:$pch, $spw:$tabw, $sph:$tabh) {
+  @include width($pcw, $tabw, $spw);
+  @include height($pch, $tabh, $sph);
+  @include flex(center, center);
+  @include fs(18px, 16px);
+  border-radius: 28px;
+  background-color: $b3;
+  color: $w1;
+  box-shadow: 8px 8px rgba(0, 0, 0, .16);
+  font-weight: 500;
+  letter-spacing: 0;
+  transition: .2s ease-out;
+
+  &:hover {
+    box-shadow: none;
+    transform: translate(8px, 8px);
+  }
+
+  @include media1(tab1) {
+    box-shadow: 4px 4px rgba(0, 0, 0, .16);
+
+    &:hover {
+      transform: translate(4px, 4px);
+    }
   }
 }
 /*-------------------------     共通部分    -------------------------*/

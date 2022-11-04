@@ -1,4 +1,4 @@
-import { MasonryGridComponent, ShopDetailArea } from '@/components/dellamall'
+import { MasonryGridComponent, ShopDetailArea, ShopOfficial } from '@/components/dellamall'
 import Container from '@/components/dellamall/Layouts/container'
 import PageLayoutDellamall from '@/components/Layouts/PageLayoutDellamall'
 import styles from '@/styles/dellamall/components/shopDetail.module.scss'
@@ -21,6 +21,7 @@ const ShopDetail = ({posts}) => {
   const router = useRouter()
 
   const connection = posts.kanren
+  const shop = posts.shop
 
   const handleClickBack = () => {
     router.back()
@@ -36,6 +37,12 @@ const ShopDetail = ({posts}) => {
         </Container>
         <Container small>
           <ShopDetailArea data={posts} />
+        </Container>
+      </section>
+
+      <section className={styles.shopOfficial}>
+        <Container small>
+          <ShopOfficial info={shop} />
         </Container>
       </section>
 

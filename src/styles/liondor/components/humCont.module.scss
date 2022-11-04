@@ -12,12 +12,7 @@
   pointer-events: none;
   transition: .5s ease-in;
   overflow: auto;
-  -ms-overflow-style: none;
-  scrollbar-width: none;
-
-  &::-webkit-scrollbar {
-    display: none;
-  }
+  @include scrollHidden;
 
   &.slideIn {
     top: 0;
