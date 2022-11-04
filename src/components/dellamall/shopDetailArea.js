@@ -30,6 +30,7 @@ const ShopDetailArea = ({data, user}) => {
     url: notSet2.src,
   })
   const [goodState, setGoodState] = useState(false)
+  const [countGood, setCountGood] = useState(goods.length)
 
   useEffect(() => {
     const filter = goods.filter((item) => {
@@ -41,7 +42,7 @@ const ShopDetailArea = ({data, user}) => {
     } else {
       setGoodState(false)
     }
-  }, [goodState, user])
+  }, [user])
 
   const handleClickGood = async () => {
     if (processing.current) return
@@ -58,6 +59,7 @@ const ShopDetailArea = ({data, user}) => {
       .then((res) => {
         console.log(res)
         setGoodState(false)
+        setCountGood(countGood - 1)
       })
       .catch((e) => {
         console.error(e)
@@ -71,6 +73,7 @@ const ShopDetailArea = ({data, user}) => {
       .then((res) => {
         console.log(res)
         setGoodState(true)
+        setCountGood(countGood + 1)
       })
       .catch((e) => {
         console.error(e)
@@ -157,7 +160,7 @@ const ShopDetailArea = ({data, user}) => {
               <button className={goodState ? styles.on : ""} type="button" onClick={handleClickGood}>
                 <FontAwesomeIcon icon={faHeart} />
               </button>
-              <p className={`${styles.num} en`}>{data.good_count}</p>
+              <p className={`${styles.num} en`}>{countGood}</p>
             </li>
             <li>
               <button type="button">
