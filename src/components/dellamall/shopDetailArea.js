@@ -2,28 +2,58 @@ import styles from '@/styles/dellamall/components/shopDetailArea.module.scss'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faComment, faHeart, faBookmark, faReply, faFlag, faChevronDown } from '@fortawesome/free-solid-svg-icons'
 import dummy from '@/images/dellamall/shopDetail/siteImg.png'
-import dummy2 from '@/images/dellamall/shopDetail/user-after.svg'
-import dummy3 from '@/images/dellamall/shopDetail/user.svg'
+import notSet from '@/images/dellamall/shopDetail/user-after.svg'
+import notSet2 from '@/images/dellamall/shopDetail/user.svg'
 import line from '@/images/dellamall/shopDetail/line.svg'
 import facebook from '@/images/dellamall/shopDetail/facebook.svg'
 import twitter from '@/images/dellamall/shopDetail/twitter.svg'
 import instagram from '@/images/dellamall/shopDetail/instagram.svg'
 import youtube from '@/images/dellamall/shopDetail/youtube.svg'
 import Link from 'next/link'
-import { useRef, useState } from 'react'
+import { useCallback, useRef, useState } from 'react'
+import { useForm } from 'react-hook-form'
+import axios from '@/lib/axios'
+import { useAuth } from '@/hooks/auth'
+import { useRouter } from 'next/router'
 
 const ShopDetailArea = ({data}) => {
-  console.log(data)
+  // console.log(data)
+  const csrf = () => axios.get('/sanctum/csrf-cookie')
 
+  const router = useRouter()
+  const { user } = useAuth()
   const shop = data.shop
   const comments = shop.d_comments
-
   const ref = useRef()
   const [commentOpen, setCommentOpen] = useState(true)
+  const processing = useRef(false)
 
   const handleClickComment = () => {
     setCommentOpen(prevState => !prevState)
   }
+
+  const { register, handleSubmit } = useForm()
+  const onSubmit = useCallback(async (data) => {
+    if (processing.current) return
+    processing.current = true
+    console.log(data)
+
+    await csrf()
+
+    await axios.post(`/api/dellamall/shop/comment_add/${shop.id}`, {
+      user_id: user?.id,
+      content: data.comment,
+    })
+    .then((res) => {
+      console.log(res)
+      router.reload()
+    })
+    .catch((e) => {
+      console.error(e)
+    })
+
+    processing.current = false
+  }, [])
 
   return (
     <div className={styles.cont1__flex}>
@@ -89,34 +119,49 @@ const ShopDetailArea = ({data}) => {
               <FontAwesomeIcon icon={faChevronDown} size="xs" transform={commentOpen ? null : "rotate-270"} />
             </button>
           </p>
-          <ul
-            ref={ref}
-            style={
-              commentOpen ?
-              {maxHeight: ref.current?.scrollHeight}
-              : {maxHeight: "0px"}
-            }
-          >
-            {comments.map((comment) => {
-              <li>
-                <div className={styles.user__img}>
-                  <img src={dummy2.src} alt="ユーザー画像" />
-                </div>
-                <div className={styles.user__comment}>
-                  <Link href="">
-                    <a className={styles.name}>ニックネーム</a>
-                  </Link>
-                  <p className={styles.content}>コメントテキストサンプルテキストサンプル！</p>
-                </div>
-              </li>
-            })}
-          </ul>
-          <div className={styles.comment__input}>
-            <div className={styles.user__img}>
-              <img src={dummy3.src} alt="ユーザー画像" />
-            </div>
-            <input placeholder="コメントを追加する" type="text" />
+          <div className={styles.comment__box}>
+            <ul
+              ref={ref}
+              style={
+                commentOpen ?
+                {maxHeight: ref.current?.scrollHeight}
+                : {maxHeight: "0px"}
+              }
+            >
+              {comments.map((comment) => (
+                <li key={comment.id}>
+                  <div className={styles.user__img}>
+                  <img
+                    src={
+                      comment.user.d_profile.thumbs ?
+                      comment.user.d_profile.thumbs :
+                      notSet.src
+                    }
+                    alt=""
+                  />
+                  </div>
+                  <div className={styles.user__comment}>
+                    <Link href="">
+                      <a className={styles.name}>{comment.user.d_profile.nicename}</a>
+                    </Link>
+                    <p className={styles.content}>{comment.content}</p>
+                  </div>
+                </li>
+              ))}
+            </ul>
           </div>
+          <form onSubmit={handleSubmit(onSubmit)}>
+            <div className={styles.comment__input}>
+              <div className={styles.user__img}>
+                <img src={notSet2.src} alt="ユーザー画像" />
+              </div>
+                <input
+                  type="text"
+                  {...register("comment", {required: true})}
+                  placeholder="コメントを追加する"
+                />
+            </div>
+          </form>
         </div>
         <div className={styles.cont1__flexRight__bottom}>
           <p>公式SNS</p>

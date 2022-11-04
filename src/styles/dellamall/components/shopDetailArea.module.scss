@@ -65,7 +65,6 @@
     .num {
       @include fs(20px, 18px, 18px);
       font-weight: $semibold;
-      color: $b3;
     }
   }
 
@@ -83,7 +82,6 @@
     @include fs(14px, 12px);
     font-weight: $bold;
     letter-spacing: 0;
-    color: $b3;
     text-decoration: underline;
     @include mb(24px, 16px);
 
@@ -96,7 +94,6 @@
 .cont1__flexRight__topName {
   @include fs(40px, 30px);
   font-weight: $bold;
-  color: $b3;
   letter-spacing: 0;
   @include mb(10px);
 }
@@ -135,34 +132,40 @@
     }
   }
 
-  ul {
+  .comment__box {
+    max-height: 300px;
+    overflow-y: scroll;
     @include mb(40px, 32px);
-    overflow: hidden;
-    transition: .5s ease-out;
+    @include scrollHidden;
 
-    li {
-      @include flex(center, left);
-      @include gap(16px, 12px);
-      @include mt(16px, 12px);
+    ul {
+      overflow: hidden;
+      transition: .5s ease-out;
 
-      .user__img {
-        @include userIcon(40px, 40px, 32px);
-      }
+      li {
+        @include flex(center, left);
+        @include gap(16px, 12px);
+        @include mt(16px, 12px);
 
-      .user__comment {
-        @include width(calc(100% - (40px + 16px)), calc(100% - (40px + 12px)), calc(100% - (32px + 12px)));
-
-        .name,
-        .content {
-          @include fs(12px, 10px);
-          font-weight: $medium;
+        .user__img {
+          @include userIcon(40px, 40px, 32px);
         }
 
-        .name {
-          text-decoration: underline;
+        .user__comment {
+          @include width(calc(100% - (40px + 16px)), calc(100% - (40px + 12px)), calc(100% - (32px + 12px)));
 
-          &:hover {
-            text-decoration: none;
+          .name,
+          .content {
+            @include fs(12px, 10px);
+            font-weight: $medium;
+          }
+
+          .name {
+            text-decoration: underline;
+
+            &:hover {
+              text-decoration: none;
+            }
           }
         }
       }
@@ -215,7 +218,7 @@
 
     .salon {
       @include p(6px 10px);
-      background: $b3;
+      background-color: $b3;
       color: $w1;
       @include fs(12px, 10px);
       font-weight: $bold;

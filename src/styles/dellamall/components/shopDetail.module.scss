@@ -9,6 +9,10 @@
   }
 }
 
+.shopOfficial {
+  @include pt(80px, 64px);
+}
+
 .connectionShop {
   @include mt(80px, 64px);
   @include p(64px 0);
