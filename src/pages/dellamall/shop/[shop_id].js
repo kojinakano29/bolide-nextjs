@@ -5,6 +5,7 @@ import styles from '@/styles/dellamall/components/shopDetail.module.scss'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faArrowLeft } from '@fortawesome/free-solid-svg-icons'
 import { useRouter } from 'next/router'
+import { useAuth } from '@/hooks/auth'
 
 export const getServerSideProps = async ({params}) => {
   const res = await fetch(`${process.env.NEXT_PUBLIC_API_DELLAMALL}/shop/show/${params.shop_id}`)
@@ -19,6 +20,7 @@ export const getServerSideProps = async ({params}) => {
 
 const ShopDetail = ({posts}) => {
   const router = useRouter()
+  const { user } = useAuth()
 
   const connection = posts.kanren
   const shop = posts.shop
@@ -36,13 +38,13 @@ const ShopDetail = ({posts}) => {
           </button>
         </Container>
         <Container small>
-          <ShopDetailArea data={posts} />
+          <ShopDetailArea data={posts} user={user} />
         </Container>
       </section>
 
       <section className={styles.shopOfficial}>
         <Container small>
-          <ShopOfficial info={shop} />
+          <ShopOfficial info={shop} user={user} />
         </Container>
       </section>
 

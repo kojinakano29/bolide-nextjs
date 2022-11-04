@@ -11,3 +11,4 @@ export {default as MasonryGridComponent} from '@/components/dellamall/masonryGri
 export {default as Loader} from '@/components/dellamall/loader'
 export {default as ShopDetailArea} from '@/components/dellamall/shopDetailArea'
 export {default as ShopOfficial} from '@/components/dellamall/shopOfficial'
+export {default as Date} from '@/components/dellamall/date'

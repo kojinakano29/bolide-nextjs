@@ -10,27 +10,105 @@ import twitter from '@/images/dellamall/shopDetail/twitter.svg'
 import instagram from '@/images/dellamall/shopDetail/instagram.svg'
 import youtube from '@/images/dellamall/shopDetail/youtube.svg'
 import Link from 'next/link'
-import { useCallback, useRef, useState } from 'react'
+import { useCallback, useEffect, useRef, useState } from 'react'
 import { useForm } from 'react-hook-form'
 import axios from '@/lib/axios'
-import { useAuth } from '@/hooks/auth'
 import { useRouter } from 'next/router'
 
-const ShopDetailArea = ({data}) => {
-  // console.log(data)
+const ShopDetailArea = ({data, user}) => {
+  console.log(data)
   const csrf = () => axios.get('/sanctum/csrf-cookie')
 
   const router = useRouter()
-  const { user } = useAuth()
   const shop = data.shop
   const comments = shop.d_comments
+  const goods = shop.d_goods
   const ref = useRef()
   const [commentOpen, setCommentOpen] = useState(true)
   const processing = useRef(false)
+  const [userThumbs, setUserThumbs] = useState({
+    url: notSet2.src,
+  })
+  const [goodState, setGoodState] = useState(false)
+
+  useEffect(() => {
+    const filter = goods.filter((item) => {
+      return item.id === user?.id
+    })
+
+    if (filter.length === 1) {
+      setGoodState(true)
+    } else {
+      setGoodState(false)
+    }
+  }, [goodState, user])
+
+  const handleClickGood = async () => {
+    if (processing.current) return
+    processing.current = true
+    await csrf()
+
+    if (goodState) {
+      await axios.delete("/api/dellamall/shop/good/delete", {
+        data: {
+          user_id: user?.id,
+          d_shop_id: shop.id,
+        }
+      })
+      .then((res) => {
+        console.log(res)
+        setGoodState(false)
+      })
+      .catch((e) => {
+        console.error(e)
+        alert("エラーが発生しました。")
+      })
+    } else {
+      await axios.post("/api/dellamall/shop/good/store", {
+        user_id: user?.id,
+        d_shop_id: shop.id,
+      })
+      .then((res) => {
+        console.log(res)
+        setGoodState(true)
+      })
+      .catch((e) => {
+        console.error(e)
+        alert("エラーが発生しました。")
+      })
+    }
+
+    processing.current = false
+  }
 
   const handleClickComment = () => {
     setCommentOpen(prevState => !prevState)
   }
+
+  const getUser = useCallback(async () => {
+    await csrf()
+
+    await axios.post("/api/d_profile_get", {
+      id: user?.id,
+    })
+    .then((res) => {
+      console.log(res)
+      if (res.data.thumbs) {
+        setUserThumbs({
+          url: res.data.thumbs,
+        })
+      }
+    })
+    .catch((e) => {
+      console.error(e)
+    })
+  }, [user])
+
+  useEffect(() => {
+    if (user) {
+      getUser()
+    }
+  }, [user])
 
   const { register, handleSubmit } = useForm()
   const onSubmit = useCallback(async (data) => {
@@ -53,7 +131,7 @@ const ShopDetailArea = ({data}) => {
     })
 
     processing.current = false
-  }, [])
+  }, [user])
 
   return (
     <div className={styles.cont1__flex}>
@@ -76,7 +154,7 @@ const ShopDetailArea = ({data}) => {
               <p className={`${styles.num} en`}>{data.comments_count}</p>
             </li>
             <li>
-              <button type="button">
+              <button className={goodState ? styles.on : ""} type="button" onClick={handleClickGood}>
                 <FontAwesomeIcon icon={faHeart} />
               </button>
               <p className={`${styles.num} en`}>{data.good_count}</p>
@@ -153,7 +231,10 @@ const ShopDetailArea = ({data}) => {
           <form onSubmit={handleSubmit(onSubmit)}>
             <div className={styles.comment__input}>
               <div className={styles.user__img}>
-                <img src={notSet2.src} alt="ユーザー画像" />
+                <img
+                  src={userThumbs.url}
+                  alt=""
+                />
               </div>
                 <input
                   type="text"

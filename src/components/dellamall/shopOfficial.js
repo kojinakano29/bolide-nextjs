@@ -2,14 +2,11 @@ import styles from '@/styles/dellamall/components/shopOfficial.module.scss'
 import { useCallback, useEffect, useState } from 'react';
 import dummy from '@/images/dellamall/shopDetail/onlineSalon.webp'
 import dummy2 from '@/images/dellamall/shopDetail/instagram@del.png'
-import Btn01 from './btn01';
+import { Btn01, Date } from '@/components/dellamall';
 import { faBagShopping } from '@fortawesome/free-solid-svg-icons'
 import { faInstagram } from '@fortawesome/free-brands-svg-icons'
-import axios from 'axios';
 
 const shopOfficial = ({info}) => {
-  console.log(info)
-
   const overviews = info.d_overviews
   const coupons = info.d_coupons
   const infos = info.d_infos
@@ -17,24 +14,24 @@ const shopOfficial = ({info}) => {
   const instagramApi = info.d_insta_api_tokens
 
   const [current, setCurrent] = useState(1)
-  const handleClicktab = useCallback((index) => {
+  const handleClickTab = useCallback((index) => {
     setCurrent(index)
   }, [])
 
-  useEffect(() => {
-    const get_count = 8
-    const user_name = instagramApi[0]?.account_name
-    const access_token = instagramApi[0]?.api_token
-    const user_id = instagramApi[0]?.user_name
+  // useEffect(() => {
+  //   const get_count = 8
+  //   const user_name = instagramApi[0]?.account_name
+  //   const access_token = instagramApi[0]?.api_token
+  //   const user_id = instagramApi[0]?.user_name
 
-    axios.get(`https://graph.facebook.com/v12.0/${user_id}?fields=business_discovery.username(${user_name}){id,followers_count,media_count,ig_id,media.limit(${get_count}){caption,media_url,like_count}}&access_token=${access_token}`)
-    .then((res) => {
-      console.log(res)
-    })
-    .catch((e) => {
-      console.error(e)
-    })
-  }, [])
+  //   axios.get(`https://graph.facebook.com/v12.0/${user_id}?fields=business_discovery.username(${user_name}){id,followers_count,media_count,ig_id,media.limit(${get_count}){caption,media_url,like_count}}&access_token=${access_token}`)
+  //   .then((res) => {
+  //     console.log(res)
+  //   })
+  //   .catch((e) => {
+  //     console.error(e)
+  //   })
+  // }, [])
 
   return (
     <>
@@ -43,22 +40,22 @@ const shopOfficial = ({info}) => {
           <button
             type="button"
             className={`${styles.tabBtn} ${current === 1 ? styles.current : ""}`}
-            onClick={() => handleClicktab(1)}
+            onClick={() => handleClickTab(1)}
           >ショップ情報</button>
           <button
             type="button"
             className={`${styles.tabBtn} ${current === 2 ? styles.current : ""}`}
-            onClick={() => handleClicktab(2)}
+            onClick={() => handleClickTab(2)}
           >クーポン情報</button>
           <button
             type="button"
             className={`${styles.tabBtn} ${current === 3 ? styles.current : ""}`}
-            onClick={() => handleClicktab(3)}
+            onClick={() => handleClickTab(3)}
           >オンラインサロン</button>
           <button
             type="button"
             className={`${styles.tabBtn} ${current === 4 ? styles.current : ""}`}
-            onClick={() => handleClicktab(4)}
+            onClick={() => handleClickTab(4)}
           >お知らせ</button>
         </div>
         <div className={styles.tabBox}>
@@ -112,8 +109,8 @@ const shopOfficial = ({info}) => {
               <ul className={styles.news}>
                 {infos.map((info) => (
                   <li key={info.id}>
-                    <div className={styles.day}>2022.08.01</div>
-                    <div className={styles.txt}>{info.title}</div>
+                    <p className={styles.day}><Date dateString={info.created_at} /></p>
+                    <p className={styles.txt}>{info.title}</p>
                   </li>
                 ))}
               </ul>
