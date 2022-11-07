@@ -1,0 +1,72 @@
+@import '../../variables.scss';
+
+.loginBox {
+  text-align: center;
+
+  .inputBox {
+    @include mb(24px);
+
+    &:last-of-type {
+      @include mb(40px);
+    }
+
+    input {
+      @include input(672px, 100%);
+      margin: auto;
+      @include pl(56px, 48px);
+      background-repeat: no-repeat;
+      background-position: 24px center;
+
+      @include media1(tab1) {
+        background-position: 16px center;
+      }
+
+      &.email {
+        background-image: url(../../../images/dellamall/login/mail.svg);
+      }
+
+      &.password {
+        background-image: url(../../../images/dellamall/login/password.svg);
+      }
+
+      &::placeholder {
+        font-family: $Montserrat;
+      }
+    }
+  }
+
+  .forgot {
+    @include fs(16px, 14px);
+    font-weight: $medium;
+    color: $g1;
+    @include mt(24px);
+
+    a {
+      @include fs(16px, 14px);
+      font-weight: $medium;
+      color: $b3;
+      text-decoration: underline;
+
+      &:hover {
+        text-decoration: none;
+      }
+    }
+  }
+}
+
+.new {
+  @include pt(112px, 80px);
+
+  .login__newList {
+    @include flex(center);
+
+    @include media1(sp) {
+      flex-direction: column;
+      gap: 24px;
+    }
+
+    .login__newItem {
+      @include btn4(calc(100% * 1/3 - 16px), calc(100% * 1/3 - 10px), 320px)
+    }
+  }
+}
