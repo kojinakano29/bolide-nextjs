@@ -12,6 +12,7 @@ $b1: #000;
 $b2: #222;
 $b3: #121B2B;
 $b4: #1E2F47;
+$b5: #005CFF;
 $g1: #888;
 $g2: #F2F2F2;
 $g3: #CCC;
@@ -337,6 +338,48 @@ $breakpoints: (
     &:hover {
       transform: translate(4px, 4px);
     }
+  }
+}
+
+@mixin btn4($pc:0, $tab:$pc, $sp:$tab) {
+  background: $o1;
+  color: $w1;
+  @include fs(18px, 14px, 16px);
+  font-weight: $bold;
+  border-radius: 20px;
+  text-align: center;
+  @include width($pc, $tab, $sp);
+  @include height(100px, 80px);
+  @include flex(center, center);
+  flex-direction: column;
+  background-image: url(../images/dellamall/login/loginNew.svg);
+  background-repeat: no-repeat;
+  background-position: calc(100% - 24px) center;
+
+  @include media1(tab1) {
+    background-position: calc(100% - 8px) center;
+    background-size: 20px;
+  }
+
+  span {
+    @include fs(13px, 11px);
+    font-weight: $bold;
+    color: $w1;
+    display: block;
+  }
+}
+
+@mixin input($pc:0, $tab:$pc, $sp:$tab) {
+  @include p(20px 24px, 16px 20px);
+  @include width($pc, $tab, $sp);
+  @include fs(18px, 14px);
+  display: block;
+  border: 1px solid $g4;
+  border-radius: 20px;
+
+  &::placeholder {
+    font-weight: $medium;
+    color: $g3;
   }
 }
 /*-------------------------     共通部分    -------------------------*/

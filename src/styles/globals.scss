@@ -303,6 +303,41 @@ span > img {
       text-align: center;
       @include mb(24px);
     }
+
+    &.mb40 {
+      @include mb(40px);
+    }
+  }
+
+  .ttl2 {
+    font-size: var(--fs40-24);
+    font-weight: 500;
+    letter-spacing: 0;
+    text-align: center;
+    @include mb(24px);
+  }
+
+  .ttl3 {
+    @include fs(28px, 24px);
+    font-weight: $bold;
+    position: relative;
+    text-align: center;
+    @include mb(40px);
+
+    &::after {
+      content: "";
+      position: absolute;
+      bottom: -12px;
+      left: 50%;
+      transform: translateX(-50%);
+      @include width(40px);
+      @include height(2px);
+      background: $b3;
+    }
+  }
+
+  .btn4 {
+    @include btn4;
   }
 
   .popularBox {
