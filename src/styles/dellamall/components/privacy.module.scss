@@ -1,0 +1,22 @@
+@import '../../variables.scss';
+
+.ttl {
+  @include mb(48px !important);
+}
+
+.ul {
+  @include mt(35px);
+
+  li {
+    h3 {
+      font-weight: $bold;
+      @include fs(24px, 22px);
+    }
+
+    p {
+      font-weight: $medium;
+      @include fs(16px, 14px);
+      @include m(16px 0 48px);
+    }
+  }
+}
