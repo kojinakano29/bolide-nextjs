@@ -96,7 +96,11 @@ span > img {
 }
 
 *.red {
-  color: $red1;
+  color: $red1 !important;
+}
+
+*.orange {
+  color: $o1 !important;
 }
 
 .pc {
