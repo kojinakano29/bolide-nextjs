@@ -66,6 +66,18 @@
       border-radius: 5px;
       transition: .2s ease-out;
 
+      &.saveOn {
+        background-color: rgba($b3, .1);
+
+        .plus {
+          opacity: 1;
+
+          .line2 {
+            display: none;
+          }
+        }
+      }
+
       &:hover {
         background-color: rgba($b3, .1);
 
