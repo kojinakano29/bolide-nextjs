@@ -12,9 +12,9 @@ export const getServerSideProps = async ({params}) => {
   const data = await res.json()
 
   return {
-      props: {
-          posts: data
-      }
+    props: {
+      posts: data
+    }
   }
 }
 
