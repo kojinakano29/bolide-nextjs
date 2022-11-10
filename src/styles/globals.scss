@@ -357,6 +357,16 @@ span > img {
     width: fit-content;
     margin: auto;
   }
+
+  .curtain {
+    width: 100vw;
+    height: 100vh;
+    position: fixed;
+    top: 0;
+    left: 0;
+    cursor: pointer;
+    z-index: 2;
+  }
 }
 /* デラモール共通部分 */
 

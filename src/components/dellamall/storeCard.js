@@ -46,7 +46,7 @@ const StoreCard = ({item, swiper = false, none = false}) => {
                                         <button className={styles.icon}>
                                             <FontAwesomeIcon icon={faBookmark} />
                                         </button>
-                                        <p className={`${styles.counter} en`}>{item.d_shop_bookmarks_count}</p>
+                                        <p className={`${styles.counter} en`}>{item.d_malls_count}</p>
                                     </div>
                                 </div>
                             </div>
@@ -95,7 +95,7 @@ const StoreCard = ({item, swiper = false, none = false}) => {
                                     <button className={styles.icon}>
                                         <FontAwesomeIcon icon={faBookmark} />
                                     </button>
-                                    <p className={`${styles.counter} en`}>{item.d_shop_bookmarks_count}</p>
+                                    <p className={`${styles.counter} en`}>{item.d_malls_count}</p>
                                 </div>
                             </div>
                         </div>

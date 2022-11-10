@@ -10,10 +10,13 @@ import twitter from '@/images/dellamall/shopDetail/twitter.svg'
 import instagram from '@/images/dellamall/shopDetail/instagram.svg'
 import youtube from '@/images/dellamall/shopDetail/youtube.svg'
 import Link from 'next/link'
-import { useCallback, useEffect, useRef, useState } from 'react'
+import { createContext, useCallback, useEffect, useRef, useState } from 'react'
 import { useForm } from 'react-hook-form'
 import axios from '@/lib/axios'
 import { useRouter } from 'next/router'
+import { SaveMall } from '@/components/dellamall'
+
+export const SaveMallContext = createContext()
 
 const ShopDetailArea = ({data, user}) => {
   console.log(data)
@@ -31,6 +34,7 @@ const ShopDetailArea = ({data, user}) => {
   })
   const [goodState, setGoodState] = useState(false)
   const [countGood, setCountGood] = useState(goods.length)
+  const [saveMallOpen, setSaveMallOpen] = useState(false)
 
   useEffect(() => {
     const filter = goods.filter((item) => {
@@ -57,7 +61,7 @@ const ShopDetailArea = ({data, user}) => {
         }
       })
       .then((res) => {
-        console.log(res)
+        // console.log(res)
         setGoodState(false)
         setCountGood(countGood - 1)
       })
@@ -71,7 +75,7 @@ const ShopDetailArea = ({data, user}) => {
         d_shop_id: shop.id,
       })
       .then((res) => {
-        console.log(res)
+        // console.log(res)
         setGoodState(true)
         setCountGood(countGood + 1)
       })
@@ -95,7 +99,7 @@ const ShopDetailArea = ({data, user}) => {
       id: user?.id,
     })
     .then((res) => {
-      console.log(res)
+      // console.log(res)
       if (res.data.thumbs) {
         setUserThumbs({
           url: res.data.thumbs,
@@ -113,11 +117,15 @@ const ShopDetailArea = ({data, user}) => {
     }
   }, [user])
 
+  const handleClickSaveMall = useCallback(async () => {
+    await setSaveMallOpen(prevState => !prevState)
+  }, [])
+
   const { register, handleSubmit } = useForm()
   const onSubmit = useCallback(async (data) => {
     if (processing.current) return
     processing.current = true
-    console.log(data)
+    // console.log(data)
 
     await csrf()
 
@@ -126,7 +134,7 @@ const ShopDetailArea = ({data, user}) => {
       content: data.comment,
     })
     .then((res) => {
-      console.log(res)
+      // console.log(res)
       router.reload()
     })
     .catch((e) => {
@@ -137,149 +145,156 @@ const ShopDetailArea = ({data, user}) => {
   }, [user])
 
   return (
-    <div className={styles.cont1__flex}>
-      <div className={styles.cont1__flexLeft}>
-        <div className={styles.cont1__imgBox}>
-          {shop.image_permission === 1 ?
-            <img src={dummy.src} alt="" />
-            :
-            <div className={styles.imgNone}></div>
-          }
+    <>
+      {saveMallOpen ? <div className="curtain" onClick={handleClickSaveMall}></div> : null}
+
+      <div className={styles.cont1__flex}>
+        <div className={styles.cont1__flexLeft}>
+          <div className={styles.cont1__imgBox}>
+            {shop.image_permission === 1 ?
+              <img src={dummy.src} alt="" />
+              :
+              <div className={styles.imgNone}></div>
+            }
+          </div>
         </div>
-      </div>
-      <div className={styles.cont1__flexRight}>
-        <div className={styles.cont1__flexRight__icon}>
-          <ul className={styles.cont1__flexRight__iconLeft}>
-            <li>
-              <button className="hoverNone" type="button">
-                <FontAwesomeIcon icon={faComment} />
-              </button>
-              <p className={`${styles.num} en`}>{data.comments_count}</p>
-            </li>
-            <li>
-              <button className={goodState ? styles.on : ""} type="button" onClick={handleClickGood}>
-                <FontAwesomeIcon icon={faHeart} />
-              </button>
-              <p className={`${styles.num} en`}>{countGood}</p>
-            </li>
-            <li>
-              <button type="button">
-                <FontAwesomeIcon icon={faBookmark} />
-              </button>
-              <p className={`${styles.num} en`}>{data.mall_count}</p>
-            </li>
-          </ul>
-          <ul className={styles.cont1__flexRight__iconRight}>
-            <li>
-              <button type="button">
-                <FontAwesomeIcon icon={faReply} transform="flip-h" />
-              </button>
-            </li>
-            <li>
-              <button type="button">
-                <FontAwesomeIcon icon={faFlag} />
-              </button>
-            </li>
-          </ul>
-        </div>
-        <div className={styles.cont1__flexRight__topUrl}>
-          <a href={shop.url} target="_blank">{shop.url}</a>
-        </div>
-        <p className={styles.cont1__flexRight__topName}>{shop.name}</p>
-        <ul className={styles.cont1__flexRight__topWords}>
-          <li className={styles.keyWord__item}><a className="hoverEffect">服</a></li>
-          <li className={styles.keyWord__item}><a className="hoverEffect">靴</a></li>
-          <li className={styles.keyWord__item}><a className="hoverEffect">アパレル</a></li>
-          <li className={styles.keyWord__item}><a className="hoverEffect">バッグ</a></li>
-        </ul>
-        <p className={styles.cont1__flexRight__middleText}>{shop.description}</p>
-        <div className={styles.cont1__flexRight__middleComment}>
-          <p className={styles.total} >
-            コメント：<span>{data.comments_count}</span>件
-            <button type="button" onClick={handleClickComment}>
-              <FontAwesomeIcon icon={faChevronDown} size="xs" transform={commentOpen ? null : "rotate-270"} />
-            </button>
-          </p>
-          <div className={styles.comment__box}>
-            <ul
-              ref={ref}
-              style={
-                commentOpen ?
-                {maxHeight: ref.current?.scrollHeight}
-                : {maxHeight: "0px"}
-              }
-            >
-              {comments.map((comment) => (
-                <li key={comment.id}>
-                  <div className={styles.user__img}>
-                  <img
-                    src={
-                      comment.user.d_profile.thumbs ?
-                      comment.user.d_profile.thumbs :
-                      notSet.src
-                    }
-                    alt=""
-                  />
-                  </div>
-                  <div className={styles.user__comment}>
-                    <Link href="">
-                      <a className={styles.name}>{comment.user.d_profile.nicename}</a>
-                    </Link>
-                    <p className={styles.content}>{comment.content}</p>
-                  </div>
-                </li>
-              ))}
+        <div className={styles.cont1__flexRight}>
+          <div className={styles.cont1__flexRight__icon}>
+            <ul className={styles.cont1__flexRight__iconLeft}>
+              <li>
+                <button className="hoverNone" type="button">
+                  <FontAwesomeIcon icon={faComment} />
+                </button>
+                <p className={`${styles.num} en`}>{data.comments_count}</p>
+              </li>
+              <li>
+                <button className={goodState ? styles.on : ""} type="button" onClick={handleClickGood}>
+                  <FontAwesomeIcon icon={faHeart} />
+                </button>
+                <p className={`${styles.num} en`}>{countGood}</p>
+              </li>
+              <li>
+                <button type="button" className={saveMallOpen ? styles.on : null} onClick={handleClickSaveMall}>
+                  <FontAwesomeIcon icon={faBookmark} />
+                </button>
+                <p className={`${styles.num} en`}>{data.mall_count}</p>
+                <SaveMallContext.Provider value={{user, shop}}>
+                  {saveMallOpen ? <SaveMall /> : null}
+                </SaveMallContext.Provider>
+              </li>
+            </ul>
+            <ul className={styles.cont1__flexRight__iconRight}>
+              <li>
+                <button type="button">
+                  <FontAwesomeIcon icon={faReply} transform="flip-h" />
+                </button>
+              </li>
+              <li>
+                <button type="button">
+                  <FontAwesomeIcon icon={faFlag} />
+                </button>
+              </li>
             </ul>
           </div>
-          <form onSubmit={handleSubmit(onSubmit)}>
-            <div className={styles.comment__input}>
-              <div className={styles.user__img}>
-                <img
-                  src={userThumbs.url}
-                  alt=""
-                />
-              </div>
-                <input
-                  type="text"
-                  {...register("comment", {required: true})}
-                  placeholder="コメントを追加する"
-                />
-            </div>
-          </form>
-        </div>
-        <div className={styles.cont1__flexRight__bottom}>
-          <p>公式SNS</p>
-          <ul>
-            <li>
-              <a className="hoverEffect" href="" target="_blank">
-                <img src={line.src} alt="" />
-              </a>
-            </li>
-            <li>
-              <a className="hoverEffect" href="" target="_blank">
-                <img src={facebook.src} alt="" />
-              </a>
-            </li>
-            <li>
-              <a className="hoverEffect" href="" target="_blank">
-                <img src={twitter.src} alt="" />
-              </a>
-            </li>
-            <li>
-              <a className="hoverEffect" href="" target="_blank">
-                <img src={instagram.src} alt="" />
-              </a>
-            </li>
-            <li>
-              <a className="hoverEffect" href="" target="_blank">
-                <img src={youtube.src} alt="" />
-              </a>
-            </li>
-            <a className={`${styles.salon} hoverEffect`}>オンラインサロン</a>
+          <div className={styles.cont1__flexRight__topUrl}>
+            <a href={shop.url} target="_blank">{shop.url}</a>
+          </div>
+          <p className={styles.cont1__flexRight__topName}>{shop.name}</p>
+          <ul className={styles.cont1__flexRight__topWords}>
+            <li className={styles.keyWord__item}><a className="hoverEffect">服</a></li>
+            <li className={styles.keyWord__item}><a className="hoverEffect">靴</a></li>
+            <li className={styles.keyWord__item}><a className="hoverEffect">アパレル</a></li>
+            <li className={styles.keyWord__item}><a className="hoverEffect">バッグ</a></li>
           </ul>
+          <p className={styles.cont1__flexRight__middleText}>{shop.description}</p>
+          <div className={styles.cont1__flexRight__middleComment}>
+            <p className={styles.total} >
+              コメント：<span>{data.comments_count}</span>件
+              <button type="button" onClick={handleClickComment}>
+                <FontAwesomeIcon icon={faChevronDown} size="xs" transform={commentOpen ? null : "rotate-270"} />
+              </button>
+            </p>
+            <div className={styles.comment__box}>
+              <ul
+                ref={ref}
+                style={
+                  commentOpen ?
+                  {maxHeight: ref.current?.scrollHeight}
+                  : {maxHeight: "0px"}
+                }
+              >
+                {comments.map((comment) => (
+                  <li key={comment.id}>
+                    <div className={styles.user__img}>
+                    <img
+                      src={
+                        comment.user.d_profile.thumbs ?
+                        comment.user.d_profile.thumbs :
+                        notSet.src
+                      }
+                      alt=""
+                    />
+                    </div>
+                    <div className={styles.user__comment}>
+                      <Link href="">
+                        <a className={styles.name}>{comment.user.d_profile.nicename}</a>
+                      </Link>
+                      <p className={styles.content}>{comment.content}</p>
+                    </div>
+                  </li>
+                ))}
+              </ul>
+            </div>
+            <form onSubmit={handleSubmit(onSubmit)}>
+              <div className={styles.comment__input}>
+                <div className={styles.user__img}>
+                  <img
+                    src={userThumbs.url}
+                    alt=""
+                  />
+                </div>
+                  <input
+                    type="text"
+                    {...register("comment", {required: true})}
+                    placeholder="コメントを追加する"
+                  />
+              </div>
+            </form>
+          </div>
+          <div className={styles.cont1__flexRight__bottom}>
+            <p>公式SNS</p>
+            <ul>
+              <li>
+                <a className="hoverEffect" href="" target="_blank">
+                  <img src={line.src} alt="" />
+                </a>
+              </li>
+              <li>
+                <a className="hoverEffect" href="" target="_blank">
+                  <img src={facebook.src} alt="" />
+                </a>
+              </li>
+              <li>
+                <a className="hoverEffect" href="" target="_blank">
+                  <img src={twitter.src} alt="" />
+                </a>
+              </li>
+              <li>
+                <a className="hoverEffect" href="" target="_blank">
+                  <img src={instagram.src} alt="" />
+                </a>
+              </li>
+              <li>
+                <a className="hoverEffect" href="" target="_blank">
+                  <img src={youtube.src} alt="" />
+                </a>
+              </li>
+              <a className={`${styles.salon} hoverEffect`}>オンラインサロン</a>
+            </ul>
+          </div>
         </div>
       </div>
-    </div>
+    </>
   );
 }
 

@@ -120,9 +120,9 @@ const Home = ({posts}) => {
           {!data ? <Loader /> : null}
           {processing.current ? <Loader /> : null}
           {data && !isReachingEnd && !processing.current ?
-          <div className="btnCover" onClick={handleClickMore}>
-            <Btn01 fa={faSquarePlus} txt="さらに見る" />
-          </div>
+            <div className="btnCover" onClick={handleClickMore}>
+              <Btn01 fa={faSquarePlus} txt="さらに見る" />
+            </div>
           : null}
         </Container>
       </section>

@@ -43,7 +43,7 @@
   .cont1__flexRight__iconRight {
     @include flex(center);
 
-    button {
+    li > button {
       @include icon(40px, 32px);
     }
   }
@@ -54,9 +54,11 @@
     li {
       @include flex(center, center);
       @include gap(4px);
+      position: relative;
+
     }
 
-    button {
+    li > button {
       &:hover {
         background-color: $g2;
       }
@@ -71,7 +73,7 @@
   .cont1__flexRight__iconRight {
     @include gap(16px);
 
-    button {
+    li > button {
       background-color: $g2;
     }
   }

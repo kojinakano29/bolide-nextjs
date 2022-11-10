@@ -37,37 +37,6 @@ const Header = () => {
         </div>
       </Container>
     </header>
-
-
-
-    // <header>
-    //   <div class="header__flex">
-    //     <div></div>
-    //     <div class="header__flexRight">
-    //         <a href=""><img src="./assets/images/header/speaker.svg" alt="スピーカーアイコン"></a>
-    //         <a href=""><img src="./assets/images/header/bookmark.svg" alt="ブックマークアイコン"></a>
-    //         <a href=""><img src="./assets/images/header/question.svg" alt="質問アイコン"></a>
-    //         <a id="sp" href=""><img src="./assets/images/header/plusIcon.svg" alt="作成アイコン"></a>
-    //         <a id="sp" href=""><img src="./assets/images/header/userIcon.svg" alt="ユーザーアイコン"></a>
-    //         <div id="pc" class="btn">
-    //             <a class="btn06" href="">
-    //                 <span>
-    //                     <img src="./assets/images/header/plus.svg" alt="ショップを作る">
-    //                     <p>ショップを作る</p>
-    //                 </span>
-    //             </a>
-    //         </div>
-    //         <div id="pc" class="btn">
-    //             <a class="btn07" href="">
-    //                 <span>
-    //                     <img src="./assets/images/header/user.svg" alt="マイページ">
-    //                     <p>マイページ</p>
-    //                 </span>
-    //             </a>
-    //         </div>
-    //     </div>
-    //   </div>
-    // </header>
   );
 }
 
