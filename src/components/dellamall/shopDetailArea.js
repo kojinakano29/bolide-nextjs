@@ -26,6 +26,7 @@ const ShopDetailArea = ({data, user}) => {
   const shop = data.shop
   const comments = shop.d_comments
   const goods = shop.d_goods
+  const malls = shop.d_malls
   const ref = useRef()
   const [commentOpen, setCommentOpen] = useState(true)
   const processing = useRef(false)
@@ -34,6 +35,7 @@ const ShopDetailArea = ({data, user}) => {
   })
   const [goodState, setGoodState] = useState(false)
   const [countGood, setCountGood] = useState(goods.length)
+  const [countMall, setCountMall] = useState(malls.length)
   const [saveMallOpen, setSaveMallOpen] = useState(false)
 
   useEffect(() => {
@@ -177,8 +179,8 @@ const ShopDetailArea = ({data, user}) => {
                 <button type="button" className={saveMallOpen ? styles.on : null} onClick={handleClickSaveMall}>
                   <FontAwesomeIcon icon={faBookmark} />
                 </button>
-                <p className={`${styles.num} en`}>{data.mall_count}</p>
-                <SaveMallContext.Provider value={{user, shop}}>
+                <p className={`${styles.num} en`}>{countMall}</p>
+                <SaveMallContext.Provider value={{handleClickSaveMall, countMall, setCountMall, user, shop}}>
                   {saveMallOpen ? <SaveMall /> : null}
                 </SaveMallContext.Provider>
               </li>

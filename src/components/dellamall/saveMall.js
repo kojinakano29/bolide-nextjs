@@ -1,5 +1,5 @@
 import styles from '@/styles/dellamall/components/saveMall.module.scss'
-import { createContext, useCallback, useContext, useEffect, useState } from 'react';
+import { createContext, useCallback, useContext, useEffect, useRef, useState } from 'react';
 import { CreateMall, Loader } from '@/components/dellamall';
 import { SaveMallContext } from './shopDetailArea';
 import axios from '@/lib/axios';
@@ -9,19 +9,23 @@ export const CreateMallContext = createContext()
 const SaveMall = () => {
   const csrf = () => axios.get('/sanctum/csrf-cookie')
 
-  const { user, shop } = useContext(SaveMallContext)
+  const processing = useRef(false)
+  const { handleClickSaveMall, countMall, setCountMall, user, shop } = useContext(SaveMallContext)
   const [popupOpen, setPopupOpen] = useState(false)
   const [mallList, setMallList] = useState()
+  const [mallIn, setMallIn] = useState([])
 
   const loadMall = async () => {
     await csrf()
 
     await axios.post("/api/dellamall/shop/mall_return", {
       user_id: user?.id,
+      d_shop_id: shop.id,
     })
     .then((res) => {
       console.log(res)
       setMallList(res.data.mall)
+      setMallIn(res.data.mall_in)
     })
     .catch((e) => {
       console.error(e)
@@ -38,20 +42,45 @@ const SaveMall = () => {
     setPopupOpen(prevState => !prevState)
   }, [])
 
-  const handleClickMallAdd = useCallback(async (e) => {
+  const handleClickMallAdd = useCallback(async (mallId) => {
+    if (processing.current) return
+    processing.current = true
     await csrf()
 
-    await axios.post("/api/dellamall/mall_in/store", {
-      user_id: user?.id,
-      d_shop_id: shop.id,
-    })
-    .then((res) => {
-      console.log(res)
-    })
-    .catch((e) => {
-      console.error(e)
-    })
-  }, [user])
+    if (mallIn.includes(mallId)) {
+      await axios.delete('/api/dellamall/mall_in/delete', {
+        data: {
+          d_mall_id: mallId,
+          d_shop_id: shop.id,
+          user_id: user?.id,
+        }
+      })
+      .then((res) => {
+        console.log(res)
+        setCountMall(countMall - 1)
+        handleClickSaveMall()
+      })
+      .catch((e) => {
+        console.error(e)
+      })
+    } else {
+      await axios.post('/api/dellamall/mall_in/store', {
+        d_mall_id: mallId,
+        d_shop_id: shop.id,
+        user_id: user?.id,
+      })
+      .then((res) => {
+        console.log(res)
+        setCountMall(countMall + 1)
+        handleClickSaveMall()
+      })
+      .catch((e) => {
+        console.error(e)
+      })
+    }
+
+    processing.current = false
+  }, [user, mallIn])
 
   return (
     <>
@@ -63,10 +92,9 @@ const SaveMall = () => {
             {mallList ?
               mallList?.map((list, index) => (
                 <button
-                  className={styles.saveMallBox__btn}
-                  value={list.name}
+                  className={`${styles.saveMallBox__btn} ${mallIn.includes(list.id) ? styles.saveOn : null}`}
                   key={index}
-                  onClick={handleClickMallAdd}
+                  onClick={() => handleClickMallAdd(list.id)}
                 >
                   <div className={styles.imgBox}>
                     <img src="../../images/dellamall/shopDetail/saveMallBoxImg@del.png" alt="" />
