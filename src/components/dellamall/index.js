@@ -19,3 +19,5 @@ export {default as ConfirmOfficialRequest} from '@/components/dellamall/confirmO
 export {default as ShopSort} from '@/components/dellamall/shopSort'
 export {default as SaveMall} from '@/components/dellamall/saveMall'
 export {default as CreateMall} from '@/components/dellamall/createMall'
+export {default as CreateMallMypage} from '@/components/dellamall/createMallMypage'
+export {default as MallComponent} from '@/components/dellamall/mallComponent'

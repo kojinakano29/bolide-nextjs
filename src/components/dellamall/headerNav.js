@@ -3,9 +3,12 @@ import Link from "next/link";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faBell, faBookmark, faQuestion } from '@fortawesome/free-solid-svg-icons'
 import { faSquarePlus, faCircleUser } from '@fortawesome/free-regular-svg-icons'
+import { useAuth } from '@/hooks/auth';
 
 
 const HeaderNav = () => {
+  const { user } = useAuth()
+
   return (
     <div className={styles.flex}>
       <button className={`${styles.btn1} hoverEffect`}>
@@ -23,7 +26,7 @@ const HeaderNav = () => {
           <span className="pc">ショップを作る</span>
         </a>
       </Link>
-      <Link href="/">
+      <Link href={`dellamall/${user ? `mypage/${user?.id}` : 'login'}`}>
         <a className={`${styles.btn2} ${styles.rev} hoverEffect`}>
           <FontAwesomeIcon icon={faCircleUser} />
           <span className="pc">マイページ</span>

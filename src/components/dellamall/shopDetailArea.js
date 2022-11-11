@@ -19,7 +19,6 @@ import { SaveMall } from '@/components/dellamall'
 export const SaveMallContext = createContext()
 
 const ShopDetailArea = ({data, user}) => {
-  console.log(data)
   const csrf = () => axios.get('/sanctum/csrf-cookie')
 
   const router = useRouter()

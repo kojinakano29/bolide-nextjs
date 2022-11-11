@@ -1,0 +1,82 @@
+@import '../../variables.scss';
+
+.flex {
+  @include flex(stretch);
+  @include gap(40px 32px);
+
+  .mallBox {
+    @include width(calc(100% * 1/3 - 22px));
+
+    .mallBtn {
+      @include flex();
+      width: 100%;
+      @include height(412px);
+      border: 1px solid $g1;
+      border-radius: 20px;
+      overflow: hidden;
+      @include mb(16px);
+
+      .box {
+        width: 50%;
+        height: 50%;
+        background-color: $g6;
+
+        &:nth-of-type(1),
+        &:nth-of-type(3) {
+          border-right: 1px solid $g1;
+        }
+
+        &:nth-of-type(1),
+        &:nth-of-type(2) {
+          border-bottom: 1px solid $g1;
+        }
+
+        img {
+          object-fit: cover;
+          object-position: top;
+        }
+      }
+    }
+
+    .nameArea {
+      @include flex(center, left);
+      @include gap(6px);
+      @include mb(8px);
+
+      .name {
+        @include fs(24px, 20px, 16px);
+        font-weight: 500;
+      }
+
+      svg,
+      svg * {
+        color: $g3;
+      }
+    }
+
+    .save {
+      @include fs(14px, 12px);
+      font-weight: bold;
+      color: $g1;
+      @include mb(8px);
+    }
+
+    .userArea {
+      @include mt(8px);
+      @include flex(center, left);
+      @include gap(8px);
+
+      .imgBox {
+        @include width(24px);
+        @include height(24px);
+        border-radius: 50%;
+        overflow: hidden;
+      }
+
+      .nicename {
+        @include fs(14px, 12px);
+        font-weight: 500;
+      }
+    }
+  }
+}

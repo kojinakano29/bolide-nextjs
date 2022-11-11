@@ -23,7 +23,7 @@ const SaveMall = () => {
       d_shop_id: shop.id,
     })
     .then((res) => {
-      console.log(res)
+      // console.log(res)
       setMallList(res.data.mall)
       setMallIn(res.data.mall_in)
     })
@@ -42,7 +42,7 @@ const SaveMall = () => {
     setPopupOpen(prevState => !prevState)
   }, [])
 
-  const handleClickMallAdd = useCallback(async (mallId) => {
+  const handleClickSaveMallToggle = useCallback(async (mallId, mallName) => {
     if (processing.current) return
     processing.current = true
     await csrf()
@@ -56,8 +56,9 @@ const SaveMall = () => {
         }
       })
       .then((res) => {
-        console.log(res)
+        // console.log(res)
         setCountMall(countMall - 1)
+        alert(`${mallName}から削除しました。`)
         handleClickSaveMall()
       })
       .catch((e) => {
@@ -70,8 +71,9 @@ const SaveMall = () => {
         user_id: user?.id,
       })
       .then((res) => {
-        console.log(res)
+        // console.log(res)
         setCountMall(countMall + 1)
+        alert(`${mallName}に追加しました。`)
         handleClickSaveMall()
       })
       .catch((e) => {
@@ -94,7 +96,7 @@ const SaveMall = () => {
                 <button
                   className={`${styles.saveMallBox__btn} ${mallIn.includes(list.id) ? styles.saveOn : null}`}
                   key={index}
-                  onClick={() => handleClickMallAdd(list.id)}
+                  onClick={() => handleClickSaveMallToggle(list.id, list.name)}
                 >
                   <div className={styles.imgBox}>
                     <img src="../../images/dellamall/shopDetail/saveMallBoxImg@del.png" alt="" />
