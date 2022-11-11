@@ -4,12 +4,12 @@ import { useCallback, useContext, useRef } from 'react';
 import { useForm } from 'react-hook-form';
 import { Btn01 } from '@/components/dellamall';
 import Container from './Layouts/container';
-import { CreateMallContext } from './saveMall';
+import { CreateMallContext } from '@/pages/dellamall/mypage/[id]';
 
-const CreateMall = () => {
+const CreateMallMypage = () => {
   const csrf = () => axios.get('/sanctum/csrf-cookie')
 
-  const { handleClickPopup, setMallList, user, shop } = useContext(CreateMallContext)
+  const { handleClickPopup, setCreateMall, user } = useContext(CreateMallContext)
   const { register, handleSubmit, formState: { errors } } = useForm()
   const processing = useRef(false)
 
@@ -21,7 +21,7 @@ const CreateMall = () => {
     await axios.post(`/api/dellamall/mall/store`, data)
     .then((res) => {
       // console.log(res)
-      setMallList(res.data.mall)
+      setCreateMall(res.data.mall)
       alert("モールを作成しました。")
       handleClickPopup()
     })
@@ -42,7 +42,6 @@ const CreateMall = () => {
 
     onCreateMall({
       user_id: user?.id,
-      d_shop_id: shop.id,
       name: data.name,
       lock: lock,
     })
@@ -77,4 +76,4 @@ const CreateMall = () => {
   );
 }
 
-export default CreateMall;
+export default CreateMallMypage;

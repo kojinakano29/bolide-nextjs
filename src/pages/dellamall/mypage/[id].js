@@ -1,0 +1,203 @@
+import Container from '@/components/dellamall/Layouts/container';
+import PageLayoutDellamall from '@/components/Layouts/PageLayoutDellamall';
+import styles from '@/styles/dellamall/components/mypage.module.scss'
+import notSet from '@/images/dellamall/myPage/userImg.webp'
+import { Btn01, CreateMallMypage, Loader, MallComponent, MasonryGridComponent } from '@/components/dellamall';
+import { faSquarePlus, faTableCellsLarge, faGear } from '@fortawesome/free-solid-svg-icons'
+import { createContext, useCallback, useState } from 'react';
+import axios from '@/lib/axios';
+import { useAuth } from '@/hooks/auth';
+
+export const getServerSideProps = async ({params}) => {
+  const res = await fetch(`${process.env.NEXT_PUBLIC_API_DELLAMALL}/mypage/${params.id}`)
+  const data = await res.json()
+
+  return {
+      props: {
+          posts: data
+      }
+  }
+}
+
+export const CreateMallContext = createContext()
+
+const Mypage = ({posts}) => {
+  console.log(posts)
+  const csrf = () => axios.get('/sanctum/csrf-cookie')
+
+  const { user } = useAuth()
+  const profile = posts.profile
+  const dProfile = profile.d_profile
+  const create_shop = posts.create_shop
+  const [processing, setProcessing] = useState(false)
+  const [tabState, setTabState] = useState(1)
+  const [popupOpen, setPopupOpen] = useState(false)
+  const [createShop, setCreateShop] = useState(create_shop)
+  const [createMall, setCreateMall] = useState([])
+  const [saveShop, setSaveShop] = useState([])
+
+  const tabItems = [
+    "作成ショップ",
+    "作成モール",
+    "保存ショップ",
+    "保存モール",
+    "コメント",
+  ]
+
+  const handleClickTab = useCallback(async (state) => {
+    setTabState(state)
+  }, [])
+
+  const handleClickTabShow = useCallback(async (state) => {
+    if (processing) return
+    await setProcessing(true)
+    await csrf()
+
+    if (state === 1) {
+      await axios.post(`/api/dellamall/user/create_shop`, {
+        user_id: user?.id
+      }).then((res) => {
+        // console.log(res)
+        setCreateShop(res.data)
+      }).catch((e) => {
+        console.error(e)
+      })
+    } else if (state === 2) {
+      await axios.post(`/api/dellamall/user/create_mall`, {
+        user_id: user?.id
+      }).then((res) => {
+        // console.log(res)
+        setCreateMall(res.data)
+      }).catch((e) => {
+        console.error(e)
+      })
+    } else if (state === 3) {
+      await axios.post(`/api/dellamall/user/save_shop`, {
+        user_id: user?.id
+      }).then((res) => {
+        // console.log(res)
+        setSaveShop(res.data)
+      }).catch((e) => {
+        console.error(e)
+      })
+    } else if (state === 4) {
+      await axios.post(`/api/dellamall/user/save_mall`, {
+        user_id: user?.id
+      }).then((res) => {
+        console.log(res)
+      }).catch((e) => {
+        console.error(e)
+      })
+    } else if (state === 5) {
+      await axios.post(`/api/dellamall/user/send_comments`, {
+        user_id: user?.id
+      }).then((res) => {
+        console.log(res)
+      }).catch((e) => {
+        console.error(e)
+      })
+    }
+
+    await setProcessing(false)
+  }, [user])
+
+  const handleClickPopup = useCallback(async () => {
+    setPopupOpen(prevState => !prevState)
+  }, [])
+
+  return (
+    <>
+      <section className="cont1">
+        <Container small>
+          <div className={styles.user__info}>
+            <div className={styles.user__info__img}>
+              <img src={dProfile.thumbs ? dProfile.thumbs : notSet.src} alt="プロフィール画像" />
+            </div>
+            <div className={styles.user__info__name}>{dProfile.nicename}</div>
+            <div className={styles.user__info__id}>{profile.name}</div>
+            <ul className={styles.user__info__follow}>
+              <li>投稿 {create_shop.length} 件</li>
+              <li>フォロー {profile.d_following_count} 件</li>
+              <li>フォロワー {profile.d_followed_count} 件</li>
+            </ul>
+            <p className={styles.user__info__text}>{dProfile.profile}</p>
+          </div>
+          <div className={styles.user__buttonList}>
+            <div className={`btnCover ${styles.btnCover}`}>
+              <Btn01 fa={faSquarePlus} txt="ショップを作成する" />
+            </div>
+            <div className={`btnCover ${styles.btnCover}`} onClick={handleClickPopup}>
+              <Btn01 fa={faTableCellsLarge} txt="モールを作成する" />
+            </div>
+            <div className={`btnCover ${styles.btnCover}`}>
+              <Btn01 fa={faGear} txt="プロフィールを編集する" />
+            </div>
+          </div>
+        </Container>
+      </section>
+
+      {popupOpen ?
+        <CreateMallContext.Provider value={{handleClickPopup, setCreateMall, user}}>
+          <CreateMallMypage />
+        </CreateMallContext.Provider>
+      : null}
+
+      <section className={styles.tabArea}>
+        <div className={styles.tabBox}>
+          <Container>
+            <div className={styles.tabFlex}>
+              {tabItems.map((item, index) => (
+                <button
+                  type="button"
+                  className={`${styles.tabBtn} ${index+1 === tabState ? styles.on : null}`}
+                  onClick={() => {
+                    handleClickTab(index+1)
+                    handleClickTabShow(index+1)
+                  }}
+                  key={index}
+                >
+                  {item}
+                </button>
+              ))}
+            </div>
+          </Container>
+        </div>
+        <div className={styles.tabContent}>
+          <Container>
+            {processing ? <Loader /> :
+              <>
+                {tabState === 1 ?
+                  <article className={styles.article}>
+                    <MasonryGridComponent item={createShop} />
+                  </article>
+                : null}
+                {tabState === 2 ?
+                  <article className={styles.article}>
+                    <MallComponent item={createMall} />
+                  </article>
+                : null}
+                {tabState === 3 ?
+                  <article className={styles.article}>
+                    <MasonryGridComponent item={saveShop} />
+                  </article>
+                : null}
+                {tabState === 4 ?
+                  <article className={styles.article}>4</article>
+                : null}
+                {tabState === 5 ?
+                  <article className={styles.article}>5</article>
+                : null}
+              </>
+            }
+          </Container>
+        </div>
+      </section>
+    </>
+  );
+}
+
+export default Mypage;
+
+Mypage.getLayout = function getLayout(page) {
+  return <PageLayoutDellamall>{page}</PageLayoutDellamall>
+}
