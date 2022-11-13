@@ -1,15 +1,7 @@
 @import '../../variables.scss';
 
 .createMallModal {
-  width: 100vw;
-  height: 100vh;
-  @include p(80px 0, 64px 0, 40px 0);
-  position: fixed;
-  top: 0;
-  left: 0;
-  background-color: rgba(0, 0, 0, 0.8);
-  cursor: pointer;
-  z-index: 999;
+  @include modalBox;
 
   .createMallBox {
     @include height(calc(100vh - 80px * 2), calc(100vh - 64px * 2), calc(100vh - 40px * 2));

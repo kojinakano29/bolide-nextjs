@@ -4,7 +4,7 @@ import styles from '@/styles/dellamall/components/mypage.module.scss'
 import notSet from '@/images/dellamall/myPage/userImg.webp'
 import { Btn01, CreateMallMypage, Loader, MallComponent, MasonryGridComponent } from '@/components/dellamall';
 import { faSquarePlus, faTableCellsLarge, faGear } from '@fortawesome/free-solid-svg-icons'
-import { createContext, useCallback, useState } from 'react';
+import { createContext, useCallback, useEffect, useState } from 'react';
 import axios from '@/lib/axios';
 import { useAuth } from '@/hooks/auth';
 
@@ -35,6 +35,9 @@ const Mypage = ({posts}) => {
   const [createShop, setCreateShop] = useState(create_shop)
   const [createMall, setCreateMall] = useState([])
   const [saveShop, setSaveShop] = useState([])
+  const [saveMall, setSaveMall] = useState([])
+  const [comment, setComment] = useState([])
+  const [follow, setFollow] = useState(false)
 
   const tabItems = [
     "作成ショップ",
@@ -43,6 +46,61 @@ const Mypage = ({posts}) => {
     "保存モール",
     "コメント",
   ]
+
+  const loadFollowCheck = useCallback(async () => {
+    await csrf()
+
+    await axios.post('/api/dellamall/follow/check', {
+      user_id: profile.id,
+    }).then((res) => {
+      // console.log(res)
+      if (res.data.includes(user?.id)) {
+        setFollow(true)
+      }
+    }).catch((e) => {
+      console.error(e)
+    })
+  }, [user])
+
+  useEffect(() => {
+    if (user) {
+      loadFollowCheck()
+    }
+  }, [user])
+
+  const handleClickFollowToggle = async () => {
+    if (processing) return
+    await setProcessing(true)
+    await csrf()
+
+    if (follow) {
+      await axios.delete('/api/dellamall/follow/delete', {
+        data: {
+          followed_user_id: profile.id,
+          following_user_id: user?.id,
+        }
+      }).then((res) => {
+        console.log(res)
+        setFollow(false)
+        alert("フォロー解除しました。")
+      }).catch((e) => {
+        console.error(e)
+      })
+    } else {
+      await axios.post('/api/dellamall/follow/store', {
+        followed_user_id: profile.id,
+        following_user_id: user?.id,
+      }).then((res) => {
+        console.log(res)
+        setFollow(true)
+        alert("フォローしました。")
+      }).catch((e) => {
+        console.error(e)
+      })
+    }
+
+    await setProcessing(false)
+  }
 
   const handleClickTab = useCallback(async (state) => {
     setTabState(state)
@@ -55,7 +113,7 @@ const Mypage = ({posts}) => {
 
     if (state === 1) {
       await axios.post(`/api/dellamall/user/create_shop`, {
-        user_id: user?.id
+        user_id: profile.id
       }).then((res) => {
         // console.log(res)
         setCreateShop(res.data)
@@ -64,7 +122,7 @@ const Mypage = ({posts}) => {
       })
     } else if (state === 2) {
       await axios.post(`/api/dellamall/user/create_mall`, {
-        user_id: user?.id
+        user_id: profile.id
       }).then((res) => {
         // console.log(res)
         setCreateMall(res.data)
@@ -73,7 +131,7 @@ const Mypage = ({posts}) => {
       })
     } else if (state === 3) {
       await axios.post(`/api/dellamall/user/save_shop`, {
-        user_id: user?.id
+        user_id: profile.id
       }).then((res) => {
         // console.log(res)
         setSaveShop(res.data)
@@ -82,17 +140,19 @@ const Mypage = ({posts}) => {
       })
     } else if (state === 4) {
       await axios.post(`/api/dellamall/user/save_mall`, {
-        user_id: user?.id
+        user_id: profile.id
       }).then((res) => {
-        console.log(res)
+        // console.log(res)
+        setSaveMall(res.data.d_mall_bookmark)
       }).catch((e) => {
         console.error(e)
       })
     } else if (state === 5) {
       await axios.post(`/api/dellamall/user/send_comments`, {
-        user_id: user?.id
+        user_id: profile.id
       }).then((res) => {
         console.log(res)
+        setComment(res.data)
       }).catch((e) => {
         console.error(e)
       })
@@ -111,27 +171,39 @@ const Mypage = ({posts}) => {
         <Container small>
           <div className={styles.user__info}>
             <div className={styles.user__info__img}>
-              <img src={dProfile.thumbs ? dProfile.thumbs : notSet.src} alt="プロフィール画像" />
+              <img src={dProfile?.thumbs ? dProfile.thumbs : notSet.src} alt="プロフィール画像" />
             </div>
-            <div className={styles.user__info__name}>{dProfile.nicename}</div>
+            <div className={styles.user__info__name}>{dProfile?.nicename}</div>
             <div className={styles.user__info__id}>{profile.name}</div>
             <ul className={styles.user__info__follow}>
               <li>投稿 {create_shop.length} 件</li>
               <li>フォロー {profile.d_following_count} 件</li>
               <li>フォロワー {profile.d_followed_count} 件</li>
             </ul>
-            <p className={styles.user__info__text}>{dProfile.profile}</p>
+            <p className={styles.user__info__text}>{dProfile?.profile}</p>
           </div>
           <div className={styles.user__buttonList}>
-            <div className={`btnCover ${styles.btnCover}`}>
-              <Btn01 fa={faSquarePlus} txt="ショップを作成する" />
-            </div>
-            <div className={`btnCover ${styles.btnCover}`} onClick={handleClickPopup}>
-              <Btn01 fa={faTableCellsLarge} txt="モールを作成する" />
-            </div>
-            <div className={`btnCover ${styles.btnCover}`}>
-              <Btn01 fa={faGear} txt="プロフィールを編集する" />
-            </div>
+            {user ?
+              <>
+                {user?.id === profile.id ?
+                  <>
+                    <div className={`btnCover ${styles.btnCover}`}>
+                      <Btn01 fa={faSquarePlus} txt="ショップを作成する" />
+                    </div>
+                    <div className={`btnCover ${styles.btnCover}`} onClick={handleClickPopup}>
+                      <Btn01 fa={faTableCellsLarge} txt="モールを作成する" />
+                    </div>
+                    <div className={`btnCover ${styles.btnCover}`}>
+                      <Btn01 fa={faGear} txt="プロフィールを編集する" />
+                    </div>
+                  </>
+                  :
+                  <div className={`btnCover ${styles.btnCover}`} onClick={handleClickFollowToggle}>
+                    <Btn01 txt={follow ? "フォロー中" : "フォローする"} />
+                  </div>
+                }
+              </>
+            : null}
           </div>
         </Container>
       </section>
@@ -173,7 +245,7 @@ const Mypage = ({posts}) => {
                 : null}
                 {tabState === 2 ?
                   <article className={styles.article}>
-                    <MallComponent item={createMall} />
+                    <MallComponent item={createMall} user={user} />
                   </article>
                 : null}
                 {tabState === 3 ?
@@ -182,10 +254,27 @@ const Mypage = ({posts}) => {
                   </article>
                 : null}
                 {tabState === 4 ?
-                  <article className={styles.article}>4</article>
+                  <article className={styles.article}>
+                    <MallComponent item={saveMall} user={user} />
+                  </article>
                 : null}
                 {tabState === 5 ?
-                  <article className={styles.article}>5</article>
+                  <article className={styles.article}>
+                    <ul className={styles.commentList}>
+                      <li className={styles.head}>
+                        <p className={styles.shopName}>ショップ名</p>
+                        <p className={styles.shopContent}>コメント内容</p>
+                        <p className={styles.shopGood}>役に立った数</p>
+                      </li>
+                      {comment.map((item, index) => (
+                        <li key={index}>
+                          <p className={styles.shopName}>{item.d_shop.name}</p>
+                          <p className={styles.shopContent}>{item.content}</p>
+                          <p className={styles.shopGood}>{item.d_comment_goods_count}</p>
+                        </li>
+                      ))}
+                    </ul>
+                  </article>
                 : null}
               </>
             }

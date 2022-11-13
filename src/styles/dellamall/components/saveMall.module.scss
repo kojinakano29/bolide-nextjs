@@ -27,18 +27,8 @@
 }
 
 .saveMallBox {
-  @include width(320px);
+  @include activeBox(320px);
   @include height(410px);
-  @include pt(24px, 16px);
-  max-width: unset;
-  background-color: $w1;
-  border: 3px solid $g3;
-  box-shadow: 8px 8px rgba(0, 0, 0, 0.16);
-  position: absolute;
-  @include top(48px);
-  left: 50%;
-  transform: translateX(-50%);
-  z-index: 3;
 
   .saveMallBox__title {
     @include fs(18px, 16px);

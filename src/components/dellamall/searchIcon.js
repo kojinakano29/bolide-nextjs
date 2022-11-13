@@ -13,7 +13,7 @@ const SearchIcon = () => {
   const onSubmit = useCallback((data) => {
     console.log(data)
 
-    // router.push(`/liondor/search/?s=${data.search}`)
+    router.push(`/dellamall/search/?s=${data.search}`)
   }, [])
 
   return (

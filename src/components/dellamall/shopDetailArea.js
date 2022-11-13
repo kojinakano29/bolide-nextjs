@@ -1,6 +1,6 @@
 import styles from '@/styles/dellamall/components/shopDetailArea.module.scss'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { faComment, faHeart, faBookmark, faReply, faFlag, faChevronDown } from '@fortawesome/free-solid-svg-icons'
+import { faComment, faHeart, faBookmark, faReply, faFlag, faChevronDown, faThumbsUp } from '@fortawesome/free-solid-svg-icons'
 import dummy from '@/images/dellamall/shopDetail/siteImg.png'
 import notSet from '@/images/dellamall/shopDetail/user-after.svg'
 import notSet2 from '@/images/dellamall/shopDetail/user.svg'
@@ -15,6 +15,8 @@ import { useForm } from 'react-hook-form'
 import axios from '@/lib/axios'
 import { useRouter } from 'next/router'
 import { SaveMall } from '@/components/dellamall'
+import { FacebookShareButton, FacebookIcon, TwitterShareButton, TwitterIcon } from 'react-share'
+import Container from './Layouts/container'
 
 export const SaveMallContext = createContext()
 
@@ -33,11 +35,26 @@ const ShopDetailArea = ({data, user}) => {
     url: notSet2.src,
   })
   const [goodState, setGoodState] = useState(false)
+  const [commentGood, setCommentGood] = useState([])
   const [countGood, setCountGood] = useState(goods.length)
   const [countMall, setCountMall] = useState(malls.length)
   const [saveMallOpen, setSaveMallOpen] = useState(false)
+  const [shareOpen, setShareOpen] = useState(false)
+  const [spamOpen, setSpamOpen] = useState(false)
+  const [spamModal, setSpamModal] = useState(false)
+  const [spamMessage, setSpamMessage] = useState("")
 
-  useEffect(() => {
+  const spams = [
+    "スパムである",
+    "ヌードまたは性的行為",
+    "ヘイトスピーチまたは差別的なシンボル",
+    "暴力または危険な団体",
+    "違法または規制対象商品の販売",
+    "いじめまたは嫌がらせ",
+    "知的財産権の侵害",
+  ]
+
+  const loadGoodState = useCallback(async () => {
     const filter = goods.filter((item) => {
       return item.id === user?.id
     })
@@ -47,6 +64,24 @@ const ShopDetailArea = ({data, user}) => {
     } else {
       setGoodState(false)
     }
+  }, [user])
+
+  const loadCommentGoodState = useCallback(async () => {
+    await csrf()
+
+    await axios.post('/api/dellamall/comment/shop_return', {
+      user_id: user?.id,
+    }).then((res) => {
+      // console.log(res)
+      setCommentGood(res.data)
+    }).catch((e) => {
+      console.error(e)
+    })
+  }, [user])
+
+  useEffect(() => {
+    loadGoodState()
+    loadCommentGoodState()
   }, [user])
 
   const handleClickGood = async () => {
@@ -93,6 +128,48 @@ const ShopDetailArea = ({data, user}) => {
     setCommentOpen(prevState => !prevState)
   }
 
+  const handleClickCommentGoodAdd = async (commentId) => {
+    if (processing.current) return
+    processing.current = true
+    await csrf()
+
+    await axios.post('/api/dellamall/d_comment_good/store', {
+      user_id: user?.id,
+      d_comment_id: commentId,
+    }).then((res) => {
+      // console.log(res)
+      setCommentGood([...commentGood, res.data.d_comment_id])
+    }).catch((e) => {
+      console.error(e)
+    })
+
+    processing.current = false
+  }
+
+  const handleClickCommentGoodDelete = async (commentId) => {
+    if (processing.current) return
+    processing.current = true
+    await csrf()
+
+    await axios.delete('/api/dellamall/d_comment_good/delete', {
+      data: {
+        user_id: user?.id,
+        d_comment_id: commentId,
+      }
+    }).then((res) => {
+      // console.log(res)
+      setCommentGood(
+        commentGood.filter((item) => {
+          return item !== commentId
+        })
+      )
+    }).catch((e) => {
+      console.error(e)
+    })
+
+    processing.current = false
+  }
+
   const getUser = useCallback(async () => {
     await csrf()
 
@@ -122,6 +199,37 @@ const ShopDetailArea = ({data, user}) => {
     await setSaveMallOpen(prevState => !prevState)
   }, [])
 
+  const handleClickShare = useCallback(async () => {
+    await setShareOpen(prevState => !prevState)
+  }, [])
+
+  const handleClickSpam = useCallback(async () => {
+    await setSpamOpen(prevState => !prevState)
+  }, [])
+
+  const handleClickSpamModal = useCallback(async (message) => {
+    await setSpamModal(prevState => !prevState)
+    await setSpamMessage(message)
+  }, [])
+
+  const handleClickSpamSubmit = async () => {
+    if (processing.current) return
+    processing.current = true
+    await csrf()
+
+    await axios.post('/api/dellamall/', {
+      message: spamMessage,
+    }).then((res) => {
+      // console.log(res)
+      alert("スパムを報告しました。")
+      handleClickSpamModal("")
+    }).catch((e) => {
+      console.error(e)
+    })
+
+    processing.current = false
+  }
+
   const { register, handleSubmit } = useForm()
   const onSubmit = useCallback(async (data) => {
     if (processing.current) return
@@ -148,6 +256,8 @@ const ShopDetailArea = ({data, user}) => {
   return (
     <>
       {saveMallOpen ? <div className="curtain" onClick={handleClickSaveMall}></div> : null}
+      {shareOpen ? <div className="curtain" onClick={handleClickShare}></div> : null}
+      {spamOpen ? <div className="curtain" onClick={handleClickSpam}></div> : null}
 
       <div className={styles.cont1__flex}>
         <div className={styles.cont1__flexLeft}>
@@ -186,14 +296,55 @@ const ShopDetailArea = ({data, user}) => {
             </ul>
             <ul className={styles.cont1__flexRight__iconRight}>
               <li>
-                <button type="button">
+                <button className={shareOpen ? styles.on : ""} type="button" onClick={handleClickShare}>
                   <FontAwesomeIcon icon={faReply} transform="flip-h" />
                 </button>
+                {shareOpen ?
+                  <div className={styles.activeArea} onClick={(e) => e.stopPropagation()}>
+                    <p className={styles.activeTtl}>シェアする</p>
+                    <div className={styles.activeFlex}>
+                      <FacebookShareButton url={[`${process.env.NEXT_PUBLIC_FRONTEND_URL}/${router.asPath}`]}>
+                        <FacebookIcon size={40} round />
+                      </FacebookShareButton>
+                      <TwitterShareButton url={[[`${process.env.NEXT_PUBLIC_FRONTEND_URL}/${router.asPath}`]]}>
+                        <TwitterIcon size={40} round />
+                      </TwitterShareButton>
+                    </div>
+                  </div>
+                : null}
               </li>
               <li>
-                <button type="button">
+                <button className={spamOpen ? styles.on : ""} type="button" onClick={handleClickSpam}>
                   <FontAwesomeIcon icon={faFlag} />
                 </button>
+                {spamOpen ?
+                  <div className={styles.activeArea} onClick={(e) => e.stopPropagation()}>
+                    <p className={styles.activeTtl}>投稿を報告する</p>
+                    <div className={styles.spamBox}>
+                      {spams.map((spam, index) => (
+                        <button
+                          type="button"
+                          className={styles.spamBtn}
+                          onClick={() => handleClickSpamModal(spam)}
+                          key={index}
+                        >{spam}</button>
+                      ))}
+                    </div>
+                  </div>
+                : null}
+                {spamModal ?
+                  <div className={styles.spamModal}>
+                    <Container small900>
+                      <div className={styles.modalArea} onClick={(e) => e.stopPropagation()}>
+                        <p className={styles.check}>本当に「<span>{spamMessage}</span>」<br className="sp" />として報告しますか？</p>
+                        <div className={styles.btnFlex}>
+                          <button className={styles.btn} type="button" onClick={handleClickSpamSubmit}>はい</button>
+                          <button className={`${styles.btn} ${styles.btn2}`} type="button" onClick={() => handleClickSpamModal("")}>いいえ</button>
+                        </div>
+                      </div>
+                    </Container>
+                  </div>
+                : null}
               </li>
             </ul>
           </div>
@@ -227,14 +378,14 @@ const ShopDetailArea = ({data, user}) => {
                 {comments.map((comment) => (
                   <li key={comment.id}>
                     <div className={styles.user__img}>
-                    <img
-                      src={
-                        comment.user.d_profile.thumbs ?
-                        comment.user.d_profile.thumbs :
-                        notSet.src
-                      }
-                      alt=""
-                    />
+                      <img
+                        src={
+                          comment.user.d_profile.thumbs ?
+                          comment.user.d_profile.thumbs :
+                          notSet.src
+                        }
+                        alt=""
+                      />
                     </div>
                     <div className={styles.user__comment}>
                       <Link href="">
@@ -242,6 +393,20 @@ const ShopDetailArea = ({data, user}) => {
                       </Link>
                       <p className={styles.content}>{comment.content}</p>
                     </div>
+                    <button
+                      type="button"
+                      className={commentGood?.includes(comment.id) ? styles.on : null}
+                      onClick={() => {
+                        if (commentGood?.includes(comment.id)) {
+                          handleClickCommentGoodDelete(comment.id)
+                        } else {
+                          handleClickCommentGoodAdd(comment.id)
+                        }
+                      }}
+                    >
+                      <FontAwesomeIcon icon={faThumbsUp} />
+                      <span>参考になった</span>
+                    </button>
                   </li>
                 ))}
               </ul>

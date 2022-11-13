@@ -103,3 +103,57 @@
 .tabContent {
   @include pt(64px);
 }
+
+.commentList {
+  border: 1px solid $g3;
+
+  @include media1(sp) {
+    overflow-x: scroll;
+
+    li {
+      max-width: unset;
+      width: 720px;
+    }
+  }
+
+  li {
+    border-bottom: 1px solid $g3;
+    @include flex(stretch);
+
+    p {
+      @include p(16px);
+      @include fs(16px, 14px);
+      font-weight: 500;
+      letter-spacing: 0;
+
+      &.shopName {
+        @include width(20%);
+        border-right: 1px solid $g3;
+      }
+
+      &.shopContent {
+        @include width(60%);
+        border-right: 1px solid $g3;
+      }
+
+      &.shopGood {
+        @include width(20%);
+        align-self: center;
+        text-align: center;
+      }
+    }
+
+    &.head {
+      background-color: $g1;
+      align-items: center;
+
+      p {
+        color: $w1;
+      }
+    }
+
+    &:last-of-type {
+      border-bottom: none;
+    }
+  }
+}

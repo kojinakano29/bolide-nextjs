@@ -26,10 +26,10 @@ const HeaderNav = () => {
           <span className="pc">ショップを作る</span>
         </a>
       </Link>
-      <Link href={`dellamall/${user ? `mypage/${user?.id}` : 'login'}`}>
+      <Link href={`/dellamall/${user ? `mypage/${user?.id}` : 'login'}`}>
         <a className={`${styles.btn2} ${styles.rev} hoverEffect`}>
           <FontAwesomeIcon icon={faCircleUser} />
-          <span className="pc">マイページ</span>
+          <span className="pc">{user ? "マイページ" : "ログイン"}</span>
         </a>
       </Link>
     </div>
