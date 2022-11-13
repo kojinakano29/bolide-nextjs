@@ -403,4 +403,30 @@ $breakpoints: (
   border: 1px solid $g4;
   border-radius: 20px;
 }
+
+@mixin activeBox($pc:0, $tab:$pc, $sp:$tab) {
+  @include width($pc, $tab, $sp);
+  @include pt(24px, 16px);
+  max-width: unset;
+  background-color: $w1;
+  border: 3px solid $g3;
+  box-shadow: 8px 8px rgba(0, 0, 0, 0.16);
+  position: absolute;
+  @include top(48px);
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 3;
+}
+
+@mixin modalBox {
+  width: 100vw;
+  height: 100vh;
+  @include p(80px 0, 64px 0, 40px 0);
+  position: fixed;
+  top: 0;
+  left: 0;
+  background-color: rgba(0, 0, 0, 0.8);
+  cursor: pointer;
+  z-index: 999;
+}
 /*-------------------------     共通部分    -------------------------*/

@@ -73,6 +73,91 @@
   .cont1__flexRight__iconRight {
     @include gap(16px);
 
+    li {
+      position: relative;
+
+      .activeArea {
+        @include activeBox(320px);
+        @include p(24px, 20px);
+
+        .activeTtl {
+          @include fs(18px, 16px);
+          font-weight: $bold;
+          text-align: center;
+          @include mb(8px);
+        }
+
+        .activeFlex {
+          @include flex(center, left);
+          @include gap(8px);
+        }
+
+        .spamBox {
+          .spamBtn {
+            display: block;
+            width: fit-content;
+            @include fs(14px, 12px);
+            font-weight: bold;
+            letter-spacing: 0;
+            @include mb(10px);
+            transition: .2s ease-out;
+
+            &:last-of-type {
+              margin-bottom: 0;
+            }
+
+            &:hover {
+              opacity: .5;
+            }
+          }
+        }
+      }
+
+      .spamModal {
+        @include modalBox;
+
+        .modalArea {
+          background-color: $w1;
+          @include p(40px, 32px, 20px);
+          text-align: center;
+          border-radius: 20px;
+          cursor: auto;
+
+          .check {
+            @include fs(20px, 18px, 16px);
+            font-weight: 500;
+            @include mb(24px);
+
+            span {
+              font-weight: bold;
+            }
+          }
+
+          .btnFlex {
+            @include flex(center, center);
+            @include gap(40px, 32px, 24px);
+
+            @include media1(sp) {
+              flex-direction: column;
+            }
+
+            .btn {
+              @include btn1(240px, 48px, 200px, 40px);
+              box-shadow: 4px 4px rgba(0, 0, 0, .16);
+
+              &.btn2 {
+                background-color: $g1;
+              }
+
+              &:hover {
+                transform: translate(4px, 4px);
+              }
+            }
+          }
+        }
+      }
+    }
+
     li > button {
       background-color: $g2;
     }
@@ -154,7 +239,7 @@
         }
 
         .user__comment {
-          @include width(calc(100% - (40px + 16px)), calc(100% - (40px + 12px)), calc(100% - (32px + 12px)));
+          @include width(calc(100% - (40px + 96px + 16px * 2)), calc(100% - (40px + 84px + 12px * 2)), calc(100% - (32px + 84px + 12px * 2)));
 
           .name,
           .content {
@@ -167,6 +252,31 @@
 
             &:hover {
               text-decoration: none;
+            }
+          }
+        }
+
+        button {
+          @include width(96px, 84px);
+          @include flex(center, right);
+          @include gap(4px);
+
+          span {
+            @include fs(12px, 10px);
+            font-weight: 500;
+          }
+
+          &.on {
+            svg,
+            svg * {
+              color: $o1;
+            }
+          }
+
+          &:hover {
+            svg,
+            svg * {
+              color: $o1;
             }
           }
         }

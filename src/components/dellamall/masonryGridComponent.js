@@ -5,15 +5,15 @@ const MasonryGridComponent = ({item}) => {
   return (
     <>
       <MasonryGrid
-        gap={30}
+        gap={28}
         defaultDirection={"end"}
-        align={"justify"}
+        align={"left"}
         useResizeObserver={true}
         observeChildren={true}
       >
-        {item?.map((item) => (
+        {item?.map((item, index) => (
           <StoreCard
-            key={item.id}
+            key={index}
             item={item}
           />
         ))}
