@@ -11,7 +11,7 @@ const SearchIcon = () => {
   const { register, handleSubmit } = useForm()
 
   const onSubmit = useCallback((data) => {
-    console.log(data)
+    // console.log(data)
 
     router.push(`/dellamall/search/?s=${data.search}`)
   }, [])
