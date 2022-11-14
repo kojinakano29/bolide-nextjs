@@ -2,7 +2,7 @@ import styles from '@/styles/dellamall/components/mallComponent.module.scss'
 import { faLock } from '@fortawesome/free-solid-svg-icons'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import notSet from '@/images/dellamall/myPage/userImg.webp'
-import { useCallback, useState } from 'react';
+import { useCallback, useEffect, useState } from 'react';
 import axios from '@/lib/axios';
 import { Loader, MasonryGridComponent } from '@/components/dellamall';
 
@@ -14,7 +14,7 @@ const MallComponent = ({item, user}) => {
   const [mallPopup, setMallPopup] = useState([])
   const [popupOpen, setPopupOpen] = useState(false)
   const [mallName, setMallName] = useState("")
-  const [saveMallState, setSaveMallState] = useState(false)
+  const [saveMallState, setSaveMallState] = useState([])
 
   const handleClickPopup = useCallback(async () => {
     setPopupOpen(prevState => !prevState)
@@ -29,7 +29,7 @@ const MallComponent = ({item, user}) => {
     await axios.post(`/api/dellamall/user/mall_click`, {
       d_mall_id: mallId,
     }).then((res) => {
-      console.log(res)
+      // console.log(res)
       setMallPopup(res.data)
       setMallName(mallName)
     }).catch((e) => {
@@ -39,39 +39,62 @@ const MallComponent = ({item, user}) => {
     await setProcessing(false)
   }, [])
 
-  const handleClickSaveMall = async (mallId) => {
+  const handleClickSaveMallAdd = async (mallId) => {
     if (processing) return
     await setProcessing(true)
     await csrf()
 
-    if (saveMallState) {
-      await axios.delete('/api/dellamall/mall_bookmark/delete', {
-        data: {
-          user_id: user?.id,
-          d_mall_id: mallId,
-        }
-      }).then((res) => {
-        // console.log(res)
-        setSaveMallState(false)
-        alert("モールの保存を解除しました。")
-      }).catch((e) => {
-        console.error(e)
-      })
-    } else {
-      await axios.post('/api/dellamall/mall_bookmark/store', {
-        user_id: user?.id,
-        d_mall_id: mallId,
-      }).then((res) => {
-        // console.log(res)
-        setSaveMallState(true)
-        alert("モールを保存しました。")
-      }).catch((e) => {
-        console.error(e)
-      })
-    }
+    await axios.post('/api/dellamall/mall_bookmark/store', {
+      user_id: user?.id,
+      d_mall_id: mallId,
+    }).then((res) => {
+      // console.log(res)
+      alert("モールを保存しました。")
+    }).catch((e) => {
+      console.error(e)
+    })
 
     await setProcessing(false)
   }
+
+  const handleClickSaveMallDelete = async (mallId) => {
+    if (processing) return
+    await setProcessing(true)
+    await csrf()
+
+    await axios.delete('/api/dellamall/mall_bookmark/delete', {
+      data: {
+        user_id: user?.id,
+        d_mall_id: mallId,
+      }
+    }).then((res) => {
+      // console.log(res)
+      alert("モールの保存を解除しました。")
+    }).catch((e) => {
+      console.error(e)
+    })
+
+    await setProcessing(false)
+  }
+
+  const handleChangeTab = async () => {
+    await csrf()
+
+    await axios.post('/api/dellamall/mallbookmark/mall_return', {
+      user_id: user?.id,
+    }).then((res) => {
+      // console.log(res)
+      setSaveMallState(res.data)
+    }).catch((e) => {
+      console.error(e)
+    })
+  }
+
+  useEffect(() => {
+    if (user) {
+      handleChangeTab()
+    }
+  }, [processing])
 
   return (
     <>
@@ -110,12 +133,18 @@ const MallComponent = ({item, user}) => {
             </div>
             <div className={styles.saveFlex}>
               <p className={styles.saveTxt}>保存：{mall.d_mall_in.length}件</p>
-              {mall.lock === 0 ?
+              {user && mall.lock === 0 ?
                 <button
-                  className={styles.saveBtn}
+                  className={`${styles.saveBtn} ${saveMallState.includes(mall.id) ? styles.on : null}`}
                   type="button"
-                  onClick={() => handleClickSaveMall(mall.id)}
-                >保存</button>
+                  onClick={() => {
+                    if (saveMallState.includes(mall.id)) {
+                      handleClickSaveMallDelete(mall.id)
+                    } else {
+                      handleClickSaveMallAdd(mall.id)
+                    }
+                  }}
+                >{saveMallState.includes(mall.id) ? "解除" : "保存"}</button>
               : null}
             </div>
             <div className={styles.userArea}>

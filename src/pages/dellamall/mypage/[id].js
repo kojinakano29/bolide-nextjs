@@ -22,7 +22,7 @@ export const getServerSideProps = async ({params}) => {
 export const CreateMallContext = createContext()
 
 const Mypage = ({posts}) => {
-  console.log(posts)
+  // console.log(posts)
   const csrf = () => axios.get('/sanctum/csrf-cookie')
 
   const { user } = useAuth()
@@ -151,7 +151,7 @@ const Mypage = ({posts}) => {
       await axios.post(`/api/dellamall/user/send_comments`, {
         user_id: profile.id
       }).then((res) => {
-        console.log(res)
+        // console.log(res)
         setComment(res.data)
       }).catch((e) => {
         console.error(e)
