@@ -8,7 +8,19 @@ import { useRouter } from "next/router";
 import { useCallback, useEffect, useState } from "react";
 import { useForm } from "react-hook-form";
 
-const CreateShop = () => {
+export const getServerSideProps = async ({params}) => {
+  const res = await fetch(`${process.env.NEXT_PUBLIC_API_DELLAMALL}/shop/edit/${params.id}`)
+  const data = await res.json()
+
+  return {
+      props: {
+          posts: data
+      }
+  }
+}
+
+const EditShop = ({posts}) => {
+  console.log(posts)
   const csrf = () => axios.get('/sanctum/csrf-cookie')
 
   const router = useRouter()
@@ -16,12 +28,14 @@ const CreateShop = () => {
   const [disabled, setDisabled] = useState(false)
   const { register, handleSubmit, getValues, setValue, formState: { errors } } = useForm({
     defaultValues: {
-      name: "",
-      description: "",
+      url: posts.url,
+      name: posts.name,
+      tag: posts.tag,
+      description: posts.description,
     },
     mode: "onChange",
   })
-  const [preview, setPreview] = useState()
+  const [preview, setPreview] = useState(`${process.env.NEXT_PUBLIC_BACKEND_URL}/storage/${posts.thumbs}`)
   const [officialCheck, setOfficialCheck] = useState(true)
 
   useEffect(() => {
@@ -35,11 +49,11 @@ const CreateShop = () => {
     if (files[0]) {
       setPreview(window.URL.createObjectURL(files[0]))
     } else {
-      setPreview("")
+      setPreview(`${process.env.NEXT_PUBLIC_BACKEND_URL}/storage/${posts.thumbs}`)
     }
   }, [])
 
-  const onShopCreate = useCallback(async (data) => {
+  const onShopEdit = useCallback(async (data) => {
     await csrf()
 
     const params = new FormData();
@@ -47,20 +61,16 @@ const CreateShop = () => {
       params.append(key, this[key])
     }, data)
 
-    await axios.post('/api/dellamall/shop/store', params, {
+    await axios.post(`/api/dellamall/shop/update/${posts.id}`, params, {
       headers: {
         'Content-Type': 'multipart/form-data',
       },
     }).then((res) => {
       // console.log(res)
-      alert("ショップを作成しました。")
-      router.push({
-        pathname: '/dellamall/admin/shop/edit/[pid]',
-        query: { pid: res.data.id }
-      })
+      alert("ショップを編集しました。")
     }).catch((e) => {
       console.error(e)
-      alert("ショップの作成に失敗しました。")
+      alert("ショップの編集に失敗しました。")
     })
 
     await setDisabled(false)
@@ -70,7 +80,7 @@ const CreateShop = () => {
     // console.log(data)
     setDisabled(true)
 
-    onShopCreate({
+    onShopEdit({
       user_id: user?.id,
       url: data.url,
       name: data.name,
@@ -78,7 +88,7 @@ const CreateShop = () => {
       description: data.description,
       thumbs: data.thumbs ? data.thumbs[0] : preview,
     })
-  }, [setDisabled, onShopCreate, user, preview])
+  }, [setDisabled, onShopEdit, user, preview])
 
   const handleClickSiteData = async (url) => {
     // console.log(url)
@@ -117,7 +127,7 @@ const CreateShop = () => {
   return (
     <section className={`${styles.adminForm} cont1`}>
       <Container small>
-        <h2 className="ttl2">ショップ作成</h2>
+        <h2 className="ttl2">ショップ編集</h2>
         {user ?
           <form onSubmit={handleSubmit(onSubmit)}>
             <h3 className={styles.infoTtl}>基本情報</h3>
@@ -223,8 +233,8 @@ const CreateShop = () => {
   );
 }
 
-export default CreateShop;
+export default EditShop;
 
-CreateShop.getLayout = function getLayout(page) {
+EditShop.getLayout = function getLayout(page) {
   return <PageLayoutDellamall>{page}</PageLayoutDellamall>
 }
