@@ -176,4 +176,100 @@
   &.btn2 {
     @include m(0 0 32px);
   }
+
+  &.btn3 {
+    color: $b3;
+    background-color: $g3;
+  }
+}
+
+.btnFlex {
+  @include flex(center, center);
+  @include gap(16px);
+  @include mt(32px);
+
+  .btn {
+    margin: 0;
+  }
+}
+
+.popupArea {
+  @include modalBox;
+  overflow-y: scroll;
+  @include scrollHidden;
+
+  .popupBox {
+    @include min-height(calc(100vh - 80px * 2), calc(100vh - 64px * 2), calc(100vh - 40px * 2));
+    @include p(40px 40px 64px, 32px 32px 64px, 20px 20px 64px);
+    background-color: $w1;
+    border-radius: 20px;
+    cursor: auto;
+    position: relative;
+
+    .midashi {
+      @include fs(24px, 20px, 18px);
+      font-weight: 500;
+      text-align: center;
+      @include mb(32px);
+    }
+
+    dl {
+      @include mb(32px);
+
+      dt {
+        @include fs(16px, 14px);
+        font-weight: bold;
+        @include mb(8px);
+
+        label {
+          cursor: pointer;
+        }
+      }
+
+      dd {
+        input[type="text"] {
+          @include input(100%);
+        }
+
+        input[type="date"] {
+          @include input(200px);
+        }
+
+        input[type="checkbox"] {
+          cursor: pointer;
+        }
+
+        .imgBox {
+          @include width(184px);
+          max-height: 184px;
+          border: 1px solid $g1;
+          border-radius: 20px;
+          overflow: hidden;
+          @include mb(16px);
+
+          .imgNone {
+            height: 184px;
+            background-color: $g2;
+            @include flex(center, center);
+            @include fs(12px);
+            font-weight: 500;
+            color: $g1;
+          }
+
+          img {
+            width: 100%;
+            object-fit: cover;
+            object-position: top;
+          }
+        }
+      }
+    }
+
+    .btn {
+      position: absolute;
+      @include bottom(40px, 32px, 20px);
+      left: 50%;
+      transform: translateX(-50%);
+    }
+  }
 }
