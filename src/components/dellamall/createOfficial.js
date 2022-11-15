@@ -20,8 +20,10 @@ const CreateOfficial = () => {
     handleClickCreate,
     disabled,
     setDisabled,
+    setEditData,
+    editData,
   } = useContext(OfficialContext)
-  
+
   const [preview, setPreview] = useState()
   const { register, handleSubmit, formState: { errors } } = useForm({
     mode: "onChange",
@@ -39,9 +41,11 @@ const CreateOfficial = () => {
     }).then((res) => {
       // console.log(res)
       setOverviews(res.data)
+      alert("作成しました。")
       handleClickCreate(type)
     }).catch((e) => {
       console.error(e)
+      alert("作成できませんでした。")
     })
 
     await setDisabled(false)
@@ -60,9 +64,11 @@ const CreateOfficial = () => {
     }).then((res) => {
       // console.log(res)
       setCoupons(res.data)
+      alert("作成しました。")
       handleClickCreate(type)
     }).catch((e) => {
       console.error(e)
+      alert("作成できませんでした。")
     })
 
     await setDisabled(false)
@@ -81,9 +87,11 @@ const CreateOfficial = () => {
     }).then((res) => {
       // console.log(res)
       setSocials(res.data)
+      alert("作成しました。")
       handleClickCreate(type)
     }).catch((e) => {
       console.error(e)
+      alert("作成できませんでした。")
     })
 
     await setDisabled(false)
@@ -101,9 +109,11 @@ const CreateOfficial = () => {
     }).then((res) => {
       // console.log(res)
       setInfos(res.data)
+      alert("作成しました。")
       handleClickCreate(type)
     }).catch((e) => {
       console.error(e)
+      alert("作成できませんでした。")
     })
 
     await setDisabled(false)
@@ -121,10 +131,12 @@ const CreateOfficial = () => {
       api_token: data.instagramToken,
     }).then((res) => {
       // console.log(res)
-      setInstagram(res.data)
+      setInstagram([res.data])
+      alert("作成しました。")
       handleClickCreate(type)
     }).catch((e) => {
       console.error(e)
+      alert("作成できませんでした。")
     })
 
     await setDisabled(false)
@@ -154,9 +166,11 @@ const CreateOfficial = () => {
     }).then((res) => {
       // console.log(res)
       setItems(res.data)
+      alert("作成しました。")
       handleClickCreate(type)
     }).catch((e) => {
       console.error(e)
+      alert("作成できませんでした。")
     })
 
     await setDisabled(false)
