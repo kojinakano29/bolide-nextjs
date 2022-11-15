@@ -4,7 +4,7 @@ import PageLayoutDellamall from "@/components/Layouts/PageLayoutDellamall";
 import { useAuth } from "@/hooks/auth";
 import { useRouter } from "next/router";
 import { createContext, useEffect, useState } from "react";
-import { CreateOfficial } from '@/components/dellamall';
+import { CreateOfficial, EditOfficial } from '@/components/dellamall';
 import axios from '@/lib/axios';
 
 export const OfficialContext = createContext()
@@ -21,7 +21,7 @@ export const getServerSideProps = async ({params}) => {
 }
 
 const OfficialShop = ({posts}) => {
-  console.log(posts)
+  // console.log(posts)
   const csrf = () => axios.get('/sanctum/csrf-cookie')
 
   const router = useRouter()
@@ -29,6 +29,7 @@ const OfficialShop = ({posts}) => {
   const [disabled, setDisabled] = useState(false)
   const [officialCheck, setOfficialCheck] = useState(false)
   const [popup, setPopup] = useState(false)
+  const [mode, setMode] = useState()
   const [type, setType] = useState("")
   const [overviews, setOverviews] = useState(posts.overview)
   const [coupons, setCoupons] = useState(posts.coupon)
@@ -36,6 +37,7 @@ const OfficialShop = ({posts}) => {
   const [infos, setInfos] = useState(posts.info)
   const [instagram, setInstagram] = useState(posts.insta_api)
   const [items, setItems] = useState(posts.item)
+  const [editData, setEditData] = useState({})
 
   const shop = posts.shop
 
@@ -52,8 +54,63 @@ const OfficialShop = ({posts}) => {
   }, [user])
 
   const handleClickCreate = async (type) => {
+    setMode("create")
     setPopup(prevState => !prevState)
     setType(type)
+  }
+
+  const handleClickEdit = async (type, id) => {
+    setMode("edit")
+    setPopup(prevState => !prevState)
+    setType(type)
+
+    if (disabled) return
+    setDisabled(true)
+    await csrf()
+
+    if (type === "overview") {
+      await axios.post(`/api/dellamall/d_overviews/edit/${id}`)
+      .then((res) => {
+        // console.log(res)
+        setEditData(res.data)
+      }).catch((e) => {
+        console.error(e)
+      })
+    } else if (type === "coupon") {
+      await axios.post(`/api/dellamall/d_coupons/edit/${id}`)
+      .then((res) => {
+        // console.log(res)
+        setEditData(res.data)
+      }).catch((e) => {
+        console.error(e)
+      })
+    } else if (type === "info") {
+      await axios.post(`/api/dellamall/d_infos/edit/${id}`)
+      .then((res) => {
+        // console.log(res)
+        setEditData(res.data)
+      }).catch((e) => {
+        console.error(e)
+      })
+    } else if (type === "instagram") {
+      await axios.post(`/api/dellamall/d_insta/edit/${id}`)
+      .then((res) => {
+        // console.log(res)
+        setEditData(res.data)
+      }).catch((e) => {
+        console.error(e)
+      })
+    } else if (type === "item") {
+      await axios.post(`/api/dellamall/d_items/edit/${id}`)
+      .then((res) => {
+        // console.log(res)
+        setEditData(res.data)
+      }).catch((e) => {
+        console.error(e)
+      })
+    }
+
+    await setDisabled(false)
   }
 
   const handleClickDelete = async (type, id) => {
@@ -74,30 +131,42 @@ const OfficialShop = ({posts}) => {
     } else if (type === 'coupon') {
       await axios.delete(`/api/dellamall/d_coupons/delete/${id}`)
       .then((res) => {
-        console.log(res)
+        // console.log(res)
+        alert("削除しました。")
+        setCoupons(res.data)
       }).catch((e) => {
         console.error(e)
+        alert("削除できませんでした。")
       })
     } else if (type === "info") {
       await axios.delete(`/api/dellamall/d_infos/delete/${id}`)
       .then((res) => {
-        console.log(res)
+        // console.log(res)
+        alert("削除しました。")
+        setInfos(res.data)
       }).catch((e) => {
         console.error(e)
+        alert("削除できませんでした。")
       })
     } else if (type === "instagram") {
       await axios.delete(`/api/dellamall/d_insta/delete/${id}`)
       .then((res) => {
-        console.log(res)
+        // console.log(res)
+        alert("削除しました。")
+        setInstagram([])
       }).catch((e) => {
         console.error(e)
+        alert("削除できませんでした。")
       })
     } else if (type === "item") {
       await axios.delete(`/api/dellamall/d_items/delete/${id}`)
       .then((res) => {
-        console.log(res)
+        // console.log(res)
+        alert("削除しました。")
+        setItems(res.data)
       }).catch((e) => {
         console.error(e)
+        alert("削除できませんでした。")
       })
     }
 
@@ -127,6 +196,7 @@ const OfficialShop = ({posts}) => {
                     <button
                       type="button"
                       className={`${styles.btn} hoverEffect`}
+                      onClick={() => handleClickEdit("overview", overview.id)}
                     >編集</button>
                     <button
                       type="button"
@@ -155,6 +225,7 @@ const OfficialShop = ({posts}) => {
                     <button
                       type="button"
                       className={`${styles.btn} hoverEffect`}
+                      onClick={() => handleClickEdit("coupon", coupon.id)}
                     >編集</button>
                     <button
                       type="button"
@@ -185,16 +256,56 @@ const OfficialShop = ({posts}) => {
                 onClick={() => handleClickCreate("info")}
               >新規作成</button>
             </div>
+            <article className={styles.listBox}>
+              {infos?.map((info, index) => (
+                <div className={styles.list} key={index}>
+                  <p className={styles.txt}>{info.content}</p>
+                  <div className={styles.btnBox}>
+                    <button
+                      type="button"
+                      className={`${styles.btn} hoverEffect`}
+                      onClick={() => handleClickEdit("info", info.id)}
+                    >編集</button>
+                    <button
+                      type="button"
+                      className={styles.delete}
+                      onClick={() => handleClickDelete('info', info.id)}
+                    >削除</button>
+                  </div>
+                </div>
+              ))}
+            </article>
           </div>
           <div className={styles.officialBox}>
             <div className={styles.ttlFlex}>
               <h4 className={styles.ttl2}>Instagram連携</h4>
-              <button
-                type="button"
-                className={`${styles.btn} hoverEffect`}
-                onClick={() => handleClickCreate("instagram")}
-              >新規作成</button>
+              {instagram.length > 0 ? null :
+                <button
+                  type="button"
+                  className={`${styles.btn} hoverEffect`}
+                  onClick={() => handleClickCreate("instagram")}
+                >新規作成</button>
+              }
             </div>
+            <article className={styles.listBox}>
+              {instagram?.map((insta, index) => (
+                <div className={styles.list} key={index}>
+                  <p className={styles.txt}>連携済みです</p>
+                  <div className={styles.btnBox}>
+                    <button
+                      type="button"
+                      className={`${styles.btn} hoverEffect`}
+                      onClick={() => handleClickEdit("instagram", insta.id)}
+                    >編集</button>
+                    <button
+                      type="button"
+                      className={styles.delete}
+                      onClick={() => handleClickDelete('instagram', insta.id)}
+                    >削除</button>
+                  </div>
+                </div>
+              ))}
+            </article>
           </div>
           <div className={styles.officialBox}>
             <div className={styles.ttlFlex}>
@@ -205,6 +316,25 @@ const OfficialShop = ({posts}) => {
                 onClick={() => handleClickCreate("item")}
               >新規作成</button>
             </div>
+            <article className={styles.listBox}>
+              {items?.map((item, index) => (
+                <div className={styles.list} key={index}>
+                  <p className={styles.txt}>{item.title}</p>
+                  <div className={styles.btnBox}>
+                    <button
+                      type="button"
+                      className={`${styles.btn} hoverEffect`}
+                      onClick={() => handleClickEdit("item", item.id)}
+                    >編集</button>
+                    <button
+                      type="button"
+                      className={styles.delete}
+                      onClick={() => handleClickDelete('item', item.id)}
+                    >削除</button>
+                  </div>
+                </div>
+              ))}
+            </article>
           </div>
         </Container>
       </section>
@@ -220,10 +350,13 @@ const OfficialShop = ({posts}) => {
           setInstagram,
           setItems,
           handleClickCreate,
+          handleClickEdit,
           disabled,
           setDisabled,
+          setEditData,
+          editData,
         }}>
-          <CreateOfficial />
+          {mode === "create" ? <CreateOfficial /> : <EditOfficial />}
         </OfficialContext.Provider>
       : null}
     </>
