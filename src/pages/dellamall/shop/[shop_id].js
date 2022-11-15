@@ -19,6 +19,7 @@ export const getServerSideProps = async ({params}) => {
 }
 
 const ShopDetail = ({posts}) => {
+  console.log(posts);
   const router = useRouter()
   const { user } = useAuth()
 

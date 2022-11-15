@@ -7,6 +7,7 @@ import axios from "@/lib/axios";
 import { useRouter } from "next/router";
 import { useCallback, useEffect, useState } from "react";
 import { useForm } from "react-hook-form";
+import Link from 'next/link';
 
 export const getServerSideProps = async ({params}) => {
   const res = await fetch(`${process.env.NEXT_PUBLIC_API_DELLAMALL}/shop/edit/${params.id}`)
@@ -23,15 +24,17 @@ const EditShop = ({posts}) => {
   console.log(posts)
   const csrf = () => axios.get('/sanctum/csrf-cookie')
 
-  const router = useRouter()
   const { user } = useAuth({middleware: 'auth'})
   const [disabled, setDisabled] = useState(false)
+  const tags = posts?.d_tags
+  const tags2 = tags?.map((item) => {return item.name})
+  const tagStr = tags2?.join(',')
   const { register, handleSubmit, getValues, setValue, formState: { errors } } = useForm({
     defaultValues: {
       url: posts.url,
       name: posts.name,
-      tag: posts.tag,
-      description: posts.description,
+      tag: tagStr,
+      description: posts.description && posts.description !== "undefined" ? posts.description : "",
     },
     mode: "onChange",
   })
@@ -86,7 +89,7 @@ const EditShop = ({posts}) => {
       name: data.name,
       tag: data.tag,
       description: data.description,
-      thumbs: data.thumbs ? data.thumbs[0] : preview,
+      thumbs: data.thumbs && data.thumbs?.length !== 0 ? data.thumbs[0] : posts.thumbs,
     })
   }, [setDisabled, onShopEdit, user, preview])
 
@@ -222,10 +225,15 @@ const EditShop = ({posts}) => {
                 </dl>
               </div>
             </article>
-            <button
-              className={`${styles.btn} hoverEffect`}
-              disabled={disabled}
-            >作成</button>
+            <div className={styles.btnFlex}>
+              <button
+                className={`${styles.btn} hoverEffect`}
+                disabled={disabled}
+              >編集</button>
+              <Link href="/dellamall/admin/shop">
+                <a className={`${styles.btn} ${styles.btn3} hoverEffect`}>戻る</a>
+              </Link>
+            </div>
           </form>
         : <Loader />}
       </Container>

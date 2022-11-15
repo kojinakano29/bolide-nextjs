@@ -2,46 +2,83 @@
 
 .listBox {
   .list {
-    @include p(20px);
+    @include p(20px, 16px);
     border: 1px solid $g3;
     border-radius: 17px;
     @include mb(24px);
     @include flex(center);
     @include gap(16px);
 
-    .link {
+    @include media1(sp) {
+      flex-direction: column;
+      align-items: flex-start;
+    }
+  }
+}
+
+.link {
+  @include fs(16px, 14px);
+  font-weight: 500;
+  text-decoration: underline;
+
+  &:hover {
+    text-decoration: none;
+  }
+}
+
+.btnBox {
+  @include flex(center, right);
+  @include gap(16px);
+}
+
+.btn {
+  @include p(4px 8px);
+  @include fs(14px, 12px);
+  font-weight: 500;
+  background-color: $o1;
+  color: $w1;
+  border-radius: 8px;
+}
+
+.delete {
+  color: $red1;
+  text-decoration: underline;
+  @include fs(14px, 12px);
+  font-weight: 500;
+
+  &:hover {
+    text-decoration: none;
+  }
+}
+
+.officialArea {
+  .officialBox {
+    @include mb(64px);
+  }
+
+  .ttl {
+    @include fs(24px, 20px, 18px);
+    font-weight: 500;
+    text-align: center;
+    @include pb(24px);
+    border-bottom: 1px solid $g3;
+    @include mb(32px);
+  }
+
+  .ttlFlex {
+    @include flex(center);
+    @include pb(16px);
+    border-bottom: 1px solid $g3;
+    @include mb(16px);
+
+    .btn {
+      @include p(4px 16px);
       @include fs(16px, 14px);
-      font-weight: 500;
-      text-decoration: underline;
-
-      &:hover {
-        text-decoration: none;
-      }
     }
+  }
 
-    .btnBox {
-      @include flex(center, right);
-      @include gap(16px);
-
-      .btn {
-        @include p(4px 8px);
-        @include fs(14px, 12px);
-        font-weight: 500;
-        background-color: $o1;
-        color: $w1;
-        border-radius: 8px;
-      }
-
-      .delete {
-        color: $red1;
-        text-decoration: underline;
-        @include fs(14px, 12px);
-        font-weight: 500;
-
-        &:hover {
-          text-decoration: none;
-        }
-      }
-    }
+  .ttl2 {
+    @include fs(24px, 20px, 18px);
+    font-weight: 500;
   }
 }

@@ -37,13 +37,13 @@ const CommentList = ({posts}) => {
     }
   }, [user])
 
-  const handleClickDelete = async () => {
+  const handleClickDelete = async (commentId) => {
     await csrf()
 
     await axios.delete(`/api/dellamall/comment/delete`, {
       data: {
         user_id: user?.id,
-        comment_id: router.query.id,
+        comment_id: commentId,
       }
     }).then((res) => {
       // console.log(res)
@@ -66,7 +66,7 @@ const CommentList = ({posts}) => {
                 <button
                   type="button"
                   className={styles.delete}
-                  onClick={handleClickDelete}
+                  onClick={() => handleClickDelete(comment.id)}
                 >削除</button>
               </div>
             </div>
