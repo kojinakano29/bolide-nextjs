@@ -1,6 +1,5 @@
 import axios from '@/lib/axios'
 import styles from '@/styles/dellamall/components/trend.module.scss'
-import Link from 'next/link'
 import { useRouter } from 'next/router'
 import { useCallback, useEffect, useState } from 'react'
 import { Loader } from '@/components/dellamall'
@@ -33,10 +32,10 @@ const Trend = ({mb40 = false}) => {
     let path = {
       tag_id: id,
     }
-    router.replace({
+    router.push({
       pathname: `/dellamall/shop`,
       query: path,
-    }).then(() => router.reload())
+    })
   }
 
   return (
@@ -45,7 +44,7 @@ const Trend = ({mb40 = false}) => {
       {trends.length === 0 ? <Loader /> :
         <ul className={styles.trend__list}>
           {trends?.map((trend, index) => (
-            <li className={styles.keyWord__item} key={index}>
+            <li className={`${styles.keyWord__item} ${trend.id === parseInt(router.query.tag_id) ? styles.current : null}`} key={index}>
               <button
                 type="button"
                 className="hoverEffect"

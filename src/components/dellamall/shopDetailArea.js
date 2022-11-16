@@ -21,6 +21,7 @@ import Container from './Layouts/container'
 export const SaveMallContext = createContext()
 
 const ShopDetailArea = ({data, user}) => {
+  console.log(data)
   const csrf = () => axios.get('/sanctum/csrf-cookie')
 
   const router = useRouter()
@@ -28,12 +29,12 @@ const ShopDetailArea = ({data, user}) => {
   const comments = shop.d_comments
   const goods = shop.d_goods
   const malls = shop.d_malls
+  const tags = shop.d_tags
+  const pickup = shop.d_pickups
   const ref = useRef()
   const [commentOpen, setCommentOpen] = useState(true)
   const processing = useRef(false)
-  const [userThumbs, setUserThumbs] = useState({
-    url: notSet2.src,
-  })
+  const [userThumbs, setUserThumbs] = useState()
   const [goodState, setGoodState] = useState(false)
   const [commentGood, setCommentGood] = useState([])
   const [countGood, setCountGood] = useState(goods.length)
@@ -179,9 +180,7 @@ const ShopDetailArea = ({data, user}) => {
     .then((res) => {
       // console.log(res)
       if (res.data.thumbs) {
-        setUserThumbs({
-          url: res.data.thumbs,
-        })
+        setUserThumbs(res.data.thumbs)
       }
     })
     .catch((e) => {
@@ -253,6 +252,35 @@ const ShopDetailArea = ({data, user}) => {
     processing.current = false
   }, [user])
 
+  const handleClickPickup = async () => {
+    if (processing.current) return
+    processing.current = true
+    await csrf()
+
+    if (pickup.length !== 0) {
+      await axios.delete(`/api/dellamall/d_pickups/delete/${pickup?.[0]?.id}`)
+      .then((res) => {
+        // console.log(res)
+        alert("ピックアップから削除しました。")
+        router.reload()
+      }).catch((e) => {
+        console.error(e)
+      })
+    } else {
+      await axios.post('/api/dellamall/d_pickups/store', {
+        d_shop_id: shop.id,
+      }).then((res) => {
+        // console.log(res)
+        alert("ピックアップに追加しました。")
+        router.reload()
+      }).catch((e) => {
+        console.error(e)
+      })
+    }
+
+    processing.current = false
+  }
+
   return (
     <>
       {saveMallOpen ? <div className="curtain" onClick={handleClickSaveMall}></div> : null}
@@ -268,6 +296,15 @@ const ShopDetailArea = ({data, user}) => {
               <div className={styles.imgNone}></div>
             }
           </div>
+          {user?.account_type > 2 ?
+            <button
+              type="button"
+              className={`${`${styles.pickup} ${pickup.length !== 0 ? styles.on : null}`} hoverEffect`}
+              onClick={handleClickPickup}
+            >
+              {pickup.length !== 0 ? "ピックアップから削除" : "ピックアップに追加"}
+            </button>
+          : null}
         </div>
         <div className={styles.cont1__flexRight}>
           <div className={styles.cont1__flexRight__icon}>
@@ -353,10 +390,11 @@ const ShopDetailArea = ({data, user}) => {
           </div>
           <p className={styles.cont1__flexRight__topName}>{shop.name}</p>
           <ul className={styles.cont1__flexRight__topWords}>
-            <li className={styles.keyWord__item}><a className="hoverEffect">服</a></li>
-            <li className={styles.keyWord__item}><a className="hoverEffect">靴</a></li>
-            <li className={styles.keyWord__item}><a className="hoverEffect">アパレル</a></li>
-            <li className={styles.keyWord__item}><a className="hoverEffect">バッグ</a></li>
+            {tags?.map((tag, index) => (
+              <li className={styles.keyWord__item} key={index}>
+                <button type="button" className="hoverNone">{tag.name}</button>
+              </li>
+            ))}
           </ul>
           <p className={styles.cont1__flexRight__middleText}>{shop.description}</p>
           <div className={styles.cont1__flexRight__middleComment}>
@@ -381,14 +419,14 @@ const ShopDetailArea = ({data, user}) => {
                       <img
                         src={
                           comment.user.d_profile.thumbs ?
-                          comment.user.d_profile.thumbs :
+                          `${process.env.NEXT_PUBLIC_BACKEND_URL}/storage/${comment.user.d_profile.thumbs}` :
                           notSet.src
                         }
                         alt=""
                       />
                     </div>
                     <div className={styles.user__comment}>
-                      <Link href="">
+                      <Link href={`/dellamall/mypage/${comment.user_id}`}>
                         <a className={styles.name}>{comment.user.d_profile.nicename}</a>
                       </Link>
                       <p className={styles.content}>{comment.content}</p>
@@ -415,7 +453,7 @@ const ShopDetailArea = ({data, user}) => {
               <div className={styles.comment__input}>
                 <div className={styles.user__img}>
                   <img
-                    src={userThumbs.url}
+                    src={userThumbs ? `${process.env.NEXT_PUBLIC_BACKEND_URL}/storage/${userThumbs}` : notSet2.src}
                     alt=""
                   />
                 </div>

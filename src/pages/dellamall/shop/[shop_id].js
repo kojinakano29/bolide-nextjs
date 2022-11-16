@@ -43,18 +43,22 @@ const ShopDetail = ({posts}) => {
         </Container>
       </section>
 
-      <section className={styles.shopOfficial}>
-        <Container small>
-          <ShopOfficial info={shop} user={user} />
-        </Container>
-      </section>
+      {shop.official_user_id ?
+        <section className={styles.shopOfficial}>
+          <Container small>
+            <ShopOfficial info={shop} user={user} />
+          </Container>
+        </section>
+      : null}
 
-      <section className={styles.connectionShop}>
-        <Container>
-          <h2 className="ttl1 center">関連ショップ</h2>
-          <MasonryGridComponent item={connection} />
-        </Container>
-      </section>
+      {!shop.official_user_id ?
+        <section className={styles.connectionShop}>
+          <Container>
+            <h2 className="ttl1 center">関連ショップ</h2>
+            <MasonryGridComponent item={connection} />
+          </Container>
+        </section>
+      : null}
     </>
   );
 }

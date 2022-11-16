@@ -293,6 +293,7 @@ $breakpoints: (
   overflow: hidden;
 
   img {
+    height: 100%;
     object-fit: cover;
     object-position: center;
   }
@@ -302,8 +303,16 @@ $breakpoints: (
   @include flex(center, center);
   border-radius: 17px;
   border: 1px solid $g3;
-  background: $w1;
+  background-color: $w1;
   font-weight: $medium;
+
+  &.current {
+    background-color: $o1;
+
+    button {
+      color: $w1;
+    }
+  }
 
   button {
     @include fs(16px, 14px);

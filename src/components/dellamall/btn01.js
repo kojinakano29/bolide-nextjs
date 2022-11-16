@@ -18,9 +18,11 @@ const Btn01 = ({fa, txt, link, right = false}) => {
         </Link>
         :
         <button className={`${styles.btn01} ${styles.pushdown} ${right ? styles.right : ""}`}>
-          <div className={styles.logo}>
-            {fa ? <FontAwesomeIcon icon={fa} /> : null}
-          </div>
+          {fa ?
+            <div className={styles.logo}>
+              <FontAwesomeIcon icon={fa} />
+            </div>
+          : null}
           {txt}
         </button>
       }

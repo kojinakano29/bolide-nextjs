@@ -338,3 +338,18 @@
     }
   }
 }
+
+.pickup {
+  @include p(4px 8px);
+  @include fs(14px, 12px);
+  font-weight: 500;
+  background-color: $o1;
+  color: $w1;
+  border-radius: 8px;
+  @include mt(16px);
+
+  &.on {
+    background-color: $g3;
+    color: $b3;
+  }
+}
