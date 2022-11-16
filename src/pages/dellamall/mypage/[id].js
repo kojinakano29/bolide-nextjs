@@ -188,7 +188,7 @@ const Mypage = ({posts}) => {
                 {user?.id === profile.id ?
                   <>
                     <div className={`btnCover ${styles.btnCover}`}>
-                      <Btn01 fa={faSquarePlus} txt="ショップを作成する" />
+                      <Btn01 fa={faSquarePlus} txt="ショップを作成する" link="/dellamall/admin/shop/create" />
                     </div>
                     <div className={`btnCover ${styles.btnCover}`} onClick={handleClickPopup}>
                       <Btn01 fa={faTableCellsLarge} txt="モールを作成する" />

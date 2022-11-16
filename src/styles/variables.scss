@@ -305,9 +305,9 @@ $breakpoints: (
   background: $w1;
   font-weight: $medium;
 
-  a {
-      @include fs(16px, 14px);
-      @include p(4px 16px);
+  button {
+    @include fs(16px, 14px);
+    @include p(4px 16px);
   }
 }
 

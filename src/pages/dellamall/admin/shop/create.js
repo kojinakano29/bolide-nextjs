@@ -55,8 +55,7 @@ const CreateShop = () => {
       // console.log(res)
       alert("ショップを作成しました。")
       router.push({
-        pathname: '/dellamall/admin/shop/edit/[pid]',
-        query: { pid: res.data.id }
+        pathname: '/dellamall/admin/shop/',
       })
     }).catch((e) => {
       console.error(e)
