@@ -4,7 +4,7 @@ import PageLayoutDellamall from "@/components/Layouts/PageLayoutDellamall";
 import { useAuth } from "@/hooks/auth";
 import { useRouter } from "next/router";
 import { createContext, useEffect, useState } from "react";
-import { CreateOfficial, EditOfficial } from '@/components/dellamall';
+import { Btn01, CreateOfficial, EditOfficial } from '@/components/dellamall';
 import axios from '@/lib/axios';
 
 export const OfficialContext = createContext()
@@ -336,6 +336,7 @@ const OfficialShop = ({posts}) => {
               ))}
             </article>
           </div>
+          <Btn01 txt="一覧に戻る" link="/dellamall/admin/shop" />
         </Container>
       </section>
 

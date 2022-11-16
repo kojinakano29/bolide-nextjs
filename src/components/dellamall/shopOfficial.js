@@ -109,8 +109,8 @@ const shopOfficial = ({info}) => {
               <ul className={styles.news}>
                 {infos.map((info) => (
                   <li key={info.id}>
-                    <p className={styles.day}><Date dateString={info.created_at} /></p>
-                    <p className={styles.txt}>{info.title}</p>
+                    <p className={styles.day}><Date dateString={info.title} /></p>
+                    <p className={styles.txt}>{info.content}</p>
                   </li>
                 ))}
               </ul>
