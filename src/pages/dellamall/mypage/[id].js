@@ -171,7 +171,7 @@ const Mypage = ({posts}) => {
         <Container small>
           <div className={styles.user__info}>
             <div className={styles.user__info__img}>
-              <img src={dProfile?.thumbs ? dProfile.thumbs : notSet.src} alt="プロフィール画像" />
+              <img src={dProfile?.thumbs ? `${process.env.NEXT_PUBLIC_BACKEND_URL}/storage/${dProfile.thumbs}` : notSet.src} alt="プロフィール画像" />
             </div>
             <div className={styles.user__info__name}>{dProfile?.nicename}</div>
             <div className={styles.user__info__id}>{profile.name}</div>
@@ -194,7 +194,7 @@ const Mypage = ({posts}) => {
                       <Btn01 fa={faTableCellsLarge} txt="モールを作成する" />
                     </div>
                     <div className={`btnCover ${styles.btnCover}`}>
-                      <Btn01 fa={faGear} txt="プロフィールを編集する" />
+                      <Btn01 fa={faGear} txt="プロフィールを編集する" link="/dellamall/mypage/edit" />
                     </div>
                   </>
                   :

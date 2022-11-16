@@ -20,7 +20,7 @@ const HeaderNav = () => {
       <button className={`${styles.btn1} hoverEffect`}>
         <FontAwesomeIcon icon={faQuestion} />
       </button>
-      <Link href="/">
+      <Link href="/dellamall/admin/shop/create">
         <a className={`${styles.btn2} hoverEffect`}>
           <FontAwesomeIcon icon={faSquarePlus} />
           <span className="pc">ショップを作る</span>

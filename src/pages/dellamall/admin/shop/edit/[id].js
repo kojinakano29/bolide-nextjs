@@ -21,7 +21,7 @@ export const getServerSideProps = async ({params}) => {
 }
 
 const EditShop = ({posts}) => {
-  console.log(posts)
+  // console.log(posts)
   const csrf = () => axios.get('/sanctum/csrf-cookie')
 
   const { user } = useAuth({middleware: 'auth'})

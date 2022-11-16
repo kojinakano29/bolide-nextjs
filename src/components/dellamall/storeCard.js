@@ -54,7 +54,7 @@ const StoreCard = ({item, swiper = false, none = false}) => {
                     : null}
                     <div className={`${styles.card} ${styles.onMouse}`}>
                         <p className={styles.name}>{item.name}</p>
-                        {item.image_permission === 0 ?
+                        {item.image_permission === 0 && !item.official_user_id ?
                             <div className={`${styles.btnArea} ${styles.btnArea1}`}>
                                 <p>ショップオーナーHP<br className="sp" />キャプチャ画像</p>
                                 <p className={styles.type1}>無料掲載はこちら</p>
