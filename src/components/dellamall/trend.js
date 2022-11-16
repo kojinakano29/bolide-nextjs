@@ -29,9 +29,9 @@ const Trend = ({mb40 = false}) => {
     onMount()
   }, [])
 
-  const handleClickTrend = async (name) => {
+  const handleClickTrend = async (id) => {
     let path = {
-      tag_i: name,
+      tag_id: id,
     }
     router.replace({
       pathname: `/dellamall/shop`,
@@ -49,7 +49,7 @@ const Trend = ({mb40 = false}) => {
               <button
                 type="button"
                 className="hoverEffect"
-                onClick={() => handleClickTrend(trend.name)}
+                onClick={() => handleClickTrend(trend.id)}
               >{trend.name}</button>
             </li>
           ))}
