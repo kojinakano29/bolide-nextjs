@@ -6,12 +6,14 @@ import axios from '@/lib/axios';
 import { faSquarePlus } from '@fortawesome/free-solid-svg-icons'
 import { createContext, useEffect, useRef, useState } from 'react';
 import useSWRInfinite from "swr/infinite"
+import { useRouter } from 'next/router';
 
 export const SortContext = createContext()
 
 const ShopSearch = () => {
   const csrf = () => axios.get('/sanctum/csrf-cookie')
 
+  const router = useRouter()
   const [sort, setSort] = useState({
     name: "新着順",
     value: "new",
@@ -29,7 +31,7 @@ const ShopSearch = () => {
   const getKey = (pageIndex, previousPageData) => {
     csrf()
     if (previousPageData && !previousPageData.length) return null
-    if (pageIndex === 0) return `/api/dellamall/shop/sort/1/${sort.value}/${account.value}`
+    if (pageIndex === 0) return `/api/dellamall/shop/sort/1/${sort.value}/${account.value}?tag_id=${router.query.tag_id}`
     return `/api/dellamall/shop/sort/${pageIndex+1}/${sort.value}/${account.value}`
   }
 
