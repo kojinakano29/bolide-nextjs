@@ -84,23 +84,12 @@ const CreateShop = () => {
     await setDisabled(true)
     await csrf()
 
-    const options = {
-      method: 'GET',
-      mode: 'cors',
-      headers: {
-        Accept: 'application/json',
-        Authorization: 'Bearer p7LE068D2fbq1i1E3v2pSdJV0yYa2MiacS5gnX6b'
-      }
-    };
-
-    const capture = await fetch(`https://screendot.io/api/standard?url=${url}&browserWidth=1920&width=1920&delay=500&format=webp&refresh=true`, options)
-    setPreview(capture.url)
-    // console.log(capture)
-
     await axios.post('/api/dellamall/shop_create_url', {
       url: url,
+      sc: `https://screendot.io/api/standard?url=${url}&browserWidth=1920&width=1920&delay=500&format=webp&refresh=true`,
     }).then((res) => {
-      // console.log(res)
+      console.log(res)
+      // setPreview(res.url)
       setValue("name", res.data.title)
       setValue("tag", res.data.keyword)
       setValue("description", res.data.description)

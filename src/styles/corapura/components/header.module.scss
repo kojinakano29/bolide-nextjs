@@ -1,0 +1,165 @@
+@import '../../variables.scss';
+
+.header {
+  @include width(100%);
+  @include p(0 32px 0 16px, 0 20px 0 0);
+  position: fixed;
+  z-index: 100;
+
+  .flex {
+    @include height(56px);
+    @include flex(center);
+
+    .left {
+      @include flex(center, left);
+      @include gap(24px, 16px)
+    }
+  }
+
+  .humBtn {
+    @include width(56px);
+    height: 56px;
+    @include flex(center, center);
+    flex-direction: column;
+    position: relative;
+    z-index: 200;
+
+    span {
+      display: block;
+      width: 24px;
+      height: 3px;
+      background-color: $b6;
+      transition: .3s ease;
+      @include mb(6px);
+
+      &:last-child {
+        margin-bottom: 0;
+      }
+    }
+
+    &.is_active {
+      span {
+        &:nth-child(1) {
+          transform: translateY(9px) rotate(30deg);
+        }
+
+        &:nth-child(2) {
+          opacity: 0;
+        }
+
+        &:nth-child(3) {
+          transform: translateY(-9px) rotate(-30deg);
+        }
+      }
+    }
+  }
+
+  h1 {
+    a {
+      display: block;
+      @include width(160px);
+    }
+  }
+
+  .right {
+    @include flex(center, right);
+    gap: 8px;
+
+    .btn {
+      @include flex(center, center);
+      gap: 4px;
+      @include p(4px 12px, 4px 12px, 8px);
+      border-radius: 17px;
+
+      .iconBox {
+        @include width(16px);
+      }
+
+      span {
+        @include fs(13px);
+        font-weight: bold;
+        color: $w1;
+      }
+
+      &.login {
+        background-color: $b8;
+      }
+
+      &.signUp {
+        background-image: linear-gradient(to right, $r2 0%, $o2 100%);
+      }
+    }
+  }
+
+  .ham__container {
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: 200;
+    transition: all 0.3s ease;
+    display: none;
+    width: 100vw;
+    height: 100vh;
+    background: $w1;
+    opacity: 0.8;
+
+    &.is_active {
+      display: block;
+    }
+  }
+
+  .ham__container_list {
+    transform: translateX(-100%);
+    position: absolute;
+    content: "";
+    left: 0;
+    top: 0;
+    z-index: 300;
+    background: $g7;
+    width: 320px;
+    height: 100vh;
+    @include pt(104px, 104px, 104px);
+    @include pl(25px);
+    @include pr(25px);
+    transition: all 0.3s ease;
+
+    &.is_active {
+      transform: translateX(0%);
+    }
+
+    li {
+      transition: all 0.3s ease;
+
+      &:not(:nth-of-type(1)) {
+        @include mt(32px);
+      }
+
+      a {
+        transition: all 0.3s ease;
+        width: 100%;
+        font-weight: $black;
+        @include fs(16px, 14px, 14px);
+        @include height(76px);
+        border-bottom: 1px solid $g3;
+
+        p {
+          @include mt(4px);
+          font-family: $Poppins;
+          font-weight: $semibold;
+          @include fs(10px, 8px, 8px);
+          color: $w1;
+        }
+      }
+
+      &:hover {
+        border-bottom: 1px solid;
+        border-image: linear-gradient(to right, $r2 0%, $o2 100%);
+        border-image-slice: 1;
+
+        a {
+          opacity: 0.4;
+        }
+      }
+    }
+  }
+}

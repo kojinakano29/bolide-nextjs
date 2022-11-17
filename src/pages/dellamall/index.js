@@ -24,13 +24,20 @@ export const getServerSideProps = async () => {
 }
 
 const Home = ({posts}) => {
-  console.log(posts)
+  // console.log(posts)
   const csrf = () => axios.get('/sanctum/csrf-cookie')
 
   /* 二度押し監視 */
   const processing = useRef(false)
 
   const popular = posts.popular
+  const pickups = posts.pick
+  const pickupLimit = pickups.filter((p, index) => {
+    return index < 8
+  })
+  const pickup = pickupLimit.map((pick) => {
+    return pick.d_shop
+  })
 
   /* もっと見る useSWRInfinite */
   const limit = 28;
@@ -111,6 +118,7 @@ const Home = ({posts}) => {
       <section className={styles.pickup}>
         <Container>
           <h2 className="ttl1">PICKUP</h2>
+          <MasonryGridComponent item={pickup} />
         </Container>
       </section>
 

@@ -132,6 +132,27 @@ span > img {
 .fill {
   position: relative;
 }
+
+.hoverNone {
+  pointer-events: none;
+}
+
+.btnCover {
+  width: fit-content;
+  margin: auto;
+}
+
+.loader-icon {
+  text-align: center;
+}
+
+.hoverEffect {
+  transition: all .2s ease-out;
+
+  &:hover {
+      opacity: .5;
+  }
+}
 /* 共通部分 */
 
 /* リオンドール共通部分 */
@@ -277,22 +298,6 @@ span > img {
     font-family: $Montserrat;
   }
 
-  .hoverEffect {
-    transition: all .2s ease-out;
-
-    &:hover {
-        opacity: .5;
-    }
-  }
-
-  .hoverNone {
-    pointer-events: none;
-  }
-
-  .loader-icon {
-    text-align: center;
-  }
-
   .cont1 {
     @include pt(176px);
   }
@@ -353,11 +358,6 @@ span > img {
     }
   }
 
-  .btnCover {
-    width: fit-content;
-    margin: auto;
-  }
-
   .curtain {
     width: 100vw;
     height: 100vh;
@@ -370,6 +370,20 @@ span > img {
 }
 /* デラモール共通部分 */
 
+/* コラプラ共通部分 */
+.corapura {
+  *,
+  *::before,
+  *::after {
+    font-family: $nsj;
+    color: $b6;
+  }
+
+  .en {
+    font-family: $Poppins;
+  }
+}
+/* コラプラ共通部分 */
 
 /* エディター部分 */
 .rdw-editor-wrapper {
