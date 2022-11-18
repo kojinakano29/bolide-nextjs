@@ -382,6 +382,28 @@ span > img {
   .en {
     font-family: $Poppins;
   }
+
+  &.topPage {
+    background: url(../images/corapura/common/grid.svg) round;
+    height: auto;
+    width: 100%;
+  }
+
+  .cont1 {
+    @include pt(120px, 80px);
+  }
+
+  .ttl1 {
+    @include fs(40px, 32px, 24px);
+    font-weight: bold;
+    text-align: center;
+    @include mb(48px, 32px);
+
+    span {
+      @include fs(48px, 40px, 32px);
+      font-weight: bold;
+    }
+  }
 }
 /* コラプラ共通部分 */
 

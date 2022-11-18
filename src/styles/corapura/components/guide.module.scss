@@ -1,0 +1,86 @@
+@import '../../variables.scss';
+
+.desc {
+  @include fs(18px, 16px);
+  font-weight: 500;
+  text-align: center;
+  @include mb(64px);
+}
+
+.ttl {
+  @include fs(32px, 24px);
+  font-weight: 900;
+  text-align: center;
+  @include mb(48px, 32px);
+}
+
+.meritArea {
+  @include pb(64px);
+}
+
+.worriesArea {
+  background: $o3;
+  @include p(64px 0);
+
+  ul {
+    @include flex();
+    @include gap(32px, 24px, 32px);
+    @include mb(40px);
+
+    @include media1(sp) {
+      flex-direction: column;
+      align-items: center;
+    }
+
+    li {
+      @include width(calc(100% * 1/3 - 32px * 2/3), calc(100% * 1/3 - 24px * 2/3), 100%);
+
+      img {
+        margin: auto;
+      }
+    }
+  }
+
+  .triangle {
+    width: 0;
+    height: 0;
+    border-style: solid;
+    border-width: 32px 60px 0 60px;
+    border-color: $b8 transparent transparent transparent;
+    margin: auto;
+    @include mb(40px);
+  }
+
+  .txt {
+    @include fs(24px, 20px, 18px);
+    font-weight: $bold;
+    text-align: center;
+
+    span {
+      text-decoration: underline;
+      text-decoration-thickness: 14px;
+      text-decoration-color: #CDD3DA;
+      text-underline-offset: -6px;
+    }
+  }
+}
+
+.useArea {
+  @include p(64px 0 96px, 64px 0);
+
+  .midashi {
+    @include fs(24px, 20px, 18px);
+    font-weight: bold;
+    text-align: center;
+    line-height: 1;
+
+    span {
+      @include fs(48px, 40px, 32px);
+      font-weight: 600;
+    }
+  }
+}
+
+.faqArea {
+  @include pt(64px);
+}
