@@ -4,7 +4,7 @@ import { useCallback, useState } from 'react';
 import Image from 'next/image';
 import logo from '@/images/corapura/common/logo.svg'
 import login from '@/images/corapura/header/login.svg'
-import login_sp from '@/images/corapura/header/login__sp.svg'
+import signUp from '@/images/corapura/header/signUp.svg'
 
 const Header = () => {
   const [humOpen, setHumOpen] = useState(false)
@@ -59,7 +59,7 @@ const Header = () => {
             <a className={`${styles.btn} ${styles.signUp} hoverEffect`}>
               <div className={styles.iconBox}>
                 <Image
-                  src={login}
+                  src={signUp}
                   alt="新規登録"
                   layout="responsive"
                   sizes="16px"
@@ -69,58 +69,69 @@ const Header = () => {
               <span className="pc">新規登録</span>
             </a>
           </Link>
-          {/* <li className="header__item signUp">
-            <img className="pc" src="./assets/images/header/signUp.svg" alt="新規登録" />
-            <img className="sp" src="./assets/images/header/signUp__sp.svg" alt="新規登録" />
-            <p className="pc">新規登録</p>
-          </li> */}
         </div>
       </div>
+
+      <div
+        className={`${styles.hum__container} ${humOpen ? styles.is_active : null}`}
+        onClick={handleClickHum}
+      ></div>
+
+      <ul
+        className={`${styles.hum__container_list} ${humOpen ? styles.is_active : null}`}
+        onClick={(e) => e.stopPropagation()}
+      >
+        <li>
+          <Link href="/corapura">
+            <a>
+              <p className={styles.jp}>案件一覧</p>
+              <p className={`en ${styles.en}`}>Project List</p>
+            </a>
+          </Link>
+        </li>
+        <li>
+          <Link href="/corapura">
+            <a>
+              <p className={styles.jp}>企業一覧</p>
+              <p className={`en ${styles.en}`}>Company List</p>
+            </a>
+          </Link>
+        </li>
+        <li>
+          <Link href="/corapura">
+            <a>
+              <p className={styles.jp}>インフルエンサー/ユーザー一覧</p>
+              <p className={`en ${styles.en}`}>Influencer User List</p>
+            </a>
+          </Link>
+        </li>
+        <li>
+          <Link href="/corapura">
+            <a>
+              <p className={styles.jp}>オンラインサロン一覧</p>
+              <p className={`en ${styles.en}`}>Online Salon List</p>
+            </a>
+          </Link>
+        </li>
+        <li>
+          <Link href="/corapura">
+            <a>
+              <p className={styles.jp}>プレスリリース一覧</p>
+              <p className={`en ${styles.en}`}>Press Releases List</p>
+            </a>
+          </Link>
+        </li>
+        <li>
+          <Link href="/corapura">
+            <a>
+              <p className={styles.jp}>CORAPURAとは？</p>
+              <p className={`en ${styles.en}`}>About Of CORAPURA</p>
+            </a>
+          </Link>
+        </li>
+      </ul>
     </header>
   );
 }
 
 export default Header;
-
-<div className="ham__container"></div>
-
-
-        {/* <!-- is-active付与でメニュー展開 --> */}
-        <ul className="ham__container_list">
-          <li>
-            <a href="">
-              案件一覧
-              <p>Project List</p>
-            </a>
-          </li>
-          <li>
-            <a href="">
-              企業一覧
-              <p>Company List</p>
-            </a>
-          </li>
-          <li>
-            <a href="">
-              インフルエンサー/ユーザー一覧
-              <p>Influencer User List</p>
-            </a>
-          </li>
-          <li>
-            <a href="">
-              オンラインサロン一覧
-              <p>Online Salon List</p>
-            </a>
-          </li>
-          <li>
-            <a href="">
-              プレスリリース一覧
-              <p>Press Releases List</p>
-            </a>
-          </li>
-          <li>
-            <a href="">
-              CORAPURAとは？
-              <p>About Of CORAPURA</p>
-            </a>
-          </li>
-        </ul>

@@ -22,7 +22,7 @@
     @include flex(center, center);
     flex-direction: column;
     position: relative;
-    z-index: 200;
+    z-index: 400;
 
     span {
       display: block;
@@ -86,78 +86,110 @@
       }
 
       &.signUp {
-        background-image: linear-gradient(to right, $r2 0%, $o2 100%);
+        background-image: $gr1;
       }
     }
   }
 
-  .ham__container {
+  .hum__container {
     position: absolute;
     top: 0;
     left: 0;
     z-index: 200;
-    transition: all 0.3s ease;
-    display: none;
-    width: 100vw;
+    transition: .3s ease-in;
+    opacity: 0;
+    pointer-events: none;
+    width: 100%;
     height: 100vh;
     background: $w1;
-    opacity: 0.8;
+    cursor: pointer;
 
     &.is_active {
-      display: block;
+      opacity: .8;
+      pointer-events: all;
     }
   }
 
-  .ham__container_list {
-    transform: translateX(-100%);
-    position: absolute;
-    content: "";
-    left: 0;
-    top: 0;
-    z-index: 300;
-    background: $g7;
-    width: 320px;
+  .hum__container_list {
+    @include width(320px, 320px, 100%);
+    @include p(104px 24px 80px);
     height: 100vh;
-    @include pt(104px, 104px, 104px);
-    @include pl(25px);
-    @include pr(25px);
-    transition: all 0.3s ease;
+    background-color: $g7;
+    position: absolute;
+    top: 0;
+    left: 0;
+    transform: translateX(-320px);
+    @include tx(-320px, -320px, -100%);
+    transition: .4s ease;
+    overflow-y: scroll;
+    @include scrollHidden;
+    cursor: auto;
+    z-index: 300;
 
     &.is_active {
+      transition: .4s .4s ease;
       transform: translateX(0%);
     }
 
     li {
-      transition: all 0.3s ease;
+      @include mb(32px, 24px);
 
-      &:not(:nth-of-type(1)) {
-        @include mt(32px);
+      &:last-of-type {
+        margin-bottom: 0;
       }
 
       a {
-        transition: all 0.3s ease;
+        display: block;
         width: 100%;
-        font-weight: $black;
-        @include fs(16px, 14px, 14px);
-        @include height(76px);
-        border-bottom: 1px solid $g3;
+        @include pb(32px, 24px);
+        position: relative;
 
         p {
-          @include mt(4px);
-          font-family: $Poppins;
-          font-weight: $semibold;
-          @include fs(10px, 8px, 8px);
-          color: $w1;
+          &.jp {
+            @include fs(16px, 14px);
+            font-weight: $black;
+            transition: .3s ease;
+          }
+
+          &.en {
+            @include mt(4px);
+            font-weight: $semibold;
+            @include fs(10px);
+            color: $w1;
+          }
         }
-      }
 
-      &:hover {
-        border-bottom: 1px solid;
-        border-image: linear-gradient(to right, $r2 0%, $o2 100%);
-        border-image-slice: 1;
+        &::before,
+        &::after {
+          content: "";
+          width: 100%;
+          height: 1px;
+          display: block;
+          position: absolute;
+          bottom: 0;
+          left: 0;
+        }
 
-        a {
-          opacity: 0.4;
+        &::before {
+          background-color: $g3;
+        }
+
+        &::after {
+          transition: .3s ease;
+          transform: scaleX(0);
+          transform-origin: left;
+          background-image: $gr1;
+          z-index: 1;
+        }
+
+        &:hover {
+          .jp {
+            opacity: .5;
+          }
+
+          &::after {
+            transform: scaleX(1);
+          }
         }
       }
     }

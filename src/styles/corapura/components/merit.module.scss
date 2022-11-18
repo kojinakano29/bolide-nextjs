@@ -1,0 +1,81 @@
+@import '../../variables.scss';
+
+.meritBox {
+  background-image: url(../../../images/corapura/top/cont5__ellipse-bk.webp);
+  background-repeat: no-repeat;
+  background-size: 1844px;
+  background-position: center 184px;
+  @include pb(50px, 50px, 72px);
+
+  @include media1(tab1) {
+    background-size: 1400px;
+    background-position: center 150px;
+  }
+
+  @include media1(sp) {
+    background-image: url(../../../images/corapura/top/cont5__ellipse-bk__sp.webp);
+    background-position: center 160px;
+    background-size: 1930px;
+  }
+
+  .ttl {
+    text-align: center;
+    @include mb(32px, 16px);
+
+    span {
+      @include fs(48px, 40px);
+      font-weight: $semibold;
+    }
+
+    @include fs(24px, 18px);
+    font-weight: $black;
+  }
+
+  .list {
+    @include flex();
+    @include gap(32px 20px, 32px 16px);
+
+    li {
+      @include width(calc(25% - 20px * 3/4), calc(25% - 16px * 3/4), calc(50% - 16px * 1/2));
+      @include flex(stretch);
+      flex-flow: column;
+
+      .height40 {
+        @include height(60px, 40px, auto);
+      }
+
+      .height60 {
+        @include height(90px, 60px, auto);
+      }
+
+      img {
+        @include mb(10px, 8px);
+      }
+
+      div {
+        @include fs(16px, 12px, 14px);
+        font-weight: $bold;
+        color: $w1;
+        text-align: center;
+        @include mb(8px);
+
+        span {
+          @include fs(22px, 14px, 18px);
+          font-weight: $bold;
+          color: $w1;
+        }
+      }
+
+      p {
+        @include fs(14px, 12px);
+        font-weight: 500;
+        color: $w1;
+      }
+    }
+  }
+
+  .detail {
+    opacity: 0;
+    pointer-events: none;
+  }
+}

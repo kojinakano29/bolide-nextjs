@@ -1,3 +1,8 @@
 export {default as Meta} from '@/components/corapura/meta'
 export {default as Header} from '@/components/corapura/header'
 export {default as Footer} from '@/components/corapura/footer'
+export {default as CanDo} from '@/components/corapura/canDo'
+export {default as Merit} from '@/components/corapura/merit'
+export {default as Btn} from '@/components/corapura/btn'
+export {default as Faq} from '@/components/corapura/faq'
+export {default as Method} from '@/components/corapura/method'

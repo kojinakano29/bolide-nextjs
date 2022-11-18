@@ -174,14 +174,14 @@ const EditShop = ({posts}) => {
                     {errors.url && <p className={styles.error}>必須項目を入力してください</p>}
                   </dd>
                 </dl>
-                {disabled ? <Loader /> :
+                {/* {disabled ? <Loader /> :
                   <button
                     type="button"
                     className={`${styles.btn} ${styles.btn2} hoverEffect`}
                     onClick={() => handleClickSiteData(getValues("url"))}
                     disabled={disabled}
                   >サイト情報を取得する</button>
-                }
+                } */}
                 <dl>
                   <dt>
                     <label htmlFor="name">サイト名</label>

@@ -23,6 +23,7 @@ const CreateShop = () => {
   })
   const [preview, setPreview] = useState()
   const [officialCheck, setOfficialCheck] = useState(true)
+  const [imgName, setImgName] = useState("")
 
   useEffect(() => {
     if (user?.account_type > 0) {
@@ -30,28 +31,25 @@ const CreateShop = () => {
     }
   }, [user])
 
-  const handleChangeFile = useCallback((e) => {
-    const { files } = e.target
-    if (files[0]) {
-      setPreview(window.URL.createObjectURL(files[0]))
-    } else {
-      setPreview("")
-    }
-  }, [])
+  // const handleChangeFile = useCallback((e) => {
+  //   const { files } = e.target
+  //   if (files[0]) {
+  //     setPreview(window.URL.createObjectURL(files[0]))
+  //   } else {
+  //     setPreview("")
+  //   }
+  // }, [])
 
   const onShopCreate = useCallback(async (data) => {
     await csrf()
 
-    const params = new FormData();
-    Object.keys(data).forEach(function(key) {
-      params.append(key, this[key])
-    }, data)
+    // const params = new FormData();
+    // Object.keys(data).forEach(function(key) {
+    //   params.append(key, this[key])
+    // }, data)
 
-    await axios.post('/api/dellamall/shop/store', params, {
-      headers: {
-        'Content-Type': 'multipart/form-data',
-      },
-    }).then((res) => {
+    await axios.post('/api/dellamall/shop/store', data)
+    .then((res) => {
       // console.log(res)
       alert("ショップを作成しました。")
       router.push({
@@ -75,9 +73,10 @@ const CreateShop = () => {
       name: data.name,
       tag: data.tag,
       description: data.description,
-      thumbs: data.thumbs ? data.thumbs[0] : preview,
+      thumbs: preview,
+      imgname: imgName,
     })
-  }, [setDisabled, onShopCreate, user, preview])
+  }, [setDisabled, onShopCreate, user, preview, imgName])
 
   const handleClickSiteData = async (url) => {
     // console.log(url)
@@ -86,13 +85,13 @@ const CreateShop = () => {
 
     await axios.post('/api/dellamall/shop_create_url', {
       url: url,
-      sc: `https://screendot.io/api/standard?url=${url}&browserWidth=1920&width=1920&delay=500&format=webp&refresh=true`,
     }).then((res) => {
-      console.log(res)
-      // setPreview(res.url)
+      // console.log(res)
       setValue("name", res.data.title)
       setValue("tag", res.data.keyword)
       setValue("description", res.data.description)
+      setPreview(res.data.imgsrc)
+      setImgName(res.data.imgname)
       alert("サイト情報の取得に成功しました。")
     }).catch((e) => {
       console.error(e)
@@ -120,7 +119,7 @@ const CreateShop = () => {
                     <div className={styles.imgBox}>
                       {preview ? <img src={preview} alt="" /> : <div className={styles.imgNone}>ショップのキャプチャが入ります</div>}
                     </div>
-                    <label htmlFor="thumbs" className={`${styles.thumbsBox} ${officialCheck ? styles.disabled : 'hoverEffect'}`}>
+                    {/* <label htmlFor="thumbs" className={`${styles.thumbsBox} ${officialCheck ? styles.disabled : 'hoverEffect'}`}>
                       キャプチャを選択する
                       <input
                         type="file"
@@ -130,7 +129,7 @@ const CreateShop = () => {
                         onChange={handleChangeFile}
                         disabled={officialCheck}
                       />
-                    </label>
+                    </label> */}
                   </dd>
                 </dl>
               </div>

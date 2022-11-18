@@ -17,6 +17,8 @@ $b5: #005CFF;
 $b6: #333;
 $b7: #1C0709;
 $b8: #24305E;
+$b9: #F0F7FE;
+$b10: #006EFF;
 $g1: #888;
 $g2: #F2F2F2;
 $g3: #CCC;
@@ -24,11 +26,15 @@ $g4: #555;
 $g5: #707070;
 $g6: #F7F7F7;
 $g7: #E1E1E1;
+$g8: #CDD3DA;
 $o1: #FF9933;
 $o2: #FFBB61;
+$o3: #FFF7EC;
 $red1: #FF0000;
 $r2: #F76C6C;
 $rgba1: rgba(0, 0, 0, .5);
+$gr1: linear-gradient(to right, $r2 0%, $o2 100%);
+$gr2: linear-gradient(to right, #FFA8A8 0%, $r2 100%);
 
 $black: 900;
 $bold: 700;
@@ -450,5 +456,143 @@ $breakpoints: (
   background-color: rgba(0, 0, 0, 0.8);
   cursor: pointer;
   z-index: 999;
+}
+
+@mixin corapuraTtl {
+  @include flex(flex-end, left);
+  @include mb(32px, 24px, 16px);
+
+  @include media1(sp) {
+    justify-content: center;
+  }
+
+  img {
+    @include width(240px, 200px, 180px);
+  }
+
+  span {
+    @include fs(24px, 18px);
+    font-weight: 900;
+    line-height: 1;
+  }
+}
+
+@mixin btn {
+  @include width(384px);
+  @include height(64px);
+  @include flex(center, center);
+  @include gap(16px);
+  background-image: $gr1;
+  border-radius: 36px;
+  margin: auto;
+  @include mt(48px, 40px);
+  transition: .2s ease;
+
+  span {
+    @include fs(16px);
+    font-weight: bold;
+    color: $w1;
+  }
+
+  &.reverse {
+    background-image: unset;
+    background-color: $w1;
+
+    span {
+      color: $r2;
+    }
+  }
+
+  &:hover {
+    opacity: .8;
+  }
+}
+
+@mixin cBtn1() {
+  .btnBase {
+    display: inline-block;
+
+    a {
+      border-radius: 36px;
+      display: flex;
+      justify-content: center;
+      gap: 16px;
+      align-items: center;
+
+      p {
+        font-family: $Noto;
+        @include fs(16px, 16px, 14px);
+        font-weight: $bold;
+      }
+    }
+  }
+}
+
+@mixin btn01($widthPC, $widthTab, $widthSp, $heightPc, $heightTab, $heightSp) {
+  .btn01 {
+      a {
+          p {
+              color: #F76C6C;
+          }
+
+          @include width($widthPC, $widthTab, $widthSp);
+          @include height($heightPc, $heightTab, $heightSp);
+          background: #fff;
+      }
+  }
+}
+
+@mixin faq {
+  border-top: 2px solid $g2;
+
+  dl {
+    border-bottom: 2px solid $g2;
+    @include p(24px 16px);
+
+    dt {
+      @include flex(center);
+      @include gap(16px, 16px, 8px);
+      cursor: pointer;
+
+      div {
+        width: 20px;
+        @include fs(24px);
+        font-weight: 600;
+        color: $b8;
+      }
+
+      p {
+        @include width(calc(100% - (20px + 24px + 16px * 2)), calc(100% - (20px * 2 + 16px * 2)), calc(100% - (20px * 2 + 8px * 2)));
+        @include fs(18px, 16px);
+        font-weight: $black;
+      }
+
+      img {
+        @include width(24px, 20px)
+      }
+    }
+
+    dd {
+      @include pt(0);
+      @include pl(36px, 36px, 28px);
+      overflow: hidden;
+      max-height: 0;
+
+      p {
+        @include fs(16px, 14px);
+        font-weight: $medium;
+        color: $g4;
+      }
+    }
+
+    &.current {
+      background-color: $o3;
+
+      dd {
+        @include pt(24px);
+        max-height: 100%;
+      }
+    }
+  }
 }
 /*-------------------------     共通部分    -------------------------*/

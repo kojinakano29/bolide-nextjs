@@ -1,0 +1,14 @@
+@import '../../variables.scss';
+
+.faqBox {
+  .ttl {
+    @include fs(32px, 24px);
+    font-weight: 900;
+    text-align: center;
+    @include mb(48px, 32px);
+  }
+
+  .faq {
+    @include faq;
+  }
+}
