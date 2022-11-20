@@ -1,0 +1,15 @@
+@import '../../variables.scss';
+
+.nameCard {
+  display: block;
+  @include width(352px);
+  border-radius: 10px;
+  overflow: hidden;
+  box-shadow: 0 3px 6px rgba(0, 0, 0, .16);
+
+  img {
+    width: 100%;
+    object-fit: cover;
+    object-position: top left;
+  }
+}

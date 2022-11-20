@@ -1,0 +1,40 @@
+@import '../../variables.scss';
+
+.couponBox {
+  background: $w1;
+  @include width(352px);
+  border-radius: 10px;
+  overflow: hidden;
+  box-shadow: 0 3px 6px rgba(0, 0, 0, .16);
+
+  .imgBox {
+    border-top-left-radius: 10px;
+    border-top-right-radius: 10px;
+
+    img {
+      object-fit: cover;
+      object-position: center;
+    }
+  }
+
+  .couponCont {
+    @include p(16px);
+    background-color: $w1;
+
+    .name {
+      @include fs(20px, 16px);
+      font-weight: bold;
+      @include mb(10px);
+    }
+
+    .limit {
+      @include fs(16px, 14px);
+      font-weight: 500;
+      @include mb(16px, 12px);
+    }
+
+    .company {
+      @include companyNicename(12px);
+    }
+  }
+}

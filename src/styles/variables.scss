@@ -508,37 +508,20 @@ $breakpoints: (
   }
 }
 
-@mixin cBtn1() {
-  .btnBase {
-    display: inline-block;
+@mixin btn2 {
+  width: fit-content;
+  @include flex(center);
+  gap: 8px;
+  @include fs(16px, 14px);
+  color: $r2;
+  font-weight: 900;
+  text-decoration: underline;
+  margin-left: auto;
+  @include mr(0, 0, auto);
+  @include mt(4px, 4px, 32px);
 
-    a {
-      border-radius: 36px;
-      display: flex;
-      justify-content: center;
-      gap: 16px;
-      align-items: center;
-
-      p {
-        font-family: $Noto;
-        @include fs(16px, 16px, 14px);
-        font-weight: $bold;
-      }
-    }
-  }
-}
-
-@mixin btn01($widthPC, $widthTab, $widthSp, $heightPc, $heightTab, $heightSp) {
-  .btn01 {
-      a {
-          p {
-              color: #F76C6C;
-          }
-
-          @include width($widthPC, $widthTab, $widthSp);
-          @include height($heightPc, $heightTab, $heightSp);
-          background: #fff;
-      }
+  &:hover {
+    text-decoration: none;
   }
 }
 
@@ -594,5 +577,66 @@ $breakpoints: (
       }
     }
   }
+}
+
+@mixin side($color) {
+  position: relative;
+
+  &::before,
+  &::after {
+    content: "";
+    @include width(88px, 20px, 0px);
+    height: 100%;
+    position: absolute;
+    top: 0;
+    z-index: 1;
+  }
+
+  &::before {
+    left: 0;
+    background-image: linear-gradient(to left, rgba(242, 242, 242, 0), $color);
+  }
+
+  &::after {
+    right: 0;
+    background-image: linear-gradient(to right, rgba(242, 242, 242, 0), $color);
+  }
+}
+
+@mixin companyNicename($pc:0, $tab:$pc, $sp:$tab) {
+  @include flex(center, left);
+  @include gap(10px);
+  @include fs($pc, $tab, $sp);
+  font-weight: bold;
+  color: $g1;
+
+  .logoBox {
+    width: 24px;
+    height: 24px;
+    border-radius: 50%;
+    overflow: hidden;
+    box-shadow: 0 3px 6px rgba(0, 0, 0, .16);
+    background-color: $w1;
+    object-fit: cover;
+    object-position: center;
+  }
+}
+
+@mixin tag {
+  @include p(2px 16px);
+  border-radius: 12px;
+  background-color: $w1;
+  @include fs(13px, 11px);
+  font-weight: bold;
+}
+
+@mixin tag2 {
+  @include p(2px 8px);
+  @include fs(14px, 12px);
+  font-weight: 500;
+  color: $r2;
+  border: 1px solid $r2;
+  border-radius: 12px;
+  width: fit-content;
 }
 /*-------------------------     共通部分    -------------------------*/

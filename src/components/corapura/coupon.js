@@ -1,0 +1,24 @@
+import styles from '@/styles/corapura/components/coupon.module.scss'
+import dummy from '@/images/corapura/common/dummy2.svg'
+
+const Coupon = ({data}) => {
+  return (
+    <article className={styles.couponBox}>
+      <div className={styles.imgBox}>
+        <img src={data.thumbs ? data.thumbs : dummy.src} alt="クーポンの画像" />
+      </div>
+      <div className={styles.couponCont}>
+        <p className={styles.name}>{data.title}</p>
+        <p className={styles.limit}>期間：{data.limit}まで</p>
+        <div className={styles.company}>
+          <div className={styles.logoBox}>
+            {data.c_profile.thumbs ? <img src={data.c_profile.thumbs} alt="" /> : null}
+          </div>
+          {data.c_profile.nicename}
+        </div>
+      </div>
+    </article>
+  );
+}
+
+export default Coupon;

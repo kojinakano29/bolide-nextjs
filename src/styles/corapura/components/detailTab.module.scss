@@ -1,0 +1,36 @@
+@import '../../variables.scss';
+
+.tabArea {
+  @include mt(120px, 80px, 48px);
+}
+
+.tabBtnBox {
+  @include flex(center);
+
+  button {
+    width: 50%;
+    @include height(80px);
+    @include flex(center, center);
+    @include fs(24px, 18px, 16px);
+    font-weight: 900;
+    background-color: $w1;
+    color: $b8;
+    border: 4px solid $o3;
+
+    &.tabOn {
+      background-color: $o3;
+    }
+  }
+
+  &.five {
+    button {
+      width: 20%;
+      @include fs(18px, 12px);
+    }
+  }
+}
+
+.tabBox {
+  background-color: $o3;
+  @include p(56px 0 64px, 48px 0, 40px 0);
+}

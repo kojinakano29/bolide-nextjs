@@ -1,0 +1,62 @@
+@import '../../variables.scss';
+
+.companyBox {
+  @include width(360px);
+
+  .company__top {
+    @include flex(center, left);
+    @include gap(12px);
+    @include mb(24px, 16px);
+
+    .company__topLeft {
+      @include width(86px, 86px, 72px);
+      @include height(86px, 86px, 72px);
+      border-radius: 50%;
+      overflow: hidden;
+
+      img {
+        object-fit: cover;
+        object-position: center;
+      }
+    }
+
+    .company__topRight {
+      .companyInfo2 {
+        @include companyNicename(18px, 16px);
+        @include mb(10px, 8px, 4px);
+      }
+
+      .company__topRightList {
+        @include flex(center, left);
+        @include gap(8px);
+
+        .tag {
+          @include tag;
+        }
+      }
+    }
+  }
+
+  .company__bottom {
+    @include fs(14px, 12px);
+    font-weight: $medium;
+    color: $g4;
+    @include p(16px 24px);
+    background: $w1;
+    border-radius: 10px;
+    position: relative;
+
+    &:before {
+      content: "";
+      position: absolute;
+      top: -15px;
+      @include left(30px, 30px, 24px);
+      width: 0;
+      height: 0;
+      border-style: solid;
+      border-width: 0 12px 20px 12px;
+      border-color: transparent transparent $w1 transparent;
+      border-radius: 3px;
+    }
+  }
+}
