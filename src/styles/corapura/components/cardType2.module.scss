@@ -1,0 +1,41 @@
+@import '../../variables.scss';
+
+.flex {
+  @include flex(stretch);
+  @include gap(32px, 24px);
+
+  .box {
+    @include width(calc(100% * 1/5 - 32px * 4/5), calc(100% * 1/5 - 24px * 4/5), calc(100% * 1/2 - 24px * 1/2));
+
+    .imgBox {
+      border-radius: 50%;
+      overflow: hidden;
+      @include mb(16px);
+
+      img {
+        width: 100%;
+        object-fit: cover;
+        object-position: center;
+      }
+    }
+
+    .name {
+      @include fs(18px, 16px);
+      font-weight: bold;
+      @include mb(8px);
+      text-align: center;
+    }
+
+    .desc {
+      @include fs(14px, 12px);
+      font-weight: bold;
+      @include mb(8px);
+      color: $g4;
+    }
+
+    .company {
+      @include companyNicename(12px);
+      justify-content: center;
+    }
+  }
+}
