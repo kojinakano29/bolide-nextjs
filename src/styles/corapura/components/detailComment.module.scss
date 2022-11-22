@@ -1,0 +1,66 @@
+@import '../../variables.scss';
+
+.commentBox {
+  .ttl {
+    @include flex(center, left);
+    @include gap(4px);
+    @include mb(8px);
+    font-weight: $black;
+    @include fs(24px, 20px, 18px);
+  }
+
+  .count {
+    @include fs(14px, 12px);
+    font-weight: $medium;
+    @include mb(40px, 32px);
+  }
+
+  .list {
+    .item {
+      @include flex();
+      @include gap(24px, 16px, 8px);
+
+      @include media1(sp) {
+        flex-direction: column;
+      }
+
+      &:not(:nth-of-type(1)) {
+        @include mt(24px);
+      }
+
+      .profile {
+        @include width(290px, 200px, 100%);
+        @include flex(center, left);
+        @include gap(16px);
+        @include fs(16px, 14px);
+        font-weight: $medium;
+        text-decoration: underline;
+
+        &:hover {
+          text-decoration: none;
+        }
+
+        .iconBox {
+          @include width(48px, 40px);
+          @include height(48px, 40px);
+          border-radius: 50%;
+
+          img {
+            width: 100%;
+            object-fit: cover;
+            object-position: center;
+          }
+        }
+      }
+
+      .txt {
+        @include width(calc(100% - (290px + 24px)), calc(100% - (200px + 16px)), 100%);
+        background: $o3;
+        border-radius: 10px;
+        font-weight: $medium;
+        @include fs(13px);
+        @include p(18px 24px, 16px);
+      }
+    }
+  }
+}

@@ -36,11 +36,11 @@
     .ttl {
       @include fs(16px, 14px);
       font-weight: $medium;
-      @include mb(16px);
     }
 
     .company {
       @include companyNicename(12px);
+      @include mt(16px);
     }
   }
 }

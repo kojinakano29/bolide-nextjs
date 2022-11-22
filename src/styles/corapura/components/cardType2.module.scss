@@ -1,7 +1,7 @@
 @import '../../variables.scss';
 
 .flex {
-  @include flex(stretch);
+  @include flex(stretch, left);
   @include gap(32px, 24px);
 
   .box {
@@ -29,13 +29,13 @@
     .desc {
       @include fs(14px, 12px);
       font-weight: bold;
-      @include mb(8px);
       color: $g4;
     }
 
     .company {
       @include companyNicename(12px);
       justify-content: center;
+      @include mt(8px);
     }
   }
 }

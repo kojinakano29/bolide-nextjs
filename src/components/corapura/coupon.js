@@ -1,7 +1,7 @@
 import styles from '@/styles/corapura/components/coupon.module.scss'
 import dummy from '@/images/corapura/common/dummy2.svg'
 
-const Coupon = ({data}) => {
+const Coupon = ({data, detail = false}) => {
   return (
     <article className={styles.couponBox}>
       <div className={styles.imgBox}>
@@ -10,12 +10,14 @@ const Coupon = ({data}) => {
       <div className={styles.couponCont}>
         <p className={styles.name}>{data.title}</p>
         <p className={styles.limit}>期間：{data.limit}まで</p>
-        <div className={styles.company}>
-          <div className={styles.logoBox}>
-            {data.c_profile.thumbs ? <img src={data.c_profile.thumbs} alt="" /> : null}
+        {!detail ?
+          <div className={styles.company}>
+            <div className={styles.logoBox}>
+              {data.c_profile.thumbs ? <img src={data.c_profile.thumbs} alt="" /> : null}
+            </div>
+            {data.c_profile.nicename}
           </div>
-          {data.c_profile.nicename}
-        </div>
+        : null}
       </div>
     </article>
   );

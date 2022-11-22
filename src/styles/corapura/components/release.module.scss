@@ -1,7 +1,7 @@
 @import '../../variables.scss';
 
 .releaseLink {
-  @include width(352px);
+  @include width(352px, calc(100% * 1/3 - 24px * 2/3), 352px);
 
   &:hover {
     .imgBox {
@@ -32,15 +32,15 @@
     font-weight: $semibold;
     @include flex(center, left);
     gap: 8px;
-    @include mb(8px);
   }
 
   .company {
     @include companyNicename(12px);
-    @include mb(10px);
+    @include mt(8px);
   }
 
   .tag {
     @include tag2;
+    @include mt(10px);
   }
 }

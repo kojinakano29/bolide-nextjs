@@ -1,7 +1,7 @@
 import styles from '@/styles/corapura/components/cardType2.module.scss'
 import dummy from '@/images/corapura/common/userDummy.svg'
 
-const CardType2 = ({data}) => {
+const CardType2 = ({data, detail = false}) => {
   return (
     <div className={styles.flex}>
       {data.map((item, index) => (
@@ -11,12 +11,14 @@ const CardType2 = ({data}) => {
           </div>
           <p className={styles.name}>{item.title}</p>
           <p className={styles.desc}>{item.text}</p>
-          <div className={styles.company}>
-            <div className={styles.logoBox}>
-              {item.c_profile.thumbs ? <img src={item.c_profile.thumbs} alt="" /> : null}
+          {!detail ?
+            <div className={styles.company}>
+              <div className={styles.logoBox}>
+                {item.c_profile.thumbs ? <img src={item.c_profile.thumbs} alt="" /> : null}
+              </div>
+              {item.c_profile.nicename}
             </div>
-            {item.c_profile.nicename}
-          </div>
+          : null}
         </article>
       ))}
     </div>
