@@ -1,4 +1,4 @@
-import { DetailArea, DetailTabCompany } from '@/components/corapura'
+import { DetailArea, DetailComment, DetailTabCompany } from '@/components/corapura'
 import Container from '@/components/corapura/Layout/container'
 import PageLayoutCorapura from '@/components/Layouts/pageLayoutCorapura'
 import styles from '@/styles/corapura/components/detail.module.scss'
@@ -22,6 +22,7 @@ const CompanyDetail = ({posts}) => {
   const businesses = posts.business
   const releases = posts.pr
   const matters = posts.posts
+  const comments = posts.comments
 
   return (
     <>
@@ -35,7 +36,14 @@ const CompanyDetail = ({posts}) => {
         businesses={businesses}
         releases={releases}
         matters={matters}
+        userInfo={userInfo}
       />
+
+      <section className={styles.commentArea}>
+        <Container small>
+          <DetailComment comments={comments} />
+        </Container>
+      </section>
     </>
   );
 }

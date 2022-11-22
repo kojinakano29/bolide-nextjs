@@ -1,6 +1,12 @@
 @import '../../variables.scss';
 
 .matterCard {
+  position: relative;
+
+  &.detail {
+    @include width(352px, calc(100% * 1/3 - 24px * 2/3), 100%);
+  }
+
   a {
     display: block;
 
@@ -42,7 +48,7 @@
       color: $g4;
     }
 
-    .date {
+    .iconBox {
       @include flex(center, left);
       @include gap(8px, 6px);
       @include mb(8px, 4px);
@@ -56,6 +62,21 @@
 
     .company {
       @include companyNicename(12px);
+    }
+  }
+
+  .bookmarkBtn {
+    @include width(40px, 30px);
+    @include height(40px, 30px);
+    @include flex(center, center);
+    border-radius: 50%;
+    background-color: $w1;
+    position: absolute;
+    @include top(calc(352px - (16px + 40px)), calc(224px - (16px + 30px)), calc((100vw - 20px * 2) - (12px + 30px)));
+    @include right(16px);
+
+    img {
+      @include width(unset, 16px);
     }
   }
 }

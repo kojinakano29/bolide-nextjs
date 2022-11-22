@@ -39,5 +39,12 @@
       font-weight: 600;
       color: $g1;
     }
+
+    .catch {
+      @include fs(14px, 12px);
+      font-weight: bold;
+      color: $g1;
+      @include mt(10px);
+    }
   }
 }

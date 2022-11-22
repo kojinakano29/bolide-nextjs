@@ -3,7 +3,7 @@ import Link from 'next/link';
 import dummy from '@/images/corapura/common/dummyRelease.svg'
 import view from '@/images/corapura/parts/material_view.svg'
 
-const Release = ({data}) => {
+const Release = ({data, detail = false}) => {
   return (
     <Link href={`/corapura`}>
       <a className={styles.releaseLink}>
@@ -15,13 +15,17 @@ const Release = ({data}) => {
           <img src={view.src} alt="" />
           {data.c_pr_counts_count}view
         </div>
-        <div className={styles.company}>
-          <div className={styles.logoBox}>
-            {data.user.c_profile.thumbs ? <img src={data.user.c_profile.thumbs} alt="" /> : null}
-          </div>
-          {data.user.c_profile.nicename}
-        </div>
-        <p className={styles.tag}>スキルアップ</p>
+        {!detail ?
+          <>
+            <div className={styles.company}>
+              <div className={styles.logoBox}>
+                {data.user.c_profile.thumbs ? <img src={data.user.c_profile.thumbs} alt="" /> : null}
+              </div>
+              {data.user.c_profile.nicename}
+            </div>
+            <p className={styles.tag}>スキルアップ</p>
+          </>
+        : null}
       </a>
     </Link>
   );

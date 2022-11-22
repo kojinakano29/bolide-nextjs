@@ -106,6 +106,21 @@
     }
   }
 
+  .skills {
+    @include flex(center, left);
+    @include gap(4px);
+    @include mb(16px);
+
+    .skill {
+      @include p(4px 12px);
+      @include fs(14px, 12px);
+      font-weight: 500;
+      color: $b8;
+      border: 1px solid $b8;
+      border-radius: 20px;
+    }
+  }
+
   .followBox {
     @include mb(24px);
 
@@ -169,18 +184,48 @@
     .snsTxt {
       @include fs(20px, 16px);
       font-weight: 900;
-      @include mb(16px);
+    }
+
+    .followerAll {
+      @include fs(24px, 16px);
+      font-weight: 900;
+      @include mt(8px);
+
+      span {
+        @include fs(32px, 20px);
+      }
     }
 
     .iconList {
       @include flex(center, left);
       @include gap(16px 32px, 16px);
+      @include mt(16px);
 
       a {
         @include width(48px);
         @include height(48px);
         border-radius: 50%;
         overflow: hidden;
+      }
+    }
+
+    .followerBox {
+      @include flex(center, left);
+      @include gap(16px 24px);
+      @include mt(16px);
+
+      a {
+        @include flex(center, left);
+        @include gap(8px);
+        @include fs(24px, 16px);
+        font-weight: 900;
+
+        img {
+          @include width(40px);
+          @include height(40px);
+          border-radius: 50%;
+          overflow: hidden;
+        }
       }
     }
   }

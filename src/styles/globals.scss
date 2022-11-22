@@ -154,6 +154,10 @@ span > img {
       opacity: .5;
   }
 }
+
+.modalArea {
+  @include modalBox;
+}
 /* 共通部分 */
 
 /* リオンドール共通部分 */
@@ -461,8 +465,6 @@ span > img {
       }
     }
   }
-
-  .swiperType2 {}
 }
 /* コラプラ共通部分 */
 

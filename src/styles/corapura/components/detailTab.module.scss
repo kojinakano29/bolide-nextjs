@@ -33,4 +33,89 @@
 .tabBox {
   background-color: $o3;
   @include p(56px 0 64px, 48px 0, 40px 0);
+
+  .column3 {
+    @include flex(stretch, left);
+    @include gap(32px, 32px 24px, 32px 16px);
+
+    @include media1(sp) {
+      justify-content: center;
+    }
+  }
+
+  .column4 {
+    @include flex(stretch, left);
+    @include gap(32px 24px, 32px 16px);
+
+    @include media1(sp) {
+      justify-content: center;
+    }
+  }
+}
+
+.presidentBox {
+  @include flex(center);
+  @include gap(48px, 32px);
+
+  .imgBox {
+    @include width(352px, 300px, 100%);
+    border-radius: 10px;
+    overflow: hidden;
+  }
+
+  .right {
+    @include width(calc(100% - (352px + 48px)), calc(100% - (300px + 32px)), 100%);
+
+    .ttl {
+      @include fs(24px, 18px);
+      font-weight: bold;
+      @include mb(24px, 16px);
+    }
+  }
+}
+
+.presidentDesc {
+  @include fs(16px, 14px);
+  font-weight: 500;
+
+  &:last-of-type {
+    @include mt(24px);
+  }
+}
+
+.matteredBox {
+  @include width(calc(100% * 1/4 - 24px * 3/4));
+  display: block;
+
+  &:hover {
+    .imgBox {
+      img {
+        transform: scale(1.1);
+      }
+    }
+  }
+
+  .imgBox {
+    border-radius: 10px;
+    overflow: hidden;
+    @include mb(16px);
+
+    img {
+      width: 100%;
+      object-fit: cover;
+      object-position: top center;
+      transition: .3s ease;
+    }
+  }
+
+  .ttl {
+    @include fs(18px, 16px);
+    font-weight: bold;
+    @include mb(8px);
+  }
+
+  .desc {
+    @include fs(12px);
+    font-weight: 500;
+  }
 }
