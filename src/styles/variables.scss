@@ -19,6 +19,8 @@ $b7: #1C0709;
 $b8: #24305E;
 $b9: #F0F7FE;
 $b10: #006EFF;
+$b11: #B3D1FF;
+$b12: #2A66C1;
 $g1: #888;
 $g2: #F2F2F2;
 $g3: #CCC;
@@ -27,6 +29,7 @@ $g5: #707070;
 $g6: #F7F7F7;
 $g7: #E1E1E1;
 $g8: #CDD3DA;
+$g9: #F4F4F4;
 $o1: #FF9933;
 $o2: #FFBB61;
 $o3: #FFF7EC;
@@ -638,5 +641,90 @@ $breakpoints: (
   border: 1px solid $r2;
   border-radius: 12px;
   width: fit-content;
+}
+
+@mixin corapuraBookmark($pc:0, $tab:$pc, $sp:$tab) {
+  @include width(40px, 30px);
+  @include height(40px, 30px);
+  @include flex(center, center);
+  border-radius: 50%;
+  position: absolute;
+  @include top($pc, $tab, $sp);
+  @include right(16px);
+}
+
+@mixin searchBox {
+  @include width(900px, 100%);
+  margin: auto;
+  @include mb(64px, 48px);
+
+  input[type="text"] {
+    display: block;
+    width: 100%;
+    @include height(64px, 56px, 48px);
+    @include p(0 40px, 0 40px, 0 20px);
+    @include fs(16px, 14px);
+    font-weight: bold;
+    background-color: $g2;
+    border-radius: 32px;
+    border: none;
+    background-image: url(../images/corapura/common/search.svg);
+    background-position: calc(100% - 40px) center;
+    background-repeat: no-repeat;
+
+    @include media1(sp) {
+      background-position: calc(100% - 20px) center;
+    }
+
+    &::placeholder {
+      color: $g3;
+    }
+  }
+}
+
+@mixin column3 {
+  @include flex(stretch, left);
+  @include gap(32px, 32px 24px, 32px 16px);
+
+  @include media1(sp) {
+    justify-content: center;
+  }
+}
+
+@mixin pager {
+  @include flex(center, center);
+  @include gap(48px, 32px, 16px);
+
+  @include media1(sp) {
+    flex-direction: column;
+  }
+
+  .btn {
+    @include btn;
+    @include width(296px, 200px);
+    @include height(64px, 48px);
+    @include m(0);
+  }
+
+  .pagerBtn {
+    @include flex(center);
+    @include gap(8px);
+
+    button {
+      @include width(40px);
+      @include height(40px);
+      border-radius: 50%;
+      background-color: $g2;
+      color: $r2;
+      @include fs(20px, 16px);
+      font-weight: 600;
+
+      &.current {
+        background-color: $r2;
+        color: $w1;
+        cursor: auto;
+      }
+    }
+  }
 }
 /*-------------------------     共通部分    -------------------------*/

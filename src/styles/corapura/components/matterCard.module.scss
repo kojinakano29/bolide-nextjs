@@ -66,17 +66,6 @@
   }
 
   .bookmarkBtn {
-    @include width(40px, 30px);
-    @include height(40px, 30px);
-    @include flex(center, center);
-    border-radius: 50%;
-    background-color: $w1;
-    position: absolute;
-    @include top(calc(352px - (16px + 40px)), calc(224px - (16px + 30px)), calc((100vw - 20px * 2) - (12px + 30px)));
-    @include right(16px);
-
-    img {
-      @include width(unset, 16px);
-    }
+    @include corapuraBookmark(calc(352px - (16px + 40px)), calc(224px - (16px + 30px)), calc((100vw - 20px * 2) - (12px + 30px)))
   }
 }

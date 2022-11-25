@@ -1,5 +1,5 @@
 import styles from '@/styles/corapura/components/detailArea.module.scss'
-import { useCallback, useContext, useState } from 'react';
+import { useCallback, useContext, useEffect, useState } from 'react';
 import { CompanyContext } from './detailArea';
 import dummy1 from '@/images/corapura/common/userDummy.svg'
 import mail from '@/images/corapura/common/mail_icon.svg'
@@ -18,6 +18,28 @@ const DetailAreaRight = ({influencer = false}) => {
 
   const [disabled, setDisabled] = useState(false)
   const [followCheck, setFollowCheck] = useState(false)
+  const [nowFollower, setNowFollower] = useState(userInfo.c_followeds_count)
+
+  const onLoadCheck = async () => {
+    await csrf()
+
+    await axios.post('/api/corapura/follow/check', {
+      user_id: user?.id,
+    }).then((res) => {
+      // console.log(res)
+      if (res.data.includes(userInfo.id)) {
+        setFollowCheck(true)
+      }
+    }).catch((e) => {
+      console.error(e)
+    })
+  }
+
+  useEffect(() => {
+    if (user) {
+      onLoadCheck()
+    }
+  }, [user])
 
   const handleClickFollow = useCallback(async () => {
     if (disabled) return
@@ -31,8 +53,9 @@ const DetailAreaRight = ({influencer = false}) => {
           followed_user_id: userInfo.id,
         }
       }).then((res) => {
-        console.log(res)
+        // console.log(res)
         setFollowCheck(false)
+        setNowFollower(nowFollower-1)
       }).catch((e) => {
         console.error(e)
       })
@@ -41,8 +64,9 @@ const DetailAreaRight = ({influencer = false}) => {
         following_user_id: user?.id,
         followed_user_id: userInfo.id,
       }).then((res) => {
-        console.log(res)
+        // console.log(res)
         setFollowCheck(true)
+        setNowFollower(nowFollower+1)
       }).catch((e) => {
         console.error(e)
       })
@@ -70,12 +94,12 @@ const DetailAreaRight = ({influencer = false}) => {
             </div>
           </div>
           <div className={styles.followBox}>
-            <p className={styles.count}>フォロワー{userInfo.c_followeds_count}人</p>
+            <p className={styles.count}>フォロワー{nowFollower}人</p>
             <button
               type="button"
               className="hoverEffect"
               onClick={handleClickFollow}
-            >フォローする</button>
+            >{followCheck ? "フォロー中" : "フォローする"}</button>
           </div>
           <p className={styles.desc}>{profile.profile}</p>
           <div className={styles.infoGraph}>
@@ -170,8 +194,12 @@ const DetailAreaRight = ({influencer = false}) => {
             <p className={styles.skill}>お仕事募集</p>
           </div>
           <div className={styles.followBox}>
-            <p className={styles.count}>フォロワー{userInfo.c_followeds_count}人</p>
-            <button type="button" className="hoverEffect">フォローする</button>
+            <p className={styles.count}>フォロワー{nowFollower}人</p>
+            <button
+              type="button"
+              className="hoverEffect"
+              onClick={handleClickFollow}
+            >{followCheck ? "フォロー中" : "フォローする"}</button>
           </div>
           <p className={styles.desc}>{profile.profile}</p>
           <div className={styles.snsLink}>

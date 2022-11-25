@@ -1,3 +1,8 @@
-<svg xmlns="http://www.w3.org/2000/svg" width="22" height="21.057" viewBox="0 0 22 21.057">
-  <path id="Icon_awesome-star" data-name="Icon awesome-star" d="M11.261.732,8.576,6.176l-6.008.876A1.317,1.317,0,0,0,1.84,9.3l4.347,4.236L5.159,19.516A1.315,1.315,0,0,0,7.067,20.9l5.375-2.825L17.816,20.9a1.316,1.316,0,0,0,1.908-1.386L18.7,13.533,23.042,9.3a1.317,1.317,0,0,0-.728-2.245l-6.008-.876L13.622.732a1.317,1.317,0,0,0-2.36,0Z" transform="translate(-1.441 0.001)" fill="#f76c6c"/>
+<svg xmlns="http://www.w3.org/2000/svg" width="40" height="40" viewBox="0 0 40 40">
+  <g id="グループ_5807" data-name="グループ 5807" transform="translate(-456 -415)">
+    <g id="グループ_138" data-name="グループ 138" transform="translate(0 -887)">
+      <circle id="楕円形_13" data-name="楕円形 13" cx="20" cy="20" r="20" transform="translate(456 1302)" fill="#fff"/>
+      <path id="Icon_awesome-star" data-name="Icon awesome-star" d="M11.261.732,8.576,6.176l-6.008.876A1.317,1.317,0,0,0,1.84,9.3l4.347,4.236L5.159,19.516A1.315,1.315,0,0,0,7.067,20.9l5.375-2.825L17.816,20.9a1.316,1.316,0,0,0,1.908-1.386L18.7,13.533,23.042,9.3a1.317,1.317,0,0,0-.728-2.245l-6.008-.876L13.622.732a1.317,1.317,0,0,0-2.36,0Z" transform="translate(463.559 1311.472)" fill="#f76c6c"/>
+    </g>
+  </g>
 </svg>

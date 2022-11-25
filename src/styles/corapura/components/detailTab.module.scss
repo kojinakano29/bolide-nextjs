@@ -35,12 +35,7 @@
   @include p(56px 0 64px, 48px 0, 40px 0);
 
   .column3 {
-    @include flex(stretch, left);
-    @include gap(32px, 32px 24px, 32px 16px);
-
-    @include media1(sp) {
-      justify-content: center;
-    }
+    @include column3;
   }
 
   .column4 {

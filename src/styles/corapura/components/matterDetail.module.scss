@@ -1,0 +1,87 @@
+@import '../../variables.scss';
+
+.headFlex {
+  @include flex(center);
+  @include gap(64px, 40px, 32px);
+  @include mb(64px);
+
+  .headLeft {
+    @include width(352px, 300px, 100%);
+    border-radius: 10px;
+    overflow: hidden;
+    position: relative;
+
+    img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      object-position: top center;
+    }
+
+    .bookmarkBtn {
+      @include corapuraBookmark(unset);
+      @include bottom(16px);
+    }
+  }
+
+  .headRight {
+    @include width(calc(100% - (352px + 64px)), calc(100% - (300px + 40px)), 100%);
+
+    .cat {
+      @include fs(16px, 14px);
+      font-weight: 500;
+      color: $g3;
+      @include mb(8px);
+    }
+
+    .ttl {
+      @include fs(32px, 24px, 20px);
+      font-weight: 900;
+      @include mb(16px);
+    }
+
+    .tags {
+      @include flex(center, left);
+      @include gap(16px);
+
+      .tag {
+        @include p(2px 16px);
+        @include fs(13px, 12px);
+        font-weight: bold;
+        border-radius: 12px;
+        background-color: $g2;
+      }
+    }
+
+    .company {
+      @include companyNicename(16px, 14px);
+      @include mt(40px, 32px);
+
+      .logoBox {
+        @include width(48px, 40px);
+        @include height(48px, 40px);
+      }
+    }
+  }
+}
+
+.btnFlex {
+  @include flex(center, center);
+  @include gap(48px, 32px);
+  @include mt(64px, 48px);
+
+  .btn {
+    @include btn;
+    margin: 0;
+    @include m(0);
+
+    &.btn2 {
+      background-color: $b11;
+      background-image: none;
+
+      span {
+        color: $b8;
+      }
+    }
+  }
+}
