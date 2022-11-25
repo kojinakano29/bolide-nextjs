@@ -494,7 +494,7 @@ const DetailTabCompany = ({businesses, releases, matters, userInfo}) => {
                   <>
                     <div className={styles.column3}>
                       {filterCard.map((card, index) => (
-                        <NameCard data={card} key={index} detail />
+                        <NameCard data={card} key={index} />
                       ))}
                     </div>
                     {filterCard.length === 3 && card.length > 3 ?

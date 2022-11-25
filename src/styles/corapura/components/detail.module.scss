@@ -1,12 +1,7 @@
 @import '../../variables.scss';
 
 .column3 {
-  @include flex(stretch, left);
-  @include gap(32px, 32px 24px, 32px 16px);
-
-  @include media1(sp) {
-    justify-content: center;
-  }
+  @include column3;
 }
 
 .commentArea {

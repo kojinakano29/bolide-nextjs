@@ -97,7 +97,7 @@ const DetailTabUser = ({cards, likes, matters, userInfo}) => {
                   <>
                     <div className={styles.column4}>
                       {filterMatching.map((match, index) => (
-                        <Link href={`/corapura/`} key={index}>
+                        <Link href={`/corapura/company/matter/${match.id}`} key={index}>
                           <a className={styles.matteredBox}>
                             <div className={styles.imgBox}>
                               <img src={match.thumbs ? match.thumbs : dummy.src} alt="" />

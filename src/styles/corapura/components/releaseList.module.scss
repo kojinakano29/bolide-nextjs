@@ -1,0 +1,266 @@
+@import '../../variables.scss';
+
+.searchBox {
+  @include searchBox;
+}
+
+.sort {
+  position: relative;
+  @include mb(24px);
+
+  .btn {
+    @include flex(center, left);
+    @include gap(8px);
+    @include fs(16px, 14px);
+    font-weight: bold;
+
+    .icon {
+      @include width(20px, 18px);
+    }
+  }
+
+  .box {
+    position: absolute;
+    @include top(40px);
+    left: 0;
+    @include width(240px);
+    border-radius: 10px;
+    background-color: $w1;
+    overflow: hidden;
+    z-index: 3;
+
+    button {
+      display: block;
+      width: 100%;
+      text-align: left;
+      @include p(8px 40px);
+      @include fs(16px, 14px);
+      font-weight: bold;
+
+      &.current {
+        background-color: $g9;
+        background-image: url(../../../images/corapura/parts/check2.svg);
+        background-repeat: no-repeat;
+        background-position: 16px center;
+      }
+    }
+  }
+}
+
+.tagBtnBox {
+  @include mb(64px, 48px);
+  @include flex(center, left);
+  @include gap(12px, 8px);
+
+  .tagBtn {
+    @include p(8px 12px);
+    @include fs(14px, 12px);
+    font-weight: bold;
+    border: 1px solid $b8;
+    border-radius: 28px;
+    color: $b8;
+    transition: .2s ease;
+
+    &.current,
+    &:hover {
+      background-color: $b8;
+      color: $w1;
+    }
+  }
+}
+
+.prList {
+  @include flex();
+  @include gap(64px 32px, 48px 16px, 40px 16px);
+  @include mb(96px, 80px, 48px);
+
+  a {
+    display: block;
+    @include width(calc(100% * 1/4 - 32px * 3/4), calc(100% * 1/4 - 16px * 3/4), calc(100% * 1/2 - 16px * 1/2));
+
+    &:hover {
+      & > .imgBox {
+        img {
+          transform: scale(1.1);
+        }
+      }
+    }
+
+    .imgBox {
+      border-radius: 10px;
+      overflow: hidden;
+      @include mb(16px);
+
+      img {
+        width: 100%;
+        object-fit: cover;
+        object-position: top center;
+        transition: .3s ease;
+      }
+    }
+
+    .ttl {
+      @include fs(16px, 14px);
+      font-weight: bold;
+      @include mb(16px);
+    }
+
+    .view {
+      @include fs(13px);
+      font-weight: $semibold;
+      @include flex(center, left);
+      gap: 8px;
+      @include mb(4px);
+    }
+
+    .company {
+      @include companyNicename(12px);
+      @include mb(10px);
+    }
+
+    .tags {
+      @include flex(center, left);
+      @include gap(8px);
+
+      .tag {
+        @include p(2px 8px);
+        border-radius: 12px;
+        border: 1px solid $r2;
+        color: $r2;
+        @include fs(14px, 12px);
+        font-weight: 500;
+      }
+    }
+  }
+}
+
+.pager {
+  @include pager;
+}
+
+.detailFlex {
+  @include flex();
+  @include gap(64px, 32px);
+  position: relative;
+
+  .detailLeft {
+    @include width(720px, 100%);
+
+    h2 {
+      @include mb(16px);
+    }
+
+    .tags {
+      @include flex(center, left);
+      @include gap(8px);
+      @include mb(32px, 24px);
+
+      .tag {
+        @include p(2px 8px);
+        border-radius: 12px;
+        border: 1px solid $r2;
+        color: $r2;
+        @include fs(14px, 12px);
+        font-weight: 500;
+      }
+    }
+
+    .headFlex {
+      @include flex(center);
+      @include pb(16px);
+      @include mb(32px, 24px);
+      border-bottom: 1px solid $g3;
+
+      .txtBox {
+        .name {
+          @include fs(14px, 12px);
+          font-weight: 900;
+          color: $b12;
+          @include mb(6px);
+        }
+
+        .date {
+          @include flex(center, left);
+          @include gap(8px);
+          @include fs(14px, 12px);
+          font-weight: bold;
+          color: $g1;
+        }
+      }
+
+      button {
+        @include width(40px);
+        @include height(40px);
+        border-radius: 50%;
+
+        &.on {
+          pointer-events: none;
+        }
+      }
+    }
+
+    .imgBox {
+      border-radius: 10px;
+      overflow: hidden;
+      @include mb(24px);
+    }
+  }
+
+  .detailRight {
+    position: sticky;
+    top: 56px;
+    @include width(calc(100% - (720px + 64px)), 100%);
+
+    .midashi {
+      @include fs(20px, 16px);
+      font-weight: 900;
+      @include pb(16px);
+      border-bottom: 2px solid $g3
+    }
+
+    .newRelease {
+      a {
+        @include p(16px 0);
+        @include flex();
+
+        .thumbsBox {
+          @include width(100px);
+          border-radius: 10px;
+          overflow: hidden;
+        }
+
+        .newTxt {
+          @include width(calc(100% - (100px + 16px)));
+
+          .newTtl {
+            @include fs(14px, 12px);
+            font-weight: bold;
+            @include mb(8px);
+          }
+
+          .newView {
+            @include flex(center, left);
+            @include gap(8px);
+            @include fs(13px, 12px);
+            font-weight: 600;
+            @include mb(4px);
+          }
+
+          .newName {
+            @include fs(12px);
+            font-weight: bold;
+            color: $g1;
+          }
+        }
+      }
+    }
+  }
+}
+
+.btnCover {
+  @include mt(56px, 48px);
+
+  a {
+    @include m(0, 0, auto);
+  }
+}

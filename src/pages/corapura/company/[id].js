@@ -15,7 +15,7 @@ export const getServerSideProps = async ({params}) => {
 }
 
 const CompanyDetail = ({posts}) => {
-  console.log(posts)
+  // console.log(posts)
 
   const profile = posts.profile
   const userInfo = posts.user
