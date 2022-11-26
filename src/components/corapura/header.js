@@ -1,12 +1,15 @@
 import styles from '@/styles/corapura/components/header.module.scss'
 import Link from 'next/link';
 import { useCallback, useState } from 'react';
-import Image from 'next/image';
 import logo from '@/images/corapura/common/logo.svg'
 import login from '@/images/corapura/header/login.svg'
 import signUp from '@/images/corapura/header/signUp.svg'
+import bookmark from '@/images/corapura/header/bookmark.svg'
+import mypage from '@/images/corapura/header/mypage.svg'
+import { useAuth } from '@/hooks/auth';
 
 const Header = () => {
+  const { user } = useAuth()
   const [humOpen, setHumOpen] = useState(false)
 
   const handleClickHum = useCallback(async () => {
@@ -29,47 +32,50 @@ const Header = () => {
           <h1>
             <Link href="/corapura">
               <a className="hoverEffect">
-                <Image
-                  src={logo}
-                  alt="CORAPURA"
-                  layout="responsive"
-                  sizes="160px"
-                  priority
-                />
+                <img src={logo.src} alt="CORAPURA" />
               </a>
             </Link>
           </h1>
         </div>
-        <div className={styles.right}>
-          <Link href="/corapura/login">
-            <a className={`${styles.btn} ${styles.login} hoverEffect`}>
-              <div className={styles.iconBox}>
-                <Image
-                  src={login}
-                  alt="ログイン"
-                  layout="responsive"
-                  sizes="16px"
-                  priority
-                />
-              </div>
-              <span className="pc">ログイン</span>
-            </a>
-          </Link>
-          <Link href="/register">
-            <a className={`${styles.btn} ${styles.signUp} hoverEffect`}>
-              <div className={styles.iconBox}>
-                <Image
-                  src={signUp}
-                  alt="新規登録"
-                  layout="responsive"
-                  sizes="16px"
-                  priority
-                />
-              </div>
-              <span className="pc">新規登録</span>
-            </a>
-          </Link>
-        </div>
+        {!user ?
+          <div className={styles.right}>
+            <Link href="/corapura/login">
+              <a className={`${styles.btn} ${styles.login} hoverEffect`}>
+                <div className={styles.iconBox}>
+                  <img src={login.src} alt="" />
+                </div>
+                <span className="pc">ログイン</span>
+              </a>
+            </Link>
+            <Link href="/register">
+              <a className={`${styles.btn} ${styles.signUp} hoverEffect`}>
+                <div className={styles.iconBox}>
+                  <img src={signUp.src} alt="" />
+                </div>
+                <span className="pc">新規登録</span>
+              </a>
+            </Link>
+          </div>
+        :
+          <div className={styles.right}>
+            <Link href="/corapura/">
+              <a className={`${styles.btn} ${styles.bookmark} hoverEffect`}>
+                <div className={styles.iconBox}>
+                  <img src={bookmark.src} alt="" />
+                </div>
+                <span className="pc">お気に入りリスト</span>
+              </a>
+            </Link>
+            <Link href={`/corapura/${user.account_type === 0 ? "influencer" : "company"}/${user.c_profile_id}`}>
+              <a className={`${styles.btn} ${styles.mypage} hoverEffect`}>
+                <div className={styles.iconBox}>
+                  <img src={mypage.src} alt="" />
+                </div>
+                <span className="pc">マイページ</span>
+              </a>
+            </Link>
+          </div>
+        }
       </div>
 
       <div

@@ -10,7 +10,7 @@ const User = ({data, detail = false}) => {
         <>
           <article className={styles.person__list}>
             {data.map((item, index) => (
-              <Link href={`/corapura/influencer/${item.id}`} key={item.id}>
+              <Link href={`/corapura/influencer/${item.c_profile_id}`} key={item.id}>
                 <a className={styles.person__item}>
                   <div className={styles.imgBox}>
                     <img src={dummy.src} alt="" />

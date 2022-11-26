@@ -1,0 +1,279 @@
+@import '../../variables.scss';
+
+.midashi {
+  @include fs(16px, 14px);
+  font-weight: bold;
+  margin-bottom: 8px;
+}
+
+.searchBox {
+  @include searchBox;
+}
+
+.sortFlex {
+  @include mb(64px, 48px, 40px);
+  @include flex(center, left);
+  @include gap(24px);
+
+  .sort {
+    @include sort;
+    @include m(0);
+
+    .box {
+      button {
+        padding: 0;
+
+        label {
+          @include p(8px 40px);
+          cursor: pointer;
+        }
+      }
+    }
+  }
+
+  .finishDisplay {
+    @include flex(center, left);
+    @include gap(8px);
+    @include fs(16px, 14px);
+    font-weight: bold;
+    cursor: pointer;
+  }
+}
+
+.selectBox {
+  @include mb(16px);
+
+  .selectFlex {
+    @include flex(center, left);
+    @include gap(8px 16px);
+  }
+
+  select {
+    @include width(180px);
+    @include height(40px);
+    border-radius: 20px;
+    border: 2px solid $b8;
+    @include fs(12px);
+    font-weight: bold;
+  }
+}
+
+.checkSortBox {
+  @include flex(center, left);
+  @include gap(8px);
+  @include mb(32px);
+
+  button {
+    display: block;
+
+    label {
+      display: block;
+      @include p(2px 10px);
+      @include fs(13px, 12px);
+      font-weight: bold;
+      color: $b8;
+      border: 2px solid $b8;
+      border-radius: 12px;
+      cursor: pointer;
+      transition: .2s ease;
+
+      &:hover,
+      &.current {
+        color: $w1;
+        background-color: $b8;
+      }
+
+      input[type="checkbox"] {
+        display: none;
+      }
+    }
+  }
+}
+
+.rewardRange {
+  @include mb(32px);
+
+  input[type="range"] {
+    -webkit-appearance: none;
+    appearance: none;
+    cursor: pointer;
+    @include width(240px);
+    @include height(6px);
+    background-color: $g2;
+    border-radius: 10px;
+    @include mb(24px);
+
+    &::-webkit-slider-thumb {
+      -webkit-appearance: none;
+      background-color: $w1;
+      width: 16px;
+      height: 16px;
+      border-radius: 50%;
+      border: 2px solid $g3
+    }
+  }
+
+  .rewardFlex {
+    @include flex(center, left);
+    @include gap(8px);
+    @include fs(14px, 12px);
+    font-weight: bold;
+
+    input[type="number"] {
+      display: block;
+      @include width(80px);
+      @include height(24px);
+      border: 1px solid $g4;
+      text-align: right;
+      padding: 0;
+      @include fs(13px, 12px);
+      font-weight: bold;
+    }
+
+    button {
+      display: block;
+      @include p(2px 12px);
+      @include fs(13px, 12px);
+      font-weight: bold;
+      border: 2px solid $b8;
+      border-radius: 12px;
+      color: $b8;
+    }
+  }
+}
+
+.tagBtnBox {
+  @include mb(32px);
+  @include flex(center, left);
+  @include gap(8px);
+
+  .tagBtn {
+    display: block;
+    @include p(2px 16px);
+    @include fs(13px, 12px);
+    font-weight: bold;
+    border-radius: 12px;
+    background-color: $o3;
+    transition: .2s ease;
+    cursor: pointer;
+
+    input[type="radio"] {
+      display: none;
+    }
+
+    &.current,
+    &:hover {
+      background-color: $b1;
+      color: $w1;
+    }
+  }
+}
+
+.list {
+  @include flex(flex-start, left);
+  @include gap(64px 20px, 48px 16px, 40px 16px);
+  @include mb(96px, 80px, 48px);
+
+  &.influencerList {
+    .imgBox {
+      border-radius: 50%;
+    }
+
+    .catch,
+    .name {
+      text-align: center;
+    }
+  }
+
+  a {
+    display: block;
+    @include width(calc(100% * 1/4 - 20px * 3/4), calc(100% * 1/4 - 16px * 3/4), calc(100% * 1/2 - 16px * 1/2));
+
+    &:hover {
+      img {
+        transform: scale(1.1);
+      }
+    }
+
+    .imgBox {
+      border-radius: 10px;
+      overflow: hidden;
+      @include mb(16px);
+
+      img {
+        width: 100%;
+        object-fit: cover;
+        object-position: top center;
+        transition: .3s ease;
+      }
+    }
+
+    .catch {
+      @include fs(13px, 12px);
+      color: $g1;
+      @include mb(2px);
+    }
+
+    .name {
+      @include fs(20px, 16px);
+      font-weight: bold;
+      @include mb(8px);
+    }
+
+    .desc {
+      @include fs(14px, 12px);
+      font-weight: 500;
+      color: $g4;
+    }
+  }
+}
+
+.matterList {
+  @include flex(flex-start, left);
+  @include gap(64px 32px, 48px 16px, 40px 16px);
+  @include mb(96px, 80px, 48px);
+}
+
+.pager {
+  @include flex(center, center);
+  @include gap(48px, 32px, 16px);
+
+  @include media1(sp) {
+    flex-direction: column;
+  }
+
+  input[type="submit"] {
+    display: none;
+  }
+
+  .btn {
+    label {
+      @include btn;
+      @include width(296px, 200px);
+      @include height(64px, 48px);
+      @include m(0);
+      cursor: pointer;
+    }
+  }
+
+  .pagerBtn {
+    @include flex(center);
+    @include gap(8px);
+
+    button {
+      @include width(40px);
+      @include height(40px);
+      border-radius: 50%;
+      background-color: $g2;
+      color: $r2;
+      @include fs(20px, 16px);
+      font-weight: 600;
+
+      &.current {
+        background-color: $r2;
+        color: $w1;
+        cursor: auto;
+      }
+    }
+  }
+}
