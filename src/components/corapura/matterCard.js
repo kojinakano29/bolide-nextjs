@@ -3,11 +3,12 @@ import dummy from '@/images/corapura/top/cont6_1.webp'
 import Link from 'next/link';
 import starB from '@/images/corapura/common/starB.svg'
 import starA from '@/images/corapura/common/starA.svg'
+import check from '@/images/corapura/common/check.svg'
 import { useAuth } from '@/hooks/auth';
 import { useCallback, useEffect, useState } from 'react';
 import axios from '@/lib/axios';
 
-const MatterCard = ({matter, detail = false}) => {
+const MatterCard = ({matter, detail = false, list = false}) => {
   const csrf = () => axios.get('/sanctum/csrf-cookie')
 
   const { user } = useAuth()
@@ -66,49 +67,97 @@ const MatterCard = ({matter, detail = false}) => {
   }, [disabled, setDisabled, user, bookmark, setBookmark, matter])
 
   return (
-    <article className={`${styles.matterCard} ${detail ? styles.detail : null}`}>
-      <Link href={`/corapura/company/matter/${matter.id}`}>
-        <a>
-          <div className={`${styles.imgBox} matterThumbs`}>
-            <img src={matter.thumbs ? matter.thumbs : dummy.src} alt="" />
-          </div>
-          <p className={styles.tag}>{matter.c_cat.name}</p>
-          <p className={styles.ttl}>{matter.title}</p>
-          <p className={styles.desc}>{matter.content.substring(0, 50)}...</p>
-          <p className={styles.iconBox}>
-            <span className={styles.icon}>{detail ? "実施日" : "撮影日"}</span>
-            {matter.date}
-          </p>
-          <p className={styles.iconBox}>
-            <span className={styles.icon}>募集期間</span>
-            {matter.limite_date}
-          </p>
-          {detail ?
-            <p className={styles.iconBox}>
-              <span className={styles.icon}>報酬</span>
-              {matter.reward}
-            </p>
-          : null}
-          {detail ? null :
-            <div className={styles.company}>
-              <div className={styles.logoBox}>
-                {matter.user.c_profile.thumbs ? <img src={matter.user.c_profile.thumbs} alt="" /> : null}
+    <>
+      {list ?
+        <article className={`${styles.matterCard} ${styles.list}`}>
+          <Link href={`/corapura/company/matter/${matter.id}`}>
+            <a>
+              <div className={`${styles.imgBox} matterThumbs`}>
+                <img src={matter.thumbs ? matter.thumbs : dummy.src} alt="" />
+                <div className={styles.finishMatter}>
+                  <img src={check.src} alt="" />
+                  <p>
+                    この募集は
+                    <br/>終了しました
+                  </p>
+                </div>
               </div>
-              {matter.user.c_profile.nicename}
-            </div>
-          }
-        </a>
-      </Link>
-      {detail ?
-        <button
-          type="button"
-          className={`${styles.bookmarkBtn} hoverEffect`}
-          onClick={handleClickBookmark}
-        >
-          <img src={bookmark.includes(matter.id) ? starA.src : starB.src} alt="" />
-        </button>
-      : null}
-    </article>
+              <p className={styles.ttl}>{matter.title}</p>
+              <p className={styles.desc}>{matter.content.substring(0, 50)}...</p>
+              <p className={styles.iconBox}>
+                <span className={styles.icon}>掲載日</span>
+                {matter.date}
+              </p>
+              <p className={styles.iconBox}>
+                <span className={styles.icon}>募集期間</span>
+                {matter.limite_date}
+              </p>
+              <p className={styles.iconBox}>
+                <span className={styles.icon}>報酬</span>
+                {matter.reward}
+              </p>
+              <div className={styles.company}>
+                <div className={styles.logoBox}>
+                  {matter.user.c_profile.thumbs ? <img src={matter.user.c_profile.thumbs} alt="" /> : null}
+                </div>
+                {matter.user.c_profile.nicename}
+              </div>
+            </a>
+          </Link>
+          <button
+            type="button"
+            className={`${styles.bookmarkBtn} hoverEffect`}
+            onClick={handleClickBookmark}
+          >
+            <img src={bookmark.includes(matter.id) ? starA.src : starB.src} alt="" />
+          </button>
+        </article>
+      :
+        <article className={`${styles.matterCard} ${detail ? styles.detail : null}`}>
+          <Link href={`/corapura/company/matter/${matter.id}`}>
+            <a>
+              <div className={`${styles.imgBox} matterThumbs`}>
+                <img src={matter.thumbs ? matter.thumbs : dummy.src} alt="" />
+              </div>
+              <p className={styles.tag}>{matter.c_cat?.name}</p>
+              <p className={styles.ttl}>{matter.title}</p>
+              <p className={styles.desc}>{matter.content.substring(0, 50)}...</p>
+              <p className={styles.iconBox}>
+                <span className={styles.icon}>{detail ? "実施日" : "撮影日"}</span>
+                {matter.date}
+              </p>
+              <p className={styles.iconBox}>
+                <span className={styles.icon}>募集期間</span>
+                {matter.limite_date}
+              </p>
+              {detail ?
+                <p className={styles.iconBox}>
+                  <span className={styles.icon}>報酬</span>
+                  {matter.reward}
+                </p>
+              : null}
+              {detail ? null :
+                <div className={styles.company}>
+                  <div className={styles.logoBox}>
+                    {matter.user.c_profile.thumbs ? <img src={matter.user.c_profile.thumbs} alt="" /> : null}
+                  </div>
+                  {matter.user.c_profile.nicename}
+                </div>
+              }
+            </a>
+          </Link>
+          {detail ?
+            <button
+              type="button"
+              className={`${styles.bookmarkBtn} hoverEffect`}
+              onClick={handleClickBookmark}
+            >
+              <img src={bookmark.includes(matter.id) ? starA.src : starB.src} alt="" />
+            </button>
+          : null}
+        </article>
+      }
+    </>
   );
 }
 

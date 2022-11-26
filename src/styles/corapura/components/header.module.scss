@@ -85,8 +85,15 @@
         background-color: $b8;
       }
 
-      &.signUp {
+      &.signUp,
+      &.mypage {
         background-image: $gr1;
+      }
+
+      &.bookmark {
+        span {
+          color: $b8;
+        }
       }
     }
   }

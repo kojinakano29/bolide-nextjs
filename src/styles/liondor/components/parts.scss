@@ -2,7 +2,7 @@
 
 .txtBox {
   width: 100%;
-  @include p(64px 24px 40px);
+  @include p(64px 24px 40px, 16px);
   position: absolute;
   bottom: 0;
   left: 0;
