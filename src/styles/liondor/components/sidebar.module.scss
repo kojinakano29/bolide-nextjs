@@ -1,10 +1,15 @@
 @import '../../variables.scss';
 
 .sidebar {
-  @include width(320px);
+  @include width(320px, 100%);
   height: 100vh;
   position: sticky;
   top: 0;
   overflow: auto;
   @include scrollHidden;
+
+  @include media1(tab1) {
+    @include mt(48px);
+    height: auto;
+  }
 }

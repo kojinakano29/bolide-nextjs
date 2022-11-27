@@ -1,7 +1,7 @@
 @import '../../variables.scss';
 
 .ttl {
-  @include mb(24px);
+  @include mb(24px, 16px);
   @include flex(flex-end, left);
   @include gap(16px);
 
@@ -21,6 +21,10 @@
       color: $g1;
     }
   }
+}
+
+.side {
+  @include mt(40px);
 }
 
 .btn {

@@ -1,15 +1,15 @@
 @import '../../variables.scss';
 
 .scrollBox {
-  @include width(calc(100% - (612px + 32px)));
+  @include width(calc(100% - (612px + 32px)), calc(100% - (450px + 16px)), calc(100% - 16px));
   @include flex();
 }
 
 .scrollCont {
-  @include width(312px);
+  @include width(312px, 100%, 100%);
   display: flex;
   flex-direction: column;
-  @include gap(64px);
+  @include gap(64px, 32px, 64px);
 
   .imgBox {
     @include mb(16px);
@@ -18,4 +18,14 @@
 
 .blogLink {
   composes: blogLink from './parts.scss';
+
+  @include media1(sp) {
+    display: flex;
+    gap: 16px;
+
+    .imgBox {
+      min-width: 100px;
+      max-width: 100px;
+    }
+  }
 }

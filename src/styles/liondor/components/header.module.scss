@@ -18,7 +18,7 @@
   }
 
   .topArea {
-    @include p(60px 0 8px);
+    @include p(60px 0 8px, 12px 0);
     position: relative;
     border-bottom: 1px solid $g3;
   }
@@ -28,7 +28,7 @@
   }
 
   h1 {
-    @include width(300px, 300px, 160px);
+    @include width(300px, 160px);
     margin: auto;
 
     .logo {
@@ -43,15 +43,16 @@
 
   .leftAbs {
     position: absolute;
-    @include top(24px);
-    @include left(40px);
+    @include top(24px, 19px);
+    @include left(40px, 0);
     @include flex(center);
-    @include gap(40px);
+    @include gap(40px, 16px);
   }
 
   .rightAbs {
     position: absolute;
-    @include top(24px);
-    @include right(40px);
+    @include top(24px, 19px);
+    @include right(40px, 20px);
+    z-index: 2;
   }
 }

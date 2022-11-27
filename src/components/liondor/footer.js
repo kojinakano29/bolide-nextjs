@@ -9,22 +9,24 @@ const Footer = () => {
   return (
     <>
       <article className={styles.bannarArea}>
-        <p className="ivy">Bolid's Japan Other Site</p>
-        <div className={styles.bannarFlex}>
-          {bannarData.map((items, index) => (
-            <Link href={items.link} key={index}>
-              <a className={styles.bannarLink}>
-                <Image
-                  src={items.src}
-                  alt=""
-                  layout="responsive"
-                  sizes="(min-width: 1340px) 274px, (min-width: 768px) 180px, 100vw"
-                  priority
-                />
-              </a>
-            </Link>
-          ))}
-        </div>
+        <Container>
+          <p className="ivy">Bolide's Japan Other Site</p>
+          <div className={styles.bannarFlex}>
+            {bannarData.map((items, index) => (
+              <Link href={items.link} key={index}>
+                <a className={styles.bannarLink}>
+                  <Image
+                    src={items.src}
+                    alt=""
+                    layout="responsive"
+                    sizes="(min-width: 1340px) 274px, (min-width: 768px) 180px, 100vw"
+                    priority
+                  />
+                </a>
+              </Link>
+            ))}
+          </div>
+        </Container>
       </article>
 
       <footer className={styles.pageFooter}>

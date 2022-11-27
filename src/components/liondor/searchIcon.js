@@ -17,7 +17,7 @@ const SearchIcon = ({humOpen}) => {
   }, [])
 
   return (
-    <div className={styles.iconBox}>
+    <div className={`${styles.iconBox} ${humOpen ? null : styles.hidden}`}>
       <form onSubmit={handleSubmit(onSubmit)}>
         <label className={styles.searchBtn}>
           <FontAwesomeIcon

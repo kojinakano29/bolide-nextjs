@@ -2,7 +2,7 @@
 
 .article {
   &:first-of-type {
-    @include mb(64px);
+    @include mb(64px, 48px);
 
   }
   .faqTtl {

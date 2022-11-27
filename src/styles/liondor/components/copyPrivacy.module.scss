@@ -6,11 +6,11 @@
 }
 
 .box {
-  @include mb(48px);
+  @include mb(48px, 40px);
 
   h3 {
     font-size: var(--fs20-18);
-    @include mb(24px);
+    @include mb(24px, 16px);
     font-weight: 500;
   }
 

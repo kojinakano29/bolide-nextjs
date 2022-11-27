@@ -1,7 +1,7 @@
 @import '../../variables.scss';
 
 .article {
-  @include mb(120px);
+  @include mb(120px, 64px);
 }
 
 .imgBox {

@@ -10,7 +10,7 @@ const CatNavi = ({parentSlug}) => {
   return (
     <nav className={styles.nav}>
       <ul>
-        {catNavData[parentSlug].map((nav, index) => (
+        {catNavData[parentSlug]?.map((nav, index) => (
           <li key={index}>
             <Link href={nav.link}>
               <a className={`${category === nav.slug ? styles.current : ''}`}>

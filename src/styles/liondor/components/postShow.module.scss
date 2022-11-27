@@ -1,14 +1,14 @@
 @import '../../variables.scss';
 
 .headline {
-  @include p(32px 0 96px);
+  @include p(32px 0 96px, 32px 0);
   border-bottom: 1px solid $g3;
 }
 
 .headlineMv {
   position: relative;
   width: 100%;
-  @include mb(48px);
+  @include mb(48px, 24px);
 
   img {
     width: 100%;
@@ -23,7 +23,7 @@
     right: 0;
 
     svg {
-      @include width(24px);
+      @include width(24px, 20px);
       height: auto;
     }
 
@@ -32,7 +32,7 @@
     }
 
     &.pickupBtn {
-      @include top(64px);
+      @include top(64px, 48px);
     }
   }
 }
@@ -46,7 +46,7 @@
 .cat {
   composes: cat from './parts.scss';
   justify-content: center;
-  @include mb(24px);
+  @include mb(24px, 16px);
 }
 
 .hr {
@@ -55,7 +55,7 @@
 
 .ttl {
   font-size: var(--fs32-18);
-  @include mb(40px);
+  @include mb(40px, 24px);
   font-weight: 500;
 }
 
@@ -68,11 +68,11 @@
 .desc {
   font-size: var(--fs14-12);
   font-weight: 300;
-  @include mb(24px);
+  @include mb(24px, 16px);
 }
 
 .series {
-  @include mb(24px);
+  @include mb(24px, 16px);
 
   .seriesLink {
     @include fs(11px);
@@ -93,21 +93,21 @@
 
 .time {
   composes: time from './parts.scss';
-  @include mb(32px);
+  @include mb(32px, 16px);
 }
 
 .showBody {
-  @include pt(40px);
+  @include pt(40px, 32px);
 }
 
 .bodyFlex {
   @include flex(stretch);
-  @include gap(0 64px);
+  @include gap(0 64px, 64px, 48px);
 }
 
 .recoCont {
-  @include mt(112px);
-  @include p(56px 0 96px);
+  @include mt(112px, 80px, 64px);
+  @include p(56px 0 96px, 64px 0 80px);
   background-color: $g2;
   overflow: hidden;
 }

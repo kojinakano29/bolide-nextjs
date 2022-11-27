@@ -8,18 +8,30 @@
 
 .flex {
   @include flex(stretch);
+  @include gap(0, 0, 64px);
 }
 
 .blogLink {
   composes: blogLink from './parts.scss';
-  @include width(412px);
+  @include width(412px, calc(100% * 1/3 - 16px * 2/3), 100%);
   @include flex(stretch);
+
+  &:first-of-type {
+    @include media1(sp) {
+      flex-direction: column;
+
+      .imgBox {
+        width: 100%;
+        margin-bottom: 16px;
+      }
+    }
+  }
 }
 
 .imgBox {
-  @include width(124px);
+  @include width(124px, 100px);
 }
 
 .txtBox {
-  @include width(calc(100% - (124px + 24px)));
+  @include width(calc(100% - (124px + 24px)), calc(100% - (100px + 16px)));
 }

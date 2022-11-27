@@ -16,7 +16,10 @@
   &:hover {
     img {
       transform: scale(1.1);
-      opacity: .5;
+
+      @include media1(sp) {
+        transform: scale(1);
+      }
     }
   }
 

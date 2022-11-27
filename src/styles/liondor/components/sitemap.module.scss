@@ -1,21 +1,21 @@
 @import '../../variables.scss';
 
 .block {
-  @include mb(64px);
+  @include mb(64px, 48px);
 
   &:last-of-type {
-    @include mb(80px);
+    @include mb(80px, 64px);
   }
 
   h3 {
     font-size: var(--fs40-24);
     letter-spacing: 0;
-    @include mb(24px);
+    @include mb(24px, 16px);
   }
 
   .flex {
     @include flex(center, left);
-    @include gap(16px 40px);
+    @include gap(16px 40px, 16px 24px);
 
     a {
       font-size: var(--fs18-16);
@@ -46,7 +46,7 @@
 
 .hr {
   width: 1px;
-  @include height(40px);
+  @include height(40px, 32px, 24px);
   background-color: $g5;
   transform-origin: center;
   transform: rotate(20deg);
