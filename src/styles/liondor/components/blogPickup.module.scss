@@ -1,19 +1,25 @@
 @import '../../variables.scss';
 
 .pickUp {
-  @include width(612px);
-  height: 100vh;
+  @include width(612px, 450px, 100%);
+  @include height(100vh, 100vh, auto);
   position: sticky;
   top: 0;
 
+  @include media1(sp) {
+    position: unset;
+    margin-bottom: 64px;
+  }
+
   .imgBox {
-    height: 100vh;
+    @include height(100vh, 100vh, auto);
+    @include mb(0, 0, 16px);
   }
 }
 
 .txtBox {
   composes: txtBox from './parts.scss';
-  @include p(80px 80px 40px);
+  @include p(80px 80px 40px, 40px, 24px);
 }
 
 .blogLink {

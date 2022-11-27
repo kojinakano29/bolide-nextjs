@@ -17,85 +17,128 @@ const BlogScrollBox = ({patternData, route2 = false}) => {
     return index !== 0 && index % 2 === 0 && index < 9
   })
 
+  const dataSp = route2 ? patternData?.filter((e, index) => {
+    return index !== 0 && index < 5
+  }) : patternData?.l_post?.filter((e, index) => {
+    return index !== 0 && index < 5
+  })
+
   return (
-    <div className={styles.scrollBox}>
-      <div className={`${styles.scrollOdd} ${styles.scrollCont}`}>
-        {dataOdd?.map((item) => (
-          <Link href={`/liondor/post/show/${item.id}`} key={item.id}>
-            <a className={styles.blogLink}>
-              <div className={styles.imgBox}>
-                <Image
-                  src={dummy3}
-                  alt=""
-                  layout="responsive"
-                  sizes="(min-width: 1340px) 312px, (min-width: 768px) 150px, 100vw"
-                  priority
-                />
-              </div>
-              {
-                route2
-                ?
-                <BlogTxt
-                  smallMb
-                  cat={item?.l_post?.l_category?.parent_slug?.toUpperCase()}
-                  cat2={item?.l_post?.l_category?.name}
-                  ttl={item?.l_post?.title}
-                  name={item?.l_post?.user?.name}
-                  time={item?.l_post?.created_at}
-                />
-                :
-                <BlogTxt
-                  smallMb
-                  cat={item?.l_category?.parent_slug?.toUpperCase()}
-                  cat2={item?.l_category?.name}
-                  ttl={item?.title}
-                  name={item?.user?.name}
-                  time={item?.created_at}
-                />
-              }
-            </a>
-          </Link>
-        ))}
+    <>
+      <div className={`${styles.scrollBox} pc`}>
+        <div className={`${styles.scrollOdd} ${styles.scrollCont}`}>
+          {dataOdd?.map((item) => (
+            <Link href={`/liondor/post/show/${item.id}`} key={item.id}>
+              <a className={styles.blogLink}>
+                <div className={styles.imgBox}>
+                  <Image
+                    src={dummy3}
+                    alt=""
+                    layout="responsive"
+                    sizes="(min-width: 1340px) 312px, (min-width: 768px) 150px, 100vw"
+                    priority
+                  />
+                </div>
+                {
+                  route2
+                  ?
+                  <BlogTxt
+                    smallMb
+                    cat={item?.l_post?.l_category?.parent_slug?.toUpperCase()}
+                    cat2={item?.l_post?.l_category?.name}
+                    ttl={item?.l_post?.title}
+                    name={item?.l_post?.user?.name}
+                    time={item?.l_post?.created_at}
+                  />
+                  :
+                  <BlogTxt
+                    smallMb
+                    cat={item?.l_category?.parent_slug?.toUpperCase()}
+                    cat2={item?.l_category?.name}
+                    ttl={item?.title}
+                    name={item?.user?.name}
+                    time={item?.created_at}
+                  />
+                }
+              </a>
+            </Link>
+          ))}
+        </div>
+        <div className={`${styles.scrollEven} ${styles.scrollCont}`}>
+          {dataEven?.map((item) => (
+            <Link href={`/liondor/post/show/${item.id}`} key={item.id}>
+              <a className={styles.blogLink}>
+                <div className={styles.imgBox}>
+                  <Image
+                    src={dummy3}
+                    alt=""
+                    layout="responsive"
+                    sizes="(min-width: 1340px) 312px, (min-width: 768px) 150px, 100vw"
+                    priority
+                  />
+                </div>
+                {
+                  route2
+                  ?
+                  <BlogTxt
+                    smallMb
+                    cat={item?.l_post?.l_category?.parent_slug?.toUpperCase()}
+                    cat2={item?.l_post?.l_category?.name}
+                    ttl={item?.l_post?.title}
+                    name={item?.l_post?.user?.name}
+                    time={item?.l_post?.created_at}
+                  />
+                  :
+                  <BlogTxt
+                    smallMb
+                    cat={item?.l_category?.parent_slug?.toUpperCase()}
+                    cat2={item?.l_category?.name}
+                    ttl={item?.title}
+                    name={item?.user?.name}
+                    time={item?.created_at}
+                  />
+                }
+              </a>
+            </Link>
+          ))}
+        </div>
       </div>
-      <div className={`${styles.scrollEven} ${styles.scrollCont}`}>
-        {dataEven?.map((item) => (
-          <Link href={`/liondor/post/show/${item.id}`} key={item.id}>
-            <a className={styles.blogLink}>
-              <div className={styles.imgBox}>
-                <Image
-                  src={dummy3}
-                  alt=""
-                  layout="responsive"
-                  sizes="(min-width: 1340px) 312px, (min-width: 768px) 150px, 100vw"
-                  priority
-                />
-              </div>
-              {
-                route2
-                ?
-                <BlogTxt
-                  smallMb
-                  cat={item?.l_post?.l_category?.parent_slug?.toUpperCase()}
-                  cat2={item?.l_post?.l_category?.name}
-                  ttl={item?.l_post?.title}
-                  name={item?.l_post?.user?.name}
-                  time={item?.l_post?.created_at}
-                />
-                :
-                <BlogTxt
-                  smallMb
-                  cat={item?.l_category?.parent_slug?.toUpperCase()}
-                  cat2={item?.l_category?.name}
-                  ttl={item?.title}
-                  name={item?.user?.name}
-                  time={item?.created_at}
-                />
-              }
-            </a>
-          </Link>
-        ))}
+
+      <div className={`${styles.scrollBox} sp`}>
+        <div className={`${styles.scrollCont}`}>
+          {dataSp?.map((item) => (
+            <Link href={`/liondor/post/show/${item.id}`} key={item.id}>
+              <a className={styles.blogLink}>
+                <div className={styles.imgBox}>
+                  <img src={dummy3.src} alt="" />
+                </div>
+                {
+                  route2
+                  ?
+                  <BlogTxt
+                    smallMb
+                    cat={item?.l_post?.l_category?.parent_slug?.toUpperCase()}
+                    cat2={item?.l_post?.l_category?.name}
+                    ttl={item?.l_post?.title}
+                    name={item?.l_post?.user?.name}
+                    time={item?.l_post?.created_at}
+                  />
+                  :
+                  <BlogTxt
+                    smallMb
+                    cat={item?.l_category?.parent_slug?.toUpperCase()}
+                    cat2={item?.l_category?.name}
+                    ttl={item?.title}
+                    name={item?.user?.name}
+                    time={item?.created_at}
+                  />
+                }
+              </a>
+            </Link>
+          ))}
+        </div>
       </div>
-    </div>
+    </>
   );
 }
 

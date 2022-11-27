@@ -5,19 +5,19 @@
 }
 
 .mypageForm {
-  @include width(755px);
+  @include width(755px, 100%);
 
   .dl {
-    @include mb(40px);
+    @include mb(40px, 32px);
 
     &:last-of-type {
-      @include mb(64px);
+      @include mb(64px, 48px);
     }
 
     dt {
       font-size: var(--fs16-14);
       font-weight: 500;
-      @include mb(16px);
+      @include mb(16px, 10px);
     }
 
     dd {
@@ -58,7 +58,7 @@
 
       &.thumbArea {
         @include flex(center, left);
-        @include gap(56px);
+        @include gap(56px, 40px);
 
         .thumbBox {
           border-radius: 50%;
@@ -110,10 +110,11 @@
 }
 
 .sideBox {
-  @include width(calc(100% - (755px + 64px)));
+  @include width(calc(100% - (755px + 64px)), 100%);
+  @include mt(0, 64px);
 
   .sideWrap {
-    @include mb(96px);
+    @include mb(96px, 80px, 64px);
 
     &:last-of-type {
       margin-bottom: 0;

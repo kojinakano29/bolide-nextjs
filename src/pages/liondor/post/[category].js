@@ -32,9 +32,9 @@ const Post = ({posts}) => {
   }
 
   const pickupData = posts.pickups
-  const parentSlug = posts.posts[0].l_category.parent_slug
+  const parentSlug = posts.posts[0]?.l_category.parent_slug
   const upperParentSlug = parentSlug?.toUpperCase()
-  const slug = posts.posts[0].l_category.slug
+  const slug = posts.posts[0]?.l_category.slug
   const upperSlug = slug?.toUpperCase()
   const post = posts.posts
 
@@ -70,7 +70,7 @@ const Post = ({posts}) => {
       <article className={styles.section2}>
         <div className={styles.wrapper}>
           <Container>
-              <BlogPattern8 pattern={pickupData} must />
+            <BlogPattern8 pattern={pickupData} must />
           </Container>
         </div>
       </article>

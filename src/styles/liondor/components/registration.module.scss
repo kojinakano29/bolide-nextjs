@@ -41,24 +41,24 @@
 }
 
 .merit {
-  @include p(112px 0 96px);
+  @include p(112px 0 96px, 80px 0, 64px 0);
 
   .ttl {
-    @include mb(80px);
+    @include mb(80px, 80px, 64px);
   }
 }
 
 .flex {
   @include flex(stretch, center);
-  @include gap(105px 136px);
+  @include gap(105px 136px, 80px 64px, 80px);
 }
 
 .box {
-  @include width(440px);
+  @include width(440px, calc(100% * 1/2 - 64px * 1/2), 90%);
   position: relative;
 
   .num {
-    @include fs(64px);
+    @include fs(64px, 56px);
     position: absolute;
     @include top(-48px);
     @include left(-32px);
@@ -66,7 +66,7 @@
   }
 
   .imgBox {
-    @include mb(24px);
+    @include mb(24px, 16px);
   }
 
   .name {

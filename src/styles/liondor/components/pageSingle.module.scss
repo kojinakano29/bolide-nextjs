@@ -1,17 +1,14 @@
 @import '../../variables.scss';
 
-.section2 {
-  @include pt(112px);
-}
-
+.section2,
 .section3 {
-  @include pt(112px);
+  @include pt(112px, 80px, 64px);
 }
 
 .wrapper {
   border-top: 1px solid $g3;
   border-bottom: 1px solid $g3;
-  @include p(40px 0 64px);
+  @include p(40px 0 64px, 40px 0);
 }
 
 .flex {

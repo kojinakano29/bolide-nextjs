@@ -1,13 +1,20 @@
 @import '../../variables.scss';
 
 .naviList{
+  @include media1(sp) {
+    overflow-x: auto;
+    @include scrollHidden;
+  }
+
   ul {
     @include flex(center, center);
     @include gap(4px 40px, 4px 20px);
+    @include width(unset, unset, 800px);
+    max-width: unset;
 
     a {
       font-size: 14px;
-      @include p(24px 0);
+      @include p(24px 0, 12px 0);
       transition: .2s ease-out;
       position: relative;
 

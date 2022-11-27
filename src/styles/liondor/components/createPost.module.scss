@@ -10,11 +10,11 @@
   position: relative;
 
   .left {
-    @include width(800px);
+    @include width(800px, 100%);
   }
 
   .right {
-    @include width(calc(100% - (800px + 64px)));
+    @include width(calc(100% - (800px + 64px)), 100%);
     height: 100vh;
     position: sticky;
     @include top(40px);

@@ -4,12 +4,12 @@
   font-size: var(--fs24-18);
   font-weight: 500;
   text-align: center;
-  @include mb(40px);
+  @include mb(40px, 32px);
 }
 
 .termsBox {
   border: 1px solid $g4;
-  @include p(24px 24px 32px);
+  @include p(24px 24px 32px, 16px);
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -34,7 +34,7 @@
     font-size: var(--fs18-16);
     text-decoration: underline;
     color: $g1;
-    @include mb(32px);
+    @include mb(32px, 24px);
 
     &:hover {
       text-decoration: none;
@@ -47,7 +47,7 @@
 }
 
 .cont2 {
-  @include pt(48px);
+  @include pt(48px, 32px);
 }
 
 .form {
@@ -56,7 +56,7 @@
     font-weight: 500;
     letter-spacing: 0;
     text-align: center;
-    @include mb(64px);
+    @include mb(64px, 48px);
   }
 }
 
@@ -90,6 +90,7 @@
       @include width(200px, 100%);
       font-size: var(--fs16-14);
       font-weight: 500;
+      @include mb(0, 12px);
 
       &.inputDt {
         @include lh(56px, 1);
@@ -171,11 +172,11 @@
     }
 
     dt {
-      @include width(160px);
+      @include width(160px, 120px);
     }
 
     dd {
-      @include width(calc(100% - 160px));
+      @include width(calc(100% - 160px), calc(100% - 120px));
     }
   }
 
@@ -358,7 +359,7 @@
 }
 
 .adBox {
-  @include mb(72px);
+  @include mb(72px, 64px);
   text-align: center;
 
   .adTxt {

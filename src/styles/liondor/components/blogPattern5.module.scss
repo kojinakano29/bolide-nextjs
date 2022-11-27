@@ -2,7 +2,7 @@
 
 .article {
   @include flex(stretch, left);
-  @include gap(100px 32px);
+  @include gap(100px 32px, 64px 16px);
 }
 
 .imgBox {
@@ -11,5 +11,17 @@
 
 .blogLink {
   composes: blogLink from './parts.scss';
-  @include width(412px);
+  @include width(412px, calc(100% * 1/3 - 16px * 2/3), 100%);
+
+  &:not(:first-of-type) {
+    @include media1(sp) {
+      display: flex;
+      gap: 16px;
+
+      .imgBox {
+        min-width: 100px;
+        max-width: 100px;
+      }
+    }
+  }
 }

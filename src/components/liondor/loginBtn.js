@@ -21,7 +21,14 @@ const LoginBtn = ({humOpen, clickHumClose}) => {
 
   return (
     <Link href={`/liondor/${link}`}>
-      <a className={`${styles.iconBox} ${humOpen ? styles.open : ''}`} onClick={clickHumClose}>
+      <a
+        className={`
+          ${styles.iconBox}
+          ${humOpen ? styles.open : ''}
+          ${humOpen ? null : styles.hidden}
+        `}
+        onClick={clickHumClose}
+      >
         <p className="en">{user ? "Mypage" : "Login"}</p>
         <FontAwesomeIcon
           icon={faCircleUser}

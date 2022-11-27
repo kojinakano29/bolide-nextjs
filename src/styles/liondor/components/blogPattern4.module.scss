@@ -1,7 +1,7 @@
 @import '../../variables.scss';
 
 .block {
-  @include mb(120px);
+  @include mb(120px, 64px);
 
   &.mbNone {
     margin-bottom: 0;

@@ -24,4 +24,10 @@
       color: $w1;
     }
   }
+
+  @include media1(sp) {
+    &.hidden {
+      display: none;
+    }
+  }
 }

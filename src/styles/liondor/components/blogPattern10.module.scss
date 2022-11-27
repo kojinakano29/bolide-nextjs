@@ -2,7 +2,7 @@
 
 .blogLink {
   composes: blogLink from './parts.scss';
-  @include width(320px);
+  @include width(320px, 320px, 100%);
   @include mb(24px);
   position: relative;
 

@@ -2,7 +2,7 @@
 
 .unkerNav {
   @include flex(center, center);
-  @include gap(64px);
+  @include gap(64px, 32px);
 
   a {
     display: block;
@@ -24,7 +24,7 @@
 }
 
 .faqBox {
-  @include mt(96px);
+  @include mt(96px, 80px, 64px);
 
   .faqTtl {
     font-size: var(--fs32-18);

@@ -1,4 +1,4 @@
-import styles from '@/styles/liondor/components/blogColumn4.module.scss'
+import styles from '@/styles/liondor/components/BlogPattern9.module.scss'
 import Link from 'next/link'
 import Image from 'next/image'
 import { BlogTxt } from '@/components/liondor'

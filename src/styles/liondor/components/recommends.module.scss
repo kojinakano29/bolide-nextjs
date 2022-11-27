@@ -1,7 +1,7 @@
 @import '../../variables.scss';
 
 .slideWrap {
-  @include width(calc(100vw - ((100vw - 1300px) / 2)));
+  @include width(calc(100vw - ((100vw - 1300px) / 2)), calc(100vw - ((100vw - 720px) / 2)), calc(100vw - 20px));
   max-width: unset;
 
   div {
@@ -29,10 +29,10 @@
     color: $b1;
     width: unset;
     height: unset;
-    @include top(60px);
+    @include top(60px, 48px);
 
     &::after {
-      @include fs(24px);
+      @include fs(24px, 16px);
     }
   }
 

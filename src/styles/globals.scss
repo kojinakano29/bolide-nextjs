@@ -177,7 +177,7 @@ span > img {
   }
 
   .cont {
-    @include pt(152px);
+    @include pt(152px, 80px, 64px);
   }
 
   .cont1 {
@@ -190,7 +190,7 @@ span > img {
     font-weight: 300;
     border-top: 1px solid $g3;
     border-bottom: 1px solid $g3;
-    @include mb(24px);
+    @include mb(24px, 16px);
   }
 
   .btn2 {
@@ -200,7 +200,7 @@ span > img {
     background-color: $b1;
     color: $w1;
     border-radius: 4px;
-    @include mb(40px);
+    @include mb(40px, 32px);
     transition: .2s ease-out;
 
     &:hover {
@@ -209,8 +209,8 @@ span > img {
   }
 
   .btn3 {
-    @include width(260px);
-    @include height(64px);
+    @include width(260px, 200px);
+    @include height(64px, 48px);
     @include flex(center, center);
     background-color: $b1;
     color: $w1;
@@ -228,8 +228,8 @@ span > img {
     font-weight: 500;
     color: $w1;
     background-color: $b1;
-    @include width(412px);
-    @include height(110px);
+    @include width(412px, 320px);
+    @include height(110px, 64px);
     @include flex(center, center);
     margin: auto;
     transition: .2s ease-out;
@@ -240,8 +240,8 @@ span > img {
   }
 
   .btn5 {
-    @include width(328px);
-    @include height(100px);
+    @include width(328px, calc(100% * 1/2 - 16px), 328px);
+    @include height(100px, 80px);
     @include flex(center, center);
     background-color: $b1;
     color: $w1;
@@ -257,12 +257,12 @@ span > img {
   /* リオンドールページャー部分 */
   .pagerBox {
     @include flex(center, center);
-    @include gap(40px);
-    @include mt(96px);
+    @include gap(40px, 24px);
+    @include mt(96px, 64px, 48px);
 
     .pagerBtn {
-      @include width(80px);
-      @include height(80px);
+      @include width(80px, 64px, 40px);
+      @include height(80px, 64px, 40px);
       border: 1px solid $g3;
       border-radius: 50%;
       background-position: center;
