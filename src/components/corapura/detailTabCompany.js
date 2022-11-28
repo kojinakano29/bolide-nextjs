@@ -1,21 +1,21 @@
 import styles from '@/styles/corapura/components/detailTab.module.scss'
-import { useCallback, useState } from 'react';
+import { useCallback, useEffect, useState } from 'react';
 import Container from './Layout/container';
 import { User, Loader, MatterCard, Btn, Info, CardType1, CardType2, Release, NameCard, Coupon, Office } from '@/components/corapura';
 import axios from '@/lib/axios';
+import { useAuth } from '@/hooks/auth';
 
 const DetailTabCompany = ({businesses, releases, matters, userInfo}) => {
   const csrf = () => axios.get('/sanctum/csrf-cookie')
 
+  const { user } = useAuth()
   const [disabled, setDisabled] = useState(false)
   const [disabled2, setDisabled2] = useState(false)
   const [disabled3, setDisabled3] = useState(false)
   const [tab1, setTab1] = useState(0)
   const [tab2, setTab2] = useState(0)
   const [tab3, setTab3] = useState(0)
-  const [matter, setMatter] = useState(matters?.filter((m, index) => {
-    return index < 3
-  }))
+  const [matter, setMatter] = useState([])
   const [matching, setMatching] = useState([])
   const [filterMatching, setFilterMatching] = useState([])
   const [business, setBusiness] = useState(businesses?.filter((b, index) => {
@@ -40,6 +40,38 @@ const DetailTabCompany = ({businesses, releases, matters, userInfo}) => {
   const [filterCoupon, setFilterCoupon] = useState([])
   const [sponsor, setSponsor] = useState([])
   const [filterSponsor, setFilterSponsor] = useState([])
+  const [bookmarkList, setBookmarkList] = useState([])
+
+  const onLoadCheck = async () => {
+    await csrf()
+
+    await axios.post('/api/corapura/post_bookmark/check', {
+      user_id: user?.id,
+    }).then((res) => {
+      // console.log(res)
+      setBookmarkList(res.data)
+    }).catch((e) => {
+      console.error(e)
+    })
+  }
+
+  useEffect(async () => {
+    if (disabled) return
+    setDisabled(true)
+
+    if (user) {
+      await onLoadCheck()
+      await setMatter(matters?.filter((m, index) => {
+        return index < 3
+      }))
+    }
+
+    await setMatter(matters?.filter((m, index) => {
+      return index < 3
+    }))
+
+    await setDisabled(false)
+  }, [user])
 
   const handleClickMoreMatter = useCallback(async () => {
     setMatter(matters)
@@ -297,7 +329,7 @@ const DetailTabCompany = ({businesses, releases, matters, userInfo}) => {
                   <>
                     <div className={styles.column3}>
                       {matter.map((matter, index) => (
-                        <MatterCard matter={matter} key={index} detail />
+                        <MatterCard matter={matter} user={user} bookmarkList={bookmarkList} key={index} detail />
                       ))}
                     </div>
                     {matter.length === 3 && matters.length > 3 ?

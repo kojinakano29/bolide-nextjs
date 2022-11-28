@@ -5,34 +5,15 @@ import starB from '@/images/corapura/common/starB.svg'
 import starA from '@/images/corapura/common/starA.svg'
 import check from '@/images/corapura/common/check.svg'
 import { useAuth } from '@/hooks/auth';
-import { useCallback, useEffect, useState } from 'react';
+import { useCallback, useState } from 'react';
 import axios from '@/lib/axios';
 
-const MatterCard = ({matter, detail = false, list = false}) => {
+const MatterCard = ({matter, bookmarkList, detail = false, list = false}) => {
   const csrf = () => axios.get('/sanctum/csrf-cookie')
 
   const { user } = useAuth()
   const [disabled, setDisabled] = useState(false)
-  const [bookmark, setBookmark] = useState([])
-
-  const onLoadCheck = async () => {
-    await csrf()
-
-    await axios.post('/api/corapura/post_bookmark/check', {
-      user_id: user?.id,
-    }).then((res) => {
-      // console.log(res)
-      setBookmark(res.data)
-    }).catch((e) => {
-      console.error(e)
-    })
-  }
-
-  useEffect(() => {
-    if (user) {
-      onLoadCheck()
-    }
-  }, [user])
+  const [bookmark, setBookmark] = useState(bookmarkList)
 
   const handleClickBookmark = useCallback(async () => {
     if (disabled) return
@@ -74,13 +55,15 @@ const MatterCard = ({matter, detail = false, list = false}) => {
             <a>
               <div className={`${styles.imgBox} matterThumbs`}>
                 <img src={matter.thumbs ? matter.thumbs : dummy.src} alt="" />
-                <div className={styles.finishMatter}>
-                  <img src={check.src} alt="" />
-                  <p>
-                    この募集は
-                    <br/>終了しました
-                  </p>
-                </div>
+                {matter.state === 0 ? null :
+                  <div className={styles.finishMatter}>
+                    <img src={check.src} alt="" />
+                    <p>
+                      この募集は
+                      <br/>終了しました
+                    </p>
+                  </div>
+                }
               </div>
               <p className={styles.ttl}>{matter.title}</p>
               <p className={styles.desc}>{matter.content.substring(0, 50)}...</p>
