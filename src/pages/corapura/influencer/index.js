@@ -1,6 +1,6 @@
 import styles from '@/styles/corapura/components/list.module.scss'
 import PageLayoutCorapura from "@/components/Layouts/pageLayoutCorapura";
-import { useCallback, useState } from 'react';
+import { useCallback, useEffect, useState } from 'react';
 import { useForm } from 'react-hook-form';
 import axios from '@/lib/axios';
 import Container from '@/components/corapura/Layout/container';
@@ -10,7 +10,7 @@ import sortIcon from '@/images/corapura/common/sort.svg'
 import dummy from '@/images/corapura/common/dummy1.svg'
 import { Loader } from '@/components/corapura';
 import Link from 'next/link';
-import { zip } from '@/lib/corapura/constants';
+import { zips } from '@/lib/corapura/constants';
 
 export const getServerSideProps = async () => {
   const res = await fetch(`${process.env.NEXT_PUBLIC_API_CORAPURA}/user`)
@@ -24,7 +24,7 @@ export const getServerSideProps = async () => {
 }
 
 const InfluencerList = ({posts}) => {
-  console.log(posts)
+  // console.log(posts)
   const csrf = () => axios.get('/sanctum/csrf-cookie')
 
   const sorts = [
@@ -40,24 +40,31 @@ const InfluencerList = ({posts}) => {
   const [influencer, setInfluencer] = useState(posts.user)
   const [nowPage, setNowPage] = useState(posts.now_page)
   const [maxPage, setMaxPage] = useState(posts.page_max)
+  const [search, setSearch] = useState("")
+  const [zip, setZip] = useState("")
+  const [skill, setSkill] = useState("")
+  const [sns, setSns] = useState("")
+  const [follower, setFollower] = useState("")
+  const [tag, setTag] = useState("")
   const [sort, setSort] = useState("new")
-  const [tags, setTags] = useState()
+  const [page, setPage] = useState(1)
   const [openSort, setOpenSort] = useState(false)
   const { handleSubmit, register } = useForm()
 
-  const handleClickOpenSort = useCallback(async () => {
-    setOpenSort(prevState => !prevState)
-  }, [])
-
-  const onSortForm = useCallback(async (data) => {
-    if (disabled) return
-    setDisabled(true)
-    setOpenSort(false)
+  const handleSort = useCallback(async () => {
     await csrf()
 
-    await axios.post(`/api/corapura/user`, data)
-    .then((res) => {
-      console.log(res)
+    await axios.post('/api/corapura/user', {
+      s: search,
+      zip: zip !== "都道府県" ? zip : "",
+      skill: skill,
+      sns: sns,
+      sns_follower: follower,
+      tag: tag,
+      sort: sort,
+      page: parseInt(page),
+    }).then((res) => {
+      // console.log(res)
       setInfluencer(res.data.user)
       setNowPage(res.data.now_page)
       setMaxPage(res.data.page_max)
@@ -65,35 +72,121 @@ const InfluencerList = ({posts}) => {
       console.error(e)
     })
 
+  }, [
+    setInfluencer,
+    setNowPage,
+    setMaxPage,
+    search,
+    zip,
+    skill,
+    sns,
+    follower,
+    tag,
+    sort,
+    page,
+  ])
+
+  useEffect(async () => {
+    if (disabled) return
+    setDisabled(true)
+    setOpenSort(false)
+
+    await handleSort()
+
     await setDisabled(false)
-  }, [disabled, setDisabled, setInfluencer, setNowPage, setMaxPage])
+  }, [
+    zip,
+    skill,
+    sns,
+    follower,
+    tag,
+    sort,
+    page,
+  ])
 
-  const onSubmit = useCallback(async (data) => {
-    console.log(data)
-    setSort(data.sort)
-    setTags(data.tag)
+  const handleChangeZip = useCallback(async (e) => {
+    setZip(e.target.value)
+  }, [setZip])
 
-    onSortForm({
+  const handleChangeSkill = useCallback(async (e) => {
+    setSkill(e.target.value)
+  }, [setSkill])
+
+  const handleChangeSns = useCallback(async (e) => {
+    setSns(e.target.value)
+  }, [setSns])
+
+  const handleChangeFollower = useCallback(async (e) => {
+    setFollower(e.target.value)
+  }, [setFollower])
+
+  const handleClickTag = useCallback(async (e) => {
+    setTag(e.target.value)
+  }, [setTag])
+
+  const handleClickSort = useCallback(async (e) => {
+    setSort(e.currentTarget.value)
+  }, [setSort])
+
+  const handleClickOpenSort = useCallback(async () => {
+    setOpenSort(prevState => !prevState)
+  }, [])
+
+  const handleClickPage = useCallback(async (e) => {
+    setPage(e.currentTarget.value)
+  }, [setPage])
+
+  const onSortForm = useCallback(async (data) => {
+    if (disabled) return
+    setDisabled(true)
+    setOpenSort(false)
+    await csrf()
+
+    await axios.post(`/api/corapura/user`, {
       s: data.s ? data.s : "",
-      zip: data.zip,
-      skill: data.skill,
-      sns: data.sns,
-      sns_follower: data.sns_follower,
-      tag: data.tag ? data.tag : "",
-      sort: data.sort,
-      page: data.page ? parseInt(data.page) : parseInt(nowPage),
+      zip: zip !== "都道府県" ? zip : "",
+      skill: skill,
+      sns: sns,
+      sns_follower: follower,
+      tag: tag,
+      sort: sort,
+      page: parseInt(page),
+    }).then((res) => {
+      // console.log(res)
+      setInfluencer(res.data.user)
+      setNowPage(res.data.now_page)
+      setMaxPage(res.data.page_max)
+    }).catch((e) => {
+      console.error(e)
     })
-  }, [setSort, setTags, onSortForm, nowPage])
+
+    setSearch(data.s)
+    await setDisabled(false)
+  }, [
+    disabled,
+    setDisabled,
+    setInfluencer,
+    setNowPage,
+    setMaxPage,
+    setSearch,
+    zip,
+    skill,
+    sns,
+    follower,
+    tag,
+    sort,
+    page,
+  ])
 
   return (
     <section className="cont1">
       <Container small>
         <h2 className="ttl1">インフルエンサー/ユーザー一覧</h2>
-        <form onSubmit={handleSubmit(onSubmit)}>
+        <form onSubmit={handleSubmit(onSortForm)}>
           <div className={styles.searchBox}>
             <input
               type="text"
-              {...register("search")}
+              {...register("s")}
               placeholder="気になるワードを検索"
             />
           </div>
@@ -101,54 +194,52 @@ const InfluencerList = ({posts}) => {
           <div className={styles.selectBox}>
             <p className={styles.midashi}>さらに絞り込む</p>
             <div className={styles.selectFlex}>
-              <button>
-                <select {...register("zip")}>
-                  {zip.map((zip, index) => (
-                    <option value={zip} key={index}>{zip}</option>
-                  ))}
-                </select>
-              </button>
-              <button>
-                <select {...register("skill")}>
-                  <option value="得意分野">得意分野</option>
-                  {skills.map((skill, index) => (
-                    <option value={skill} key={index}>{skill}</option>
-                  ))}
-                </select>
-              </button>
-              <button>
-                <select {...register("sns")}>
-                  <option value="SNS">SNS</option>
-                </select>
-              </button>
-              <button>
-                <select {...register("sns_follower")}>
-                  <option value="SNSフォロワー数">SNSフォロワー数</option>
-                </select>
-              </button>
+              <select onChange={handleChangeZip}>
+                {zips.map((zip, index) => (
+                  <option value={zip} key={index}>{zip}</option>
+                ))}
+              </select>
+              <select onChange={handleChangeSkill}>
+                <option value="">得意分野</option>
+                {skills.map((skill, index) => (
+                  <option value={skill} key={index}>{skill}</option>
+                ))}
+              </select>
+              <select onChange={handleChangeSns}>
+                <option value="">SNS</option>
+                {/* {skills.map((skill, index) => (
+                  <option value={skill} key={index}>{skill}</option>
+                ))} */}
+              </select>
+              <select onChange={handleChangeFollower}>
+                <option value="">SNSフォロワー数</option>
+                {/* {skills.map((skill, index) => (
+                  <option value={skill} key={index}>{skill}</option>
+                ))} */}
+              </select>
             </div>
           </div>
 
           <div className={styles.tagBtnArea}>
             <p className={styles.midashi}>タグから探す</p>
             <div className={styles.tagBtnBox}>
-              {tagList.map((tag, index) => (
-                <button key={index}>
-                  <label className={`${styles.tagBtn} ${tag.id === parseInt(tags) ? styles.current : null}`}>
-                    {tag.name}
-                    <input
-                      type="radio"
-                      value={tag.id}
-                      {...register("tag")}
-                    />
-                  </label>
-                </button>
+              {tagList.map((item, index) => (
+                <button
+                  value={item.id}
+                  className={`${styles.tagBtn} ${item.id === parseInt(tag) ? styles.current : null}`}
+                  onClick={handleClickTag}
+                  key={index}
+                >{item.name}</button>
               ))}
             </div>
           </div>
 
           <div className={styles.sort}>
-            <button type="button" className={styles.btn} onClick={handleClickOpenSort}>
+            <button
+              type="button"
+              className={styles.btn}
+              onClick={handleClickOpenSort}
+            >
               <div className={styles.icon}>
                 <img src={sortIcon.src} alt="" />
               </div>
@@ -157,16 +248,12 @@ const InfluencerList = ({posts}) => {
             {openSort ?
               <div className={styles.box}>
                 {sorts.map((item, index) => (
-                  <button key={index} className={sort === item.value ? styles.current : null}>
-                    <label>
-                      {item.name}
-                      <input
-                        type="radio"
-                        value={item.value}
-                        {...register("sort")}
-                      />
-                    </label>
-                  </button>
+                  <button
+                    value={item.value}
+                    className={sort === item.value ? styles.current : null}
+                    onClick={handleClickSort}
+                    key={index}
+                  >{item.name}</button>
                 ))}
               </div>
             : null}
@@ -175,72 +262,60 @@ const InfluencerList = ({posts}) => {
           {!disabled ?
             <>
               <article className={`${styles.list} ${styles.influencerList}`}>
-                {influencer.map((influ, index) => (
-                  <Link href={`/corapura/influencer/${influ.id}`} key={index}>
+                {influencer.map((item, index) => (
+                  <Link href={`/corapura/influencer/${item.id}`} key={index}>
                     <a>
                       <div className={styles.imgBox}>
-                        <img src={influ.thumbs ? influ.thumbs : dummy.src} alt="" />
+                        <img src={item.thumbs ? item.thumbs : dummy.src} alt="" />
                       </div>
-                      <p className={styles.catch}>{influ.title}</p>
-                      <p className={styles.name}>{influ.nicename}</p>
-                      <p className={styles.desc}>{influ.profile.substring(0, 35)}...</p>
+                      <p className={styles.catch}>{item.title}</p>
+                      <p className={styles.name}>{item.nicename}</p>
+                      <p className={styles.desc}>{item.profile.substring(0, 35)}...</p>
                     </a>
                   </Link>
                 ))}
               </article>
-              {parseInt(maxPage) !== 1 ?
+              {parseInt(maxPage) > 1 ?
                 <div className={styles.pager}>
-                  {parseInt(nowPage) !== 1 ?
-                    <button className={styles.btn} >
-                      <label>
-                        <input
-                          type="submit"
-                          value={parseInt(nowPage)-1}
-                          {...register("page")}
-                        />
-                        <img src={prev.src} alt="" />
-                        <span>前のページへ</span>
-                      </label>
+                  {parseInt(nowPage) > 1 ?
+                    <button
+                      className={styles.btn}
+                      value={nowPage-1}
+                      onClick={handleClickPage}
+                    >
+                      <img src={prev.src} alt="" />
+                      <span>前のページへ</span>
                     </button>
                   : null}
                   <div className={styles.pagerBtn}>
-                    {parseInt(nowPage) !== 1 ?
-                      <button className="hoverEffect" >
-                        <label>
-                          <input
-                            type="submit"
-                            value={parseInt(nowPage)-1}
-                            {...register("page")}
-                          />
-                          {parseInt(nowPage)-1}
-                        </label>
+                    {parseInt(nowPage) > 1 ?
+                      <button
+                        className="hoverEffect"
+                        value={nowPage-1}
+                        onClick={handleClickPage}
+                      >
+                        {nowPage-1}
                       </button>
                     : null}
-                    <button type="button" className={styles.current}>{parseInt(nowPage)}</button>
+                    <button type="button" className={styles.current}>{nowPage}</button>
                     {parseInt(maxPage) !== parseInt(nowPage) ?
-                      <button className="hoverEffect" >
-                        <label>
-                          <input
-                            type="submit"
-                            value={parseInt(nowPage)+1}
-                            {...register("page")}
-                          />
-                          {parseInt(nowPage)+1}
-                        </label>
+                      <button
+                        className="hoverEffect"
+                        value={nowPage+1}
+                        onClick={handleClickPage}
+                      >
+                        {nowPage+1}
                       </button>
                     : null}
                   </div>
                   {parseInt(nowPage) !== parseInt(maxPage) ?
-                    <button className={styles.btn} >
-                      <label>
-                        <input
-                          type="submit"
-                          value={parseInt(nowPage)+1}
-                          {...register("page")}
-                        />
-                        <img src={next.src} alt="" />
-                        <span>次のページへ</span>
-                      </label>
+                    <button
+                      className={styles.btn}
+                      value={nowPage+1}
+                      onClick={handleClickPage}
+                    >
+                      <img src={next.src} alt="" />
+                      <span>次のページへ</span>
                     </button>
                   : null}
                 </div>

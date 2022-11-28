@@ -16,28 +16,20 @@
   @include gap(24px);
 
   .sort {
-    @include sort;
     @include m(0);
-
-    .box {
-      button {
-        padding: 0;
-
-        label {
-          @include p(8px 40px);
-          cursor: pointer;
-        }
-      }
-    }
   }
+}
 
-  .finishDisplay {
-    @include flex(center, left);
-    @include gap(8px);
-    @include fs(16px, 14px);
-    font-weight: bold;
-    cursor: pointer;
-  }
+.sort {
+  @include sort;
+}
+
+.finishDisplay {
+  @include flex(center, left);
+  @include gap(8px);
+  @include fs(16px, 14px);
+  font-weight: bold;
+  cursor: pointer;
 }
 
 .selectBox {
@@ -235,45 +227,5 @@
 }
 
 .pager {
-  @include flex(center, center);
-  @include gap(48px, 32px, 16px);
-
-  @include media1(sp) {
-    flex-direction: column;
-  }
-
-  input[type="submit"] {
-    display: none;
-  }
-
-  .btn {
-    label {
-      @include btn;
-      @include width(296px, 200px);
-      @include height(64px, 48px);
-      @include m(0);
-      cursor: pointer;
-    }
-  }
-
-  .pagerBtn {
-    @include flex(center);
-    @include gap(8px);
-
-    button {
-      @include width(40px);
-      @include height(40px);
-      border-radius: 50%;
-      background-color: $g2;
-      color: $r2;
-      @include fs(20px, 16px);
-      font-weight: 600;
-
-      &.current {
-        background-color: $r2;
-        color: $w1;
-        cursor: auto;
-      }
-    }
-  }
+  @include pager;
 }
