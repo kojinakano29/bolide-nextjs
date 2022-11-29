@@ -10,7 +10,7 @@ import sortIcon from '@/images/corapura/common/sort.svg'
 import dummy from '@/images/corapura/common/dummy1.svg'
 import { Loader } from '@/components/corapura';
 import Link from 'next/link';
-import { zips } from '@/lib/corapura/constants';
+import { zips, socialNetworkingService, followers } from '@/lib/corapura/constants';
 
 export const getServerSideProps = async () => {
   const res = await fetch(`${process.env.NEXT_PUBLIC_API_CORAPURA}/user`)
@@ -59,7 +59,7 @@ const InfluencerList = ({posts}) => {
       zip: zip !== "都道府県" ? zip : "",
       skill: skill,
       sns: sns,
-      sns_follower: follower,
+      sns_follower: parseInt(follower),
       tag: tag,
       sort: sort,
       page: parseInt(page),
@@ -147,7 +147,7 @@ const InfluencerList = ({posts}) => {
       zip: zip !== "都道府県" ? zip : "",
       skill: skill,
       sns: sns,
-      sns_follower: follower,
+      sns_follower: parseInt(follower),
       tag: tag,
       sort: sort,
       page: parseInt(page),
@@ -190,139 +190,139 @@ const InfluencerList = ({posts}) => {
               placeholder="気になるワードを検索"
             />
           </div>
+        </form>
 
-          <div className={styles.selectBox}>
-            <p className={styles.midashi}>さらに絞り込む</p>
-            <div className={styles.selectFlex}>
-              <select onChange={handleChangeZip}>
-                {zips.map((zip, index) => (
-                  <option value={zip} key={index}>{zip}</option>
-                ))}
-              </select>
-              <select onChange={handleChangeSkill}>
-                <option value="">得意分野</option>
-                {skills.map((skill, index) => (
-                  <option value={skill} key={index}>{skill}</option>
-                ))}
-              </select>
-              <select onChange={handleChangeSns}>
-                <option value="">SNS</option>
-                {/* {skills.map((skill, index) => (
-                  <option value={skill} key={index}>{skill}</option>
-                ))} */}
-              </select>
-              <select onChange={handleChangeFollower}>
-                <option value="">SNSフォロワー数</option>
-                {/* {skills.map((skill, index) => (
-                  <option value={skill} key={index}>{skill}</option>
-                ))} */}
-              </select>
-            </div>
+        <div className={styles.selectBox}>
+          <p className={styles.midashi}>さらに絞り込む</p>
+          <div className={styles.selectFlex}>
+            <select onChange={handleChangeZip}>
+              {zips.map((zip, index) => (
+                <option value={zip} key={index}>{zip}</option>
+              ))}
+            </select>
+            <select onChange={handleChangeSkill}>
+              <option value="">得意分野</option>
+              {skills.map((skill, index) => (
+                <option value={skill} key={index}>{skill}</option>
+              ))}
+            </select>
+            <select onChange={handleChangeSns}>
+              <option value="">SNS</option>
+              {socialNetworkingService.map((sns, index) => (
+                <option value={sns} key={index}>{sns}</option>
+              ))}
+            </select>
+            <select onChange={handleChangeFollower}>
+              <option value="0">SNSフォロワー数</option>
+              {followers.map((follower, index) => (
+                <option value={follower} key={index}>{follower}人以上</option>
+              ))}
+            </select>
           </div>
+        </div>
 
-          <div className={styles.tagBtnArea}>
-            <p className={styles.midashi}>タグから探す</p>
-            <div className={styles.tagBtnBox}>
-              {tagList.map((item, index) => (
+        <div className={styles.tagBtnArea}>
+          <p className={styles.midashi}>タグから探す</p>
+          <div className={styles.tagBtnBox}>
+            {tagList.map((item, index) => (
+              <button
+                value={item.id}
+                className={`${styles.tagBtn} ${item.id === parseInt(tag) ? styles.current : null}`}
+                onClick={handleClickTag}
+                key={index}
+              >{item.name}</button>
+            ))}
+          </div>
+        </div>
+
+        <div className={styles.sort}>
+          <button
+            type="button"
+            className={styles.btn}
+            onClick={handleClickOpenSort}
+          >
+            <div className={styles.icon}>
+              <img src={sortIcon.src} alt="" />
+            </div>
+            並べ替え
+          </button>
+          {openSort ?
+            <div className={styles.box}>
+              {sorts.map((item, index) => (
                 <button
-                  value={item.id}
-                  className={`${styles.tagBtn} ${item.id === parseInt(tag) ? styles.current : null}`}
-                  onClick={handleClickTag}
+                  value={item.value}
+                  className={sort === item.value ? styles.current : null}
+                  onClick={handleClickSort}
                   key={index}
                 >{item.name}</button>
               ))}
             </div>
-          </div>
+          : null}
+        </div>
 
-          <div className={styles.sort}>
-            <button
-              type="button"
-              className={styles.btn}
-              onClick={handleClickOpenSort}
-            >
-              <div className={styles.icon}>
-                <img src={sortIcon.src} alt="" />
-              </div>
-              並べ替え
-            </button>
-            {openSort ?
-              <div className={styles.box}>
-                {sorts.map((item, index) => (
+        {!disabled ?
+          <>
+            <article className={`${styles.list} ${styles.influencerList}`}>
+              {influencer.map((item, index) => (
+                <Link href={`/corapura/influencer/${item.id}`} key={index}>
+                  <a>
+                    <div className={styles.imgBox}>
+                      <img src={item.thumbs ? item.thumbs : dummy.src} alt="" />
+                    </div>
+                    <p className={styles.catch}>{item.title}</p>
+                    <p className={styles.name}>{item.nicename}</p>
+                    <p className={styles.desc}>{item.profile.substring(0, 35)}...</p>
+                  </a>
+                </Link>
+              ))}
+            </article>
+            {parseInt(maxPage) > 1 ?
+              <div className={styles.pager}>
+                {parseInt(nowPage) > 1 ?
                   <button
-                    value={item.value}
-                    className={sort === item.value ? styles.current : null}
-                    onClick={handleClickSort}
-                    key={index}
-                  >{item.name}</button>
-                ))}
-              </div>
-            : null}
-          </div>
-
-          {!disabled ?
-            <>
-              <article className={`${styles.list} ${styles.influencerList}`}>
-                {influencer.map((item, index) => (
-                  <Link href={`/corapura/influencer/${item.id}`} key={index}>
-                    <a>
-                      <div className={styles.imgBox}>
-                        <img src={item.thumbs ? item.thumbs : dummy.src} alt="" />
-                      </div>
-                      <p className={styles.catch}>{item.title}</p>
-                      <p className={styles.name}>{item.nicename}</p>
-                      <p className={styles.desc}>{item.profile.substring(0, 35)}...</p>
-                    </a>
-                  </Link>
-                ))}
-              </article>
-              {parseInt(maxPage) > 1 ?
-                <div className={styles.pager}>
+                    className={styles.btn}
+                    value={nowPage-1}
+                    onClick={handleClickPage}
+                  >
+                    <img src={prev.src} alt="" />
+                    <span>前のページへ</span>
+                  </button>
+                : null}
+                <div className={styles.pagerBtn}>
                   {parseInt(nowPage) > 1 ?
                     <button
-                      className={styles.btn}
+                      className="hoverEffect"
                       value={nowPage-1}
                       onClick={handleClickPage}
                     >
-                      <img src={prev.src} alt="" />
-                      <span>前のページへ</span>
+                      {nowPage-1}
                     </button>
                   : null}
-                  <div className={styles.pagerBtn}>
-                    {parseInt(nowPage) > 1 ?
-                      <button
-                        className="hoverEffect"
-                        value={nowPage-1}
-                        onClick={handleClickPage}
-                      >
-                        {nowPage-1}
-                      </button>
-                    : null}
-                    <button type="button" className={styles.current}>{nowPage}</button>
-                    {parseInt(maxPage) !== parseInt(nowPage) ?
-                      <button
-                        className="hoverEffect"
-                        value={nowPage+1}
-                        onClick={handleClickPage}
-                      >
-                        {nowPage+1}
-                      </button>
-                    : null}
-                  </div>
-                  {parseInt(nowPage) !== parseInt(maxPage) ?
+                  <button type="button" className={styles.current}>{nowPage}</button>
+                  {parseInt(maxPage) !== parseInt(nowPage) ?
                     <button
-                      className={styles.btn}
+                      className="hoverEffect"
                       value={nowPage+1}
                       onClick={handleClickPage}
                     >
-                      <img src={next.src} alt="" />
-                      <span>次のページへ</span>
+                      {nowPage+1}
                     </button>
                   : null}
                 </div>
-              : null}
-            </>
-          : <Loader />}
-        </form>
+                {parseInt(nowPage) !== parseInt(maxPage) ?
+                  <button
+                    className={styles.btn}
+                    value={nowPage+1}
+                    onClick={handleClickPage}
+                  >
+                    <img src={next.src} alt="" />
+                    <span>次のページへ</span>
+                  </button>
+                : null}
+              </div>
+            : null}
+          </>
+        : <Loader />}
       </Container>
     </section>
   );
