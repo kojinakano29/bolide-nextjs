@@ -9,7 +9,19 @@ import { Loader } from '@/components/corapura';
 import axios from '@/lib/axios';
 import { zips } from '@/lib/corapura/constants';
 
-const CreateCompany = () => {
+export const getServerSideProps = async ({params}) => {
+  const res = await fetch(`${process.env.NEXT_PUBLIC_API_CORAPURA}/mypage/edit/${params.id}`)
+  const data = await res.json()
+
+  return {
+    props: {
+      posts: data
+    }
+  }
+}
+
+const EditCompany = ({posts}) => {
+  console.log(posts)
   const csrf = () => axios.get('/sanctum/csrf-cookie')
 
   const router = useRouter()
@@ -42,8 +54,8 @@ const CreateCompany = () => {
       onLoadCheck("このページの閲覧権限がありません。", "/corapura")
     }
 
-    if (user && user?.c_profile_id) {
-      onLoadCheck("すでにプロフィールを作成済みです。", `/corapura/editor/company/edit/${user?.c_profile_id}`)
+    if (user && !user?.c_profile_id) {
+      onLoadCheck("プロフィールを作成してください。", `/corapura/editor/company/create`)
     }
   }, [user])
 
@@ -86,7 +98,7 @@ const CreateCompany = () => {
       },
     })
     .then((res) => {
-      // console.log(res)
+      console.log(res)
       alert("プロフィールを作成しました。")
       router.push({
         pathname: '/corapura/editor/company/edit/[profId]',
@@ -101,7 +113,7 @@ const CreateCompany = () => {
   }, [setDisabled])
 
   const onSubmit = useCallback(async (data) => {
-    // console.log(data)
+    console.log(data)
     setDisabled(true)
 
     onProfileCreate({
@@ -232,8 +244,8 @@ const CreateCompany = () => {
   );
 }
 
-export default CreateCompany;
+export default EditCompany;
 
-CreateCompany.getLayout = function getLayout(page) {
+EditCompany.getLayout = function getLayout(page) {
   return <PageLayoutCorapura>{page}</PageLayoutCorapura>
 }
