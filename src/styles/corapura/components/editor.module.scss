@@ -1,1 +1,129 @@
 @import '../../variables.scss';
+
+.profileFlex {
+  @include flex();
+  @include gap(64, 40px);
+
+  .profileLeft {
+    @include width(496px, 300px, 100%);
+  }
+
+  .profileRight {
+    @include width(calc(100% - (496px + 64px)), calc(100% - (300px + 40px)), 100%);
+  }
+
+  .imgBox {
+    @include height(496px, 300px, calc(100vw - (20px * 2 + 16px)));
+    border-radius: 10px;
+    background-color: $g3;
+    overflow: hidden;
+    @include mb(16px);
+
+    img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      object-position: top center;
+    }
+  }
+
+  .iconFlex {
+    @include flex(center, left);
+    @include gap(32px, 24px, 16px);
+    @include mb(40px);
+
+    label {
+      @include mb(0);
+    }
+  }
+
+  .iconBox {
+    @include width(86px);
+    @include height(86px);
+    border-radius: 50%;
+    background-color: $g3;
+    box-shadow: 0 3px 6px rgba(0, 0, 0, .16);
+    overflow: hidden;
+
+    img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      object-position: center;
+    }
+  }
+
+  .fileBtn {
+    display: block;
+    cursor: pointer;
+    @include fs(16px, 14px);
+    font-weight: 900;
+    @include mb(48px, 40px);
+    @include flex(center, left);
+    @include gap(8px);
+
+    span {
+      @include p(2px 16px);
+      background-color: $b8;
+      color: $w1;
+      border-radius: 16px;
+      @include fs(14px, 12px);
+    }
+
+    input[type="file"] {
+      display: none;
+    }
+  }
+
+  dl {
+    @include mb(40px, 32px);
+
+    &:last-of-type {
+      margin-bottom: 0;
+    }
+
+    dt {
+      @include fs(16px, 14px);
+      font-weight: 900;
+      @include mb(12px);
+
+      label {
+        cursor: pointer;
+      }
+    }
+
+    dd {
+      input[type="text"] {
+        @include input(100%);
+      }
+
+      textarea {
+        @include textarea(100%);
+      }
+
+      select {
+        @include select(240px);
+        cursor: pointer;
+      }
+    }
+  }
+}
+
+.submitFlex {
+  @include flex(center, center);
+  @include gap(24px);
+
+  .submitBtn {
+    @include p(4px 32px);
+    background-color: $b8;
+    color: $w1;
+    @include fs(16px);
+    font-weight: bold;
+    border-radius: 8px;
+  }
+}
+
+.error {
+  color: $red1;
+  @include mt(8px);
+}
