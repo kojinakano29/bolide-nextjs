@@ -58,7 +58,7 @@ const Header = () => {
           </div>
         :
           <div className={styles.right}>
-            <Link href="/corapura/">
+            <Link href="/corapura/company/matter/bookmark">
               <a className={`${styles.btn} ${styles.bookmark} hoverEffect`}>
                 <div className={styles.iconBox}>
                   <img src={bookmark.src} alt="" />
@@ -88,48 +88,48 @@ const Header = () => {
         onClick={(e) => e.stopPropagation()}
       >
         <li>
-          <Link href="/corapura">
-            <a>
+          <Link href="/corapura/company/matter">
+            <a onClick={handleClickHum}>
               <p className={styles.jp}>案件一覧</p>
               <p className={`en ${styles.en}`}>Project List</p>
             </a>
           </Link>
         </li>
         <li>
-          <Link href="/corapura">
-            <a>
+          <Link href="/corapura/company">
+            <a onClick={handleClickHum}>
               <p className={styles.jp}>企業一覧</p>
               <p className={`en ${styles.en}`}>Company List</p>
             </a>
           </Link>
         </li>
         <li>
-          <Link href="/corapura">
-            <a>
+          <Link href="/corapura/influencer">
+            <a onClick={handleClickHum}>
               <p className={styles.jp}>インフルエンサー/ユーザー一覧</p>
               <p className={`en ${styles.en}`}>Influencer User List</p>
             </a>
           </Link>
         </li>
         <li>
-          <Link href="/corapura">
-            <a>
+          <Link href="/corapura/salon">
+            <a onClick={handleClickHum}>
               <p className={styles.jp}>オンラインサロン一覧</p>
               <p className={`en ${styles.en}`}>Online Salon List</p>
             </a>
           </Link>
         </li>
         <li>
-          <Link href="/corapura">
-            <a>
+          <Link href="/corapura/press_release">
+            <a onClick={handleClickHum}>
               <p className={styles.jp}>プレスリリース一覧</p>
               <p className={`en ${styles.en}`}>Press Releases List</p>
             </a>
           </Link>
         </li>
         <li>
-          <Link href="/corapura">
-            <a>
+          <Link href="/corapura/guide">
+            <a onClick={handleClickHum}>
               <p className={styles.jp}>CORAPURAとは？</p>
               <p className={`en ${styles.en}`}>About Of CORAPURA</p>
             </a>

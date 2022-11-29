@@ -122,7 +122,7 @@ const Corapura = ({posts}) => {
             <br/>テキストサンプルテキストサンプルテキストサンプルテキストサンプル。
           </p>
           <SwiperType1 matters={matterLimit} />
-          <Btn txt="企業案件一覧" />
+          <Btn txt="企業案件一覧" link="/corapura/company/matter" />
         </Container>
       </section>
 
@@ -136,7 +136,7 @@ const Corapura = ({posts}) => {
               </SwiperSlide>
             ))}
           </SwiperType2>
-          <Btn2 txt="企業一覧" link="/corapura" />
+          <Btn2 txt="企業一覧" link="/corapura/company" />
         </Container>
       </section>
 
@@ -161,7 +161,7 @@ const Corapura = ({posts}) => {
               </SwiperSlide>
             ))}
           </SwiperType2>
-          <Btn2 txt="プレスリリース一覧へ" link="/corapura" />
+          <Btn2 txt="プレスリリース一覧へ" link="/corapura/press_release" />
         </Container>
       </section>
 
@@ -171,7 +171,7 @@ const Corapura = ({posts}) => {
           <div className={styles.salonBox}>
             <div className={styles.left}>
               {salonLeft.map((salon, index) => (
-                <Link href={`/corapura`} key={index}>
+                <Link href={`/corapura/salon/${salon.id}`} key={index}>
                   <a className={styles.imgBox}>
                     <img src={salon.thumbs ? salon.thumbs : dummy1.src} alt="" />
                     <div className={styles.contBox}>
@@ -184,7 +184,7 @@ const Corapura = ({posts}) => {
             </div>
             <div className={styles.right}>
               {salonRight.map((salon, index) => (
-                <Link href={`/corapura`} key={index}>
+                <Link href={`/corapura/salon/${salon.id}`} key={index}>
                   <a className={styles.imgBox}>
                     <img src={salon.thumbs ? salon.thumbs : dummy1.src} alt="" />
                     <div className={styles.contBox}>
@@ -195,7 +195,7 @@ const Corapura = ({posts}) => {
               ))}
             </div>
           </div>
-          <Btn2 txt="オンラインサロン一覧へ" link="/corapura" />
+          <Btn2 txt="オンラインサロン一覧へ" link="/corapura/salon" />
         </Container>
       </section>
 
