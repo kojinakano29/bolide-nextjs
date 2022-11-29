@@ -9,19 +9,19 @@ import { Loader } from '@/components/corapura';
 import axios from '@/lib/axios';
 import { zips } from '@/lib/corapura/constants';
 
-export const getServerSideProps = async ({params}) => {
-  const res = await fetch(`${process.env.NEXT_PUBLIC_API_CORAPURA}/mypage/edit/${params.id}`)
-  const data = await res.json()
+// export const getServerSideProps = async ({params}) => {
+//   const res = await fetch(`${process.env.NEXT_PUBLIC_API_CORAPURA}/mypage/edit/${params.id}`)
+//   const data = await res.json()
 
-  return {
-    props: {
-      posts: data
-    }
-  }
-}
+//   return {
+//     props: {
+//       posts: data
+//     }
+//   }
+// }
 
 const EditCompany = ({posts}) => {
-  console.log(posts)
+  // console.log(posts)
   const csrf = () => axios.get('/sanctum/csrf-cookie')
 
   const router = useRouter()
