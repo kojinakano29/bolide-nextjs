@@ -40,7 +40,7 @@ const Footer = () => {
                 priority
               />
             </a>
-            <a className="hoverEffect" href="" target="_blank">
+            <a className="hoverEffect" href="/liondor" target="_blank">
               <Image
                 src={liondor}
                 alt="Liondor"
@@ -49,7 +49,7 @@ const Footer = () => {
                 priority
               />
             </a>
-            <a className="hoverEffect" href="" target="_blank">
+            <a className="hoverEffect" href="/dellamall" target="_blank">
               <Image
                 src={Dellamall}
                 alt="Della Mall"
@@ -77,17 +77,17 @@ const Footer = () => {
             </Link>
             <ul className={styles.footer__cont1List}>
               <li className={styles.footer__cont1Item}>
-                <Link href="/corapura">
+                <Link href="/corapura/guide">
                   <a>CORAPRAとは</a>
                 </Link>
               </li>
               <li className={styles.footer__cont1Item}>
-                <Link href="/corapura">
+                <Link href="/corapura/company/matter">
                   <a>企業案件</a>
                 </Link>
               </li>
               <li className={styles.footer__cont1Item}>
-                <Link href="/corapura">
+                <Link href="/corapura/salon">
                   <a>オンラインサロン</a>
                 </Link>
               </li>
@@ -102,7 +102,7 @@ const Footer = () => {
                 </Link>
               </li>
               <li className={styles.footer__cont1Item}>
-                <Link href="/corapura">
+                <Link href="/corapura/press_release">
                   <a>プレスリリース</a>
                 </Link>
               </li>
@@ -111,7 +111,7 @@ const Footer = () => {
           <div className={styles.footer__cont2}>
             <div className={styles.footer__cont2Left}>
               このサイトはreCAPTHAによって保護されており、<br />
-              Googleの<a href="">プライバシーポリシー</a>と<a href="">利用規約</a>が適応されます。
+              Googleの<a href="https://policies.google.com/privacy?hl=ja" target="_blank">プライバシーポリシー</a>と<a href="https://policies.google.com/terms?hl=ja" target="_blank">利用規約</a>が適応されます。
             </div>
             <div className={styles.footer__cont2Right}>
               © 2022 CORAPRA inc.
@@ -119,9 +119,9 @@ const Footer = () => {
           </div>
           <ul className={styles.footer__cont3}>
             <li className={styles.footer__cont3Item}><a href="">運営会社</a></li>
-            <li className={styles.footer__cont3Item}><a href="">利用規約</a></li>
-            <li className={styles.footer__cont3Item}><a href="">特定商品取引法に基づく表記</a></li>
-            <li className={styles.footer__cont3Item}><a href="">プライバシーポリシー</a></li>
+            <li className={styles.footer__cont3Item}><a href="/corapura/terms">利用規約</a></li>
+            <li className={styles.footer__cont3Item}><a href="/corapura/tradeLaw">特定商品取引法に基づく表記</a></li>
+            <li className={styles.footer__cont3Item}><a href="/corapura/privacy">プライバシーポリシー</a></li>
             <li className={styles.footer__cont3Item}><a href="">サイトマップ</a></li>
             <li className={styles.footer__cont3Item}><a href="">お問い合わせ</a></li>
           </ul>
