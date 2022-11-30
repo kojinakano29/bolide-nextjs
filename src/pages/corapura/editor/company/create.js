@@ -16,7 +16,6 @@ const CreateCompany = () => {
   const { user } = useAuth({middleware: 'auth'})
   const [disabled, setDisabled] = useState(false)
   const { register, handleSubmit, formState: { errors } } = useForm({
-    defaultValues: {},
     mode: "onChange",
   })
   const [preview1, setPreview1] = useState()
@@ -48,7 +47,7 @@ const CreateCompany = () => {
   }, [user])
 
   const handleChangeImage = useCallback(async (e, num) => {
-    const { files } = e.target
+    const { files } = e.currentTarget
     if (files[0]) {
       if (num === 1) {
         setPreview1(window.URL.createObjectURL(files[0]))
@@ -70,7 +69,7 @@ const CreateCompany = () => {
         setPreviewIcon("")
       }
     }
-  }, [setPreview1, setPreview2, setPreview3])
+  }, [setPreview1, setPreview2, setPreview3, setPreviewIcon])
 
   const onProfileCreate = useCallback(async (data) => {
     await csrf()
@@ -156,7 +155,7 @@ const CreateCompany = () => {
                       accept="image/*"
                       {...register("thumbs")}
                       onChange={(e) => handleChangeImage(e, 4)}
-                      />
+                    />
                   </label>
                 </div>
                 <dl>

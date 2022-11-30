@@ -8,15 +8,27 @@ import styles from '@/styles/corapura/components/list.module.scss'
 import prev from '@/images/corapura/common/prev.svg'
 import next from '@/images/corapura/common/next.svg'
 
-const CompanyBookmark = () => {
+export const getServerSideProps = async ({params}) => {
+  const res = await fetch(`${process.env.NEXT_PUBLIC_API_CORAPURA}/post_bookmark/${params.id}`)
+  const data = await res.json()
+
+  return {
+    props: {
+      posts: data
+    }
+  }
+}
+
+const CompanyBookmark = ({posts}) => {
+  // console.log(posts)
   const csrf = () => axios.get('/sanctum/csrf-cookie')
 
   const { user } = useAuth()
   const [disabled, setDisabled] = useState(false)
   const [matters, setMatters] = useState([])
+  const [nowPage, setNowPage] = useState(posts.now_page)
+  const [maxPage, setMaxPage] = useState(posts.page_max)
   const [page, setPage] = useState(1)
-  const [nowPage, setNowPage] = useState()
-  const [maxPage, setMaxPage] = useState()
   const [bookmarkList, setBookmarkList] = useState([])
 
   const onLoadCheck = async () => {
@@ -25,7 +37,7 @@ const CompanyBookmark = () => {
     await axios.post('/api/corapura/post_bookmark/check', {
       user_id: user?.id,
     }).then((res) => {
-      console.log(res)
+      // console.log(res)
       setBookmarkList(res.data)
     }).catch((e) => {
       console.error(e)
@@ -35,10 +47,10 @@ const CompanyBookmark = () => {
   const handleSort = useCallback(async () => {
     await csrf()
 
-    await axios.post('/api/corapura/post', {
+    await axios.post(`/api/corapura/post_bookmark/${user?.id}`, {
       page: parseInt(page),
     }).then((res) => {
-      console.log(res)
+      // console.log(res)
       setMatters(res.data.post)
       setNowPage(res.data.now_page)
       setMaxPage(res.data.page_max)
@@ -51,25 +63,20 @@ const CompanyBookmark = () => {
     setNowPage,
     setMaxPage,
     page,
+    user,
   ])
-
-  useEffect(async () => {
-    if (user) {
-      await onLoadCheck()
-    }
-  }, [user])
 
   useEffect(async () => {
     if (disabled) return
     setDisabled(true)
 
-    await onLoadCheck()
-    await handleSort()
+    if (user) {
+      await onLoadCheck()
+      await handleSort()
+    }
 
     await setDisabled(false)
-  }, [
-    page,
-  ])
+  }, [user, page])
 
   const handleClickPage = useCallback(async (e) => {
     setPage(e.currentTarget.value)
