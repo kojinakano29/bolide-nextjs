@@ -58,7 +58,7 @@ const Header = () => {
           </div>
         :
           <div className={styles.right}>
-            <Link href="/corapura/company/matter/bookmark">
+            <Link href={`/corapura/company/matter/bookmark/${user?.id}`}>
               <a className={`${styles.btn} ${styles.bookmark} hoverEffect`}>
                 <div className={styles.iconBox}>
                   <img src={bookmark.src} alt="" />

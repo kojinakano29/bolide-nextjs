@@ -9,32 +9,54 @@ import { Loader } from '@/components/corapura';
 import axios from '@/lib/axios';
 import { zips } from '@/lib/corapura/constants';
 
-// export const getServerSideProps = async ({params}) => {
-//   const res = await fetch(`${process.env.NEXT_PUBLIC_API_CORAPURA}/mypage/edit/${params.id}`)
-//   const data = await res.json()
+export const getServerSideProps = async ({params}) => {
+  const res = await fetch(`${process.env.NEXT_PUBLIC_API_CORAPURA}/mypage/edit/${params.id}`)
+  const data = await res.json()
 
-//   return {
-//     props: {
-//       posts: data
-//     }
-//   }
-// }
+  return {
+    props: {
+      posts: data
+    }
+  }
+}
 
 const EditCompany = ({posts}) => {
-  // console.log(posts)
+  console.log(posts)
   const csrf = () => axios.get('/sanctum/csrf-cookie')
+
+  const profile = posts.c_profile
+  const option = posts.c_profile_option
+  const tags = profile.c_tags.map((tag) => {
+    return tag.name
+  })
+  const tagStr = tags.join(',')
 
   const router = useRouter()
   const { user } = useAuth({middleware: 'auth'})
   const [disabled, setDisabled] = useState(false)
   const { register, handleSubmit, formState: { errors } } = useForm({
-    defaultValues: {},
+    defaultValues: {
+      nicename: profile.nicename,
+      title: profile.title,
+      tag: tagStr,
+      zip: profile.zip,
+      profile: profile.profile,
+      president: option.president,
+      maked: option.maked,
+      jojo: option.jojo,
+      capital: option.capital,
+      zipcode: option.zipcode,
+      address: option.address,
+      tel: option.tel,
+      site_url: option.site_url,
+      shop_url: option.shop_url,
+    },
     mode: "onChange",
   })
-  const [preview1, setPreview1] = useState()
-  const [preview2, setPreview2] = useState()
-  const [preview3, setPreview3] = useState()
-  const [previewIcon, setPreviewIcon] = useState()
+  const [preview1, setPreview1] = useState(`${process.env.NEXT_PUBLIC_BACKEND_URL}/storage/${profile.image1}`)
+  const [preview2, setPreview2] = useState(`${process.env.NEXT_PUBLIC_BACKEND_URL}/storage/${profile.image2}`)
+  const [preview3, setPreview3] = useState(`${process.env.NEXT_PUBLIC_BACKEND_URL}/storage/${profile.image3}`)
+  const [previewIcon, setPreviewIcon] = useState(`${process.env.NEXT_PUBLIC_BACKEND_URL}/storage/${profile.thumbs}`)
 
   const previews = [
     preview1,
@@ -84,7 +106,7 @@ const EditCompany = ({posts}) => {
     }
   }, [setPreview1, setPreview2, setPreview3])
 
-  const onProfileCreate = useCallback(async (data) => {
+  const onProfileUpdate = useCallback(async (data) => {
     await csrf()
 
     const params = new FormData();
@@ -92,7 +114,7 @@ const EditCompany = ({posts}) => {
       params.append(key, this[key])
     }, data)
 
-    await axios.post('/api/corapura/mypage/store', params, {
+    await axios.post(`/api/corapura/mypage/update/${profile.id}`, params, {
       headers: {
         'Content-Type': 'multipart/form-data',
       },
@@ -100,35 +122,56 @@ const EditCompany = ({posts}) => {
     .then((res) => {
       console.log(res)
       alert("プロフィールを作成しました。")
-      router.push({
-        pathname: '/corapura/editor/company/edit/[profId]',
-        query: { profId: res.data.id }
-      })
+      router.reload()
     }).catch((e) => {
       console.error(e)
       alert("プロフィールの作成に失敗しました。")
     })
+  }, [profile])
 
-    await setDisabled(false)
-  }, [setDisabled])
+  const onCompanyProfileUpdate = useCallback(async (data) => {
+    await csrf
+
+    await axios.post(`/api/corapura/mypage/c_company_profile/update/${option.id}`, data)
+    .then((res) => {
+      console.log(res)
+    }).catch((e) => {
+      console.error(e)
+    })
+  }, [option])
 
   const onSubmit = useCallback(async (data) => {
     console.log(data)
     setDisabled(true)
 
-    onProfileCreate({
+    onProfileUpdate({
       user_id: user?.id,
       nicename: data.nicename,
       title: data.title,
       tag: data.tag,
       zip: data.zip,
       profile: data.profile,
-      image1: data.image1[0],
-      image2: data.image2[0],
-      image3: data.image3[0],
-      thumbs: data.thumbs[0],
+      image1: data.image1.length !== 0 ? data.image1[0] : profile.image1,
+      image2: data.image2.length !== 0 ? data.image2[0] : profile.image2,
+      image3: data.image3.length !== 0 ? data.image3[0] : profile.image3,
+      thumbs: data.thumbs.length !== 0 ? data.thumbs[0] : profile.thumbs,
     })
-  }, [setDisabled, onProfileCreate, user])
+
+    onCompanyProfileUpdate({
+      c_profile_id: profile.id,
+      president: data.president,
+      maked: data.maked,
+      jojo: data.jojo,
+      capital: data.capital,
+      zipcode: data.zipcode,
+      address: data.address,
+      tel: data.tel,
+      site_url: data.site_url,
+      shop_url: data.shop_url,
+    })
+
+    await setDisabled(false)
+  }, [setDisabled, onProfileUpdate, onCompanyProfileUpdate, user, profile])
 
   return (
     <section className="cont1">
@@ -211,7 +254,62 @@ const EditCompany = ({posts}) => {
                   </dd>
                 </dl>
                 <dl>
-                  <dt>都道府県</dt>
+                  <dt>
+                    <label htmlFor="profile">事業内容を入力ください</label>
+                  </dt>
+                  <dd>
+                    <textarea id="profile" {...register("profile", {required: true})}></textarea>
+                    {errors.profile && <p className={styles.error}>必須項目を入力してください</p>}
+                  </dd>
+                </dl>
+                <dl>
+                  <dt>
+                    <label htmlFor="president">代表者</label>
+                  </dt>
+                  <dd>
+                    <input
+                      type="text"
+                      id="president"
+                      {...register("president")}
+                    />
+                  </dd>
+                </dl>
+                <dl>
+                  <dt>
+                    <label htmlFor="maked">設立</label>
+                  </dt>
+                  <dd>
+                    <input
+                      type="text"
+                      id="maked"
+                      {...register("maked")}
+                      placeholder="昭和0年0月"
+                    />
+                  </dd>
+                </dl>
+                <dl>
+                  <dt>上場・非上場</dt>
+                  <dd>
+                    <select {...register("jojo")}>
+                      <option value="非上場">非上場</option>
+                      <option value="上場">上場</option>
+                    </select>
+                  </dd>
+                </dl>
+                <dl>
+                  <dt>
+                    <label htmlFor="capital">資本金</label>
+                  </dt>
+                  <dd>
+                    <input
+                      type="text"
+                      id="capital"
+                      {...register("capital")}
+                    />
+                  </dd>
+                </dl>
+                <dl>
+                  <dt>本社所在地</dt>
                   <dd>
                     <select {...register("zip")}>
                       {zips.map((zip, index) => (
@@ -222,11 +320,66 @@ const EditCompany = ({posts}) => {
                 </dl>
                 <dl>
                   <dt>
-                    <label htmlFor="profile">事業内容を入力ください</label>
+                    <label htmlFor="zipcode">郵便番号</label>
                   </dt>
                   <dd>
-                    <textarea id="profile" {...register("profile", {required: true})}></textarea>
-                    {errors.profile && <p className={styles.error}>必須項目を入力してください</p>}
+                    <input
+                      type="number"
+                      id="zipcode"
+                      {...register("zipcode")}
+                      placeholder="0000000"
+                    />
+                  </dd>
+                </dl>
+                <dl>
+                  <dt>
+                    <label htmlFor="address">住所</label>
+                  </dt>
+                  <dd>
+                    <input
+                      type="text"
+                      id="address"
+                      {...register("address")}
+                    />
+                  </dd>
+                </dl>
+                <dl>
+                  <dt>
+                    <label htmlFor="tel">電話番号</label>
+                  </dt>
+                  <dd>
+                    <input
+                      type="tel"
+                      id="tel"
+                      {...register("tel")}
+                      placeholder="00000000000"
+                    />
+                  </dd>
+                </dl>
+                <dl>
+                  <dt>
+                    <label htmlFor="site_url">コーポレートサイトURL</label>
+                  </dt>
+                  <dd>
+                    <input
+                      type="url"
+                      id="site_url"
+                      {...register("site_url")}
+                      placeholder="https://example.com"
+                    />
+                  </dd>
+                </dl>
+                <dl>
+                  <dt>
+                    <label htmlFor="shop_url">ECサイトURL</label>
+                  </dt>
+                  <dd>
+                    <input
+                      type="url"
+                      id="shop_url"
+                      {...register("shop_url")}
+                      placeholder="https://example.com"
+                    />
                   </dd>
                 </dl>
               </div>
@@ -235,7 +388,7 @@ const EditCompany = ({posts}) => {
               <button
                 className={`${styles.submitBtn} hoverEffect`}
                 disabled={disabled}
-              >作成</button>
+              >編集</button>
             </div>
           </form>
         : <Loader />}

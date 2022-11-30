@@ -54,7 +54,6 @@
   }
 
   .fileBtn {
-    display: block;
     cursor: pointer;
     @include fs(16px, 14px);
     font-weight: 900;
@@ -71,7 +70,9 @@
     }
 
     input[type="file"] {
-      display: none;
+      opacity: 0;
+      width: 0;
+      height: 0;
     }
   }
 
@@ -93,8 +94,14 @@
     }
 
     dd {
-      input[type="text"] {
+      input[type="text"],
+      input[type="url"] {
         @include input(100%);
+      }
+
+      input[type="number"],
+      input[type="tel"] {
+        @include input(240px);
       }
 
       textarea {
