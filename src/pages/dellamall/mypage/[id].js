@@ -80,7 +80,7 @@ const Mypage = ({posts}) => {
           following_user_id: user?.id,
         }
       }).then((res) => {
-        console.log(res)
+        // console.log(res)
         setFollow(false)
         alert("フォロー解除しました。")
       }).catch((e) => {
@@ -91,7 +91,7 @@ const Mypage = ({posts}) => {
         followed_user_id: profile.id,
         following_user_id: user?.id,
       }).then((res) => {
-        console.log(res)
+        // console.log(res)
         setFollow(true)
         alert("フォローしました。")
       }).catch((e) => {

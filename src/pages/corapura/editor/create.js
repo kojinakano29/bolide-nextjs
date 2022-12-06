@@ -37,12 +37,10 @@ const CreateCompany = () => {
   }, [])
 
   useEffect(() => {
-    if (user && user?.account_type !== 1) {
-      onLoadCheck("このページの閲覧権限がありません。", "/corapura")
-    }
-
-    if (user && user?.c_profile_id) {
-      onLoadCheck("すでにプロフィールを作成済みです。", `/corapura/editor/company/edit/${user?.c_profile_id}`)
+    if (user && user?.c_profile_id && user?.account_type === 1) {
+      onLoadCheck("すでにプロフィールを作成済みです。", `/corapura/editor/company/${user?.c_profile_id}`)
+    } else if (user && user?.c_profile_id && user?.account_type === 0) {
+      onLoadCheck("すでにプロフィールを作成済みです。", `/corapura/editor/user/${user?.c_profile_id}`)
     }
   }, [user])
 
@@ -87,17 +85,24 @@ const CreateCompany = () => {
     .then((res) => {
       // console.log(res)
       alert("プロフィールを作成しました。")
-      router.push({
-        pathname: '/corapura/editor/company/edit/[profId]',
-        query: { profId: res.data.id }
-      })
+      if (user?.account_type === 0) {
+        router.push({
+          pathname: '/corapura/editor/user/[profId]',
+          query: { profId: res.data.id }
+        })
+      } else if (user?.account_type === 1) {
+        router.push({
+          pathname: '/corapura/editor/company/[profId]',
+          query: { profId: res.data.id }
+        })
+      }
     }).catch((e) => {
       console.error(e)
       alert("プロフィールの作成に失敗しました。")
     })
 
     await setDisabled(false)
-  }, [setDisabled])
+  }, [user, setDisabled])
 
   const onSubmit = useCallback(async (data) => {
     // console.log(data)
@@ -126,7 +131,10 @@ const CreateCompany = () => {
               <div className={styles.profileLeft}>
                 {previews.map((preview, index) => (
                   <div key={index}>
-                    <div className={styles.imgBox} key={index}>
+                    <div className={`
+                      ${styles.imgBox}
+                      ${user?.account_type === 0 ? styles.user : null}
+                    `} key={index}>
                       {preview ? <img src={preview} alt="" /> : null}
                     </div>
                     <label className={`hoverEffect ${styles.fileBtn}`}>
@@ -160,7 +168,7 @@ const CreateCompany = () => {
                 </div>
                 <dl>
                   <dt>
-                    <label htmlFor="nicename">企業名を入力ください</label>
+                    <label htmlFor="nicename">{user?.account_type === 0 ? "ニックネーム" : "企業名"}を入力ください</label>
                   </dt>
                   <dd>
                     <input
@@ -173,7 +181,7 @@ const CreateCompany = () => {
                 </dl>
                 <dl>
                   <dt>
-                    <label htmlFor="title">業種を入力ください</label>
+                    <label htmlFor="title">{user?.account_type === 0 ? "キャッチコピー" : "業種"}を入力ください</label>
                   </dt>
                   <dd>
                     <input
@@ -186,7 +194,7 @@ const CreateCompany = () => {
                 </dl>
                 <dl>
                   <dt>
-                    <label htmlFor="tag">業種に合ったタグを入力ください</label>
+                    <label htmlFor="tag">{user?.account_type === 0 ? "活動" : "業種"}に合ったタグを入力ください</label>
                   </dt>
                   <dd>
                     <input
@@ -209,7 +217,7 @@ const CreateCompany = () => {
                 </dl>
                 <dl>
                   <dt>
-                    <label htmlFor="profile">事業内容を入力ください</label>
+                    <label htmlFor="profile">{user?.account_type === 0 ? "自己紹介" : "事業内容"}を入力ください</label>
                   </dt>
                   <dd>
                     <textarea id="profile" {...register("profile", {required: true})}></textarea>

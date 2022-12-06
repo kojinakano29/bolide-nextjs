@@ -24,7 +24,7 @@ const InputOfficialRequest = () => {
   }
 
   const onSubmit = useCallback(async (data) => {
-    console.log(data)
+    // console.log(data)
 
     router.push('/dellamall/officialRequest/?confirm=1')
   }, [router])

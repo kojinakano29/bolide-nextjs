@@ -27,7 +27,7 @@ const ConfirmOfficialRequest = () => {
 
     await axios.post("/api/dellamall/official", data)
     .then((res) => {
-      console.log(res)
+      // console.log(res)
       sessionStorage.setItem('officialRequest', true)
       router.push("/dellamall/officialRequest/thanks")
     })
@@ -37,7 +37,7 @@ const ConfirmOfficialRequest = () => {
   }, [router])
 
   const onSubmit = useCallback(async (data) => {
-    console.log(data)
+    // console.log(data)
 
     onContactForm({
       content: values.content,

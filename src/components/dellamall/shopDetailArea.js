@@ -21,7 +21,7 @@ import Container from './Layouts/container'
 export const SaveMallContext = createContext()
 
 const ShopDetailArea = ({data, user}) => {
-  console.log(data)
+  // console.log(data)
   const csrf = () => axios.get('/sanctum/csrf-cookie')
 
   const router = useRouter()

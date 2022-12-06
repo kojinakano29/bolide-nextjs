@@ -219,7 +219,7 @@ const DetailTabCompany = ({businesses, releases, matters, userInfo}) => {
       await axios.post(`/api/corapura/president/tab_return`, {
         c_profile_id: userInfo.c_profile_id
       }).then((res) => {
-        console.log(res)
+        // console.log(res)
         setSalon(res.data)
         setFilterSalon(res.data.filter((o, index) => {
           return index === 0
