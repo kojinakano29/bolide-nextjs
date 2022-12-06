@@ -23,7 +23,7 @@ export const getServerSideProps = async ({query}) => {
 }
 
 const Search = ({posts}) => {
-  console.log(posts);
+  // console.log(posts)
   const router = useRouter(null)
   let current = null
   if (router.query.page) {

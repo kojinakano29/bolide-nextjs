@@ -41,7 +41,7 @@ const AdminShop = () => {
 
     await axios.delete(`/api/dellamall/shop/delete/${id}`)
     .then((res) => {
-      console.log(res)
+      // console.log(res)
       onLoadList()
       alert("ショップを削除しました。")
     }).catch((e) => {

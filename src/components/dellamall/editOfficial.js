@@ -4,7 +4,7 @@ import { useCallback, useContext, useEffect, useState } from "react";
 import Container from './Layouts/container';
 import { useForm } from 'react-hook-form';
 import axios from '@/lib/axios';
-import Loader from './loader';
+import { Loader } from '@/components/dellamall';
 
 const EditOfficial = () => {
   const csrf = () => axios.get('/sanctum/csrf-cookie')
@@ -212,7 +212,7 @@ const EditOfficial = () => {
     } else {
       setPreview(`${process.env.NEXT_PUBLIC_BACKEND_URL}/storage/${editData.thumbs}`)
     }
-  }, [])
+  }, [setPreview])
 
   return (
     <section className={styles.popupArea} onClick={() => handleClickCreate(type)}>

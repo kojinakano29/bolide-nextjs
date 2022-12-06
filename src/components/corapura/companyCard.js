@@ -3,7 +3,8 @@ import Link from 'next/link';
 import dummy from '@/images/corapura/common/userDummy.svg'
 
 const CompanyCard = ({data}) => {
-  console.log(data)
+  // console.log(data)
+
   return (
     <Link href={`/corapura/company/${data.c_profile_id}`}>
       <a className={`hoverEffect ${styles.companyBox}`}>
