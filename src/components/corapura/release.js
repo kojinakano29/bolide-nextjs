@@ -8,7 +8,7 @@ const Release = ({data, detail = false}) => {
     <Link href={`/corapura`}>
       <a className={styles.releaseLink}>
         <div className={styles.imgBox}>
-          <img src={data.thumbs ? data.thumbs : dummy.src} alt="" />
+          <img src={data.thumbs ? `${process.env.NEXT_PUBLIC_BACKEND_URL}/storage/${data.thumbs}` : dummy.src} alt="" />
         </div>
         <p className={styles.ttl}>{data.title}</p>
         <div className={`${styles.view} en`}>

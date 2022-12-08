@@ -24,7 +24,7 @@ export const getServerSideProps = async () => {
 }
 
 const CompanyList = ({posts}) => {
-  // console.log(posts)
+  console.log(posts)
   const csrf = () => axios.get('/sanctum/csrf-cookie')
 
   const sorts = [
@@ -334,10 +334,10 @@ const CompanyList = ({posts}) => {
           <>
             <article className={styles.list}>
               {company.map((comp, index) => (
-                <Link href={`/corapura/company/${comp.id}`} key={index}>
+                <Link href={`/corapura/company/${comp.user.id}`} key={index}>
                   <a>
                     <div className={styles.imgBox}>
-                      <img src={comp.thumbs ? comp.thumbs : dummy.src} alt="" />
+                      <img src={comp.thumbs ? `${process.env.NEXT_PUBLIC_BACKEND_URL}/storage/${comp.thumbs}` : dummy.src} alt="" />
                     </div>
                     <p className={styles.catch}>{comp.title}</p>
                     <p className={styles.name}>{comp.nicename}</p>

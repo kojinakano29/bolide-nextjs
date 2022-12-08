@@ -2,6 +2,7 @@
 
 .nameCard {
   display: block;
+  aspect-ratio: 22 / 13;
   @include width(352px);
   border-radius: 10px;
   overflow: hidden;
@@ -9,6 +10,7 @@
 
   img {
     width: 100%;
+    height: 100%;
     object-fit: cover;
     object-position: top left;
   }

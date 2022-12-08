@@ -132,7 +132,7 @@ const DetailTabUser = ({cards, likes, matters, userInfo}) => {
                         <Link href={`/corapura/company/matter/${match.id}`} key={index}>
                           <a className={styles.matteredBox}>
                             <div className={styles.imgBox}>
-                              <img src={match.thumbs ? match.thumbs : dummy.src} alt="" />
+                              <img src={match.thumbs ? `${process.env.NEXT_PUBLIC_BACKEND_URL}/storage/${match.thumbs}` : dummy.src} alt="" />
                             </div>
                             <p className={styles.ttl}>{match.title}</p>
                             <p className={styles.desc}>{match.content.substring(0, 25)}...</p>

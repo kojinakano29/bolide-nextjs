@@ -5,7 +5,7 @@ const Coupon = ({data, detail = false}) => {
   return (
     <article className={styles.couponBox}>
       <div className={styles.imgBox}>
-        <img src={data.thumbs ? data.thumbs : dummy.src} alt="クーポンの画像" />
+        <img src={data.thumbs ? `${process.env.NEXT_PUBLIC_BACKEND_URL}/storage/${data.thumbs}` : dummy.src} alt="クーポンの画像" />
       </div>
       <div className={styles.couponCont}>
         <p className={styles.name}>{data.title}</p>

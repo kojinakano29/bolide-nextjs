@@ -81,15 +81,15 @@ const DetailAreaRight = ({influencer = false}) => {
         <div className={styles.detailRight}>
           <div className={styles.detailHead}>
             <div className={styles.headLeft}>
-              <img src={profile.thumbs ? profile.thumbs : dummy1.src} alt="" />
+              <img src={profile.thumbs ? `${process.env.NEXT_PUBLIC_BACKEND_URL}/storage/${profile.thumbs}` : dummy1.src} alt="" />
             </div>
             <div className={styles.headRight}>
               <p className={styles.type}>{profile.title}</p>
               <p className={styles.name}>{profile.nicename}</p>
               <div className={styles.tags}>
-                <p className={styles.tag}>飲食店</p>
-                <p className={styles.tag}>グルメ</p>
-                <p className={styles.tag}>料理</p>
+                {profile.c_tags.map((tag, index) => (
+                  <p className={styles.tag} key={index}>{tag.name}</p>
+                ))}
               </div>
             </div>
           </div>
@@ -169,29 +169,23 @@ const DetailAreaRight = ({influencer = false}) => {
         <div className={styles.detailRight}>
           <div className={styles.detailHead}>
             <div className={styles.headLeft}>
-              <img src={profile.thumbs ? profile.thumbs : dummy1.src} alt="" />
+              <img src={profile.thumbs ? `${process.env.NEXT_PUBLIC_BACKEND_URL}/storage/${profile.thumbs}` : dummy1.src} alt="" />
             </div>
             <div className={styles.headRight}>
-              <p className={styles.catch}>{profile.c_user_profile.appeal_text}</p>
+              <p className={styles.catch}>{profile.title}</p>
               <p className={styles.name}>{profile.nicename}</p>
-              <p className={styles.type}>{profile.title}</p>
+              <p className={styles.type}>個人</p>
               <div className={styles.tags}>
                 {profile.c_tags.map((tag, index) => (
-                  <p className={styles.tag} key={index}>{tag.title}</p>
+                  <p className={styles.tag} key={index}>{tag.name}</p>
                 ))}
-                <p className={styles.tag}>飲食店</p>
-                <p className={styles.tag}>グルメ</p>
-                <p className={styles.tag}>料理</p>
               </div>
             </div>
           </div>
           <div className={styles.skills}>
             {profile.c_user_profile.c_user_skills.map((skill, index) => (
-              <p className={styles.skill} key={index}>{skill.title}</p>
+              <p className={styles.skill} key={index}>{skill.name}</p>
             ))}
-            <p className={styles.skill}>相互フォロー</p>
-            <p className={styles.skill}>仲間・友達募集</p>
-            <p className={styles.skill}>お仕事募集</p>
           </div>
           <div className={styles.followBox}>
             <p className={styles.count}>フォロワー{nowFollower}人</p>
@@ -203,7 +197,7 @@ const DetailAreaRight = ({influencer = false}) => {
           </div>
           <p className={styles.desc}>{profile.profile}</p>
           <div className={styles.snsLink}>
-            <p className={styles.snsTxt}>SNS LINK</p>
+            <p className={styles.snsTxt}>FOLLOWERS</p>
             <p className={styles.followerAll}>All <span>{allFollower}</span></p>
             <div className={styles.followerBox}>
               {profile.c_user_profile.c_user_socials.length !== 0 ?
@@ -216,14 +210,12 @@ const DetailAreaRight = ({influencer = false}) => {
               : null}
             </div>
           </div>
-          <div className={styles.siteUrl}>
-            {profile.c_user_profile.brand ?
-              <>
-                <p>プロデュースブランド</p>
-                <a href={profile.c_user_profile.brand} target="_balnk">{profile.c_user_profile.brand}</a>
-              </>
-            : null}
-          </div>
+          {profile.c_user_profile.brand ?
+            <div className={styles.siteUrl}>
+              <p>プロデュースブランド</p>
+              <a href={profile.c_user_profile.brand} target="_blank">{profile.c_user_profile.brand}</a>
+            </div>
+          : null}
           <a href={`mailto:${userInfo.email}`} className={styles.btn}>
             <img src={mail.src} alt="" />
             <span>このインフルエンサーに<br className="sp" />メッセージを送る</span>

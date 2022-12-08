@@ -8,12 +8,14 @@
     @include width(calc(100% * 1/5 - 32px * 4/5), calc(100% * 1/5 - 24px * 4/5), calc(100% * 1/2 - 24px * 1/2));
 
     .imgBox {
+      aspect-ratio: 1 / 1;
       border-radius: 50%;
       overflow: hidden;
       @include mb(16px);
 
       img {
         width: 100%;
+        height: 100%;
         object-fit: cover;
         object-position: center;
       }

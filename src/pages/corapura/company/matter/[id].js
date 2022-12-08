@@ -3,8 +3,8 @@ import PageLayoutCorapura from '@/components/Layouts/pageLayoutCorapura'
 import styles from '@/styles/corapura/components/matterDetail.module.scss'
 import starB from '@/images/corapura/common/starB.svg'
 import starA from '@/images/corapura/common/starA.svg'
-import dummy from '@/images/corapura/top/cont6_1.webp'
-import { Conditions } from '@/components/corapura'
+import dummy from '@/images/corapura/common/dummy1.svg'
+import { Conditions, ShowEditor } from '@/components/corapura'
 import { useAuth } from '@/hooks/auth'
 import { useCallback, useEffect, useState } from 'react'
 import axios from '@/lib/axios'
@@ -23,9 +23,8 @@ export const getServerSideProps = async ({params}) => {
 }
 
 const CompanyMatter = ({posts}) => {
-  const csrf = () => axios.get('/sanctum/csrf-cookie')
-
   // console.log(posts)
+  const csrf = () => axios.get('/sanctum/csrf-cookie')
 
   const { user } = useAuth()
   const [disabled, setDisabled] = useState(false)
@@ -87,7 +86,7 @@ const CompanyMatter = ({posts}) => {
       <Container small>
         <div className={styles.headFlex}>
           <div className={styles.headLeft}>
-            <img src={posts.thumbs ? posts.thumbs : dummy.src} alt="" />
+            <img src={posts.thumbs ? `${process.env.NEXT_PUBLIC_BACKEND_URL}/storage/${posts.thumbs}` : dummy.src} alt="" />
             <button
               type="button"
               className={`${styles.bookmarkBtn} hoverEffect`}
@@ -103,13 +102,10 @@ const CompanyMatter = ({posts}) => {
               {posts.c_tags.map((tag, index) => (
                 <p className={styles.tag} key={index}>{tag.name}</p>
               ))}
-              <p className={styles.tag}>SNS投稿</p>
-              <p className={styles.tag}>宣伝</p>
-              <p className={styles.tag}>インフルエンサー</p>
             </div>
             <div className={styles.company}>
               <div className={styles.logoBox}>
-                {posts.user.c_profile.thumbs ? <img src={posts.user.c_profile.thumbs} alt="" /> : null}
+                {posts.user.c_profile.thumbs ? <img src={`${process.env.NEXT_PUBLIC_BACKEND_URL}/storage/${posts.user.c_profile.thumbs}`} alt="" /> : null}
               </div>
               {posts.user.c_profile.nicename}
             </div>
@@ -118,7 +114,9 @@ const CompanyMatter = ({posts}) => {
 
         <Conditions data={posts} />
 
-        <div className={styles.editArea}></div>
+        <div className={styles.editArea}>
+          <ShowEditor data={posts} />
+        </div>
 
         <div className={styles.btnFlex}>
           <a href={`mailto:${posts.user.email}`} className={styles.btn}>

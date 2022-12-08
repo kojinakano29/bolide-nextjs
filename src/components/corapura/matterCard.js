@@ -1,5 +1,5 @@
 import styles from '@/styles/corapura/components/matterCard.module.scss'
-import dummy from '@/images/corapura/top/cont6_1.webp'
+import dummy from '@/images/corapura/common/dummy1.svg'
 import Link from 'next/link';
 import starB from '@/images/corapura/common/starB.svg'
 import starA from '@/images/corapura/common/starA.svg'
@@ -54,7 +54,7 @@ const MatterCard = ({matter, bookmarkList, detail = false, list = false}) => {
           <Link href={`/corapura/company/matter/${matter.id}`}>
             <a>
               <div className={`${styles.imgBox} matterThumbs`}>
-                <img src={matter.thumbs ? matter.thumbs : dummy.src} alt="" />
+                <img src={matter.thumbs ? `${process.env.NEXT_PUBLIC_BACKEND_URL}/storage/${matter.thumbs}` : dummy.src} alt="" />
                 {matter.state === 0 ? null :
                   <div className={styles.finishMatter}>
                     <img src={check.src} alt="" />
@@ -81,7 +81,7 @@ const MatterCard = ({matter, bookmarkList, detail = false, list = false}) => {
               </p>
               <div className={styles.company}>
                 <div className={styles.logoBox}>
-                  {matter.user.c_profile.thumbs ? <img src={matter.user.c_profile.thumbs} alt="" /> : null}
+                  {matter.user.c_profile.thumbs ? <img src={`${process.env.NEXT_PUBLIC_BACKEND_URL}/storage/${matter.user.c_profile.thumbs}`} alt="" /> : null}
                 </div>
                 {matter.user.c_profile.nicename}
               </div>
@@ -100,7 +100,7 @@ const MatterCard = ({matter, bookmarkList, detail = false, list = false}) => {
           <Link href={`/corapura/company/matter/${matter.id}`}>
             <a>
               <div className={`${styles.imgBox} matterThumbs`}>
-                <img src={matter.thumbs ? matter.thumbs : dummy.src} alt="" />
+                <img src={matter.thumbs ? `${process.env.NEXT_PUBLIC_BACKEND_URL}/storage/${matter.thumbs}` : dummy.src} alt="" />
               </div>
               <p className={styles.tag}>{matter.c_cat?.name}</p>
               <p className={styles.ttl}>{matter.title}</p>
@@ -122,7 +122,7 @@ const MatterCard = ({matter, bookmarkList, detail = false, list = false}) => {
               {detail ? null :
                 <div className={styles.company}>
                   <div className={styles.logoBox}>
-                    {matter.user.c_profile.thumbs ? <img src={matter.user.c_profile.thumbs} alt="" /> : null}
+                    {matter.user.c_profile.thumbs ? <img src={`${process.env.NEXT_PUBLIC_BACKEND_URL}/storage/${matter.user.c_profile.thumbs}`} alt="" /> : null}
                   </div>
                   {matter.user.c_profile.nicename}
                 </div>

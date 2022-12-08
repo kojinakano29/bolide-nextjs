@@ -7,6 +7,7 @@
 
   .headLeft {
     @include width(352px, 300px, 100%);
+    aspect-ratio: 1 / 1;
     border-radius: 10px;
     overflow: hidden;
     position: relative;
@@ -63,6 +64,10 @@
       }
     }
   }
+}
+
+.editArea {
+  @include pt(64px, 48px);
 }
 
 .btnFlex {

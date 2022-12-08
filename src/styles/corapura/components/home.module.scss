@@ -125,6 +125,7 @@
 
       img {
         width: 100%;
+        height: 100%;
         object-fit: cover;
         object-position: center;
         transition: .3s ease;
@@ -154,9 +155,11 @@
     }
 
     .left {
-      @include width(496px, 340px);
+      @include width(496px, 340px, 100%);
 
       .imgBox {
+        aspect-ratio: 1 / 1;
+
         .contBox {
           @include p(0 16px, 0 8px);
           @include bottom(20px, 16px, 8px);
@@ -171,7 +174,7 @@
 
       .imgBox {
         @include width(calc(100% * 1/2 - 8px));
-        @include height(240px, 160px);
+        aspect-ratio: 37 / 30;
 
         .contBox {
           @include p(0 8px);
