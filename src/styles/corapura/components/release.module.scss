@@ -12,11 +12,16 @@
   }
 
   .imgBox {
+    aspect-ratio: 22 / 17;
     @include mb(16px);
     border-radius: 10px;
     overflow: hidden;
 
     img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      object-position: top center;
       transition: .2s ease
     }
   }

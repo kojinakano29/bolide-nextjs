@@ -420,7 +420,7 @@ const DetailTabCompany = ({businesses, releases, matters, userInfo}) => {
                     <div className={styles.presidentBox}>
                       {president.thumbs ?
                         <div className={styles.imgBox}>
-                          <img src={president.thumbs} alt="" />
+                          <img src={`${process.env.NEXT_PUBLIC_BACKEND_URL}/storage/${president.thumbs}`} alt="" />
                         </div>
                       : null}
                       <div className={styles.right}>

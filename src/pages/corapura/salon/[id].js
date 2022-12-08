@@ -11,7 +11,7 @@ import {
 import { useAuth } from '@/hooks/auth';
 import { useCallback, useEffect, useState } from 'react';
 import axios from '@/lib/axios';
-import { Btn } from '@/components/corapura';
+import { Btn, ShowEditor } from '@/components/corapura';
 
 export const getServerSideProps = async ({params}) => {
   const res = await fetch(`${process.env.NEXT_PUBLIC_API_CORAPURA}/salon/show/${params.id}`)
@@ -102,7 +102,6 @@ const OnlineSalonDetail = ({posts}) => {
                 {salon.c_tags.map((tag, index) => (
                   <p className={styles.tag} key={index}>{tag.name}</p>
                 ))}
-                  <p className={styles.tag}>スキルアップ</p>
               </div>
               <button
                 type="button"
@@ -111,7 +110,7 @@ const OnlineSalonDetail = ({posts}) => {
               >{followCheck ? "フォロー中" : "フォローする"}</button>
             </div>
             <div className={styles.imgBox}>
-              <img src={salon.thumbs ? salon.thumbs : dummy.src} alt="" />
+              <img src={salon.thumbs ? `${process.env.NEXT_PUBLIC_BACKEND_URL}/storage/${salon.thumbs}` : dummy.src} alt="" />
             </div>
             <div className={styles.conditions}>
               <div className={styles.block}>
@@ -136,6 +135,10 @@ const OnlineSalonDetail = ({posts}) => {
                 <p className={styles.txt}>{salon.number_of_people}</p>
               </div>
             </div>
+
+            <div className={styles.editArea}>
+              <ShowEditor data={salon} />
+            </div>
           </div>
           <div className={styles.detailRight}>
             <div className={styles.userBox}>
@@ -143,12 +146,12 @@ const OnlineSalonDetail = ({posts}) => {
               <p className={styles.name}>{profile.nicename}</p>
               <p className={styles.profile}>{profile.profile}</p>
               <p className={styles.ttl}>SNS</p>
-              {influencer?.c_user_socials?.map((social, index) => {
+              {influencer?.c_user_socials?.map((social, index) => (
                 <a href={social.url} target="_blank" key={index}>{social.url}</a>
-              })}
-              {company?.c_company_socials?.map((company, index) => {
+              ))}
+              {company?.c_company_socials?.map((company, index) => (
                 <a href={company.url} target="_blank" key={index}>{company.url}</a>
-              })}
+              ))}
             </div>
           </div>
         </div>

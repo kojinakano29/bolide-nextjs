@@ -14,19 +14,19 @@ const DetailAreaLeft = ({influencer = false}) => {
   return (
     <div className={`${styles.detailLeft} ${influencer ? styles.influencer : null}`}>
       <div className={styles.currentImg}>
-        {currentImg === 0 ? <img src={profile.image1 ? profile.image1 : dummy1.src} alt="" /> : null}
-        {currentImg === 1 ? <img src={profile.image2 ? profile.image2 : dummy1.src} alt="" /> : null}
-        {currentImg === 2 ? <img src={profile.image3 ? profile.image3 : dummy1.src} alt="" /> : null}
+        {currentImg === 0 ? <img src={profile.image1 ? `${process.env.NEXT_PUBLIC_BACKEND_URL}/storage/${profile.image1}` : dummy1.src} alt="" /> : null}
+        {currentImg === 1 ? <img src={profile.image2 ? `${process.env.NEXT_PUBLIC_BACKEND_URL}/storage/${profile.image2}` : dummy1.src} alt="" /> : null}
+        {currentImg === 2 ? <img src={profile.image3 ? `${process.env.NEXT_PUBLIC_BACKEND_URL}/storage/${profile.image3}` : dummy1.src} alt="" /> : null}
       </div>
       <div className={styles.selectImg}>
         <button type="button" className="hoverEffect" onClick={() => handleClickSelectImg(0)}>
-          <img src={profile.image1 ? profile.image1 : dummy1.src} alt="" />
+          <img src={profile.image1 ? `${process.env.NEXT_PUBLIC_BACKEND_URL}/storage/${profile.image1}` : dummy1.src} alt="" />
         </button>
         <button type="button" className="hoverEffect" onClick={() => handleClickSelectImg(1)}>
-          <img src={profile.image2 ? profile.image2 : dummy1.src} alt="" />
+          <img src={profile.image2 ? `${process.env.NEXT_PUBLIC_BACKEND_URL}/storage/${profile.image2}` : dummy1.src} alt="" />
         </button>
         <button type="button" className="hoverEffect" onClick={() => handleClickSelectImg(2)}>
-          <img src={profile.image3 ? profile.image3 : dummy1.src} alt="" />
+          <img src={profile.image3 ? `${process.env.NEXT_PUBLIC_BACKEND_URL}/storage/${profile.image3}` : dummy1.src} alt="" />
         </button>
       </div>
     </div>

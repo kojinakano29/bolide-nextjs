@@ -11,7 +11,7 @@ import view from '@/images/corapura/parts/material_view.svg'
 import viewB from '@/images/corapura/common/view.svg'
 import viewA from '@/images/corapura/common/view_a.svg'
 import clock from '@/images/corapura/common/clock.svg'
-import { Btn, Date } from '@/components/corapura';
+import { Btn, Date, ShowEditor } from '@/components/corapura';
 
 export const getServerSideProps = async ({params}) => {
   const res = await fetch(`${process.env.NEXT_PUBLIC_API_CORAPURA}/pr/show/${params.id}`)
@@ -87,7 +87,6 @@ const PressReleaseDetail = ({posts}) => {
               {release.c_tags.map((tag, index) => (
                 <p className={styles.tag} key={index}>{tag.name}</p>
               ))}
-              <p className={styles.tag}>スキルアップ</p>
             </div>
             <div className={styles.headFlex}>
               <div className={styles.txtBox}>
@@ -107,7 +106,10 @@ const PressReleaseDetail = ({posts}) => {
               </button>
             </div>
             <div className={styles.imgBox}>
-              <img src={release.thumbs ? release.thumbs : dummy.src} alt="" />
+              <img src={release.thumbs ? `${process.env.NEXT_PUBLIC_BACKEND_URL}/storage/${release.thumbs}` : dummy.src} alt="" />
+            </div>
+            <div className={styles.editBox}>
+              <ShowEditor data={release} />
             </div>
           </div>
           <div className={styles.detailRight}>
@@ -117,7 +119,7 @@ const PressReleaseDetail = ({posts}) => {
                 <Link href={`/corapura/press_release/${release.id}`} key={index}>
                   <a>
                     <div className={styles.thumbsBox}>
-                      <img src={release.thumbs ? release.thumbs : dummy2.src} alt="" />
+                      <img src={release.thumbs ? `${process.env.NEXT_PUBLIC_BACKEND_URL}/storage/${release.thumbs}` : dummy2.src} alt="" />
                     </div>
                     <div className={styles.newTxt}>
                       <p className={styles.newTtl}>{release.title}</p>

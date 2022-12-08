@@ -9,13 +9,14 @@
   @include width(496px, 300px, 100%);
 
   .currentImg {
-    @include height(496px, 300px, calc(100vw - 20px * 3));
+    aspect-ratio: 1 / 1;
     border-radius: 10px;
     overflow: hidden;
     @include mb(16px);
 
     img {
       width: 100%;
+      height: 100%;
       object-fit: cover;
       object-position: top center;
     }
@@ -28,9 +29,16 @@
     button {
       display: block;
       @include width(calc(100% * 1/3 - 8px * 2/3));
-      @include height(calc(496px * 1/3 - 8px * 2/3), calc(300px * 1/3 - 8px * 2/3), calc(100% * 1/3 - 8px * 2/3));
+      aspect-ratio: 1 / 1;
       border-radius: 10px;
       overflow: hidden;
+
+      img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        object-position: top center;
+      }
     }
   }
 
@@ -64,6 +72,7 @@
 
       img {
         width: 100%;
+        height: 100%;
         object-fit: cover;
         object-position: center;
       }

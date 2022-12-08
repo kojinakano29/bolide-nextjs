@@ -4,11 +4,14 @@
   @include width(352px, calc(100% * 1/3 - 24px * 2/3), 352px);
 
   .imgBox {
+    aspect-ratio: 22 / 17;
     overflow: hidden;
     border-radius: 10px;
     @include mb(16px);
 
     img {
+      width: 100%;
+      height: 100%;
       object-fit: cover;
       object-position: center;
     }

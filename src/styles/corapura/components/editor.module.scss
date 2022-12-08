@@ -134,6 +134,29 @@
     font-weight: bold;
     border-radius: 8px;
   }
+
+  .submitBtn2 {
+    label {
+      @include p(4px 32px);
+      background-color: $b8;
+      color: $w1;
+      @include fs(16px);
+      font-weight: bold;
+      border-radius: 8px;
+      cursor: pointer;
+
+      input[type="radio"] {
+        display: none;
+      }
+    }
+  }
+
+  .submitBtn3 {
+    label {
+      background-color: $g3;
+      color: $b3;
+    }
+  }
 }
 
 .error {
@@ -311,6 +334,137 @@
       @include bottom(40px, 32px, 20px);
       left: 50%;
       transform: translateX(-50%);
+    }
+  }
+}
+
+.matterFlex {
+  @include flex();
+  @include gap(32px, 24px, 16px);
+  @include mb(32px);
+
+  .matterLeft {
+    @include width(352px, 300px, 100%);
+  }
+
+  .matterRight {
+    @include width(calc(100% - (352px + 32px)), calc(100% - (300px + 24px)), 100%);
+  }
+
+  .fileBox {
+    @include flex(center, center);
+    width: 100%;
+    @include height(352px, 300px, calc(100vw - (20px * 2 + 17px)));
+    background-color: $g3;
+    border-radius: 10px;
+    overflow: hidden;
+    @include fs(16px, 14px);
+    font-weight: 500;
+    cursor: pointer;
+
+    img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      object-position: top center;
+    }
+
+    input[type="file"] {
+      width: 0;
+      height: 0;
+      opacity: 0;
+    }
+  }
+
+  dl {
+    @include mb(40px, 32px);
+
+    &:last-of-type {
+      margin-bottom: 0;
+    }
+
+    dt {
+      @include fs(16px, 14px);
+      font-weight: 900;
+      @include mb(12px);
+
+      label {
+        cursor: pointer;
+      }
+    }
+
+    dd {
+      input[type="text"],
+      input[type="url"] {
+        @include input(100%);
+      }
+
+      input[type="number"],
+      input[type="tel"],
+      input[type="date"] {
+        @include input(240px);
+      }
+
+      textarea {
+        @include textarea(100%);
+      }
+
+      select {
+        @include select(240px);
+        cursor: pointer;
+      }
+    }
+  }
+}
+
+.selectorArea {
+  dl {
+    @include mb(40px, 32px);
+
+    &:last-of-type {
+      margin-bottom: 0;
+    }
+
+    dt {
+      @include fs(16px, 14px);
+      font-weight: 900;
+      @include mb(12px);
+
+      label {
+        cursor: pointer;
+      }
+    }
+
+    dd {
+      input[type="text"],
+      input[type="url"],
+      input[type="number"],
+      input[type="tel"],
+      input[type="date"] {
+        @include input(240px);
+      }
+    }
+  }
+}
+
+.editArea {
+  @include mt(40px, 32px);
+
+  dl {
+    dt {
+      @include fs(16px, 14px);
+      font-weight: 900;
+      @include mb(12px);
+
+      label {
+        cursor: pointer;
+      }
+    }
+
+    dd {
+      &.lock {
+        pointer-events: none;
+      }
     }
   }
 }

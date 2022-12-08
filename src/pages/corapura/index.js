@@ -173,7 +173,7 @@ const Corapura = ({posts}) => {
               {salonLeft.map((salon, index) => (
                 <Link href={`/corapura/salon/${salon.id}`} key={index}>
                   <a className={styles.imgBox}>
-                    <img src={salon.thumbs ? salon.thumbs : dummy1.src} alt="" />
+                    <img src={salon.thumbs ? `${process.env.NEXT_PUBLIC_BACKEND_URL}/storage/${salon.thumbs}` : dummy1.src} alt="" />
                     <div className={styles.contBox}>
                       <p className={styles.salonName}>{salon.title}</p>
                       <p className={styles.salonDesc}>{salon.content}</p>
@@ -186,7 +186,7 @@ const Corapura = ({posts}) => {
               {salonRight.map((salon, index) => (
                 <Link href={`/corapura/salon/${salon.id}`} key={index}>
                   <a className={styles.imgBox}>
-                    <img src={salon.thumbs ? salon.thumbs : dummy1.src} alt="" />
+                    <img src={salon.thumbs ? `${process.env.NEXT_PUBLIC_BACKEND_URL}/storage/${salon.thumbs}` : dummy1.src} alt="" />
                     <div className={styles.contBox}>
                       <p className={styles.salonName}>{salon.title}</p>
                     </div>

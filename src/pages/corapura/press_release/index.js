@@ -1,6 +1,6 @@
 import styles from '@/styles/corapura/components/releaseList.module.scss'
 import PageLayoutCorapura from "@/components/Layouts/pageLayoutCorapura";
-import { useCallback, useState } from "react";
+import { useCallback, useEffect, useState } from "react";
 import { useForm } from "react-hook-form";
 import Container from '@/components/corapura/Layout/container';
 import dummy from '@/images/corapura/common/dummy7.svg'
@@ -24,7 +24,7 @@ export const getServerSideProps = async () => {
 }
 
 const PressReleaseList = ({posts}) => {
-  // console.log(posts)
+  console.log(posts)
   const csrf = () => axios.get('/sanctum/csrf-cookie')
 
   const sorts = [
@@ -34,112 +34,87 @@ const PressReleaseList = ({posts}) => {
 
   const tags = posts.tags
   const [disabled, setDisabled] = useState(false)
-  const [search, setSearch] = useState("")
   const [releases, setReleases] = useState(posts.pr)
   const [nowPage, setNowPage] = useState(posts.now_page)
   const [maxPage, setMaxPage] = useState(posts.page_max)
-  const [sort, setSort] = useState("new")
+  const [search, setSearch] = useState("")
   const [tag, setTag] = useState("")
+  const [sort, setSort] = useState("new")
+  const [page, setPage] = useState(1)
   const [openSort, setOpenSort] = useState(false)
   const { handleSubmit, register } = useForm()
 
-  const handleClickTags = useCallback(async (e) => {
-    if (disabled) return
-    setDisabled(true)
-    await setOpenSort(false)
+  const handleSort = useCallback(async () => {
     await csrf()
 
-    await axios.post(`/api/corapura/pr?s=${search}&sort=${sort}&tag_id=${e.target.value}&page=1`)
+    await axios.post(`/api/corapura/pr`, {
+      s: search,
+      tag_id: tag,
+      sort: sort,
+      page: parseInt(page),
+    })
     .then((res) => {
-      // console.log(res)
+      console.log(res)
       setReleases(res.data.pr)
       setNowPage(res.data.now_page)
       setMaxPage(res.data.page_max)
-      setTag(res.data.tag_id)
     }).catch((e) => {
       console.error(e)
     })
+  }, [
+    setReleases,
+    setNowPage,
+    setMaxPage,
+    search,
+    tag,
+    sort,
+    page,
+  ])
+
+  useEffect(async () => {
+    if (disabled) return
+    setDisabled(true)
+    setOpenSort(false)
+
+    await handleSort()
 
     await setDisabled(false)
-  }, [disabled, setDisabled, search, sort, setReleases, setNowPage, setMaxPage, setTag])
+  }, [
+    tag,
+    sort,
+    page,
+  ])
+
+  const handleClickTag = useCallback(async (e) => {
+    setTag(e.target.value)
+  }, [setTag])
+
+  const handleClickSort = useCallback(async (e) => {
+    setSort(e.currentTarget.value)
+  }, [setSort])
 
   const handleClickOpenSort = useCallback(async () => {
     setOpenSort(prevState => !prevState)
   }, [])
 
-  const handleClickSort = useCallback(async (e) => {
+  const handleClickPage = useCallback(async (e) => {
+    setPage(e.currentTarget.value)
+  }, [setPage])
+
+  const onSortForm = useCallback(async (data) => {
     if (disabled) return
     setDisabled(true)
-    await setOpenSort(false)
+    setOpenSort(false)
     await csrf()
 
-    await axios.post(`/api/corapura/pr?s=${search}&sort=${e.target.value}&tag_id=${tag}&page=1`)
-    .then((res) => {
-      // console.log(res)
-      setReleases(res.data.pr)
-      setNowPage(res.data.now_page)
-      setMaxPage(res.data.page_max)
-      setSort(res.data.sort)
-    }).catch((e) => {
-      console.error(e)
+    await axios.post(`/api/corapura/pr`, {
+      s: data.s ? data.s : "",
+      tag_id: tag,
+      sort: sort,
+      page: parseInt(page),
     })
-
-    await setDisabled(false)
-  }, [disabled, setDisabled, setSort, search, tag, setReleases, setNowPage, setMaxPage])
-
-  const onSearchForm = useCallback(async (data) => {
-    if (disabled) return
-    setDisabled(true)
-    await setOpenSort(false)
-    await csrf()
-
-    await axios.post(`/api/corapura/pr?s=${data.s}&sort=${sort}&tag_id=${tag}&page=${nowPage}`)
     .then((res) => {
-      // console.log(res)
-      setReleases(res.data.pr)
-      setNowPage(res.data.now_page)
-      setMaxPage(res.data.page_max)
-    }).catch((e) => {
-      console.error(e)
-    })
-    await setDisabled(false)
-  }, [disabled, setDisabled, nowPage, sort, tag, setReleases, setNowPage, setMaxPage])
-
-  const onSubmit = useCallback(async (data) => {
-    // console.log(data)
-    setSearch(data.search)
-
-    onSearchForm({
-      s: data.search,
-    })
-  }, [onSearchForm, setSearch])
-
-  const handleClickNext = useCallback(async () => {
-    if (disabled) return
-    setDisabled(true)
-    await csrf()
-
-    await axios.post(`/api/corapura/pr?s=${search}&sort=${sort}&tag_id=${tag}&page=${parseInt(nowPage)+1}`)
-    .then((res) => {
-      // console.log(res)
-      setReleases(res.data.pr)
-      setNowPage(res.data.now_page)
-      setMaxPage(res.data.page_max)
-    }).catch((e) =>{
-      console.error(e)
-    })
-
-    await setDisabled(false)
-  }, [disabled, setDisabled, search, nowPage, sort, tag, setReleases, setNowPage, setMaxPage])
-
-  const handleClickPrev = useCallback(async () => {
-    if (disabled) return
-    setDisabled(true)
-    await csrf()
-
-    await axios.post(`/api/corapura/pr?s=${search}&sort=${sort}&tag_id=${tag}&page=${parseInt(nowPage)-1}`)
-    .then((res) => {
-      // console.log(res)
+      console.log(res)
       setReleases(res.data.pr)
       setNowPage(res.data.now_page)
       setMaxPage(res.data.page_max)
@@ -147,25 +122,40 @@ const PressReleaseList = ({posts}) => {
       console.error(e)
     })
 
+    setSearch(data.s)
     await setDisabled(false)
-  }, [disabled, setDisabled, search, nowPage, sort, tag, setReleases, setNowPage, setMaxPage])
+  }, [
+    disabled,
+    setDisabled,
+    setReleases,
+    setNowPage,
+    setMaxPage,
+    setSearch,
+    tag,
+    sort,
+    page,
+  ])
 
   return (
     <section className="cont1">
       <Container small>
         <h2 className="ttl1">プレスリリース一覧</h2>
-        <form onSubmit={handleSubmit(onSubmit)}>
+        <form onSubmit={handleSubmit(onSortForm)}>
           <div className={styles.searchBox}>
             <input
               type="text"
-              {...register("search")}
+              {...register("s")}
               placeholder="気になるワードを検索"
             />
           </div>
         </form>
 
         <div className={styles.sort}>
-          <button type="button" className={styles.btn} onClick={handleClickOpenSort}>
+          <button
+            type="button"
+            className={styles.btn}
+            onClick={handleClickOpenSort}
+          >
             <div className={styles.icon}>
               <img src={sortIcon.src} alt="" />
             </div>
@@ -175,11 +165,10 @@ const PressReleaseList = ({posts}) => {
             <div className={styles.box}>
               {sorts.map((item, index) => (
                 <button
-                  key={index}
-                  type="button"
-                  className={sort === item.value ? styles.current : ""}
                   value={item.value}
+                  className={sort === item.value ? styles.current : null}
                   onClick={handleClickSort}
+                  key={index}
                 >{item.name}</button>
               ))}
             </div>
@@ -187,21 +176,14 @@ const PressReleaseList = ({posts}) => {
         </div>
 
         <div className={styles.tagBtnBox}>
-          {tags.map((tag, index) => (
+          {tags.map((item, index) => (
             <button
-              type="button"
-              className={`${styles.tagBtn}`}
-              value={tag.id}
-              onClick={handleClickTags}
+            value={item.id}
+            className={`${styles.tagBtn} ${item.id === parseInt(tag) ? styles.current : null}`}
+              onClick={handleClickTag}
               key={index}
-            >{tag.name}</button>
+            >{item.name}</button>
           ))}
-          <button
-            type="button"
-            className={`${styles.tagBtn}`}
-            value="2"
-            onClick={handleClickTags}
-          >ビューティー</button>
         </div>
 
         {!disabled ?
@@ -211,7 +193,7 @@ const PressReleaseList = ({posts}) => {
                 <Link href={`/corapura/press_release/${release.id}`} key={index}>
                   <a>
                     <div className={styles.imgBox}>
-                      <img src={release.thumbs ? release.thumbs : dummy.src} alt="" />
+                      <img src={release.thumbs ? `${process.env.NEXT_PUBLIC_BACKEND_URL}/storage/${release.thumbs}` : dummy.src} alt="" />
                     </div>
                     <p className={styles.ttl}>{release.title}</p>
                     <div className={`${styles.view} en`}>
@@ -220,7 +202,7 @@ const PressReleaseList = ({posts}) => {
                     </div>
                     <div className={styles.company}>
                       <div className={styles.logoBox}>
-                        {release.user.c_profile.thumbs ? <img src={release.user.c_profile.thumbs} alt="" /> : null}
+                        {release.user.c_profile.thumbs ? <img src={`${process.env.NEXT_PUBLIC_BACKEND_URL}/storage/${release.user.c_profile.thumbs}`} alt="" /> : null}
                       </div>
                       {release.user.c_profile.nicename}
                     </div>
@@ -228,46 +210,49 @@ const PressReleaseList = ({posts}) => {
                       {release.c_tags.map((tag, index) => (
                         <p className={styles.tag} key={index}>{tag.name}</p>
                       ))}
-                        <p className={styles.tag}>スキルアップ</p>
                     </div>
                   </a>
                 </Link>
               ))}
             </article>
-            {parseInt(maxPage) !== 1 ?
+            {parseInt(maxPage) > 1 ?
               <div className={styles.pager}>
-                {parseInt(nowPage) !== 1 ?
+                {parseInt(nowPage) > 1 ?
                   <button
-                    type="button"
                     className={styles.btn}
-                    onClick={handleClickPrev}
+                    value={nowPage-1}
+                    onClick={handleClickPage}
                   >
                     <img src={prev.src} alt="" />
                     <span>前のページへ</span>
                   </button>
                 : null}
                 <div className={styles.pagerBtn}>
-                  {parseInt(nowPage) !== 1 ?
+                  {parseInt(nowPage) > 1 ?
                     <button
-                      type="button"
-                      onClick={handleClickPrev}
                       className="hoverEffect"
-                    >{parseInt(parseInt(nowPage))-1}</button>
+                      value={nowPage-1}
+                      onClick={handleClickPage}
+                    >
+                      {nowPage-1}
+                    </button>
                   : null}
-                  <button type="button" className={styles.current}>{parseInt(nowPage)}</button>
+                  <button type="button" className={styles.current}>{nowPage}</button>
                   {parseInt(maxPage) !== parseInt(nowPage) ?
                     <button
-                      type="button"
-                      onClick={handleClickNext}
                       className="hoverEffect"
-                    >{parseInt(parseInt(nowPage))+1}</button>
+                      value={nowPage+1}
+                      onClick={handleClickPage}
+                    >
+                      {nowPage+1}
+                    </button>
                   : null}
                 </div>
                 {parseInt(nowPage) !== parseInt(maxPage) ?
                   <button
-                    type="button"
                     className={styles.btn}
-                    onClick={handleClickNext}
+                    value={nowPage+1}
+                    onClick={handleClickPage}
                   >
                     <img src={next.src} alt="" />
                     <span>次のページへ</span>

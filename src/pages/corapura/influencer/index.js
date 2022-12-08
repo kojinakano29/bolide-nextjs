@@ -71,7 +71,6 @@ const InfluencerList = ({posts}) => {
     }).catch((e) => {
       console.error(e)
     })
-
   }, [
     setInfluencer,
     setNowPage,
@@ -264,10 +263,10 @@ const InfluencerList = ({posts}) => {
           <>
             <article className={`${styles.list} ${styles.influencerList}`}>
               {influencer.map((item, index) => (
-                <Link href={`/corapura/influencer/${item.id}`} key={index}>
+                <Link href={`/corapura/influencer/${item.user.id}`} key={index}>
                   <a>
                     <div className={styles.imgBox}>
-                      <img src={item.thumbs ? item.thumbs : dummy.src} alt="" />
+                      <img src={item.thumbs ? `${process.env.NEXT_PUBLIC_BACKEND_URL}/storage/${item.thumbs}` : dummy.src} alt="" />
                     </div>
                     <p className={styles.catch}>{item.title}</p>
                     <p className={styles.name}>{item.nicename}</p>

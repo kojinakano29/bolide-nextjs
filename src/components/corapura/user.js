@@ -10,10 +10,10 @@ const User = ({data, detail = false}) => {
         <>
           <article className={styles.person__list}>
             {data.map((item, index) => (
-              <Link href={`/corapura/influencer/${item.c_profile_id}`} key={item.id}>
+              <Link href={`/corapura/influencer/${item.id}`} key={item.id}>
                 <a className={styles.person__item}>
                   <div className={styles.imgBox}>
-                    <img src={dummy.src} alt="" />
+                    <img src={item.thumbs ? `${process.env.NEXT_PUBLIC_BACKEND_URL}/storage/${item.thumbs}` : dummy.src} alt="" />
                   </div>
                   <p className={styles.jp}>{item.c_profile.nicename}</p>
                   <p className={`${styles.en} en`}>{item.name}</p>
@@ -21,7 +21,7 @@ const User = ({data, detail = false}) => {
               </Link>
             ))}
           </article>
-          <Btn txt="インフルエンサー一覧" link="/corapura" />
+          <Btn txt="インフルエンサー一覧" link="/corapura/influencer" />
         </>
       :
         <>
@@ -30,7 +30,7 @@ const User = ({data, detail = false}) => {
               <Link href={`/corapura/influencer/${item.id}`} key={item.id}>
                 <a className={styles.person__item}>
                   <div className={styles.imgBox}>
-                    <img src={dummy.src} alt="" />
+                    <img src={item.thumbs ? `${process.env.NEXT_PUBLIC_BACKEND_URL}/storage/${item.thumbs}` : dummy.src} alt="" />
                   </div>
                   <p className={styles.jp}>{item.c_profile.nicename}</p>
                   <p className={`${styles.en} en`}>{item.name}</p>

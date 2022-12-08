@@ -13,7 +13,7 @@ const Info = ({data, detail = false}) => {
             {detail ? null :
               <div className={styles.company}>
                 <div className={styles.logoBox}>
-                  {info.c_profile.thumbs ? <img src={info.c_profile.thumbs} alt="" /> : null}
+                  {info.c_profile.thumbs ? <img src={`${process.env.NEXT_PUBLIC_BACKEND_URL}/storage/${info.c_profile.thumbs}`} alt="" /> : null}
                 </div>
                 {info.c_profile.nicename}
               </div>

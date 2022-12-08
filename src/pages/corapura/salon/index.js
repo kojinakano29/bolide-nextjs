@@ -118,7 +118,7 @@ const OnlineSalonList = ({posts}) => {
                 <Link href={`/corapura/salon/${salon.id}`} key={index}>
                   <a>
                     <div className={styles.imgBox}>
-                      <img src={salon.thumbs ? salon.thumbs : dummy.src} alt="" />
+                      <img src={salon.thumbs ? `${process.env.NEXT_PUBLIC_BACKEND_URL}/storage/${salon.thumbs}` : dummy.src} alt="" />
                     </div>
                     <p className={styles.ttl}>{salon.title}</p>
                     <p className={styles.desc}>{salon.content.substring(0, 45)}...</p>
@@ -126,7 +126,6 @@ const OnlineSalonList = ({posts}) => {
                       {salon.c_tags.map((tag, index) => (
                         <p className={styles.tag} key={index}>{tag.name}</p>
                       ))}
-                        <p className={styles.tag}>スキルアップ</p>
                     </div>
                   </a>
                 </Link>

@@ -6,23 +6,23 @@ const CompanyCard = ({data}) => {
   // console.log(data)
 
   return (
-    <Link href={`/corapura/company/${data.c_profile_id}`}>
+    <Link href={`/corapura/company/${data.id}`}>
       <a className={`hoverEffect ${styles.companyBox}`}>
         <div className={styles.company__top}>
           <div className={styles.company__topLeft}>
-            <img src={dummy.src} alt="会社のイメージ画像" />
+            <img src={data.c_profile.image1 ? `${process.env.NEXT_PUBLIC_BACKEND_URL}/storage/${data.c_profile.image1}` : dummy.src} alt="会社のイメージ画像" />
           </div>
           <div className={styles.company__topRight}>
             <div className={styles.companyInfo2}>
               <div className={styles.logoBox}>
-                {data.c_profile.thumbs ? <img src={data.c_profile.thumbs} alt="" /> : null}
+                {data.c_profile.thumbs ? <img src={`${process.env.NEXT_PUBLIC_BACKEND_URL}/storage/${data.c_profile.thumbs}`} alt="" /> : null}
               </div>
               {data.c_profile.nicename}
             </div>
             <div className={styles.company__topRightList}>
-              <p className={styles.tag}>飲食店</p>
-              <p className={styles.tag}>グルメ</p>
-              <p className={styles.tag}>料理</p>
+              {data.c_profile.c_tags.map((tag, index) => (
+                <p className={styles.tag} key={index}>{tag.name}</p>
+              ))}
             </div>
           </div>
         </div>
