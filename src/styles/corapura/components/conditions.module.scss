@@ -1,7 +1,7 @@
 @import '../../variables.scss';
 
 .conditionsBox {
-  @include flex();
+  @include flex(stretch, left);
   @include gap(8px);
 
   .cont {

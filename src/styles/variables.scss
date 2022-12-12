@@ -30,9 +30,13 @@ $g6: #F7F7F7;
 $g7: #E1E1E1;
 $g8: #CDD3DA;
 $g9: #F4F4F4;
+$g10: #53B2A5;
 $o1: #FF9933;
 $o2: #FFBB61;
 $o3: #FFF7EC;
+$o4: #EA8272;
+$y1: #EBE76A;
+$p1: #E15FA5;
 $red1: #FF0000;
 $r2: #F76C6C;
 $rgba1: rgba(0, 0, 0, .5);
@@ -783,6 +787,44 @@ $breakpoints: (
           display: none;
         }
       }
+    }
+  }
+}
+
+@mixin createLink {
+  @include p(8px 16px);
+  @include flex(center, center);
+  @include gap(24px);
+  @include fs(16px, 14px);
+  font-weight: 500;
+  color: $b8;
+  border-radius: 20px;
+  border: 2px solid $b8;
+  width: fit-content;
+  position: relative;
+  transition: .3s ease;
+  overflow: hidden;
+
+  &::after {
+    content: "";
+    display: block;
+    @include width(32px);
+    @include height(32px);
+    border-radius: 50%;
+    background-color: $b8;
+    position: absolute;
+    top: 50%;
+    @include left(8px);
+    transform: translateY(-50%);
+    z-index: -1;
+    transition: .3s ease;
+  }
+
+  &:hover {
+    color: $w1;
+
+    &::after {
+      transform: scale(20);
     }
   }
 }
