@@ -12,7 +12,7 @@ const CreateShop = () => {
   const csrf = () => axios.get('/sanctum/csrf-cookie')
 
   const router = useRouter()
-  const { user } = useAuth({middleware: 'auth'})
+  const { user } = useAuth({middleware: 'auth', type: 'dellamall'})
   const [disabled, setDisabled] = useState(false)
   const { register, handleSubmit, getValues, setValue, formState: { errors } } = useForm({
     defaultValues: {

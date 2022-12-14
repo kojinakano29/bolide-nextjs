@@ -2,7 +2,7 @@ import styles from '@/styles/liondor/components/blogPattern7.module.scss'
 import Image from 'next/image';
 import Link from 'next/link';
 import { BlogTxt } from '@/components/liondor'
-import dummy19 from '@/images/liondor/cms/dummy19.png'
+import dummy from '@/images/liondor/cms/dummy.png'
 
 const BlogPattern7 = ({pattern}) => {
   const data = pattern?.l_post?.filter((e, index) => {
@@ -15,20 +15,14 @@ const BlogPattern7 = ({pattern}) => {
         <Link href={`/liondor/post/show/${item.id}`} key={item.id}>
           <a className={styles.blogLink}>
             <div className={styles.imgBox}>
-              <Image
-                src={dummy19}
-                alt=""
-                layout="responsive"
-                sizes="(min-width: 1340px) 412px, (min-width: 768px) 230px, 100vw"
-                priority
-              />
+              <img src={item.thumbs ? `${process.env.NEXT_PUBLIC_BACKEND_URL}/storage/${item.thumbs}` : dummy.src} alt="" />
             </div>
             <BlogTxt
               smallMb
               cat={item?.l_category?.parent_slug?.toUpperCase()}
               cat2={item?.l_category?.name}
               ttl={item?.title}
-              name={item?.user?.name}
+              name={item?.user?.l_profile.nicename}
               time={item?.created_at}
             />
           </a>

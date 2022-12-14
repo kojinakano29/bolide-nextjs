@@ -11,7 +11,7 @@ import icon4 from '@/images/corapura/common/linkIcon4.svg'
 import icon5 from '@/images/corapura/common/linkIcon5.svg'
 
 const EditorMyPage = () => {
-  const { user } = useAuth({middleware: 'auth'})
+  const { user } = useAuth({middleware: 'auth', type: 'corapura'})
   // console.log(user)
 
   return (

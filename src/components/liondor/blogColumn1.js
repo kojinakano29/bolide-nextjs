@@ -1,6 +1,5 @@
 import styles from '@/styles/liondor/components/blogColumn1.module.scss'
-import Image from 'next/image';
-import dummy1 from '@/images/liondor/cms/dummy1.png'
+import dummy from '@/images/liondor/cms/dummy.png'
 import Link from 'next/link';
 import { BlogTxt } from '@/components/liondor'
 
@@ -15,19 +14,13 @@ const BlogColumn1 = ({patternData}) => {
         <Link href={`/liondor/post/show/${item.id}`} key={item.id}>
           <a className={styles.blogLink}>
             <div className={styles.imgBox}>
-              <Image
-                src={dummy1}
-                alt=""
-                layout="responsive"
-                sizes="(min-width: 1340px) 1300px, (min-width: 768px) 720px, 100vw"
-                priority
-              />
+              <img src={item.thumbs ? `${process.env.NEXT_PUBLIC_BACKEND_URL}/storage/${item.thumbs}` : dummy.src} alt="" />
             </div>
             <BlogTxt
               cat={item?.l_category?.parent_slug?.toUpperCase()}
               cat2={item?.l_category?.name}
               ttl={item?.title}
-              name={item?.user?.name}
+              name={item?.user?.l_profile.nicename}
               time={item?.created_at}
               fs24
             />

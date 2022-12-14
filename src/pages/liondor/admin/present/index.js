@@ -30,7 +30,7 @@ const AdminPresent = ({posts}) => {
   const csrf = () => axios.get('/sanctum/csrf-cookie')
 
   const router = useRouter()
-  const { user } = useAuth({middleware: 'auth'})
+  const { user } = useAuth({middleware: 'auth', type: 'liondor'})
 
   useEffect(() => {
     onLoadCheck()
@@ -105,11 +105,13 @@ const AdminPresent = ({posts}) => {
               ))}
             </ul>
           </article>
-          <div className="pagerBox">
-            {current === 1 ? '' : <button className="pagerBtn pagerPrev" onClick={onClickPrev}></button>}
-            <p className="pagerCurrent en">{current}/{posts.page_max}</p>
-            {posts.page_max === current ? '' : <button className="pagerBtn pagerNext" onClick={onClickNext}></button>}
-          </div>
+          {posts.page_max > 0 ?
+            <div className="pagerBox">
+              {current === 1 ? '' : <button className="pagerBtn pagerPrev" onClick={onClickPrev}></button>}
+              <p className="pagerCurrent en">{current}/{posts.page_max}</p>
+              {posts.page_max === current ? '' : <button className="pagerBtn pagerNext" onClick={onClickNext}></button>}
+            </div>
+          : null}
         </Container>
         : null
       }

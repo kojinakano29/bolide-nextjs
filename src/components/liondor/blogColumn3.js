@@ -1,8 +1,7 @@
 import styles from '@/styles/liondor/components/blogColumn3.module.scss'
-import Image from 'next/image';
 import Link from 'next/link';
 import { BlogTxt } from '@/components/liondor'
-import dummy7 from '@/images/liondor/cms/dummy7.png'
+import dummy from '@/images/liondor/cms/dummy.png'
 
 const BlogColumn3 = ({patternData, part2 = false, route2 = false}) => {
   const data = route2 ? patternData?.filter((e, index) => {
@@ -17,13 +16,11 @@ const BlogColumn3 = ({patternData, part2 = false, route2 = false}) => {
         <Link href={`/liondor/post/show/${item.id}`} key={item.id}>
           <a className={styles.blogLink}>
             <div className={styles.imgBox}>
-              <Image
-                src={dummy7}
-                alt=""
-                layout="responsive"
-                sizes="(min-width: 1340px) 412px, (min-width: 768px) 230px, 100vw"
-                priority
-              />
+              {route2 ?
+                <img src={item.l_post.thumbs ? `${process.env.NEXT_PUBLIC_BACKEND_URL}/storage/${item.l_post.thumbs}` : dummy.src} alt="" />
+              :
+                <img src={item.thumbs ? `${process.env.NEXT_PUBLIC_BACKEND_URL}/storage/${item.thumbs}` : dummy.src} alt="" />
+              }
             </div>
             {
               route2
@@ -33,7 +30,7 @@ const BlogColumn3 = ({patternData, part2 = false, route2 = false}) => {
                 cat={item?.l_post?.l_category?.parent_slug?.toUpperCase()}
                 cat2={item?.l_post?.l_category?.name}
                 ttl={item?.l_post?.title}
-                name={item?.l_post?.user?.name}
+                name={item?.l_post?.user?.l_profile.nicename}
                 time={item?.l_post?.created_at}
               />
               :
@@ -42,7 +39,7 @@ const BlogColumn3 = ({patternData, part2 = false, route2 = false}) => {
                 cat={item?.l_category?.parent_slug?.toUpperCase()}
                 cat2={item?.l_category?.name}
                 ttl={item?.title}
-                name={item?.user?.name}
+                name={item?.user?.l_profile.nicename}
                 time={item?.created_at}
               />
             }

@@ -1,12 +1,12 @@
 import styles from '@/styles/dellamall/components/shopOfficial.module.scss'
 import { useCallback, useEffect, useState } from 'react';
 import dummy from '@/images/dellamall/shopDetail/onlineSalon.webp'
-import dummy2 from '@/images/dellamall/shopDetail/instagram@del.png'
 import { Btn01, Date } from '@/components/dellamall';
 import { faBagShopping } from '@fortawesome/free-solid-svg-icons'
 import { faInstagram } from '@fortawesome/free-brands-svg-icons'
 
 const shopOfficial = ({info}) => {
+  // console.log(info)
   const overviews = info.d_overviews
   const coupons = info.d_coupons
   const infos = info.d_infos
@@ -134,14 +134,14 @@ const shopOfficial = ({info}) => {
           {items.map((item) => (
             <li key={item.id}>
               <div className={styles.imgBox}>
-                <img src={dummy2.src} alt="" />
+                <img src={item.thumbs ? `${process.env.NEXT_PUBLIC_BACKEND_URL}/storage/${item.thumbs}` : null} alt="" />
               </div>
               <p className={styles.product}>{item.title}</p>
               <p className={styles.cost}>￥{item.price}<span>(税込)</span></p>
             </li>
           ))}
         </ul>
-        <Btn01 fa={faBagShopping} txt="すべての商品を見る" />
+        <Btn01 fa={faBagShopping} txt="すべての商品を見る" link={info.url} blank />
       </div>
     </>
   );

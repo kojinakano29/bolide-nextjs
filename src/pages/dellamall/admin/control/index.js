@@ -12,7 +12,7 @@ const Control = () => {
   const csrf = () => axios.get('/sanctum/csrf-cookie')
 
   const router = useRouter()
-  const { user } = useAuth({middleware: 'auth'})
+  const { user } = useAuth({middleware: 'auth', type: 'dellamall'})
   const [authCheck, setAuthCheck] = useState(false)
   const [popup, setPopup] = useState(false)
   const [type, setType] = useState("")

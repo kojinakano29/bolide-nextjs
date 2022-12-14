@@ -7,6 +7,7 @@ import { faSquarePlus, faTableCellsLarge, faGear } from '@fortawesome/free-solid
 import { createContext, useCallback, useEffect, useState } from 'react';
 import axios from '@/lib/axios';
 import { useAuth } from '@/hooks/auth';
+import { useRouter } from 'next/router';
 
 export const getServerSideProps = async ({params}) => {
   const res = await fetch(`${process.env.NEXT_PUBLIC_API_DELLAMALL}/mypage/${params.id}`)
@@ -25,6 +26,7 @@ const Mypage = ({posts}) => {
   // console.log(posts)
   const csrf = () => axios.get('/sanctum/csrf-cookie')
 
+  const router = useRouter()
   const { user } = useAuth()
   const profile = posts.profile
   const dProfile = profile.d_profile
@@ -46,6 +48,13 @@ const Mypage = ({posts}) => {
     "保存モール",
     "コメント",
   ]
+
+  useEffect(() => {
+    if (user && router.query.state === "4") {
+      handleClickTab(4)
+      handleClickTabShow(4)
+    }
+  }, [user])
 
   const loadFollowCheck = useCallback(async () => {
     await csrf()

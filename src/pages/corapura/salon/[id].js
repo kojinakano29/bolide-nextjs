@@ -12,6 +12,7 @@ import { useAuth } from '@/hooks/auth';
 import { useCallback, useEffect, useState } from 'react';
 import axios from '@/lib/axios';
 import { Btn, ShowEditor } from '@/components/corapura';
+import userIcon from '@/images/corapura/common/user.svg'
 
 export const getServerSideProps = async ({params}) => {
   const res = await fetch(`${process.env.NEXT_PUBLIC_API_CORAPURA}/salon/show/${params.id}`)
@@ -37,6 +38,7 @@ const OnlineSalonDetail = ({posts}) => {
 
   const [disabled, setDisabled] = useState(false)
   const [followCheck, setFollowCheck] = useState(false)
+  const [planCheck, setPlanCheck] = useState(false)
 
   const onLoadCheck = async () => {
     await csrf()
@@ -51,6 +53,16 @@ const OnlineSalonDetail = ({posts}) => {
     }).catch((e) => {
       console.error(e)
     })
+
+    await axios.post(`/api/corapura/salon_app/check`, {
+      user_id: user?.id,
+      c_salon_id: salon.id,
+    }).then((res) => {
+      // console.log(res)
+      if (res.data.includes(salon.id)) {
+        setPlanCheck(true)
+      }
+    }).catch(e => console.error(e))
   }
 
   useEffect(() => {
@@ -90,6 +102,34 @@ const OnlineSalonDetail = ({posts}) => {
 
     await setDisabled(false)
   }, [disabled, setDisabled, user, followCheck, setFollowCheck, salon])
+
+  const handleClickPlan = useCallback(async () => {
+    if (disabled) return
+    setDisabled(true)
+    await csrf()
+
+    if (planCheck) {
+      await axios.delete(`/api/corapura/salon_app/delete`, {
+        data: {
+          user_id: user?.id,
+          c_salon_id: salon.id
+        }
+      }).then((res) => {
+        // console.log(res)
+        setPlanCheck(false)
+      }).catch(e => console.error(e))
+    } else {
+      await axios.post(`/api/corapura/salon_app/store`, {
+        user_id: user?.id,
+        c_salon_id: salon.id
+      }).then((res) => {
+        // console.log(res)
+        setPlanCheck(true)
+      }).catch(e => console.error(e))
+    }
+
+    await setDisabled(false)
+  }, [disabled, setDisabled, user, salon, planCheck])
 
   return (
     <section className="cont1">
@@ -153,6 +193,14 @@ const OnlineSalonDetail = ({posts}) => {
                 <a href={company.url} target="_blank" key={index}>{company.url}</a>
               ))}
             </div>
+            <button
+              type="button"
+              className={`${styles.btn} ${planCheck ? styles.on : null}`}
+              onClick={handleClickPlan}
+            >
+              <img src={userIcon.src} alt="" />
+              <span>{planCheck ? "入会済み" : "このプランに入会する"}</span>
+            </button>
           </div>
         </div>
         <div className={styles.btnCover}>

@@ -10,7 +10,7 @@ import { Loader } from '@/components/dellamall';
 const AdminShop = () => {
   const csrf = () => axios.get('/sanctum/csrf-cookie')
 
-  const { user } = useAuth({middleware: 'auth'})
+  const { user } = useAuth({middleware: 'auth', type: 'dellamall'})
   const [createShop, setCreateShop] = useState([])
   const [processing, setProcessing] = useState(false)
 

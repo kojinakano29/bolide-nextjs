@@ -21,7 +21,7 @@ export const getServerSideProps = async ({params}) => {
 
 const AdminPresentUserList = ({posts}) => {
   const router = useRouter()
-  const { user } = useAuth({middleware: 'auth'})
+  const { user } = useAuth({middleware: 'auth', type: 'liondor'})
   const present = posts.presents
 
   useEffect(() => {

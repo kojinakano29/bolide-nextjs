@@ -1,7 +1,6 @@
 import styles from '@/styles/dellamall/components/shopDetailArea.module.scss'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faComment, faHeart, faBookmark, faReply, faFlag, faChevronDown, faThumbsUp } from '@fortawesome/free-solid-svg-icons'
-import dummy from '@/images/dellamall/shopDetail/siteImg.png'
 import notSet from '@/images/dellamall/shopDetail/user-after.svg'
 import notSet2 from '@/images/dellamall/shopDetail/user.svg'
 import line from '@/images/dellamall/shopDetail/line.svg'
@@ -290,8 +289,8 @@ const ShopDetailArea = ({data, user}) => {
       <div className={styles.cont1__flex}>
         <div className={styles.cont1__flexLeft}>
           <div className={styles.cont1__imgBox}>
-            {shop.image_permission === 1 ?
-              <img src={dummy.src} alt="" />
+            {shop.image_permission === 1 && shop.thumbs ?
+              <img src={`${process.env.NEXT_PUBLIC_BACKEND_URL}/storage/${shop.thumbs}`} alt="" />
               :
               <div className={styles.imgNone}></div>
             }

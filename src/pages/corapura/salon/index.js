@@ -23,7 +23,7 @@ export const getServerSideProps = async () => {
 
 const OnlineSalonList = ({posts}) => {
   const csrf = () => axios.get('/sanctum/csrf-cookie')
-  // console.log(posts)
+  console.log(posts)
 
   const [disabled, setDisabled] = useState(false)
   const [search, setSearch] = useState("")
@@ -121,7 +121,12 @@ const OnlineSalonList = ({posts}) => {
                       <img src={salon.thumbs ? `${process.env.NEXT_PUBLIC_BACKEND_URL}/storage/${salon.thumbs}` : dummy.src} alt="" />
                     </div>
                     <p className={styles.ttl}>{salon.title}</p>
-                    <p className={styles.desc}>{salon.content.substring(0, 45)}...</p>
+                    <p className={styles.desc}>
+                      {salon.content.substring(0, 45)}...
+                      {/* {JSON.parse(salon.content).blocks.map((cont) => {
+                        return cont.text
+                      }).join('').substring(0, 45)}... */}
+                    </p>
                     <div className={styles.tags}>
                       {salon.c_tags.map((tag, index) => (
                         <p className={styles.tag} key={index}>{tag.name}</p>

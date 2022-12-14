@@ -12,7 +12,7 @@ const PickupList = () => {
   const csrf = () => axios.get('/sanctum/csrf-cookie')
 
   const router = useRouter()
-  const { user } = useAuth({middleware: 'auth'})
+  const { user } = useAuth({middleware: 'auth', type: 'dellamall'})
   const [authCheck, setAuthCheck] = useState(false)
   const [lists, setLists] = useState([])
 

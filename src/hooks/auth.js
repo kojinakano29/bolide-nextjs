@@ -3,7 +3,7 @@ import axios from '@/lib/axios'
 import { useEffect } from 'react'
 import { useRouter } from 'next/router'
 
-export const useAuth = ({ middleware, redirectIfAuthenticated } = {}) => {
+export const useAuth = ({ middleware, redirectIfAuthenticated, type } = {}) => {
     const router = useRouter()
 
     const { data: user, error, mutate } = useSWR('/api/user', () =>
@@ -95,7 +95,15 @@ export const useAuth = ({ middleware, redirectIfAuthenticated } = {}) => {
                 .then(() => mutate())
         }
 
-        window.location.pathname = '/liondor/login'
+        if (type === 'liondor') {
+            window.location.pathname = '/liondor/login'
+        } else if (type === 'dellamall') {
+            window.location.pathname = '/dellamall/login'
+        } else if (type === 'corapura') {
+            window.location.pathname = '/corapura/login'
+        } else if (type === 'register') {
+            window.location.pathname = '/register'
+        }
     }
 
     useEffect(() => {

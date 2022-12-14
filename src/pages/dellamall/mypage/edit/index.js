@@ -12,7 +12,7 @@ const EditMypage = () => {
   const csrf = () => axios.get('/sanctum/csrf-cookie')
 
   const router = useRouter()
-  const { user } = useAuth({middleware: 'auth'})
+  const { user } = useAuth({middleware: 'auth', type: 'dellamall'})
   const [disabled, setDisabled] = useState(false)
   const [editData, setEditData] = useState()
   const { register, handleSubmit, setValue, formState: { errors } } = useForm({

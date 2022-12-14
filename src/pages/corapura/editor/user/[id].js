@@ -38,7 +38,7 @@ const EditUser = ({posts}) => {
   const skillStr = skills.join(',')
 
   const router = useRouter()
-  const { user } = useAuth({middleware: 'auth'})
+  const { user } = useAuth({middleware: 'auth', type: 'corapura'})
   const [disabled, setDisabled] = useState(false)
   const [popup, setPopup] = useState(false)
   const [mode, setMode] = useState("")

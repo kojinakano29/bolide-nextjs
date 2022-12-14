@@ -24,7 +24,7 @@ const PresentEdit = ({posts}) => {
   const csrf = () => axios.get('/sanctum/csrf-cookie')
 
   const router = useRouter()
-  const { user } = useAuth({middleware: 'auth'})
+  const { user } = useAuth({middleware: 'auth', type: 'liondor'})
 
   useEffect(() => {
     onLoadCheck()

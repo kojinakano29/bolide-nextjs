@@ -1,7 +1,7 @@
 import styles from '@/styles/liondor/components/createPost.module.scss'
 import axios from '@/lib/axios'; // カスタムフック
 import { useCallback, useEffect, useState } from 'react'
-import { PageTitle, PostEditor } from '@/components/liondor';
+import { Button2, PageTitle, PostEditor } from '@/components/liondor';
 import { useForm } from 'react-hook-form';
 import Container from '@/components/liondor/Layouts/container';
 import { useAuth } from '@/hooks/auth';
@@ -22,7 +22,7 @@ export const getServerSideProps = async ({params}) => {
 const PostEdit = ({posts}) => {
   const csrf = () => axios.get('/sanctum/csrf-cookie')
 
-  const { user } = useAuth({middleware: 'auth'})
+  const { user } = useAuth({middleware: 'auth', type: 'liondor'})
 
   useEffect(() => {
     onLoadCheck()
@@ -246,6 +246,8 @@ const PostEdit = ({posts}) => {
         </Container>
         : null
       }
+
+      <Button2 link={`/liondor/post/editor_index/${user?.id}`} name="一覧へ戻る" />
     </section>
   );
 }
