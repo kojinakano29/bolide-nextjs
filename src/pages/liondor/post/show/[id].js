@@ -45,7 +45,7 @@ const DetailPage = ({posts}) => {
   const seriesNextPost = posts.series?.next_post
   const seriesName = posts.series.series_info.name
   const userName = post.user.name
-  const createAt = post.created_at
+  const createAt = post.view_date
   const bookmark = posts.bookmarks
   const pickup = post.l_pickup
 

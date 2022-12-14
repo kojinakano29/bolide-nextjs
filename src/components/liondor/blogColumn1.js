@@ -21,7 +21,7 @@ const BlogColumn1 = ({patternData}) => {
               cat2={item?.l_category?.name}
               ttl={item?.title}
               name={item?.user?.l_profile.nicename}
-              time={item?.created_at}
+              time={item?.view_date}
               fs24
             />
           </a>
