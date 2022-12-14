@@ -24,7 +24,7 @@ const EditShop = ({posts}) => {
   // console.log(posts)
   const csrf = () => axios.get('/sanctum/csrf-cookie')
 
-  const { user } = useAuth({middleware: 'auth'})
+  const { user } = useAuth({middleware: 'auth', type: 'dellamall'})
   const [disabled, setDisabled] = useState(false)
   const tags = posts?.d_tags
   const tags2 = tags?.map((item) => {return item.name})

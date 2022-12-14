@@ -187,3 +187,12 @@
     @include m(0, 0, auto);
   }
 }
+
+.btn {
+  @include btn;
+
+  &.on {
+    background-image: unset;
+    background-color: $g3;
+  }
+}

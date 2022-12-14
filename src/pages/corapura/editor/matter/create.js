@@ -24,7 +24,7 @@ const CreateMatter = ({posts}) => {
   const csrf = () => axios.get('/sanctum/csrf-cookie')
 
   const router = useRouter()
-  const { user } = useAuth({middleware: 'auth'})
+  const { user } = useAuth({middleware: 'auth', type: 'corapura'})
   const [disabled, setDisabled] = useState(false)
   const [selector, setSelector] = useState(parseInt(1))
   const { register, handleSubmit, reset, formState: { errors } } = useForm({

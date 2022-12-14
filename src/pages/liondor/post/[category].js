@@ -97,11 +97,13 @@ const Post = ({posts}) => {
         </article>
         : null
       }
-      <div className="pagerBox">
-        {current === 1 ? '' : <button className="pagerBtn pagerPrev" onClick={onClickPrev}></button>}
-        <p className="pagerCurrent en">{current}/{posts.page_max}</p>
-        {posts.page_max === current ? '' : <button className="pagerBtn pagerNext" onClick={onClickNext}></button>}
-      </div>
+      {posts.page_max > 0 ?
+        <div className="pagerBox">
+          {current === 1 ? '' : <button className="pagerBtn pagerPrev" onClick={onClickPrev}></button>}
+          <p className="pagerCurrent en">{current}/{posts.page_max}</p>
+          {posts.page_max === current ? '' : <button className="pagerBtn pagerNext" onClick={onClickNext}></button>}
+        </div>
+      : null}
     </section>
   );
 }

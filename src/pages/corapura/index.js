@@ -176,7 +176,11 @@ const Corapura = ({posts}) => {
                     <img src={salon.thumbs ? `${process.env.NEXT_PUBLIC_BACKEND_URL}/storage/${salon.thumbs}` : dummy1.src} alt="" />
                     <div className={styles.contBox}>
                       <p className={styles.salonName}>{salon.title}</p>
-                      <p className={styles.salonDesc}>{salon.content}</p>
+                      <p className={styles.salonDesc}>
+                        {JSON.parse(salon.content).blocks.map((cont) => {
+                          return cont.text
+                        }).join('').substring(0, 60)}...
+                      </p>
                     </div>
                   </a>
                 </Link>

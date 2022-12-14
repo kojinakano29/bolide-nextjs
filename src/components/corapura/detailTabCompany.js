@@ -418,22 +418,22 @@ const DetailTabCompany = ({businesses, releases, matters, userInfo}) => {
                 {tab2 === 2 ?
                   <>
                     <div className={styles.presidentBox}>
-                      {president.thumbs ?
+                      {president?.thumbs ?
                         <div className={styles.imgBox}>
-                          <img src={`${process.env.NEXT_PUBLIC_BACKEND_URL}/storage/${president.thumbs}`} alt="" />
+                          <img src={`${process.env.NEXT_PUBLIC_BACKEND_URL}/storage/${president?.thumbs}`} alt="" />
                         </div>
                       : null}
                       <div className={styles.right}>
-                        <p className={styles.ttl}>{president.title}</p>
-                        <p className={styles.presidentDesc}>{president.top_text}</p>
+                        <p className={styles.ttl}>{president?.title}</p>
+                        <p className={styles.presidentDesc}>{president?.top_text}</p>
                       </div>
                     </div>
-                    {!presidentMore ?
+                    {president && !presidentMore ?
                       <div className="btnCover" onClick={handleClickMorePresident}>
                         <Btn txt="さらに見る" />
                       </div>
                     :
-                      <p className={styles.presidentDesc}>{president.content}</p>
+                      <p className={styles.presidentDesc}>{president?.content}</p>
                     }
                   </>
                 : null}

@@ -2,10 +2,6 @@ import bannar1 from '@/images/liondor/common/bannar1.png'
 import bannar2 from '@/images/liondor/common/bannar2.png'
 import bannar3 from '@/images/liondor/common/bannar3.png'
 import bannar4 from '@/images/liondor/common/bannar4.png'
-import dummy14 from '@/images/liondor/cms/dummy14.png'
-import dummy15 from '@/images/liondor/cms/dummy15.png'
-import dummy16 from '@/images/liondor/cms/dummy16.png'
-import dummy17 from '@/images/liondor/cms/dummy17.png'
 import dummy18 from '@/images/liondor/cms/dummy18.png'
 
 // サイト情報
@@ -30,6 +26,8 @@ export const adminNaviData = [
   {name: 'ピックアップ管理', link: '/liondor/admin/pickup'},
   {name: 'サイドバー管理', link: '/liondor/admin/sidebar'},
   {name: 'FAQ管理', link: '/liondor/admin/faq'},
+  {name: 'FirstClass管理', link: '/liondor/admin/first_class/edit/1'},
+  {name: 'COLLECTION管理', link: '/liondor/admin/collection/edit/1'},
 ]
 
 // ページナビ
@@ -693,13 +691,6 @@ export const zip = [
 ]
 
 // ダミー画像（削除予定）
-export const dummyImage3 = [
-  {src: dummy14},
-  {src: dummy15},
-  {src: dummy16},
-  {src: dummy17},
-]
-
 export const dummyImage5 = [
   {
     src: dummy18,

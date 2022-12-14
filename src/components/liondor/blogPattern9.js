@@ -1,8 +1,7 @@
 import styles from '@/styles/liondor/components/blogPattern9.module.scss'
 import Link from 'next/link'
-import Image from 'next/image'
 import { BlogTxt } from '@/components/liondor'
-import dummy10 from '@/images/liondor/cms/dummy10.png'
+import dummy from '@/images/liondor/cms/dummy.png'
 
 const BlogPattern9 = ({pattern}) => {
   const data = pattern?.filter((e, index) => {
@@ -15,13 +14,7 @@ const BlogPattern9 = ({pattern}) => {
         <Link href={`/liondor/present/${item.id}`} key={item.id}>
           <a className={styles.blogLink}>
             <div className={styles.imgBox}>
-              <Image
-                src={dummy10}
-                alt=""
-                layout="responsive"
-                sizes="(min-width: 1340px) 300px, (min-width: 768px) 180px, 100vw"
-                priority
-              />
+              <img src={item.thumbs ? `${process.env.NEXT_PUBLIC_BACKEND_URL}/storage/${item.thumbs}` : dummy.src} alt="" />
             </div>
             <BlogTxt
               smallMb

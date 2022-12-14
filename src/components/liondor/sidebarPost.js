@@ -1,7 +1,6 @@
 import styles from '@/styles/liondor/components/sidebarPost.module.scss'
 import Link from 'next/link'
-import Image from 'next/image'
-import dummy10 from '@/images/liondor/cms/dummy10.png'
+import dummy from '@/images/liondor/cms/dummy.png'
 import { BlogTxt } from '@/components/liondor'
 
 const SidebarPost = ({pickUp}) => {
@@ -18,13 +17,7 @@ const SidebarPost = ({pickUp}) => {
           <Link href={`/liondor/post/show/${item.id}`} key={index}>
             <a className={styles.blogLink}>
               <div className={styles.imgBox}>
-                <Image
-                  src={dummy10}
-                  alt=""
-                  layout="responsive"
-                  sizes="100px"
-                  // priority
-                />
+                <img src={item.l_post.thumbs ? `${process.env.NEXT_PUBLIC_BACKEND_URL}/storage/${item.l_post.thumbs}` : dummy.src} alt="" />
               </div>
               <div className={styles.txtBox}>
                 <BlogTxt
@@ -33,7 +26,7 @@ const SidebarPost = ({pickUp}) => {
                   cat={item.l_post.l_category?.parent_slug?.toUpperCase()}
                   cat2={item.l_post.l_category?.name}
                   ttl={item.l_post.title}
-                  name={item.l_post.user.name}
+                  name={item.l_post.user.l_profile.nicename}
                   time={item.l_post.created_at}
                 />
               </div>

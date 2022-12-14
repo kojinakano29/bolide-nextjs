@@ -1,6 +1,5 @@
 import styles from '@/styles/dellamall/components/storeCard.module.scss'
 import dummyDefault from '@/images/dellamall/parts/store__item/defoult.webp'
-import dummyShop from '@/images/dellamall/parts/store__item/test@del.png'
 import Link from 'next/link'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faComment } from '@fortawesome/free-solid-svg-icons'
@@ -16,7 +15,19 @@ const StoreCard = ({item, swiper = false, none = false}) => {
         <div className={`${styles.cardBox} ${swiper ? styles.swiper : ""}`}>
             <Link href={`/dellamall/shop/${item.id}`}>
                 <a className={styles.item}>
-                    <img className={styles.shopImg} src={item.image_permission === 0 ? dummyDefault.src : dummyShop.src} alt="" />
+                    {item.image_permission === 0 ?
+                        <img
+                            className={styles.shopImg}
+                            src={dummyDefault.src}
+                            alt=""
+                        />
+                    :
+                        <img
+                            className={styles.shopImg}
+                            src={item.thumbs ? `${process.env.NEXT_PUBLIC_BACKEND_URL}/storage/${item.thumbs}` : dummyDefault.src}
+                            alt=""
+                        />
+                    }
                     {item.image_permission === 0 ?
                         <div className={`${styles.card} ${styles.default}`}>
                             <p className={styles.name}>{item.name}</p>

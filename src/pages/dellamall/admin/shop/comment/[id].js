@@ -23,7 +23,7 @@ const CommentList = ({posts}) => {
   const csrf = () => axios.get('/sanctum/csrf-cookie')
 
   const router = useRouter()
-  const { user } = useAuth({middleware: 'auth'})
+  const { user } = useAuth({middleware: 'auth', type: 'dellamall'})
 
   const onLoadCheck = async () => {
     if (user?.account_type === 0) {

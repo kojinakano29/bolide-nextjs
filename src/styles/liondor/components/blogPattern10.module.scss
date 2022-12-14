@@ -9,6 +9,18 @@
   &:last-of-type {
     @include mb(48px);
   }
+
+  .imgBox {
+    aspect-ratio: 1 / 1;
+    overflow: hidden;
+
+    img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      object-position: top center;
+    }
+  }
 }
 
 .txtBox {

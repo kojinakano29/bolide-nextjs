@@ -45,7 +45,7 @@ const Header = () => {
               null
               :
               <Link href="/dellamall">
-                <a className={`${styles.logo} hoverEffect`}>
+                <a className={`${styles.logo} hoverEffect pc`}>
                   <Image
                     src={logo}
                     alt="della mall"

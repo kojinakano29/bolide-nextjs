@@ -15,9 +15,12 @@ export const getServerSideProps = async () => {
 }
 
 export default function Home({posts}) {
-    const firstClassData = posts.fashions
+    console.log(posts)
+
+    const firstClassData = posts.first
     const specialData = posts.special
     const fashionData = posts.fashions
+    const collectionData = posts.collection
     const beautyData = posts.beautys
     const trendData = posts.trends
     const lifestyleData = posts.lifestyles
@@ -25,6 +28,7 @@ export default function Home({posts}) {
     const topleaderData = posts.topleaders
     const fortuneData = posts.fortunes
     const videoData = posts.videos
+    const salonData = posts.salon
     const pickupData = posts.pickups
     const presentData = posts.presents
 
@@ -54,7 +58,7 @@ export default function Home({posts}) {
             <section className={`cont ${styles.cont4}`}>
                 <Container>
                     <h2 className="ttl1 ivy">COLLECTION</h2>
-                    <BlogPattern3 />
+                    <BlogPattern3 pattern={collectionData[0]} />
                 </Container>
             </section>
 
@@ -110,8 +114,8 @@ export default function Home({posts}) {
             <section className={`cont ${styles.cont12}`}>
                 <Container>
                     <h2 className="ttl1 ivy">ON-LINE SALON</h2>
-                    <BlogPattern6 />
-                    <Button2 link="/" name="view all" />
+                    <BlogPattern6 salons={salonData} />
+                    <Button2 link={`/corapura/salon`} name="view all" />
                 </Container>
             </section>
 

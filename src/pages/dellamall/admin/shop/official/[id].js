@@ -25,7 +25,7 @@ const OfficialShop = ({posts}) => {
   const csrf = () => axios.get('/sanctum/csrf-cookie')
 
   const router = useRouter()
-  const { user } = useAuth({middleware: 'auth'})
+  const { user } = useAuth({middleware: 'auth', type: 'dellamall'})
   const [disabled, setDisabled] = useState(false)
   const [officialCheck, setOfficialCheck] = useState(false)
   const [popup, setPopup] = useState(false)

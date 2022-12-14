@@ -29,7 +29,7 @@ const EditPressRelease = ({posts}) => {
   const tagStr = tags.join(',')
 
   const router = useRouter()
-  const { user } = useAuth({middleware: 'auth'})
+  const { user } = useAuth({middleware: 'auth', type: 'corapura'})
   const [disabled, setDisabled] = useState(false)
   const { register, handleSubmit, formState: { errors } } = useForm({
     defaultValues: {

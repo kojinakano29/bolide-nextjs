@@ -9,6 +9,7 @@ import { faTrophy, faSquarePlus } from '@fortawesome/free-solid-svg-icons'
 import { createContext, useEffect, useRef } from 'react';
 import axios from '@/lib/axios';
 import useSWRInfinite from "swr/infinite"
+import Link from 'next/link';
 
 export const StoreData = createContext()
 
@@ -118,7 +119,7 @@ const Home = ({posts}) => {
       <section className={styles.pickup}>
         <Container>
           <h2 className="ttl1">PICKUP</h2>
-          <MasonryGridComponent item={pickup} />
+          <MasonryGridComponent item={pickup} none />
         </Container>
       </section>
 
@@ -135,6 +136,14 @@ const Home = ({posts}) => {
           : null}
         </Container>
       </section>
+
+      <Container small>
+        <Link href="/corapura/press_release">
+          <a className={styles.banner}>
+            <img src="" alt="" />
+          </a>
+        </Link>
+      </Container>
     </>
   );
 }

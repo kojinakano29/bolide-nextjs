@@ -1,33 +1,32 @@
 import styles from '@/styles/liondor/components/blogPattern3.module.scss'
-import Image from 'next/image';
 import Link from 'next/link';
 import { BlogTxt } from '@/components/liondor';
-import { dummyImage3 } from '@/lib/liondor/constants';
 
-const BlogPattern3 = () => {
+const BlogPattern3 = ({pattern}) => {
   return (
     <article className={styles.article}>
-      <Link href="/">
+      <Link href={pattern.url}>
         <a className={styles.blogLink}>
           <div className={styles.imgFlex}>
-            {dummyImage3.map((items, index) => (
-              <div className={styles.imgBox} key={index}>
-                <Image
-                  src={items.src}
-                  alt=""
-                  layout="responsive"
-                  sizes="(min-width: 1340px) 325px, (min-width: 768px) 180px, 25vw"
-                  priority
-                />
-              </div>
-            ))}
+            <div className={styles.imgBox}>
+              <img src={`${process.env.NEXT_PUBLIC_BACKEND_URL}/storage/${pattern.image1}`} alt="" />
+            </div>
+            <div className={styles.imgBox}>
+              <img src={`${process.env.NEXT_PUBLIC_BACKEND_URL}/storage/${pattern.image2}`} alt="" />
+            </div>
+            <div className={styles.imgBox}>
+              <img src={`${process.env.NEXT_PUBLIC_BACKEND_URL}/storage/${pattern.image3}`} alt="" />
+            </div>
+            <div className={styles.imgBox}>
+              <img src={`${process.env.NEXT_PUBLIC_BACKEND_URL}/storage/${pattern.image4}`} alt="" />
+            </div>
           </div>
           <BlogTxt
-            cat="FASHION"
-            cat2="TREND & STORY"
-            ttl="【インフルエンサーインタビューvol.5】魅せるインスタブランディング×望む未来を創るコーチング・美容ライフ　梅宮翠さん"
-            name="ARATA HOMMA"
-            time="2022-09-26T04:54:36.000000Z"
+            cat={pattern.l_category.parent_slug?.toUpperCase()}
+            cat2={pattern.l_category.name}
+            ttl={pattern.title}
+            name={pattern.user.l_profile.nicename}
+            time={pattern.created_at}
             fs24
           />
         </a>

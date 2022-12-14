@@ -1,7 +1,7 @@
 import { StoreCard } from '@/components/dellamall';
 import { MasonryGrid } from '@egjs/react-grid';
 
-const MasonryGridComponent = ({item}) => {
+const MasonryGridComponent = ({item, none = false}) => {
   return (
     <>
       <MasonryGrid
@@ -15,6 +15,7 @@ const MasonryGridComponent = ({item}) => {
           <StoreCard
             key={index}
             item={item}
+            none={none}
           />
         ))}
       </MasonryGrid>

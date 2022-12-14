@@ -66,19 +66,30 @@ const MatterCard = ({matter, bookmarkList, detail = false, list = false}) => {
                 }
               </div>
               <p className={styles.ttl}>{matter.title}</p>
-              <p className={styles.desc}>{matter.content.substring(0, 50)}...</p>
-              <p className={styles.iconBox}>
-                <span className={styles.icon}>掲載日</span>
-                {matter.date}
+              <p className={styles.desc}>
+                {matter.content.substring(0, 50)}...
+                {/* {JSON.parse(matter.content).blocks.map((cont) => {
+                  return cont.text
+                }).join('').substring(0, 45)}... */}
               </p>
-              <p className={styles.iconBox}>
-                <span className={styles.icon}>募集期間</span>
-                {matter.limite_date}
-              </p>
-              <p className={styles.iconBox}>
-                <span className={styles.icon}>報酬</span>
-                {matter.reward}
-              </p>
+              {matter.date ?
+                <p className={styles.iconBox}>
+                  <span className={styles.icon}>掲載日</span>
+                  {matter.date}
+                </p>
+              : null}
+              {matter.limite_date ?
+                <p className={styles.iconBox}>
+                  <span className={styles.icon}>募集期間</span>
+                  {matter.limite_date}
+                </p>
+              : null}
+              {matter.reward ?
+                <p className={styles.iconBox}>
+                  <span className={styles.icon}>報酬</span>
+                  {matter.reward}
+                </p>
+              : null}
               <div className={styles.company}>
                 <div className={styles.logoBox}>
                   {matter.user.c_profile.thumbs ? <img src={`${process.env.NEXT_PUBLIC_BACKEND_URL}/storage/${matter.user.c_profile.thumbs}`} alt="" /> : null}
@@ -104,16 +115,25 @@ const MatterCard = ({matter, bookmarkList, detail = false, list = false}) => {
               </div>
               <p className={styles.tag}>{matter.c_cat?.name}</p>
               <p className={styles.ttl}>{matter.title}</p>
-              <p className={styles.desc}>{matter.content.substring(0, 50)}...</p>
-              <p className={styles.iconBox}>
-                <span className={styles.icon}>{detail ? "実施日" : "撮影日"}</span>
-                {matter.date}
+              <p className={styles.desc}>
+                {matter.content.substring(0, 50)}...
+                {/* {JSON.parse(matter.content).blocks.map((cont) => {
+                  return cont.text
+                }).join('').substring(0, 45)}... */}
               </p>
-              <p className={styles.iconBox}>
-                <span className={styles.icon}>募集期間</span>
-                {matter.limite_date}
-              </p>
-              {detail ?
+              {matter.date ?
+                <p className={styles.iconBox}>
+                  <span className={styles.icon}>{detail ? "実施日" : "撮影日"}</span>
+                  {matter.date}
+                </p>
+              : null}
+              {matter.limite_date ?
+                <p className={styles.iconBox}>
+                  <span className={styles.icon}>募集期間</span>
+                  {matter.limite_date}
+                </p>
+              : null}
+              {detail && matter.reward ?
                 <p className={styles.iconBox}>
                   <span className={styles.icon}>報酬</span>
                   {matter.reward}

@@ -12,7 +12,7 @@ import dummy from '@/images/corapura/common/dummy1.svg'
 const AdminSalonList = () => {
   const csrf = () => axios.get('/sanctum/csrf-cookie')
 
-  const { user } = useAuth({middleware: 'auth'})
+  const { user } = useAuth({middleware: 'auth', type: 'corapura'})
   const [disabled, setDisabled] = useState(false)
   const [salons, setSalons] = useState([])
   const [nowPage, setNowPage] = useState(1)
