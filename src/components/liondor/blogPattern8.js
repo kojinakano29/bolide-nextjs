@@ -28,7 +28,7 @@ const BlogPattern8 = ({pattern, must = false}) => {
                   cat2={item?.l_post?.l_category?.name}
                   ttl={item?.l_post?.title}
                   name={item?.l_post?.user?.l_profile.nicename}
-                  time={item?.l_post?.created_at}
+                  time={item?.l_post?.view_date}
                 />
               </div>
             </a>

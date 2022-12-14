@@ -64,6 +64,7 @@ const PostEdit = ({posts}) => {
       l_category_id: parentNum,
       child_category: post.l_category_id,
       l_series_id: post.l_series_id,
+      view_date: post.view_date,
     }
   })
 
@@ -105,6 +106,7 @@ const PostEdit = ({posts}) => {
       discription: data.discription,
       content: editorContent,
       state: data.state,
+      view_date: data.view_date,
     })
   }, [onPostForm, editorContent, defaultThumb, defaultMv, user])
 
@@ -206,6 +208,19 @@ const PostEdit = ({posts}) => {
                       <option value="0">下書き</option>
                       <option value="1">公開済み</option>
                     </select>
+                  </dd>
+                </dl>
+                <dl className={styles.dl}>
+                  <dt className={styles.dt}>
+                    <label htmlFor="view_date">日付</label>
+                  </dt>
+                  <dd className={styles.dd}>
+                    <input
+                      type="date"
+                      id="view_date"
+                      {...register("view_date", { required: state })}
+                    />
+                    {errors.view_date && <p className={`red ${styles.error}`}>必須項目を入力してください</p>}
                   </dd>
                 </dl>
                 <button className="btn2" disabled={disabled}>更新</button>

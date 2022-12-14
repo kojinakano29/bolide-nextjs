@@ -89,6 +89,7 @@ const CreatePost = ({posts}) => {
       discription: data.discription,
       content: editorContent,
       state: data.state,
+      view_date: data.view_date,
     })
   }, [onPostForm, editorContent, user])
 
@@ -194,6 +195,19 @@ const CreatePost = ({posts}) => {
                       <option value="0">下書き</option>
                       <option value="1">公開済み</option>
                     </select>
+                  </dd>
+                </dl>
+                <dl className={styles.dl}>
+                  <dt className={styles.dt}>
+                    <label htmlFor="view_date">日付</label>
+                  </dt>
+                  <dd className={styles.dd}>
+                    <input
+                      type="date"
+                      id="view_date"
+                      {...register("view_date", { required: state })}
+                    />
+                    {errors.view_date && <p className={`red ${styles.error}`}>必須項目を入力してください</p>}
                   </dd>
                 </dl>
                 <button className="btn2" disabled={disabled}>新規作成</button>

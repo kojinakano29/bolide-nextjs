@@ -20,7 +20,7 @@ const ArticleColumn = ({sort, present = false}) => {
               cat2={item?.l_category?.name}
               ttl={item?.title}
               name={item?.user?.l_profile.nicename}
-              time={item?.created_at}
+              time={present ? item?.created_at : item?.view_date}
             />
           </a>
         </Link>
