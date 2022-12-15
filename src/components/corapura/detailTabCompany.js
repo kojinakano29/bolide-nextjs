@@ -4,6 +4,7 @@ import Container from './Layout/container';
 import { User, Loader, MatterCard, Btn, Info, CardType1, CardType2, Release, NameCard, Coupon, Office } from '@/components/corapura';
 import axios from '@/lib/axios';
 import { useAuth } from '@/hooks/auth';
+import Link from 'next/link';
 
 const DetailTabCompany = ({businesses, releases, matters, userInfo}) => {
   const csrf = () => axios.get('/sanctum/csrf-cookie')
@@ -34,8 +35,8 @@ const DetailTabCompany = ({businesses, releases, matters, userInfo}) => {
   }))
   const [card, setCard] = useState([])
   const [filterCard, setFilterCard] = useState([])
-  const [salon, setSalon] = useState([])
-  const [filterSalon, setFilterSalon] = useState([])
+  const [salon, setSalon] = useState()
+  const [salonMore, setSalonMore] = useState(false)
   const [coupon, setCoupon] = useState([])
   const [filterCoupon, setFilterCoupon] = useState([])
   const [sponsor, setSponsor] = useState([])
@@ -108,6 +109,10 @@ const DetailTabCompany = ({businesses, releases, matters, userInfo}) => {
   const handleClickMoreCard = useCallback(async () => {
     setFilterCard(card)
   }, [card, setFilterCard])
+
+  const handleClickMoreSalon = useCallback(async () => {
+    setSalonMore(true)
+  }, [setSalonMore])
 
   const handleClickMoreCoupon = useCallback(async () => {
     setFilterCoupon(coupon)
@@ -216,14 +221,11 @@ const DetailTabCompany = ({businesses, releases, matters, userInfo}) => {
         console.error(e)
       })
     } else if (num === 2) {
-      await axios.post(`/api/corapura/president/tab_return`, {
-        c_profile_id: userInfo.c_profile_id
+      await axios.post(`/api/corapura/salon/tab_return`, {
+        user_id: userInfo.id
       }).then((res) => {
-        // console.log(res)
-        setSalon(res.data)
-        setFilterSalon(res.data.filter((o, index) => {
-          return index === 0
-        }))
+        console.log(res)
+        setSalon(res.data[0])
       }).catch((e) => {
         console.error(e)
       })
@@ -259,7 +261,6 @@ const DetailTabCompany = ({businesses, releases, matters, userInfo}) => {
     setCard,
     setFilterCard,
     setSalon,
-    setFilterSalon,
     setCoupon,
     setFilterCoupon,
     setSponsor,
@@ -537,7 +538,27 @@ const DetailTabCompany = ({businesses, releases, matters, userInfo}) => {
                   </>
                 : null}
                 {tab3 === 2 ?
-                  <></>
+                  <>
+                    <Link href={`/corapura/salon/${salon.id}`}>
+                      <a className={styles.salonBox}>
+                        <div className={styles.imgBox}>
+                          <img src={salon.thumbs ? `${process.env.NEXT_PUBLIC_BACKEND_URL}/storage/${salon.thumbs}` : dummy.src} alt="" />
+                        </div>
+                        <p className={styles.ttl}>{salon.title}</p>
+                        <p className={styles.desc}>
+                          {salon.content.substring(0, 45)}...
+                          {/* {JSON.parse(salon.content).blocks.map((cont) => {
+                            return cont.text
+                          }).join('').substring(0, 45)}... */}
+                        </p>
+                        {/* <div className={styles.tags}>
+                          {salon.c_tags.map((tag, index) => (
+                            <p className={styles.tag} key={index}>{tag.name}</p>
+                          ))}
+                        </div> */}
+                      </a>
+                    </Link>
+                  </>
                 : null}
                 {tab3 === 3 ?
                   <>

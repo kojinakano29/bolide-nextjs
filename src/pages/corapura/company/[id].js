@@ -39,11 +39,13 @@ const CompanyDetail = ({posts}) => {
         userInfo={userInfo}
       />
 
-      <section className={styles.commentArea}>
-        <Container small>
-          <DetailComment comments={comments} />
-        </Container>
-      </section>
+      {comments.length !== 0 ?
+        <section className={styles.commentArea}>
+          <Container small>
+            <DetailComment comments={comments} />
+          </Container>
+        </section>
+      : null}
     </>
   );
 }

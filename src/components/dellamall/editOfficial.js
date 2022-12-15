@@ -5,6 +5,7 @@ import Container from './Layouts/container';
 import { useForm } from 'react-hook-form';
 import axios from '@/lib/axios';
 import { Loader } from '@/components/dellamall';
+import { socialNetworkingService } from '@/lib/dellamall/constants';
 
 const EditOfficial = () => {
   const csrf = () => axios.get('/sanctum/csrf-cookie')
@@ -39,6 +40,9 @@ const EditOfficial = () => {
       setValue("couponContent", editData.title)
       setValue("couponPrice", editData.content)
       setValue("couponLimit", editData.limit)
+    } else if (type === "social") {
+      setValue("socialName", editData.name)
+      setValue("socialUrl", editData.link)
     } else if (type === "info") {
       setValue("infoDate", editData.title)
       setValue("infoContent", editData.content)
@@ -113,7 +117,6 @@ const EditOfficial = () => {
     await axios.post(`/api/dellamall/d_socials/update/${editData.id}`, {
       name: data.socialName,
       link: data.socialUrl,
-      description: data.socialDescription,
     }).then((res) => {
       // console.log(res)
       setSocials(res.data)
@@ -221,7 +224,7 @@ const EditOfficial = () => {
           <h4 className={styles.midashi}>
             {type === "overview" ? "ショップ情報" : null}
             {type === "coupon" ? "クーポン情報" : null}
-            {type === "social" ? "オンラインサロン情報" : null}
+            {type === "social" ? "公式SNS情報" : null}
             {type === "info" ? "お知らせ" : null}
             {type === "instagram" ? "Instagram連携" : null}
             {type === "item" ? "商品情報" : null}
@@ -314,55 +317,37 @@ const EditOfficial = () => {
               : null}
               {/* クーポン編集 */}
 
-              {/* オンラインサロン編集 */}
+              {/* 公式SNS編集 */}
               {type === "social" ?
                 <form onSubmit={handleSubmit(onSubmitSocial)}>
                   <dl>
+                    <dt>SNS名</dt>
+                    <dd>
+                      <select {...register("socialName")}>
+                        {socialNetworkingService.map((sns, index) => (
+                          <option value={sns} key={index}>{sns}</option>
+                        ))}
+                      </select>
+                    </dd>
+                  </dl>
+                  <dl>
                     <dt>
-                      <label htmlFor="socialUrl">サロンURL</label>
+                      <label htmlFor="socialUrl">SNSリンクURL</label>
                     </dt>
                     <dd>
                       <input
-                        type="text"
+                        type="url"
                         id="socialUrl"
                         {...register("socialUrl", {required: true})}
-                        placeholder="コラプラで掲載済みのオンラインサロンのリンク先を入力してください"
+                        placeholder="SNSのリンク先を入力してください"
                       />
                       {errors.socialUrl && <p className={styles.error}>必須項目を入力してください</p>}
-                    </dd>
-                  </dl>
-                  <dl>
-                    <dt>
-                      <label htmlFor="socialName">サロン名</label>
-                    </dt>
-                    <dd>
-                      <input
-                        type="text"
-                        id="socialName"
-                        {...register("socialName", {required: true})}
-                        placeholder="例：アコースティック講座"
-                      />
-                      {errors.socialName && <p className={styles.error}>必須項目を入力してください</p>}
-                    </dd>
-                  </dl>
-                  <dl>
-                    <dt>
-                      <label htmlFor="socialDescription">サロン内容・説明文</label>
-                    </dt>
-                    <dd>
-                      <input
-                        type="text"
-                        id="socialDescription"
-                        {...register("socialDescription", {required: true})}
-                        placeholder="サロンの説明を記入してください！"
-                      />
-                      {errors.socialDescription && <p className={styles.error}>必須項目を入力してください</p>}
                     </dd>
                   </dl>
                   <button className={`${styles.btn} hoverEffect`}>編集</button>
                 </form>
               : null}
-              {/* オンラインサロン編集 */}
+              {/* 公式SNS編集 */}
 
               {/* お知らせ */}
               {type === "info" ?

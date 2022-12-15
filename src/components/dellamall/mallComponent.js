@@ -6,8 +6,8 @@ import { useCallback, useEffect, useState } from 'react';
 import axios from '@/lib/axios';
 import { Loader, MasonryGridComponent } from '@/components/dellamall';
 
-const MallComponent = ({item, user}) => {
-  // console.log(item)
+const MallComponent = ({item, user, save = false}) => {
+  console.log(item)
   const csrf = () => axios.get('/sanctum/csrf-cookie')
 
   const [processing, setProcessing] = useState(false)
@@ -105,23 +105,23 @@ const MallComponent = ({item, user}) => {
               mall.lock === 0 ? handleClickMall(mall.id, mall.name) : null
             }} >
               <div className={styles.box}>
-                {mall.d_mall_in.image_permission === 1 && mall.d_mall_in?.[0]?.thumbs ?
-                  <img src={mall.d_mall_in?.[0]?.thumbs} alt="" />
+                {mall.d_mall_in?.[0]?.image_permission === 1 && mall.d_mall_in?.[0]?.thumbs ?
+                  <img src={`${process.env.NEXT_PUBLIC_BACKEND_URL}/storage/${mall.d_mall_in?.[0]?.thumbs}`} alt="" />
                 : null}
               </div>
               <div className={styles.box}>
-                {mall.d_mall_in.image_permission === 1 && mall.d_mall_in?.[1]?.thumbs ?
-                  <img src={mall.d_mall_in?.[1]?.thumbs} alt="" />
+                {mall.d_mall_in?.[1]?.image_permission === 1 && mall.d_mall_in?.[1]?.thumbs ?
+                  <img src={`${process.env.NEXT_PUBLIC_BACKEND_URL}/storage/${mall.d_mall_in?.[1]?.thumbs}`} alt="" />
                 : null}
               </div>
               <div className={styles.box}>
-                {mall.d_mall_in.image_permission === 1 && mall.d_mall_in?.[2]?.thumbs ?
-                  <img src={mall.d_mall_in?.[2]?.thumbs} alt="" />
+                {mall.d_mall_in?.[2]?.image_permission === 1 && mall.d_mall_in?.[2]?.thumbs ?
+                  <img src={`${process.env.NEXT_PUBLIC_BACKEND_URL}/storage/${mall.d_mall_in?.[2]?.thumbs}`} alt="" />
                 : null}
               </div>
               <div className={styles.box}>
-                {mall.d_mall_in.image_permission === 1 && mall.d_mall_in?.[3]?.thumbs ?
-                  <img src={mall.d_mall_in?.[3]?.thumbs} alt="" />
+                {mall.d_mall_in?.[3]?.image_permission === 1 && mall.d_mall_in?.[3]?.thumbs ?
+                  <img src={`${process.env.NEXT_PUBLIC_BACKEND_URL}/storage/${mall.d_mall_in?.[3]?.thumbs}`} alt="" />
                 : null}
               </div>
             </button>
@@ -132,7 +132,7 @@ const MallComponent = ({item, user}) => {
               : null}
             </div>
             <div className={styles.saveFlex}>
-              <p className={styles.saveTxt}>保存：{mall.d_mall_in.length}件</p>
+              <p className={styles.saveTxt}>保存：{mall.d_mall_in?.length}件</p>
               {user && mall.lock === 0 ?
                 <button
                   className={`${styles.saveBtn} ${saveMallState.includes(mall.id) ? styles.on : null}`}
@@ -147,12 +147,14 @@ const MallComponent = ({item, user}) => {
                 >{saveMallState.includes(mall.id) ? "解除" : "保存"}</button>
               : null}
             </div>
-            <div className={styles.userArea}>
-              <div className={styles.imgBox}>
-                <img src={notSet.src} alt="" />
+            {save ?
+              <div className={styles.userArea}>
+                <div className={styles.imgBox}>
+                  <img src={mall.user.d_profile.thumbs ? `${process.env.NEXT_PUBLIC_BACKEND_URL}/storage/${mall.user.d_profile.thumbs}` : notSet.src} alt="" />
+                </div>
+                <p className={styles.nicename}>{mall.user.d_profile.nicename}</p>
               </div>
-              <p className={styles.nicename}>{mall.name}</p>
-            </div>
+            : null}
           </div>
         ))}
       </div>

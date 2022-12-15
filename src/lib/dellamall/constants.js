@@ -59,3 +59,12 @@ export const zip = [
   "鹿児島",
   "沖縄",
 ]
+
+// SNS
+export const socialNetworkingService = [
+  "LINE",
+  "Facebook",
+  "Twitter",
+  "Instagram",
+  "Youtube",
+]
