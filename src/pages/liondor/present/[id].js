@@ -49,7 +49,7 @@ const PresentForm = (posts) => {
               <div className={styles.termsBox}>
                 <p className={styles.termsTxt}>応募条件</p>
                 <p className={styles.txt}>&#9312;Bolide's JAPAN IDメンバー登録が必要です。</p>
-                <a className={styles.addon} href="" target="_blank">まだ登録がお済みでない方はこちら</a>
+                <a className={styles.addon} href="/register" target="_blank">まだ登録がお済みでない方はこちら</a>
                 <p className={styles.txt}>&#9313;リオンドール各種SNSアカウントのいずれかをフォローしていること。</p>
                 <SnsFollow gray />
               </div>

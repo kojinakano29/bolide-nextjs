@@ -13,17 +13,15 @@ const Footer = () => {
           <p className="ivy">Bolide's Japan Other Site</p>
           <div className={styles.bannarFlex}>
             {bannarData.map((items, index) => (
-              <Link href={items.link} key={index}>
-                <a className={styles.bannarLink}>
-                  <Image
-                    src={items.src}
-                    alt=""
-                    layout="responsive"
-                    sizes="(min-width: 1340px) 274px, (min-width: 768px) 180px, 100vw"
-                    priority
-                  />
-                </a>
-              </Link>
+              <a href={items.link} key={index} className={styles.bannarLink} target="_blank" rel="noopener noreferrer">
+                <Image
+                  src={items.src}
+                  alt=""
+                  layout="responsive"
+                  sizes="(min-width: 1340px) 274px, (min-width: 768px) 180px, 100vw"
+                  priority
+                />
+              </a>
             ))}
           </div>
         </Container>
@@ -56,29 +54,29 @@ const Footer = () => {
 
           <div className={styles.bottomArea}>
             <nav className={styles.bottomLeft}>
-              <a href="/">運営会社</a>
-              <Link href="/">
+              <a href="https://bolides.co.jp/company/" target="_blank">運営会社</a>
+              <Link href="/liondor/copyright">
                 <a>著作権・免責事項について</a>
               </Link>
-              <Link href="/">
+              <Link href="/liondor/privacy">
                 <a>プライバシーポリシー</a>
               </Link>
-              <Link href="/">
+              <Link href="/liondor/sitemap">
                 <a>サイトマップ</a>
               </Link>
-              <Link href="/">
+              <Link href="/liondor/faq">
                 <a>FAQ</a>
               </Link>
-              <Link href="/">
+              <Link href="/liondor/ad">
                 <a>広告掲載について</a>
               </Link>
-              <Link href="/">
+              <Link href="/liondor/present">
                 <a>企業からのプレゼント募集</a>
               </Link>
-              <Link href="/">
+              <Link href="/liondor/registration">
                 <a>リオンドールについて</a>
               </Link>
-              <Link href="/">
+              <Link href="/liondor/contact">
                 <a>お問い合わせ</a>
               </Link>
             </nav>

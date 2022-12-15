@@ -30,7 +30,7 @@ const AdThanks = () => {
             <br/>お問い合わせ内容を確認させていただき、後ほど担当者よりご回答をさせていただきます。
             <br/>恐れ入りますが、今しばらくお待ちいただけますよう、よろしくお願い申し上げます。
           </p>
-          <Link href="/liondor/present">
+          <Link href="/liondor/">
             <a className="btn3 ivy">back to top</a>
           </Link>
         </div>

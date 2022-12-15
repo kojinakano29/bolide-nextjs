@@ -133,17 +133,11 @@ const DetailAreaRight = ({influencer = false}) => {
             <div className={styles.iconList}>
               {profile.c_company_profile.c_company_socials.length !== 0 ?
                 profile.c_company_profile.c_company_socials.map((social, index) => (
-                  <a className="hoverEffect" href="" target="_blank" key={index}>
+                  <a className="hoverEffect" href={social.url} target="_blank" rel="noopener noreferrer" key={index}>
                     <img src="" alt="" />
                   </a>
                 ))
               : null}
-              <a className="hoverEffect" href="" target="_blank">
-                <img src={facebook.src} alt="" />
-              </a>
-              <a className="hoverEffect" href="" target="_blank">
-                <img src={instagram.src} alt="" />
-              </a>
             </div>
           </div>
           <div className={styles.siteUrl}>
@@ -202,7 +196,7 @@ const DetailAreaRight = ({influencer = false}) => {
             <div className={styles.followerBox}>
               {profile.c_user_profile.c_user_socials.length !== 0 ?
                 profile.c_user_profile.c_user_socials.map((social, index) => (
-                  <a className="hoverEffect" href={social.url} target="_blank" key={index}>
+                  <a className="hoverEffect" href={social.url} target="_blank" rel="noopener noreferrer" key={index}>
                     <img src="" alt="" />
                     {social.follower}
                   </a>

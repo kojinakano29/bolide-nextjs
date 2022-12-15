@@ -2,7 +2,6 @@ import bannar1 from '@/images/liondor/common/bannar1.png'
 import bannar2 from '@/images/liondor/common/bannar2.png'
 import bannar3 from '@/images/liondor/common/bannar3.png'
 import bannar4 from '@/images/liondor/common/bannar4.png'
-import dummy18 from '@/images/liondor/cms/dummy18.png'
 
 // サイト情報
 export const siteMeta = {
@@ -195,10 +194,10 @@ export const sitemap = [
 
 // バナー
 export const bannarData = [
-  {src: bannar1, link: "/"},
-  {src: bannar2, link: "/"},
-  {src: bannar3, link: "/"},
-  {src: bannar4, link: "/"},
+  {src: bannar1, link: "https://bolides.co.jp/"},
+  {src: bannar2, link: "https://marche-dor.jp/"},
+  {src: bannar3, link: "/corapura"},
+  {src: bannar4, link: "/dellamall"},
 ]
 
 // プレゼントの趣味のチェックボックス
@@ -688,28 +687,4 @@ export const zip = [
   "宮崎",
   "鹿児島",
   "沖縄",
-]
-
-// ダミー画像（削除予定）
-export const dummyImage5 = [
-  {
-    src: dummy18,
-    ttl: 'かずきのギターサークル',
-    txt: 'ギター初心者が安心して上達できる。上達の過程を楽しみながら練習できる。それを実現する場所を作りました。 僕とメンバーと…'
-  },
-  {
-    src: dummy18,
-    ttl: 'Mayumi Lab. 宇宙一わかりやすいスピリチュアル',
-    txt: 'テキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキス…'
-  },
-  {
-    src: dummy18,
-    ttl: 'SKILLS',
-    txt: 'テキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキス…'
-  },
-  {
-    src: dummy18,
-    ttl: '風水師黒門のオンライン開運塾',
-    txt: 'テキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキス…'
-  },
 ]

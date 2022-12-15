@@ -95,11 +95,11 @@ const Registration = () => {
                 ボリードジャパンの
                 <br/>すべての機能が使える
               </p>
-              <a href="" target="_blank" className={styles.link}>ボリードジャパンとは</a>
+              <a href="https://bolides.co.jp/about/" target="_blank" rel="noopener noreferrer" className={styles.link}>ボリードジャパンとは</a>
             </div>
           </div>
         </div>
-        <a href="" target="_blank" className="btn4">会員登録はこちら</a>
+        <a href="/register" target="_blank" className="btn4">会員登録はこちら</a>
       </Container>
     </section>
   );

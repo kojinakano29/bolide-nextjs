@@ -112,7 +112,7 @@ const Home = ({posts}) => {
           </StoreData.Provider>
         </div>
         <Container>
-          <Btn01 fa={faTrophy} txt="ランキングを見る" link="" right />
+          <Btn01 fa={faTrophy} txt="ランキングを見る" link="/dellamall/shop" right />
         </Container>
       </section>
 

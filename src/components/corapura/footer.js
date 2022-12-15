@@ -22,7 +22,7 @@ const Footer = () => {
         <Container small>
           <p className={`${styles.footer1__title} en`}>Bolide's Japan Other Site</p>
           <div className={styles.footer1__list}>
-            <a className="hoverEffect" href="" target="_blank">
+            <a className="hoverEffect" href="https://bolides.co.jp/" target="_blank" rel="noopener noreferrer">
               <Image
                 src={bolide}
                 alt="Bolide's"
@@ -31,7 +31,7 @@ const Footer = () => {
                 priority
               />
             </a>
-            <a className="hoverEffect" href="" target="_blank">
+            <a className="hoverEffect" href="https://marche-dor.jp/" target="_blank" rel="noopener noreferrer">
               <Image
                 src={marchDor}
                 alt="Marche Dor"
@@ -40,7 +40,7 @@ const Footer = () => {
                 priority
               />
             </a>
-            <a className="hoverEffect" href="/liondor" target="_blank">
+            <a className="hoverEffect" href="/liondor" target="_blank" rel="noopener noreferrer">
               <Image
                 src={liondor}
                 alt="Liondor"
@@ -49,7 +49,7 @@ const Footer = () => {
                 priority
               />
             </a>
-            <a className="hoverEffect" href="/dellamall" target="_blank">
+            <a className="hoverEffect" href="/dellamall" target="_blank" rel="noopener noreferrer">
               <Image
                 src={Dellamall}
                 alt="Della Mall"
@@ -92,12 +92,10 @@ const Footer = () => {
                 </Link>
               </li>
               <li className={styles.footer__cont1Item}>
-                <Link href="/corapura">
-                  <a>Bolide's Japanとは</a>
-                </Link>
+                <a href="https://bolides.co.jp/company/" target="_blank" rel="noopener noreferrer">Bolide's Japanとは</a>
               </li>
               <li className={styles.footer__cont1Item}>
-                <Link href="/corapura">
+                <Link href="/corapura/company/matter">
                   <a>インフルエンサー案件</a>
                 </Link>
               </li>
@@ -118,7 +116,7 @@ const Footer = () => {
             </div>
           </div>
           <ul className={styles.footer__cont3}>
-            <li className={styles.footer__cont3Item}><a href="">運営会社</a></li>
+            <li className={styles.footer__cont3Item}><a href="https://bolides.co.jp/company/" target="_blank" rel="noopener noreferrer">運営会社</a></li>
             <li className={styles.footer__cont3Item}><a href="/corapura/terms">利用規約</a></li>
             <li className={styles.footer__cont3Item}><a href="/corapura/tradeLaw">特定商品取引法に基づく表記</a></li>
             <li className={styles.footer__cont3Item}><a href="/corapura/privacy">プライバシーポリシー</a></li>

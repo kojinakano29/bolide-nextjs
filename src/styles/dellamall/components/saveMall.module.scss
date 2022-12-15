@@ -80,7 +80,16 @@
         border: 1px solid $g3;
         border-radius: 5px;
         @include width(40px);
+        aspect-ratio: 1 / 1;
         overflow: hidden;
+        background-color: $g3;
+
+        img {
+          width: 100%;
+          height: 100%;
+          object-fit: cover;
+          object-position: center;
+        }
       }
 
       .saveMallBox__name {

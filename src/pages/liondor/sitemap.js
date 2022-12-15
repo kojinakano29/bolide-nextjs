@@ -52,11 +52,9 @@ const Sitemap = () => {
             <a className="ivy">SITE MAP</a>
           </Link>
           <div className={styles.hr}></div>
-          <Link href="">
-            <a className="ivy">COMPANY</a>
-          </Link>
+          <a href="https://bolides.co.jp/company/" target="_blank" rel="noopener noreferrer" className="ivy">COMPANY</a>
           <div className={styles.hr}></div>
-          <Link href="">
+          <Link href="/liondor/registration">
             <a className="ivy">ABOUT LIONDOR</a>
           </Link>
         </div>

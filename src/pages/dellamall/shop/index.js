@@ -31,8 +31,8 @@ const ShopSearch = () => {
   const getKey = (pageIndex, previousPageData) => {
     csrf()
     if (previousPageData && !previousPageData.length) return null
-    if (pageIndex === 0) return `/api/dellamall/shop/sort/1/${sort.value}/${account.value}?tag_id=${router.query.tag_id}`
-    return `/api/dellamall/shop/sort/${pageIndex+1}/${sort.value}/${account.value}?tag_id=${router.query.tag_id}`
+    if (pageIndex === 0) return `/api/dellamall/shop/sort/1/${sort.value}/${account.value}?tag_id=${router.query.tag_id ? router.query.tag_id : "0"}`
+    return `/api/dellamall/shop/sort/${pageIndex+1}/${sort.value}/${account.value}?tag_id=${router.query.tag_id ? router.query.tag_id : "0"}`
   }
 
   const fetcher = url => axios.post(url).then(res => res.data.shop)

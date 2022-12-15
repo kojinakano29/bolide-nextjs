@@ -18,6 +18,7 @@ import Image from 'next/image';
 import { Btn01 } from '@/components/dellamall';
 import { faSquarePlus } from '@fortawesome/free-regular-svg-icons'
 import { faCircleCheck } from '@fortawesome/free-solid-svg-icons'
+import Link from 'next/link';
 
 const Guide = () => {
   const [current, setCurrent] = useState(1)
@@ -101,7 +102,7 @@ const Guide = () => {
                   </p>
                 </li>
               </ul>
-              <Btn01 fa={faSquarePlus} txt="ショップを作る" />
+              <Btn01 fa={faSquarePlus} txt="ショップを作る" link="/dellamall/admin/shop/create" />
             </div>
             :
             <div className={styles.cont1__tabArea}>
@@ -135,7 +136,7 @@ const Guide = () => {
                   <p className={styles.cont1__meritItem__text}>
                     デラモールへの掲載はもちろん、グループサイトの「マルシェドール」では実際にあなたのお店の商品の出品が可能！ECサイトへのアクセスだけでなく、商品の購入まで一貫したサポート体制が備わっています。
                   </p>
-                  <p className={styles.cont1__meritItem__link}>マルシェドール：<a href="">https://marche-dor.jp/</a></p>
+                  <p className={styles.cont1__meritItem__link}>マルシェドール：<a href="https://marche-dor.jp/" target="_blank" rel="noopener noreferrer">https://marche-dor.jp/</a></p>
                 </li>
                 <li className={styles.cont1__meritItem}>
                   <div className={styles.imgBox}>
@@ -151,10 +152,10 @@ const Guide = () => {
                   <p className={styles.cont1__meritItem__text}>
                     グループサイトの「コラプラ」では様々な内容で案件をポストすることができます。例えば「アンケート」を掲載して回答からユーザーニーズの分析をしたり、「タイアップ」を依頼して人気インフルエンサーとのコラボ企画実施…なんてことも可能！使い方次第で販路の拡大は自由自在です。
                   </p>
-                  <p className={styles.cont1__meritItem__link}>コラプラ：<a href="">https://corapura.jp/</a></p>
+                  <p className={styles.cont1__meritItem__link}>コラプラ：<Link href="/corapura"><a target="_blank" rel="noopener noreferrer">https://bolides-japan.com/corapura</a></Link></p>
                 </li>
               </ul>
-              <Btn01 fa={faCircleCheck} txt="公式ショップ申請" />
+              <Btn01 fa={faCircleCheck} txt="公式ショップ申請" link="/dellamall/officialRequest" />
             </div>
           }
         </Container>
