@@ -210,7 +210,7 @@
 
         &::after {
           position: absolute;
-          content: "0" counter(num);
+          content: counter(num);
           left: 50%;
           top: 50%;
           transform: translate(-50%, -50%);
@@ -304,7 +304,7 @@
 
         &:after {
           position: absolute;
-          content: "0" counter(num);
+          content: counter(num);
           top: 50%;
           left: 50%;
           transform: translate(-50%, -50%);

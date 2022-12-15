@@ -51,10 +51,10 @@ const Login = () => {
                 </p>
                 <p className={`${styles.desc} ${styles.desc2}`}>まだ登録がお済みでない方はこちら</p>
                 <div className={styles.register}>
-                    <Link href="/">
+                    <Link href="/register">
                         <a className="btn5">企業様はこちら</a>
                     </Link>
-                    <Link href="/">
+                    <Link href="/register">
                         <a className="btn5">一般ユーザーの方はこちら</a>
                     </Link>
                 </div>

@@ -15,7 +15,7 @@ export const getServerSideProps = async () => {
 }
 
 export default function Home({posts}) {
-    console.log(posts)
+    // console.log(posts)
 
     const firstClassData = posts.first
     const specialData = posts.special
@@ -131,7 +131,7 @@ export default function Home({posts}) {
                 <Container>
                     <h2 className="ttl1 ivy">PRESENT</h2>
                     <BlogPattern9 pattern={presentData} />
-                    <Button2 link="/" name="view all" />
+                    <Button2 link="/liondor/present" name="view all" />
                 </Container>
             </section>
         </>

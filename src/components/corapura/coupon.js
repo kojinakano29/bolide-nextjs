@@ -13,7 +13,7 @@ const Coupon = ({data, detail = false}) => {
         {!detail ?
           <div className={styles.company}>
             <div className={styles.logoBox}>
-              {data.c_profile.thumbs ? <img src={data.c_profile.thumbs} alt="" /> : null}
+              {data.c_profile.thumbs ? <img src={`${process.env.NEXT_PUBLIC_BACKEND_URL}/storage/${data.c_profile.thumbs}`} alt="" /> : null}
             </div>
             {data.c_profile.nicename}
           </div>

@@ -5,7 +5,7 @@ import view from '@/images/corapura/parts/material_view.svg'
 
 const Release = ({data, detail = false}) => {
   return (
-    <Link href={`/corapura`}>
+    <Link href={`/corapura/press_release/${data.id}`}>
       <a className={styles.releaseLink}>
         <div className={styles.imgBox}>
           <img src={data.thumbs ? `${process.env.NEXT_PUBLIC_BACKEND_URL}/storage/${data.thumbs}` : dummy.src} alt="" />
@@ -19,7 +19,7 @@ const Release = ({data, detail = false}) => {
           <>
             <div className={styles.company}>
               <div className={styles.logoBox}>
-                {data.user.c_profile.thumbs ? <img src={data.user.c_profile.thumbs} alt="" /> : null}
+                {data.user.c_profile.thumbs ? <img src={`${process.env.NEXT_PUBLIC_BACKEND_URL}/storage/${data.user.c_profile.thumbs}`} alt="" /> : null}
               </div>
               {data.user.c_profile.nicename}
             </div>

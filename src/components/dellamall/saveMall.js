@@ -23,7 +23,7 @@ const SaveMall = () => {
       d_shop_id: shop.id,
     })
     .then((res) => {
-      // console.log(res)
+      console.log(res)
       setMallList(res.data.mall)
       setMallIn(res.data.mall_in)
     })
@@ -99,7 +99,9 @@ const SaveMall = () => {
                   onClick={() => handleClickSaveMallToggle(list.id, list.name)}
                 >
                   <div className={styles.imgBox}>
-                    <img src="../../images/dellamall/shopDetail/saveMallBoxImg@del.png" alt="" />
+                    {list.d_mall_in?.[0]?.thumbs && list.d_mall_in?.[0]?.image_permission === 1 ?
+                      <img src={`${process.env.NEXT_PUBLIC_BACKEND_URL}/storage/${list.d_mall_in?.[0]?.thumbs}`} alt="" />
+                    : null}
                   </div>
                   <span className={styles.saveMallBox__name}>{list.name}</span>
                   <div className={styles.plus}>

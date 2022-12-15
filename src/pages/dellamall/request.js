@@ -98,7 +98,7 @@ const Request = () => {
       <section className={styles.btnArea}>
         <Container small>
           <div className={styles.cont3__title}>まずは下のボタンから公式ショップ申請！</div>
-          <Btn01 fa={faCircleCheck} txt="公式ショップ申請" />
+          <Btn01 fa={faCircleCheck} txt="公式ショップ申請" link="/dellamall/officialRequest" />
         </Container>
       </section>
     </>

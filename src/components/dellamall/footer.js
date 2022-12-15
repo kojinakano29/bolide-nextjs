@@ -65,22 +65,22 @@ const Footer = () => {
             </a>
           </Link>
           <div className={styles.footer__listPage}>
-            <a className="hoverEffect" href="" target="_blank">運営会社</a>
-            <Link href="">
+            <a className="hoverEffect" href="https://bolides.co.jp/company/" target="_blank" rel="noopener noreferrer">運営会社</a>
+            <Link href="/dellamall/terms">
               <a className="hoverEffect">利用規約</a>
             </Link>
-            <Link href="">
+            <Link href="/dellamall/privacy">
               <a className="hoverEffect">プライバシーポリシー</a>
             </Link>
-            <Link href="">
-              <a className="hoverEffect">プレスリリース</a>
+            <Link href="/corapura/press_release">
+              <a className="hoverEffect" target="_blank" rel="noopener noreferrer">プレスリリース</a>
             </Link>
-            <Link href="">
+            <Link href="/dellamall/contact">
               <a className="hoverEffect">お問い合わせ</a>
             </Link>
           </div>
           <div className={styles.footer__listCompany}>
-            <a href="" className="hoverEffect" target="_blank">
+            <a href="https://bolides.co.jp/" className="hoverEffect" target="_blank" rel="noopener noreferrer">
               <Image
                 src={bolides}
                 alt=""
@@ -89,7 +89,7 @@ const Footer = () => {
                 priority
               />
             </a>
-            <a href="" className="hoverEffect" target="_blank">
+            <a href="https://marche-dor.jp/" className="hoverEffect" target="_blank" rel="noopener noreferrer">
               <Image
                 src={marchedor}
                 alt=""
@@ -98,7 +98,7 @@ const Footer = () => {
                 priority
               />
             </a>
-            <a href="" className="hoverEffect" target="_blank">
+            <a href="/corapura" className="hoverEffect" target="_blank" rel="noopener noreferrer">
               <Image
                 src={corapura}
                 alt=""
@@ -107,7 +107,7 @@ const Footer = () => {
                 priority
               />
             </a>
-            <a href="" className="hoverEffect" target="_blank">
+            <a href="/liondor" className="hoverEffect" target="_blank" rel="noopener noreferrer">
               <Image
                 src={liondor}
                 alt=""
@@ -119,7 +119,7 @@ const Footer = () => {
           </div>
           <div className={styles.footer__text}>
             このサイトはreCAPTHAによって保護されており、
-            <br />Googleの<a href="" target="_blank">プライバシーポリシー</a>と<a href="" target="_blank">利用規約</a>が適応されます。
+            <br />Googleの<a href="https://policies.google.com/privacy?hl=ja" target="_blank">プライバシーポリシー</a>と<a href="https://policies.google.com/terms?hl=ja" target="_blank">利用規約</a>が適応されます。
           </div>
           <p className={`${styles.copy} en`}>© 2022 Della Moll inc.</p>
         </Container>

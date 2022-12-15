@@ -125,7 +125,7 @@ const shopOfficial = ({info}) => {
         <ul className={styles.instaBox}>
           <li></li>
         </ul>
-        <Btn01 fa={faInstagram} txt="Instagram" />
+        <Btn01 fa={faInstagram} txt="Instagram" link="/" />
       </div>
 
       <div className={styles.itemArea}>
