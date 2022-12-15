@@ -6,7 +6,7 @@ import { faBagShopping } from '@fortawesome/free-solid-svg-icons'
 import { faInstagram } from '@fortawesome/free-brands-svg-icons'
 
 const shopOfficial = ({info}) => {
-  // console.log(info)
+  console.log(info)
   const overviews = info.d_overviews
   const coupons = info.d_coupons
   const infos = info.d_infos

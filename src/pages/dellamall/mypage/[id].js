@@ -264,7 +264,7 @@ const Mypage = ({posts}) => {
                 : null}
                 {tabState === 4 ?
                   <article className={styles.article}>
-                    <MallComponent item={saveMall} user={user} />
+                    <MallComponent item={saveMall} user={user} save />
                   </article>
                 : null}
                 {tabState === 5 ?

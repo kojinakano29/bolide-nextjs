@@ -84,6 +84,14 @@ const OfficialShop = ({posts}) => {
       }).catch((e) => {
         console.error(e)
       })
+    } else if (type === "social") {
+      await axios.post(`/api/dellamall/d_socials/edit/${id}`)
+      .then((res) => {
+        // console.log(res)
+        setEditData(res.data)
+      }).catch((e) => {
+        console.error(e)
+      })
     } else if (type === "info") {
       await axios.post(`/api/dellamall/d_infos/edit/${id}`)
       .then((res) => {
@@ -134,6 +142,16 @@ const OfficialShop = ({posts}) => {
         // console.log(res)
         alert("削除しました。")
         setCoupons(res.data)
+      }).catch((e) => {
+        console.error(e)
+        alert("削除できませんでした。")
+      })
+    } else if (type === 'social') {
+      await axios.delete(`/api/dellamall/d_socials/delete/${id}`)
+      .then((res) => {
+        // console.log(res)
+        alert("削除しました。")
+        setSocials(res.data)
       }).catch((e) => {
         console.error(e)
         alert("削除できませんでした。")
@@ -237,16 +255,35 @@ const OfficialShop = ({posts}) => {
               ))}
             </article>
           </div>
-          {/* <div className={styles.officialBox}>
+          <div className={styles.officialBox}>
             <div className={styles.ttlFlex}>
-              <h4 className={styles.ttl2}>オンラインサロン情報</h4>
+              <h4 className={styles.ttl2}>公式SNS</h4>
               <button
                 type="button"
                 className={`${styles.btn} hoverEffect`}
                 onClick={() => handleClickCreate("social")}
               >新規作成</button>
             </div>
-          </div> */}
+            <article className={styles.listBox}>
+              {socials?.map((social, index) => (
+                <div className={styles.list} key={index}>
+                  <p className={styles.txt}>{social.name}</p>
+                  <div className={styles.btnBox}>
+                    <button
+                      type="button"
+                      className={`${styles.btn} hoverEffect`}
+                      onClick={() => handleClickEdit("social", social.id)}
+                    >編集</button>
+                    <button
+                      type="button"
+                      className={styles.delete}
+                      onClick={() => handleClickDelete('social', social.id)}
+                    >削除</button>
+                  </div>
+                </div>
+              ))}
+            </article>
+          </div>
           <div className={styles.officialBox}>
             <div className={styles.ttlFlex}>
               <h4 className={styles.ttl2}>お知らせ</h4>

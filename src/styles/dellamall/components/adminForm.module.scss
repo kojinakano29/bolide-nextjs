@@ -252,7 +252,8 @@
       }
 
       dd {
-        input[type="text"] {
+        input[type="text"],
+        input[type="url"] {
           @include input(100%);
         }
 
@@ -262,6 +263,10 @@
 
         input[type="checkbox"] {
           cursor: pointer;
+        }
+
+        select {
+          @include select(200px);
         }
 
         .imgBox {
