@@ -5,7 +5,7 @@ import { useForm } from 'react-hook-form';
 import Container from '@/components/liondor/Layouts/container';
 import PageLayoutLiondor from '@/components/Layouts/PageLayoutLiondor';
 import { MypageSide, PageTitle } from '@/components/liondor';
-import { zip } from '@/lib/liondor/constants'
+import { industries, workTypes, zip } from '@/lib/liondor/constants'
 import thumb from '@/images/liondor/common/mypage.png'
 import { useAuth } from '@/hooks/auth';
 import { useRouter } from 'next/router';
@@ -218,7 +218,9 @@ const MypageEdit = ({posts}) => {
                   <dt>就業形態</dt>
                   <dd className={styles.workArea}>
                     <select {...register("work_type")}>
-                      <option value="正社員">正社員</option>
+                      {workTypes.map((type, index) => (
+                        <option value={type} key={index}>{type}</option>
+                      ))}
                     </select>
                   </dd>
                 </dl>
@@ -226,7 +228,9 @@ const MypageEdit = ({posts}) => {
                   <dt>業種</dt>
                   <dd className={styles.industryArea}>
                     <select {...register("industry")}>
-                      <option value="学術研究、専門技術サービス業">学術研究、専門技術サービス業</option>
+                      {industries.map((industry, index) => (
+                        <option value={industry} key={index}>{industry}</option>
+                      ))}
                     </select>
                   </dd>
                 </dl>

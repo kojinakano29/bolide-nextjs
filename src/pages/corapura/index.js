@@ -3,12 +3,13 @@ import PageLayoutCorapura from "@/components/Layouts/pageLayoutCorapura";
 import Image from 'next/image';
 import mv from '@/images/corapura/top/mv.webp'
 import mv_sp from '@/images/corapura/top/mv__sp.webp'
+import mv_big from '@/images/corapura/top/mv_big.webp'
 import { Btn, Btn2, CanDo, CardType1, CardType2, CompanyCard, Coupon, Info, Merit, NameCard, Release, SwiperType1, SwiperType2, User } from '@/components/corapura';
 import Container from '@/components/corapura/Layout/container';
 import ttl from '@/images/corapura/common/corapura.svg'
 import txt from '@/images/corapura/top/cont3_img.svg'
 import reco from '@/images/corapura/top/cont4_img.webp'
-import reco_sp from '@/images/corapura/top/cont4_img__sp.svg'
+import reco_sp from '@/images/corapura/top/cont4_img__sp.webp'
 import { SwiperSlide } from 'swiper/react';
 import dummy1 from '@/images/corapura/common/dummy1.svg'
 import Link from 'next/link';
@@ -53,7 +54,16 @@ const Corapura = ({posts}) => {
   return (
     <>
       <section className={styles.mv}>
-        <div className={`${styles.mvBox} pc`}>
+        <div className={`${styles.mvBox} bigPc`}>
+          <Image
+            src={mv_big}
+            alt="メインビジュアル"
+            layout="responsive"
+            sizes="100vw"
+            priority
+          />
+        </div>
+        <div className={`${styles.mvBox} smPc pc`}>
           <Image
             src={mv}
             alt="メインビジュアル"
@@ -177,9 +187,10 @@ const Corapura = ({posts}) => {
                     <div className={styles.contBox}>
                       <p className={styles.salonName}>{salon.title}</p>
                       <p className={styles.salonDesc}>
-                        {JSON.parse(salon.content).blocks.map((cont) => {
+                        {salon.content.substring(0, 60)}
+                        {/* {JSON.parse(salon.content).blocks.map((cont) => {
                           return cont.text
-                        }).join('').substring(0, 60)}...
+                        }).join('').substring(0, 60)}... */}
                       </p>
                     </div>
                   </a>

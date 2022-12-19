@@ -90,3 +90,14 @@
     }
   }
 }
+
+.myMatterBox {
+  @include pt(120px, 80px, 64px);
+
+  .ttl2 {
+    @include fs(24px, 20px, 18px);
+    font-weight: 900;
+    text-align: center;
+    @include mb(40px, 32px);
+  }
+}

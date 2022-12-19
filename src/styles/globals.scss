@@ -104,6 +104,18 @@ span > img {
   color: $o1 !important;
 }
 
+.bigPc {
+  @include media1(bigPc) {
+    display: none !important;
+  }
+}
+
+.smPc {
+  @include media2(smPc) {
+    display: none !important;
+  }
+}
+
 .pc {
   @include media1(sp) {
     display: none !important;

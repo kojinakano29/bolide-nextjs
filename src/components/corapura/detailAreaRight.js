@@ -3,10 +3,9 @@ import { useCallback, useContext, useEffect, useState } from 'react';
 import { CompanyContext } from './detailArea';
 import dummy1 from '@/images/corapura/common/userDummy.svg'
 import mail from '@/images/corapura/common/mail_icon.svg'
-import facebook from '@/images/corapura/common/facebook_icon.svg'
-import instagram from '@/images/corapura/common/instagram_icon.svg'
 import axios from '@/lib/axios';
 import { useAuth } from '@/hooks/auth';
+import Social from './social';
 
 const DetailAreaRight = ({influencer = false}) => {
   const csrf = () => axios.get('/sanctum/csrf-cookie')
@@ -14,8 +13,8 @@ const DetailAreaRight = ({influencer = false}) => {
   const { profile, userInfo } = useContext(CompanyContext)
   const { user } = useAuth()
 
-  const allFollower = profile.c_user_profile?.c_user_socials?.reduce((sum, i) => sum + i.follower, 0)
-
+  const companySocials = profile?.c_company_profile?.c_company_socials
+  const userSocials = profile.c_user_profile?.c_user_socials
   const [disabled, setDisabled] = useState(false)
   const [followCheck, setFollowCheck] = useState(false)
   const [nowFollower, setNowFollower] = useState(userInfo.c_followeds_count)
@@ -128,18 +127,7 @@ const DetailAreaRight = ({influencer = false}) => {
               <dd>{profile.c_company_profile.tel}</dd>
             </dl>
           </div>
-          <div className={styles.snsLink}>
-            <p className={styles.snsTxt}>SNS LINK</p>
-            <div className={styles.iconList}>
-              {profile.c_company_profile.c_company_socials.length !== 0 ?
-                profile.c_company_profile.c_company_socials.map((social, index) => (
-                  <a className="hoverEffect" href={social.url} target="_blank" rel="noopener noreferrer" key={index}>
-                    <img src="" alt="" />
-                  </a>
-                ))
-              : null}
-            </div>
-          </div>
+          <Social socials={companySocials} />
           <div className={styles.siteUrl}>
             {profile.c_company_profile.site_url ?
               <>
@@ -190,20 +178,7 @@ const DetailAreaRight = ({influencer = false}) => {
             >{followCheck ? "フォロー中" : "フォローする"}</button>
           </div>
           <p className={styles.desc}>{profile.profile}</p>
-          <div className={styles.snsLink}>
-            <p className={styles.snsTxt}>FOLLOWERS</p>
-            <p className={styles.followerAll}>All <span>{allFollower}</span></p>
-            <div className={styles.followerBox}>
-              {profile.c_user_profile.c_user_socials.length !== 0 ?
-                profile.c_user_profile.c_user_socials.map((social, index) => (
-                  <a className="hoverEffect" href={social.url} target="_blank" rel="noopener noreferrer" key={index}>
-                    <img src="" alt="" />
-                    {social.follower}
-                  </a>
-                ))
-              : null}
-            </div>
-          </div>
+          <Social socials={userSocials} user />
           {profile.c_user_profile.brand ?
             <div className={styles.siteUrl}>
               <p>プロデュースブランド</p>

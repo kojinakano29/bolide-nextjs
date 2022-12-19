@@ -1,3 +1,9 @@
+import line from '@/images/dellamall/shopDetail/line.svg'
+import facebook from '@/images/dellamall/shopDetail/facebook.svg'
+import twitter from '@/images/dellamall/shopDetail/twitter.svg'
+import instagram from '@/images/dellamall/shopDetail/instagram.svg'
+import youtube from '@/images/dellamall/shopDetail/youtube.svg'
+
 // サイト情報
 export const siteMeta = {
   siteTitle: 'Dellamall',
@@ -68,3 +74,11 @@ export const socialNetworkingService = [
   "Instagram",
   "Youtube",
 ]
+
+export const socialNetworkingServiceIcons = {
+  "LINE": line.src,
+  "Facebook": facebook.src,
+  "Twitter": twitter.src,
+  "Instagram": instagram.src,
+  "Youtube": youtube.src,
+}
