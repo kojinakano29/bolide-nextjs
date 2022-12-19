@@ -202,7 +202,7 @@ const InfluencerList = ({posts}) => {
             <select onChange={handleChangeSkill}>
               <option value="">得意分野</option>
               {skills.map((skill, index) => (
-                <option value={skill} key={index}>{skill}</option>
+                <option value={skill.name} key={index}>{skill.name}</option>
               ))}
             </select>
             <select onChange={handleChangeSns}>

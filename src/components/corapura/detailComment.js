@@ -26,7 +26,7 @@ const DetailComment = ({comments}) => {
       <ul className={styles.list}>
         {comment.map((comment, index) => (
           <li className={styles.item} key={index}>
-            <Link href={`/corapura/${comment.user.account_type === 0 ? "influencer" : "company"}/${comment.user.c_profile_id}`}>
+            <Link href={`/corapura/${comment.user.account_type === 0 ? "influencer" : "company"}/${comment.user.id}`}>
               <a className={styles.profile}>
                 <div className={styles.iconBox}>
                   <img src={comment.user.c_profile.thumbs ? `${process.env.NEXT_PUBLIC_BACKEND_URL}/storage/${comment.user.c_profile.thumbs}` : dummy.src} alt="" />

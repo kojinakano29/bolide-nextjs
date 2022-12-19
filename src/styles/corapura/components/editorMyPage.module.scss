@@ -69,6 +69,10 @@
       background-color: $p1;
     }
 
+    &.blue2 {
+      background-color: $b10;
+    }
+
     .block {
       @include pt(72px, 40px, 64px);
       width: 100%;

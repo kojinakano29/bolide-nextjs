@@ -15,7 +15,7 @@ export const getServerSideProps = async () => {
 }
 
 export default function Home({posts}) {
-    // console.log(posts)
+    console.log(posts)
 
     const firstClassData = posts.first
     const specialData = posts.special
@@ -37,7 +37,9 @@ export default function Home({posts}) {
             <section className="cont1">
                 <Container>
                     <h2 className="ttl1 ivy">FIRST CLASS</h2>
-                    <FirstClass firstClassData={firstClassData} />
+                    {firstClassData.length !== 0 ?
+                        <FirstClass firstClassData={firstClassData[0]} />
+                    : null}
                 </Container>
             </section>
 
@@ -58,7 +60,9 @@ export default function Home({posts}) {
             <section className={`cont ${styles.cont4}`}>
                 <Container>
                     <h2 className="ttl1 ivy">COLLECTION</h2>
-                    <BlogPattern3 pattern={collectionData[0]} />
+                    {collectionData.length !== 0 ?
+                        <BlogPattern3 pattern={collectionData[0]} />
+                    : null}
                 </Container>
             </section>
 
@@ -114,8 +118,12 @@ export default function Home({posts}) {
             <section className={`cont ${styles.cont12}`}>
                 <Container>
                     <h2 className="ttl1 ivy">ON-LINE SALON</h2>
-                    <BlogPattern6 salons={salonData} />
-                    <Button2 link={`/corapura/salon`} name="view all" />
+                    {salonData.length !== 0 ?
+                        <>
+                            <BlogPattern6 salons={salonData} />
+                            <Button2 link={`/corapura/salon`} name="view all" />
+                        </>
+                    : null}
                 </Container>
             </section>
 

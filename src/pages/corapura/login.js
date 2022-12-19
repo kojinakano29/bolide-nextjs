@@ -16,7 +16,7 @@ const Login = () => {
 
   const { login } = useAuth({
     middleware: 'guest',
-    redirectIfAuthenticated: '/corapura',
+    redirectIfAuthenticated: '/corapura/editor',
   })
 
   const [email, setEmail] = useState('')

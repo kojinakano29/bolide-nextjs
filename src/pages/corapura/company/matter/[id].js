@@ -4,12 +4,14 @@ import styles from '@/styles/corapura/components/matterDetail.module.scss'
 import starB from '@/images/corapura/common/starB.svg'
 import starA from '@/images/corapura/common/starA.svg'
 import dummy from '@/images/corapura/common/dummy1.svg'
-import { Conditions, ShowEditor } from '@/components/corapura'
+import { Btn, Conditions, ShowEditor } from '@/components/corapura'
 import { useAuth } from '@/hooks/auth'
 import { useCallback, useEffect, useState } from 'react'
 import axios from '@/lib/axios'
 import mail from '@/images/corapura/common/mail_icon.svg'
 import question from '@/images/corapura/common/question_icon.svg'
+import Link from 'next/link'
+import { useForm } from 'react-hook-form'
 
 export const getServerSideProps = async ({params}) => {
   const res = await fetch(`${process.env.NEXT_PUBLIC_API_CORAPURA}/post/show/${params.id}`)
@@ -23,12 +25,15 @@ export const getServerSideProps = async ({params}) => {
 }
 
 const CompanyMatter = ({posts}) => {
-  // console.log(posts)
+  console.log(posts)
   const csrf = () => axios.get('/sanctum/csrf-cookie')
 
   const { user } = useAuth()
   const [disabled, setDisabled] = useState(false)
   const [bookmark, setBookmark] = useState([])
+  const [myMatter, setMyMatter] = useState(false)
+  const [appList, setAppList] = useState([])
+  const { register, handleSubmit } = useForm()
 
   const onLoadCheck = async () => {
     await csrf()
@@ -43,11 +48,37 @@ const CompanyMatter = ({posts}) => {
     })
   }
 
+  const onMatterStatus = async () => {
+    await csrf()
+    setMyMatter(true)
+
+    await axios.post(`/api/corapura/post_app/list`, {
+      c_post_id: posts.id,
+    }).then((res) => {
+      console.log(res)
+      setAppList(res.data)
+    }).catch(e => console.error(e))
+  }
+
   useEffect(() => {
     if (user) {
       onLoadCheck()
     }
+
+    if (user && parseInt(user?.id) === parseInt(posts.user_id)) {
+      onMatterStatus()
+    }
   }, [user])
+
+  const handleClickMatterFinish = useCallback(async () => {
+    await csrf()
+
+    await axios.post(`/api`, {
+
+    }).then((res) => {
+      console.log(res)
+    }).catch(e => console.error(e))
+  }, [])
 
   const handleClickBookmark = useCallback(async () => {
     if (disabled) return
@@ -80,6 +111,17 @@ const CompanyMatter = ({posts}) => {
 
     await setDisabled(false)
   }, [disabled, setDisabled, user, bookmark, setBookmark])
+
+  const onSubmit = useCallback(async (data) => {
+    console.log(data)
+    await csrf()
+
+    await axios.post(`/api/corapura/post_app/state_change/${app_id}`, {
+      state: data.state,
+    }).then((res) => {
+      console.log(res)
+    }).catch(e => console.error(e))
+  }, [])
 
   return (
     <section className="cont1">
@@ -118,16 +160,47 @@ const CompanyMatter = ({posts}) => {
           <ShowEditor data={posts} />
         </div>
 
-        <div className={styles.btnFlex}>
-          <a href={`mailto:${posts.user.email}`} className={styles.btn}>
-            <img src={mail.src} alt="" />
-            <span>この企業にメッセージを送る</span>
-          </a>
-          <a href={`/corapura`} className={`${styles.btn} ${styles.btn2}`}>
-            <img src={question.src} alt="" />
-            <span>質問する</span>
-          </a>
-        </div>
+        {myMatter ?
+          <div className={styles.myMatterBox}>
+            <h3 className={styles.ttl2}>この案件に応募した企業・ユーザーステータス状況</h3>
+            {appList.map((list, index) => (
+              <div className={styles.list} key={index}>
+                <div className={styles.left}>
+                  <div className={styles.imgBox}>
+                    <img src="" alt="" />
+                  </div>
+                  <Link href={`/`}>
+                    <a className={styles.name}>テストテスト</a>
+                  </Link>
+                </div>
+                <div className={styles.right}>
+                  <select {...register("state")}>
+                    <option value="0">応募中</option>
+                    <option value="1">不採用</option>
+                    <option value="2">採用</option>
+                  </select>
+                  <button
+                    className={styles.btn2}
+                  >更新する</button>
+                </div>
+              </div>
+            ))}
+            <div className="btnCover">
+              <Btn txt="この案件を完了にする" />
+            </div>
+          </div>
+        :
+          <div className={styles.btnFlex}>
+            <a href={`mailto:${posts.user.email}`} className={styles.btn}>
+              <img src={mail.src} alt="" />
+              <span>この企業にメッセージを送る</span>
+            </a>
+            <a href={`/corapura`} className={`${styles.btn} ${styles.btn2}`}>
+              <img src={question.src} alt="" />
+              <span>質問する</span>
+            </a>
+          </div>
+        }
       </Container>
     </section>
   );

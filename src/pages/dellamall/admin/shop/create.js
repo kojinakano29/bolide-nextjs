@@ -176,7 +176,7 @@ const CreateShop = () => {
                     <label htmlFor="tag">関連タグ</label>
                   </dt>
                   <dd>
-                    <textarea id="tag" {...register("tag")} disabled={officialCheck}></textarea>
+                    <textarea id="tag" {...register("tag")}></textarea>
                     <p className={styles.txt}>
                       ※アパレルショップであれば、
                       <br />「アパレル」「メンズ」「カジュアル」など！サイトに合ったタグを設定できます

@@ -55,6 +55,8 @@ $light: 300;
 $gd1: linear-gradient(transparent 10%, rgba(88, 88, 88, .82) 70%, $b2);
 
 /*-------------------------     mixin1    -------------------------*/
+$bigPc: 1920px;
+$smPc: 1921px;
 $pc: 1341px;
 $tab1: 1340px;
 $tab2: 768px;
@@ -62,6 +64,8 @@ $sp: 767px;
 
 // @media
 $breakpoints: (
+  'bigPc': $bigPc,
+  'smPc': $smPc,
   'pc': $pc,
   'tab1': $tab1,
   'tab2': $tab2,

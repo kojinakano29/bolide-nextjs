@@ -3,17 +3,12 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faComment, faHeart, faBookmark, faReply, faFlag, faChevronDown, faThumbsUp } from '@fortawesome/free-solid-svg-icons'
 import notSet from '@/images/dellamall/shopDetail/user-after.svg'
 import notSet2 from '@/images/dellamall/shopDetail/user.svg'
-import line from '@/images/dellamall/shopDetail/line.svg'
-import facebook from '@/images/dellamall/shopDetail/facebook.svg'
-import twitter from '@/images/dellamall/shopDetail/twitter.svg'
-import instagram from '@/images/dellamall/shopDetail/instagram.svg'
-import youtube from '@/images/dellamall/shopDetail/youtube.svg'
 import Link from 'next/link'
 import { createContext, useCallback, useEffect, useRef, useState } from 'react'
 import { useForm } from 'react-hook-form'
 import axios from '@/lib/axios'
 import { useRouter } from 'next/router'
-import { SaveMall } from '@/components/dellamall'
+import { SaveMall, Social } from '@/components/dellamall'
 import { FacebookShareButton, FacebookIcon, TwitterShareButton, TwitterIcon } from 'react-share'
 import Container from './Layouts/container'
 
@@ -30,6 +25,7 @@ const ShopDetailArea = ({data, user}) => {
   const malls = shop.d_malls
   const tags = shop.d_tags
   const pickup = shop.d_pickups
+  const socials = shop.d_socials
   const ref = useRef()
   const [commentOpen, setCommentOpen] = useState(true)
   const processing = useRef(false)
@@ -464,37 +460,7 @@ const ShopDetailArea = ({data, user}) => {
               </div>
             </form>
           </div>
-          <div className={styles.cont1__flexRight__bottom}>
-            <p>公式SNS</p>
-            <ul>
-              <li>
-                <a className="hoverEffect" href="" target="_blank">
-                  <img src={line.src} alt="" />
-                </a>
-              </li>
-              <li>
-                <a className="hoverEffect" href="" target="_blank">
-                  <img src={facebook.src} alt="" />
-                </a>
-              </li>
-              <li>
-                <a className="hoverEffect" href="" target="_blank">
-                  <img src={twitter.src} alt="" />
-                </a>
-              </li>
-              <li>
-                <a className="hoverEffect" href="" target="_blank">
-                  <img src={instagram.src} alt="" />
-                </a>
-              </li>
-              <li>
-                <a className="hoverEffect" href="" target="_blank">
-                  <img src={youtube.src} alt="" />
-                </a>
-              </li>
-              <a className={`${styles.salon} hoverEffect`}>オンラインサロン</a>
-            </ul>
-          </div>
+          <Social socials={socials} />
         </div>
       </div>
     </>
