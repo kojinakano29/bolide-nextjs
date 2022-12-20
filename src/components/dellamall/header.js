@@ -13,7 +13,7 @@ const Header = () => {
   const csrf = () => axios.get('/sanctum/csrf-cookie')
 
   const router = useRouter()
-  const { user } = useAuth()
+  const { user, logout } = useAuth()
 
   const profileCheck = useCallback(async () => {
     await csrf()
@@ -57,6 +57,10 @@ const Header = () => {
               </Link>
             }
             <SearchIcon />
+            <button
+              type="button"
+              onClick={() => logout()}
+            >ログアウト</button>
           </div>
           <div className={styles.right}>
             <HeaderNav />

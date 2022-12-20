@@ -9,7 +9,7 @@ import mypage from '@/images/corapura/header/mypage.svg'
 import { useAuth } from '@/hooks/auth';
 
 const Header = () => {
-  const { user } = useAuth()
+  const { user, logout } = useAuth()
   const [humOpen, setHumOpen] = useState(false)
 
   const handleClickHum = useCallback(async () => {
@@ -36,6 +36,10 @@ const Header = () => {
               </a>
             </Link>
           </h1>
+          <button
+            type="button"
+            onClick={() => logout()}
+          >ログアウト</button>
         </div>
         {!user ?
           <div className={styles.right}>
