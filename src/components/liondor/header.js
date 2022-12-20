@@ -4,8 +4,11 @@ import hLogo from '@/images/liondor/common/h-logo.png'
 import Image from 'next/image';
 import { Hum, SearchIcon, LoginBtn, PageNavi } from '@/components/liondor'
 import { useCallback, useEffect, useState } from 'react';
+import { useAuth } from '@/hooks/auth';
 
 const Header = () => {
+  const { logout } = useAuth()
+
   // ハンバーガーメニュー
   const [humOpen, setHumOpen] = useState(false)
 
@@ -75,6 +78,10 @@ const Header = () => {
         <div className={styles.leftAbs}>
           <Hum humOpen={humOpen} clickHumOpen={clickHumOpen} clickHumClose={clickHumClose} />
           <SearchIcon humOpen={humOpen} />
+          <button
+            type="button"
+            onClick={() => logout()}
+          >ログアウト</button>
         </div>
         <div className={styles.rightAbs}>
           <LoginBtn humOpen={humOpen} clickHumClose={clickHumClose} />

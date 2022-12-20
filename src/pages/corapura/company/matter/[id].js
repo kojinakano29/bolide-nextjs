@@ -11,7 +11,6 @@ import axios from '@/lib/axios'
 import mail from '@/images/corapura/common/mail_icon.svg'
 import question from '@/images/corapura/common/question_icon.svg'
 import Link from 'next/link'
-import { useForm } from 'react-hook-form'
 
 export const getServerSideProps = async ({params}) => {
   const res = await fetch(`${process.env.NEXT_PUBLIC_API_CORAPURA}/post/show/${params.id}`)
@@ -33,7 +32,7 @@ const CompanyMatter = ({posts}) => {
   const [bookmark, setBookmark] = useState([])
   const [myMatter, setMyMatter] = useState(false)
   const [appList, setAppList] = useState([])
-  const { register, handleSubmit } = useForm()
+  const [state, setState] = useState()
 
   const onLoadCheck = async () => {
     await csrf()
@@ -112,12 +111,15 @@ const CompanyMatter = ({posts}) => {
     await setDisabled(false)
   }, [disabled, setDisabled, user, bookmark, setBookmark])
 
-  const onSubmit = useCallback(async (data) => {
-    console.log(data)
+  const handleChangeState = useCallback(async (e) => {
+    setState(e.target.value)
+  }, [setState])
+
+  const handleClickState = useCallback(async (e, id) => {
     await csrf()
 
-    await axios.post(`/api/corapura/post_app/state_change/${app_id}`, {
-      state: data.state,
+    await axios.post(`/api/corapura/post_app/state_change/${id}`, {
+      state: e.target.value,
     }).then((res) => {
       console.log(res)
     }).catch(e => console.error(e))
@@ -174,14 +176,21 @@ const CompanyMatter = ({posts}) => {
                   </Link>
                 </div>
                 <div className={styles.right}>
-                  <select {...register("state")}>
+                  <select onChange={(e) => handleChangeState(e)}>
                     <option value="0">応募中</option>
-                    <option value="1">不採用</option>
-                    <option value="2">採用</option>
+                    <option value="4">不採用</option>
+                    <option value="3">採用</option>
                   </select>
-                  <button
-                    className={styles.btn2}
-                  >更新する</button>
+                  {state === "3" ?
+                    <button
+                      className={styles.btn2}
+                    >採用する</button>
+                  : null}
+                  {state === "4" ?
+                    <button
+                      className={styles.btn2}
+                    >更新する</button>
+                  : null}
                 </div>
               </div>
             ))}
