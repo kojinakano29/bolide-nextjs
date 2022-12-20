@@ -11,6 +11,7 @@ import axios from '@/lib/axios'
 import mail from '@/images/corapura/common/mail_icon.svg'
 import question from '@/images/corapura/common/question_icon.svg'
 import Link from 'next/link'
+import { useRouter } from 'next/router'
 
 export const getServerSideProps = async ({params}) => {
   const res = await fetch(`${process.env.NEXT_PUBLIC_API_CORAPURA}/post/show/${params.id}`)
@@ -27,6 +28,7 @@ const CompanyMatter = ({posts}) => {
   console.log(posts);
   const csrf = () => axios.get('/sanctum/csrf-cookie')
 
+  const router = useRouter()
   const { user } = useAuth()
   const [disabled, setDisabled] = useState(false)
   const [bookmark, setBookmark] = useState([])
@@ -72,13 +74,15 @@ const CompanyMatter = ({posts}) => {
     }
   }, [user])
 
-  const handleClickMatterFinish = useCallback(async () => {
+  const handleClickFinish = useCallback(async () => {
     await csrf()
 
-    await axios.post(`/api`, {
-
+    await axios.post(`/api/corapura/post/compleate/${posts.id}`, {
+      state: 1,
     }).then((res) => {
-      console.log(res)
+      // console.log(res)
+      alert("この案件を完了にしました。")
+      router.reload()
     }).catch(e => console.error(e))
   }, [])
 
@@ -187,33 +191,37 @@ const CompanyMatter = ({posts}) => {
 
         {myMatter ?
           <div className={styles.myMatterBox}>
-            <h3 className={styles.ttl2}>この案件に応募した企業・<br className="sp" />ユーザーステータス状況</h3>
-            {appList.map((list, index) => (
-              <div className={styles.list} key={index}>
-                <div className={styles.left}>
-                  <div className={styles.imgBox}>
-                    {list.c_profile.thumbs ? <img src={`${process.env.NEXT_PUBLIC_BACKEND_URL}/storage/${list.c_profile.thumbs}`} alt="" /> : null}
+            {posts.state < 1 ?
+              <>
+                <h3 className={styles.ttl2}>この案件に応募した企業・<br className="sp" />ユーザーステータス状況</h3>
+                {appList.map((list, index) => (
+                  <div className={styles.list} key={index}>
+                    <div className={styles.left}>
+                      <div className={styles.imgBox}>
+                        {list.c_profile.thumbs ? <img src={`${process.env.NEXT_PUBLIC_BACKEND_URL}/storage/${list.c_profile.thumbs}`} alt="" /> : null}
+                      </div>
+                      <Link href={`/corapura/${list.account_type === 0 ? "influencer" : "company"}/${list.id}`}>
+                        <a className={styles.name}>{list.c_profile.nicename}</a>
+                      </Link>
+                    </div>
+                    <div className={styles.right}>
+                      <select value={state[index]} onChange={(e) => handleChangeState(e, index)}>
+                        <option value="0">応募中</option>
+                        <option value="3">採用</option>
+                        <option value="4">不採用</option>
+                      </select>
+                      <button
+                        className={`${styles.btn3} hoverEffect`}
+                        onClick={() => handleClickState(state[index], list.pivot.id, list.c_profile.nicename)}
+                      >更新する</button>
+                    </div>
                   </div>
-                  <Link href={`/corapura/${list.account_type === 0 ? "influencer" : "company"}/${list.id}`}>
-                    <a className={styles.name}>{list.c_profile.nicename}</a>
-                  </Link>
+                ))}
+                <div className="btnCover" onClick={handleClickFinish}>
+                  <Btn txt="この案件を完了にする" />
                 </div>
-                <div className={styles.right}>
-                  <select value={state[index]} onChange={(e) => handleChangeState(e, index)}>
-                    <option value="0">応募中</option>
-                    <option value="3">採用</option>
-                    <option value="4">不採用</option>
-                  </select>
-                  <button
-                    className={`${styles.btn3} hoverEffect`}
-                    onClick={() => handleClickState(state[index], list.pivot.id, list.c_profile.nicename)}
-                  >更新する</button>
-                </div>
-              </div>
-            ))}
-            <div className="btnCover">
-              <Btn txt="この案件を完了にする" />
-            </div>
+              </>
+            : null}
           </div>
         :
           <div className={styles.btnFlex}>
