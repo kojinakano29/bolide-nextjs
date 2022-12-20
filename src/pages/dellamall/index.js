@@ -3,7 +3,6 @@ import Container from '@/components/dellamall/Layouts/container';
 import PageLayoutDellamall from '@/components/Layouts/PageLayoutDellamall';
 import styles from '@/styles/dellamall/components/home.module.scss'
 import fv_text from '@/images/dellamall/top/fv_text.svg'
-import fv_text__sp from '@/images/dellamall/top/fv_text__sp.svg'
 import Image from 'next/image';
 import { faTrophy, faSquarePlus } from '@fortawesome/free-solid-svg-icons'
 import { createContext, useEffect, useRef } from 'react';
@@ -78,7 +77,7 @@ const Home = ({posts}) => {
     <>
       <section className={styles.mv}>
         <Container small>
-          <h1 className={`${styles.sitename} pc`}>
+          <h1 className={styles.sitename}>
             <Image
               src={fv_text}
               alt="della mall"
@@ -87,19 +86,16 @@ const Home = ({posts}) => {
               priority
             />
           </h1>
-          <h1 className={`${styles.sitename} sp`}>
-            <Image
-              src={fv_text__sp}
-              alt="della mall"
-              layout="responsive"
-              sizes="416px"
-              priority
-            />
-          </h1>
-          <div className={styles.trend}>
-            <Trend />
+          <div className={styles.mvTxtBox}>
+            <p className={styles.sm}>日本中の素敵なECサイトを集めた<br className="sp" />新世代マーケットでお買い物！</p>
+            <p className={`${styles.big} en`}><span>Slogan is</span> Everyone,<br className="sp" />Find,Share,Enjoy</p>
           </div>
         </Container>
+        <div className={styles.trend}>
+          <Container small>
+            <Trend sp />
+          </Container>
+        </div>
       </section>
 
       <section className={styles.popular}>

@@ -32,7 +32,7 @@ const CompanyMatter = ({posts}) => {
   const [bookmark, setBookmark] = useState([])
   const [myMatter, setMyMatter] = useState(false)
   const [appList, setAppList] = useState([])
-  const [state, setState] = useState()
+  const [state, setState] = useState([])
 
   const onLoadCheck = async () => {
     await csrf()
@@ -54,8 +54,11 @@ const CompanyMatter = ({posts}) => {
     await axios.post(`/api/corapura/post_app/list`, {
       c_post_id: posts.id,
     }).then((res) => {
-      console.log(res)
+      // console.log(res)
       setAppList(res.data.c_post_apps)
+      setState(res.data.c_post_apps.map((app) => {
+        return app.pivot.state
+      }))
     }).catch(e => console.error(e))
   }
 
@@ -111,19 +114,39 @@ const CompanyMatter = ({posts}) => {
     await setDisabled(false)
   }, [disabled, setDisabled, user, bookmark, setBookmark])
 
-  const handleChangeState = useCallback(async (e) => {
-    setState(e.target.value)
-  }, [setState])
+  const handleChangeState = useCallback(async (e, current) => {
+    setState(state.map((st, index) => (index === current ? parseInt(e.target.value) : parseInt(st))))
+  }, [state, setState])
 
-  const handleClickState = useCallback(async (e, id) => {
+  const handleClickState = useCallback(async (status, id, name) => {
     await csrf()
 
-    await axios.post(`/api/corapura/post_app/state_change/${id}`, {
-      state: e.target.value,
-    }).then((res) => {
-      console.log(res)
-    }).catch(e => console.error(e))
-  }, [])
+    if (parseInt(status) === parseInt(4)) {
+      await axios.delete(`/api/corapura/post_app/delete`, {
+        data: {
+          app_id: id,
+        }
+      }).then((res) => {
+        // console.log(res)
+        setAppList(res.data.c_post_apps)
+        setState(res.data.c_post_apps.map((app) => {
+          return app.pivot.state
+        }))
+        alert(`${name}さんを不採用にしました。`)
+      }).catch(e => console.error(e))
+    } else {
+      await axios.post(`/api/corapura/post_app/state_change/${id}`, {
+        state: status,
+      }).then((res) => {
+        // console.log(res)
+        if (parseInt(status) === 3) {
+          alert(`${name}さんを採用しました。`)
+        } else if (parseInt(status) === 0) {
+          alert(`${name}さんを応募中にしました。`)
+        }
+      }).catch(e => console.error(e))
+    }
+  }, [setAppList, setState])
 
   return (
     <section className="cont1">
@@ -164,7 +187,7 @@ const CompanyMatter = ({posts}) => {
 
         {myMatter ?
           <div className={styles.myMatterBox}>
-            <h3 className={styles.ttl2}>この案件に応募した企業・ユーザーステータス状況</h3>
+            <h3 className={styles.ttl2}>この案件に応募した企業・<br className="sp" />ユーザーステータス状況</h3>
             {appList.map((list, index) => (
               <div className={styles.list} key={index}>
                 <div className={styles.left}>
@@ -172,25 +195,19 @@ const CompanyMatter = ({posts}) => {
                     {list.c_profile.thumbs ? <img src={`${process.env.NEXT_PUBLIC_BACKEND_URL}/storage/${list.c_profile.thumbs}`} alt="" /> : null}
                   </div>
                   <Link href={`/corapura/${list.account_type === 0 ? "influencer" : "company"}/${list.id}`}>
-                    <a className={styles.name}>テストテスト</a>
+                    <a className={styles.name}>{list.c_profile.nicename}</a>
                   </Link>
                 </div>
                 <div className={styles.right}>
-                  <select onChange={(e) => handleChangeState(e)}>
+                  <select value={state[index]} onChange={(e) => handleChangeState(e, index)}>
                     <option value="0">応募中</option>
-                    <option value="4">不採用</option>
                     <option value="3">採用</option>
+                    <option value="4">不採用</option>
                   </select>
-                  {state === "3" ?
-                    <button
-                      className={styles.btn2}
-                    >採用する</button>
-                  : null}
-                  {state === "4" ?
-                    <button
-                      className={styles.btn2}
-                    >更新する</button>
-                  : null}
+                  <button
+                    className={`${styles.btn3} hoverEffect`}
+                    onClick={() => handleClickState(state[index], list.pivot.id, list.c_profile.nicename)}
+                  >更新する</button>
                 </div>
               </div>
             ))}

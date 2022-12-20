@@ -105,36 +105,63 @@
 
   .list {
     @include flex(center);
-    @include gap(24px);
+    @include gap(24px, 16px);
+    @include mb(32px, 32px, 64px);
+
+    @include media1(sp) {
+      flex-direction: column;
+      align-items: start;
+    }
 
     .left {
       @include flex(center, left);
       @include gap(16px);
+    }
 
-      .imgBox {
-        @include width(40px);
-        aspect-ratio: 1 / 1;
-        border-radius: 50%;
-        overflow: hidden;
-        box-shadow: 0 3px 6px rgba(0, 0, 0, .16);
+    .right {
+      @include flex(center, right);
+      @include gap(16px);
+    }
 
-        img {
-          width: 100%;
-          height: 100%;
-          object-fit: cover;
-          object-position: top center;
-        }
+    .imgBox {
+      @include width(40px);
+      aspect-ratio: 1 / 1;
+      border-radius: 50%;
+      overflow: hidden;
+      box-shadow: 0 3px 6px rgba(0, 0, 0, .16);
+      background-color: $g3;
+
+      img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        object-position: top center;
       }
+    }
 
-      .name {
-        @include fs(16px, 14px);
-        font-weight: 500;
-        text-decoration: underline;
+    .name {
+      @include fs(16px, 14px);
+      font-weight: 500;
+      text-decoration: underline;
 
-        &:hover {
-          text-decoration: none;
-        }
+      &:hover {
+        text-decoration: none;
       }
+    }
+
+    select {
+      @include select(120px);
+      cursor: pointer;
+    }
+
+    .btn3 {
+      display: block;
+      @include p(4px 16px);
+      @include fs(14px, 12px);
+      font-weight: bold;
+      background-color: $o1;
+      color: $w1;
+      border-radius: 8px;
     }
   }
 }
