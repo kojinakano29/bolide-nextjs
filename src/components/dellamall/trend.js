@@ -4,7 +4,7 @@ import { useRouter } from 'next/router'
 import { useCallback, useEffect, useState } from 'react'
 import { Loader } from '@/components/dellamall'
 
-const Trend = ({mb40 = false}) => {
+const Trend = ({mb40 = false, sp}) => {
   const csrf = () => axios.get('/sanctum/csrf-cookie')
 
   const router = useRouter()
@@ -42,17 +42,19 @@ const Trend = ({mb40 = false}) => {
     <>
       <p className={`${styles.title} ${mb40 ? styles.mb40 : ""}`}>TREND</p>
       {trends.length === 0 ? <Loader /> :
-        <ul className={styles.trend__list}>
-          {trends?.map((trend, index) => (
-            <li className={`${styles.keyWord__item} ${trend.id === parseInt(router.query.tag_id) ? styles.current : null}`} key={index}>
-              <button
-                type="button"
-                className="hoverEffect"
-                onClick={() => handleClickTrend(trend.id)}
-              >{trend.name}</button>
-            </li>
-          ))}
-        </ul>
+        <div className={sp ? styles.sp_slide : null}>
+          <ul className={styles.trend__list}>
+            {trends?.map((trend, index) => (
+              <li className={`${styles.keyWord__item} ${trend.id === parseInt(router.query.tag_id) ? styles.current : null}`} key={index}>
+                <button
+                  type="button"
+                  className="hoverEffect"
+                  onClick={() => handleClickTrend(trend.id)}
+                >{trend.name}</button>
+              </li>
+            ))}
+          </ul>
+        </div>
       }
     </>
   );
