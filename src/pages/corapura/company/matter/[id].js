@@ -25,7 +25,7 @@ export const getServerSideProps = async ({params}) => {
 }
 
 const CompanyMatter = ({posts}) => {
-  console.log(posts)
+  console.log(posts);
   const csrf = () => axios.get('/sanctum/csrf-cookie')
 
   const { user } = useAuth()
@@ -56,7 +56,7 @@ const CompanyMatter = ({posts}) => {
       c_post_id: posts.id,
     }).then((res) => {
       console.log(res)
-      setAppList(res.data)
+      setAppList(res.data.c_post_apps)
     }).catch(e => console.error(e))
   }
 
@@ -167,9 +167,9 @@ const CompanyMatter = ({posts}) => {
               <div className={styles.list} key={index}>
                 <div className={styles.left}>
                   <div className={styles.imgBox}>
-                    <img src="" alt="" />
+                    {list.c_profile.thumbs ? <img src={`${process.env.NEXT_PUBLIC_BACKEND_URL}/storage/${list.c_profile.thumbs}`} alt="" /> : null}
                   </div>
-                  <Link href={`/`}>
+                  <Link href={`/corapura/${list.account_type === 0 ? "influencer" : "company"}/${list.id}`}>
                     <a className={styles.name}>テストテスト</a>
                   </Link>
                 </div>

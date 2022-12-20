@@ -66,7 +66,7 @@ const Header = () => {
                 <span className="pc">お気に入りリスト</span>
               </a>
             </Link>
-            <Link href={`/corapura/${user.account_type === 0 ? "influencer" : "company"}/${user?.id}`}>
+            <Link href={`/corapura/editor`}>
               <a className={`${styles.btn} ${styles.mypage} hoverEffect`}>
                 <div className={styles.iconBox}>
                   <img src={mypage.src} alt="" />
