@@ -468,3 +468,36 @@
     }
   }
 }
+
+.checkArea {
+  @include pt(64px, 48px);
+
+  label {
+    @include flex(center, center);
+    @include gap(8px);
+    width: fit-content;
+    margin: auto;
+    cursor: pointer;
+
+    .txt {
+      @include fs(16px, 14px);
+      font-weight: 500;
+
+      a {
+        text-decoration: underline;
+
+        &:hover {
+          text-decoration: none;
+        }
+      }
+    }
+
+    * {
+      cursor: pointer;
+    }
+  }
+
+  .error {
+    text-align: center;
+  }
+}

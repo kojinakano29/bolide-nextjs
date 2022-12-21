@@ -16,6 +16,8 @@
     "@fortawesome/free-solid-svg-icons": "^6.2.0",
     "@fortawesome/react-fontawesome": "^0.2.0",
     "@headlessui/react": "^1.4.2",
+    "@stripe/react-stripe-js": "^1.16.1",
+    "@stripe/stripe-js": "^1.46.0",
     "axios": "^0.21.1",
     "date-fns": "^2.29.3",
     "draft-js": "^0.11.7",
@@ -27,6 +29,7 @@
     "react-share": "^4.4.1",
     "react-use": "^17.4.0",
     "sass": "^1.54.9",
+    "stripe": "^11.4.0",
     "swiper": "^8.4.2",
     "swr": "^1.2.2"
   },
