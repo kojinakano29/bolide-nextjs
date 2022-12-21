@@ -1,4 +1,5 @@
 import { PaymentElement } from "@stripe/react-stripe-js";
+import styles from '@/styles/top/components/form.module.scss'
 
 const CheckoutForm = () => {
   return (

@@ -1,10 +1,7 @@
-import { CheckoutForm } from '@/components/top';
-import axios from '@/lib/axios';
 import styles from '@/styles/top/components/form.module.scss'
+import { CheckoutForm } from '@/components/top';
 import { Elements } from '@stripe/react-stripe-js';
 import { loadStripe } from '@stripe/stripe-js';
-import { useCallback } from 'react';
-import { useForm } from 'react-hook-form';
 
 export const getServerSideProps = async ({params}) => {
   const res = await fetch(`${process.env.NEXT_PUBLIC_BACKEND_URL}/api/subscription/${params.id}`)
@@ -23,7 +20,7 @@ const Payment = ({posts}) => {
   console.log(posts)
 
   const options = {
-    clientSecret: "",
+    clientSecret: posts.client_secret,
   }
 
   return (
