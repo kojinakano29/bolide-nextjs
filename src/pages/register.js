@@ -1,3 +1,4 @@
+import styles from '@/styles/top/components/form.module.scss'
 import ApplicationLogo from '@/components/ApplicationLogo'
 import AuthCard from '@/components/AuthCard'
 import Button from '@/components/Button'
@@ -12,7 +13,7 @@ import { useState } from 'react'
 const Register = () => {
     const { register } = useAuth({
         middleware: 'guest',
-        redirectIfAuthenticated: '/liondor',
+        redirectIfAuthenticated: '/mypage',
     })
 
     const [name, setName] = useState('')
