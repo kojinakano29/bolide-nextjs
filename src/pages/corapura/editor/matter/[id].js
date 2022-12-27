@@ -434,7 +434,7 @@ const EditMatter = ({posts}) => {
                     下書き保存
                     <input
                       type="radio"
-                      value="2"
+                      value="4"
                       {...register("state")}
                       disabled={disabled}
                     />

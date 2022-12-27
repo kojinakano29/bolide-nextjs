@@ -1,0 +1,18 @@
+@import '../../variables.scss';
+
+.default {
+  width: 100%;
+  @include max-width(1320px, 720px, 100%);
+  margin: auto;
+  @include p(0, 0, 0 20px);
+}
+
+.small {
+  composes: default;
+  @include max-width(1120px, 720px, 100%);
+}
+
+.small900 {
+  composes: default;
+  @include max-width(900px, 720px, 100%);
+}

@@ -9,6 +9,7 @@ import { useCallback, useState } from 'react';
 import axios from '@/lib/axios';
 
 const MatterCard = ({matter, bookmarkList, detail = false, list = false}) => {
+  console.log(matter)
   const csrf = () => axios.get('/sanctum/csrf-cookie')
 
   const { user } = useAuth()
@@ -51,7 +52,7 @@ const MatterCard = ({matter, bookmarkList, detail = false, list = false}) => {
     <>
       {list ?
         <article className={`${styles.matterCard} ${styles.list}`}>
-          <Link href={`/corapura/company/matter/${matter.id}`}>
+          <Link href={`/corapura/${matter?.user?.account_type === 0 ? "influencer" : "company"}/matter/${matter.id}`}>
             <a>
               <div className={`${styles.imgBox} matterThumbs`}>
                 <img src={matter.thumbs ? `${process.env.NEXT_PUBLIC_BACKEND_URL}/storage/${matter.thumbs}` : dummy.src} alt="" />
@@ -108,7 +109,7 @@ const MatterCard = ({matter, bookmarkList, detail = false, list = false}) => {
         </article>
       :
         <article className={`${styles.matterCard} ${detail ? styles.detail : null}`}>
-          <Link href={`/corapura/company/matter/${matter.id}`}>
+          <Link href={`/corapura/${matter?.user?.account_type === 0 ? "influencer" : "company"}/matter/${matter.id}`}>
             <a>
               <div className={`${styles.imgBox} matterThumbs`}>
                 <img src={matter.thumbs ? `${process.env.NEXT_PUBLIC_BACKEND_URL}/storage/${matter.thumbs}` : dummy.src} alt="" />

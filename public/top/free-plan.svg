@@ -1,0 +1,14 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="256" height="238" viewBox="0 0 256 238">
+  <g id="グループ_6396" data-name="グループ 6396" transform="translate(-1008 -4122)">
+    <path id="合体_8" data-name="合体 8" d="M0,204.887H256L128,238Zm0,0V0H256V204.887Z" transform="translate(1008 4122)" fill="#fff"/>
+    <text id="フリープラン" transform="translate(1077 4192)" fill="#333" font-size="20" font-family="NotoSansJP-Black, Noto Sans JP" font-weight="800"><tspan x="0" y="0">フリープラン</tspan></text>
+    <text id="ライトに使用したい方におすすめ_" data-name="ライトに使用したい方におすすめ♪" transform="translate(1136 4155)" fill="#5096ff" font-size="14" font-family="NotoSansJP-Bold, Noto Sans JP" font-weight="700"><tspan x="-112" y="0">ライトに使用したい方におすすめ♪</tspan></text>
+    <line id="線_121" data-name="線 121" x2="224" transform="translate(1024.5 4206.5)" fill="none" stroke="#f5f5f5" stroke-width="2"/>
+    <text id="一般ユーザー_フリー_" data-name="一般ユーザー(フリー)" transform="translate(1136 4248)" fill="#adadad" font-size="13" font-family="NotoSansJP-Bold, Noto Sans JP" font-weight="700"><tspan x="-63.284" y="0">一般ユーザー(フリー)</tspan></text>
+    <g id="グループ_5932" data-name="グループ 5932" transform="translate(506 1089)">
+      <text id="_月" data-name="/月" transform="translate(653 3218)" fill="#333" font-size="16" font-family="NotoSansJP-Bold, Noto Sans JP" font-weight="700" letter-spacing="0.06em"><tspan x="-11.584" y="0">/月</tspan></text>
+      <text id="_0" data-name="0" transform="translate(629 3219)" fill="#333" font-size="32" font-family="Poppins-Bold, Poppins" font-weight="700"><tspan x="-10.432" y="0">0</tspan></text>
+      <text id="_" data-name="￥" transform="translate(607 3219)" fill="#333" font-size="24" font-family="YuGothicUI-Bold, Yu Gothic UI" font-weight="700" letter-spacing="0.06em"><tspan x="-12" y="0">￥</tspan></text>
+    </g>
+  </g>
+</svg>
