@@ -1,3 +1,4 @@
+import styles from '@/styles/top/components/home.module.scss'
 import PageLayoutTop from "@/components/Layouts/pageLayoutTop";
 
 const BolideTop = () => {

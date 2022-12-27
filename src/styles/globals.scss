@@ -172,6 +172,22 @@ span > img {
 }
 /* 共通部分 */
 
+/* 3サイトトップ */
+.bolide_top {
+  *,
+  *::before,
+  *::after {
+    font-family: $nsj;
+    color: $b6;
+  }
+
+  .en {
+    font-family: $Poppins;
+  }
+}
+/* 3サイトトップ */
+
+
 /* リオンドール共通部分 */
 .liondor {
   *,

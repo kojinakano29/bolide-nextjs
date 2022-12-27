@@ -132,7 +132,10 @@ const Corapura = ({posts}) => {
             <br/>テキストサンプルテキストサンプルテキストサンプルテキストサンプル。
           </p>
           <SwiperType1 matters={matterLimit} />
-          <Btn txt="企業案件一覧" link="/corapura/company/matter" />
+          <div className={styles.btnFlex}>
+            <Btn txt="企業案件一覧" link="/corapura/company/matter" />
+            <Btn txt="インフルエンサー案件一覧" link="/corapura/influencer/matter" />
+          </div>
         </Container>
       </section>
 

@@ -1,0 +1,52 @@
+@import '../../variables.scss';
+
+.header {
+  @include p(16px 0);
+}
+
+.headerFlex {
+  @include flex(center);
+
+  .logo {
+    @include width(230px, 200px, 164px);
+
+    a {
+      display: block;
+    }
+  }
+
+  .nav {
+    @include flex(center, right);
+    @include gap(40px, 16px, 8px);
+
+    .type1 {
+      @include fs(14px, 12px);
+      font-weight: bold;
+    }
+
+    .type2 {
+      @include flex(center, right);
+      @include gap(16px, 8px);
+
+      .btn {
+        @include width(160px);
+        @include height(40px);
+        border-radius: 5px;
+        @include flex(center, center);
+        @include gap(8px);
+        background-color: $y2;
+        @include fs(14px, 12px);
+        font-weight: bold;
+
+        &.color1 {
+          background-color: $o5;
+        }
+
+        &.color2 {
+          background-color: $b13;
+          color: $w1;
+        }
+      }
+    }
+  }
+}

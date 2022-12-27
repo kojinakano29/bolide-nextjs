@@ -85,7 +85,7 @@ const EditorComment = ({posts}) => {
             <article className={styles.listBox}>
               {matters.map((matter, index) => (
                 <div className={styles.listItem} key={index}>
-                  <Link href={`/corapura/company/matter/${matter.c_post.id}`}>
+                  <Link href={`/corapura/${user?.account_type === 0 ? "influencer" : "company"}/matter/${matter.c_post.id}`}>
                     <a className={styles.ttl}>{matter.c_post.title}</a>
                   </Link>
                   <button

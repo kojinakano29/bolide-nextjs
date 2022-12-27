@@ -80,7 +80,7 @@ const AdminMatterList = () => {
             <article className={styles.itemList}>
               {matters.map((matter, index) => (
                 <div className={styles.itemBox} key={index}>
-                  <Link href={`/corapura/company/matter/${matter.id}`}>
+                  <Link href={`/corapura/${user?.account_type === 0 ? "influencer" : "company"}/matter/${matter.id}`}>
                     <a className={styles.imgBox}>
                       <img src={matter.thumbs ? `${process.env.NEXT_PUBLIC_BACKEND_URL}/storage/${matter.thumbs}` : dummy.src} alt="" />
                     </a>
