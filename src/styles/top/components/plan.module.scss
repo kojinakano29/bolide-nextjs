@@ -1,0 +1,48 @@
+@import '../../variables.scss';
+
+.item {
+  @include p(0 16px, 0 8px);
+  @include mb(16px, 8px);
+
+  &:last-of-type {
+    @include mb(32px, 24px);
+  }
+
+  &.corapura {
+    background-color: $y2;
+  }
+
+  &.della {
+    background-color: $o5;
+  }
+
+  &.liondor {
+    background-color: $p2;
+  }
+
+  &.marche {
+    background-color: $b13;
+  }
+
+  button {
+    width: 100%;
+    @include flex(center, left);
+    @include gap(24px, 8px);
+    @include p(16px 8px, 8px 0);
+
+    div {
+      @include flex(center, center);
+      @include width(40px, 32px);
+      aspect-ratio: 1 / 1;
+      background-color: $g13;
+      border-radius: 50%;
+      font-weight: 900;
+      @include fs(20px);
+    }
+  }
+
+  .imgBox {
+    height: 0;
+    overflow: hidden;
+  }
+}

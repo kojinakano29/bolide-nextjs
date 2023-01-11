@@ -1,1 +1,50 @@
 @import '../../variables.scss';
+
+.footer {
+  @include p(32px 20px 40px, 32px 20px);
+  background-color: $g13;
+
+  .logo {
+    display: block;
+    @include width(198px);
+    margin: auto;
+    @include mb(24px, 16px);
+  }
+
+  .listFlex {
+    @include flex(center, center);
+    @include gap(24px, 16px);
+    @include mb(24px, 16px);
+
+    @include media1(sp) {
+      flex-direction: column
+    }
+
+    li {
+      @include fs(16px);
+      font-weight: bold;
+    }
+  }
+
+  .copy {
+    @include fs(12px);
+    font-weight: 600;
+    color: $g3;
+    text-align: center;
+  }
+}
+
+.topBtn {
+  @include width(40px);
+  aspect-ratio: 1 / 1;
+  display: block;
+  position: fixed;
+  bottom: 8px;
+  right: 8px;
+  opacity: 0;
+  transition: .2s ease;
+
+  &.active {
+    opacity: 1;
+  }
+}

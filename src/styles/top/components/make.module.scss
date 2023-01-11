@@ -1,0 +1,91 @@
+@import '../../variables.scss';
+
+.makeArea {
+  @include p(96px 0, 80px 0, 48px 0 0);
+  background-image: url(../../../../public/top/use-back.png);
+  background-size: 100%;
+  background-repeat: no-repeat;
+  background-position: center bottom;
+
+  @include media1(sp) {
+    background-position: center 100px;
+  }
+
+  .midashiBox {
+    @include width(320px);
+    margin: auto;
+    @include mb(32px, 16px);
+  }
+
+  h2 {
+    margin: auto;
+  }
+
+  .desc {
+    @include fs(16px, 14px, 13px);
+    font-weight: 500;
+    text-align: center;
+    @include mb(48px, 24px);
+  }
+
+  .ttl {
+    @include fs(32px, 24px);
+    font-weight: 900;
+    text-align: center;
+    @include mb(32px);
+  }
+
+  .flex {
+    @include flex(center);
+    @include gap(64px 24px, 40px 16px, 30px);
+
+    a {
+      position: relative;
+      @include width(calc(100% * 1/3 - 24px * 2/3), calc(100% * 1/2 - 16px * 1/2), 100%);
+      @include height(116px, 80px);
+      background-color: $w1;
+      border-radius: 10px;
+      border: 6px solid $b13;
+      @include flex(center, center);
+      @include gap(8px, 4px);
+      flex-direction: column;
+
+      span {
+        display: block;
+        font-weight: bold;
+
+        &.plan {
+          @include p(2px 16px);
+          background-color: $b13;
+          @include fs(16px, 14px);
+          color: $w1;
+          border-radius: 14px;
+        }
+
+        &.txt {
+          @include fs(20px, 18px);
+          color: $b13;
+          text-align: center;
+        }
+      }
+
+      img {
+        position: absolute;
+        right: 0;
+
+        @include media1(tab1) {
+          height: 104px;
+        }
+      }
+
+      @include media1(sp) {
+        &:nth-child(even) {
+          img {
+            right: unset;
+            left: 0;
+          }
+        }
+      }
+    }
+  }
+}

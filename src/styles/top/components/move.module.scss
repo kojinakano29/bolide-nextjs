@@ -1,0 +1,229 @@
+@import '../../variables.scss';
+
+.moveArea {
+  @include pt(64px, 48px, 24px);
+
+  .flex {
+    @include flex(stretch);
+
+    .box {
+      @include width(120px, 100%);
+      cursor: pointer;
+      transition: .5s ease-in-out;
+
+      &.cora {
+        background-color: $y2;
+      }
+
+      &.lion {
+        background-color: $o5;
+      }
+
+      &.della {
+        background-color: $p2;
+      }
+
+      &.marche {
+        background-color: $b13;
+      }
+
+      .before {
+        display: block;
+        margin: auto;
+        @include p(32px, 24px, 20px);
+
+        img {
+          &:first-child {
+            @include media1(tab1) {
+              display: none;
+            }
+          }
+        }
+      }
+
+      .after {
+        overflow: hidden;
+        max-width: 0;
+        max-height: 0;
+        opacity: 0;
+        pointer-events: none;
+        transition: .5s ease-in-out;
+        position: relative;
+        z-index: 1;
+
+        .afterFlex {
+          @include flex(flex-end);
+          @include gap(32px, 16px);
+          @include mb(24px, 16px);
+
+          .left {
+            @include width(calc(100% - (200px + 32px)), calc(100% - (200px + 16px)), 100%);
+
+            .midashiBox {
+              @include flex(center, left);
+              @include gap(16px, 8px);
+              @include mb(24px, 20px);
+
+              span {
+                font-weight: bold;
+                display: block;
+
+                &.num {
+                  @include fs(24px, 20px);
+                  color: $w1;
+                }
+
+                &.txt {
+                  @include fs(20px, 16px);
+                }
+              }
+            }
+
+            .whatTtl {
+              @include mb(10px, 8px);
+            }
+
+            .desc {
+              @include fs(14px, 13px);
+              font-weight: 500;
+            }
+          }
+        }
+      }
+
+      .after {
+        &::after {
+          display: block;
+          color: $w1;
+          opacity: .3;
+          @include fs(120px, 100px, 80px);
+          font-weight: bold;
+          font-family: $Poppins;
+          position: absolute;
+          top: 0;
+          @include right(40px, 32px, unset);
+          @include left(unset, unset, 20px);
+          z-index: -1;
+        }
+      }
+
+      &:nth-of-type(1) {
+        .after {
+          &::after {
+            content: "connect";
+          }
+        }
+      }
+
+      &:nth-of-type(2) {
+        .after {
+          &::after {
+            content: "know";
+          }
+        }
+      }
+
+      &:nth-of-type(3) {
+        .after {
+          &::after {
+            content: "search";
+          }
+        }
+      }
+
+      &:nth-of-type(4) {
+        .after {
+          &::after {
+            content: "shopping";
+          }
+        }
+      }
+
+      .afterCan {
+        @include p(32px, 24px, 24px 20px);
+        background-color: $w1;
+        border-radius: 10px;
+
+        .canTtl {
+          @include mb(24px);
+
+          img {
+            margin: auto;
+          }
+        }
+
+        .canFlex {
+          @include flex(stretch, center);
+          @include gap(24px 32px, 16px 32px);
+          margin: auto;
+
+          &.type1 {
+            @include max-width(742px, 100%);
+
+            div {
+              @include width(160px, 160px, calc(100% * 1/2 - 32px * 1/2));
+
+              p {
+                @include fs(13px);
+              }
+            }
+          }
+
+          &.type2 {
+            @include max-width(728px, 100%);
+
+            div {
+              @include width(200px, calc(100% * 1/3 - 32px * 2/3), 200px);
+
+              p {
+                @include fs(13px, 12px);
+              }
+            }
+          }
+
+          &.type3 {
+            @include max-width(600px, 100%);
+
+            div {
+              @include width(178px, 178px, calc(100% * 1/2 - 32px * 1/2));
+
+              p {
+                @include fs(12px);
+              }
+            }
+          }
+
+          div {
+            text-align: center;
+
+            img {
+              margin: auto;
+              @include mb(16px);
+            }
+
+            p {
+              font-weight: bold;
+            }
+          }
+        }
+      }
+
+      &.current {
+        @include width(calc(100% - 120px * 3), 100%);
+        cursor: auto;
+
+        .before {
+          display: none;
+        }
+
+        .after {
+          @include p(40px, 32px, 32px 20px);
+          max-width: 100%;
+          max-height: unset;
+          opacity: 1;
+          pointer-events: all;
+        }
+      }
+    }
+  }
+}

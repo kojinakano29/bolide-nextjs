@@ -1,71 +1,95 @@
 import styles from '@/styles/top/components/header.module.scss'
 import Link from 'next/link';
-import { Link as Scroll } from 'react-scroll';
+import { useCallback, useState } from 'react';
 import Container from './Layout/container';
 
 const Header = () => {
+  const [open, setOpen] = useState(false)
+
+  const handleClickHum = useCallback(async () => {
+    setOpen(prevState => !prevState)
+  }, [setOpen])
+
   return (
     <header className={styles.header}>
-      <Container>
-        <div className={styles.headerFlex}>
-          <h1 className={styles.logo}>
-            <Link href="/">
-              <a className="hoverEffect">
-                <img src="/top/logo.svg" alt="" />
-              </a>
-            </Link>
-          </h1>
-          <ul className={styles.nav}>
-            <li className={styles.type1}>
-              <Scroll
-                to="about"
-                smooth={true}
-                duration={100}
-                offset={-50}
-                className="hoverEffect"
-              >Bolide's Japanとは？</Scroll>
-            </li>
-            <li className={styles.type1}>
-              <Scroll
-                to="plan"
-                smooth={true}
-                duration={100}
-                offset={-50}
-                className="hoverEffect"
-              >料金プラン</Scroll>
-            </li>
-            <li className={styles.type1}>
-              <Scroll
-                to="faq"
-                smooth={true}
-                duration={100}
-                offset={-50}
-                className="hoverEffect"
-              >よくあるご質問</Scroll>
-            </li>
-            <li className={styles.type2}>
+      <div className={`${styles.humBox} ${open ? styles.active : null}`}>
+        <Container>
+          <div className={styles.headerFlex}>
+            <h1 className={styles.logo}>
               <Link href="/">
-                <a className={`${styles.btn} hoverEffect`}>
-                  <img src="/top/mail-icon.svg" alt="" />
-                  お問い合わせ
+                <a className="hoverEffect">
+                  <img src="/top/logo.svg" alt="" />
                 </a>
               </Link>
-              <Link href="/login">
-                <a className={`${styles.btn} ${styles.color1} hoverEffect`}>
-                  <img src="" alt="" />
-                  ログイン
-                </a>
+            </h1>
+            <ul className={styles.nav}>
+              <li className={`${styles.type1} pc`}>
+                <Link href="/#about">
+                  <a className="hoverEffect">Bolide's Japanとは？</a>
+                </Link>
+              </li>
+              <li className={`${styles.type1} pc`}>
+                <Link href="/#plan">
+                  <a className="hoverEffect">料金プラン</a>
+                </Link>
+              </li>
+              <li className={`${styles.type1} pc`}>
+                <Link href="/#faq">
+                  <a className="hoverEffect">よくあるご質問</a>
+                </Link>
+              </li>
+              <li className={styles.type2}>
+                <Link href="/">
+                  <a className={`${styles.btn} hoverEffect`}>
+                    <img src="/top/mail-icon.svg" alt="" />
+                    <span>お問い合わせ</span>
+                  </a>
+                </Link>
+                <Link href="/login">
+                  <a className={`${styles.btn} ${styles.color1} hoverEffect`}>
+                    <img src="" alt="" />
+                    <span>ログイン</span>
+                  </a>
+                </Link>
+                <Link href="/register">
+                  <a className={`${styles.btn} ${styles.color2} hoverEffect`}>
+                    <img src="/top/registar-icon.svg" alt="" />
+                    <span>会員登録</span>
+                  </a>
+                </Link>
+              </li>
+              <li className={`${styles.type3} sp`}>
+                <button
+                  type="button"
+                  className={open ? styles.active : null}
+                  onClick={handleClickHum}
+                >
+                  <span></span>
+                  <span></span>
+                  <span></span>
+                </button>
+              </li>
+            </ul>
+          </div>
+          <ul className={styles.humNav}>
+            <li>
+              <Link href="/#about">
+                <a>Bolide's Japanとは？</a>
               </Link>
-              <Link href="/register">
-                <a className={`${styles.btn} ${styles.color2} hoverEffect`}>
-                  <img src="/top/registar-icon.svg" alt="" />
-                  会員登録
-                </a>
+            </li>
+            <li>
+              <Link href="/#plan">
+                <a>料金プラン</a>
+              </Link>
+            </li>
+            <li>
+              <Link href="/#faq">
+                <a>よくあるご質問</a>
               </Link>
             </li>
           </ul>
-        </div>
-      </Container>
+        </Container>
+      </div>
     </header>
   );
 }
