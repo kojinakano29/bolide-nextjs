@@ -184,6 +184,77 @@ span > img {
   .en {
     font-family: $Poppins;
   }
+
+  &.topPage {
+    background-image: url(../../public/top/back.svg);
+    background-position: center -258px;
+    width: 100%;
+
+    @include media1(sp) {
+      background-image: url(../../public/top/back__sp.svg);
+      background-position: center -120px;
+    }
+  }
+
+  .ttl1 {
+    @include flex(center, center);
+    @include mb(32px, 24px);
+    width: fit-content;
+
+    &.center {
+      @include m(0 auto 32px, 0 auto 24px);
+    }
+
+    &.bottom {
+      .sm.en {
+        @include ty(6px, 2px);
+      }
+    }
+
+    &.bg_line {
+      background-image: url(../../public/top/color__bar.svg);
+      background-repeat: no-repeat;
+      background-size: 100%;
+      background-position: center bottom;
+      @include pb(16px);
+    }
+
+    span {
+      display: block;
+
+      &.big {
+        @include fs(40px, 28px);
+        font-weight: bold;
+      }
+
+      &.sm {
+        @include fs(32px, 24px);
+        font-weight: 900;
+
+        &.en {
+          @include fs(16px, 14px, 13px);
+          font-weight: bold;
+        }
+      }
+    }
+  }
+
+  .btn1 {
+    @include width(200px);
+    @include height(40px);
+    border-radius: 36px;
+    border: 2px solid $b1;
+    @include flex(center, center);
+    background-color: $w1;
+    @include fs(14px);
+    font-weight: bold;
+
+    &.btn2 {
+      background-color: $b1;
+      color: $w1;
+      @include mt(10px);
+    }
+  }
 }
 /* 3サイトトップ */
 

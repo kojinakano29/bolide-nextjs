@@ -169,7 +169,7 @@ const MypageCreate = () => {
                   <label htmlFor="age">年齢</label>
                 </dt>
                 <dd className={styles.ageArea}>
-                  <input type="number" id="age" {...register("age", { required: true })} />
+                  <input type="text" id="age" {...register("age", { required: true })} />
                   {errors.age && <p className={`red ${styles.error}`}>必須項目を入力してください</p>}
                 </dd>
               </dl>

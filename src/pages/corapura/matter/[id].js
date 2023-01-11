@@ -12,7 +12,7 @@ export const getServerSideProps = async ({params}) => {
   }
 }
 
-const CompanyMatter = ({posts}) => {
+const MatterDetailPage = ({posts}) => {
   // console.log(posts);
 
   return (
@@ -20,8 +20,8 @@ const CompanyMatter = ({posts}) => {
   );
 }
 
-export default CompanyMatter;
+export default MatterDetailPage;
 
-CompanyMatter.getLayout = function getLayout(page) {
+MatterDetailPage.getLayout = function getLayout(page) {
   return <PageLayoutCorapura>{page}</PageLayoutCorapura>
 }
