@@ -14,7 +14,7 @@ const Login = () => {
 
     const { login } = useAuth({
         middleware: 'guest',
-        redirectIfAuthenticated: '/liondor/mypage/create',
+        redirectIfAuthenticated: '/liondor/',
     })
 
     const [email, setEmail] = useState('')

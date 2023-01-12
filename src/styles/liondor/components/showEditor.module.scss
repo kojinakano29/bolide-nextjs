@@ -2,4 +2,12 @@
 
 .editorBody {
   @include width(calc(100% - (320px + 64px)), 100%);
+
+  div {
+    div {
+      & > span {
+        color: $g4;
+      }
+    }
+  }
 }

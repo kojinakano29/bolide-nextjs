@@ -9,7 +9,7 @@
   transition: .5s ease-out;
 
   &.headerHidden {
-    @include top(-222px);
+    @include top(-178px);
     transition: .3s ease-in;
   }
 
@@ -17,8 +17,12 @@
     top: 0;
   }
 
+  &.stickyNone {
+    position: unset;
+  }
+
   .topArea {
-    @include p(60px 0 8px, 12px 0);
+    @include p(32px 0 8px, 12px 0);
     position: relative;
     border-bottom: 1px solid $g3;
   }
@@ -28,7 +32,7 @@
   }
 
   h1 {
-    @include width(300px, 160px);
+    @include width(240px, 160px);
     margin: auto;
 
     .logo {

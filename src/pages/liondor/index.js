@@ -15,7 +15,7 @@ export const getServerSideProps = async () => {
 }
 
 export default function Home({posts}) {
-    console.log(posts)
+    // console.log(posts)
 
     const firstClassData = posts.first
     const specialData = posts.special

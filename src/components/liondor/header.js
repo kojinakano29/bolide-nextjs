@@ -5,8 +5,11 @@ import Image from 'next/image';
 import { Hum, SearchIcon, LoginBtn, PageNavi } from '@/components/liondor'
 import { useCallback, useEffect, useState } from 'react';
 import { useAuth } from '@/hooks/auth';
+import { useRouter } from 'next/router';
 
 const Header = () => {
+  const router = useRouter()
+
   const { logout } = useAuth()
 
   // ハンバーガーメニュー
@@ -24,7 +27,7 @@ const Header = () => {
   // ヘッダースクロール時のイベント（上下スクロールで隠れたりするやつ）
   const [isHeaderShow, setIsHeaderShow] = useState(true)
   const [lastPosition, setLastPosition] = useState(0)
-  const headerHeight = 222
+  const headerHeight = 178
 
   const scrollEvent = useCallback(() => {
     const offset = window.pageYOffset
@@ -58,6 +61,11 @@ const Header = () => {
           ${styles.pageHeader}
           ${isHeaderShow ? '' : styles.headerHidden}
           ${humOpen ? styles.headerFixed : ''}
+          ${
+            router.route === "/liondor/post/create" ||
+            router.route === `/liondor/post/edit/[id]`
+            ? styles.stickyNone : ''
+          }
         `
       }
     >

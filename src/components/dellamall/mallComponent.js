@@ -144,7 +144,7 @@ const MallComponent = ({item, user, save = false}) => {
                       handleClickSaveMallAdd(mall.id)
                     }
                   }}
-                >{saveMallState.includes(mall.id) ? "解除" : "保存"}</button>
+                >{saveMallState.includes(mall.id) ? "モールの保存解除" : "モールを保存"}</button>
               : null}
             </div>
             {save ?

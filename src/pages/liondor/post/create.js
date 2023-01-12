@@ -21,6 +21,7 @@ export const getServerSideProps = async () => {
 }
 
 const CreatePost = ({posts}) => {
+  // console.log(posts)
   const csrf = () => axios.get('/sanctum/csrf-cookie')
 
   const router = useRouter()
@@ -38,8 +39,16 @@ const CreatePost = ({posts}) => {
   }
 
   const [disabled, setDisabled] = useState(false)
+  const date = new Date()
+  const year = date.getFullYear()
+  const month = ("00" + date.getMonth()+1).slice(-2)
+  const day = ("00" + date.getDate()).slice(-2)
   const [editorContent, setEditorContent] = useState()
-  const { register, handleSubmit, formState: { errors } } = useForm()
+  const { register, handleSubmit, formState: { errors } } = useForm({
+    defaultValues: {
+      view_date: `${year}-${month}-${day}T00:00`,
+    }
+  })
 
   const catArray = posts.category
   const seriesArray = posts.series
@@ -203,7 +212,7 @@ const CreatePost = ({posts}) => {
                   </dt>
                   <dd className={styles.dd}>
                     <input
-                      type="date"
+                      type="datetime-local"
                       id="view_date"
                       {...register("view_date", { required: state })}
                     />

@@ -79,6 +79,8 @@
     font-weight: 500;
     color: $g3;
     text-decoration: underline;
+    display: block;
+    margin-bottom: 8px;
 
     &:hover {
       text-decoration: none;
