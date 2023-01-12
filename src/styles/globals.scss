@@ -595,5 +595,48 @@ span > img {
   span {
     display: inline;
   }
+
+  .toolbarFontSize {
+    width: 50px;
+  }
+
+  .toolbarColor {
+    width: 200px;
+
+    .rdw-colorpicker-modal-header {
+      span {
+        font-size: 12px;
+      }
+    }
+
+    .rdw-colorpicker-modal-options {
+      @include flex(center, left);
+    }
+  }
+
+  .toolbarLink {
+    & > label {
+      font-size: 12px;
+    }
+  }
+
+  .toolbarEmbed {
+    * {
+      font-size: 12px;
+    }
+  }
+
+  .toolbarImage {
+    width: 250px;
+
+    * {
+      font-size: 12px;
+    }
+
+    .rdw-image-modal-header-option {
+      width: unset;
+      padding-right: 12px;
+    }
+  }
 }
 /* エディター部分 */

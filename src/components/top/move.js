@@ -42,9 +42,6 @@ const Move = () => {
                   <p className={styles.desc}>自由な発想で案件登録して、企業や自治体、フリーランス、専門家、インフルエンサー、一般ユーザー、メディアと気軽に多種多様のつながりをもてるアプローチツール。"つながる" "認知拡大""楽しむ"が満載で、お仕事や認知向上につながるプロモーションがいっぱい。</p>
                 </div>
                 <div className={styles.right}>
-                  <Link href="/">
-                    <a className="hoverEffect btn1">資料請求はこちら</a>
-                  </Link>
                   <Link href="/corapura">
                     <a className="hoverEffect btn1 btn2">CARAPURA公式サイト</a>
                   </Link>
@@ -98,15 +95,12 @@ const Move = () => {
                   </div>
                   <img className={styles.whatTtl} src="/top/liondor-about.svg" alt="" />
                   <p className={styles.desc}>
-                    ファッション×ビジネス×トレンドを突いた情報を発信する情報サイト。
+                    ファッション×ビジネス×トレンドを突いた情報を発信するWEBサイト。
                     <br/>「見て、知って、感じて」をありのままに体験してもらい、読者の方をリュクスな世界へ。
                     <br/>コラプラ、デラモール、マルシェドール掲載企業やユーザーも光輝く形でご紹介。
                   </p>
                 </div>
                 <div className={styles.right}>
-                  <Link href="/">
-                    <a className="hoverEffect btn1">資料請求はこちら</a>
-                  </Link>
                   <Link href="/liondor">
                     <a className="hoverEffect btn1 btn2">Liondor公式サイト</a>
                   </Link>
@@ -165,9 +159,6 @@ const Move = () => {
                   </p>
                 </div>
                 <div className={styles.right}>
-                  <Link href="/">
-                    <a className="hoverEffect btn1">資料請求はこちら</a>
-                  </Link>
                   <Link href="/dellamall">
                     <a className="hoverEffect btn1 btn2">Della Mall公式サイト</a>
                   </Link>
@@ -226,9 +217,6 @@ const Move = () => {
                   </p>
                 </div>
                 <div className={styles.right}>
-                  <Link href="/">
-                    <a className="hoverEffect btn1">資料請求はこちら</a>
-                  </Link>
                   <a className="hoverEffect btn1 btn2" href="https://marche-dor.jp/" target="_blank" rel="noopener noreferrer">Marche Dor公式サイト</a>
                 </div>
               </div>

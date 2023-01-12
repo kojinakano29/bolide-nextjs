@@ -216,7 +216,7 @@ const PostEdit = ({posts}) => {
                   </dt>
                   <dd className={styles.dd}>
                     <input
-                      type="date"
+                      type="datetime-local"
                       id="view_date"
                       {...register("view_date", { required: state })}
                     />

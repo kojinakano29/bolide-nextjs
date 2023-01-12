@@ -9,7 +9,7 @@ const Editor = dynamic(
 const ShowEditor = ({data}) => {
   const content = data.content
   const [editorState, setEditorState] = useState(() => {
-    if (content) {
+    if (content && content !== "undefined") {
       return EditorState.createWithContent(convertFromRaw(JSON.parse(content)))
     } else {
       return EditorState.createEmpty()

@@ -53,7 +53,7 @@ export const canCorapura = [
   },
   {
     src: "/top/corapura6.svg",
-    txt: "SDGS・NFTなど\n取り入れ企業力UP",
+    txt: "SDGS・NFTなどを\n取り入れて企業力UP",
   },
   {
     src: "/top/corapura7.svg",
@@ -132,18 +132,18 @@ export const plans = [
     color: "corapura"
   },
   {
-    name: "/top/della-logo.svg",
-    graph: "/top/della-plan.svg",
-    color: "della"
-  },
-  {
     name: "/top/liondor-logo.svg",
     graph: "/top/liondor-plan.svg",
     color: "liondor"
   },
   {
+    name: "/top/della-logo.svg",
+    graph: "/top/della-plan.svg",
+    color: "della"
+  },
+  {
     name: "/top/marche-logo.svg",
-    graph: "",
+    graph: "/top/marche-plan.svg",
     color: "marche"
   },
 ]

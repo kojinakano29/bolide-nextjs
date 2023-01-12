@@ -67,7 +67,7 @@ const BolideTop = () => {
           </div>
           <div className={styles.flexType2}>
             <div className={styles.left}>
-              <p className={styles.feature}>サービスの特徴が入ります</p>
+              {/* <p className={styles.feature}>サービスの特徴が入ります</p> */}
               <h2 className="ttl1 bottom">
                 <span className="big en">BJC</span>
                 <span className="sm en">(Bolide's Japan Club)</span>
@@ -84,7 +84,7 @@ const BolideTop = () => {
           </div>
           <div className={styles.flexType2}>
             <div className={styles.left}>
-              <p className={styles.feature}>サービスの特徴が入ります</p>
+              {/* <p className={styles.feature}>サービスの特徴が入ります</p> */}
               <h2 className="ttl1">
                 <span className="sm">社会貢献活動</span>
               </h2>

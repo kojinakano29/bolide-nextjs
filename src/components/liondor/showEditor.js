@@ -10,7 +10,7 @@ const Editor = dynamic(
 const ShowEditor = ({posts}) => {
   const content = posts.posts.content
   const [editorState, setEditorState] = useState(() => {
-    if (content) {
+    if (content && content !== "undefined") {
       return EditorState.createWithContent(convertFromRaw(JSON.parse(content)))
     } else {
       return EditorState.createEmpty()

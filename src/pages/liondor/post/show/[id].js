@@ -27,10 +27,11 @@ export const getServerSideProps = async ({params}) => {
 }
 
 const DetailPage = ({posts}) => {
+  // console.log(posts)
   const csrf = () => axios.get('/sanctum/csrf-cookie')
 
   const router = useRouter()
-  const { user } = useAuth()
+  const { user } = useAuth({middleware: 'auth', type: 'liondor'})
 
   const post = posts.posts
   const parentSlug = post.l_category.parent_slug
@@ -165,7 +166,7 @@ const DetailPage = ({posts}) => {
                   seriesPrevPost !== null
                   ?
                   <Link href={`/liondor/post/show/${seriesPrevPost.id}`}>
-                    <a className={styles.seriesLink}>{seriesName}</a>
+                    <a className={styles.seriesLink}>{seriesPrevPost.title ? seriesPrevPost.title : "タイトル未入力"}</a>
                   </Link>
                   :
                   ''
@@ -174,7 +175,7 @@ const DetailPage = ({posts}) => {
                   seriesNextPost !== null
                   ?
                   <Link href={`/liondor/post/show/${seriesNextPost.id}`}>
-                    <a className={styles.seriesLink}>{seriesName}</a>
+                    <a className={styles.seriesLink}>{seriesNextPost.title ? seriesNextPost.title : "タイトル未入力"}</a>
                   </Link>
                   :
                   ''

@@ -1,7 +1,7 @@
 import styles from '@/styles/liondor/components/adminList.module.scss'
 import Container from '@/components/liondor/Layouts/container'
 import PageLayoutLiondor from '@/components/Layouts/PageLayoutLiondor'
-import { PageTitle } from '@/components/liondor'
+import { Date, PageTitle } from '@/components/liondor'
 import { useAuth } from '@/hooks/auth'
 import axios from '@/lib/axios'
 import Link from 'next/link'
@@ -146,6 +146,11 @@ const PostList = ({posts}) => {
         <Container small900>
           <h3 className={styles.catTtl}>カテゴリー絞り込み</h3>
           <div className={styles.bigCatBox}>
+            <button
+              type="button"
+              className={`${styles.bigCat} ${catName === "All" ? styles.current : null}`}
+              onClick={() => handleClickCat("", "All")}
+            >All</button>
             {bigCat.map((cat, index) => (
               <button
                 type="button"
@@ -175,8 +180,12 @@ const PostList = ({posts}) => {
             <ul>
               {lists?.map((list, index) => (
                 <li key={index}>
+                  {list.state === 0 ?
+                    <p  className={styles.iconP}>下書き</p>
+                  : null}
+                  <p className={styles.time}><Date dateString={list.view_date} />{list.view_date.substr(11, 5).replace(":", "時")}分</p>
                   <Link href={`/liondor/post/show/${list.id}`}>
-                    <a className={styles.ttl}>{list.title}</a>
+                    <a className={styles.ttl}>{list.title ? list.title : "タイトル未入力"}</a>
                   </Link>
                   <div className={styles.btnBox}>
                     <Link href={`/liondor/post/edit/${list.id}`}>

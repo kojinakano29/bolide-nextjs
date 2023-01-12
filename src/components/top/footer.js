@@ -41,6 +41,16 @@ const Footer = () => {
             </li>
             <li className="pc">|</li>
             <li className="hoverEffect">
+              <Link href="/#faq">
+                <a>よくある質問</a>
+              </Link>
+            </li>
+            <li className="pc">|</li>
+            <li className="hoverEffect">
+              <a href="">利用規約</a>
+            </li>
+            <li className="pc">|</li>
+            <li className="hoverEffect">
               <a href="">プライバシーポリシー</a>
             </li>
             <li className="pc">|</li>

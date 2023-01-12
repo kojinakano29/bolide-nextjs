@@ -81,6 +81,29 @@
         }
       }
 
+      .iconP {
+        @include fs(12px);
+        @include p(2px 8px);
+        border-radius: 8px;
+        font-weight: bold;
+        background-color: $b1;
+        color: $w1;
+        width: fit-content;
+        text-decoration: none;
+        @include mb(8px);
+      }
+
+      .time {
+        @include fs(14px, 12px);
+        text-decoration: none;
+        color: $g1;
+        @include mb(4px);
+
+        * {
+          text-decoration: none;
+        }
+      }
+
       .ttl {
         font-size: var(--fs16-14);
         display: block;

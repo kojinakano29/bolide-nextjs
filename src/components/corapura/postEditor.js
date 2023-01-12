@@ -159,7 +159,7 @@ https://example.jp/
         }}
         localization={{ locale: "ja" }}
         toolbar={{
-          options: ["inline", "blockType", "fontSize", "list", "textAlign", "colorPicker", "link", "image", "history"],
+          // options: ["inline", "blockType", "fontSize", "list", "textAlign", "colorPicker", "link", "image", "embedded", "history"],
           inline: {
             options: [
               "bold",
@@ -172,6 +172,11 @@ https://example.jp/
           blockType: {
             options: ['Normal', 'H3', 'H4', 'H5', 'H6', 'Blockquote', 'Code'],
           },
+          fontSize: {
+            options: [10, 11, 12, 14, 16, 18, 24, 30, 36, 48, 60, 72, 96],
+            className: "toolbarFontSize",
+            dropdownClassName: "toolbarFontSizeDrop",
+          },
           list: {
             inDropdown: true,
             options: ['unordered', 'ordered', 'indent', 'outdent'],
@@ -181,15 +186,29 @@ https://example.jp/
             options: ['left', 'center', 'right'],
           },
           image: {
+            popupClassName: "toolbarImage",
             uploadCallback: handleImageUpload,
             alt: { present: true, mandatory: true },
             previewImage: true,
-            alignmentEnabled: false,
             inputAccept: 'image/webp,image/jpeg,image/jpg,image/png',
           },
+          colorPicker: {
+            className: undefined,
+            popupClassName: "toolbarColor",
+          },
           link: {
+            popupClassName: "toolbarLink",
             options: ["link"],
           },
+          embedded: {
+            className: undefined,
+            popupClassName: "toolbarEmbed",
+            embedCallback: undefined,
+            defaultSize: {
+              height: 'auto',
+              width: 'auto',
+            },
+          }
         }}
       />
     </div>
