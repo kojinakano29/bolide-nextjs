@@ -262,7 +262,7 @@ const PostEdit = ({posts}) => {
         : null
       }
 
-      <Button2 link={`/liondor/post/editor_index/${user?.id}`} name="一覧へ戻る" />
+      <Button2 link={`/liondor/post/editor_index/${user?.id}`} name="一覧へ戻る" noto />
     </section>
   );
 }

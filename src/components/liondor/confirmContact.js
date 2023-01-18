@@ -106,8 +106,8 @@ const ConfirmContact = () => {
             <dd>{values.message}</dd>
           </dl>
           <div className={styles.btnFlex}>
-            <button type="button" className="btn3" onClick={handleBack}>修正する</button>
-            <button type="submit" className="btn3">送信する</button>
+            <button type="button" className="btn3 noto btn3_2" onClick={handleBack}>修正する</button>
+            <button type="submit" className="btn3 noto">送信する</button>
           </div>
         </article>
       </form>

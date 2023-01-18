@@ -3,7 +3,7 @@
 .modalArea {
   @include modalBox;
   background-color: transparent;
-  @include pt(96px, 96px, 76px);
+  @include pt(96px, 96px, 64px);
 
   .modalBox {
     @include width(400px, 380px, 320px);

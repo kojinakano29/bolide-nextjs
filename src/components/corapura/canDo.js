@@ -30,6 +30,7 @@ const CanDo = () => {
                 className={`${styles.cont2__item} ${current === index + 1 ? styles.current : null}`}
                 key={can.name}
                 onClick={() => handleClickTab(index+1)}
+                onMouseEnter={() => handleClickTab(index+1)}
               >
                 <div className={styles.cont2__item__left}>
                   {current === index + 1 ?
@@ -61,6 +62,7 @@ const CanDo = () => {
                 className={`${styles.cont2__item} ${current === index + 7 ? styles.current : null}`}
                 key={can.name}
                 onClick={() => handleClickTab(index+7)}
+                onMouseEnter={() => handleClickTab(index+7)}
               >
                 <div className={styles.cont2__item__left}>
                   {current === index + 7 ?

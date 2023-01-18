@@ -3,7 +3,7 @@ import axios from '@/lib/axios';
 import styles from '@/styles/dellamall/components/newShop.module.scss'
 import Link from 'next/link';
 import { useCallback, useEffect, useState } from 'react';
-import { Date, Loader } from '@/components/dellamall'
+import { Btn01, Date, Loader } from '@/components/dellamall'
 
 const NewShop = ({handleClickOpen}) => {
   const csrf = () => axios.get('/sanctum/csrf-cookie')
@@ -49,6 +49,11 @@ const NewShop = ({handleClickOpen}) => {
             ))}
           </>
         : <Loader />}
+        {!user ?
+          <div className="hoverCover" onClick={handleClickOpen}>
+            <Btn01 txt="ログインする" link="/dellamall/login" />
+          </div>
+        : null}
       </article>
     </div>
   );

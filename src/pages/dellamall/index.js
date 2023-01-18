@@ -88,7 +88,7 @@ const Home = ({posts}) => {
           </h1>
           <div className={styles.mvTxtBox}>
             <p className={styles.sm}>日本中の素敵なECサイトを集めた<br className="sp" />新世代マーケットでお買い物！</p>
-            <p className={`${styles.big} en`}><span>Slogan is</span> Everyone,<br className="sp" />Find,Share,Enjoy</p>
+            <p className={`${styles.big} en`}><span className="en">Slogan is</span> Everyone,<br className="sp" />Find,Share,Enjoy</p>
           </div>
         </Container>
         <div className={styles.trend}>

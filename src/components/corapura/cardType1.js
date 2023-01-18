@@ -1,9 +1,9 @@
 import styles from '@/styles/corapura/components/cardType1.module.scss'
 import dummy from '@/images/corapura/common/dummy3.svg'
 
-const CardType1 = ({data, cat = false, detail = false}) => {
+const CardType1 = ({data, cat = false, detail = false, swiper = false}) => {
   return (
-    <article className={styles.box}>
+    <article className={`${styles.box} ${swiper ? styles.swiper : null}`}>
       <div className={styles.imgBox}>
         <img src={data.thumbs ? `${process.env.NEXT_PUBLIC_BACKEND_URL}/storage/${data.thumbs}` : dummy.src} alt="" />
       </div>

@@ -74,8 +74,14 @@
     }
   }
 
-  .detail {
-    opacity: 0;
-    pointer-events: none;
+  &.detail {
+    background-size: 1800px;
+
+    .btnCover {
+      opacity: 0;
+      pointer-events: none;
+      max-height: 0;
+      overflow: hidden;
+    }
   }
 }

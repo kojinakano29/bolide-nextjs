@@ -233,6 +233,11 @@
       opacity: 1;
     }
   }
+
+  input::placeholder,
+  textarea::placeholder {
+    color: $g3;
+  }
 }
 
 .lastError {
@@ -316,18 +321,17 @@
   .ul {
     @include flex(center, left);
     @include gap(12px 48px);
-    list-style: disc;
 
     li {
       font-size: var(--fs16-14);
       font-weight: 300;
-      @include ml(1.3em);
     }
   }
 
   .btnFlex {
     @include flex(center, center);
-    @include gap(40px);
+    flex-direction: column-reverse;
+    @include gap(32px, 24px);
 
     button {
       margin: 0;

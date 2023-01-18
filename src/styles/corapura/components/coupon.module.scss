@@ -7,6 +7,10 @@
   overflow: hidden;
   box-shadow: 0 3px 6px rgba(0, 0, 0, .16);
 
+  &.swiper {
+    width: 352px;
+  }
+
   .imgBox {
     aspect-ratio: 16 / 9;
     border-top-left-radius: 10px;

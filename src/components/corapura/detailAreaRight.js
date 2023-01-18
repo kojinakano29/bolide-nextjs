@@ -6,6 +6,7 @@ import mail from '@/images/corapura/common/mail_icon.svg'
 import axios from '@/lib/axios';
 import { useAuth } from '@/hooks/auth';
 import Social from './social';
+import { Follow } from '@/components/corapura';
 
 const DetailAreaRight = ({influencer = false}) => {
   const csrf = () => axios.get('/sanctum/csrf-cookie')
@@ -18,6 +19,8 @@ const DetailAreaRight = ({influencer = false}) => {
   const [disabled, setDisabled] = useState(false)
   const [followCheck, setFollowCheck] = useState(false)
   const [nowFollower, setNowFollower] = useState(userInfo.c_followeds_count)
+  const [open, setOpen] = useState(false)
+  const [followType, setFollowType] = useState(null)
 
   const onLoadCheck = async () => {
     await csrf()
@@ -74,6 +77,11 @@ const DetailAreaRight = ({influencer = false}) => {
     await setDisabled(false)
   }, [disabled, setDisabled, user, followCheck, setFollowCheck])
 
+  const handleClickOpen = useCallback(async (type) => {
+    setOpen(prevState => !prevState)
+    setFollowType(type)
+  }, [setOpen, setFollowType])
+
   return (
     <>
       {!influencer ?
@@ -93,10 +101,16 @@ const DetailAreaRight = ({influencer = false}) => {
             </div>
           </div>
           <div className={styles.followBox}>
-            <p className={styles.count}>フォロワー{nowFollower}人</p>
+            <p className={styles.count}>
+              <button
+                type="button"
+                className="hoverEffect"
+                onClick={() => handleClickOpen("follower")}
+              >フォロワー</button>{nowFollower}人
+            </p>
             <button
               type="button"
-              className="hoverEffect"
+              className={`${styles.followBtn} hoverEffect`}
               onClick={handleClickFollow}
             >{followCheck ? "フォロー中" : "フォローする"}</button>
           </div>
@@ -170,10 +184,16 @@ const DetailAreaRight = ({influencer = false}) => {
             ))}
           </div>
           <div className={styles.followBox}>
-            <p className={styles.count}>フォロワー{nowFollower}人</p>
+            <p className={styles.count}>
+              <button
+                type="button"
+                className="hoverEffect"
+                onClick={() => handleClickOpen("follower")}
+              >フォロワー</button>{nowFollower}人
+            </p>
             <button
               type="button"
-              className="hoverEffect"
+              className={`${styles.followBtn} hoverEffect`}
               onClick={handleClickFollow}
             >{followCheck ? "フォロー中" : "フォローする"}</button>
           </div>
@@ -191,6 +211,10 @@ const DetailAreaRight = ({influencer = false}) => {
           </a>
         </div>
       }
+
+      {open ?
+        <Follow handleClickOpen={handleClickOpen} userInfo={userInfo} followType={followType} />
+      : null}
     </>
   );
 }

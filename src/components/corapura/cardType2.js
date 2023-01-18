@@ -9,8 +9,8 @@ const CardType2 = ({data, detail = false}) => {
           <div className={styles.imgBox}>
             <img src={item.thumbs ? `${process.env.NEXT_PUBLIC_BACKEND_URL}/storage/${item.thumbs}` : dummy.src} alt="" />
           </div>
-          <p className={styles.name}>{item.title}</p>
-          <p className={styles.desc}>{item.text}</p>
+          <p className={styles.name}>{item.title.substring(0, 18)}{item.title.length > 18 ? "..." : ""}</p>
+          <p className={styles.desc}>{item.text.substring(0, 23)}{item.text.length > 23 ? "..." : ""}</p>
           {!detail ?
             <div className={styles.company}>
               <div className={styles.logoBox}>

@@ -18,7 +18,7 @@
 .headlineWrap {
   position: relative;
 
-  button {
+  .button {
     position: absolute;
     right: 0;
 
@@ -41,6 +41,11 @@
   text-align: center;
   @include max-width(608px);
   margin: auto;
+}
+
+.snsShare {
+  @include flex(center, center);
+  @include gap(24px);
 }
 
 .cat {

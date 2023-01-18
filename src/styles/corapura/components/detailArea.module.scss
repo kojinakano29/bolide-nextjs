@@ -139,7 +139,7 @@
       @include mb(16px);
     }
 
-    button {
+    .followBtn {
       @include p(8px 32px, 4px 24px);
       @include fs(16px, 14px);
       font-weight: 500;

@@ -28,7 +28,7 @@
 
 .saveMallBox {
   @include activeBox(320px);
-  @include height(410px);
+  @include height(410px, 399px);
 
   .saveMallBox__title {
     @include fs(18px, 16px);

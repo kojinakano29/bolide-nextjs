@@ -317,8 +317,25 @@ span > img {
     margin: auto;
     transition: .2s ease-out;
 
+    &.noto {
+      font-family: $nsj;
+      font-weight: 500;
+    }
+
+    &.bold {
+      font-weight: bold;
+    }
+
     &:hover {
       opacity: .5;
+    }
+
+    &.btn3_2 {
+      @include width(200px, 160px);
+      @include height(48px, 40px);
+      background-color: $g2 !important;
+      @include fs(16px, 14px);
+      color: $b1;
     }
   }
 
@@ -403,7 +420,7 @@ span > img {
   }
 
   .cont1 {
-    @include pt(176px);
+    @include pt(160px, 130px, 108px);
   }
 
   .ttl1 {
@@ -636,6 +653,49 @@ span > img {
     .rdw-image-modal-header-option {
       width: unset;
       padding-right: 12px;
+    }
+  }
+
+  .public-DraftEditorPlaceholder-inner {
+    color: $g14;
+  }
+
+  .rdw-link-decorator-wrapper {
+    a:hover {
+      text-decoration: underline;
+    }
+
+    .rdw-link-decorator-icon {
+      display: none;
+    }
+  }
+
+  .rdw-image-modal-header {
+    justify-content: center;
+    @include gap(32px);
+
+    .rdw-image-modal-header-option {
+      padding: 0;
+
+      &:nth-child(1) {
+        position: relative;
+
+        &::after {
+          content: "";
+          width: 1px;
+          height: 14px;
+          background-color: $b1;
+          display: block;
+          position: absolute;
+          top: 50%;
+          right: -16px;
+          transform: translateY(-50%);
+        }
+      }
+
+      .rdw-image-modal-header-label {
+        display: none;
+      }
     }
   }
 }

@@ -16,8 +16,10 @@ const GuideCorapura = () => {
           とは？
         </h2>
         <p className={styles.desc}>
-          Collaboration+Plusで組み合わせ、想いを込めて作った言葉。
-          <br/>コラプラのプラットフォームの中で、携わるすべての人がプラスに進みますように…
+          Collaboration+Plusで組み合わせ、
+          <br className="sp" />想いを込めて作った言葉。
+          <br/>コラプラのプラットフォームの中で、
+          <br className="sp" />携わるすべての人がプラスに進みますように…
         </p>
       </section>
 

@@ -31,6 +31,10 @@
     position: relative;
     z-index: 1;
     color: $w1;
+
+    &.noto {
+      font-family: $nsj;
+    }
   }
 
   &:hover {

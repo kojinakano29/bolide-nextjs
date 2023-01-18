@@ -1,8 +1,8 @@
 import styles from '@/styles/dellamall/components/headerNav.module.scss'
 import Link from "next/link";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faBell, faBookmark, faQuestion } from '@fortawesome/free-solid-svg-icons'
-import { faSquarePlus, faCircleUser } from '@fortawesome/free-regular-svg-icons'
+import { faBookmark, faQuestion } from '@fortawesome/free-solid-svg-icons'
+import { faCircleUser } from '@fortawesome/free-regular-svg-icons'
 import { useAuth } from '@/hooks/auth';
 import { useCallback, useState } from 'react';
 import { NewShop } from '@/components/dellamall';
@@ -20,9 +20,9 @@ const HeaderNav = () => {
     <>
       <div className={styles.flex}>
         <button className={`${styles.btn1} hoverEffect`} onClick={handleClickOpen}>
-          <FontAwesomeIcon icon={faBell} />
+          <img src="/dellamall/news.svg" alt="" />
         </button>
-        <Link href={`/dellamall/mypage/${user?.id}?state=4`}>
+        <Link href={user ? `/dellamall/mypage/${user?.id}?state=4` : "/dellamall/login"}>
           <a className={`${styles.btn1} hoverEffect`}>
             <FontAwesomeIcon icon={faBookmark} />
           </a>
@@ -34,7 +34,7 @@ const HeaderNav = () => {
         </Link>
         <Link href="/dellamall/admin/shop/create">
           <a className={`${styles.btn2} hoverEffect`}>
-            <FontAwesomeIcon icon={faSquarePlus} />
+            <img src="/dellamall/make.svg" alt="" />
             <span className="pc">ショップを作る</span>
           </a>
         </Link>

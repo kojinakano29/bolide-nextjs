@@ -29,7 +29,7 @@
     }
 
     .jp {
-      @include fs(20px, 18px);
+      @include fs(20px, 16px);
       font-weight: bold;
       @include mb(4px);
     }

@@ -4,15 +4,13 @@ import PageLayoutLiondor from "@/components/Layouts/PageLayoutLiondor";
 import styles from '@/styles/liondor/components/postShow.module.scss'
 import Link from "next/link";
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { faBookmark as bookmarkRegular } from '@fortawesome/free-regular-svg-icons'
-import { faBookmark as bookmarkSolid } from '@fortawesome/free-solid-svg-icons'
 import { faStar as starRegular } from '@fortawesome/free-regular-svg-icons'
 import { faStar as starSolid } from '@fortawesome/free-solid-svg-icons'
 import { useEffect, useState } from "react";
 import axios from "@/lib/axios";
 import { useAuth } from "@/hooks/auth";
 import { useRouter } from "next/router";
-
+import { FacebookIcon, FacebookShareButton, TwitterIcon, TwitterShareButton } from "react-share";
 
 // SSR
 export const getServerSideProps = async ({params}) => {
@@ -187,19 +185,27 @@ const DetailPage = ({posts}) => {
                 <span className="en">{userName}</span>
               </p>
               <p className={`en ${styles.time}`}><Date dateString={createAt} /></p>
+              <div className={styles.snsShare}>
+                <FacebookShareButton url={`${process.env.NEXT_PUBLIC_FRONTEND_URL}/${router.asPath}`}>
+                  <FacebookIcon size={40} round />
+                </FacebookShareButton>
+                <TwitterShareButton url={`${process.env.NEXT_PUBLIC_FRONTEND_URL}/${router.asPath}`}>
+                  <TwitterIcon size={40} round />
+                </TwitterShareButton>
+              </div>
             </div>
             {
               user ?
               <button
-                className={styles.bookmarkBtn}
+                className={`${styles.button} ${styles.bookmarkBtn}`}
                 onClick={handleClickBookmark}
                 disabled={disabled}
               >
                 {
                   bookmarkState ?
-                  <FontAwesomeIcon icon={bookmarkSolid} />
+                  <img src="/liondor/bookmark-b.svg" alt="" />
                   :
-                  <FontAwesomeIcon icon={bookmarkRegular} />
+                  <img src="/liondor/bookmark.svg" alt="" />
                 }
               </button>
               : null
@@ -207,7 +213,7 @@ const DetailPage = ({posts}) => {
             {
               user?.account_type > 2 ?
               <button
-                className={styles.pickupBtn}
+                className={`${styles.button} ${styles.pickupBtn}`}
                 onClick={handleClickPickup}
                 disabled={disabled}
               >

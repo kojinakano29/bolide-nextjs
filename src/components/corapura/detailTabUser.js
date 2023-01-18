@@ -99,7 +99,7 @@ const DetailTabUser = ({cards, likes, matters, userInfo}) => {
               type="button"
               className={`${tab1 === 0 ? styles.tabOn : null}`}
               onClick={() => handleClickTab1(0)}
-            >この企業の案件一覧</button>
+            >このユーザーの案件一覧</button>
             <button
               type="button"
               className={`${tab1 === 1 ? styles.tabOn : null}`}

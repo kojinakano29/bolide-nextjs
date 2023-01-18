@@ -11,6 +11,7 @@ const Plan = ({plan, num}) => {
       ${plan.color === "della" ? styles.della : null}
       ${plan.color === "liondor" ? styles.liondor : null}
       ${plan.color === "marche" ? styles.marche : null}
+      ${plan.color === "bj" ? styles.bj : null}
     `}>
       <button
         type="button"
@@ -20,6 +21,9 @@ const Plan = ({plan, num}) => {
       >
         <div>{isOpen ? "ー" : "＋"}</div>
         <img src={plan.name} alt="" />
+        {plan.color === "bj" ?
+          <span>※プレミアムプランを含みます</span>
+        : null}
       </button>
       <div
         id={`planImg${num}`}

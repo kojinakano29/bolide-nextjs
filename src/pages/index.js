@@ -121,10 +121,6 @@ const BolideTop = () => {
               ))}
             </div>
           </article>
-          <div className={styles.packBox}>
-            <img className="pc" src="/top/pack.svg" alt="" />
-            <img className="sp" src="/top/pack__sp.svg" alt="" />
-          </div>
         </Container>
       </section>
 

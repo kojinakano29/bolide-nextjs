@@ -24,7 +24,7 @@ export const getServerSideProps = async () => {
 }
 
 const CompanyList = ({posts}) => {
-  console.log(posts)
+  // console.log(posts)
   const csrf = () => axios.get('/sanctum/csrf-cookie')
 
   const sorts = [
@@ -151,8 +151,12 @@ const CompanyList = ({posts}) => {
   }, [setBusinessInformation])
 
   const handleClickTag = useCallback(async (e) => {
+    if (parseInt(tag) === parseInt(e.target.value)) {
+      setTag(null)
+      return
+    }
     setTag(e.target.value)
-  }, [setTag])
+  }, [tag, setTag])
 
   const handleClickSort = useCallback(async (e) => {
     setSort(e.currentTarget.value)

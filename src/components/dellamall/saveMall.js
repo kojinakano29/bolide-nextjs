@@ -23,7 +23,7 @@ const SaveMall = () => {
       d_shop_id: shop.id,
     })
     .then((res) => {
-      console.log(res)
+      // console.log(res)
       setMallList(res.data.mall)
       setMallIn(res.data.mall_in)
     })

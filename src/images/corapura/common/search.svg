@@ -1,1 +1,6 @@
-<svg xmlns="http://www.w3.org/2000/svg" width="19" height="33" viewBox="0 0 19 33"><text transform="translate(0 25)" fill="#24305e" font-size="24" font-family="Poppins-SemiBold, Poppins" font-weight="600" letter-spacing="0.06em"><tspan x="0" y="0">Q</tspan></text></svg>
+<svg xmlns="http://www.w3.org/2000/svg" width="30.414" height="30.414" viewBox="0 0 30.414 30.414">
+  <g id="Icon_feather-search" data-name="Icon feather-search" transform="translate(2 2)">
+    <path id="パス_1" data-name="パス 1" d="M28.5,16.5a12,12,0,1,1-12-12A12,12,0,0,1,28.5,16.5Z" transform="translate(-4.5 -4.5)" fill="none" stroke="#333" stroke-width="4"/>
+    <path id="パス_2" data-name="パス 2" d="M31.5,31.5l-6.525-6.525" transform="translate(-4.5 -4.5)" fill="none" stroke="#333" stroke-linejoin="round" stroke-width="4"/>
+  </g>
+</svg>
