@@ -22,8 +22,8 @@ export const getServerSideProps = async () => {
 }
 
 const OnlineSalonList = ({posts}) => {
+  // console.log(posts)
   const csrf = () => axios.get('/sanctum/csrf-cookie')
-  console.log(posts)
 
   const [disabled, setDisabled] = useState(false)
   const [search, setSearch] = useState("")

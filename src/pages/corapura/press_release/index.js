@@ -24,7 +24,7 @@ export const getServerSideProps = async () => {
 }
 
 const PressReleaseList = ({posts}) => {
-  console.log(posts)
+  // console.log(posts)
   const csrf = () => axios.get('/sanctum/csrf-cookie')
 
   const sorts = [
@@ -54,7 +54,7 @@ const PressReleaseList = ({posts}) => {
       page: parseInt(page),
     })
     .then((res) => {
-      console.log(res)
+      // console.log(res)
       setReleases(res.data.pr)
       setNowPage(res.data.now_page)
       setMaxPage(res.data.page_max)
@@ -86,8 +86,12 @@ const PressReleaseList = ({posts}) => {
   ])
 
   const handleClickTag = useCallback(async (e) => {
+    if (parseInt(tag) === parseInt(e.target.value)) {
+      setTag(null)
+      return
+    }
     setTag(e.target.value)
-  }, [setTag])
+  }, [tag, setTag])
 
   const handleClickSort = useCallback(async (e) => {
     setSort(e.currentTarget.value)
@@ -114,7 +118,7 @@ const PressReleaseList = ({posts}) => {
       page: parseInt(page),
     })
     .then((res) => {
-      console.log(res)
+      // console.log(res)
       setReleases(res.data.pr)
       setNowPage(res.data.now_page)
       setMaxPage(res.data.page_max)

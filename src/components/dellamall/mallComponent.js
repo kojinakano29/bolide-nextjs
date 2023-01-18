@@ -7,7 +7,7 @@ import axios from '@/lib/axios';
 import { Loader, MasonryGridComponent } from '@/components/dellamall';
 
 const MallComponent = ({item, user, save = false}) => {
-  console.log(item)
+  // console.log(item)
   const csrf = () => axios.get('/sanctum/csrf-cookie')
 
   const [processing, setProcessing] = useState(false)

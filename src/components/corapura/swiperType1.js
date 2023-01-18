@@ -1,6 +1,6 @@
 import styles from '@/styles/corapura/components/swiper.module.scss'
 import { Swiper, SwiperSlide } from 'swiper/react';
-import { Pagination, Navigation } from 'swiper'
+import { Pagination, Navigation, Autoplay } from 'swiper'
 import { MatterCard } from '@/components/corapura';
 import { useState } from 'react';
 import left from '@/images/corapura/top/arrowIcon-left.svg'
@@ -16,11 +16,15 @@ const SwiperType1 = ({matters}) => {
       <div className={styles.swiperType1}>
         <div className="swiperType1">
           <Swiper
-            modules={[Pagination, Navigation]}
+            modules={[Pagination, Navigation, Autoplay]}
             slidesPerView="auto"
             navigation={{
               nextEl: '.swiper-button-next',
               prevEl: '.swiper-button-prev',
+            }}
+            autoplay={{
+              delay: 2500,
+              disableOnInteraction: false,
             }}
             loop={true}
             onSlideChange={(swiperCore) => {

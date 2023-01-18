@@ -88,6 +88,16 @@
         color: $b8;
       }
     }
+
+    &.check {
+      background-color: $g1;
+      background-image: none;
+
+      &:hover {
+        opacity: 1;
+        cursor: auto
+      }
+    }
   }
 }
 

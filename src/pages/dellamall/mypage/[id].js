@@ -2,7 +2,7 @@ import Container from '@/components/dellamall/Layouts/container';
 import PageLayoutDellamall from '@/components/Layouts/PageLayoutDellamall';
 import styles from '@/styles/dellamall/components/mypage.module.scss'
 import notSet from '@/images/dellamall/myPage/userImg.webp'
-import { Btn01, CreateMallMypage, Loader, MallComponent, MasonryGridComponent } from '@/components/dellamall';
+import { Btn01, CreateMallMypage, Follow, Loader, MallComponent, MasonryGridComponent } from '@/components/dellamall';
 import { faSquarePlus, faTableCellsLarge, faGear } from '@fortawesome/free-solid-svg-icons'
 import { createContext, useCallback, useEffect, useState } from 'react';
 import axios from '@/lib/axios';
@@ -14,13 +14,14 @@ export const getServerSideProps = async ({params}) => {
   const data = await res.json()
 
   return {
-      props: {
-          posts: data
-      }
+    props: {
+      posts: data
+    }
   }
 }
 
 export const CreateMallContext = createContext()
+export const FollowPopupContext = createContext()
 
 const Mypage = ({posts}) => {
   // console.log(posts)
@@ -40,6 +41,9 @@ const Mypage = ({posts}) => {
   const [saveMall, setSaveMall] = useState([])
   const [comment, setComment] = useState([])
   const [follow, setFollow] = useState(false)
+  const [open, setOpen] = useState(false)
+  const [followType, setFollowType] = useState(null)
+  const [followCount, setFollowCount] = useState(profile.d_followed_count)
 
   const tabItems = [
     "作成ショップ",
@@ -54,7 +58,7 @@ const Mypage = ({posts}) => {
       handleClickTab(4)
       handleClickTabShow(4)
     }
-  }, [user])
+  }, [user, router.query.state])
 
   const loadFollowCheck = useCallback(async () => {
     await csrf()
@@ -91,6 +95,7 @@ const Mypage = ({posts}) => {
       }).then((res) => {
         // console.log(res)
         setFollow(false)
+        setFollowCount(prevState => prevState - 1)
         alert("フォロー解除しました。")
       }).catch((e) => {
         console.error(e)
@@ -102,6 +107,7 @@ const Mypage = ({posts}) => {
       }).then((res) => {
         // console.log(res)
         setFollow(true)
+        setFollowCount(prevState => prevState + 1)
         alert("フォローしました。")
       }).catch((e) => {
         console.error(e)
@@ -174,6 +180,11 @@ const Mypage = ({posts}) => {
     setPopupOpen(prevState => !prevState)
   }, [])
 
+  const handleClickOpen = useCallback(async (type) => {
+    setOpen(prevState => !prevState)
+    setFollowType(type)
+  }, [setOpen, setFollowType])
+
   return (
     <>
       <section className="cont1">
@@ -186,8 +197,20 @@ const Mypage = ({posts}) => {
             <div className={styles.user__info__id}>{profile.name}</div>
             <ul className={styles.user__info__follow}>
               <li>投稿 {create_shop.length} 件</li>
-              <li>フォロー {profile.d_following_count} 件</li>
-              <li>フォロワー {profile.d_followed_count} 件</li>
+              <li>
+                <button
+                  type="button"
+                  className="hoverEffect"
+                  onClick={() => handleClickOpen("following")}
+                >フォロー</button> {profile.d_following_count} 件
+              </li>
+              <li>
+                <button
+                  type="button"
+                  className="hoverEffect"
+                  onClick={() => handleClickOpen("follower")}
+                >フォロワー</button> {followCount} 件
+              </li>
             </ul>
             <p className={styles.user__info__text}>{dProfile?.profile}</p>
           </div>
@@ -216,6 +239,12 @@ const Mypage = ({posts}) => {
           </div>
         </Container>
       </section>
+
+      {open ?
+        <FollowPopupContext.Provider value={{handleClickOpen, followType, profile}}>
+          <Follow />
+        </FollowPopupContext.Provider>
+      : null}
 
       {popupOpen ?
         <CreateMallContext.Provider value={{handleClickPopup, setCreateMall, user}}>

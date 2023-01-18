@@ -2,7 +2,7 @@
 
 .bottomArea {
   @include flex(stretch);
-  @include gap(0, 0, 64px);
+  @include gap(0, 0, 32px);
 }
 
 .imgBox {
@@ -25,6 +25,11 @@
 .blogLink {
   composes: blogLink from './parts.scss';
   @include width(412px, calc(100% * 1/3 - 16px * 2/3), 100%);
+
+  @include media1(sp) {
+    border-bottom: 1px solid $g2;
+    padding-bottom: 32px;
+  }
 
   &:not(:first-of-type) {
     @include media1(sp) {

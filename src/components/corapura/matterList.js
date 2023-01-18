@@ -131,8 +131,12 @@ const MatterList = ({posts, influencer = false}) => {
   }, [setReward])
 
   const handleClickTag = useCallback(async (e) => {
+    if (parseInt(tag) === parseInt(e.target.value)) {
+      setTag(null)
+      return
+    }
     setTag(e.target.value)
-  }, [setTag])
+  }, [tag, setTag])
 
   const handleClickSort = useCallback(async (e) => {
     setSort(e.currentTarget.value)

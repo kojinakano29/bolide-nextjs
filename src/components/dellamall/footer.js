@@ -40,6 +40,7 @@ const Footer = () => {
           ${styles.topBtn}
           ${show ? styles.active : ""}
           hoverEffect
+          pc
         `}
         onClick={scrollTop}
       >

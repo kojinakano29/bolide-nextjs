@@ -94,7 +94,7 @@ const Login = () => {
                             </dd>
                         </dl>
                         <div>
-                            <button className="btn3">ログインする</button>
+                            <button className="btn3 noto">ログインする</button>
                             <p className={styles.forgot}>
                                 ※パスワードをお忘れの方は
                                 <Link href="/forgot-password"><a>こちら</a></Link>

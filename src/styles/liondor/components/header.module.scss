@@ -9,7 +9,7 @@
   transition: .5s ease-out;
 
   &.headerHidden {
-    @include top(-178px);
+    @include top(-178px, -178px, 0);
     transition: .3s ease-in;
   }
 

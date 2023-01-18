@@ -12,7 +12,7 @@ import Btn from './btn';
 
 const Merit = ({detail = false}) => {
   return (
-    <section className={styles.meritBox}>
+    <section className={`${styles.meritBox} ${detail ? styles.detail : null}`}>
       <Container small>
         <h2 className={styles.ttl}><span className="en">8</span>つのメリット</h2>
         <ul className={styles.list}>
@@ -62,7 +62,7 @@ const Merit = ({detail = false}) => {
             <p>自分の推し活・趣味・特技をここぞとばかりに披露。そこから広がる・深まる・つながる仲間の輪。</p>
           </li>
         </ul>
-        <div className={detail ? styles.detail : null}>
+        <div className={styles.btnCover}>
           <Btn txt="CORAPRAとは" link="/corapura/guide" reverse />
         </div>
       </Container>

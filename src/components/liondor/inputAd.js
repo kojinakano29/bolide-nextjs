@@ -29,7 +29,7 @@ const InputAd = () => {
           <br/>企業様・ブランド様は下記までご連絡下さい。
         </p>
         <p className={styles.adTxt2}>詳細の注意事項はこちらをご覧ください</p>
-        <a href="" target="_blank" className="btn3">PDFをDLする</a>
+        <a href="" target="_blank" className="btn3 noto">PDFをDLする</a>
       </div>
       <p className={styles.desc}>
         お申込みは下記のフォームをご利用ください。
@@ -153,7 +153,7 @@ const InputAd = () => {
             <p>※携帯電話メールアドレスをご利用の場合は、必ず送信前に『携帯メールフィルタの解除』を行ってください。</p>
             <p>※お問い合わせ前に「<Link href="/privacy"><a>個人情報保護方針</a></Link>」についてご確認の上、送信をお願いいたします。</p>
           </div>
-          <button type="submit" className="btn3">内容を確認する</button>
+          <button type="submit" className="btn3 noto">内容を確認する</button>
         </article>
         {!isValid && <p className={`red ${styles.error} ${styles.lastError}`}>まだ全ての必須項目の入力が完了していません。</p>}
       </form>

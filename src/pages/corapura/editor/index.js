@@ -9,6 +9,7 @@ import icon2 from '@/images/corapura/common/linkIcon2.svg'
 import icon3 from '@/images/corapura/common/linkIcon3.svg'
 import icon4 from '@/images/corapura/common/linkIcon4.svg'
 import icon5 from '@/images/corapura/common/linkIcon5.svg'
+import icon6 from '@/images/corapura/common/linkIcon6.svg'
 
 const EditorMyPage = () => {
   const { user } = useAuth({middleware: 'auth', type: 'corapura'})
@@ -98,7 +99,7 @@ const EditorMyPage = () => {
                         <p>完了した案件一覧</p>
                       </div>
                       <div className={styles.iconBox}>
-                        <img src="" alt="" />
+                        <img src={icon6.src} alt="" />
                       </div>
                     </a>
                   </Link>

@@ -9,7 +9,7 @@ import { useCallback, useState } from 'react';
 import axios from '@/lib/axios';
 
 const MatterCard = ({matter, bookmarkList, detail = false, list = false}) => {
-  console.log(matter)
+  // console.log(matter)
   const csrf = () => axios.get('/sanctum/csrf-cookie')
 
   const { user } = useAuth()

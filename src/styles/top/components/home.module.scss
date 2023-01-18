@@ -158,17 +158,6 @@
       @include mt(-32px, -40px);
     }
   }
-
-  .packBox {
-    @include media1(sp) {
-      padding: 0 20px;
-    }
-
-    img {
-      width: 100%;
-      margin: auto;
-    }
-  }
 }
 
 .brandArea {

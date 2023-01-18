@@ -2,11 +2,11 @@
 
 .article {
   @include flex(stretch);
-  @include gap(64px 0);
+  @include gap(64px 0, 64px 0, 32px 0);
 }
 
 .imgBox {
-  @include mb(16px);
+  @include mb(16px, 16px, 0);
   aspect-ratio: 1 / 1;
   overflow: hidden;
 
@@ -21,6 +21,11 @@
 .blogLink {
   composes: blogLink from './parts.scss';
   @include width(300px, calc(100% * 1/4 - 12px * 3/4), 100%);
+
+  @include media1(sp) {
+    padding-bottom: 32px;
+    border-bottom: 1px solid $g2;
+  }
 
   &:not(:first-of-type) {
     @include media1(sp) {

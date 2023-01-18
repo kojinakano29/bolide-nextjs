@@ -16,7 +16,7 @@ const Sitemap = () => {
             <div className={styles.flex}>
               {item.group.map((gr, index) => (
                 <Link href={gr.link} key={index}>
-                  <a>{gr.name}</a>
+                  <a className="en">{gr.name}</a>
                 </Link>
               ))}
             </div>

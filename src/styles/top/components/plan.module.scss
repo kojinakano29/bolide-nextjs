@@ -24,6 +24,10 @@
     background-color: $b13;
   }
 
+  &.bj {
+    background-color: $g3;
+  }
+
   button {
     width: 100%;
     @include flex(center, left);
@@ -38,6 +42,12 @@
       border-radius: 50%;
       font-weight: 900;
       @include fs(20px);
+    }
+
+    span {
+      @include fs(12px);
+      font-weight: 500;
+      color: $g1;
     }
   }
 

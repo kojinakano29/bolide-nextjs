@@ -11,6 +11,7 @@ import { useRouter } from 'next/router'
 import { SaveMall, Social } from '@/components/dellamall'
 import { FacebookShareButton, FacebookIcon, TwitterShareButton, TwitterIcon } from 'react-share'
 import Container from './Layouts/container'
+import useRedirect from '@/hooks/redirect'
 
 export const SaveMallContext = createContext()
 
@@ -18,6 +19,7 @@ const ShopDetailArea = ({data, user}) => {
   // console.log(data)
   const csrf = () => axios.get('/sanctum/csrf-cookie')
 
+  const { loginCheck } = useRedirect()
   const router = useRouter()
   const shop = data.shop
   const comments = shop.d_comments
@@ -81,6 +83,8 @@ const ShopDetailArea = ({data, user}) => {
   }, [user])
 
   const handleClickGood = async () => {
+    await loginCheck(user, "/dellamall/login", "ログインしてください")
+    if (!user) return
     if (processing.current) return
     processing.current = true
     await csrf()
@@ -125,6 +129,8 @@ const ShopDetailArea = ({data, user}) => {
   }
 
   const handleClickCommentGoodAdd = async (commentId) => {
+    await loginCheck(user, "/dellamall/login", "ログインしてください")
+    if (!user) return
     if (processing.current) return
     processing.current = true
     await csrf()
@@ -190,8 +196,10 @@ const ShopDetailArea = ({data, user}) => {
   }, [user])
 
   const handleClickSaveMall = useCallback(async () => {
+    await loginCheck(user, "/dellamall/login", "ログインしてください")
+    if (!user) return
     await setSaveMallOpen(prevState => !prevState)
-  }, [])
+  }, [user])
 
   const handleClickShare = useCallback(async () => {
     await setShareOpen(prevState => !prevState)
@@ -226,6 +234,8 @@ const ShopDetailArea = ({data, user}) => {
 
   const { register, handleSubmit } = useForm()
   const onSubmit = useCallback(async (data) => {
+    await loginCheck(user, "/dellamall/login", "ログインしてください")
+    if (!user) return
     if (processing.current) return
     processing.current = true
     // console.log(data)
@@ -248,6 +258,8 @@ const ShopDetailArea = ({data, user}) => {
   }, [user])
 
   const handleClickPickup = async () => {
+    await loginCheck(user, "/dellamall/login", "ログインしてください")
+    if (!user) return
     if (processing.current) return
     processing.current = true
     await csrf()
@@ -365,7 +377,10 @@ const ShopDetailArea = ({data, user}) => {
                   </div>
                 : null}
                 {spamModal ?
-                  <div className={styles.spamModal}>
+                  <div
+                    className={styles.spamModal}
+                    onClick={() => handleClickSpamModal("")}
+                  >
                     <Container small900>
                       <div className={styles.modalArea} onClick={(e) => e.stopPropagation()}>
                         <p className={styles.check}>本当に「<span>{spamMessage}</span>」<br className="sp" />として報告しますか？</p>

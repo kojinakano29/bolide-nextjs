@@ -114,7 +114,10 @@
 
         &.color2 {
           background-color: $b13;
-          color: $w1;
+
+          span {
+            color: $w1;
+          }
         }
 
         span {

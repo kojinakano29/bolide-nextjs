@@ -146,4 +146,9 @@ export const plans = [
     graph: "/top/marche-plan.svg",
     color: "marche"
   },
+  {
+    name: "/top/bj-logo.svg",
+    graph: "/top/bj-plan.svg",
+    color: "bj",
+  }
 ]

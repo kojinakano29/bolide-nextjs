@@ -99,7 +99,8 @@ const Corapura = ({posts}) => {
           <p className={styles.txt}>
             Collaboration+Plusで組み合わせ、
             <br className="sp" />想いを込めて作った言葉。
-            <br />コラプラのプラットフォームの中で、携わるすべての人がプラスに進みますように…
+            <br />コラプラのプラットフォームの中で、
+            <br className="sp" />携わるすべての人がプラスに進みますように…
           </p>
           <p className={styles.txt}>
             企業・フリーランス・専門家・個人事業主・インフルエンサー・個人ユーザー
@@ -170,7 +171,7 @@ const Corapura = ({posts}) => {
           <SwiperType2 gap={24}>
             {releases.map((release, index) => (
               <SwiperSlide key={index}>
-                <Release data={release} />
+                <Release data={release} swiper />
               </SwiperSlide>
             ))}
           </SwiperType2>
@@ -227,7 +228,7 @@ const Corapura = ({posts}) => {
           <SwiperType2 gap={24}>
             {coupons.map((coupon, index) => (
               <SwiperSlide key={index}>
-                <Coupon data={coupon} />
+                <Coupon data={coupon} swiper />
               </SwiperSlide>
             ))}
           </SwiperType2>
@@ -244,7 +245,7 @@ const Corapura = ({posts}) => {
           <SwiperType2 gap={24}>
             {presidents.map((president, index) => (
               <SwiperSlide key={index}>
-                <CardType1 data={president} />
+                <CardType1 data={president} swiper />
               </SwiperSlide>
             ))}
           </SwiperType2>
@@ -289,7 +290,7 @@ const Corapura = ({posts}) => {
           <SwiperType2 gap={24}>
             {nfts.map((nft, index) => (
               <SwiperSlide key={index}>
-                <CardType1 data={nft} cat />
+                <CardType1 data={nft} cat swiper />
               </SwiperSlide>
             ))}
           </SwiperType2>
@@ -306,7 +307,7 @@ const Corapura = ({posts}) => {
           <SwiperType2 gap={24}>
             {sdgs.map((sdgs, index) => (
               <SwiperSlide key={index}>
-                <CardType1 data={sdgs} cat />
+                <CardType1 data={sdgs} cat swiper />
               </SwiperSlide>
             ))}
           </SwiperType2>

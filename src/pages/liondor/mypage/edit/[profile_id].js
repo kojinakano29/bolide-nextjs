@@ -242,7 +242,7 @@ const MypageEdit = ({posts}) => {
                     </select>
                   </dd>
                 </dl>
-                <button className="btn3" disabled={disabled}>変更を保存する</button>
+                <button className="btn3 noto bold" disabled={disabled}>変更を保存する</button>
               </form>
             </article>
             <article className={styles.sideBox}>

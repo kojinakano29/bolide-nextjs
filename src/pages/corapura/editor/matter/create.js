@@ -3,7 +3,7 @@ import PageLayoutCorapura from "@/components/Layouts/pageLayoutCorapura";
 import Container from '@/components/corapura/Layout/container';
 import { useRouter } from 'next/router';
 import { useAuth } from '@/hooks/auth';
-import { useCallback, useEffect, useState } from 'react';
+import { useCallback, useState } from 'react';
 import { useForm } from 'react-hook-form';
 import axios from '@/lib/axios';
 import { Loader, PostEditor } from '@/components/corapura';

@@ -1,9 +1,11 @@
+import { useAuth } from '@/hooks/auth';
 import styles from '@/styles/top/components/header.module.scss'
 import Link from 'next/link';
 import { useCallback, useState } from 'react';
 import Container from './Layout/container';
 
 const Header = () => {
+  const { user } = useAuth()
   const [open, setOpen] = useState(false)
 
   const handleClickHum = useCallback(async () => {
@@ -45,10 +47,10 @@ const Header = () => {
                     <span>お問い合わせ</span>
                   </a>
                 </Link>
-                <Link href="/login">
+                <Link href={user ? "/mypage" : "/login"}>
                   <a className={`${styles.btn} ${styles.color1} hoverEffect`}>
-                    <img src="" alt="" />
-                    <span>ログイン</span>
+                    <img src={`/top/${user ? "mypage-icon.svg" : "login-icon.svg"}`} alt="" />
+                    <span>{user ? "マイページ" : "ログイン"}</span>
                   </a>
                 </Link>
                 <Link href="/register">

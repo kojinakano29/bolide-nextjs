@@ -77,8 +77,14 @@
       position: relative;
 
       .activeArea {
-        @include activeBox(320px);
+        @include activeBox(320px, 320px, 280px);
         @include p(24px, 20px);
+
+        @include media1(tab1) {
+          transform: translateX(0);
+          left: unset;
+          right: 0;
+        }
 
         .activeTtl {
           @include fs(18px, 16px);

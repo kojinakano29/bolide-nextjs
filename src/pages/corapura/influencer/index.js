@@ -120,8 +120,12 @@ const InfluencerList = ({posts}) => {
   }, [setFollower])
 
   const handleClickTag = useCallback(async (e) => {
+    if (parseInt(tag) === parseInt(e.target.value)) {
+      setTag(null)
+      return
+    }
     setTag(e.target.value)
-  }, [setTag])
+  }, [tag, setTag])
 
   const handleClickSort = useCallback(async (e) => {
     setSort(e.currentTarget.value)
@@ -180,7 +184,7 @@ const InfluencerList = ({posts}) => {
   return (
     <section className="cont1">
       <Container small>
-        <h2 className="ttl1">インフルエンサー/ユーザー一覧</h2>
+        <h2 className="ttl1">インフルエンサー<br className="sp" />/ユーザー一覧</h2>
         <form onSubmit={handleSubmit(onSortForm)}>
           <div className={styles.searchBox}>
             <input
