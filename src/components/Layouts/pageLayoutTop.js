@@ -8,7 +8,7 @@ const PageLayoutTop = ({children}) => {
     <>
       <Meta />
 
-      <div className={`bolide_top ${router.route === "/" ? "topPage" : null}`}>
+      <div className={`bolide_top bjc_page`}>
         <Header />
 
         <main>

@@ -1,0 +1,33 @@
+@import '../../variables.scss';
+
+.menuBox {
+  @include flex(stretch);
+  @include gap(40px 36px, 40px 24px);
+  @include mb(80px, 64px);
+
+  a {
+    display: block;
+    @include width(calc(100% * 1/2 - 36px * 1/2), calc(100% * 1/2 - 24px * 1/2), 100%);
+
+    .imgBox {
+      @include mb(16px);
+      transition: .3s ease;
+
+      img {
+        width: 100%;
+      }
+    }
+
+    .nameBox {
+      img {
+        margin: auto;
+      }
+    }
+
+    &:hover {
+      .imgBox {
+        box-shadow: 0 3px 6px rgba(0, 0, 0, .3);
+      }
+    }
+  }
+}

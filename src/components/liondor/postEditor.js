@@ -53,6 +53,15 @@ const PostEditor = ({setEditorContent, content, edit = false}) => {
             src: data
           }
         }
+      } else if (entity.getType() === "EMBEDDED_LINK") {
+        const data = entity.getData()
+        return {
+          component: embeddedComponent,
+          editable: false,
+          props: {
+            src: data
+          }
+        }
       }
     }
     return null
@@ -60,6 +69,10 @@ const PostEditor = ({setEditorContent, content, edit = false}) => {
 
   const ImageComponent = (props) => {
     return <img src={props.blockProps.src.src} alt={props.blockProps.src.alt} />
+  }
+
+  const embeddedComponent = (props) => {
+    return <p>{props.blockProps.src.src}</p>
   }
 
   const handleImageUpload = useCallback(async (file) => {

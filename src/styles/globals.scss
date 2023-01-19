@@ -185,7 +185,7 @@ span > img {
     font-family: $Poppins;
   }
 
-  &.topPage {
+  &.bjc_page {
     background-image: url(../../public/top/back.svg);
     background-position: center -258px;
     width: 100%;
@@ -194,6 +194,10 @@ span > img {
       background-image: url(../../public/top/back__sp.svg);
       background-position: center -120px;
     }
+  }
+
+  .cont1 {
+    @include pt(176px, 120px, 80px);
   }
 
   .ttl1 {
@@ -239,6 +243,12 @@ span > img {
     }
   }
 
+  .ttl2 {
+    @include fs(48px, 40px, 32px);
+    font-weight: 900;
+    @include mb(32px, 24px);
+  }
+
   .btn1 {
     @include width(200px);
     @include height(40px);
@@ -253,6 +263,25 @@ span > img {
       background-color: $b1;
       color: $w1;
       @include mt(10px);
+    }
+  }
+
+  .breadcrumbBox {
+    @include flex(center, left);
+    @include gap(10px);
+    @include mb(48px, 40px, 32px);
+
+    * {
+      @include fs(12px);
+      font-weight: 500;
+    }
+
+    a {
+      color: $g3;
+
+      &:hover {
+        text-decoration: underline;
+      }
     }
   }
 }

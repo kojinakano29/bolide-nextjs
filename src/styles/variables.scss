@@ -840,4 +840,24 @@ $breakpoints: (
     }
   }
 }
+
+@mixin bjcInput($pc:0, $tab:$pc, $sp:$tab) {
+  @include width($pc, $tab, $sp);
+  @include height(64px, 48px);
+  border-radius: 10px;
+  background-color: $g13;
+  border: none;
+}
+
+@mixin bjcBtn {
+  @include width(240px);
+  @include height(48px);
+  @include flex(center, center);
+  @include fs(14px);
+  font-weight: bold;
+  color: $w1;
+  background-color: $b6;
+  border-radius: 36px;
+  margin: auto;
+}
 /*-------------------------     共通部分    -------------------------*/
