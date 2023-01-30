@@ -39,7 +39,7 @@ const EditPressRelease = ({posts}) => {
     mode: "onChange",
   })
   const [preview, setPreview] = useState(posts.thumbs ? `${process.env.NEXT_PUBLIC_BACKEND_URL}/storage/${posts.thumbs}` : "")
-  const [editorContent, setEditorContent] = useState()
+  const [editorContent, setEditorContent] = useState(posts.content)
 
   const onLoadCheck = () => {
     alert("このページにはアクセスできません。")
@@ -157,7 +157,14 @@ const EditPressRelease = ({posts}) => {
                 <dl>
                   <dt>本文</dt>
                   <dd>
-                    <PostEditor release setEditorContent={setEditorContent} content={posts.content} edit />
+                    <PostEditor
+                      handleChange={(editorContent) => {
+                        setEditorContent(editorContent)
+                      }}
+                      value={editorContent}
+                      uploadPath={`/api/corapura/pr/imagesave`}
+                      release
+                    />
                   </dd>
                 </dl>
               </article>

@@ -43,7 +43,7 @@ const EditSalon = ({posts}) => {
     mode: "onChange",
   })
   const [preview, setPreview] = useState(salon.thumbs ? `${process.env.NEXT_PUBLIC_BACKEND_URL}/storage/${salon.thumbs}` : "")
-  const [editorContent, setEditorContent] = useState()
+  const [editorContent, setEditorContent] = useState(salon.content)
 
   const onLoadCheck = () => {
     alert("このページにはアクセスできません。")
@@ -203,7 +203,14 @@ const EditSalon = ({posts}) => {
                 <dl>
                   <dt>本文</dt>
                   <dd>
-                    <PostEditor salon setEditorContent={setEditorContent} content={salon.content} edit />
+                    <PostEditor
+                      handleChange={(editorContent) => {
+                        setEditorContent(editorContent)
+                      }}
+                      value={editorContent}
+                      uploadPath={`/api/corapura/salon/imagesave`}
+                      salon
+                    />
                   </dd>
                 </dl>
               </article>

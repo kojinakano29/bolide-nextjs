@@ -4,7 +4,7 @@
   @include width(320px, 100%);
   height: 100vh;
   position: sticky;
-  top: 0;
+  top: 32px;
   overflow: auto;
   @include scrollHidden;
 

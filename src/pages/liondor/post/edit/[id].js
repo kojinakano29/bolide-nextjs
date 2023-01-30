@@ -42,7 +42,7 @@ const PostEdit = ({posts}) => {
   const content = posts.posts.content
 
   const [disabled, setDisabled] = useState(false)
-  const [editorContent, setEditorContent] = useState()
+  const [editorContent, setEditorContent] = useState(content)
   const [defaultThumb, setDefaultThumb] = useState(post.thumbs)
   const [defaultMv, setDefaultMv] = useState(post.mv)
 
@@ -178,7 +178,13 @@ const PostEdit = ({posts}) => {
                 <dl className={styles.dl}>
                   <dt className={styles.dt}>本文</dt>
                   <dd className={styles.dd}>
-                    <PostEditor setEditorContent={setEditorContent} content={content} edit />
+                    <PostEditor
+                      handleChange={(editorContent) => {
+                        setEditorContent(editorContent)
+                      }}
+                      value={editorContent}
+                      uploadPath={`/api/liondor/post/imagesave`}
+                    />
                   </dd>
                 </dl>
                 <dl className={styles.dl}>

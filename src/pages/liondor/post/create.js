@@ -15,7 +15,7 @@ export const getServerSideProps = async () => {
 
   return {
     props: {
-        posts: data
+      posts: data
     }
   }
 }
@@ -26,10 +26,6 @@ const CreatePost = ({posts}) => {
 
   const router = useRouter()
   const { user } = useAuth({middleware: 'auth', type: 'liondor'})
-
-  useEffect(() => {
-    onLoadCheck()
-  }, [user])
 
   const onLoadCheck = () => {
     if (user?.account_type < 1) {
@@ -43,12 +39,16 @@ const CreatePost = ({posts}) => {
   const year = date.getFullYear()
   const month = ("00" + date.getMonth()+1).slice(-2)
   const day = ("00" + date.getDate()).slice(-2)
-  const [editorContent, setEditorContent] = useState()
+  const [editorContent, setEditorContent] = useState("")
   const { register, handleSubmit, formState: { errors } } = useForm({
     defaultValues: {
       view_date: `${year}-${month}-${day}T00:00`,
     }
   })
+
+  useEffect(() => {
+    onLoadCheck()
+  }, [user])
 
   const catArray = posts.category
   const seriesArray = posts.series
@@ -172,7 +172,12 @@ const CreatePost = ({posts}) => {
                 <dl className={styles.dl}>
                   <dt className={styles.dt}>本文</dt>
                   <dd className={styles.dd}>
-                    <PostEditor setEditorContent={setEditorContent} />
+                    <PostEditor
+                      handleChange={(editorContent) => {
+                        setEditorContent(editorContent)
+                      }}
+                      uploadPath={`/api/liondor/post/imagesave`}
+                    />
                   </dd>
                 </dl>
                 <dl className={styles.dl}>

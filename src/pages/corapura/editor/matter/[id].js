@@ -53,7 +53,7 @@ const EditMatter = ({posts}) => {
     mode: "onChange",
   })
   const [preview, setPreview] = useState(post.thumbs ? `${process.env.NEXT_PUBLIC_BACKEND_URL}/storage/${post.thumbs}` : "")
-  const [editorContent, setEditorContent] = useState()
+  const [editorContent, setEditorContent] = useState(post.content)
   const [lock, setLock] = useState(false)
 
   const onLoadCheck = () => {
@@ -412,7 +412,14 @@ const EditMatter = ({posts}) => {
                 <dl>
                   <dt>本文</dt>
                   <dd className={lock ? styles.lock : null}>
-                    <PostEditor matter setEditorContent={setEditorContent} content={post.content} edit />
+                    <PostEditor
+                      handleChange={(editorContent) => {
+                        setEditorContent(editorContent)
+                      }}
+                      value={editorContent}
+                      uploadPath={`/api/corapura/post/imagesave`}
+                      matter
+                    />
                   </dd>
                 </dl>
               </article>

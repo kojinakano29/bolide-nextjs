@@ -1,7 +1,7 @@
 import styles from '@/styles/liondor/components/createPost.module.scss'
 import axios from '@/lib/axios'; // カスタムフック
 import { useCallback, useEffect, useState } from 'react'
-import { PageTitle, SidebarEditor } from '@/components/liondor';
+import { PageTitle, PostEditor } from '@/components/liondor';
 import { useForm } from 'react-hook-form';
 import Container from '@/components/liondor/Layouts/container';
 import { useRouter } from 'next/router';
@@ -37,7 +37,7 @@ const SidebarEdit = ({posts}) => {
     }
   }
 
-  const [editorContent, setEditorContent] = useState()
+  const [editorContent, setEditorContent] = useState(posts.content)
   const [disabled, setDisabled] = useState(false)
   const { register, handleSubmit, formState: { errors } } = useForm({
     defaultValues: {
@@ -110,7 +110,13 @@ const SidebarEdit = ({posts}) => {
                 <dl className={styles.dl}>
                   <dt className={styles.dt}>本文</dt>
                   <dd className={styles.dd}>
-                    <SidebarEditor setEditorContent={setEditorContent} content={posts.content} edit />
+                    <PostEditor
+                      handleChange={(editorContent) => {
+                        setEditorContent(editorContent)
+                      }}
+                      value={editorContent}
+                      uploadPath={`/api/liondor/sidebar/imagesave`}
+                    />
                   </dd>
                 </dl>
               </div>
