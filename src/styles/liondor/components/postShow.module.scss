@@ -112,6 +112,10 @@
   @include gap(0 64px, 64px, 48px);
 }
 
+.editorBody {
+  @include width(calc(100% - (320px + 64px)), 100%);
+}
+
 .recoCont {
   @include mt(112px, 80px, 64px);
   @include p(56px 0 96px, 64px 0 80px);

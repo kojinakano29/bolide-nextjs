@@ -109,7 +109,7 @@ const PressReleaseDetail = ({posts}) => {
               <img src={release.thumbs ? `${process.env.NEXT_PUBLIC_BACKEND_URL}/storage/${release.thumbs}` : dummy.src} alt="" />
             </div>
             <div className={styles.editBox}>
-              <ShowEditor data={release} />
+              <ShowEditor value={release.content} />
             </div>
           </div>
           <div className={styles.detailRight}>

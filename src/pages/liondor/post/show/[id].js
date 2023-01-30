@@ -233,7 +233,11 @@ const DetailPage = ({posts}) => {
       <section className={styles.showBody}>
         <Container>
           <div className={styles.bodyFlex}>
-            <ShowEditor posts={posts} />
+            <div className={styles.editorBody}>
+              <ShowEditor
+                value={post.content}
+              />
+            </div>
             <Sidebar posts={posts} />
           </div>
           <Button2 link={`/liondor/post/${slug}`} name="back to list" left />

@@ -19,7 +19,7 @@ const CreateSalon = () => {
     mode: "onChange",
   })
   const [preview, setPreview] = useState()
-  const [editorContent, setEditorContent] = useState()
+  const [editorContent, setEditorContent] = useState("")
 
   const onSalonCreate = useCallback(async (data) => {
     await csrf()
@@ -172,7 +172,13 @@ const CreateSalon = () => {
                 <dl>
                   <dt>本文</dt>
                   <dd>
-                    <PostEditor salon setEditorContent={setEditorContent} />
+                    <PostEditor
+                      handleChange={(editorContent) => {
+                        setEditorContent(editorContent)
+                      }}
+                      uploadPath={`/api/corapura/salon/imagesave`}
+                      salon
+                    />
                   </dd>
                 </dl>
               </article>

@@ -1,1 +1,180 @@
 @import '../../variables.scss';
+
+.catch {
+  @include fs(18px, 16px);
+  font-weight: bold;
+}
+
+.adTop {
+  text-align: center;
+  @include mb(80px, 64px, 48px);
+
+  .catch {
+    @include mb(32px, 24px);
+  }
+
+  .desc {
+    @include fs(14px);
+    @include mb(40px, 32px);
+  }
+
+  .desc2 {
+    @include fs(14px);
+    font-weight: bold;
+    @include mb(16px);
+  }
+}
+
+.formArea {
+  @include pb(80px, 64px);
+}
+
+.formContent {
+  .catch {
+    text-align: center;
+    @include mb(48px, 40px, 32px);
+  }
+
+  dl {
+    @include mb(48px, 40px);
+
+    dt {
+      @include flex(center, left);
+      @include gap(8px);
+      @include mb(16px);
+      @include fs(16px, 14px);
+      font-weight: bold;
+
+      span {
+        @include fs(13px, 12px);
+        font-weight: bold;
+        @include p(0 4px);
+
+        &.require {
+          color: $red1;
+          border: 1px solid $red1;
+        }
+
+        &.any {
+          color: $g1;
+          border: 1px solid $g1;
+        }
+      }
+    }
+
+    dd {
+      input[type="text"],
+      input[type="mail"],
+      input[type="tel"] {
+        @include bjcInput(100%);
+      }
+
+      textarea {
+        @include bjcTextarea;
+      }
+
+      &.checkbox {
+        @include bjcCheckbox;
+      }
+
+      &.inputFlex {
+        @include flex();
+
+        input[type="text"] {
+          @include width(calc(100% * 1/2 - 20px * 1/2));
+        }
+      }
+
+      .small {
+        @include fs(12px);
+        color: $g1;
+        @include mt(8px);
+      }
+    }
+  }
+}
+
+.privacyCheck {
+  text-align: center;
+  @include mb(40px, 32px);
+
+  .require {
+    width: fit-content;
+    @include fs(13px, 12px);
+    font-weight: bold;
+    @include p(0 4px);
+    color: $red1;
+    border: 1px solid $red1;
+    margin: auto;
+    @include mb(8px);
+  }
+
+  .txt {
+    @include fs(16px, 14px);
+    font-weight: 500;
+    @include mb(24px, 16px);
+
+    a {
+      color: $b14;
+      text-decoration: underline;
+
+      &:hover {
+        text-decoration: none;
+      }
+    }
+  }
+
+  label {
+    width: fit-content;
+    @include flex(center, center);
+    @include gap(8px);
+    margin: auto;
+    @include fs(16px, 14px);
+    font-weight: bold;
+    cursor: pointer;
+
+    input[type="checkbox"] {
+      @include width(16px, 14px);
+      @include height(16px, 14px);
+      cursor: pointer;
+    }
+  }
+}
+
+.btnFlex {
+  @include flex(center, center);
+  @include gap(16px);
+  flex-direction: column-reverse;
+
+  div {
+    width: fit-content;
+
+    &.type2 {
+      @include width(200px, 160px);
+
+      button {
+        background-color: $g1;
+      }
+    }
+  }
+}
+
+.thanksBox {
+  text-align: center;
+  @include pb(80px, 64px);
+
+  .catch {
+    @include mb(32px, 24px);
+  }
+
+  .txt {
+    @include fs(16px, 14px);
+    font-weight: 500;
+    @include mb(48px, 40px, 32px);
+  }
+}
+
+.error {
+  width: 100%;
+  margin-top: 4px;
+}

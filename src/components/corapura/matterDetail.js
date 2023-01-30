@@ -214,7 +214,7 @@ const MatterDetail = ({posts}) => {
         <Conditions data={posts} />
 
         <div className={styles.editArea}>
-          <ShowEditor data={posts} />
+          <ShowEditor value={posts.content} />
         </div>
 
         {myMatter ?

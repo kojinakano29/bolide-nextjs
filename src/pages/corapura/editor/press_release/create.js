@@ -18,7 +18,7 @@ const CreatePressRelease = () => {
     mode: "onChange",
   })
   const [preview, setPreview] = useState()
-  const [editorContent, setEditorContent] = useState()
+  const [editorContent, setEditorContent] = useState("")
 
   const onPressReleaseCreate = useCallback(async (data) => {
     await csrf()
@@ -129,7 +129,13 @@ const CreatePressRelease = () => {
                 <dl>
                   <dt>本文</dt>
                   <dd>
-                    <PostEditor release setEditorContent={setEditorContent} />
+                    <PostEditor
+                      handleChange={(editorContent) => {
+                        setEditorContent(editorContent)
+                      }}
+                      uploadPath={`/api/corapura/pr/imagesave`}
+                      release
+                    />
                   </dd>
                 </dl>
               </article>

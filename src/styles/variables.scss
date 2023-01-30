@@ -22,6 +22,7 @@ $b10: #006EFF;
 $b11: #B3D1FF;
 $b12: #2A66C1;
 $b13: #5096ff;
+$b14: #003CFF;
 $g1: #888;
 $g2: #F2F2F2;
 $g3: #CCC;
@@ -844,9 +845,46 @@ $breakpoints: (
 @mixin bjcInput($pc:0, $tab:$pc, $sp:$tab) {
   @include width($pc, $tab, $sp);
   @include height(64px, 48px);
+  @include p(0 24px, 0 16px);
   border-radius: 10px;
   background-color: $g13;
   border: none;
+
+  &::placeholder {
+    color: $g3;
+  }
+}
+
+@mixin bjcTextarea {
+  width: 100%;
+  @include height(260px, 240px);
+  @include p(20px 24px, 16px);
+  border-radius: 10px;
+  background-color: $g13;
+  border: none;
+
+  &::placeholder {
+    color: $g3;
+  }
+}
+
+@mixin bjcCheckbox {
+  @include flex(center, left);
+  @include gap(0 32px, 0 24px, 0 16px);
+
+  label {
+    @include flex(center, center);
+    @include gap(8px);
+    @include fs(16px, 14px);
+    font-weight: 500;
+    cursor: pointer;
+
+    input[type="checkbox"] {
+      @include width(16px, 14px);
+      @include height(16px, 14px);
+      cursor: pointer;
+    }
+  }
 }
 
 @mixin bjcBtn {

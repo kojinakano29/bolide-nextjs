@@ -1,30 +1,19 @@
-import styles from '@/styles/liondor/components/showEditor.module.scss'
-import { convertFromRaw, EditorState } from "draft-js";
-import dynamic from "next/dynamic";
-import { useState } from "react";
-const Editor = dynamic(
-  () => import("react-draft-wysiwyg").then(mod => mod.Editor),
-  { ssr: false }
-)
+import parse, { domToReact } from 'html-react-parser'
 
-const ShowEditor = ({posts}) => {
-  const content = posts.posts.content
-  const [editorState, setEditorState] = useState(() => {
-    if (content && content !== "undefined") {
-      return EditorState.createWithContent(convertFromRaw(JSON.parse(content)))
-    } else {
-      return EditorState.createEmpty()
-    }
-  })
+const replace = (node) => {
+  if (node.name === 'a') {
+    return (
+      <a {...node.attribs} rel="noreferrer">
+        { domToReact(node.children) }
+      </a>
+    )
+  }
+}
 
+const ShowEditor = ({ value = "" }) => {
   return (
-    <div className={styles.editorBody}>
-      <Editor
-        editorState={editorState}
-        toolbarHidden
-        readOnly
-        localization={{ locale: "ja" }}
-      />
+    <div className="ck-content">
+      {parse(value, {replace})}
     </div>
   )
 }

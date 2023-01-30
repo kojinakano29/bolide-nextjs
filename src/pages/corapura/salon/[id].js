@@ -177,7 +177,7 @@ const OnlineSalonDetail = ({posts}) => {
             </div>
 
             <div className={styles.editArea}>
-              <ShowEditor data={salon} />
+              <ShowEditor value={salon.content} />
             </div>
           </div>
           <div className={styles.detailRight}>

@@ -31,7 +31,7 @@ const CreateMatter = ({posts}) => {
     mode: "onChange",
   })
   const [preview, setPreview] = useState()
-  const [editorContent, setEditorContent] = useState()
+  const [editorContent, setEditorContent] = useState("")
   const cats = posts.cat
 
   const onMatterCreate = useCallback(async (data) => {
@@ -366,7 +366,13 @@ const CreateMatter = ({posts}) => {
                 <dl>
                   <dt>本文</dt>
                   <dd>
-                    <PostEditor matter setEditorContent={setEditorContent} />
+                    <PostEditor
+                      handleChange={(editorContent) => {
+                        setEditorContent(editorContent)
+                      }}
+                      uploadPath={`/api/corapura/post/imagesave`}
+                      matter
+                    />
                   </dd>
                 </dl>
               </article>
