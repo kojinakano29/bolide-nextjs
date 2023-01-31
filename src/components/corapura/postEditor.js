@@ -116,6 +116,9 @@ https://example.jp/
           config={{
             extraPlugins: [uploadPlugin],
             placeholder: placeholder,
+            mediaEmbed: {
+              previewsInData: true,
+            },
           }}
           onChange={(event, editor) => {
             const editorData = editor.getData()
