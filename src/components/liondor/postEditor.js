@@ -56,7 +56,10 @@ const PostEditor = ({ handleChange, value = "", uploadPath }) => {
           data={value}
           config={{
             extraPlugins: [uploadPlugin],
-            placeholder: "こちらに入力してください"
+            placeholder: "こちらに入力してください",
+            mediaEmbed: {
+              previewsInData: true,
+            },
           }}
           onChange={(event, editor) => {
             const editorData = editor.getData()
