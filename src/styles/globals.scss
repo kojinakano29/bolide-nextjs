@@ -849,6 +849,38 @@ span > img {
 .ck-content {
   img {
     display: inline-block;
+    transition: .3s ease;
+  }
+
+  strong {
+    font-weight: bold;
+  }
+
+  p,
+  strong,
+  td,
+  th,
+  span,
+  h2,
+  h3,
+  h4 {
+    color: $g4;
+  }
+
+  a {
+    text-decoration: underline;
+
+    &:hover {
+      text-decoration: none;
+
+      img {
+        opacity: .5;
+      }
+    }
+  }
+
+  li {
+    margin-left: 1.5em;
   }
 }
 /* エディター部分 */
