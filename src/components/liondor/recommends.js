@@ -32,11 +32,11 @@ const Recommends = ({posts}) => {
                       <img src={item.l_post.thumbs ? `${process.env.NEXT_PUBLIC_BACKEND_URL}/storage/${item.l_post.thumbs}` : dummy.src} alt="" />
                     </div>
                     <BlogTxt
-                      cat={item.l_post.l_category?.parent_slug?.toUpperCase()}
-                      cat2={item.l_post.l_category?.name}
-                      ttl={item.l_post.title}
-                      name={item.l_post.user.l_profile?.nicename}
-                      time={item.l_post.view_date}
+                      cat={item?.l_post?.l_category?.parent_slug?.toUpperCase()}
+                      cat2={item?.l_post?.l_category?.name}
+                      ttl={item.l_post?.title}
+                      name={item?.l_post.user?.l_profile?.nicename}
+                      time={item?.l_post?.view_date}
                       smallMb
                     />
                   </a>

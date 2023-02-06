@@ -56,7 +56,7 @@ const MypageEdit = ({posts}) => {
 
   const { register, handleSubmit, formState: { errors } } = useForm({
     defaultValues: {
-      name: profile.nicename,
+      name: profile?.nicename,
       sex: profile.sex,
       zipcode: profile.zipcode,
       zip: profile.zip,
