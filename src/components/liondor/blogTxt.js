@@ -53,7 +53,7 @@ const BlogTxt = (
       <p className={styles.name}>
         <span className="en">BY</span>
         <span className="space"></span>
-        <span className="en">{name}</span>
+        <span className="en">{name ? name : "未設定"}</span>
       </p>
       <p className={`en ${styles.time}`}><Date dateString={time} /></p>
     </div>

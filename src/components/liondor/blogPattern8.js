@@ -27,7 +27,7 @@ const BlogPattern8 = ({pattern, must = false}) => {
                   cat={item?.l_post?.l_category?.parent_slug?.toUpperCase()}
                   cat2={item?.l_post?.l_category?.name}
                   ttl={item?.l_post?.title}
-                  name={item?.l_post?.user?.l_profile.nicename}
+                  name={item?.l_post?.user?.l_profile?.nicename}
                   time={item?.l_post?.view_date}
                 />
               </div>

@@ -16,7 +16,7 @@ const FirstClass = ({firstClassData}) => {
               cat={firstClassData.l_category.parent_slug?.toUpperCase()}
               cat2={firstClassData.l_category.name}
               ttl={firstClassData.title}
-              name={firstClassData.user.l_profile.nicename}
+              name={firstClassData.user.l_profile?.nicename}
               time={firstClassData.created_at}
               white
               fs24
