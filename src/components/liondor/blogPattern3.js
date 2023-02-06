@@ -22,11 +22,11 @@ const BlogPattern3 = ({pattern}) => {
             </div>
           </div>
           <BlogTxt
-            cat={pattern.l_category.parent_slug?.toUpperCase()}
-            cat2={pattern.l_category.name}
-            ttl={pattern.title}
-            name={pattern.user.l_profile.nicename}
-            time={pattern.created_at}
+            cat={pattern?.l_category?.parent_slug?.toUpperCase()}
+            cat2={pattern?.l_category?.name}
+            ttl={pattern?.title}
+            name={pattern?.user?.l_profile?.nicename}
+            time={pattern?.created_at}
             fs24
           />
         </a>

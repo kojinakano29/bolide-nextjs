@@ -21,7 +21,7 @@ const BlogColumn4 = ({patternData, part2 = false}) => {
               cat={item?.l_category?.parent_slug?.toUpperCase()}
               cat2={item?.l_category?.name}
               ttl={item?.title}
-              name={item?.user?.l_profile.nicename}
+              name={item?.user?.l_profile?.nicename}
               time={item?.view_date}
             />
           </a>

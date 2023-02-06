@@ -44,7 +44,7 @@ const BlogScrollBox = ({patternData, route2 = false}) => {
                     cat={item?.l_post?.l_category?.parent_slug?.toUpperCase()}
                     cat2={item?.l_post?.l_category?.name}
                     ttl={item?.l_post?.title}
-                    name={item?.l_post?.user?.l_profile.nicename}
+                    name={item?.l_post?.user?.l_profile?.nicename}
                     time={item?.l_post?.view_date}
                   />
                   :
@@ -53,7 +53,7 @@ const BlogScrollBox = ({patternData, route2 = false}) => {
                     cat={item?.l_category?.parent_slug?.toUpperCase()}
                     cat2={item?.l_category?.name}
                     ttl={item?.title}
-                    name={item?.user?.l_profile.nicename}
+                    name={item?.user?.l_profile?.nicename}
                     time={item?.view_date}
                   />
                 }
@@ -80,7 +80,7 @@ const BlogScrollBox = ({patternData, route2 = false}) => {
                     cat={item?.l_post?.l_category?.parent_slug?.toUpperCase()}
                     cat2={item?.l_post?.l_category?.name}
                     ttl={item?.l_post?.title}
-                    name={item?.l_post?.user?.l_profile.nicename}
+                    name={item?.l_post?.user?.l_profile?.nicename}
                     time={item?.l_post?.view_date}
                   />
                   :
@@ -89,7 +89,7 @@ const BlogScrollBox = ({patternData, route2 = false}) => {
                     cat={item?.l_category?.parent_slug?.toUpperCase()}
                     cat2={item?.l_category?.name}
                     ttl={item?.title}
-                    name={item?.user?.l_profile.nicename}
+                    name={item?.user?.l_profile?.nicename}
                     time={item?.view_date}
                   />
                 }
@@ -119,7 +119,7 @@ const BlogScrollBox = ({patternData, route2 = false}) => {
                     cat={item?.l_post?.l_category?.parent_slug?.toUpperCase()}
                     cat2={item?.l_post?.l_category?.name}
                     ttl={item?.l_post?.title}
-                    name={item?.l_post?.user?.l_profile.nicename}
+                    name={item?.l_post?.user?.l_profile?.nicename}
                     time={item?.l_post?.view_date}
                   />
                   :
@@ -128,7 +128,7 @@ const BlogScrollBox = ({patternData, route2 = false}) => {
                     cat={item?.l_category?.parent_slug?.toUpperCase()}
                     cat2={item?.l_category?.name}
                     ttl={item?.title}
-                    name={item?.user?.l_profile.nicename}
+                    name={item?.user?.l_profile?.nicename}
                     time={item?.view_date}
                   />
                 }
