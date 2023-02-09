@@ -3,7 +3,7 @@ import dummy from '@/images/liondor/cms/dummy.png'
 import Link from 'next/link';
 import { BlogTxt } from '@/components/liondor'
 
-const BlogPickup = ({patternData, route2 = false}) => {
+const BlogPickup = ({patternData, route2 = false, pickup = false}) => {
   const data = route2 ? patternData?.filter((e, index) => {
     return index === 0
   }) : patternData?.l_post?.filter((e, index) => {
@@ -14,7 +14,7 @@ const BlogPickup = ({patternData, route2 = false}) => {
     <>
       <div className={`${styles.pickUp} pc`}>
         {data?.map((item) => (
-          <Link href={`/liondor/post/show/${item.id}`} key={item.id}>
+          <Link href={`/liondor/post/show/${pickup ? item.l_post_id : item.id}`} key={item.id}>
             <a className={styles.blogLink}>
               <div className={`${styles.imgBox} fill`}>
                 {route2 ?

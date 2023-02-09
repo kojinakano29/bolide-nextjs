@@ -191,10 +191,7 @@ const Corapura = ({posts}) => {
                     <div className={styles.contBox}>
                       <p className={styles.salonName}>{salon.title}</p>
                       <p className={styles.salonDesc}>
-                        {salon.content.substring(0, 60)}
-                        {/* {JSON.parse(salon.content).blocks.map((cont) => {
-                          return cont.text
-                        }).join('').substring(0, 60)}... */}
+                        {salon.content.replace(/<[^>]+>/g, '').replace(/&nbsp;/g, '').substring(0, 60)}
                       </p>
                     </div>
                   </a>

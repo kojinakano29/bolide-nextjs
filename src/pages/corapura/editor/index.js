@@ -12,7 +12,7 @@ import icon5 from '@/images/corapura/common/linkIcon5.svg'
 import icon6 from '@/images/corapura/common/linkIcon6.svg'
 
 const EditorMyPage = () => {
-  const { user } = useAuth({middleware: 'auth', type: 'corapura'})
+  const { user, logout } = useAuth({middleware: 'auth', type: 'corapura'})
   // console.log(user)
 
   return (
@@ -117,6 +117,11 @@ const EditorMyPage = () => {
               </Link>
               }
             </article>
+            <button
+              type="button"
+              className={`${styles.logout} hoverEffect`}
+              onClick={() => logout()}
+            >ログアウト</button>
           </Container>
         </section>
       : <Loader />}

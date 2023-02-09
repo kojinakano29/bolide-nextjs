@@ -28,7 +28,7 @@
   @include gap(120px, 32px);
   @include pb(64px, 32px);
   @include mb(32px, 24px);
-  border-bottom: 1.5px solid $g4;
+  border-bottom: 1px solid $g4;
 }
 
 .humUl {
@@ -85,12 +85,26 @@
 
 .flex {
   @include flex(flex-end);
+  @include gap(40px, 40px, 24px);
   @include pb(64px, 40px);
   border-bottom: 1px solid $g4;
 
   .left {
-    @include mb(0, 0, 40px);
     @include width(unset, unset, 100%);
+
+    .snsCover {
+      @include mb(32px, 32px, 24px);
+
+      @include media1(sp) {
+        div {
+          justify-content: center;
+        }
+        
+        p {
+          text-align: center;
+        }
+      }
+    }
 
     p {
       font-size: 16px;
@@ -117,13 +131,9 @@
   }
 
   .right {
-    @include m(0, 0, auto);
-
-    @include media1(sp) {
-      p {
-        text-align: center !important;
-      }
-    }
+    display: block;
+    max-width: 520px;
+    @include width(520px);
   }
 }
 

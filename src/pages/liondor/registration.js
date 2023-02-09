@@ -59,6 +59,9 @@ const Registration = () => {
                 会員様はプレゼント応募企画で
                 <br/>素敵な商品があたるチャンス
               </p>
+              <Link href="/liondor/present">
+                <a className={styles.link}>プレゼント応募はこちら</a>
+              </Link>
             </div>
             <div className={styles.box}>
               <p className={`${styles.num} ivy`}>03</p>

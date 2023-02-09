@@ -68,10 +68,7 @@ const MatterCard = ({matter, bookmarkList, detail = false, list = false}) => {
               </div>
               <p className={styles.ttl}>{matter.title}</p>
               <p className={styles.desc}>
-                {matter.content.substring(0, 50)}...
-                {/* {JSON.parse(matter.content).blocks.map((cont) => {
-                  return cont.text
-                }).join('').substring(0, 45)}... */}
+                {matter.content.replace(/<[^>]+>/g, '').replace(/&nbsp;/g, '').substring(0, 50)}
               </p>
               {matter.date ?
                 <p className={styles.iconBox}>
@@ -117,10 +114,7 @@ const MatterCard = ({matter, bookmarkList, detail = false, list = false}) => {
               <p className={styles.tag}>{matter.c_cat?.name}</p>
               <p className={styles.ttl}>{matter.title}</p>
               <p className={styles.desc}>
-                {matter.content.substring(0, 50)}...
-                {/* {JSON.parse(matter.content).blocks.map((cont) => {
-                  return cont.text
-                }).join('').substring(0, 45)}... */}
+                {matter.content.replace(/<[^>]+>/g, '').replace(/&nbsp;/g, '').substring(0, 50)}
               </p>
               {matter.date ?
                 <p className={styles.iconBox}>

@@ -42,7 +42,7 @@ const InputContact = () => {
                 広告掲載について
               </label>
               <label>
-                <input type="checkbox" value="企業プレゼントについて" {...register("content", {required: true})} />
+                <input type="checkbox" value="企業プレゼントについて" {...register("content", {required: true})} checked={router.query.check === "present" ? true : false} />
                 企業プレゼントについて
               </label>
               <label>

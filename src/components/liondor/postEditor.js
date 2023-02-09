@@ -60,6 +60,18 @@ const PostEditor = ({ handleChange, value = "", uploadPath }) => {
             mediaEmbed: {
               previewsInData: true,
             },
+            link: {
+              decorators: {
+                openInNewTab: {
+                  mode: 'manual',
+                  label: 'Open in a new tab',
+                  attributes: {
+                    target: '_blank',
+                    rel: 'noopener noreferrer',
+                  }
+                }
+              }
+            },
           }}
           onChange={(event, editor) => {
             const editorData = editor.getData()

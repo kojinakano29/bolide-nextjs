@@ -3,7 +3,7 @@ import Link from 'next/link';
 import { BlogTxt } from '@/components/liondor'
 import dummy from '@/images/liondor/cms/dummy.png'
 
-const BlogScrollBox = ({patternData, route2 = false}) => {
+const BlogScrollBox = ({patternData, route2 = false, pickup = false}) => {
   const dataOdd = route2 ? patternData?.filter((e, index) => {
     return index !== 0 && index % 2 === 1 && index < 8
   }) : patternData?.l_post?.filter((e, index) => {
@@ -27,7 +27,7 @@ const BlogScrollBox = ({patternData, route2 = false}) => {
       <div className={`${styles.scrollBox} pc`}>
         <div className={`${styles.scrollOdd} ${styles.scrollCont}`}>
           {dataOdd?.map((item) => (
-            <Link href={`/liondor/post/show/${item.id}`} key={item.id}>
+            <Link href={`/liondor/post/show/${pickup ? item.l_post_id : item.id}`} key={item.id}>
               <a className={styles.blogLink}>
                 <div className={styles.imgBox}>
                   {route2 ?
@@ -63,7 +63,7 @@ const BlogScrollBox = ({patternData, route2 = false}) => {
         </div>
         <div className={`${styles.scrollEven} ${styles.scrollCont}`}>
           {dataEven?.map((item) => (
-            <Link href={`/liondor/post/show/${item.id}`} key={item.id}>
+            <Link href={`/liondor/post/show/${pickup ? item.l_post_id : item.id}`} key={item.id}>
               <a className={styles.blogLink}>
                 <div className={styles.imgBox}>
                   {route2 ?
@@ -102,7 +102,7 @@ const BlogScrollBox = ({patternData, route2 = false}) => {
       <div className={`${styles.scrollBox} sp`}>
         <div className={`${styles.scrollCont}`}>
           {dataSp?.map((item) => (
-            <Link href={`/liondor/post/show/${item.id}`} key={item.id}>
+            <Link href={`/liondor/post/show/${pickup ? item.l_post_id : item.id}`} key={item.id}>
               <a className={styles.blogLink}>
                 <div className={styles.imgBox}>
                   {route2 ?

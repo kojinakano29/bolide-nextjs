@@ -7,6 +7,7 @@ import Container from '@/components/liondor/Layouts/container';
 import { useRouter } from 'next/router';
 import { useAuth } from '@/hooks/auth';
 import PageLayoutLiondor from '@/components/Layouts/PageLayoutLiondor';
+import Link from 'next/link';
 
 const CreateSidebar = () => {
   const csrf = () => axios.get('/sanctum/csrf-cookie')
@@ -126,6 +127,9 @@ const CreateSidebar = () => {
                     <input type="number" id="order" defaultValue="0" {...register("order")} />
                   </dd>
                 </dl>
+                <Link href={`/liondor/admin/sidebar`}>
+                  <a className="btn2">一覧へ戻る</a>
+                </Link>
               </div>
             </article>
           </form>

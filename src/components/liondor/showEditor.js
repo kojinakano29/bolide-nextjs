@@ -13,7 +13,9 @@ const replace = (node) => {
 const ShowEditor = ({ value = "" }) => {
   return (
     <div className="ck-content">
-      {parse(value, {replace})}
+      {value ?
+        parse(value, {replace})
+      : null}
     </div>
   )
 }

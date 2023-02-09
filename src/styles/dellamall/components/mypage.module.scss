@@ -49,6 +49,19 @@
     max-width: 737px;
     margin: auto;
   }
+
+  .logout {
+    display: block;
+    width: fit-content;
+    @include p(6px 40px);
+    border-radius: 20px;
+    background-color: $g1;
+    color: $w1;
+    @include fs(16px, 14px);
+    font-weight: bold;
+    margin: auto;
+    @include mt(32px);
+  }
 }
 
 .user__buttonList {

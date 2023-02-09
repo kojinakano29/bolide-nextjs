@@ -847,6 +847,10 @@ span > img {
 }
 
 .ck-content {
+  * {
+    font-family: inherit;
+  }
+
   img {
     display: inline-block;
     transition: .3s ease;
@@ -867,6 +871,27 @@ span > img {
     color: $g4;
   }
 
+  h2 {
+    @include p(2px 4px);
+    background-color: $g3;
+    width: fit-content;
+    font-weight: 500;
+  }
+
+  h3 {
+    @include p(8px 0);
+    width: fit-content;
+    border-top: 1px solid $g3;
+    border-bottom: 1px solid $g3;
+    font-weight: 500;
+  }
+
+  h4 {
+    @include pb(4px);
+    border-bottom: 1px solid $b1;
+    width: fit-content;
+  }
+
   a {
     text-decoration: underline;
 
@@ -881,6 +906,16 @@ span > img {
 
   li {
     margin-left: 1.5em;
+  }
+
+  img {
+    @include media1(sp) {
+      width: 100% !important;
+    }
+  }
+
+  i {
+    font-style: italic;
   }
 }
 /* エディター部分 */

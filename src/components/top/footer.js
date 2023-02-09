@@ -47,11 +47,15 @@ const Footer = () => {
             </li>
             <li className="pc">|</li>
             <li className="hoverEffect">
-              <a href="">利用規約</a>
+              <Link href="/terms">
+                <a>利用規約</a>
+              </Link>
             </li>
             <li className="pc">|</li>
             <li className="hoverEffect">
-              <a href="">プライバシーポリシー</a>
+              <Link href="/privacy">
+                <a>プライバシーポリシー</a>
+              </Link>
             </li>
             <li className="pc">|</li>
             <li className="hoverEffect">

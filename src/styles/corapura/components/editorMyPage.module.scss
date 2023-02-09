@@ -119,3 +119,15 @@
     }
   }
 }
+
+.logout {
+  @include width(240px);
+  @include height(40px);
+  @include flex(center, center);
+  @include fs(14px);
+  font-weight: bold;
+  background-color: $g3;
+  border-radius: 20px;
+  margin: auto;
+  @include mt(40px);
+}

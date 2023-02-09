@@ -7,6 +7,7 @@ import Container from '@/components/liondor/Layouts/container';
 import { useAuth } from '@/hooks/auth';
 import { useRouter } from 'next/router';
 import PageLayoutLiondor from '@/components/Layouts/PageLayoutLiondor';
+import Link from 'next/link';
 
 // SSR
 export const getServerSideProps = async () => {
@@ -165,8 +166,7 @@ const CreatePost = ({posts}) => {
                     <label htmlFor="desc">ディスクリプション</label>
                   </dt>
                   <dd className={styles.dd}>
-                    <textarea id="desc" {...register("discription", { required: state })}></textarea>
-                    {errors.discription && <p className={`red ${styles.error}`}>必須項目を入力してください</p>}
+                    <textarea id="desc" {...register("discription")}></textarea>
                   </dd>
                 </dl>
                 <dl className={styles.dl}>
@@ -195,9 +195,8 @@ const CreatePost = ({posts}) => {
                     <label htmlFor="mv">メインビジュアル</label>
                   </dt>
                   <dd className={styles.dd}>
-                    <input id="mv" type="file" accept="image/*" {...register("mv", { required: state })} onChange={handleChangeFile2} />
+                    <input id="mv" type="file" accept="image/*" {...register("mv")} onChange={handleChangeFile2} />
                     <img src={preview2} alt="" />
-                    {errors.mv && <p className={`red ${styles.error}`}>必須項目を入力してください</p>}
                   </dd>
                 </dl>
               </div>
@@ -224,7 +223,7 @@ const CreatePost = ({posts}) => {
                     {errors.view_date && <p className={`red ${styles.error}`}>必須項目を入力してください</p>}
                   </dd>
                 </dl>
-                <button className="btn2" disabled={disabled}>新規作成</button>
+                <button className="btn2" disabled={disabled}>新規公開</button>
                 <div className={styles.hr}></div>
                 <dl className={styles.dl}>
                   <dt className={styles.dt}>大カテゴリー</dt>
@@ -250,12 +249,16 @@ const CreatePost = ({posts}) => {
                   <dt className={styles.dt}>シリーズ選択</dt>
                   <dd className={styles.dd}>
                     <select {...register("l_series_id")}>
+                      <option value="">選択しない</option>
                       {seriesArray.map((series, index) => (
                         <option value={index+1} key={index+1}>{series.name}</option>
                       ))}
                     </select>
                   </dd>
                 </dl>
+                <Link href={`/liondor/post/editor_index/${user?.id}`}>
+                  <a className="btn2">一覧へ戻る</a>
+                </Link>
               </div>
             </article>
           </form>

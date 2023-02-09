@@ -70,7 +70,7 @@ const Footer = () => {
               <Link href="/liondor/ad">
                 <a>広告掲載について</a>
               </Link>
-              <Link href="/liondor/present">
+              <Link href="/liondor/contact?check=present">
                 <a>企業からのプレゼント募集</a>
               </Link>
               <Link href="/liondor/registration">
