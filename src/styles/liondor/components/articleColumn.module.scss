@@ -23,3 +23,20 @@
     object-position: top center;
   }
 }
+
+.txt_box {
+  .ttl {
+    font-size: var(--fs18-16);
+    font-weight: 500;
+    @include mb(8px);
+  }
+
+  .limit {
+    @include mb(4px);
+  }
+}
+
+.limit,
+.date {
+  composes: time from './parts.scss';
+}

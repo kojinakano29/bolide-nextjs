@@ -3,7 +3,7 @@ import Link from 'next/link'
 import { BlogTxt } from '@/components/liondor'
 import dummy from '@/images/liondor/cms/dummy.png'
 
-const BlogColumn4 = ({patternData, part2 = false}) => {
+const BlogColumn4 = ({patternData, part2 = false, portrait = false}) => {
   const data = patternData?.l_post?.filter((e, index) => {
     return part2 ? index > 3 && index < 8 : index !== 0 && index < 5
   })
@@ -13,7 +13,7 @@ const BlogColumn4 = ({patternData, part2 = false}) => {
       {data?.map((item) => (
         <Link href={`/liondor/post/show/${item.id}`} key={item.id}>
           <a className={styles.blogLink}>
-            <div className={styles.imgBox}>
+            <div className={`${styles.imgBox} ${portrait ? styles.portrait : null}`}>
               <img src={item.thumbs ? `${process.env.NEXT_PUBLIC_BACKEND_URL}/storage/${item.thumbs}` : dummy.src} alt="" />
             </div>
             <BlogTxt

@@ -103,10 +103,13 @@ const HumCont = ({humOpen, clickHumClose}) => {
 
         <div className={`${styles.flex} ${humOpen ? styles.lazyIn : ''}`}>
           <div className={styles.left}>
+            <div className={styles.snsCover}>
+              <SnsFollow />
+            </div>
             <p className="ivy">Bolid's Japan Other Site</p>
             <div className={styles.bannarBox}>
               <Link href="/corapura">
-                <a target="_blank" rel="noopener noreferrer">
+                <a target="_blank" rel="noopener noreferrer" onClick={clickHumClose}>
                   <Image
                     src={corapura}
                     alt=""
@@ -116,7 +119,7 @@ const HumCont = ({humOpen, clickHumClose}) => {
                 </a>
               </Link>
               <Link href="/dellamall">
-                <a target="_blank" rel="noopener noreferrer">
+                <a target="_blank" rel="noopener noreferrer" onClick={clickHumClose}>
                   <Image
                     src={dela}
                     alt=""
@@ -127,9 +130,11 @@ const HumCont = ({humOpen, clickHumClose}) => {
               </Link>
             </div>
           </div>
-          <div className={styles.right}>
-            <SnsFollow right />
-          </div>
+          <Link href="/liondor/present">
+            <a className={`${styles.right} hoverEffect`} onClick={clickHumClose}>
+              <img src="/liondor/present_banner.png" alt="" />
+            </a>
+          </Link>
         </div>
 
         {

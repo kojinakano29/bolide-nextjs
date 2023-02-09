@@ -26,7 +26,7 @@ const MypageEdit = ({posts}) => {
   const csrf = () => axios.get('/sanctum/csrf-cookie')
 
   const router = useRouter()
-  const { user } = useAuth({middleware: 'auth', type: 'liondor'})
+  const { user, logout } = useAuth({middleware: 'auth', type: 'liondor'})
 
   useEffect(() => {
     onLoadCheck()
@@ -243,6 +243,11 @@ const MypageEdit = ({posts}) => {
                   </dd>
                 </dl>
                 <button className="btn3 noto bold" disabled={disabled}>変更を保存する</button>
+                <button
+                  type="button"
+                  className={`btn3 btn3_2 noto ${styles.logout}`}
+                  onClick={() => logout()}
+                >ログアウト</button>
               </form>
             </article>
             <article className={styles.sideBox}>

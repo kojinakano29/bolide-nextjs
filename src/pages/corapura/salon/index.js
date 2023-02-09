@@ -122,10 +122,7 @@ const OnlineSalonList = ({posts}) => {
                     </div>
                     <p className={styles.ttl}>{salon.title}</p>
                     <p className={styles.desc}>
-                      {salon.content.substring(0, 45)}...
-                      {/* {JSON.parse(salon.content).blocks.map((cont) => {
-                        return cont.text
-                      }).join('').substring(0, 45)}... */}
+                      {salon.content.replace(/<[^>]+>/g, '').replace(/&nbsp;/g, '').substring(0, 45)}
                     </p>
                     <div className={styles.tags}>
                       {salon.c_tags.map((tag, index) => (

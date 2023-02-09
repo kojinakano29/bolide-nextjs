@@ -28,7 +28,7 @@ const Mypage = ({posts}) => {
   const csrf = () => axios.get('/sanctum/csrf-cookie')
 
   const router = useRouter()
-  const { user } = useAuth()
+  const { user, logout } = useAuth({type: 'dellamall'})
   const profile = posts.profile
   const dProfile = profile.d_profile
   const create_shop = posts.create_shop
@@ -213,6 +213,11 @@ const Mypage = ({posts}) => {
               </li>
             </ul>
             <p className={styles.user__info__text}>{dProfile?.profile}</p>
+            <button
+              type="button"
+              className={`${styles.logout} hoverEffect`}
+              onClick={() => logout()}
+            >ログアウト</button>
           </div>
           <div className={styles.user__buttonList}>
             {user ?
@@ -279,6 +284,7 @@ const Mypage = ({posts}) => {
                 {tabState === 1 ?
                   <article className={styles.article}>
                     <MasonryGridComponent item={createShop} />
+                    <Btn01 fa={faGear} txt="ショップを編集する" link="/dellamall/admin/shop" />
                   </article>
                 : null}
                 {tabState === 2 ?

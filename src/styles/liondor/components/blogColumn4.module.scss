@@ -10,6 +10,10 @@
   aspect-ratio: 1 / 1;
   overflow: hidden;
 
+  &.portrait {
+    aspect-ratio: 5 / 12;
+  }
+
   img {
     width: 100%;
     height: 100%;

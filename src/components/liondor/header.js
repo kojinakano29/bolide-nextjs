@@ -10,8 +10,6 @@ import { useRouter } from 'next/router';
 const Header = () => {
   const router = useRouter()
 
-  const { logout } = useAuth()
-
   // ハンバーガーメニュー
   const [humOpen, setHumOpen] = useState(false)
 
@@ -86,10 +84,6 @@ const Header = () => {
         <div className={styles.leftAbs}>
           <Hum humOpen={humOpen} clickHumOpen={clickHumOpen} clickHumClose={clickHumClose} />
           <SearchIcon humOpen={humOpen} />
-          <button
-            type="button"
-            onClick={() => logout()}
-          >ログアウト</button>
         </div>
         <div className={styles.rightAbs}>
           <LoginBtn humOpen={humOpen} clickHumClose={clickHumClose} />

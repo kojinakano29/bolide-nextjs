@@ -6,6 +6,8 @@ import { useForm } from 'react-hook-form';
 import Container from '@/components/liondor/Layouts/container';
 import { useAuth } from '@/hooks/auth';
 import PageLayoutLiondor from '@/components/Layouts/PageLayoutLiondor';
+import { useRouter } from 'next/router';
+import Link from 'next/link';
 
 // SSR
 export const getServerSideProps = async ({params}) => {
@@ -22,6 +24,7 @@ export const getServerSideProps = async ({params}) => {
 const PostEdit = ({posts}) => {
   const csrf = () => axios.get('/sanctum/csrf-cookie')
 
+  const router = useRouter()
   const { user } = useAuth({middleware: 'auth', type: 'liondor'})
 
   useEffect(() => {
@@ -171,8 +174,7 @@ const PostEdit = ({posts}) => {
                     <label htmlFor="desc">ディスクリプション</label>
                   </dt>
                   <dd className={styles.dd}>
-                    <textarea id="desc" {...register("discription", { required: state })}></textarea>
-                    {errors.discription && <p className={`red ${styles.error}`}>必須項目を入力してください</p>}
+                    <textarea id="desc" {...register("discription")}></textarea>
                   </dd>
                 </dl>
                 <dl className={styles.dl}>
@@ -255,12 +257,16 @@ const PostEdit = ({posts}) => {
                   <dt className={styles.dt}>シリーズ選択</dt>
                   <dd className={styles.dd}>
                     <select {...register("l_series_id")}>
+                      <option value="">選択しない</option>
                       {seriesArray.map((series, index) => (
                         <option value={index+1} key={index+1}>{series.name}</option>
                       ))}
                     </select>
                   </dd>
                 </dl>
+                <Link href={`/liondor/post/editor_index/${user?.id}`}>
+                  <a className="btn2">一覧へ戻る</a>
+                </Link>
               </div>
             </article>
           </form>

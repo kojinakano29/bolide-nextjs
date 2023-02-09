@@ -7,6 +7,7 @@ import Container from '@/components/liondor/Layouts/container';
 import { useRouter } from 'next/router';
 import { useAuth } from '@/hooks/auth';
 import PageLayoutLiondor from '@/components/Layouts/PageLayoutLiondor';
+import Link from 'next/link';
 
 // SSR
 export const getServerSideProps = async ({params}) => {
@@ -140,6 +141,9 @@ const SidebarEdit = ({posts}) => {
                     <input type="number" id="order" {...register("order")} />
                   </dd>
                 </dl>
+                <Link href={`/liondor/admin/sidebar`}>
+                  <a className="btn2">一覧へ戻る</a>
+                </Link>
               </div>
             </article>
           </form>

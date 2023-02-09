@@ -5,8 +5,8 @@ const BlogPattern1 = ({column3None, pattern, route2}) => {
   return (
     <>
       <article className={`${styles.stickyArea} ${column3None ? styles.mbNone : ''}`}>
-        <BlogPickup patternData={pattern} route2={route2} />
-        <BlogScrollBox patternData={pattern} route2={route2} />
+        <BlogPickup patternData={pattern} route2={route2} pickup />
+        <BlogScrollBox patternData={pattern} route2={route2} pickup />
       </article>
 
       {column3None ? '' : <BlogColumn3 patternData={pattern} route2={route2} />}

@@ -8,7 +8,7 @@ const BlogPattern4 = ({mode2 = false, pattern}) => {
         <BlogColumn1 patternData={pattern} />
         <BlogColumn3 patternData={pattern} part2 />
       </div>
-      {mode2 ? <BlogColumn4 patternData={pattern} part2 /> : ''}
+      {mode2 ? <BlogColumn4 patternData={pattern} part2 portrait /> : ''}
     </>
   );
 }

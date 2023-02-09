@@ -21,6 +21,7 @@ export const getServerSideProps = async () => {
 }
 
 const AdminPickup = ({posts}) => {
+  // console.log(posts)
   const csrf = () => axios.get('/sanctum/csrf-cookie')
 
   const router = useRouter()
@@ -61,17 +62,17 @@ const AdminPickup = ({posts}) => {
       <PageTitle title="ピックアップ一覧" />
       {user?.account_type > 2 ?
         <Container small900>
-          <Link href="/liondor/present/create">
-            <a className={`btn2 ${styles.create}`}>新規作成</a>
-          </Link>
           <article className={styles.article}>
             <ul>
               {posts?.map((item, index) => (
                 <li key={index}>
-                  <Link href={`/liondor/post/show/${item.id}`}>
+                  <Link href={`/liondor/post/show/${item.l_post_id}`}>
                     <a className={styles.ttl}>{item.l_post.title}</a>
                   </Link>
                   <div className={styles.btnBox}>
+                    <Link href={`/liondor/post/edit/${item.l_post_id}`}>
+                      <a className={styles.edit}>編集</a>
+                    </Link>
                     <button className={styles.delete} onClick={() => onClickDelete(item)} disabled={disabled}>削除</button>
                   </div>
                 </li>

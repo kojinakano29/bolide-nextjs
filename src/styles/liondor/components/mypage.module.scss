@@ -109,6 +109,10 @@
   }
 }
 
+.logout {
+  @include mt(32px !important, 24px !important);
+}
+
 .sideBox {
   @include width(calc(100% - (755px + 64px)), 100%);
   @include mt(0, 64px);
