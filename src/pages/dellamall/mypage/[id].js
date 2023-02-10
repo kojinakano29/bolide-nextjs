@@ -213,11 +213,13 @@ const Mypage = ({posts}) => {
               </li>
             </ul>
             <p className={styles.user__info__text}>{dProfile?.profile}</p>
-            <button
-              type="button"
-              className={`${styles.logout} hoverEffect`}
-              onClick={() => logout()}
-            >ログアウト</button>
+            {user && user?.id === profile.id ?
+              <button
+                type="button"
+                className={`${styles.logout} hoverEffect`}
+                onClick={() => logout()}
+              >ログアウト</button>
+            : null}
           </div>
           <div className={styles.user__buttonList}>
             {user ?
@@ -284,7 +286,9 @@ const Mypage = ({posts}) => {
                 {tabState === 1 ?
                   <article className={styles.article}>
                     <MasonryGridComponent item={createShop} />
-                    <Btn01 fa={faGear} txt="ショップを編集する" link="/dellamall/admin/shop" />
+                    {user && user?.id === profile.id && createShop.length !== 0 ?
+                      <Btn01 fa={faGear} txt="ショップを編集する" link="/dellamall/admin/shop" />
+                    : null}
                   </article>
                 : null}
                 {tabState === 2 ?
