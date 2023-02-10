@@ -31,11 +31,11 @@ const CommentList = ({posts}) => {
     }
   }
 
-  useEffect(() => {
-    if (user) {
-      onLoadCheck()
-    }
-  }, [user])
+  // useEffect(() => {
+  //   if (user) {
+  //     onLoadCheck()
+  //   }
+  // }, [user])
 
   const handleClickDelete = async (commentId) => {
     await csrf()
