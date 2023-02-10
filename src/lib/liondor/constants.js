@@ -25,8 +25,8 @@ export const adminNaviData = [
   {name: 'ピックアップ管理', link: '/liondor/admin/pickup'},
   {name: 'サイドバー管理', link: '/liondor/admin/sidebar'},
   {name: 'FAQ管理', link: '/liondor/admin/faq'},
-  {name: 'FirstClass管理', link: '/liondor/admin/first_class/create'},
-  {name: 'COLLECTION管理', link: '/liondor/admin/collection/create'},
+  {name: 'FirstClass管理', link: '/liondor/admin/first_class/edit/1'},
+  {name: 'COLLECTION管理', link: '/liondor/admin/collection/edit/1'},
 ]
 
 // ページナビ
