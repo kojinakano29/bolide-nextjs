@@ -1,7 +1,7 @@
 @import '../../variables.scss';
 
 .title {
-  font-weight: $regular;
+  font-weight: 400;
   @include fs(24px, 22px, 24px);
   text-align: center;
   font-family: $Montserrat;

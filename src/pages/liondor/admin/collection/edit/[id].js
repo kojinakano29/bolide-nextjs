@@ -84,7 +84,9 @@ const CreateCollection = ({posts}) => {
     .catch((e) => {
       console.error(e)
     })
-  }, [post])
+
+    setDisabled(false)
+  }, [post, setDisabled])
 
   const onSubmit = useCallback((data) => {
     // console.log(data)
@@ -101,7 +103,7 @@ const CreateCollection = ({posts}) => {
       url: data.url,
       // view_date: data.view_data,
     })
-  }, [onPostForm, user, post])
+  }, [onPostForm, user, post, setDisabled])
 
   const handleCat = (e) => {
     setCat(cats.filter((item) => {

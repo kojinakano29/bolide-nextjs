@@ -1,0 +1,68 @@
+@import '../../variables.scss';
+
+.signOutBox {
+  .signOutIcon {
+    @include width(64px, 56px, 48px);
+    margin: auto;
+    @include mb(32px, 32px, 24px);
+  }
+
+  .desc {
+    @include fs(18px, 16px);
+    font-weight: bold;
+    text-align: center;
+    color: $r1;
+    @include mb(40px, 32px);
+  }
+
+  .txtBox {
+    @include mb(64px, 56px, 40px);
+
+    div {
+      @include p(12px);
+      @include fs(18px, 16px);
+      font-weight: bold;
+      background-color: $g1;
+      color: $w1;
+      text-align: center;
+    }
+
+    dl {
+      @include p(24px 64px, 20px 40px, 20px);
+      border: 3px solid $g1;
+      @include flex(stretch, left);
+      @include gap(8px);
+
+      dt {
+        @include fs(14px);
+        @include width(1em);
+        @include mb(16px);
+      }
+
+      dd {
+        @include fs(14px);
+        @include width(calc(100% - (1em + 8px)));
+      }
+    }
+  }
+
+  .desc2 {
+    @include fs(16px, 14px);
+    font-weight: bold;
+    text-align: center;
+    @include mb(32px);
+
+    span {
+      color: $r1;
+    }
+  }
+
+  .btnBox {
+    @include mb(80px, 64px);
+
+    .btn {
+      margin: auto;
+      @include mt(24px, 16px);
+    }
+  }
+}

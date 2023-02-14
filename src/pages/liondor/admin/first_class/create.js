@@ -15,7 +15,7 @@ export const getServerSideProps = async () => {
 
   return {
     props: {
-        posts: data
+      posts: data
     }
   }
 }
@@ -32,9 +32,27 @@ const CreateFirstClass = ({posts}) => {
     router.push(`/liondor`)
   }
 
+  const onExistCheck = () => {
+    csrf()
+
+    axios.post('/api/liondor/firstclass/check')
+    .then((res) => {
+      // console.log(res)
+      if (res.data === 1) {
+        router.push(`/liondor/admin/first_class/edit/${res.data}`)
+      }
+    }).catch((e) => {
+      console.error(e)
+    })
+  }
+
   useEffect(() => {
     if (user && user?.account_type < 2) {
       onLoadCheck()
+    }
+
+    if (user) {
+      onExistCheck()
     }
   }, [user])
 
@@ -67,7 +85,9 @@ const CreateFirstClass = ({posts}) => {
     .catch((e) => {
       console.error(e)
     })
-  }, [])
+
+    setDisabled(false)
+  }, [setDisabled])
 
   const onSubmit = useCallback((data) => {
     // console.log(data)
@@ -81,7 +101,7 @@ const CreateFirstClass = ({posts}) => {
       url: data.url,
       // view_date: data.view_data,
     })
-  }, [onPostForm, user])
+  }, [onPostForm, user, setDisabled])
 
   const handleCat = (e) => {
     setCat(posts.filter((item) => {

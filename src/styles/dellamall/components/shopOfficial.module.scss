@@ -9,7 +9,7 @@
     @include height(70px, 50px, 45px);
     background: $g2;
     @include fs(20px, 18px, 16px);
-    font-weight: $bold;
+    font-weight: bold;
     border-radius: 35px;
     transition: .2s ease-out;
 
@@ -41,7 +41,7 @@
     * {
       @include p(12px 16px);
       @include fs(14px, 12px);
-      font-weight: $bold;
+      font-weight: bold;
     }
 
     dt {
@@ -70,19 +70,19 @@
     .txt {
       @include fs(14px, 12px);
       @include mb(8px, 4px);
-      font-weight: $bold;
+      font-weight: bold;
     }
 
     .discount {
       @include mb(16px, 12px);
       @include fs(14px, 12px);
-      font-weight: $bold;
+      font-weight: bold;
       color: $o1;
     }
 
     .limit {
       @include fs(12px, 11px);
-      font-weight: $medium;
+      font-weight: 500;
 
       span {
         color: $g1;
@@ -104,13 +104,13 @@
 
     .ttl {
       @include fs(24px, 18px);
-      font-weight: $bold;
+      font-weight: bold;
       @include mb(16px, 12px);
     }
 
     .desc {
       @include fs(16px, 14px);
-      font-weight: $medium;
+      font-weight: 500;
       @include mb(32px, 24px);
     }
 
@@ -129,13 +129,13 @@
     .day {
       @include fs(15px, 13px);
       @include width(112px, 112px, 90px);
-      font-weight: $semibold;
+      font-weight: 600;
     }
 
     .txt {
       @include width(calc(100% - 112px), calc(100% - 112px), calc(100% - 90px));
       @include fs(15px, 13px);
-      font-weight: $bold;
+      font-weight: bold;
     }
   }
 }
@@ -172,17 +172,17 @@
 
       .product {
         @include fs(14px, 12px);
-        font-weight: $medium;
+        font-weight: 500;
         @include mb(16px);
       }
 
       .cost {
         @include fs(18px, 14px);
-        font-weight: $bold;
+        font-weight: bold;
 
         span {
           @include fs(12px, 10px);
-          font-weight: $bold;
+          font-weight: bold;
         }
       }
     }

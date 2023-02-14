@@ -154,13 +154,13 @@
         p {
           &.jp {
             @include fs(16px, 14px);
-            font-weight: $black;
+            font-weight: 900;
             transition: .3s ease;
           }
 
           &.en {
             @include mt(4px);
-            font-weight: $semibold;
+            font-weight: 600;
             @include fs(10px);
             color: $w1;
           }

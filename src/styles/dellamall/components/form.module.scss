@@ -12,7 +12,7 @@
     flex-direction: column;
     @include fs(22px, 20px, 18px);
     border-radius: 50%;
-    font-weight: $bold;
+    font-weight: bold;
     border: 4px solid $g3;
     text-align: center;
 
@@ -20,7 +20,7 @@
       display: block;
       @include fs(16px, 16px, 14px);
       @include mb(4px);
-      font-weight: $semibold;
+      font-weight: 600;
     }
 
     &:nth-of-type(2) {
@@ -71,12 +71,12 @@
 
   .big {
     @include fs(18px, 16px);
-    font-weight: $bold;
+    font-weight: bold;
   }
 
   .sm {
     @include fs(16px, 14px);
-    font-weight: $medium;
+    font-weight: 500;
     margin: auto;
     @include mt(16px);
   }

@@ -6,20 +6,20 @@
 
 .cont1__what {
   @include fs(28px, 24px, 20px);
-  font-weight: $bold;
+  font-weight: bold;
   text-align: center;
   @include mt(56px, 40px);
   @include mb(40px);
 
   span {
     @include fs(37px, 35px);
-    font-weight: $semibold;
+    font-weight: 600;
   }
 }
 
 .cont1__text {
   @include fs(16px, 14px);
-  font-weight: $medium;
+  font-weight: 500;
   max-width: 672px;
   margin: auto;
   text-align: center;
@@ -28,7 +28,7 @@
 
 .cont1__who {
   @include fs(20px, 18px, 16px);
-  font-weight: $bold;
+  font-weight: bold;
   text-align: center;
   @include mb(48px);
 }
@@ -43,7 +43,7 @@
     @include fs(20px, 18px, 16px);
     @include flex(center, center);
     display: block;
-    font-weight: $bold;
+    font-weight: bold;
     color: $b3;
     border: 1px solid $b3;
     position: relative;
@@ -89,23 +89,23 @@
 
       .cont1__meritItem__forte {
         @include fs(18px, 16px);
-        font-weight: $bold;
+        font-weight: bold;
         text-align: center;
         @include mb(16px);
       }
 
       .cont1__meritItem__text {
         @include fs(14px, 12px);
-        font-weight: $medium;
+        font-weight: 500;
       }
 
       .cont1__meritItem__link {
         @include fs(14px, 12px);
-        font-weight: $medium;
+        font-weight: 500;
 
         a {
           @include fs(14px, 12px);
-          font-weight: $medium;
+          font-weight: 500;
           color: $b5;
           text-decoration: underline;
 
@@ -120,7 +120,7 @@
 
 .bkText {
   @include fs(108px, 80px, 56px);
-  font-weight: $medium;
+  font-weight: 500;
   position: absolute;
   @include top(40px);
   left: 0px;
@@ -130,7 +130,7 @@
 
 .section__text {
   @include fs(16px, 14px);
-  font-weight: $medium;
+  font-weight: 500;
   text-align: center;
   max-width: 512px;
   margin: auto;
@@ -161,14 +161,14 @@
 
       .cont2__methodItem__forte {
           @include fs(20px, 18px);
-          font-weight: $bold;
+          font-weight: bold;
           text-align: center;
           @include mb(16px);
       }
 
       .cont2__methodItem__text {
           @include fs(14px, 12px);
-          font-weight: $medium;
+          font-weight: 500;
       }
     }
   }
@@ -215,7 +215,7 @@
           top: 50%;
           transform: translate(-50%, -50%);
           @include fs(20px, 18px);
-          font-weight: $semibold;
+          font-weight: 600;
           font-family: $Montserrat;
           color: $w1;
         }
@@ -223,12 +223,12 @@
 
       .cont3__mainRight__text {
         @include fs(18px, 16px);
-        font-weight: $bold;
+        font-weight: bold;
         @include width(calc(100% - (40px + 16px)), calc(100% - (40px + 12px)));
 
           p {
             @include fs(14px, 12px);
-            font-weight: $medium;
+            font-weight: 500;
           }
         }
       }
@@ -253,14 +253,14 @@
 
   .cont4__mallWhat__title {
     @include fs(18px, 16px);
-    font-weight: $bold;
+    font-weight: bold;
     color: $o1;
     @include mb(12px);
   }
 
   .cont4__mallWhat__text {
     @include fs(14px, 12px);
-    font-weight: $medium;
+    font-weight: 500;
     max-width: 800px;
     margin: auto;
   }
@@ -309,14 +309,14 @@
           left: 50%;
           transform: translate(-50%, -50%);
           @include fs(20px, 18px);
-          font-weight: $semibold;
+          font-weight: 600;
           color: $o1;
         }
       }
 
       .cont4__mallMethodItem__forte {
         @include fs(18px, 13px, 16px);
-        font-weight: $bold;
+        font-weight: bold;
         text-align: center;
         @include height(84px, 60px, unset);
         @include mb(10px);
@@ -324,7 +324,7 @@
 
       .cont4__mallMethodItem__text {
         @include fs(14px, 12px);
-        font-weight: $medium;
+        font-weight: 500;
       }
     }
   }

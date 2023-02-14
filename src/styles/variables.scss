@@ -46,19 +46,11 @@ $y1: #EBE76A;
 $y2: #ffd700;
 $p1: #E15FA5;
 $p2: #f77ee6;
-$red1: #FF0000;
+$r1: #FF0000;
 $r2: #F76C6C;
 $rgba1: rgba(0, 0, 0, .5);
 $gr1: linear-gradient(to right, $r2 0%, $o2 100%);
 $gr2: linear-gradient(to right, #FFA8A8 0%, $r2 100%);
-
-$black: 900;
-$bold: 700;
-$semibold: 600;
-$Demi: 600;
-$medium :500;
-$regular: 400;
-$light: 300;
 
 /* グラデーション */
 $gd1: linear-gradient(transparent 10%, rgba(88, 88, 88, .82) 70%, $b2);
@@ -337,7 +329,7 @@ $breakpoints: (
   border-radius: 17px;
   border: 1px solid $g3;
   background-color: $w1;
-  font-weight: $medium;
+  font-weight: 500;
 
   &.current {
     background-color: $o1;
@@ -393,7 +385,7 @@ $breakpoints: (
   background: $o1;
   color: $w1;
   @include fs(18px, 14px, 16px);
-  font-weight: $bold;
+  font-weight: bold;
   border-radius: 20px;
   text-align: center;
   @include width($pc, $tab, $sp);
@@ -411,7 +403,7 @@ $breakpoints: (
 
   span {
     @include fs(13px, 11px);
-    font-weight: $bold;
+    font-weight: bold;
     color: $w1;
     display: block;
   }
@@ -427,7 +419,7 @@ $breakpoints: (
   border-radius: 20px;
 
   &::placeholder {
-    font-weight: $medium;
+    font-weight: 500;
     color: $g3;
   }
 }
@@ -567,7 +559,7 @@ $breakpoints: (
       p {
         @include width(calc(100% - (20px + 24px + 16px * 2)), calc(100% - (20px * 2 + 16px * 2)), calc(100% - (20px * 2 + 8px * 2)));
         @include fs(18px, 16px);
-        font-weight: $black;
+        font-weight: 900;
       }
 
       img {
@@ -583,7 +575,7 @@ $breakpoints: (
 
       p {
         @include fs(16px, 14px);
-        font-weight: $medium;
+        font-weight: 500;
         color: $g4;
       }
     }

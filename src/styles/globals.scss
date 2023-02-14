@@ -97,7 +97,7 @@ span > img {
 }
 
 *.red {
-  color: $red1 !important;
+  color: $r1 !important;
 }
 
 *.orange {
@@ -258,11 +258,16 @@ span > img {
     background-color: $w1;
     @include fs(14px);
     font-weight: bold;
+    transition: .3s ease;
 
     &.btn2 {
       background-color: $b1;
       color: $w1;
       @include mt(10px);
+    }
+
+    &:hover {
+      opacity: .5;
     }
   }
 
@@ -478,7 +483,7 @@ span > img {
 
   .ttl3 {
     @include fs(28px, 24px);
-    font-weight: $bold;
+    font-weight: bold;
     position: relative;
     text-align: center;
     @include mb(40px);

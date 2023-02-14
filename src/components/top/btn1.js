@@ -1,7 +1,7 @@
 import styles from '@/styles/top/components/btn1.module.scss'
 import Link from "next/link";
 
-const Btn1 = ({txt, link, submit = false}) => {
+const Btn1 = ({txt, link, submit = false, disabled = false}) => {
   return (
     <>
       {link ?
@@ -12,6 +12,7 @@ const Btn1 = ({txt, link, submit = false}) => {
         <button
           type={submit ? "submit" : "button"}
           className={`${styles.btn} hoverEffect`}
+          disabled={disabled}
         >{txt}</button>
       }
     </>

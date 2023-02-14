@@ -10,7 +10,7 @@
 
     .footer1__title {
       @include fs(20px, 18px);
-      font-weight: $semibold;
+      font-weight: 600;
       @include mb(24px);
     }
 
@@ -59,7 +59,7 @@
 
       .footer__cont1Item {
         @include fs(14px, 12px);
-        font-weight: $bold;
+        font-weight: bold;
         @include width(calc(100% * 1/3 - 16px), calc(100% * 1/3 - 16px), fit-content);
       }
     }
@@ -78,13 +78,13 @@
 
     .footer__cont2Left {
       @include fs(12px, 10px);
-      font-family: $medium;
+      font-weight: 500;
       color: $g1;
 
       a {
         color: $g1;
         @include fs(12px, 10px);
-        font-family: $medium;
+        font-weight: 500;
         text-decoration: underline;
 
         &:hover {
@@ -114,7 +114,7 @@
 
     .footer__cont3Item {
       @include fs(14px, 12px);
-      font-family: $medium;
+      font-weight: 500;
     }
   }
 

@@ -41,7 +41,7 @@ const Header = () => {
                 </Link>
               </li>
               <li className={styles.type2}>
-                <Link href="/">
+                <Link href="/contact">
                   <a className={`${styles.btn} hoverEffect`}>
                     <img src="/top/mail-icon.svg" alt="" />
                     <span>お問い合わせ</span>

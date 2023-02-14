@@ -12,9 +12,9 @@ export const getServerSideProps = async ({params}) => {
   const data = await res.json()
 
   return {
-      props: {
-          posts: data
-      }
+    props: {
+      posts: data
+    }
   }
 }
 
@@ -26,16 +26,16 @@ const CommentList = ({posts}) => {
   const { user } = useAuth({middleware: 'auth', type: 'dellamall'})
 
   const onLoadCheck = async () => {
-    if (user?.account_type === 0) {
-      router.push('/dellamall/')
+    if (parseInt(user?.id) !== parseInt(posts[0]?.d_shop?.user_id)) {
+      router.push('/dellamall/admin/shop')
     }
   }
 
-  // useEffect(() => {
-  //   if (user) {
-  //     onLoadCheck()
-  //   }
-  // }, [user])
+  useEffect(() => {
+    if (user) {
+      onLoadCheck()
+    }
+  }, [user])
 
   const handleClickDelete = async (commentId) => {
     await csrf()

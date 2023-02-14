@@ -103,6 +103,8 @@ export const useAuth = ({ middleware, redirectIfAuthenticated, type } = {}) => {
             window.location.pathname = '/corapura/login'
         } else if (type === 'register') {
             window.location.pathname = '/register'
+        } else if (type === 'bjc') {
+            window.location.pathname = '/login'
         }
     }
 

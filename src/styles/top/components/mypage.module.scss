@@ -1,9 +1,51 @@
 @import '../../variables.scss';
 
+.smallMenuBox {
+  @include flex(center, center);
+  @include gap(36px, 24px);
+  @include mb(64px, 56px);
+
+  a {
+    @include width(calc(100% * 1/2 - 36px * 1/2), calc(100% * 1/2 - 24px * 1/2), 100%);
+    @include flex(center, center);
+    @include gap(16px);
+    @include p(20px 24px, 16px);
+    border-radius: 10px;
+    background-color: $w1;
+    box-shadow: 0 3px 6px rgba(0, 0, 0, .16);
+    transition: .3s ease;
+
+    &:hover {
+      box-shadow: none;
+      transform: translate(2px, 2px);
+    }
+
+    .iconBox {
+      @include width(88px, 80px);
+    }
+
+    .txtBox {
+      @include width(calc(100% - (88px + 16px)), calc(100% - (80px + 16px)));
+
+      .big {
+        @include fs(20px, 18px);
+        font-weight: bold;
+        @include mb(8px, 6px);
+      }
+
+      .sm {
+        @include fs(14px, 12px);
+        font-weight: 500;
+        color: $g1;
+      }
+    }
+  }
+}
+
 .menuBox {
   @include flex(stretch);
   @include gap(40px 36px, 40px 24px);
-  @include mb(80px, 64px);
+  @include mb(56px);
 
   a {
     display: block;
@@ -30,4 +72,17 @@
       }
     }
   }
+}
+
+.logout {
+  @include width(160px);
+  @include height(40px);
+  border-radius: 5px;
+  background-color: $g3;
+  @include flex(center, center);
+  @include gap(8px);
+  margin: auto;
+  @include fs(14px, 12px);
+  font-weight: bold;
+  @include mb(80px, 64px);
 }

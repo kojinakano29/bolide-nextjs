@@ -41,17 +41,17 @@ const OfficialShop = ({posts}) => {
 
   const shop = posts.shop
 
-  // useEffect(() => {
-  //   if (user) {
-  //     if (user?.account_type > 0) {
-  //       setOfficialCheck(true)
-  //     } else {
-  //       router.push({
-  //         pathname: "/dellamall/admin/shop",
-  //       })
-  //     }
-  //   }
-  // }, [user])
+  useEffect(() => {
+    if (user) {
+      if (parseInt(user?.id) === parseInt(shop.official_user_id)) {
+        setOfficialCheck(true)
+      } else {
+        router.push({
+          pathname: "/dellamall/admin/shop",
+        })
+      }
+    }
+  }, [user])
 
   const handleClickCreate = async (type) => {
     setMode("create")

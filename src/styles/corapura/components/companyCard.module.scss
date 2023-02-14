@@ -41,7 +41,7 @@
 
   .company__bottom {
     @include fs(14px, 12px);
-    font-weight: $medium;
+    font-weight: 500;
     color: $g4;
     @include p(16px 24px);
     background: $w1;
