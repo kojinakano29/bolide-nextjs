@@ -1,24 +1,26 @@
-import PageLayoutTop from '@/components/Layouts/pageLayoutTop';
-import { ConfirmAd, InputAd } from '@/components/top';
-import Container from '@/components/top/Layout/container';
 import styles from '@/styles/top/components/form.module.scss'
-import Link from 'next/link';
+import PageLayoutTop from "@/components/Layouts/pageLayoutTop";
 import { useRouter } from 'next/router';
 import { FormProvider, useForm } from 'react-hook-form';
+import Container from '@/components/top/Layout/container';
+import Link from 'next/link';
+import { ConfirmMembership, InputMembership } from '@/components/top';
 
-const BjcAd = () => {
+const MembershipRegister = () => {
   const router = useRouter()
   const isConfirm = router.query.confirm
 
   const methods = useForm({
     defaultValues: {
-      content: [],
+      c_name: "",
+      position: "",
       name1: "",
       name2: "",
-      store_name: "",
-      email: "",
+      zipcode: "",
+      address: "",
       tel: "",
-      message: "",
+      email: "",
+      course: "",
     },
     mode: "onChange",
     criteriaMode: "all",
@@ -28,13 +30,13 @@ const BjcAd = () => {
     <>
       <section className="cont1">
         <Container small900>
-          <h2 className="ttl2">広告掲載について</h2>
+          <h2 className="ttl2">会員登録申請フォーム</h2>
           <div className="breadcrumbBox">
             <Link href="/">
               <a>トップ</a>
             </Link>
             <div><img src="/top/breadcrumb.svg" alt="" /></div>
-            <p>広告掲載について</p>
+            <p>会員登録申請フォーム</p>
           </div>
         </Container>
       </section>
@@ -42,7 +44,7 @@ const BjcAd = () => {
       <section className={styles.formArea}>
         <Container small900>
           <FormProvider {...methods}>
-            {!isConfirm ? <InputAd /> : <ConfirmAd />}
+            {!isConfirm ? <InputMembership /> : <ConfirmMembership />}
           </FormProvider>
         </Container>
       </section>
@@ -50,8 +52,8 @@ const BjcAd = () => {
   );
 }
 
-export default BjcAd;
+export default MembershipRegister;
 
-BjcAd.getLayout = function getLayout(page) {
+MembershipRegister.getLayout = function getLayout(page) {
   return <PageLayoutTop>{page}</PageLayoutTop>
 }

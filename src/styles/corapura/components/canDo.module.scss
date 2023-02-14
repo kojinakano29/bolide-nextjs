@@ -66,7 +66,7 @@
 
       .cont2__item__desc {
         @include fs(14px, 13px);
-        font-weight: $medium;
+        font-weight: 500;
         color: $g4;
         @include mt(8px);
       }

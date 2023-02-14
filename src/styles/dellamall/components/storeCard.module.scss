@@ -15,7 +15,7 @@
 }
 
 .name {
-  font-weight: $bold;
+  font-weight: bold;
   @include fs(20px, 16px, 12px);
   text-align: center;
   width: 100%;
@@ -23,7 +23,7 @@
 
 .sub {
   text-align: center;
-  font-weight: $bold;
+  font-weight: bold;
   @include fs(14px, 12px, 10px);
   color: $g3;
   @include m(24px 0 110px, 16px 0 32px, 16px 0);

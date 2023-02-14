@@ -24,11 +24,11 @@
 
     span {
       @include fs(48px, 40px);
-      font-weight: $semibold;
+      font-weight: 600;
     }
 
     @include fs(24px, 18px);
-    font-weight: $black;
+    font-weight: 900;
   }
 
   .list {
@@ -54,14 +54,14 @@
 
       div {
         @include fs(16px, 12px, 14px);
-        font-weight: $bold;
+        font-weight: bold;
         color: $w1;
         text-align: center;
         @include mb(8px);
 
         span {
           @include fs(22px, 14px, 18px);
-          font-weight: $bold;
+          font-weight: bold;
           color: $w1;
         }
       }

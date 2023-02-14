@@ -59,7 +59,9 @@ const Footer = () => {
             </li>
             <li className="pc">|</li>
             <li className="hoverEffect">
-              <a href="">お問い合わせ</a>
+              <Link href="/contact">
+                <a>お問い合わせ</a>
+              </Link>
             </li>
           </ul>
           <p className={`${styles.copy} en`}>© 2023 Bolide's Japan inc.</p>

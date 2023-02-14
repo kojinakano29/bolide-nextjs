@@ -15,7 +15,7 @@ export const getServerSideProps = async ({params}) => {
 
   return {
     props: {
-        posts: data
+      posts: data
     }
   }
 }
@@ -80,18 +80,18 @@ const EditFirstClass = ({posts}) => {
   }, [post, setDisabled])
 
   const onSubmit = useCallback((data) => {
-    // console.log(data)
+    // console.log(data.thumbs)
     setDisabled(true)
 
     onPostForm({
       user_id: user?.id,
       l_category_id: data.child_category,
       title: data.title,
-      thumbs: data.thumbs ? data.thumbs[0] : post.thumbs,
+      thumbs: data.thumbs.length !== 0 ? data.thumbs[0] : post.thumbs,
       url: data.url,
       // view_date: data.view_data,
     })
-  }, [onPostForm, user, post])
+  }, [onPostForm, user, post, setDisabled])
 
   const handleCat = (e) => {
     setCat(cats.filter((item) => {

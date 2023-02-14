@@ -35,7 +35,7 @@
   .cont3__text1,
   .cont3__text2 {
     @include fs(16px, 14px, 14px);
-    font-weight: $medium;
+    font-weight: 500;
     color: #555555;
     text-align: center;
   }
@@ -57,7 +57,7 @@
 
   .ttl {
     @include fs(24px, 20px);
-    font-weight: $black;
+    font-weight: 900;
     color: $b8;
     @include mb(40px, 24px);
   }

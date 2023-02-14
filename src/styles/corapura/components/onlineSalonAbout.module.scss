@@ -61,19 +61,19 @@
 
       .item_num {
         @include fs(22px, 14px);
-        font-weight: $black;
+        font-weight: 900;
         text-align: center;
         @include mb(8px);
 
         span {
           @include fs(28px, 18px);
-          font-weight: $bold;
+          font-weight: bold;
         }
       }
 
       p {
         @include fs(14px, 12px);
-        font-weight: $medium;
+        font-weight: 500;
         color: $g1;
       }
     }

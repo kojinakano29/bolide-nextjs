@@ -28,7 +28,7 @@
 
       time {
         @include fs(16px, 14px);
-        font-weight: $medium;
+        font-weight: 500;
         color: $g1;
         font-family: $Poppins;
       }
@@ -36,7 +36,7 @@
 
     .ttl {
       @include fs(16px, 14px);
-      font-weight: $medium;
+      font-weight: 500;
     }
 
     .company {

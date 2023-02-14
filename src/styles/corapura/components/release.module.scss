@@ -32,13 +32,13 @@
 
   .ttl {
     @include fs(16px, 14px);
-    font-weight: $bold;
+    font-weight: bold;
     @include mb(16px);
   }
 
   .view {
     @include fs(13px);
-    font-weight: $semibold;
+    font-weight: 600;
     @include flex(center, left);
     gap: 8px;
   }

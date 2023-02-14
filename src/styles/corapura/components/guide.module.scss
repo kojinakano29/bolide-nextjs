@@ -54,7 +54,7 @@
 
   .txt {
     @include fs(24px, 20px, 18px);
-    font-weight: $bold;
+    font-weight: bold;
     text-align: center;
 
     span {

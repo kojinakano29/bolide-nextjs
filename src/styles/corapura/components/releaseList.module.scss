@@ -70,7 +70,7 @@
 
     .view {
       @include fs(13px);
-      font-weight: $semibold;
+      font-weight: 600;
       @include flex(center, left);
       gap: 8px;
       @include mb(4px);

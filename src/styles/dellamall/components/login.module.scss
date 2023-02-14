@@ -37,13 +37,13 @@
 
   .forgot {
     @include fs(16px, 14px);
-    font-weight: $medium;
+    font-weight: 500;
     color: $g1;
     @include mt(24px);
 
     a {
       @include fs(16px, 14px);
-      font-weight: $medium;
+      font-weight: 500;
       color: $b3;
       text-decoration: underline;
 

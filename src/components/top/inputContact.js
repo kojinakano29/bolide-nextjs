@@ -5,7 +5,7 @@ import { useCallback } from 'react';
 import { useFormContext } from 'react-hook-form';
 import { Btn1 } from '@/components/top/';
 
-const InputAd = () => {
+const InputContact = () => {
   const router = useRouter()
 
   const { register, handleSubmit, formState: { errors, isValid } } = useFormContext()
@@ -13,21 +13,11 @@ const InputAd = () => {
   const onSubmit = useCallback(async (data) => {
     // console.log(data)
 
-    router.push("/ad/?confirm=1")
+    router.push("/contact/?confirm=1")
   }, [router])
 
   return (
     <>
-      <div className={styles.adTop}>
-        <p className={styles.catch}>広告掲載企業様・ブランド様を募集しております。</p>
-        <p className={styles.desc}>
-          Bolide's Japanでは、プレスリリース、広告掲載、情報掲載に関するお問い合わせを
-          <br/>常に受け付けています。ブランドのニュースやコレクション情報、プロフィール紹介などや、
-          <br/>ショップ情報の掲載を希望される企業様・ブランド様は下記までご連絡下さい。
-        </p>
-        <p className={styles.desc2}>詳細の注意事項はこちらをご覧ください</p>
-        <Btn1 txt="PDFをDLする" />
-      </div>
       <form onSubmit={handleSubmit(onSubmit)}>
         <article className={styles.formContent}>
           <p className={styles.catch}>お申込みは下記のフォームをご利用ください。担当よりご連絡いたします。</p>
@@ -57,7 +47,7 @@ const InputAd = () => {
               <label htmlFor="name">お名前</label>
               <span className={styles.require}>必須</span>
             </dt>
-            <dd className={styles.inputFlex}>
+            <dd className={styles.nameArea}>
               <input id="name" type="text" {...register("name1", {required: true})} placeholder="山田" />
               <input type="text" {...register("name2", {required: true})} placeholder="太郎" />
               {errors.name1 && <p className={`red ${styles.error}`}>この項目は必須です</p>}
@@ -66,11 +56,14 @@ const InputAd = () => {
           </dl>
           <dl>
             <dt>
-              <label htmlFor="store_name">会社・店名</label>
-              <span className={styles.any}>任意</span>
+              <label htmlFor="furigana">フリガナ</label>
+              <span className={styles.require}>必須</span>
             </dt>
-            <dd>
-              <input id="store_name" type="text" {...register("store_name")} placeholder="株式会社サンプル" />
+            <dd className={styles.nameArea}>
+              <input id="furigana" type="text" {...register("furigana1", {required: true})} placeholder="ヤマダ" />
+              <input type="text" {...register("furigana2", {required: true})} placeholder="タロウ" />
+              {errors.furigana1 && <p className={`red ${styles.error}`}>この項目は必須です</p>}
+              {errors.furigana2 && <p className={`red ${styles.error}`}>この項目は必須です</p>}
             </dd>
           </dl>
           <dl>
@@ -131,4 +124,4 @@ const InputAd = () => {
   );
 }
 
-export default InputAd;
+export default InputContact;

@@ -21,13 +21,13 @@
 
   .user__info__name {
     @include fs(32px, 24px);
-    font-weight: $medium;
+    font-weight: 500;
     @include mb(8px);
   }
 
   .user__info__id {
     @include fs(16px, 14px);
-    font-weight: $medium;
+    font-weight: 500;
     color: $g1;
     @include mb(40px);
   }
@@ -39,13 +39,13 @@
 
     li {
       @include fs(20px, 18px, 16px);
-      font-weight: $medium;
+      font-weight: 500;
     }
   }
 
   .user__info__text {
     @include fs(16px, 14px);
-    font-weight: $medium;
+    font-weight: 500;
     max-width: 737px;
     margin: auto;
   }

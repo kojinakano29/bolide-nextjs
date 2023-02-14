@@ -9,12 +9,12 @@
 
   li {
     h3 {
-      font-weight: $bold;
+      font-weight: bold;
       @include fs(24px, 22px);
     }
 
     p {
-      font-weight: $medium;
+      font-weight: 500;
       @include fs(16px, 14px);
       @include m(16px 0 48px);
     }

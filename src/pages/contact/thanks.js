@@ -1,20 +1,20 @@
-import styles from '@/styles/top/components/form.module.scss'
-import PageLayoutTop from "@/components/Layouts/pageLayoutTop";
-import Container from "@/components/top/Layout/container";
-import Link from "next/link";
-import { useRouter } from "next/router";
-import { useEffect } from "react";
+import PageLayoutTop from '@/components/Layouts/pageLayoutTop';
 import { Btn1 } from '@/components/top';
+import Container from '@/components/top/Layout/container';
+import styles from '@/styles/top/components/form.module.scss'
+import Link from 'next/link';
+import { useRouter } from 'next/router';
+import { useEffect } from 'react';
 
-const BjcAdThanks = () => {
+const BjcThanks = () => {
   const router = useRouter()
 
   useEffect(() => {
-    const ad = sessionStorage.getItem('ad')
+    const contact = sessionStorage.getItem('contact')
 
-    if (!ad) {
+    if (!contact) {
       router.push({
-        pathname: "/ad"
+        pathname: "/contact"
       })
     }
   }, [])
@@ -22,13 +22,13 @@ const BjcAdThanks = () => {
   return (
     <section className="cont1">
       <Container small900>
-        <h2 className="ttl2">広告掲載について</h2>
+        <h2 className="ttl2">お問い合わせ</h2>
         <div className="breadcrumbBox">
           <Link href="/">
             <a>トップ</a>
           </Link>
           <div><img src="/top/breadcrumb.svg" alt="" /></div>
-          <p>広告掲載について</p>
+          <p>お問い合わせ</p>
         </div>
         <div className={styles.thanksBox}>
           <p className={styles.catch}>送信が完了しました。</p>
@@ -44,8 +44,8 @@ const BjcAdThanks = () => {
   );
 }
 
-export default BjcAdThanks;
+export default BjcThanks;
 
-BjcAdThanks.getLayout = function getLayout(page) {
+BjcThanks.getLayout = function getLayout(page) {
   return <PageLayoutTop>{page}</PageLayoutTop>
 }

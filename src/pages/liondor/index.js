@@ -46,7 +46,7 @@ export default function Home({posts}) {
             <section className={`cont ${styles.cont2}`}>
                 <Container>
                     <h2 className="ttl1 ivy">SPECIAL</h2>
-                    <BlogPattern1 pattern={specialData} route2 />
+                    <BlogPattern1 pattern={specialData} route2 pickup />
                 </Container>
             </section>
 

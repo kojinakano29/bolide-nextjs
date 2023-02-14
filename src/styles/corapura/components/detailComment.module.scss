@@ -5,13 +5,13 @@
     @include flex(center, left);
     @include gap(4px);
     @include mb(8px);
-    font-weight: $black;
+    font-weight: 900;
     @include fs(24px, 20px, 18px);
   }
 
   .count {
     @include fs(14px, 12px);
-    font-weight: $medium;
+    font-weight: 500;
     @include mb(40px, 32px);
   }
 
@@ -33,7 +33,7 @@
         @include flex(center, left);
         @include gap(16px);
         @include fs(16px, 14px);
-        font-weight: $medium;
+        font-weight: 500;
         text-decoration: underline;
 
         &:hover {
@@ -60,7 +60,7 @@
         @include width(calc(100% - (290px + 24px)), calc(100% - (200px + 16px)), 100%);
         background: $o3;
         border-radius: 10px;
-        font-weight: $medium;
+        font-weight: 500;
         @include fs(13px);
         @include p(18px 24px, 16px);
       }

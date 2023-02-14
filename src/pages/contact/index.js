@@ -1,12 +1,12 @@
-import PageLayoutTop from '@/components/Layouts/pageLayoutTop';
-import { ConfirmAd, InputAd } from '@/components/top';
-import Container from '@/components/top/Layout/container';
 import styles from '@/styles/top/components/form.module.scss'
-import Link from 'next/link';
+import PageLayoutTop from "@/components/Layouts/pageLayoutTop";
 import { useRouter } from 'next/router';
 import { FormProvider, useForm } from 'react-hook-form';
+import Container from '@/components/top/Layout/container';
+import Link from 'next/link';
+import { ConfirmContact, InputContact } from '@/components/top';
 
-const BjcAd = () => {
+const BjcContact = () => {
   const router = useRouter()
   const isConfirm = router.query.confirm
 
@@ -15,7 +15,8 @@ const BjcAd = () => {
       content: [],
       name1: "",
       name2: "",
-      store_name: "",
+      furigana1: "",
+      furigana2: "",
       email: "",
       tel: "",
       message: "",
@@ -28,13 +29,13 @@ const BjcAd = () => {
     <>
       <section className="cont1">
         <Container small900>
-          <h2 className="ttl2">広告掲載について</h2>
+          <h2 className="ttl2">お問い合わせ</h2>
           <div className="breadcrumbBox">
             <Link href="/">
               <a>トップ</a>
             </Link>
             <div><img src="/top/breadcrumb.svg" alt="" /></div>
-            <p>広告掲載について</p>
+            <p>お問い合わせ</p>
           </div>
         </Container>
       </section>
@@ -42,7 +43,7 @@ const BjcAd = () => {
       <section className={styles.formArea}>
         <Container small900>
           <FormProvider {...methods}>
-            {!isConfirm ? <InputAd /> : <ConfirmAd />}
+            {!isConfirm ? <InputContact /> : <ConfirmContact />}
           </FormProvider>
         </Container>
       </section>
@@ -50,8 +51,8 @@ const BjcAd = () => {
   );
 }
 
-export default BjcAd;
+export default BjcContact;
 
-BjcAd.getLayout = function getLayout(page) {
+BjcContact.getLayout = function getLayout(page) {
   return <PageLayoutTop>{page}</PageLayoutTop>
 }

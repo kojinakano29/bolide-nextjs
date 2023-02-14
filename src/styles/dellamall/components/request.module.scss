@@ -2,7 +2,7 @@
 
 .cont1__title {
   @include fs(28px, 24px);
-  font-weight: $medium;
+  font-weight: 500;
   text-align: center;
   @include mt(64px, 48px);
   @include mb(32px);
@@ -21,7 +21,7 @@
 
     .cont1__item__text {
       @include fs(22px, 18px);
-      font-weight: $bold;
+      font-weight: bold;
       text-align: center;
 
       @include media1(sp) {
@@ -36,14 +36,14 @@
 
   .cont2__title {
     @include fs(28px, 24px);
-    font-weight: $bold;
+    font-weight: bold;
     text-align: center;
     @include mb(24px, 16px);
   }
 
   .cont2__text {
     @include fs(16px, 14px);
-    font-weight: $medium;
+    font-weight: 500;
     text-align: center;
     max-width: 500px;
     margin: auto;
@@ -67,7 +67,7 @@
 
   .cont3__title {
     @include fs(24px, 24px, 16px);
-    font-weight: $bold;
+    font-weight: bold;
     position: relative;
     width: fit-content;
     margin: auto;
