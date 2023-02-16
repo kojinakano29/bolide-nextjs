@@ -77,22 +77,9 @@ const Footer = () => {
             </Link>
             <ul className={styles.footer__cont1List}>
               <li className={`${styles.footer__cont1Item} hoverEffect`}>
-                <Link href="/corapura/guide">
-                  <a>CORAPRAとは</a>
-                </Link>
-              </li>
-              <li className={`${styles.footer__cont1Item} hoverEffect`}>
                 <Link href="/corapura/company/matter">
                   <a>企業案件</a>
                 </Link>
-              </li>
-              <li className={`${styles.footer__cont1Item} hoverEffect`}>
-                <Link href="/corapura/salon">
-                  <a>オンラインサロン</a>
-                </Link>
-              </li>
-              <li className={`${styles.footer__cont1Item} hoverEffect`}>
-                <a href="https://bolides.co.jp/company/" target="_blank" rel="noopener noreferrer">Bolide's Japanとは</a>
               </li>
               <li className={`${styles.footer__cont1Item} hoverEffect`}>
                 <Link href="/corapura/influencer/matter">
@@ -100,8 +87,31 @@ const Footer = () => {
                 </Link>
               </li>
               <li className={`${styles.footer__cont1Item} hoverEffect`}>
+                <Link href="/corapura/company">
+                  <a>企業一覧</a>
+                </Link>
+              </li>
+              <li className={`${styles.footer__cont1Item} hoverEffect`}>
+                <Link href="/corapura/influencer">
+                  <a>インフルエンサー</a>
+                </Link>
+              </li>
+              <li className={`${styles.footer__cont1Item} hoverEffect`}>
+                <Link href="/corapura/salon">
+                  <a>オンラインサロン</a>
+                </Link>
+              </li>
+              {/* <li className={`${styles.footer__cont1Item} hoverEffect`}>
+                <a href="https://bolides.co.jp/company/" target="_blank" rel="noopener noreferrer">Bolide's Japanとは</a>
+              </li> */}
+              <li className={`${styles.footer__cont1Item} hoverEffect`}>
                 <Link href="/corapura/press_release">
                   <a>プレスリリース</a>
+                </Link>
+              </li>
+              <li className={`${styles.footer__cont1Item} hoverEffect`}>
+                <Link href="/corapura/guide">
+                  <a>CORAPURAとは</a>
                 </Link>
               </li>
             </ul>
@@ -111,7 +121,7 @@ const Footer = () => {
               このサイトはreCAPTHAによって保護されており、<br />
               Googleの<a href="https://policies.google.com/privacy?hl=ja" target="_blank">プライバシーポリシー</a>と<a href="https://policies.google.com/terms?hl=ja" target="_blank">利用規約</a>が適応されます。
             </div>
-            <div className={styles.footer__cont2Right}>© 2022 CORAPRA inc.</div>
+            <div className={styles.footer__cont2Right}>© 2022 CORAPURA inc.</div>
           </div>
           <ul className={styles.footer__cont3}>
             <li className={`${styles.footer__cont3Item} hoverEffect`}><a href="https://bolides.co.jp/company/" target="_blank" rel="noopener noreferrer">運営会社</a></li>

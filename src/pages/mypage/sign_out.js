@@ -3,8 +3,35 @@ import PageLayoutTop from "@/components/Layouts/pageLayoutTop";
 import Container from "@/components/top/Layout/container";
 import Link from "next/link";
 import { Btn1 } from '@/components/top';
+import { useCallback, useState } from 'react';
+import axios from '@/lib/axios';
+import { useAuth } from '@/hooks/auth';
+import { useRouter } from 'next/router';
 
 const SignOut = () => {
+  const csrf = () => axios.get('/sanctum/csrf-cookie')
+
+  const router = useRouter()
+  const { user } = useAuth({middleware: 'auth', type: 'bjc'})
+  const [disabled, setDisabled] = useState(false)
+
+  const handleClickSignOut = useCallback(async () => {
+    if (disabled) return
+    setDisabled(true)
+    await csrf()
+
+    await axios.delete(`/api/delete/user/${user?.id}`)
+    .then((res) => {
+      // console.log(res)
+      alert(res.data)
+      router.push({
+        pathname: '/',
+      })
+    }).catch(e => console.error(e))
+
+    await setDisabled(false)
+  }, [user, disabled, setDisabled])
+
   return (
     <section className="cont1">
       <Container small900>
@@ -50,7 +77,9 @@ const SignOut = () => {
             <br/>お客様の情報は<span>すべて削除</span>されますがよろしいでしょうか？
           </p>
           <div className={styles.btnBox}>
-            <Btn1 txt="はい、退会します" />
+            <div className="btnCover" onClick={handleClickSignOut}>
+              <Btn1 txt="はい、退会します" />
+            </div>
             <Link href="/mypage">
               <a className={`btn1 ${styles.btn}`}>いいえ、退会しません</a>
             </Link>

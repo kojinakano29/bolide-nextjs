@@ -115,9 +115,8 @@
   @include pt(64px, 56px);
 
   & > div {
-    @include media1(sp) {
-      padding: 0;
-    }
+    @include max-width(1120px, 100%, 800px);
+    @include p(0, 0 20px, 0);
   }
 
   .planSlide {
@@ -128,8 +127,8 @@
 
       .planCard,
       .planBox {
-        width: 756px;
-        max-width: unset
+        width: 820px;
+        max-width: unset;
       }
     }
 
@@ -144,11 +143,11 @@
 
         @include media1(tab1) {
           &:nth-child(1) {
-            width: 350px;
+            @include width(calc((100% - (288px + 16px)) * 2/3 - 16px * 1/2), calc((100% - (30% + 8px)) * 2/3 - 8px * 1/2));
           }
 
           &:nth-child(2) {
-            width: 176px;
+            @include width(calc((100% - (288px + 16px)) * 1/3 - 16px * 1/2), calc((100% - (30% + 8px)) * 1/3 - 8px * 1/2));
           }
         }
       }

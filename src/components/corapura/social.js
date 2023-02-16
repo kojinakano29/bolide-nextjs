@@ -10,14 +10,14 @@ const Social = ({socials, user = false}) => {
     <>
       {user ?
         <div className={styles.snsLink}>
-          <p className={styles.snsTxt}>FOLLOWERS</p>
-          <p className={styles.followerAll}>All <span>{allFollower}</span></p>
+          <p className={styles.snsTxt}>SNS FOLLOWERS</p>
+          <p className={styles.followerAll}>All <span>{allFollower.toLocaleString()}</span></p>
           <div className={styles.followerBox}>
             {socials.length !== 0 ?
               socials.map((social, index) => (
                 <a className="hoverEffect" href={social.url} target="_blank" rel="noopener noreferrer" key={index}>
                   <img src={socialNetworkingServiceIcons[social.name]} alt={social.name} />
-                  {social.follower}
+                  {social.follower.toLocaleString()}
                 </a>
               ))
             : null}

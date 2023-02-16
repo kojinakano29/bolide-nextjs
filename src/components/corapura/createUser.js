@@ -175,7 +175,7 @@ const CreateUserForm = () => {
                   </dt>
                   <dd>
                     <input
-                      type="number"
+                      type="text"
                       id="snsFollower"
                       {...register("snsFollower", {required: true})}
                     />

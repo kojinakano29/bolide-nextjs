@@ -6,6 +6,12 @@
   top: 0;
   left: 0;
   z-index: 999;
+  transition: .3s ease;
+
+  &.active {
+    background-color: rgba($w1, .9);
+    box-shadow: 0 3px 5px rgba($b1, .16);
+  }
 }
 
 .humBox {

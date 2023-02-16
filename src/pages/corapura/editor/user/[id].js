@@ -356,7 +356,7 @@ const EditUser = ({posts}) => {
                   </dl>
                   <dl>
                     <dt>
-                      <label htmlFor="tag">{user?.account_type === 0 ? "活動" : "業種"}に合ったタグを入力ください</label>
+                      <label htmlFor="tag">{user?.account_type === 0 ? "自分を表す・関連するタグ" : "業種に合ったタグを入力ください"}</label>
                     </dt>
                     <dd>
                       <input
@@ -407,7 +407,7 @@ const EditUser = ({posts}) => {
                       <input
                         type="url"
                         id="brand"
-                        {...register("brand", {required: true})}
+                        {...register("brand")}
                       />
                       {errors.brand && <p className={styles.error}>必須項目を入力してください</p>}
                     </dd>

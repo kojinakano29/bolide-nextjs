@@ -63,7 +63,7 @@ const Merit = ({detail = false}) => {
           </li>
         </ul>
         <div className={styles.btnCover}>
-          <Btn txt="CORAPRAとは" link="/corapura/guide" reverse />
+          <Btn txt="CORAPURAとは" link="/corapura/guide" reverse />
         </div>
       </Container>
     </section>

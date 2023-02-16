@@ -3,6 +3,7 @@ import styles from '@/styles/top/components/form.module.scss'
 import { PaymentElement, useElements, useStripe } from "@stripe/react-stripe-js";
 import { useState } from 'react';
 import { useForm } from 'react-hook-form';
+import Btn1 from './btn1';
 
 const CheckoutForm = ({user}) => {
   const csrf = () => axios.get('/sanctum/csrf-cookie')
@@ -13,6 +14,7 @@ const CheckoutForm = ({user}) => {
       coupon: "",
     },
     mode: 'onChange',
+    criteriaMode: "all",
   })
   const elements = useElements()
   const stripe = useStripe()
@@ -21,7 +23,6 @@ const CheckoutForm = ({user}) => {
     await csrf()
 
     await axios.post(`/api/subscription/subscribe/${user?.id}`, {
-      name: data.name,
       payment_method: pm,
       db_name: "corporate",
       plan: "price_1MH4p7LPvAJPNlRsnSq9a5MR",
@@ -56,28 +57,25 @@ const CheckoutForm = ({user}) => {
   }
 
   return (
-    <div>
-      <form onSubmit={handleSubmit(onSubmit)}>
-        <label>
-          カード名義人
-          <input
-            type="text"
-            {...register("name", {required: true})}
-            placeholder="TARO YAMADA"
-          />
-        </label>
-        {errors.name && <p className={`orange ${styles.error}`}>※こちらの項目は入力必須です</p>}
+    <form onSubmit={handleSubmit(onSubmit)}>
+      <article className={styles.formContent}>
         <PaymentElement />
-        <label>
-          クーポンコード
-          <input
-            type="text"
-            {...register("coupon")}
-          />
-        </label>
-        <button disabled={disabled}>送信する</button>
-      </form>
-    </div>
+        <dl>
+          <dt>
+            <label htmlFor="coupon">クーポンコード</label>
+            <span className={styles.any}>任意</span>
+          </dt>
+          <dd>
+            <input
+              id="coupon"
+              type="text"
+              {...register("coupon")}
+            />
+          </dd>
+        </dl>
+        <Btn1 txt="確認する" submit disabled={disabled} />
+      </article>
+    </form>
   )
 }
 

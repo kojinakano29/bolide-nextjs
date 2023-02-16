@@ -54,6 +54,24 @@ const AdminPressReleaseList = () => {
     setPage(e.currentTarget.value)
   }, [setPage])
 
+  const handleClickDelete = useCallback(async (id) => {
+    await csrf()
+
+    await axios.delete(`/api/corapura/pr/delete`, {
+      data: {
+        c_pr_id: id,
+      }
+    }).then((res) => {
+      console.log(res)
+      // setReleases(res.data.pr)
+      // setNowPage(1)
+      // setMaxPage(res.data.page_max)
+      alert("このプレスリリースを削除しました")
+    }).catch((e) => {
+      console.error(e)
+    })
+  }, [])
+
   return (
     <section className="cont1">
       <Container small>
@@ -74,11 +92,19 @@ const AdminPressReleaseList = () => {
                       <img src={pr.thumbs ? `${process.env.NEXT_PUBLIC_BACKEND_URL}/storage/${pr.thumbs}` : dummy.src} alt="" />
                     </a>
                   </Link>
+                  {pr.state === 0 ?
+                    <p className={styles.stateIcon}>下書き</p>
+                  : null}
                   <p className={styles.ttl}>{pr.title}</p>
                   <div className={styles.btnFlex}>
                     <Link href={`/corapura/editor/press_release/${pr.id}`}>
                       <a className={`${styles.btn} hoverEffect`}>編集する</a>
                     </Link>
+                    <button
+                      type="button"
+                      className={`${styles.btn} ${styles.finishBtn} hoverEffect`}
+                      onClick={() => handleClickDelete(pr.id)}
+                    >削除</button>
                   </div>
                 </div>
               ))}

@@ -9,7 +9,7 @@ import mypage from '@/images/corapura/header/mypage.svg'
 import { useAuth } from '@/hooks/auth';
 
 const Header = () => {
-  const { user, logout } = useAuth()
+  const { user } = useAuth()
   const [humOpen, setHumOpen] = useState(false)
 
   const handleClickHum = useCallback(async () => {
@@ -36,10 +36,6 @@ const Header = () => {
               </a>
             </Link>
           </h1>
-          <button
-            type="button"
-            onClick={() => logout()}
-          >ログアウト</button>
         </div>
         {!user ?
           <div className={styles.right}>
@@ -94,8 +90,16 @@ const Header = () => {
         <li>
           <Link href="/corapura/company/matter">
             <a onClick={handleClickHum}>
-              <p className={styles.jp}>案件一覧</p>
-              <p className={`en ${styles.en}`}>Project List</p>
+              <p className={styles.jp}>企業案件一覧</p>
+              <p className={`en ${styles.en}`}>Company Project List</p>
+            </a>
+          </Link>
+        </li>
+        <li>
+          <Link href="/corapura/influencer/matter">
+            <a onClick={handleClickHum}>
+              <p className={styles.jp}>インフルエンサー案件一覧</p>
+              <p className={`en ${styles.en}`}>Influencer Project List</p>
             </a>
           </Link>
         </li>

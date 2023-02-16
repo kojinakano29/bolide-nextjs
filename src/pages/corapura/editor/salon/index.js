@@ -54,6 +54,24 @@ const AdminSalonList = () => {
     setPage(e.currentTarget.value)
   }, [setPage])
 
+  const handleClickDelete = useCallback(async (id) => {
+    await csrf()
+
+    await axios.delete(`/api/corapura/salon/delete`, {
+      data: {
+        c_salon_id: id,
+      }
+    }).then((res) => {
+      console.log(res)
+      // setMatters(res.data.post)
+      // setNowPage(1)
+      // setMaxPage(res.data.page_max)
+      alert("このオンラインサロンを削除しました")
+    }).catch((e) => {
+      console.error(e)
+    })
+  }, [])
+
   return (
     <section className="cont1">
       <Container small>
@@ -74,11 +92,19 @@ const AdminSalonList = () => {
                       <img src={salon.thumbs ? `${process.env.NEXT_PUBLIC_BACKEND_URL}/storage/${salon.thumbs}` : dummy.src} alt="" />
                     </a>
                   </Link>
+                  {salon.state === 0 ?
+                    <p className={styles.stateIcon}>下書き</p>
+                  : null}
                   <p className={styles.ttl}>{salon.title}</p>
                   <div className={styles.btnFlex}>
                     <Link href={`/corapura/editor/salon/${salon.id}`}>
                       <a className={`${styles.btn} hoverEffect`}>編集する</a>
                     </Link>
+                    <button
+                      type="button"
+                      className={`${styles.btn} ${styles.finishBtn} hoverEffect`}
+                      onClick={() => handleClickDelete(salon.id)}
+                    >削除</button>
                   </div>
                 </div>
               ))}

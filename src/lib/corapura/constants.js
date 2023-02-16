@@ -267,6 +267,7 @@ export const socialNetworkingService = [
   "pring",
   "Monappy",
   "tipmusic",
+  "その他",
 ]
 
 // SNSフォロワー
@@ -317,4 +318,5 @@ export const socialNetworkingServiceIcons = {
   "pring": "",
   "Monappy": "",
   "tipmusic": "",
+  "その他": "",
 }
