@@ -74,6 +74,7 @@
     }
 
     .block {
+      @include flex(center, center);
       @include pt(72px, 40px, 64px);
       width: 100%;
       max-height: 50%;
@@ -109,7 +110,7 @@
 
     &:hover {
       .block {
-        max-height: 0;
+        max-height: 4em;
         @include pt(0);
       }
 

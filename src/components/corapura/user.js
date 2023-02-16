@@ -4,6 +4,8 @@ import dummy from '@/images/corapura/common/userDummy.svg'
 import { Btn } from '@/components/corapura';
 
 const User = ({data, detail = false}) => {
+  // console.log(data)
+
   return (
     <>
       {!detail ?
@@ -13,7 +15,7 @@ const User = ({data, detail = false}) => {
               <Link href={`/corapura/influencer/${item.id}`} key={item.id}>
                 <a className={styles.person__item}>
                   <div className={styles.imgBox}>
-                    <img src={item.thumbs ? `${process.env.NEXT_PUBLIC_BACKEND_URL}/storage/${item.thumbs}` : dummy.src} alt="" />
+                    <img src={item.c_profile.thumbs ? `${process.env.NEXT_PUBLIC_BACKEND_URL}/storage/${item.c_profile.thumbs}` : dummy.src} alt="" />
                   </div>
                   <p className={styles.jp}>{item.c_profile.nicename}</p>
                   <p className={`${styles.en} en`}>{item.name}</p>
@@ -30,7 +32,7 @@ const User = ({data, detail = false}) => {
               <Link href={`/corapura/influencer/${item.id}`} key={item.id}>
                 <a className={styles.person__item}>
                   <div className={styles.imgBox}>
-                    <img src={item.thumbs ? `${process.env.NEXT_PUBLIC_BACKEND_URL}/storage/${item.thumbs}` : dummy.src} alt="" />
+                    <img src={item.c_profile.thumbs ? `${process.env.NEXT_PUBLIC_BACKEND_URL}/storage/${item.c_profile.thumbs}` : dummy.src} alt="" />
                   </div>
                   <p className={styles.jp}>{item.c_profile.nicename}</p>
                   <p className={`${styles.en} en`}>{item.name}</p>

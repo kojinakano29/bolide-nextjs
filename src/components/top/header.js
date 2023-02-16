@@ -1,19 +1,35 @@
 import { useAuth } from '@/hooks/auth';
 import styles from '@/styles/top/components/header.module.scss'
 import Link from 'next/link';
-import { useCallback, useState } from 'react';
+import { useCallback, useEffect, useState } from 'react';
 import Container from './Layout/container';
 
 const Header = () => {
   const { user } = useAuth()
   const [open, setOpen] = useState(false)
+  const [active, setActive] = useState(false)
 
   const handleClickHum = useCallback(async () => {
     setOpen(prevState => !prevState)
   }, [setOpen])
 
+  const scrollEvent = useCallback(() => {
+    const offset = window.scrollY
+
+    if (offset > 500) {
+      setActive(true)
+    } else {
+      setActive(false)
+    }
+  }, [setActive])
+
+  useEffect(() => {
+    window.addEventListener('scroll', scrollEvent)
+    return () => window.removeEventListener('scroll', scrollEvent)
+  }, [scrollEvent])
+
   return (
-    <header className={styles.header}>
+    <header className={`${styles.header} ${active ? styles.active : null}`}>
       <div className={`${styles.humBox} ${open ? styles.active : null}`}>
         <Container>
           <div className={styles.headerFlex}>

@@ -170,7 +170,7 @@ const OnlineSalonDetail = ({posts}) => {
               <div className={styles.block}>
                 <div className={styles.cat}>
                   <FontAwesomeIcon icon={faUserGroup} />
-                  入会中の人数
+                  入会上限人数
                 </div>
                 <p className={styles.txt}>{salon.number_of_people}</p>
               </div>

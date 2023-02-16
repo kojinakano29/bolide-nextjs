@@ -65,6 +65,24 @@ const AdminMatterList = () => {
     }).catch(e => console.error(e))
   }, [])
 
+  const handleClickDelete = useCallback(async (id) => {
+    await csrf()
+
+    await axios.delete(`/api/corapura/post/delete`, {
+      data: {
+        c_post_id: id,
+      }
+    }).then((res) => {
+      console.log(res)
+      // setMatters(res.data.post)
+      // setNowPage(1)
+      // setMaxPage(res.data.page_max)
+      alert("この案件を掲載終了しました")
+    }).catch((e) => {
+      console.error(e)
+    })
+  }, [])
+
   return (
     <section className="cont1">
       <Container small>
@@ -85,6 +103,9 @@ const AdminMatterList = () => {
                       <img src={matter.thumbs ? `${process.env.NEXT_PUBLIC_BACKEND_URL}/storage/${matter.thumbs}` : dummy.src} alt="" />
                     </a>
                   </Link>
+                  {matter.state === 4 ?
+                    <p className={styles.stateIcon}>下書き</p>
+                  : null}
                   <p className={styles.ttl}>{matter.title}</p>
                   <p className={styles.iconBox}>
                     <span className={styles.icon}>更新日</span>
@@ -99,6 +120,11 @@ const AdminMatterList = () => {
                       className={`${styles.btn} ${styles.finishBtn} hoverEffect`}
                       onClick={() => handleClickFinish(matter.id)}
                     >完了に変更</button> */}
+                    <button
+                      type="button"
+                      className={`${styles.btn} ${styles.finishBtn} hoverEffect`}
+                      onClick={() => handleClickDelete(matter.id)}
+                    >掲載終了</button>
                   </div>
                 </div>
               ))}

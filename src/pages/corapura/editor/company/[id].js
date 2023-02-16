@@ -555,7 +555,7 @@ const EditCompany = ({posts}) => {
                     </dt>
                     <dd>
                       <input
-                        type="number"
+                        type="text"
                         id="zipcode"
                         {...register("zipcode")}
                         placeholder="0000000"

@@ -190,7 +190,7 @@ const CreateSalon = () => {
                     {...register("check", {required: true})}
                   />
                   <p className={styles.txt}>
-                    <Link href={`/corapura/terms`}><a>利用規約</a></Link>に同意します
+                    <Link href={`/corapura/terms`}><a target="_blank">利用規約</a></Link>に同意します
                   </p>
                 </label>
                 {errors.check && <p className={styles.error}>チェック必須項目です</p>}

@@ -21,6 +21,7 @@ const DetailAreaRight = ({influencer = false}) => {
   const [nowFollower, setNowFollower] = useState(userInfo.c_followeds_count)
   const [open, setOpen] = useState(false)
   const [followType, setFollowType] = useState(null)
+  const [profileMore, setProfileMore] = useState(false)
 
   const onLoadCheck = async () => {
     await csrf()
@@ -82,6 +83,10 @@ const DetailAreaRight = ({influencer = false}) => {
     setFollowType(type)
   }, [setOpen, setFollowType])
 
+  const handleClickProfileMore = useCallback(async () => {
+    setProfileMore(true)
+  }, [setProfileMore])
+
   return (
     <>
       {!influencer ?
@@ -114,7 +119,22 @@ const DetailAreaRight = ({influencer = false}) => {
               onClick={handleClickFollow}
             >{followCheck ? "フォロー中" : "フォローする"}</button>
           </div>
-          <p className={styles.desc}>{profile.profile}</p>
+          <p className={styles.desc}>
+            <span>自己紹介</span>
+            <br/>
+            {profileMore ?
+              profile.profile
+            :
+              profile.profile.substr(0, 60)
+            }
+          </p>
+          {profileMore ? null:
+            <button
+              type="button"
+              className={`${styles.profileMoreBtn} hoverEffect`}
+              onClick={handleClickProfileMore}
+            >もっと見る</button>
+          }
           <div className={styles.infoGraph}>
             <dl>
               <dt>代表者</dt>

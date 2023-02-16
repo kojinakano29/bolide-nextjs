@@ -15,7 +15,7 @@ const Plan = ({plan, num}) => {
     `}>
       <button
         type="button"
-        aria-controls={`planImg${num}`}
+        aria-controls={`planGraph${num}`}
         aria-expanded={!isOpen}
         onClick={() => setIsOpen(!isOpen)}
       >
@@ -26,12 +26,50 @@ const Plan = ({plan, num}) => {
         : null}
       </button>
       <div
-        id={`planImg${num}`}
-        className={styles.imgBox}
+        id={`planGraph${num}`}
+        className={styles.graphBox}
         aria-hidden={!isOpen}
         ref={accordionRef}
       >
+        {plan.color === "bj" ?
         <img src={plan.graph} alt="" />
+        :
+        plan.graph.map((item, index) => (
+          <dl key={index}>
+            <dt className={styles.left}>{item.left}</dt>
+            <dd className={styles.center}>
+              {item.center === 1 ?
+                <img src="/top/graph_check.svg" alt="" />
+              : null}
+              {item.center === 2 ?
+                <img src="/top/graph_limit.svg" alt="" />
+              : null}
+              {item.center === 3 ?
+                <img src="/top/graph_none.svg" alt="" />
+              : null}
+              {item.text1 !== "" ?
+                <span className={styles.txt}>{item.text1}</span>
+              : null}
+            </dd>
+            <dd className={styles.right}>
+              {item.right === 1 ?
+                <img src="/top/graph_check.svg" alt="" />
+              : null}
+              {item.right === 2 ?
+                <img src="/top/graph_limit.svg" alt="" />
+              : null}
+              {item.right === 3 ?
+                <img src="/top/graph_none.svg" alt="" />
+              : null}
+              {item.text2 !== "" ?
+                <span className={styles.txt}>{item.text2}</span>
+              : null}
+            </dd>
+          </dl>
+        ))}
+        {plan.color === "marche" ?
+          <p className={styles.note}>※の項目は別途マルシェドールでの会員登録が必要です</p>
+        : null}
       </div>
     </div>
   );
