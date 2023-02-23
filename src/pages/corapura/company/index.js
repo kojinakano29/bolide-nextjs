@@ -11,6 +11,7 @@ import dummy from '@/images/corapura/common/dummy1.svg'
 import { Loader } from '@/components/corapura';
 import Link from 'next/link';
 import { zips } from '@/lib/corapura/constants';
+import searchIcon from '@/images/corapura/common/search.svg'
 
 export const getServerSideProps = async () => {
   const res = await fetch(`${process.env.NEXT_PUBLIC_API_CORAPURA}/company`)
@@ -269,6 +270,9 @@ const CompanyList = ({posts}) => {
               {...register("s")}
               placeholder="気になるワードを検索"
             />
+            <button>
+              <img src={searchIcon.src} alt="検索アイコン" />
+            </button>
           </div>
         </form>
 
@@ -338,7 +342,7 @@ const CompanyList = ({posts}) => {
           <>
             <article className={styles.list}>
               {company.map((comp, index) => (
-                <Link href={`/corapura/company/${comp.user.id}`} key={index}>
+                <Link href={`/corapura/company/${comp?.user?.id}`} key={index}>
                   <a>
                     <div className={styles.imgBox}>
                       <img src={comp.thumbs ? `${process.env.NEXT_PUBLIC_BACKEND_URL}/storage/${comp.thumbs}` : dummy.src} alt="" />

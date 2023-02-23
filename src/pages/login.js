@@ -3,7 +3,7 @@ import AuthSessionStatus from '@/components/AuthSessionStatus'
 import InputError from '@/components/InputError'
 import Link from 'next/link'
 import { useAuth } from '@/hooks/auth'
-import { useEffect, useState } from 'react'
+import { useCallback, useEffect, useState } from 'react'
 import { useRouter } from 'next/router'
 import Container from '@/components/corapura/Layout/container'
 import PageLayoutTop from '@/components/Layouts/pageLayoutTop'
@@ -21,6 +21,7 @@ const Login = () => {
   const [password, setPassword] = useState('')
   const [errors, setErrors] = useState([])
   const [status, setStatus] = useState(null)
+  const [view, setView] = useState(false)
 
   useEffect(() => {
     if (router.query.reset?.length > 0 && errors.length === 0) {
@@ -40,6 +41,10 @@ const Login = () => {
       setStatus,
     })
   }
+
+  const handleClickView = useCallback(async () => {
+    setView(prevState => !prevState)
+  }, [setView])
 
   return (
     <>
@@ -72,14 +77,20 @@ const Login = () => {
               </div>
               <div className={styles.inputBox}>
                 <label htmlFor="password" className="en">Password</label>
-                <input
-                  id="password"
-                  type="password"
-                  className={styles.password}
-                  onChange={event => setPassword(event.target.value)}
-                  required
-                  autoComplete="current-password"
-                />
+                <div className={styles.passwordBox}>
+                  <input
+                    id="password"
+                    type={view ? "text" : "password"}
+                    className={styles.password}
+                    onChange={event => setPassword(event.target.value)}
+                    required
+                    autoComplete="current-password"
+                  />
+                  <p
+                    className={styles.view}
+                    onClick={handleClickView}
+                  >{view ? "非表示" : "表示"}</p>
+                </div>
                 <InputError
                   messages={errors.password}
                   className="mt-2"

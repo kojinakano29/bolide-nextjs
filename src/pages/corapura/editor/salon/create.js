@@ -132,7 +132,7 @@ const CreateSalon = () => {
                     </dt>
                     <dd>
                       <input
-                        type="date"
+                        type="text"
                         id="date"
                         {...register("date", {required: true})}
                       />

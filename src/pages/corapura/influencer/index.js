@@ -11,6 +11,7 @@ import dummy from '@/images/corapura/common/dummy1.svg'
 import { Loader } from '@/components/corapura';
 import Link from 'next/link';
 import { zips, socialNetworkingService, followers } from '@/lib/corapura/constants';
+import searchIcon from '@/images/corapura/common/search.svg'
 
 export const getServerSideProps = async () => {
   const res = await fetch(`${process.env.NEXT_PUBLIC_API_CORAPURA}/user`)
@@ -45,6 +46,8 @@ const InfluencerList = ({posts}) => {
   const [skill, setSkill] = useState("")
   const [sns, setSns] = useState("")
   const [follower, setFollower] = useState("")
+  const [card, setCard] = useState(false)
+  const [like, setLike] = useState(false)
   const [tag, setTag] = useState("")
   const [sort, setSort] = useState("new")
   const [page, setPage] = useState(1)
@@ -60,6 +63,8 @@ const InfluencerList = ({posts}) => {
       skill: skill,
       sns: sns,
       sns_follower: parseInt(follower),
+      card: card ? 1 : 0,
+      like: like ? 1 : 0,
       tag: tag,
       sort: sort,
       page: parseInt(page),
@@ -80,6 +85,8 @@ const InfluencerList = ({posts}) => {
     skill,
     sns,
     follower,
+    card,
+    like,
     tag,
     sort,
     page,
@@ -98,6 +105,8 @@ const InfluencerList = ({posts}) => {
     skill,
     sns,
     follower,
+    card,
+    like,
     tag,
     sort,
     page,
@@ -118,6 +127,14 @@ const InfluencerList = ({posts}) => {
   const handleChangeFollower = useCallback(async (e) => {
     setFollower(e.target.value)
   }, [setFollower])
+
+  const handleChangeCard = useCallback(async (e) => {
+    setCard(e.target.checked)
+  }, [setCard])
+
+  const handleChangeLike = useCallback(async (e) => {
+    setLike(e.target.checked)
+  }, [setLike])
 
   const handleClickTag = useCallback(async (e) => {
     if (parseInt(tag) === parseInt(e.target.value)) {
@@ -151,6 +168,8 @@ const InfluencerList = ({posts}) => {
       skill: skill,
       sns: sns,
       sns_follower: parseInt(follower),
+      card: card,
+      like: like,
       tag: tag,
       sort: sort,
       page: parseInt(page),
@@ -176,10 +195,25 @@ const InfluencerList = ({posts}) => {
     skill,
     sns,
     follower,
+    card,
+    like,
     tag,
     sort,
     page,
   ])
+
+  const sorts2 = [
+    {
+      name: "名刺",
+      click: handleChangeCard,
+      state: card,
+    },
+    {
+      name: "推し活/ボビー",
+      click: handleChangeLike,
+      state: like,
+    },
+  ]
 
   return (
     <section className="cont1">
@@ -192,6 +226,9 @@ const InfluencerList = ({posts}) => {
               {...register("s")}
               placeholder="気になるワードを検索"
             />
+            <button>
+              <img src={searchIcon.src} alt="検索アイコン" />
+            </button>
           </div>
         </form>
 
@@ -222,6 +259,20 @@ const InfluencerList = ({posts}) => {
               ))}
             </select>
           </div>
+        </div>
+
+        <div className={styles.checkSortBox}>
+          {sorts2.map((item, index) => (
+            <button key={index}>
+              <label className={`${item.state ? styles.current : null}`}>
+                {item.name}
+                <input
+                  type="checkbox"
+                  onChange={item.click}
+                />
+              </label>
+            </button>
+          ))}
         </div>
 
         <div className={styles.tagBtnArea}>

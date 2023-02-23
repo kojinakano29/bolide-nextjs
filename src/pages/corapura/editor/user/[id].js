@@ -7,7 +7,7 @@ import { useForm } from 'react-hook-form';
 import Container from '@/components/corapura/Layout/container';
 import { CreateUserForm, EditUserForm, Loader } from '@/components/corapura';
 import axios from '@/lib/axios';
-import { zips } from '@/lib/corapura/constants';
+import { zips, skillList } from '@/lib/corapura/constants';
 
 export const UserContext = createContext()
 
@@ -35,7 +35,6 @@ const EditUser = ({posts}) => {
     return skill.name
   })
   const tagStr = tags.join(',')
-  const skillStr = skills.join(',')
 
   const router = useRouter()
   const { user } = useAuth({middleware: 'auth', type: 'corapura'})
@@ -57,7 +56,7 @@ const EditUser = ({posts}) => {
       profile: profile.profile,
       appeal_text: option.appeal_text,
       brand: option.brand,
-      skill: skillStr,
+      skill: skills,
     },
     mode: "onChange",
   })
@@ -186,7 +185,7 @@ const EditUser = ({posts}) => {
       appeal_image: data.appeal_image.length !== 0 ? data.appeal_image[0] : option.appeal_image,
       appeal_text: data.appeal_text,
       brand: data.brand,
-      skill: data.skill,
+      skill: data.skill.join(','),
     })
 
     await setDisabled(false)
@@ -387,15 +386,18 @@ const EditUser = ({posts}) => {
                     </dd>
                   </dl>
                   <dl>
-                    <dt>
-                      <label htmlFor="skill">スキルを入力ください</label>
-                    </dt>
-                    <dd>
-                      <input
-                        type="text"
-                        id="skill"
-                        {...register("skill", {required: true})}
-                      />
+                    <dt>スキル/資格/表彰を選択ください</dt>
+                    <dd className={styles.skillScroll}>
+                      {skillList.map((skill, index) => (
+                        <label key={index}>
+                          <input
+                            type="checkbox"
+                            value={skill}
+                            {...register("skill", {required: true})}
+                          />
+                          {skill}
+                        </label>
+                      ))}
                       {errors.skill && <p className={styles.error}>必須項目を入力してください</p>}
                     </dd>
                   </dl>
@@ -542,6 +544,14 @@ const EditUser = ({posts}) => {
                 ))}
               </article>
             </div>
+            <form onSubmit={handleSubmit(onSubmit)}>
+              <div className={styles.submitFlex}>
+                <button
+                  className={`${styles.submitBtn} hoverEffect`}
+                  disabled={disabled}
+                >編集</button>
+              </div>
+            </form>
           </Container>
         </section>
       : null}

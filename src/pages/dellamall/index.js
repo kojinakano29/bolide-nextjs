@@ -1,8 +1,9 @@
-import { Btn01, Loader, MasonryGridComponent, PopularStore, Trend } from '@/components/dellamall';
+import { Btn01, Loader, MasonryGridComponent, NewBtn, PopularStore, Trend } from '@/components/dellamall';
 import Container from '@/components/dellamall/Layouts/container';
 import PageLayoutDellamall from '@/components/Layouts/PageLayoutDellamall';
 import styles from '@/styles/dellamall/components/home.module.scss'
 import fv_text from '@/images/dellamall/top/fv_text.svg'
+import mv__sp from '@/images/dellamall/top/fv_bk__sp.webp'
 import Image from 'next/image';
 import { faTrophy, faSquarePlus } from '@fortawesome/free-solid-svg-icons'
 import { createContext, useEffect, useRef } from 'react';
@@ -76,6 +77,7 @@ const Home = ({posts}) => {
   return (
     <>
       <section className={styles.mv}>
+        <img className={`sp ${styles.bg_mv_sp}`} src={mv__sp.src} alt="" />
         <Container small>
           <h1 className={styles.sitename}>
             <Image
@@ -108,7 +110,7 @@ const Home = ({posts}) => {
           </StoreData.Provider>
         </div>
         <Container>
-          <Btn01 fa={faTrophy} txt="ランキングを見る" link="/dellamall/shop" right />
+          <Btn01 fa={faTrophy} txt="ストア一覧" link="/dellamall/shop" right />
         </Container>
       </section>
 
@@ -132,6 +134,8 @@ const Home = ({posts}) => {
           : null}
         </Container>
       </section>
+
+      <NewBtn />
 
       <Container small>
         <Link href="/corapura/press_release">

@@ -5,7 +5,7 @@ import { useForm } from 'react-hook-form'
 import { useCallback } from 'react'
 import { useRouter } from 'next/router'
 
-const SearchIcon = () => {
+const SearchIcon = ({setSearchActive}) => {
   const router = useRouter()
 
   const { register, handleSubmit } = useForm()
@@ -27,6 +27,8 @@ const SearchIcon = () => {
             type="text"
             {...register("search")}
             placeholder="SEARCH FOR INSPIRATION"
+            onFocus={() => setSearchActive(true)}
+            onBlur={() => setSearchActive(false)}
           />
         </label>
       </form>

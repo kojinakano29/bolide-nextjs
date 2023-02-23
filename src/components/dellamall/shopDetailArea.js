@@ -50,6 +50,7 @@ const ShopDetailArea = ({data, user}) => {
     "違法または規制対象商品の販売",
     "いじめまたは嫌がらせ",
     "知的財産権の侵害",
+    "その他",
   ]
 
   const loadGoodState = useCallback(async () => {
@@ -238,6 +239,7 @@ const ShopDetailArea = ({data, user}) => {
     if (!user) return
     if (processing.current) return
     processing.current = true
+    if (data.comment === "") return
     // console.log(data)
 
     await csrf()
@@ -303,15 +305,27 @@ const ShopDetailArea = ({data, user}) => {
               <div className={styles.imgNone}></div>
             }
           </div>
-          {user?.account_type > 2 ?
-            <button
-              type="button"
-              className={`${`${styles.pickup} ${pickup.length !== 0 ? styles.on : null}`} hoverEffect`}
-              onClick={handleClickPickup}
-            >
-              {pickup.length !== 0 ? "ピックアップから削除" : "ピックアップに追加"}
-            </button>
-          : null}
+          <div className={styles.cont1__flexLeft__btnFlex}>
+            {shop.image_permission === 0 ?
+              <Link href="/dellamall/contact/?type=captcha">
+                <a className={`${styles.contactLink} hoverEffect`}>キャプチャ申請</a>
+              </Link>
+            : null}
+            {shop.official_user_id ? null :
+              <Link href="/dellamall/officialRequest">
+                <a className={`${styles.contactLink} hoverEffect`}>公式申請</a>
+              </Link>
+            }
+            {user?.account_type > 2 ?
+              <button
+                type="button"
+                className={`${`${styles.pickup} ${pickup.length !== 0 ? styles.on : null}`} hoverEffect`}
+                onClick={handleClickPickup}
+              >
+                {pickup.length !== 0 ? "ピックアップから削除" : "ピックアップに追加"}
+              </button>
+            : null}
+          </div>
         </div>
         <div className={styles.cont1__flexRight}>
           <div className={styles.cont1__flexRight__icon}>
@@ -402,7 +416,9 @@ const ShopDetailArea = ({data, user}) => {
           <ul className={styles.cont1__flexRight__topWords}>
             {tags?.map((tag, index) => (
               <li className={styles.keyWord__item} key={index}>
-                <button type="button" className="hoverNone">{tag.name}</button>
+                <Link href={`/dellamall/shop/?tag_id=${tag.id}`}>
+                  <a className="hoverEffect">{tag.name}</a>
+                </Link>
               </li>
             ))}
           </ul>
@@ -441,20 +457,25 @@ const ShopDetailArea = ({data, user}) => {
                       </Link>
                       <p className={styles.content}>{comment.content}</p>
                     </div>
-                    <button
-                      type="button"
-                      className={commentGood?.includes(comment.id) ? styles.on : null}
-                      onClick={() => {
-                        if (commentGood?.includes(comment.id)) {
-                          handleClickCommentGoodDelete(comment.id)
-                        } else {
-                          handleClickCommentGoodAdd(comment.id)
-                        }
-                      }}
-                    >
-                      <FontAwesomeIcon icon={faThumbsUp} />
-                      <span>参考になった</span>
-                    </button>
+                    <div className={styles.user__right}>
+                      <button
+                        type="button"
+                        className={commentGood?.includes(comment.id) ? styles.on : null}
+                        onClick={() => {
+                          if (commentGood?.includes(comment.id)) {
+                            handleClickCommentGoodDelete(comment.id)
+                          } else {
+                            handleClickCommentGoodAdd(comment.id)
+                          }
+                        }}
+                      >
+                        <FontAwesomeIcon icon={faThumbsUp} />
+                        <span>参考になった</span>
+                      </button>
+                      <Link href="/dellamall/contact/?type=spam">
+                        <a className={`${styles.spamLink} hoverEffect`}>通報する</a>
+                      </Link>
+                    </div>
                   </li>
                 ))}
               </ul>
@@ -467,11 +488,12 @@ const ShopDetailArea = ({data, user}) => {
                     alt=""
                   />
                 </div>
-                  <input
-                    type="text"
-                    {...register("comment", {required: true})}
-                    placeholder="コメントを追加する"
-                  />
+                <textarea
+                  type="text"
+                  {...register("comment", {required: true})}
+                  placeholder="コメントを追加する"
+                ></textarea>
+                <button className={`${styles.comment__submit} hoverEffect`}>送信</button>
               </div>
             </form>
           </div>

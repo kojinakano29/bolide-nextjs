@@ -36,6 +36,22 @@
   }
 }
 
+.followArea {
+  @include flex(center, center);
+  @include gap(24px, 16px);
+  @include mb(40px);
+
+  button {
+    @include width(160px, 120px);
+    @include height(40px);
+    background-color: $b4;
+    color: $w1;
+    border-radius: 8px;
+    font-weight: bold;
+    @include fs(16px, 14px);
+  }
+}
+
 .navFlex {
   @include flex(center, center);
   @include gap(32px);
@@ -117,6 +133,25 @@
       .iconBox {
         transform: translate(-50%, -50%) scale(1.1);
       }
+    }
+  }
+}
+
+.privacyArea {
+  text-align: right;
+  @include mt(32px);
+
+  p,
+  a {
+    @include fs(12px, 10px);
+  }
+
+  a {
+    color: $b14;
+    text-decoration: underline;
+
+    &:hover {
+      text-decoration: none;
     }
   }
 }

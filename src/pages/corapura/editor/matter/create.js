@@ -6,7 +6,8 @@ import { useAuth } from '@/hooks/auth';
 import { useCallback, useState } from 'react';
 import { useForm } from 'react-hook-form';
 import axios from '@/lib/axios';
-import { Loader, PostEditor } from '@/components/corapura';
+import { GuidePopup, Loader, PostEditor } from '@/components/corapura';
+import Link from 'next/link';
 
 export const getServerSideProps = async () => {
   const res = await fetch(`${process.env.NEXT_PUBLIC_API_CORAPURA}/post/create`)
@@ -134,7 +135,10 @@ const CreateMatter = ({posts}) => {
                 </div>
                 <div className={styles.matterRight}>
                   <dl>
-                    <dt>案件カテゴリーを選択ください</dt>
+                    <dt>
+                      案件カテゴリーを選択ください
+                      <GuidePopup txt={`あなたの投稿したい案件内容に関連したカテゴリを選択してください。\n選んだカテゴリに対してその下の記入項目も自動で変更されます。\n※項目を記入してからカテゴリを変更してしまうと初めから書き直しになってしまうので要注意`} />
+                    </dt>
                     <dd>
                       <select {...register("c_cat_id")} onChange={(e) => handleChangeSelect(e)}>
                         {cats.map((cat, index) => (
@@ -146,6 +150,7 @@ const CreateMatter = ({posts}) => {
                   <dl>
                     <dt>
                       <label htmlFor="title">案件タイトルを入力ください</label>
+                      <GuidePopup txt={`投稿する案件の大まかな内容を表すようなフレーズを入れてタイトルを設定しましょう。\n例）モデル募集！見習いスタイリストの練習モデルになってくれませんか？`} />
                     </dt>
                     <dd>
                       <input
@@ -159,6 +164,7 @@ const CreateMatter = ({posts}) => {
                   <dl>
                     <dt>
                       <label htmlFor="tag">案件に合ったタグを入力ください</label>
+                      <GuidePopup txt={`その案件の内容に合ったタグを設定できます。\nタグの入力方法\n「タグ①,タグ②,タグ③」のようなかたちで入力可能です。\n\n「例）撮影依頼,美容室,カットモデル」\n※タグ同士を区切る時は必ず、半角カンマ「,」でお願いします。`} />
                     </dt>
                     <dd>
                       <input
@@ -376,6 +382,19 @@ const CreateMatter = ({posts}) => {
                   </dd>
                 </dl>
               </article>
+
+              <div className={styles.checkArea}>
+                <label>
+                  <input
+                    type="checkbox"
+                    {...register("check", {required: true})}
+                  />
+                  <p className={styles.txt}>
+                    <Link href={`/corapura/terms`}><a target="_blank">利用規約</a></Link>に同意します
+                  </p>
+                </label>
+                {errors.check && <p className={styles.error}>チェック必須項目です</p>}
+              </div>
 
               <div className={styles.submitFlex}>
                 <button className={`${styles.submitBtn2} hoverEffect`} disabled={disabled}>

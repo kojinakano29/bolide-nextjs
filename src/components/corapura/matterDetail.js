@@ -24,6 +24,7 @@ const MatterDetail = ({posts}) => {
   const [appList, setAppList] = useState([])
   const [state, setState] = useState([])
   const [check, setCheck] = useState(false)
+  const [popup, setPopup] = useState(false)
 
   const onLoadCheck = async () => {
     await csrf()
@@ -110,7 +111,8 @@ const MatterDetail = ({posts}) => {
     }).catch(e => console.error(e))
 
     await setDisabled(false)
-  }, [disabled, setDisabled])
+    await setPopup(false)
+  }, [disabled, setDisabled, setPopup])
 
   const handleClickBookmark = useCallback(async () => {
     if (disabled) return
@@ -180,52 +182,56 @@ const MatterDetail = ({posts}) => {
     }
   }, [setAppList, setState])
 
+  const handleClickPopup = useCallback(async () => {
+    setPopup(prevState => !prevState)
+  }, [setPopup])
+
   return (
-    <section className="cont1">
-      <Container small>
-        <div className={styles.headFlex}>
-          <div className={styles.headLeft}>
-            <img src={posts.thumbs ? `${process.env.NEXT_PUBLIC_BACKEND_URL}/storage/${posts.thumbs}` : dummy.src} alt="" />
-            <button
-              type="button"
-              className={`${styles.bookmarkBtn} hoverEffect`}
-              onClick={handleClickBookmark}
-            >
-              <img src={bookmark.includes(posts.id) ? starA.src : starB.src} alt="" />
-            </button>
-          </div>
-          <div className={styles.headRight}>
-            <p className={styles.cat}>{posts.c_cat.name}</p>
-            <p className={styles.ttl}>{posts.title}</p>
-            <div className={styles.tags}>
-              {posts.c_tags.map((tag, index) => (
-                <p className={styles.tag} key={index}>{tag.name}</p>
-              ))}
+    <>
+      <section className="cont1">
+        <Container small>
+          <div className={styles.headFlex}>
+            <div className={styles.headLeft}>
+              <img src={posts.thumbs ? `${process.env.NEXT_PUBLIC_BACKEND_URL}/storage/${posts.thumbs}` : dummy.src} alt="" />
+              <button
+                type="button"
+                className={`${styles.bookmarkBtn} hoverEffect`}
+                onClick={handleClickBookmark}
+              >
+                <img src={bookmark.includes(posts.id) ? starA.src : starB.src} alt="" />
+              </button>
             </div>
-            <div className={styles.company}>
-              <div className={styles.logoBox}>
-                {posts.user.c_profile.thumbs ? <img src={`${process.env.NEXT_PUBLIC_BACKEND_URL}/storage/${posts.user.c_profile.thumbs}`} alt="" /> : null}
+            <div className={styles.headRight}>
+              <p className={styles.cat}>{posts.c_cat.name}</p>
+              <p className={styles.ttl}>{posts.title}</p>
+              <div className={styles.tags}>
+                {posts.c_tags.map((tag, index) => (
+                  <p className={styles.tag} key={index}>{tag.name}</p>
+                ))}
               </div>
-              {posts.user.c_profile.nicename}
+              <div className={styles.company}>
+                <div className={styles.logoBox}>
+                  {posts.user.c_profile.thumbs ? <img src={`${process.env.NEXT_PUBLIC_BACKEND_URL}/storage/${posts.user.c_profile.thumbs}`} alt="" /> : null}
+                </div>
+                {posts.user.c_profile.nicename}
+              </div>
             </div>
           </div>
-        </div>
 
-        <Conditions data={posts} />
+          <Conditions data={posts} />
 
-        <div className={styles.editArea}>
-          <ShowEditor value={posts.content} />
-        </div>
+          <div className={styles.editArea}>
+            <ShowEditor value={posts.content} />
+          </div>
 
-        {myMatter ?
-          <>
-            {posts.state < 1 ?
-              <div className="btnCover" onClick={handleClickFinish}>
-                <Btn txt="この案件の募集を終了する" />
-              </div>
-            : null}
-            <div className={styles.myMatterBox}>
-              <>
+          {myMatter ?
+            <>
+              {posts.state < 1 ?
+                <div className="btnCover" onClick={handleClickPopup}>
+                  <Btn txt="この案件の募集を終了する" />
+                </div>
+              : null}
+              <div className={styles.myMatterBox}>
                 <h3 className={styles.ttl2}>この案件に応募した企業・<br className="sp" />ユーザーステータス状況</h3>
                 {appList.map((list, index) => (
                   <div className={styles.list} key={index}>
@@ -251,27 +257,45 @@ const MatterDetail = ({posts}) => {
                     </div>
                   </div>
                 ))}
-              </>
+              </div>
+            </>
+          :
+            <div className={styles.btnFlex}>
+              <button
+                type="button"
+                className={`${styles.btn} ${check ? styles.check : null}`}
+                onClick={handleClickMatterAdd}
+              >
+                <img src={mail.src} alt="" />
+                <span>{check ? "応募済み" : "この案件に応募する"}</span>
+              </button>
+              <a href={`mailto:${posts.user.email}`} className={`${styles.btn} ${styles.btn2}`}>
+                <img src={question.src} alt="" />
+                <span>質問する</span>
+              </a>
             </div>
-          </>
-        :
-          <div className={styles.btnFlex}>
-            <button
-              type="button"
-              className={`${styles.btn} ${check ? styles.check : null}`}
-              onClick={handleClickMatterAdd}
-            >
-              <img src={mail.src} alt="" />
-              <span>{check ? "応募済み" : "この案件に応募する"}</span>
-            </button>
-            <a href={`mailto:${posts.user.email}`} className={`${styles.btn} ${styles.btn2}`}>
-              <img src={question.src} alt="" />
-              <span>質問する</span>
-            </a>
+          }
+        </Container>
+      </section>
+
+      {popup ?
+        <section className={styles.popupArea} onClick={handleClickPopup}>
+          <div className={styles.popupBox} onClick={(e) => e.stopPropagation()}>
+            <p>本当に掲載終了していいですか？</p>
+            <div className={styles.buttonFlex}>
+              <button
+                type="button"
+                onClick={handleClickFinish}
+              >はい</button>
+              <button
+                type="button"
+                onClick={handleClickPopup}
+              >いいえ</button>
+            </div>
           </div>
-        }
-      </Container>
-    </section>
+        </section>
+      : null}
+    </>
   );
 }
 

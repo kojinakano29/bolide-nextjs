@@ -117,6 +117,20 @@
         @include select(240px);
         cursor: pointer;
       }
+
+      &.skillScroll {
+        @include flex(center, left);
+        @include gap(16px);
+        @include height(200px);
+        overflow-y: scroll;
+
+        label {
+          @include flex(center, left);
+          @include gap(8px);
+          @include fs(14px, 12px);
+          font-weight: 500;
+        }
+      }
     }
   }
 }

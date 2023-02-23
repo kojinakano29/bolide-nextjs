@@ -8,16 +8,20 @@ import { useCallback, useEffect, useState } from 'react';
 import axios from '@/lib/axios';
 import { Date, Loader } from '@/components/corapura';
 import dummy from '@/images/corapura/common/dummy1.svg'
+import { useRouter } from 'next/router';
 
 const AdminMatterList = () => {
   const csrf = () => axios.get('/sanctum/csrf-cookie')
 
+  const router = useRouter()
   const { user } = useAuth({middleware: 'auth', type: 'corapura'})
   const [disabled, setDisabled] = useState(false)
   const [matters, setMatters] = useState([])
   const [nowPage, setNowPage] = useState(1)
   const [maxPage, setMaxPage] = useState(1)
   const [page, setPage] = useState(1)
+
+  console.log(matters)
 
   const handleSort = useCallback(async () => {
     await csrf()
@@ -73,11 +77,9 @@ const AdminMatterList = () => {
         c_post_id: id,
       }
     }).then((res) => {
-      console.log(res)
-      // setMatters(res.data.post)
-      // setNowPage(1)
-      // setMaxPage(res.data.page_max)
+      // console.log(res)
       alert("この案件を掲載終了しました")
+      router.reload()
     }).catch((e) => {
       console.error(e)
     })
@@ -101,6 +103,14 @@ const AdminMatterList = () => {
                   <Link href={`/corapura/matter/${matter.id}`}>
                     <a className={styles.imgBox}>
                       <img src={matter.thumbs ? `${process.env.NEXT_PUBLIC_BACKEND_URL}/storage/${matter.thumbs}` : dummy.src} alt="" />
+                      {matter.state === 1 || matter.state === 2 ?
+                        <div className={styles.finishMatter}>
+                          <p>
+                            {matter.state === 1 ? "掲載終了" : null}
+                            {matter.state === 2 ? "案件完了" : null}
+                          </p>
+                        </div>
+                      : null}
                     </a>
                   </Link>
                   {matter.state === 4 ?

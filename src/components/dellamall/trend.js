@@ -15,18 +15,20 @@ const Trend = ({mb40 = false, sp}) => {
 
     await axios.post(`/api/dellamall/tag/list`)
     .then((res) => {
-      // console.log(res)
-      setTrends(res.data.filter((_, index) => {
-        return index < 10
+      console.log(res)
+      setTrends(res.data.filter((tag, index) => {
+        return index < 10 || parseInt(router.query.tag_id) === parseInt(tag.id)
       }))
     }).catch((e) => {
       console.error(e)
     })
-  }, [setTrends])
+  }, [setTrends, router])
 
   useEffect(() => {
-    onMount()
-  }, [])
+    if (router) {
+      onMount()
+    }
+  }, [router])
 
   const handleClickTrend = async (id) => {
     let path = {
@@ -37,6 +39,8 @@ const Trend = ({mb40 = false, sp}) => {
       query: path,
     })
   }
+
+  console.log(trends)
 
   return (
     <>

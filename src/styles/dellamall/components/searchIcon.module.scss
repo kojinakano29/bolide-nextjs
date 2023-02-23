@@ -27,6 +27,7 @@
     outline: none !important;
     font-size: var(--fs14-12);
     letter-spacing: 0;
+    background-color: $w1;
 
     &:focus {
       @include width(196px);

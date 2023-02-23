@@ -38,6 +38,20 @@
       display: block;
       border: 1px solid $g3;
     }
+
+    .passwordBox {
+      position: relative;
+
+      .view {
+        @include fs(14px, 12px);
+        font-weight: bold;
+        cursor: pointer;
+        position: absolute;
+        top: 50%;
+        @include right(16px, 12px);
+        transform: translateY(-50%);
+      }
+    }
   }
 
   .forgot {

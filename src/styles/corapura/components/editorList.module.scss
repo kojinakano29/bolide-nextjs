@@ -29,6 +29,25 @@
       transition: .3s ease;
     }
 
+    .finishMatter {
+      width: 100%;
+      height: 100%;
+      background-color: rgba(0, 0, 0, .5);
+      position: absolute;
+      top: 0;
+      left: 0;
+      @include flex(center, center);
+      flex-direction: column;
+      gap: 16px;
+
+      p {
+        @include fs(28px, 20px, 18px);
+        font-weight: bold;
+        text-align: center;
+        color: $w1;
+      }
+    }
+
     &:hover {
       img {
         transform: scale(1.1);

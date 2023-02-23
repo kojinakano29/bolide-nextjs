@@ -1,6 +1,6 @@
 import styles from '@/styles/top/components/form.module.scss'
 import Link from 'next/link'
-import { useState } from 'react'
+import { useCallback, useState } from 'react'
 import PageLayoutTop from '@/components/Layouts/pageLayoutTop'
 import Container from '@/components/top/Layout/container'
 import { useForm } from 'react-hook-form'
@@ -14,6 +14,8 @@ const Register = () => {
 
     const router = useRouter()
     const [disabled, setDisabled] = useState(false)
+    const [view, setView] = useState(false)
+    const [view2, setView2] = useState(false)
     const { user } = useAuth({
         middleware: 'guest',
         redirectIfAuthenticated: '/mypage',
@@ -55,6 +57,14 @@ const Register = () => {
             course: data.course,
         })
     }
+
+    const handleClickView = useCallback(async () => {
+        setView(prevState => !prevState)
+    }, [setView])
+
+    const handleClickView2 = useCallback(async () => {
+        setView2(prevState => !prevState)
+    }, [setView2])
 
     return (
         <>
@@ -118,25 +128,31 @@ const Register = () => {
                                     <span className={styles.require}>必須</span>
                                 </dt>
                                 <dd>
-                                    <input
-                                        id="password"
-                                        type="password"
-                                        {...register("password", {
-                                            required: {
-                                                value: true,
-                                                message: "この項目は必須です",
-                                            },
-                                            minLength: {
-                                                value: 8,
-                                                message: "8文字以上で入力してください"
-                                            },
-                                            maxLength: {
-                                                value: 20,
-                                                message: "20文字以内で入力してください"
-                                            },
-                                        })}
-                                        placeholder="半角英数記号8～20文字"
-                                    />
+                                    <div className={styles.passwordBox}>
+                                        <input
+                                            id="password"
+                                            type={view ? "text" : "password"}
+                                            {...register("password", {
+                                                required: {
+                                                    value: true,
+                                                    message: "この項目は必須です",
+                                                },
+                                                minLength: {
+                                                    value: 8,
+                                                    message: "8文字以上で入力してください"
+                                                },
+                                                maxLength: {
+                                                    value: 20,
+                                                    message: "20文字以内で入力してください"
+                                                },
+                                            })}
+                                            placeholder="半角英数記号8～20文字"
+                                        />
+                                        <p
+                                            className={styles.view}
+                                            onClick={handleClickView}
+                                        >{view ? "非表示" : "表示"}</p>
+                                    </div>
                                     {errors.password?.types.required && <p className={`red ${styles.error}`}>{errors.password.types.required}</p>}
                                     {errors.password?.types.minLength && <p className={`red ${styles.error}`}>{errors.password.types.minLength}</p>}
                                     {errors.password?.types.maxLength && <p className={`red ${styles.error}`}>{errors.password.types.maxLength}</p>}
@@ -148,22 +164,28 @@ const Register = () => {
                                     <span className={styles.require}>必須</span>
                                 </dt>
                                 <dd>
-                                    <input
-                                        id="password_confirmation"
-                                        type="password"
-                                        {...register("password_confirmation", {
-                                            required: {
-                                                value: true,
-                                                message: "この項目は必須です",
-                                            },
-                                            validate: (value) => {
-                                                return (
-                                                    value === getValues("password") || "パスワードが一致しません"
-                                                )
-                                            }
-                                        })}
-                                        placeholder="半角英数記号8～20文字"
-                                    />
+                                    <div className={styles.passwordBox}>
+                                        <input
+                                            id="password_confirmation"
+                                            type={view2 ? "text" : "password"}
+                                            {...register("password_confirmation", {
+                                                required: {
+                                                    value: true,
+                                                    message: "この項目は必須です",
+                                                },
+                                                validate: (value) => {
+                                                    return (
+                                                        value === getValues("password") || "パスワードが一致しません"
+                                                    )
+                                                }
+                                            })}
+                                            placeholder="半角英数記号8～20文字"
+                                        />
+                                        <p
+                                            className={styles.view}
+                                            onClick={handleClickView2}
+                                        >{view2 ? "非表示" : "表示"}</p>
+                                    </div>
                                     {errors.password_confirmation?.types.required && <p className={`red ${styles.error}`}>{errors.password_confirmation.types.required}</p>}
                                     {errors.password_confirmation?.types.validate && <p className={`red ${styles.error}`}>{errors.password_confirmation.types.validate}</p>}
                                 </dd>
@@ -213,6 +235,23 @@ const Register = () => {
                                     {errors.course && <p className={`red ${styles.error}`}>この項目は必須です</p>}
                                 </dd>
                             </dl>
+                            <div className={styles.privacyArea}>
+                                <p>
+                                    Liondorの
+                                    <a href="/liondor/terms" target="_blank" rel="noopener noreferrer">利用規約</a>
+                                    はこちら
+                                </p>
+                                <p>
+                                    Dellamallの
+                                    <a href="/dellamall/terms" target="_blank" rel="noopener noreferrer">利用規約</a>
+                                    はこちら
+                                </p>
+                                <p>
+                                    Corapuraの
+                                    <a href="/dellamall/terms" target="_blank" rel="noopener noreferrer">利用規約</a>
+                                    はこちら
+                                </p>
+                            </div>
                             <div className={styles.privacyCheck}>
                                 <p className={styles.require}>必須</p>
                                 <p className={styles.txt}>

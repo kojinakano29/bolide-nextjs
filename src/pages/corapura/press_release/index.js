@@ -11,6 +11,7 @@ import sortIcon from '@/images/corapura/common/sort.svg'
 import Link from 'next/link';
 import axios from '@/lib/axios';
 import { Loader } from '@/components/corapura';
+import searchIcon from '@/images/corapura/common/search.svg'
 
 export const getServerSideProps = async () => {
   const res = await fetch(`${process.env.NEXT_PUBLIC_API_CORAPURA}/pr`)
@@ -151,6 +152,9 @@ const PressReleaseList = ({posts}) => {
               {...register("s")}
               placeholder="気になるワードを検索"
             />
+            <button>
+              <img src={searchIcon.src} alt="検索アイコン" />
+            </button>
           </div>
         </form>
 

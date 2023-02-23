@@ -334,12 +334,14 @@ $breakpoints: (
   &.current {
     background-color: $o1;
 
-    button {
+    button,
+    a {
       color: $w1;
     }
   }
 
-  button {
+  button,
+  a {
     @include fs(16px, 14px);
     @include p(4px 16px);
   }
@@ -673,6 +675,7 @@ $breakpoints: (
   @include width(900px, 100%);
   margin: auto;
   @include mb(64px, 48px);
+  position: relative;
 
   input[type="text"] {
     display: block;
@@ -684,16 +687,21 @@ $breakpoints: (
     background-color: $g2;
     border-radius: 32px;
     border: none;
-    background-image: url(../images/corapura/common/search.svg);
-    background-position: calc(100% - 40px) center;
-    background-repeat: no-repeat;
-
-    @include media1(sp) {
-      background-position: calc(100% - 20px) center;
-    }
 
     &::placeholder {
       color: $g3;
+    }
+  }
+
+  button {
+    position: absolute;
+    top: 50%;
+    @include right(40px, 40px, 20px);
+    transform: translateY(-50%);
+    transition: .3s ease;
+
+    &:hover {
+      opacity: .5;
     }
   }
 }

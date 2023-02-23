@@ -25,7 +25,7 @@
 
   @include media1(sp) {
     flex-wrap: nowrap;
-    padding-right: 20px;
+    padding: 0 29px;
     max-width: unset;
     width: fit-content;
   }

@@ -3,11 +3,11 @@ import AuthSessionStatus from '@/components/AuthSessionStatus'
 import InputError from '@/components/InputError'
 import Link from 'next/link'
 import { useAuth } from '@/hooks/auth'
-import { useEffect, useState } from 'react'
+import { useCallback, useEffect, useState } from 'react'
 import { useRouter } from 'next/router'
 import PageLayoutDellamall from '@/components/Layouts/PageLayoutDellamall'
 import Container from '@/components/dellamall/Layouts/container'
-import { Btn01 } from '@/components/dellamall'
+import { Btn01, NewBtn } from '@/components/dellamall'
 import { faArrowRightToBracket } from '@fortawesome/free-solid-svg-icons'
 
 const Login = () => {
@@ -22,6 +22,7 @@ const Login = () => {
   const [password, setPassword] = useState('')
   const [errors, setErrors] = useState([])
   const [status, setStatus] = useState(null)
+  const [view, setView] = useState(false)
 
   useEffect(() => {
     if (router.query.reset?.length > 0 && errors.length === 0) {
@@ -41,6 +42,10 @@ const Login = () => {
       setStatus,
     })
   }
+
+  const handleClickView = useCallback(async () => {
+    setView(prevState => !prevState)
+  }, [setView])
 
   return (
     <>
@@ -64,15 +69,21 @@ const Login = () => {
                 <InputError messages={errors.email} className="mt-2" />
               </div>
               <div className={styles.inputBox}>
-                <input
-                  id="password"
-                  type="password"
-                  className={styles.password}
-                  onChange={event => setPassword(event.target.value)}
-                  required
-                  autoComplete="current-password"
-                  placeholder="PASSWORD"
-                />
+                <div className={styles.passwordBox}>
+                  <input
+                    id="password"
+                    type={view ? "text" : "password"}
+                    className={styles.password}
+                    onChange={event => setPassword(event.target.value)}
+                    required
+                    autoComplete="current-password"
+                    placeholder="PASSWORD"
+                  />
+                  <p
+                    className={styles.view}
+                    onClick={handleClickView}
+                  >{view ? "非表示" : "表示"}</p>
+                </div>
                 <InputError
                   messages={errors.password}
                   className="mt-2"
@@ -88,23 +99,7 @@ const Login = () => {
         </Container>
       </section>
 
-      <section className={styles.new}>
-        <Container small>
-          <h2 className="ttl1 center mb40">新規のお客様はこちら</h2>
-          <div className={styles.login__newList}>
-            <Link href="/dellamall/officialRequest">
-              <a className={`${styles.login__newItem} btn4 hoverEffect`}>公式ショップ申請の方</a>
-            </Link>
-            <a className={`${styles.login__newItem} btn4 hoverEffect`} href="">
-              無料キャプチャ申請の方
-              <span>※ショップオーナー様</span>
-            </a>
-            <Link href="/register">
-              <a className={`${styles.login__newItem} btn4 hoverEffect`}>個人利用の方</a>
-            </Link>
-          </div>
-        </Container>
-      </section>
+      <NewBtn />
     </>
   )
 }

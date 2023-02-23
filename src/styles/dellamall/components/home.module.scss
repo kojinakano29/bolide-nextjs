@@ -5,7 +5,15 @@
   background: url(../../../images/dellamall/top/fv_bk.webp) no-repeat center center / cover;
 
   @include media1(sp) {
-    background: url(../../../images/dellamall/top/fv_bk__sp.webp) no-repeat center center / cover;
+    background: none;
+  }
+
+  .bg_mv_sp {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    z-index: -1;
   }
 }
 
@@ -20,7 +28,6 @@
   .sm {
     @include fs(16px, 16px, 14px);
     font-weight: bold;
-    color: $g4;
   }
 
   .big {
@@ -41,7 +48,7 @@
   @include media1(sp) {
     & > div {
       max-width: 100%;
-      padding-right: 0;
+      padding: 0;
     }
   }
 }

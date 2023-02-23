@@ -208,6 +208,39 @@
   }
 }
 
+.check {
+  @include m(64px 0, 48px 0);
+
+  label {
+    @include flex(center, center);
+    @include gap(4px);
+    @include fs(20px, 18px);
+    font-weight: 500;
+    width: fit-content;
+    margin: auto;
+
+    a {
+      text-decoration: underline;
+      color: $b5;
+
+      &:hover {
+        text-decoration: none;
+      }
+    }
+  }
+}
+
+.require,
+.any {
+  @include fs(14px, 12px);
+  color: $w1;
+  font-weight: 500;
+  background-color: $o1;
+  @include p(2px 6px);
+  border-radius: 4px;
+  @include mr(8px);
+}
+
 .btnFlex {
   @include flex(center, center);
   @include gap(16px);
@@ -316,4 +349,8 @@
   a {
     margin: 0;
   }
+}
+
+.error2 {
+  text-align: center;
 }

@@ -73,23 +73,28 @@ const Footer = () => {
             <Link href="/dellamall/privacy">
               <a className="hoverEffect">プライバシーポリシー</a>
             </Link>
-            <Link href="/corapura/press_release">
-              <a className="hoverEffect" target="_blank" rel="noopener noreferrer">プレスリリース</a>
+            <Link href="/dellamall/">
+              <a className="hoverEffect">特定商取引法に基づく表示</a>
+            </Link>
+            <Link href="/dellamall/">
+              <a className="hoverEffect">広告掲載費について</a>
             </Link>
             <Link href="/dellamall/contact">
               <a className="hoverEffect">お問い合わせ</a>
             </Link>
           </div>
           <div className={styles.footer__listCompany}>
-            <a href="https://bolides.co.jp/" className="hoverEffect" target="_blank" rel="noopener noreferrer">
-              <Image
-                src={bolides}
-                alt=""
-                layout="responsive"
-                sizes="240px"
-                priority
-              />
-            </a>
+            <Link href="/">
+              <a className="hoverEffect" target="_blank" rel="noopener noreferrer">
+                <Image
+                  src={bolides}
+                  alt=""
+                  layout="responsive"
+                  sizes="240px"
+                  priority
+                />
+              </a>
+            </Link>
             <a href="https://marche-dor.jp/" className="hoverEffect" target="_blank" rel="noopener noreferrer">
               <Image
                 src={marchedor}

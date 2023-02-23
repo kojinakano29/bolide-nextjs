@@ -194,7 +194,7 @@ export const sitemap = [
 
 // バナー
 export const bannarData = [
-  {src: bannar1, link: "https://bolides.co.jp/"},
+  {src: bannar1, link: "/"},
   {src: bannar2, link: "https://marche-dor.jp/"},
   {src: bannar3, link: "/corapura"},
   {src: bannar4, link: "/dellamall"},

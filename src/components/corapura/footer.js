@@ -22,10 +22,10 @@ const Footer = () => {
         <Container small>
           <p className={`${styles.footer1__title} en`}>Bolide's Japan Other Site</p>
           <div className={styles.footer1__list}>
-            <a className="hoverEffect" href="https://bolides.co.jp/" target="_blank" rel="noopener noreferrer">
+            <a className="hoverEffect" href="/" target="_blank" rel="noopener noreferrer">
               <Image
                 src={bolide}
-                alt="Bolide's"
+                alt="Bolide's Japan"
                 layout="responsive"
                 sizes="274px"
                 priority

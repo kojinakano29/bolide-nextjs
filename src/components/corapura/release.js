@@ -4,6 +4,8 @@ import dummy from '@/images/corapura/common/dummyRelease.svg'
 import view from '@/images/corapura/parts/material_view.svg'
 
 const Release = ({data, detail = false, swiper = false}) => {
+  console.log(data)
+
   return (
     <Link href={`/corapura/press_release/${data.id}`}>
       <a className={`${styles.releaseLink} ${swiper ? styles.swiper : null}`}>
@@ -23,7 +25,12 @@ const Release = ({data, detail = false, swiper = false}) => {
               </div>
               {data.user.c_profile.nicename}
             </div>
-            <p className={styles.tag}>スキルアップ</p>
+            {/* {data.c_tags.map((tag, index) => (
+              <p className={styles.tag} key={index}>{tag.name}</p>
+            ))} */}
+            {data.c_tags.length !== 0 ?
+              <p className={styles.tag}>{data.c_tags[0].name}</p>
+            : null}
           </>
         : null}
       </a>
