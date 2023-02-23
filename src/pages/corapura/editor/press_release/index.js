@@ -8,10 +8,12 @@ import { useCallback, useEffect, useState } from 'react';
 import axios from '@/lib/axios';
 import { Date, Loader } from '@/components/corapura';
 import dummy from '@/images/corapura/common/dummy1.svg'
+import { useRouter } from 'next/router';
 
 const AdminPressReleaseList = () => {
   const csrf = () => axios.get('/sanctum/csrf-cookie')
 
+  const router = useRouter()
   const { user } = useAuth({middleware: 'auth', type: 'corapura'})
   const [disabled, setDisabled] = useState(false)
   const [releases, setReleases] = useState([])
@@ -62,11 +64,9 @@ const AdminPressReleaseList = () => {
         c_pr_id: id,
       }
     }).then((res) => {
-      console.log(res)
-      // setReleases(res.data.pr)
-      // setNowPage(1)
-      // setMaxPage(res.data.page_max)
+      // console.log(res)
       alert("このプレスリリースを削除しました")
+      router.reload()
     }).catch((e) => {
       console.error(e)
     })

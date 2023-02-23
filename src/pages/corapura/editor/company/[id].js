@@ -892,6 +892,14 @@ const EditCompany = ({posts}) => {
                 ))}
               </article>
             </div>
+            <form onSubmit={handleSubmit(onSubmit)}>
+              <div className={styles.submitFlex}>
+                <button
+                  className={`${styles.submitBtn} hoverEffect`}
+                  disabled={disabled}
+                >編集</button>
+              </div>
+            </form>
           </Container>
         </section>
       : null}

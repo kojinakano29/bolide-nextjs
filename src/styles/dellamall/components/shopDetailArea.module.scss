@@ -251,6 +251,7 @@
           .content {
             @include fs(12px, 10px);
             font-weight: 500;
+            white-space: pre-wrap;
           }
 
           .name {
@@ -262,28 +263,38 @@
           }
         }
 
-        button {
-          @include width(96px, 84px);
-          @include flex(center, right);
-          @include gap(4px);
+        .user__right {
+          button {
+            @include width(96px, 84px);
+            @include flex(center, right);
+            @include gap(4px);
 
-          span {
+            span {
+              @include fs(12px, 10px);
+              font-weight: 500;
+            }
+
+            &.on {
+              svg,
+              svg * {
+                color: $o1;
+              }
+            }
+
+            &:hover {
+              svg,
+              svg * {
+                color: $o1;
+              }
+            }
+          }
+
+          .spamLink {
+            display: block;
             @include fs(12px, 10px);
             font-weight: 500;
-          }
-
-          &.on {
-            svg,
-            svg * {
-              color: $o1;
-            }
-          }
-
-          &:hover {
-            svg,
-            svg * {
-              color: $o1;
-            }
+            text-align: right;
+            @include mt(6px);
           }
         }
       }
@@ -298,10 +309,10 @@
       @include userIcon(56px, 56px, 40px);
     }
 
-    input {
-      @include width(calc(100% - (56px + 16px)), calc(100% - (56px + 12px)), calc(100% - (40px + 12px)));
+    textarea {
+      @include width(calc(100% - (56px + 16px * 2 + 40px)), calc(100% - (56px + 12px * 2 + 40px)), calc(100% - (40px + 12px * 2 + 40px)));
       @include height(56px);
-      @include p(0 16px);
+      @include p(12px 16px);
       @include fs(14px, 12px);
       border: 1px solid $g4;
       border-radius: 20px;
@@ -309,6 +320,16 @@
       &::placeholder {
         color: $g3;
       }
+    }
+
+    .comment__submit {
+      @include width(40px);
+      @include height(24px);
+      background-color: $o1;
+      color: $w1;
+      font-weight: bold;
+      @include fs(12px, 10px);
+      border-radius: 8px;
     }
   }
 }
@@ -345,6 +366,12 @@
   }
 }
 
+.cont1__flexLeft__btnFlex {
+  @include flex(center, center);
+  @include gap(8px);
+  @include mt(16px);
+}
+
 .pickup {
   @include p(4px 8px);
   @include fs(14px, 12px);
@@ -352,10 +379,18 @@
   background-color: $o1;
   color: $w1;
   border-radius: 8px;
-  @include mt(16px);
 
   &.on {
     background-color: $g3;
     color: $b3;
   }
+}
+
+.contactLink {
+  @include p(4px 8px);
+  @include fs(14px, 12px);
+  background-color: $b1;
+  color: $w1;
+  font-weight: bold;
+  border-radius: 8px;
 }

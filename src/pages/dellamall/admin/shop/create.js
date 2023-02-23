@@ -7,6 +7,7 @@ import axios from "@/lib/axios";
 import { useRouter } from "next/router";
 import { useCallback, useEffect, useState } from "react";
 import { useForm } from "react-hook-form";
+import Link from 'next/link';
 
 const CreateShop = () => {
   const csrf = () => axios.get('/sanctum/csrf-cookie')
@@ -86,13 +87,17 @@ const CreateShop = () => {
     await axios.post('/api/dellamall/shop_create_url', {
       url: url,
     }).then((res) => {
-      // console.log(res)
-      setValue("name", res.data.title)
-      setValue("tag", res.data.keyword)
-      setValue("description", res.data.description)
-      setPreview(res.data.imgsrc)
-      setImgName(res.data.imgname)
-      alert("サイト情報の取得に成功しました。")
+      console.log(res)
+      if (res.data !== "すでにショップがあります") {
+        setValue("name", res.data.title)
+        setValue("tag", res.data.keyword)
+        setValue("description", res.data.description)
+        setPreview(res.data.imgsrc)
+        setImgName(res.data.imgname)
+        alert("サイト情報の取得に成功しました。")
+      } else {
+        alert(res.data)
+      }
     }).catch((e) => {
       console.error(e)
       alert("サイト情報の取得に失敗しました。")
@@ -165,7 +170,7 @@ const CreateShop = () => {
                       type="text"
                       id="name"
                       {...register("name", { required: true })}
-                      placeholder="サイト名、お店の名前を入れてください"
+                      // placeholder="サイト名、お店の名前を入れてください"
                       disabled={officialCheck}
                     />
                     {errors.name && <p className={styles.error}>必須項目を入力してください</p>}
@@ -199,6 +204,17 @@ const CreateShop = () => {
                 </dl>
               </div>
             </article>
+            <div className={styles.check}>
+              <label>
+                <span className={styles.require}>必須</span>
+                <input type="checkbox" {...register("check", {required: true})} />
+                <Link href="/dellamall/terms">
+                  <a>利用規約</a>
+                </Link>
+                に同意する
+              </label>
+              {errors.check && <p className={`orange ${styles.error} ${styles.error2}`}>※こちらの項目は入力必須です</p>}
+            </div>
             <button
               className={`${styles.btn} hoverEffect`}
               disabled={disabled}

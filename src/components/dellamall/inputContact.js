@@ -1,6 +1,6 @@
 import styles from '@/styles/dellamall/components/form.module.scss'
 import { useRouter } from "next/router";
-import { useCallback } from "react";
+import { useCallback, useEffect, useState } from "react";
 import { useFormContext } from "react-hook-form";
 import Btn01 from './btn01';
 
@@ -11,12 +11,20 @@ const InputContact = () => {
   const mailRegExp = /^[A-Za-z0-9]{1}[A-Za-z0-9_.-]*@{1}[A-Za-z0-9_.-]+.[A-Za-z0-9]+$/
   const telRegExp = /^0\d{9,10}$/
 
-  const { register, handleSubmit, formState: { errors, isValid } } = useFormContext()
+  const { register, handleSubmit, setValue, formState: { errors, isValid } } = useFormContext()
 
   const onSubmit = useCallback(async (data) => {
     // console.log(data)
 
     router.push('/dellamall/contact/?confirm=1')
+  }, [router])
+
+  useEffect(() => {
+    if (router.query.type === "spam") {
+      setValue("type", ["コメントの通報"])
+    } else if (router.query.type === "captcha") {
+      setValue("type", ["ショップキャプチャ無料登録について"])
+    }
   }, [router])
 
   return (
@@ -48,6 +56,10 @@ const InputContact = () => {
               <label>
                 <input type="checkbox" value="ショップの削除依頼" {...register("type", {required: true})} />
                 ショップの削除依頼
+              </label>
+              <label>
+                <input type="checkbox" value="コメントの通報" {...register("type", {required: true})} />
+                コメントの通報
               </label>
               <label>
                 <input type="checkbox" value="その他" {...register("type", {required: true})} />

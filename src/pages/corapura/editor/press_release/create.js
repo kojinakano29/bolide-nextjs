@@ -7,6 +7,7 @@ import { useCallback, useEffect, useState } from 'react';
 import { useForm } from 'react-hook-form';
 import axios from '@/lib/axios';
 import { Loader, PostEditor } from '@/components/corapura';
+import Link from 'next/link';
 
 const CreatePressRelease = () => {
   const csrf = () => axios.get('/sanctum/csrf-cookie')
@@ -139,6 +140,19 @@ const CreatePressRelease = () => {
                   </dd>
                 </dl>
               </article>
+
+              <div className={styles.checkArea}>
+                <label>
+                  <input
+                    type="checkbox"
+                    {...register("check", {required: true})}
+                  />
+                  <p className={styles.txt}>
+                    <Link href={`/corapura/terms`}><a target="_blank">利用規約</a></Link>に同意します
+                  </p>
+                </label>
+                {errors.check && <p className={styles.error}>チェック必須項目です</p>}
+              </div>
 
               <div className={styles.submitFlex}>
                 <button className={`${styles.submitBtn2} hoverEffect`} disabled={disabled}>

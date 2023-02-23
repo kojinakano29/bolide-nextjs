@@ -52,6 +52,12 @@ const CreateMallMypage = () => {
       <form onSubmit={handleSubmit(onSubmit)}>
         <Container small900>
           <div className={styles.createMallBox} onClick={(e) => e.stopPropagation()}>
+            <img
+              className={`${styles.closeBtn} hoverEffect`}
+              src="/dellamall/close.svg"
+              alt=""
+              onClick={handleClickPopup}
+            />
             <h3 className="ttl2">新規モールを作成する</h3>
             <dl>
               <dt><label htmlFor="name">名前</label></dt>

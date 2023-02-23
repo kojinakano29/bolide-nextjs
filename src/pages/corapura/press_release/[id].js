@@ -105,9 +105,9 @@ const PressReleaseDetail = ({posts}) => {
                 <img src={viewCheck ? viewB.src : viewA.src} alt="" />
               </button>
             </div>
-            <div className={styles.imgBox}>
+            {/* <div className={styles.imgBox}>
               <img src={release.thumbs ? `${process.env.NEXT_PUBLIC_BACKEND_URL}/storage/${release.thumbs}` : dummy.src} alt="" />
-            </div>
+            </div> */}
             <div className={styles.editBox}>
               <ShowEditor value={release.content} />
             </div>

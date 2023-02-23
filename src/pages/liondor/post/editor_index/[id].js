@@ -192,6 +192,11 @@ const PostList = ({posts}) => {
                       <a className={styles.edit}>編集</a>
                     </Link>
                     <button className={styles.delete} onClick={() => onClickDelete(list)} disabled={disabled}>削除</button>
+                    {list.state === 0 ?
+                      <Link href={`/liondor/post/show/${list.id}/?preview=1`}>
+                        <a className={styles.edit} target="_blank" rel="noopener noreferrer">プレビュー</a>
+                      </Link>
+                    : null}
                   </div>
                 </li>
               ))}

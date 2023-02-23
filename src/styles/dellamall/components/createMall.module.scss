@@ -11,6 +11,13 @@
     cursor: auto;
     position: relative;
 
+    .closeBtn {
+      position: absolute;
+      @include top(24px, 20px, 16px);
+      @include right(24px, 20px, 16px);
+      cursor: pointer;
+    }
+
     dl {
       @include mb(32px);
 

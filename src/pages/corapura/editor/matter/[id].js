@@ -6,7 +6,7 @@ import { useAuth } from '@/hooks/auth';
 import { useCallback, useEffect, useState } from 'react';
 import { useForm } from 'react-hook-form';
 import axios from '@/lib/axios';
-import { Loader, PostEditor } from '@/components/corapura';
+import { GuidePopup, Loader, PostEditor } from '@/components/corapura';
 
 export const getServerSideProps = async ({params}) => {
   const res = await fetch(`${process.env.NEXT_PUBLIC_API_CORAPURA}/post/edit/${params.id}`)
@@ -168,7 +168,10 @@ const EditMatter = ({posts}) => {
                 </div>
                 <div className={styles.matterRight}>
                   <dl>
-                    <dt>案件カテゴリーを選択ください</dt>
+                    <dt>
+                      案件カテゴリーを選択ください
+                      <GuidePopup txt={`あなたの投稿したい案件内容に関連したカテゴリを選択してください。\n選んだカテゴリに対してその下の記入項目も自動で変更されます。\n※項目を記入してからカテゴリを変更してしまうと初めから書き直しになってしまうので要注意`} />
+                    </dt>
                     <dd>
                       <select {...register("c_cat_id")} onChange={(e) => handleChangeSelect(e)} disabled>
                         {cats.map((cat, index) => (
@@ -180,6 +183,7 @@ const EditMatter = ({posts}) => {
                   <dl>
                     <dt>
                       <label htmlFor="title">案件タイトルを入力ください</label>
+                      <GuidePopup txt={`投稿する案件の大まかな内容を表すようなフレーズを入れてタイトルを設定しましょう。\n例）モデル募集！見習いスタイリストの練習モデルになってくれませんか？`} />
                     </dt>
                     <dd>
                       <input
@@ -194,6 +198,7 @@ const EditMatter = ({posts}) => {
                   <dl>
                     <dt>
                       <label htmlFor="tag">案件に合ったタグを入力ください</label>
+                      <GuidePopup txt={`その案件の内容に合ったタグを設定できます。\nタグの入力方法\n「タグ①,タグ②,タグ③」のようなかたちで入力可能です。\n\n「例）撮影依頼,美容室,カットモデル」\n※タグ同士を区切る時は必ず、半角カンマ「,」でお願いします。`} />
                     </dt>
                     <dd>
                       <input

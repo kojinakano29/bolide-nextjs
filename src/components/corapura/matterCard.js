@@ -56,7 +56,7 @@ const MatterCard = ({matter, bookmarkList, detail = false, list = false}) => {
             <a>
               <div className={`${styles.imgBox} matterThumbs`}>
                 <img src={matter.thumbs ? `${process.env.NEXT_PUBLIC_BACKEND_URL}/storage/${matter.thumbs}` : dummy.src} alt="" />
-                {matter.state === 0 ? null :
+                {matter.state === 1 || matter.state === 2 ?
                   <div className={styles.finishMatter}>
                     <img src={check.src} alt="" />
                     <p>
@@ -64,6 +64,7 @@ const MatterCard = ({matter, bookmarkList, detail = false, list = false}) => {
                       <br/>終了しました
                     </p>
                   </div>
+                  : null
                 }
               </div>
               <p className={styles.ttl}>{matter.title}</p>

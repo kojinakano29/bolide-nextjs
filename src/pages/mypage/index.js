@@ -36,7 +36,7 @@ const BjcMypage = () => {
                 <img src="/top/option.svg" alt="オプションのアイコン" />
               </div>
               <div className={styles.txtBox}>
-                <p className={styles.big}>オプション</p>
+                <p className={styles.big}>サスティナブルオプション</p>
                 <p className={styles.sm}>社会貢献活動の一環として募金ができます。</p>
               </div>
             </a>

@@ -12,7 +12,7 @@
 
   .footer__listPage {
     @include flex(center, center);
-    @include gap(40px);
+    @include gap(16px 40px);
     @include mt(32px, 24px);
 
     @include media1(sp) {

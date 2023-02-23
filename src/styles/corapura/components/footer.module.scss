@@ -2,7 +2,7 @@
 
 .footer {
   position: relative;
-  @include pt(64px);
+  @include pt(80px, 64px);
 
   .footer1 {
     text-align: center;

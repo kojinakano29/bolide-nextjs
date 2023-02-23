@@ -3,7 +3,7 @@ import AuthSessionStatus from '@/components/AuthSessionStatus'
 import InputError from '@/components/InputError'
 import Link from 'next/link'
 import { useAuth } from '@/hooks/auth'
-import { useEffect, useState } from 'react'
+import { useCallback, useEffect, useState } from 'react'
 import { useRouter } from 'next/router'
 import Container from '@/components/liondor/Layouts/container'
 import PageLayoutLiondor from '@/components/Layouts/PageLayoutLiondor'
@@ -21,6 +21,7 @@ const Login = () => {
     const [password, setPassword] = useState('')
     const [errors, setErrors] = useState([])
     const [status, setStatus] = useState(null)
+    const [view, setView] = useState(false)
 
     useEffect(() => {
         if (router.query.reset?.length > 0 && errors.length === 0) {
@@ -40,6 +41,10 @@ const Login = () => {
             setStatus,
         })
     }
+
+    const handleClickView = useCallback(async () => {
+        setView(prevState => !prevState)
+    }, [setView])
 
     return (
         <section className="cont1">
@@ -80,13 +85,19 @@ const Login = () => {
                         <dl className={styles.dl}>
                             <dt><span></span><label className="ivy" htmlFor="password">Password</label></dt>
                             <dd>
-                                <input
-                                    id="password"
-                                    type="password"
-                                    onChange={event => setPassword(event.target.value)}
-                                    required
-                                    autoComplete="current-password"
-                                />
+                                <div className={styles.passwordBox}>
+                                    <input
+                                        id="password"
+                                        type={view ? "text" : "password"}
+                                        onChange={event => setPassword(event.target.value)}
+                                        required
+                                        autoComplete="current-password"
+                                    />
+                                    <p
+                                        className={styles.view}
+                                        onClick={handleClickView}
+                                    >{view ? "非表示" : "表示"}</p>
+                                </div>
                                 <InputError
                                     messages={errors.password}
                                     className="mt-2"

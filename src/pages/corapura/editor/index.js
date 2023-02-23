@@ -2,7 +2,7 @@ import styles from '@/styles/corapura/components/editorMyPage.module.scss'
 import PageLayoutCorapura from "@/components/Layouts/pageLayoutCorapura";
 import Container from '@/components/corapura/Layout/container';
 import { useAuth } from '@/hooks/auth';
-import { Loader } from '@/components/corapura';
+import { Follow, Loader } from '@/components/corapura';
 import Link from 'next/link';
 import icon1 from '@/images/corapura/common/linkIcon1.svg'
 import icon2 from '@/images/corapura/common/linkIcon2.svg'
@@ -10,10 +10,42 @@ import icon3 from '@/images/corapura/common/linkIcon3.svg'
 import icon4 from '@/images/corapura/common/linkIcon4.svg'
 import icon5 from '@/images/corapura/common/linkIcon5.svg'
 import icon6 from '@/images/corapura/common/linkIcon6.svg'
+import { useCallback, useEffect, useState } from 'react';
+import axios from '@/lib/axios';
 
 const EditorMyPage = () => {
-  // console.log(user)
+  const csrf = () => axios.get('/sanctum/csrf-cookie')
+
   const { user, logout } = useAuth({middleware: 'auth', type: 'corapura'})
+  const [nowFollower, setNowFollower] = useState("")
+  const [nowFollowing, setNowFollowing] = useState("")
+  const [open, setOpen] = useState(false)
+  const [followType, setFollowType] = useState("")
+  const [userInfo, setUserInfo] = useState({})
+
+  const getProfile = async () => {
+    await csrf()
+
+    await axios.post('/api/c_profile_get', {
+      id: user?.id
+    }).then((res) => {
+      // console.log(res)
+      setNowFollower(res.data.user.c_followeds_count)
+      setNowFollowing(res.data.user.c_followings_count)
+      setUserInfo(res.data.user)
+    }).catch(e => console.error(e))
+  }
+
+  useEffect(() => {
+    if (user) {
+      getProfile()
+    }
+  }, [user])
+
+  const handleClickOpen = useCallback(async (type) => {
+    setOpen(prevState => !prevState)
+    setFollowType(type)
+  }, [setOpen, setFollowType])
 
   return (
     <>
@@ -34,6 +66,18 @@ const EditorMyPage = () => {
             <p className={styles.hello}>
               こんにちは、{user?.name}さん
             </p>
+            <div className={styles.followArea}>
+              <button
+                type="button"
+                className="hoverEffect"
+                onClick={() => handleClickOpen("following")}
+              >フォロー{nowFollowing}人</button>
+              <button
+                type="button"
+                className="hoverEffect"
+                onClick={() => handleClickOpen("follower")}
+              >フォロワー{nowFollower}人</button>
+            </div>
             <article className={styles.navFlex}>
               {user?.c_profile_id ?
                 <>
@@ -117,6 +161,12 @@ const EditorMyPage = () => {
               </Link>
               }
             </article>
+            <div className={styles.privacyArea}>
+              <Link href="/corapura/terms">
+                <a>利用規約</a>
+              </Link>
+              <p>※2023年2月22日時点</p>
+            </div>
             <button
               type="button"
               className={`${styles.logout} hoverEffect`}
@@ -125,6 +175,10 @@ const EditorMyPage = () => {
           </Container>
         </section>
       : <Loader />}
+
+      {open ?
+        <Follow handleClickOpen={handleClickOpen} userInfo={userInfo} followType={followType} />
+      : null}
     </>
   );
 }

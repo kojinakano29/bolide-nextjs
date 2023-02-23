@@ -154,7 +154,7 @@ const EditMypage = () => {
             <button
               className={`${styles.btn} hoverEffect`}
               disabled={disabled}
-            >編集</button>
+            >確定</button>
           </form>
         : <Loader />}
       </Container>

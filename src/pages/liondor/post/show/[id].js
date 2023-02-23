@@ -29,7 +29,10 @@ const DetailPage = ({posts}) => {
   const csrf = () => axios.get('/sanctum/csrf-cookie')
 
   const router = useRouter()
-  const { user } = useAuth({middleware: 'auth', type: 'liondor'})
+  const { user } = useAuth({
+    middleware: parseInt(router.query.preview) === parseInt(1) ? "" : 'auth',
+    type: 'liondor'
+  })
 
   const post = posts.posts
   const parentSlug = post.l_category.parent_slug

@@ -14,6 +14,7 @@ const Header = () => {
 
   const router = useRouter()
   const { user } = useAuth()
+  const [searchActive, setSearchActive] = useState(false)
 
   const profileCheck = useCallback(async () => {
     await csrf()
@@ -58,6 +59,7 @@ const Header = () => {
       <header className={`
         ${styles.header}
         ${router.route === "/dellamall" ? null : styles.kasou}
+        ${show ? styles.active : null}
       `}>
         <Container>
           <div className={styles.flex}>
@@ -77,16 +79,21 @@ const Header = () => {
                   </a>
                 </Link>
               }
-              <SearchIcon />
+              <SearchIcon setSearchActive={setSearchActive} />
             </div>
-            <div className={styles.right}>
+            <div className={`${styles.right} pc`}>
               <HeaderNav />
             </div>
+            {searchActive ? null :
+              <div className={`${styles.right} sp`}>
+                <HeaderNav />
+              </div>
+            }
           </div>
         </Container>
       </header>
 
-      <header className={`
+      <div className={`
         ${styles.header}
         ${styles.spHeader}
         ${show ? styles.active : null}
@@ -95,14 +102,19 @@ const Header = () => {
         <Container>
           <div className={styles.flex}>
             <div className={styles.left}>
-              <SearchIcon />
+              <SearchIcon setSearchActive={setSearchActive} />
             </div>
-            <div className={styles.right}>
+            <div className={`${styles.right} pc`}>
               <HeaderNav />
             </div>
+            {searchActive ? null :
+              <div className={`${styles.right} sp`}>
+                <HeaderNav />
+              </div>
+            }
           </div>
         </Container>
-      </header>
+      </div>
     </>
   );
 }

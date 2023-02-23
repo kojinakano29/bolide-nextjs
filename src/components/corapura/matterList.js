@@ -9,6 +9,7 @@ import sortIcon from '@/images/corapura/common/sort.svg'
 import { Loader, MatterCard } from '@/components/corapura';
 import { zips } from '@/lib/corapura/constants';
 import { useAuth } from '@/hooks/auth';
+import searchIcon from '@/images/corapura/common/search.svg'
 
 const MatterList = ({posts, influencer = false}) => {
   // console.log(posts)
@@ -208,6 +209,9 @@ const MatterList = ({posts, influencer = false}) => {
               {...register("s")}
               placeholder="気になるワードを検索"
             />
+            <button>
+              <img src={searchIcon.src} alt="検索アイコン" />
+            </button>
           </div>
         </form>
 

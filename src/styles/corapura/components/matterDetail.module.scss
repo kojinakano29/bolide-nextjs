@@ -175,3 +175,41 @@
     }
   }
 }
+
+.popupArea {
+  @include modalBox;
+  @include flex(center, center);
+
+  .popupBox {
+    width: fit-content;
+    @include max-width(fit-content, fit-content, calc(100% - 20px * 2));
+    @include p(40px 64px, 32px 40px, 24px);
+    background-color: $w1;
+    border-radius: 10px;
+    cursor: auto;
+
+    p {
+      @include fs(24px, 20px, 18px);
+      font-weight: 500;
+      @include mb(40px, 32px);
+    }
+
+    .buttonFlex {
+      @include flex(center, center);
+      @include gap(16px);
+
+      button {
+        @include width(120px, 100px, 80px);
+        @include height(40px, 32px);
+        border: 1px solid $b4;
+        border-radius: 20px;
+        transition: .3s ease;
+
+        &:hover {
+          background-color: $b4;
+          color: $w1;
+        }
+      }
+    }
+  }
+}
