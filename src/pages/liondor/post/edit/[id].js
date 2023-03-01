@@ -52,13 +52,8 @@ const PostEdit = ({posts}) => {
   const parentNum = parseInt(parentCat.id)
   const arrayNum = parentNum - 1
   const [cat, setCat] = useState([catArray[arrayNum]])
-  const handleCat = (e) => {
-    setCat(catArray.filter((item) => {
-      return item.id.toString() === e.target.value
-    }))
-  }
 
-  const { register, handleSubmit, formState: { errors } } = useForm({
+  const { register, handleSubmit, setValue, formState: { errors } } = useForm({
     defaultValues: {
       title: post.title,
       sub_title: post.sub_title,
@@ -70,6 +65,13 @@ const PostEdit = ({posts}) => {
       view_date: post.view_date,
     }
   })
+
+  const handleCat = (e) => {
+    setCat(catArray.filter((item) => {
+      setValue("child_category", e.target.value)
+      return item.id.toString() === e.target.value
+    }))
+  }
 
   const onPostForm = useCallback(async (data) => {
     await csrf()

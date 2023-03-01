@@ -5,9 +5,11 @@ import { FormProvider, useForm } from 'react-hook-form';
 import Container from '@/components/top/Layout/container';
 import Link from 'next/link';
 import { ConfirmMembership, InputMembership } from '@/components/top';
+import { useAuth } from '@/hooks/auth';
 
 const MembershipRegister = () => {
   const router = useRouter()
+  const { user } = useAuth({middleware: 'auth', type: 'bjc'})
   const isConfirm = router.query.confirm
 
   const methods = useForm({
@@ -44,7 +46,7 @@ const MembershipRegister = () => {
       <section className={styles.formArea}>
         <Container small900>
           <FormProvider {...methods}>
-            {!isConfirm ? <InputMembership /> : <ConfirmMembership />}
+            {!isConfirm ? <InputMembership /> : <ConfirmMembership user={user} />}
           </FormProvider>
         </Container>
       </section>

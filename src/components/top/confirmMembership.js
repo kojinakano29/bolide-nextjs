@@ -1,17 +1,14 @@
 import styles from '@/styles/top/components/form.module.scss'
-import { useAuth } from "@/hooks/auth";
 import axios from "@/lib/axios";
 import { useRouter } from "next/router";
 import { useCallback, useEffect, useState } from "react";
 import { useFormContext } from "react-hook-form";
 import { Btn1 } from '@/components/top/';
 
-const ConfirmMembership = () => {
+const ConfirmMembership = ({user}) => {
   const csrf = () => axios.get('/sanctum/csrf-cookie')
 
   const router = useRouter()
-  const { user } = useAuth()
-
   const [disabled, setDisabled] = useState(false)
   const { handleSubmit, getValues, formState: { isValid } } = useFormContext()
 
@@ -32,7 +29,7 @@ const ConfirmMembership = () => {
   const onMembershipForm = useCallback(async (data) => {
     await csrf()
 
-    await axios.post(`/api`, data)
+    await axios.post(`/api/bolides_japan/plan_add`, data)
     .then((res) => {
       // console.log(res)
       sessionStorage.setItem('membership', true)
@@ -57,6 +54,7 @@ const ConfirmMembership = () => {
       address: values.address,
       tel: values.tel,
       email: values.email,
+      course: values.course,
     })
   }, [onMembershipForm, setDisabled, user])
 
@@ -119,19 +117,19 @@ const ConfirmMembership = () => {
               コース選択
               <span className={styles.require}>必須</span>
             </dt>
-              {parseInt(values.course) === parseInt(0) ?
+              {values.course === "企業・団体" ?
                 <dd>
                   企業・団体
                   <br/>￥11,000/月
                 </dd>
               : null}
-              {parseInt(values.course) === parseInt(1) ?
+              {values.course === "フリーランス・専門家・個人事業主・一般ユーザー(プレミアム)" ?
                 <dd>
                   フリーランス　専門家　個人事業主　一般ユーザー（プレミアム）
                   <br/>￥5,500/月
                 </dd>
               : null}
-              {parseInt(values.course) === parseInt(2) ?
+              {values.course === "メディア・地方自治体" ?
                 <dd>
                   メディア　地方自治体
                   <br/>￥0/月

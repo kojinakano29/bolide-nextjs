@@ -31,11 +31,11 @@ const Register = () => {
         await axios.post('/register', data)
         .then((res) => {
             // console.log(res)
-            if (parseInt(data.course) === parseInt(0)) {
+            if (data.account_type === "0") {
                 router.push({
                     pathname: "/mypage",
                 })
-            } else if (parseInt(data.course) === parseInt(1)) {
+            } else if (data.account_type === "1") {
                 router.push({
                     pathname: "/membership_register",
                 })
@@ -54,7 +54,7 @@ const Register = () => {
             email: data.email,
             password: data.password,
             password_confirmation: data.password_confirmation,
-            course: data.course,
+            account_type: data.account_type,
         })
     }
 
@@ -197,33 +197,19 @@ const Register = () => {
                                 </dt>
                                 <dd className={styles.courseArea}>
                                     <div className={styles.courseBtn}>
-                                        <input id="course1" type="radio" value={1} {...register("course", {required: true})} />
-                                        <label htmlFor="course1">
+                                        <input id="account_type1" type="radio" value="1" {...register("account_type", {required: true})} />
+                                        <label htmlFor="account_type1">
                                             <p className={styles.planName}>企業・団体</p>
                                             <div className={styles.planPrice}>
                                                 <span className={`${styles.medium} en`}>￥</span>
-                                                <span className={`${styles.big} en`}>11,000</span>
+                                                <span className={`${styles.big} en`}>~11,000</span>
                                                 <span className={styles.sm}>/月</span>
                                             </div>
                                         </label>
                                     </div>
                                     <div className={styles.courseBtn}>
-                                        <input id="course2" type="radio" value={2} {...register("course", {required: true})} />
-                                        <label htmlFor="course2">
-                                            <p className={styles.planName}>
-                                                企業・団体
-                                                <br/>（おまかせ込み）
-                                            </p>
-                                            <div className={styles.planPrice}>
-                                                <span className={`${styles.medium} en`}>￥</span>
-                                                <span className={`${styles.big} en`}>55,000</span>
-                                                <span className={styles.sm}>/月</span>
-                                            </div>
-                                        </label>
-                                    </div>
-                                    <div className={styles.courseBtn}>
-                                        <input id="course3" type="radio" value={0} {...register("course", {required: true})} />
-                                        <label htmlFor="course3">
+                                        <input id="account_type3" type="radio" value="0" {...register("account_type", {required: true})} />
+                                        <label htmlFor="account_type3">
                                             <p className={styles.planName}>一般ユーザー(フリー)</p>
                                             <div className={styles.planPrice}>
                                                 <span className={`${styles.medium} en`}>￥</span>
@@ -232,7 +218,7 @@ const Register = () => {
                                             </div>
                                         </label>
                                     </div>
-                                    {errors.course && <p className={`red ${styles.error}`}>この項目は必須です</p>}
+                                    {errors.account_type && <p className={`red ${styles.error}`}>この項目は必須です</p>}
                                 </dd>
                             </dl>
                             <div className={styles.privacyArea}>

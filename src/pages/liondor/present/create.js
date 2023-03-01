@@ -97,7 +97,7 @@ const CreatePresent = () => {
                 </dl>
                 <dl className={styles.dl}>
                   <dt className={styles.dt}>
-                    <label htmlFor="offer">オファー</label>
+                    <label htmlFor="offer">企業名</label>
                   </dt>
                   <dd className={styles.dd}>
                     <input type="text" id="offer" {...register("offer", { required: true })} />

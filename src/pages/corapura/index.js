@@ -1,9 +1,8 @@
 import styles from '@/styles/corapura/components/home.module.scss'
 import PageLayoutCorapura from "@/components/Layouts/pageLayoutCorapura";
-import Image from 'next/image';
-import mv from '@/images/corapura/top/mv.webp'
-import mv_sp from '@/images/corapura/top/mv__sp.webp'
-import mv_big from '@/images/corapura/top/mv_big.webp'
+import mv from '@/images/corapura/top/mv.png'
+import mv_sp from '@/images/corapura/top/mv_sp.png'
+import mv_big from '@/images/corapura/top/mv_big.png'
 import { Btn, Btn2, CanDo, CardType1, CardType2, CompanyCard, Coupon, Info, Merit, NameCard, Release, SwiperType1, SwiperType2, User } from '@/components/corapura';
 import Container from '@/components/corapura/Layout/container';
 import ttl from '@/images/corapura/common/corapura.svg'
@@ -55,31 +54,13 @@ const Corapura = ({posts}) => {
     <>
       <section className={styles.mv}>
         <div className={`${styles.mvBox} bigPc`}>
-          <Image
-            src={mv_big}
-            alt="メインビジュアル"
-            layout="responsive"
-            sizes="100vw"
-            priority
-          />
+          <img src={mv_big.src} alt="メインビジュアル" />
         </div>
         <div className={`${styles.mvBox} smPc pc`}>
-          <Image
-            src={mv}
-            alt="メインビジュアル"
-            layout="responsive"
-            sizes="100vw"
-            priority
-          />
+          <img src={mv.src} alt="メインビジュアル" />
         </div>
         <div className={`${styles.mvBox} sp`}>
-          <Image
-            src={mv_sp}
-            alt="メインビジュアル"
-            layout="responsive"
-            sizes="100vw"
-            priority
-          />
+          <img src={mv_sp.src} alt="メインビジュアル" />
         </div>
       </section>
 
