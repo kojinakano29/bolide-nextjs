@@ -41,7 +41,7 @@ const CreatePost = ({posts}) => {
   const month = ("00" + date.getMonth()+1).slice(-2)
   const day = ("00" + date.getDate()).slice(-2)
   const [editorContent, setEditorContent] = useState("")
-  const { register, handleSubmit, formState: { errors } } = useForm({
+  const { register, handleSubmit, setValue, formState: { errors } } = useForm({
     defaultValues: {
       view_date: `${year}-${month}-${day}T00:00`,
     }
@@ -106,6 +106,7 @@ const CreatePost = ({posts}) => {
   const [cat, setCat] = useState([catArray[0]])
   const handleCat = (e) => {
     setCat(catArray.filter((item) => {
+      setValue("child_category", e.target.value)
       return item.id.toString() === e.target.value
     }))
   }

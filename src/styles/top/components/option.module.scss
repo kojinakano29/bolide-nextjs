@@ -1,0 +1,95 @@
+@import '../../variables.scss';
+
+.optionContent {
+  @include mb(80px, 64px);
+
+  h3 {
+    @include fs(18px, 16px);
+    font-weight: bold;
+    text-align: center;
+    @include mb(32px, 24px);
+  }
+
+  .desc {
+    @include fs(16px, 14px);
+    text-align: center;
+    @include mb(40px, 32px);
+  }
+
+  .catch {
+    @include fs(20px, 18px, 16px);
+    font-weight: bold;
+    text-align: center;
+    @include mb(40px, 32px);
+  }
+
+  .linkBox {
+    @include mb(80px, 64px);
+
+    .txt {
+      @include fs(16px, 14px);
+      font-weight: bold;
+      text-align: center;
+      @include mb(16px);
+    }
+  }
+
+  .courseArea {
+    @include bjcCourse;
+    justify-content: center;
+    @include mb(64px, 56px);
+
+    .courseBtn {
+      @include height(118px, 118px, unset);
+
+      label {
+        justify-content: center;
+        @include p(0, 0, 32px);
+      }
+    }
+  }
+
+  .optionDl {
+    @include mb(64px, 56px);
+
+    dt {
+      @include fs(16px, 14px);
+      font-weight: bold;
+      @include mb(12px);
+    }
+
+    dd {
+      @include fs(16px, 14px);
+      font-weight: 500;
+    }
+  }
+
+  .btnFlex {
+    @include flex(center, center);
+    @include gap(16px);
+    flex-direction: column-reverse;
+
+    div {
+      width: fit-content;
+
+      &.type2 {
+        button,
+        a {
+          @include width(200px, 160px);
+          @include height(40px);
+          background-color: $w1;
+          border: 2px solid $b6;
+          color: $b6;
+        }
+      }
+    }
+
+    .registered {
+      @include fs(16px, 14px);
+
+      &:hover {
+        text-decoration: underline;
+      }
+    }
+  }
+}

@@ -5,7 +5,7 @@ import Link from "next/link";
 import { useAuth } from '@/hooks/auth';
 
 const BjcMypage = () => {
-  const { logout } = useAuth({middleware: 'auth', type: 'bjc'})
+  const { logout, user } = useAuth({middleware: 'auth', type: 'bjc'})
 
   return (
     <section className="cont1">
@@ -19,7 +19,7 @@ const BjcMypage = () => {
           <p>マイページ</p>
         </div>
         <div className={styles.smallMenuBox}>
-          <Link href="/">
+          <Link href="/mypage/plan">
             <a>
               <div className={styles.iconBox}>
                 <img src="/top/plan_check.svg" alt="プラン確認のアイコン" />
@@ -30,7 +30,7 @@ const BjcMypage = () => {
               </div>
             </a>
           </Link>
-          <Link href="/">
+          <Link href={`/mypage/option/${user?.id}`}>
             <a>
               <div className={styles.iconBox}>
                 <img src="/top/option.svg" alt="オプションのアイコン" />

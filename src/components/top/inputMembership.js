@@ -136,7 +136,7 @@ const InputMembership = () => {
             </dt>
             <dd className={styles.courseArea}>
               <div className={styles.courseBtn}>
-                <input id="course1" type="radio" value={0} {...register("course", {required: true})} />
+                <input id="course1" type="radio" value="企業・団体" {...register("course", {required: true})} />
                 <label htmlFor="course1">
                   <p className={styles.planName}>企業・団体</p>
                   <div className={styles.planPrice}>
@@ -147,7 +147,7 @@ const InputMembership = () => {
                 </label>
               </div>
               <div className={styles.courseBtn}>
-                <input id="course2" type="radio" value={1} {...register("course", {required: true})} />
+                <input id="course2" type="radio" value="フリーランス・専門家・個人事業主・一般ユーザー(プレミアム)" {...register("course", {required: true})} />
                 <label htmlFor="course2">
                   <p className={styles.planName}>
                     フリーランス 専門家
@@ -162,7 +162,7 @@ const InputMembership = () => {
                 </label>
               </div>
               <div className={styles.courseBtn}>
-                <input id="course3" type="radio" value={2} {...register("course", {required: true})} />
+                <input id="course3" type="radio" value="メディア・地方自治体" {...register("course", {required: true})} />
                 <label htmlFor="course3">
                   <p className={styles.planName}>
                     メディア
@@ -175,7 +175,7 @@ const InputMembership = () => {
                   </div>
                 </label>
               </div>
-              {errors.course && <p className={`red ${styles.error}`}>この項目は必須です</p>}
+              {errors.coupon && <p className={`red ${styles.error}`}>この項目は必須です</p>}
             </dd>
           </dl>
           <div className={styles.privacyCheck}>

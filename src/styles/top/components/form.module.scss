@@ -25,6 +25,43 @@
   }
 }
 
+.planChangeTop {
+  .desc {
+    @include fs(18px, 16px);
+    font-weight: bold;
+    text-align: center;
+    @include mb(32px, 24px);
+  }
+
+  .planChange {
+    @include fs(18px, 16px);
+    font-weight: bold;
+    text-align: center;
+    @include pt(80px, 64px);
+    @include mb(12px);
+  }
+
+  .txt {
+    @include fs(16px, 14px);
+    @include mb(56px, 40px);
+  }
+
+  .checkTxt {
+    @include mb(64px, 56px);
+
+    p {
+      @include fs(16px, 14px);
+    }
+  }
+}
+
+.planChangeForm {
+  .catch {
+    text-align: center;
+    @include mb(48px, 40px);
+  }
+}
+
 .formArea {
   @include pb(80px, 64px);
 
@@ -63,6 +100,8 @@
     }
 
     dd {
+      white-space: pre-wrap;
+
       input[type="text"],
       input[type="email"],
       input[type="tel"],
@@ -114,87 +153,7 @@
       }
 
       &.courseArea {
-        @include flex(center, left);
-        @include gap(32px, 32px, 16px);
-
-        .courseBtn {
-          @include width(208px, calc(100% * 1/3 - 32px * 2/3), 100%);
-          @include height(144px, 144px, unset);
-        }
-
-        label {
-          width: 100%;
-          height: 100%;
-          @include flex(center, flex-end);
-          @include gap(0, 0, 15px);
-          @include p(0 0 16px, 0 0 16px, 16px);
-          flex-direction: column;
-          background-color: $g13;
-          border-radius: 10px;
-          box-shadow: 0 3px 6px rgba(0, 0, 0, .16);
-          transition: .3s ease;
-          cursor: pointer;
-
-          &:hover {
-            background-color: $b13;
-            background-image: url(../../../../public/top/course_check.svg);
-            background-position: 12px 12px;
-            background-repeat: no-repeat;
-
-            * {
-              color: $w1;
-            }
-          }
-
-          @include media1(sp) {
-            justify-content: center;
-          }
-        }
-
-        .planName {
-          @include fs(13px, 13px, 12px);
-          font-weight: bold;
-          color: $g11;
-          text-align: center;
-          @include height(55px, 55px, unset);
-          @include flex(center, center);
-        }
-
-        .planPrice {
-          @include flex(center, center);
-
-          span {
-            display: block;
-            font-weight: bold;
-
-            &.sm {
-              @include fs(16px, 16px, 14px);
-            }
-
-            &.medium {
-              @include fs(24px, 24px, 20px);
-            }
-
-            &.big {
-              @include fs(32px, 32px, 24px);
-            }
-          }
-        }
-
-        input[type="radio"] {
-          display: none;
-
-          &:checked ~ label {
-            background-color: $b13;
-            background-image: url(../../../../public/top/course_check.svg);
-            background-position: 12px 12px;
-            background-repeat: no-repeat;
-
-            * {
-              color: $w1;
-            }
-          }
-        }
+        @include bjcCourse;
       }
 
       .small {
@@ -279,7 +238,8 @@
     width: fit-content;
 
     &.type2 {
-      button {
+      button,
+      a {
         @include width(200px, 160px);
         @include height(40px);
         background-color: $w1;

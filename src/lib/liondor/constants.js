@@ -86,7 +86,7 @@ export const catNavData = {
     {name: "Weddinghall", slug: "weddinghall", link: "/liondor/post/weddinghall"},
     {name: "Accessory", slug: "accessory", link: "/liondor/post/accessory"},
     {name: "Bouquet", slug: "bouquet", link: "/liondor/post/bouquet"},
-    {name: "Bresent", slug: "bresent", link: "/liondor/post/bresent"},
+    {name: "Present", slug: "present", link: "/liondor/post/present"},
     {name: "FirstClass", slug: "firstclass_wedding", link: "/liondor/post/firstclass_wedding"},
   ],
   topleader: [
@@ -163,7 +163,7 @@ export const sitemap = [
       {name: "Wedding Hall", slug: "weddinghall", link: "/liondor/post/weddinghall"},
       {name: "Accessory", slug: "accessory", link: "/liondor/post/accessory"},
       {name: "Bouquet", slug: "bouquet", link: "/liondor/post/bouquet"},
-      {name: "Present", slug: "bresent", link: "/liondor/post/bresent"},
+      {name: "Present", slug: "present", link: "/liondor/post/present"},
       {name: "First Class", slug: "firstclass_wedding", link: "/liondor/post/firstclass_wedding"},
     ],
   },
