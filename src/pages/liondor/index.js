@@ -15,7 +15,7 @@ export const getServerSideProps = async () => {
 }
 
 export default function Home({posts}) {
-    // console.log(posts)
+    console.log(posts)
 
     const firstClassData = posts.first
     const specialData = posts.special
@@ -39,21 +39,31 @@ export default function Home({posts}) {
                     <h2 className="ttl1 ivy">FIRST CLASS</h2>
                     {firstClassData.length !== 0 ?
                         <FirstClass firstClassData={firstClassData[0]} />
-                    : null}
+                        :
+                        <p className={`${styles.noneLength} ivy`}>FIRST CLASSの記事がありません</p>
+                    }
                 </Container>
             </section>
 
             <section className={`cont ${styles.cont2}`}>
                 <Container>
                     <h2 className="ttl1 ivy">SPECIAL</h2>
-                    <BlogPattern1 pattern={specialData} route2 pickup />
+                    {specialData.length !== 0 ?
+                        <BlogPattern1 pattern={specialData} route2 pickup />
+                        :
+                        <p className={`${styles.noneLength} ivy`}>SPECIALの記事がありません</p>
+                    }
                 </Container>
             </section>
 
             <section className={`cont ${styles.cont3}`}>
                 <Container>
                     <h2 className="ttl1 ivy">FASHION</h2>
-                    <BlogPattern2 pattern={fashionData} />
+                    {fashionData.l_post.length !== 0 ?
+                        <BlogPattern2 pattern={fashionData} />
+                        :
+                        <p className={`${styles.noneLength} ivy`}>FASHIONの記事がありません</p>
+                    }
                 </Container>
             </section>
 
@@ -62,56 +72,86 @@ export default function Home({posts}) {
                     <h2 className="ttl1 ivy">COLLECTION</h2>
                     {collectionData.length !== 0 ?
                         <BlogPattern3 pattern={collectionData[0]} />
-                    : null}
+                        :
+                        <p className={`${styles.noneLength} ivy`}>COLLECTIONの記事がありません</p>
+                    }
                 </Container>
             </section>
 
             <section className={`cont ${styles.cont5}`}>
                 <Container>
                     <h2 className="ttl1 ivy">BEAUTY</h2>
-                    <BlogPattern1 pattern={beautyData} />
+                    {beautyData.l_post.length !== 0 ?
+                        <BlogPattern1 pattern={beautyData} />
+                        :
+                        <p className={`${styles.noneLength} ivy`}>BEAUTYの記事がありません</p>
+                    }
                 </Container>
             </section>
 
             <section className={`cont ${styles.cont6}`}>
                 <Container>
                     <h2 className="ttl1 ivy">TREND</h2>
-                    <BlogPattern4 pattern={trendData} />
+                    {trendData.l_post.length !== 0 ?
+                        <BlogPattern4 pattern={trendData} />
+                        :
+                        <p className={`${styles.noneLength} ivy`}>TRENDの記事がありません</p>
+                    }
                 </Container>
             </section>
 
             <section className={`cont ${styles.cont7}`}>
                 <Container>
                     <h2 className="ttl1 ivy">LIFE STYLE</h2>
-                    <BlogPattern1 pattern={lifestyleData} />
+                    {lifestyleData.l_post.length !== 0 ?
+                        <BlogPattern1 pattern={lifestyleData} />
+                        :
+                        <p className={`${styles.noneLength} ivy`}>LIFE STYLEの記事がありません</p>
+                    }
                 </Container>
             </section>
 
             <section className={`cont ${styles.cont8}`}>
                 <Container>
                     <h2 className="ttl1 ivy">WEDDING</h2>
-                    <BlogPattern4 pattern={weddingData} mode2 />
+                    {weddingData.l_post.length !== 0 ?
+                        <BlogPattern4 pattern={weddingData} mode2 />
+                        :
+                        <p className={`${styles.noneLength} ivy`}>WEDDINGの記事がありません</p>
+                    }
                 </Container>
             </section>
 
             <section className={`cont ${styles.cont9}`}>
                 <Container>
                     <h2 className="ttl1 ivy">TOP LEADER</h2>
-                    <BlogPattern1 pattern={topleaderData} column3None />
+                    {topleaderData.l_post.length !== 0 ?
+                        <BlogPattern1 pattern={topleaderData} column3None />
+                        :
+                        <p className={`${styles.noneLength} ivy`}>TOP LEADERの記事がありません</p>
+                    }
                 </Container>
             </section>
 
             <section className={`cont ${styles.cont10}`}>
                 <Container>
                     <h2 className="ttl1 ivy">FORTUNE</h2>
-                    <BlogPattern7 pattern={fortuneData} />
+                    {fortuneData.l_post.length !== 0 ?
+                        <BlogPattern7 pattern={fortuneData} />
+                        :
+                        <p className={`${styles.noneLength} ivy`}>FORTUNEの記事がありません</p>
+                    }
                 </Container>
             </section>
 
             <section className={`cont ${styles.cont11}`}>
                 <Container>
                     <h2 className="ttl1 ivy">VIDEO</h2>
-                    <BlogPattern5 pattern={videoData} />
+                    {videoData.l_post.length !== 0 ?
+                        <BlogPattern5 pattern={videoData} />
+                        :
+                        <p className={`${styles.noneLength} ivy`}>VIDEOの記事がありません</p>
+                    }
                 </Container>
             </section>
 
@@ -123,23 +163,33 @@ export default function Home({posts}) {
                             <BlogPattern6 salons={salonData} />
                             <Button2 link={`/corapura/salon`} name="view all" />
                         </>
-                    : null}
+                    :
+                    <p className={`${styles.noneLength} ivy`}>ON-LINE SALONの記事がありません</p>
+                    }
                 </Container>
             </section>
 
-            <section id="pickUp" className={`cont ${styles.cont13}`}>
-                <div className={styles.wrapper}>
-                    <Container>
-                        <BlogPattern8 pattern={pickupData} />
-                    </Container>
-                </div>
-            </section>
+            {pickupData.length !== 0 ?
+                <section id="pickUp" className={`cont ${styles.cont13}`}>
+                    <div className={styles.wrapper}>
+                        <Container>
+                            <BlogPattern8 pattern={pickupData} />
+                        </Container>
+                    </div>
+                </section>
+            : null}
 
             <section className={`cont ${styles.cont14}`}>
                 <Container>
                     <h2 className="ttl1 ivy">PRESENT</h2>
-                    <BlogPattern9 pattern={presentData} />
+                    {presentData.length !== 0 ?
+                        <BlogPattern9 pattern={presentData} />
+                        :
+                        <p className={`${styles.noneLength} ivy`}>PRESENTがありません</p>
+                    }
+                    {presentData.length > 3 ?
                     <Button2 link="/liondor/present" name="view all" />
+                    : null}
                 </Container>
             </section>
         </>

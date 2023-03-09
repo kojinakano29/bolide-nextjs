@@ -23,6 +23,8 @@
     }
 
     .company__topRight {
+      @include width(calc(100% - (86px + 12px)), calc(100% - (86px + 12px)), calc(100% - (72px + 12px)));
+
       .companyInfo2 {
         @include companyNicename(18px, 16px);
         @include mb(10px, 8px, 4px);

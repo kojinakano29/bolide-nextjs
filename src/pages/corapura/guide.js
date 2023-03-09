@@ -2,6 +2,9 @@ import styles from '@/styles/corapura/components/guide.module.scss'
 import PageLayoutCorapura from "@/components/Layouts/pageLayoutCorapura";
 import { Btn, Faq, Merit, Method } from '@/components/corapura';
 import Container from '@/components/corapura/Layout/container';
+import txt from '@/images/corapura/top/cont3_img.svg'
+import reco from '@/images/corapura/top/cont4_img.webp'
+import reco_sp from '@/images/corapura/top/cont4_img__sp.webp'
 import worries1 from '@/images/corapura/use/trouble1.svg'
 import worries2 from '@/images/corapura/use/trouble2.svg'
 import worries3 from '@/images/corapura/use/trouble3.svg'
@@ -10,21 +13,42 @@ import { faqCorapura } from '@/lib/corapura/constants';
 const GuideCorapura = () => {
   return (
     <>
-      <section className="cont1">
-        <h2 className="ttl1">
-          <span className="en">CORAPURA</span>
-          とは？
-        </h2>
-        <p className={styles.desc}>
-          Collaboration+Plusで組み合わせ、
-          <br className="sp" />想いを込めて作った言葉。
-          <br/>コラプラのプラットフォームの中で、
-          <br className="sp" />携わるすべての人がプラスに進みますように…
-        </p>
+      <section className={`cont1 ${styles.whatArea}`}>
+        <Container small>
+          <h2 className="ttl1">
+            <span className="en">CORAPURA</span>
+            とは？
+          </h2>
+          <div className={styles.imgBox}>
+            <img src={txt.src} alt="Collabolation + Plus" />
+          </div>
+          <p className={styles.txt}>
+            Collaboration+Plusで組み合わせ、
+            <br className="sp" />想いを込めて作った言葉。
+            <br />コラプラのプラットフォームの中で、
+            <br className="sp" />携わるすべての人がプラスに進みますように…
+          </p>
+          <p className={styles.txt}>
+            企業・フリーランス・専門家・個人事業主・インフルエンサー・個人ユーザー
+            <br className="pc" />・自治体・メディアと多種多様の繋がりが持てるプラットフォーム。
+            <br />ビジネスから個人的な事まで無料で案件登録ができ、自由に依頼・やり取りができます。
+            <br />コラプラを活用して＂価値あるつながり＂を見つけてみませんか？
+          </p>
+        </Container>
       </section>
 
       <section className={styles.meritArea}>
         <Merit detail />
+      </section>
+
+      <section className={styles.recommendArea}>
+        <Container small>
+          <div className={styles.ttl}>＼ こんな人におすすめ！／</div>
+          <div className={styles.imgBox}>
+            <img className="pc" src={reco.src} alt="こんな人におすすめ" />
+            <img className="sp" src={reco_sp.src} alt="こんな人におすすめ" />
+          </div>
+        </Container>
       </section>
 
       <section className={styles.worriesArea}>

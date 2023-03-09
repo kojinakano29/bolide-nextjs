@@ -9,15 +9,17 @@ import { Btn1 } from '@/components/top';
 const MembershipThanks = () => {
   const router = useRouter()
 
-  // useEffect(() => {
-  //   const membership = sessionStorage.getItem('membership')
+  useEffect(() => {
+    const membership = sessionStorage.getItem('membership')
 
-  //   if (!membership) {
-  //     router.push({
-  //       pathname: "/membership_register"
-  //     })
-  //   }
-  // }, [])
+    if (!membership) {
+      router.push({
+        pathname: "/membership_register"
+      })
+    }
+
+    sessionStorage.removeItem('membership')
+  }, [])
 
   return (
     <section className="cont1">

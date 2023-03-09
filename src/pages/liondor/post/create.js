@@ -250,7 +250,7 @@ const CreatePost = ({posts}) => {
                   <dt className={styles.dt}>シリーズ選択</dt>
                   <dd className={styles.dd}>
                     <select {...register("l_series_id")}>
-                      <option value="">選択しない</option>
+                      <option value={0}>選択しない</option>
                       {seriesArray.map((series, index) => (
                         <option value={index+1} key={index+1}>{series.name}</option>
                       ))}

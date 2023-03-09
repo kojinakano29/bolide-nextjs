@@ -165,6 +165,19 @@
   }
 }
 
+.paymentArea {
+  @include width(580px);
+  margin: auto;
+
+  .paymentDl {
+    @include mt(24px);
+
+    input {
+      height: 50px !important;
+    }
+  }
+}
+
 .privacyArea {
   p {
     @include fs(16px, 14px);

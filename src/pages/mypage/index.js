@@ -90,6 +90,9 @@ const BjcMypage = () => {
           <img src="/top/logout.svg" alt="" />
           ログアウト
         </button>
+        <p className={styles.signOut}>
+          <a href="/mypage/sign_out">退会はこちら</a>
+        </p>
       </Container>
     </section>
   );

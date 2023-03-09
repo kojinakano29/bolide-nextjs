@@ -330,9 +330,9 @@ const CreateCompanyForm = () => {
         <div className={styles.popupBox} onClick={(e) => e.stopPropagation()}>
           <h4 className={styles.midashi}>
             {type === "sns" ? "SNSリンク先" : null}
-            {type === "business_information" ? "ビジネスインフォメーション" : null}
+            {type === "business_information" ? "ニュース/イベント" : null}
             {type === "office" ? "事務所・店舗" : null}
-            {type === "president" ? "プレジデント" : null}
+            {type === "president" ? "プレジデント/リーダー" : null}
             {type === "item" ? "NFT/製品・商品・特許・技術" : null}
             {type === "sust" ? "SDGs" : null}
             {type === "card" ? "名刺" : null}
@@ -372,7 +372,7 @@ const CreateCompanyForm = () => {
             : null}
             {/* SNS */}
 
-            {/* ビジネスインフォメーション作成 */}
+            {/* ニュース/イベント作成 */}
             {type === "business_information" ?
               <form onSubmit={handleSubmit(onSubmitBusinessInformation)}>
                 <dl>
@@ -405,7 +405,7 @@ const CreateCompanyForm = () => {
                 <button className={`${styles.btn} hoverEffect`}>作成</button>
               </form>
             : null}
-            {/* ビジネスインフォメーション作成 */}
+            {/* ニュース/イベント作成 */}
 
             {/* 事務所・店舗作成 */}
             {type === "office" ?
@@ -456,7 +456,7 @@ TEL:000-0000-0000`}
             : null}
             {/* 事務所・店舗作成 */}
 
-            {/* プレジデント作成 */}
+            {/* プレジデント/リーダー作成 */}
             {type === "president" ?
               <form onSubmit={handleSubmit(onSubmitPresident)}>
                 <dl>
@@ -511,7 +511,7 @@ TEL:000-0000-0000`}
                 <button className={`${styles.btn} hoverEffect`}>作成</button>
               </form>
             : null}
-            {/* プレジデント作成 */}
+            {/* プレジデント/リーダー作成 */}
 
             {/* NFT/製品・商品・特許・技術作成 */}
             {type === "item" ?
@@ -626,6 +626,7 @@ TEL:000-0000-0000`}
                     <div className={styles.imgBox}>
                       {preview ? <img src={preview} alt="" /> : <div className={styles.imgNone}></div>}
                     </div>
+                    <p className={styles.reco_size}>推奨画像サイズ：352×208</p>
                     <input
                       type="file"
                       id="cardThumbs"
@@ -678,6 +679,7 @@ TEL:000-0000-0000`}
                     <div className={styles.imgBox}>
                       {preview ? <img src={preview} alt="" /> : <div className={styles.imgNone}></div>}
                     </div>
+                    <p className={styles.reco_size}>推奨画像サイズ：352×198</p>
                     <input
                       type="file"
                       id="couponThumbs"
@@ -730,6 +732,7 @@ TEL:000-0000-0000`}
                     <div className={styles.imgBox}>
                       {preview ? <img src={preview} alt="" /> : <div className={styles.imgNone}></div>}
                     </div>
+                    <p className={styles.reco_size}>推奨画像サイズ：198×198</p>
                     <input
                       type="file"
                       id="likeThumbs"

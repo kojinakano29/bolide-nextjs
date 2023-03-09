@@ -4,6 +4,7 @@ import twitter from '@/images/dellamall/shopDetail/twitter.svg'
 import instagram from '@/images/dellamall/shopDetail/instagram.svg'
 import youtube from '@/images/dellamall/shopDetail/youtube.svg'
 
+
 // サイト情報
 export const siteMeta = {
   siteTitle: 'Dellamall',
@@ -68,6 +69,7 @@ export const zip = [
 
 // SNS
 export const socialNetworkingService = [
+  "CORAPURA",
   "LINE",
   "Facebook",
   "Twitter",
@@ -76,6 +78,7 @@ export const socialNetworkingService = [
 ]
 
 export const socialNetworkingServiceIcons = {
+  "CORAPURA": "/corapura/sns/corapura.svg",
   "LINE": line.src,
   "Facebook": facebook.src,
   "Twitter": twitter.src,

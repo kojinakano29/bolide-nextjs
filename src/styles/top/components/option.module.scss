@@ -1,8 +1,52 @@
 @import '../../variables.scss';
 
-.optionContent {
+.optionArea {
   @include mb(80px, 64px);
 
+  .midashi {
+    @include fs(18px, 16px);
+    font-weight: bold;
+    text-align: center;
+    @include mb(32px, 24px);
+  }
+
+  .optionBox {
+    @include width(496px);
+    margin: auto;
+    border-radius: 10px;
+    box-shadow: 0 3px 6px rgba(0, 0, 0, .16);
+    background-color: $w1;
+    @include flex(center);
+    @include gap(16px, 8px);
+    @include p(24px, 16px 24px, 16px);
+    @include mb(80px);
+
+    .optionName {
+      @include fs(20px, 18px, 16px);
+      font-weight: bold;
+    }
+
+    .optionPrice {
+      span {
+        font-weight: bold;
+
+        &.sm {
+          @include fs(30px, 24px, 20px);
+        }
+
+        &.big {
+          @include fs(38px, 28px, 24px);
+        }
+
+        &.jp {
+          @include fs(22px, 18px, 16px);
+        }
+      }
+    }
+  }
+}
+
+.optionContent {
   h3 {
     @include fs(18px, 16px);
     font-weight: bold;
@@ -63,33 +107,33 @@
       font-weight: 500;
     }
   }
+}
 
-  .btnFlex {
-    @include flex(center, center);
-    @include gap(16px);
-    flex-direction: column-reverse;
+.btnFlex {
+  @include flex(center, center);
+  @include gap(16px);
+  flex-direction: column-reverse;
 
-    div {
-      width: fit-content;
+  div {
+    width: fit-content;
 
-      &.type2 {
-        button,
-        a {
-          @include width(200px, 160px);
-          @include height(40px);
-          background-color: $w1;
-          border: 2px solid $b6;
-          color: $b6;
-        }
+    &.type2 {
+      button,
+      a {
+        @include width(200px, 160px);
+        @include height(40px);
+        background-color: $w1;
+        border: 2px solid $b6;
+        color: $b6;
       }
     }
+  }
 
-    .registered {
-      @include fs(16px, 14px);
+  .registered {
+    @include fs(16px, 14px);
 
-      &:hover {
-        text-decoration: underline;
-      }
+    &:hover {
+      text-decoration: underline;
     }
   }
 }

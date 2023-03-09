@@ -128,6 +128,7 @@ const Footer = () => {
             <li className={`${styles.footer__cont3Item} hoverEffect`}><a href="/corapura/terms">利用規約</a></li>
             <li className={`${styles.footer__cont3Item} hoverEffect`}><a href="/corapura/tradeLaw">特定商品取引法に基づく表記</a></li>
             <li className={`${styles.footer__cont3Item} hoverEffect`}><a href="/corapura/privacy">プライバシーポリシー</a></li>
+            <li className={`${styles.footer__cont3Item} hoverEffect`}><a href="/ad">広告掲載について</a></li>
             <li className={`${styles.footer__cont3Item} hoverEffect`}><a href="">お問い合わせ</a></li>
           </ul>
         </Container>

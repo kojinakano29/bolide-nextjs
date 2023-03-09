@@ -84,5 +84,20 @@
   margin: auto;
   @include fs(14px, 12px);
   font-weight: bold;
+  @include mb(16px);
+}
+
+.signOut {
   @include mb(80px, 64px);
+  text-align: center;
+
+  a {
+    @include fs(12px, 11px);
+    text-decoration: underline;
+    color: $r1;
+
+    &:hover {
+      text-decoration: none;
+    }
+  }
 }

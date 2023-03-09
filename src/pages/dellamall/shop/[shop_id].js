@@ -20,6 +20,7 @@ export const getServerSideProps = async ({params}) => {
 
 const ShopDetail = ({posts}) => {
   // console.log(posts)
+
   const router = useRouter()
   const { user } = useAuth()
 
@@ -46,7 +47,7 @@ const ShopDetail = ({posts}) => {
       {shop.official_user_id ?
         <section className={styles.shopOfficial}>
           <Container small>
-            <ShopOfficial info={shop} user={user} />
+            <ShopOfficial info={shop} salon={posts.salon?.[0]} />
           </Container>
         </section>
       : null}

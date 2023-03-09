@@ -13,6 +13,7 @@ import { useCallback, useEffect, useState } from 'react';
 import axios from '@/lib/axios';
 import { Btn, ShowEditor } from '@/components/corapura';
 import userIcon from '@/images/corapura/common/user.svg'
+import { useRouter } from 'next/router';
 
 export const getServerSideProps = async ({params}) => {
   const res = await fetch(`${process.env.NEXT_PUBLIC_API_CORAPURA}/salon/show/${params.id}`)
@@ -27,8 +28,10 @@ export const getServerSideProps = async ({params}) => {
 
 const OnlineSalonDetail = ({posts}) => {
   // console.log(posts)
+
   const csrf = () => axios.get('/sanctum/csrf-cookie')
 
+  const router = useRouter()
   const { user } = useAuth()
 
   const salon = posts.salon
@@ -118,18 +121,19 @@ const OnlineSalonDetail = ({posts}) => {
         // console.log(res)
         setPlanCheck(false)
       }).catch(e => console.error(e))
-    } else {
-      await axios.post(`/api/corapura/salon_app/store`, {
-        user_id: user?.id,
-        c_salon_id: salon.id
+
+      await axios.post(`/api/subscription/cancel/${user?.id}`, {
+        db_name: `salon${router.query.id}`,
       }).then((res) => {
         // console.log(res)
-        setPlanCheck(true)
+        alert("このオンラインサロンから退会しました")
       }).catch(e => console.error(e))
+    } else if (!planCheck && salon.stripe_api_id) {
+      router.push(`/payment/${user?.id}/?plan=salon&salon_id=${salon.id}&salon_plan=${salon.stripe_api_id}&type=subscribe`)
     }
 
     await setDisabled(false)
-  }, [disabled, setDisabled, user, salon, planCheck])
+  }, [router, disabled, setDisabled, user, salon, planCheck])
 
   return (
     <section className="cont1">
@@ -156,7 +160,7 @@ const OnlineSalonDetail = ({posts}) => {
               <div className={styles.block}>
                 <div className={styles.cat}>
                   <FontAwesomeIcon icon={faCalendarCheck} />
-                  開催日時
+                  開催ツール
                 </div>
                 <p className={styles.txt}>{salon.date}</p>
               </div>
@@ -199,7 +203,7 @@ const OnlineSalonDetail = ({posts}) => {
               onClick={handleClickPlan}
             >
               <img src={userIcon.src} alt="" />
-              <span>{planCheck ? "入会済み" : "このプランに入会する"}</span>
+              <span>{planCheck ? "このプランを退会する" : "このプランに入会する"}</span>
             </button>
           </div>
         </div>

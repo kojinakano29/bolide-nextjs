@@ -9,7 +9,7 @@ import { useAuth } from '@/hooks/auth';
 
 const MembershipRegister = () => {
   const router = useRouter()
-  const { user } = useAuth({middleware: 'auth', type: 'bjc'})
+  const { user } = useAuth()
   const isConfirm = router.query.confirm
 
   const methods = useForm({

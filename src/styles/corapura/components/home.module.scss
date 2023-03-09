@@ -18,63 +18,6 @@
   @include ml(auto, auto, 0);
 }
 
-.whatArea {
-  @include pt(120px, 80px, 48px);
-
-  .ttl {
-    @include corapuraTtl;
-    justify-content: center;
-  }
-
-  .imgBox {
-    @include width(711px, 500px, 100%);
-    margin: auto;
-    @include mb(32px, 24px);
-  }
-
-  .cont3__text1,
-  .cont3__text2 {
-    @include fs(16px, 14px, 14px);
-    font-weight: 500;
-    color: #555555;
-    text-align: center;
-  }
-
-  .txt {
-    @include fs(16px, 14px);
-    font-weight: 500;
-    text-align: center;
-
-    &:nth-of-type(1) {
-      @include mb(48px, 24px);
-    }
-  }
-}
-
-.recommendArea {
-  text-align: center;
-  @include pt(80px, 80px, 48px);
-
-  .ttl {
-    @include fs(24px, 20px);
-    font-weight: 900;
-    color: $b8;
-    @include mb(40px, 24px);
-  }
-
-  .imgBox {
-    width: 100%;
-
-    img {
-      margin: auto;
-    }
-  }
-}
-
-.meritArea {
-  @include pt(96px, 80px, 48px);
-}
-
 .matchArea {
   @include side($o3);
   @include mt(128px, 80px, 48px);

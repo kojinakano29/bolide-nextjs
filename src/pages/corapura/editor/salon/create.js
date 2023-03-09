@@ -6,7 +6,7 @@ import { useAuth } from '@/hooks/auth';
 import { useCallback, useEffect, useState } from 'react';
 import { useForm } from 'react-hook-form';
 import axios from '@/lib/axios';
-import { Loader, PostEditor } from '@/components/corapura';
+import { GuidePopup, Loader, PostEditor } from '@/components/corapura';
 import Link from 'next/link';
 
 const CreateSalon = () => {
@@ -98,6 +98,7 @@ const CreateSalon = () => {
                       onChange={handleChangeImage}
                     />
                   </label>
+                  <p className={styles.reco_size}>推奨画像サイズ：720×479</p>
                 </div>
                 <div className={styles.matterRight}>
                   <dl>
@@ -128,7 +129,7 @@ const CreateSalon = () => {
                   </dl>
                   <dl>
                     <dt>
-                      <label htmlFor="date">開催日</label>
+                      <label htmlFor="date">開催ツール</label>
                     </dt>
                     <dd>
                       <input
@@ -170,7 +171,10 @@ const CreateSalon = () => {
 
               <article className={styles.editArea}>
                 <dl>
-                  <dt>本文</dt>
+                  <dt>
+                    本文
+                    <GuidePopup txt={`■記入ツール\nテキストの大きさや色の変更、画像の追加など、このなかで色々なツールが使用できます。\n\n■B\n選択したテキストを太くすることができます。何かを強調したい時に使ってみてください。\n\n■U(アンダーバー)\n選択したテキストの下に下線を引くことができます。\n\n■I\n選択したテキストが斜めに表示されます。英語やローマ字をかっこよく見せることができます。\n\n■A↕\nテキストのサイズを調整できます。\n\n■A(アンダーバー)\nテキストの色をかえられます。\n\n■A（■）\nテキストに背景色を引くことができます。\n\n■A三\n選択肢の中からテキストの種類を変更できます。\n\n■ペンのマーク\n選択したテキストにハイライトを付けることができます。\n\n■(‐)\nリンク設定ができます。\n例えば、詳しくは別のWEBページを見てほしい…という時にそのWEBページのURLを設置できます。リンクを設置したいテキストを選択して、そのまま（ー）のマークをクリック。\n別タブでの表示設定も可能です。\n\n■”\nブロックオートです。選択したテキストをまとまりあるかたちで表示させます。\n例えば案件の概要と条件をそれぞれ選択して、ブロックオートをクリックすることで見やすくブロック分けされて区切られます。\n\n■・、1ー\n箇条書き設定ができます。・で箇条書きもしくは、先頭に数字を付けた箇条書きも可能です。\n\n■＝\nテキストの配置を変更できます。\n左寄せ、中央揃え、右寄せから選べます。\n\n■ソース\nコードの入力が可能です。\n※対応していないコードやコードが間違っている場合には、反映がされず入力したコードの内容は削除されますのでご注意ください。\n\n■画像マーク\n画像の挿入が可能です。\nPC内やスマホ内カメラホルダに入ってる画像のアップロードが可能です。\n\n■表\n表の作成が可能です。\n\n■ビデオマーク\nYouTube動画のURLを入力して、動画を表示させることができます。\n\n■←、→\n本文入力の状態を戻したり、進めたりできます。`} />
+                  </dt>
                   <dd>
                     <PostEditor
                       handleChange={(editorContent) => {

@@ -14,8 +14,46 @@
   @include mb(48px, 32px);
 }
 
+.whatArea {
+  .imgBox {
+    @include width(711px, 500px, 100%);
+    margin: auto;
+    @include mb(32px, 24px);
+  }
+
+  .txt {
+    @include fs(16px, 14px);
+    font-weight: 500;
+    text-align: center;
+
+    &:nth-of-type(1) {
+      @include mb(32px, 24px);
+    }
+  }
+}
+
 .meritArea {
-  @include pb(64px);
+  @include pt(102px, 80px, 64px);
+}
+
+.recommendArea {
+  text-align: center;
+  @include p(80px 0, 80px 0, 48px 0);
+
+  .ttl {
+    @include fs(24px, 20px);
+    font-weight: 900;
+    color: $b8;
+    @include mb(40px, 24px);
+  }
+
+  .imgBox {
+    width: 100%;
+
+    img {
+      margin: auto;
+    }
+  }
 }
 
 .worriesArea {

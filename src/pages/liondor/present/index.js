@@ -48,21 +48,27 @@ const Present = ({posts}) => {
   return (
     <section className="cont1">
       <PageTitle title="PRESENT" ivy />
-      <Container>
-        <article className={styles.section}>
-          <div className={styles.flex}>
-            <ArticleColumn sort={sort1} present />
-            <Sidebar posts={posts} />
-          </div>
-        </article>
-        {posts.page_max > 0 ?
-          <div className="pagerBox">
-            {current === 1 ? '' : <button className="pagerBtn pagerPrev" onClick={onClickPrev}></button>}
-            <p className="pagerCurrent en">{current}/{posts.page_max}</p>
-            {posts.page_max === current ? '' : <button className="pagerBtn pagerNext" onClick={onClickNext}></button>}
-          </div>
-        : null}
-      </Container>
+      {sort1.length !== 0 ?
+        <Container>
+          <article className={styles.section}>
+            <div className={styles.flex}>
+              <ArticleColumn sort={sort1} present />
+              {posts.sidebars.length !== 0 ?
+                <Sidebar posts={posts} />
+              : null}
+            </div>
+          </article>
+          {posts.page_max > 0 ?
+            <div className="pagerBox">
+              {current === 1 ? '' : <button className="pagerBtn pagerPrev" onClick={onClickPrev}></button>}
+              <p className="pagerCurrent en">{current}/{posts.page_max}</p>
+              {posts.page_max === current ? '' : <button className="pagerBtn pagerNext" onClick={onClickNext}></button>}
+            </div>
+          : null}
+        </Container>
+        :
+        <p className={`${styles.noneLength} ivy`}>PRESENTがありません</p>
+      }
     </section>
   );
 }

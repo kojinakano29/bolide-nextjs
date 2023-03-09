@@ -17,6 +17,8 @@ const BjcAdThanks = () => {
         pathname: "/ad"
       })
     }
+
+    sessionStorage.removeItem('ad')
   }, [])
 
   return (

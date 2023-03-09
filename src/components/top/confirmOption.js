@@ -27,11 +27,11 @@ const ConfirmOption = ({user}) => {
     setDisabled(true)
 
     if (data.option === "1000") {
-      router.push(`/payment/${user?.id}?plan=option1000`)
+      router.push(`/payment/${user?.id}?plan=option1000&type=subscribe`)
     } else if (data.option === "500") {
-      router.push(`/payment/${user?.id}?plan=option500`)
+      router.push(`/payment/${user?.id}?plan=option500&type=subscribe`)
     } else if (data.option === "100") {
-      router.push(`/payment/${user?.id}?plan=option100`)
+      router.push(`/payment/${user?.id}?plan=option100&type=subscribe`)
     }
 
     setDisabled(false)

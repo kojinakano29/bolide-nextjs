@@ -497,7 +497,7 @@ const ShopDetailArea = ({data, user}) => {
               </div>
             </form>
           </div>
-          <Social socials={socials} />
+          <Social socials={socials} salon={data.salon?.[0]} />
         </div>
       </div>
     </>

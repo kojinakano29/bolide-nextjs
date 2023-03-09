@@ -15,3 +15,10 @@
   @include flex();
   position: relative;
 }
+
+.noneLength {
+  @include fs(16px, 14px);
+  font-weight: 500;
+  text-align: center;
+  @include mt(40px, 32px);
+}

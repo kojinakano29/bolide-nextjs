@@ -98,7 +98,7 @@ const Header = () => {
         <li>
           <Link href="/corapura/influencer/matter">
             <a onClick={handleClickHum}>
-              <p className={styles.jp}>インフルエンサー案件一覧</p>
+              <p className={styles.jp}>インフルエンサー/ユーザー案件一覧</p>
               <p className={`en ${styles.en}`}>Influencer Project List</p>
             </a>
           </Link>
@@ -143,6 +143,16 @@ const Header = () => {
             </a>
           </Link>
         </li>
+        {user?.account_type === 3 ?
+          <li>
+            <Link href="/corapura/admin/control">
+              <a onClick={handleClickHum}>
+                <p className={styles.jp}>管理者</p>
+                <p className={`en ${styles.en}`}>Administrator</p>
+              </a>
+            </Link>
+          </li>
+        : null}
       </ul>
     </header>
   );
