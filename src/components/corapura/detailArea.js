@@ -8,17 +8,8 @@ const DetailArea = ({influencer = false, profile, userInfo}) => {
   return (
     <article className={styles.detailBox}>
       <CompanyContext.Provider value={{profile, userInfo}}>
-        {influencer ?
-          <>
-            <DetailAreaLeft influencer />
-            <DetailAreaRight influencer />
-          </>
-        :
-          <>
-            <DetailAreaLeft />
-            <DetailAreaRight />
-          </>
-        }
+        <DetailAreaLeft influencer={influencer} />
+        <DetailAreaRight influencer={influencer} />
       </CompanyContext.Provider>
     </article>
   );

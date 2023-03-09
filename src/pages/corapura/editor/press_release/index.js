@@ -92,9 +92,10 @@ const AdminPressReleaseList = () => {
                       <img src={pr.thumbs ? `${process.env.NEXT_PUBLIC_BACKEND_URL}/storage/${pr.thumbs}` : dummy.src} alt="" />
                     </a>
                   </Link>
-                  {pr.state === 0 ?
-                    <p className={styles.stateIcon}>下書き</p>
-                  : null}
+                    <p className={styles.stateIcon}>
+                      {pr.state === 0 ? "下書き" : null}
+                      {pr.state === 1 ? "公開" : null}
+                    </p>
                   <p className={styles.ttl}>{pr.title}</p>
                   <div className={styles.btnFlex}>
                     <Link href={`/corapura/editor/press_release/${pr.id}`}>

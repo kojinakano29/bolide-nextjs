@@ -619,14 +619,16 @@ $breakpoints: (
 
 @mixin companyNicename($pc:0, $tab:$pc, $sp:$tab) {
   @include flex(center, left);
+  flex-wrap: nowrap;
   @include gap(10px);
   @include fs($pc, $tab, $sp);
   font-weight: bold;
   color: $g1;
+  white-space: pre-wrap;
 
   .logoBox {
-    width: 24px;
-    height: 24px;
+    @include width(40px, 32px);
+    @include height(40px, 32px);
     border-radius: 50%;
     overflow: hidden;
     box-shadow: 0 3px 6px rgba(0, 0, 0, .16);

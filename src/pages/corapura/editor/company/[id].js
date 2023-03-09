@@ -5,7 +5,7 @@ import { useAuth } from '@/hooks/auth';
 import { createContext, useCallback, useEffect, useState } from 'react';
 import { useForm } from 'react-hook-form';
 import Container from '@/components/corapura/Layout/container';
-import { CreateCompanyForm, EditCompanyForm, Loader } from '@/components/corapura';
+import { CreateCompanyForm, EditCompanyForm, GuidePopup, Loader } from '@/components/corapura';
 import axios from '@/lib/axios';
 import { zips } from '@/lib/corapura/constants';
 
@@ -23,7 +23,8 @@ export const getServerSideProps = async ({params}) => {
 }
 
 const EditCompany = ({posts}) => {
-  // console.log(posts)
+  // console.log(posts)]
+
   const csrf = () => axios.get('/sanctum/csrf-cookie')
 
   const profile = posts.c_profile
@@ -434,6 +435,7 @@ const EditCompany = ({posts}) => {
                     <div className={styles.iconBox}>
                       {previewIcon ? <img src={previewIcon} alt="" /> : null}
                     </div>
+                    <GuidePopup txt={`アイコンを登録してみましょう♪\n\n企業様であれば、オフィス外観やオフィス内風景、会社ロゴ(マーク)、代表者様の素敵なお写真など…\n御社を表すトレードマークのようなイメージをここに登録してみましょう。\n\nユーザー様であれば、ご自身の宣材写真やブランドロゴ、好きなもの、趣味に関するもの、景色など…\nご自身を象徴する素敵な一枚をここに登録してみましょう。\n\n※推奨画像サイズ：\n【ユーザー様】小アイコン80×80、アイキャッチ374×374\n【企業様】小アイコン80×80、アイキャッチ496×496`} />
                     <label className={`hoverEffect ${styles.fileBtn}`}>
                       ファイルから画像を選択
                       <span>アップロード</span>
@@ -660,7 +662,7 @@ const EditCompany = ({posts}) => {
             </div>
             <div className={styles.editorBox}>
               <div className={styles.ttlFlex}>
-                <h4 className={styles.ttl2}>ビジネスインフォメーション</h4>
+                <h4 className={styles.ttl2}>ニュース/イベント</h4>
                 <button
                   type="button"
                   className={`${styles.btn} hoverEffect`}
@@ -718,7 +720,7 @@ const EditCompany = ({posts}) => {
             </div>
             <div className={styles.editorBox}>
               <div className={styles.ttlFlex}>
-                <h4 className={styles.ttl2}>プレジデント</h4>
+                <h4 className={styles.ttl2}>プレジデント/リーダー</h4>
                 {presidents.length === 0 ?
                   <button
                     type="button"

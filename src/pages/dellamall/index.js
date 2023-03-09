@@ -25,7 +25,8 @@ export const getServerSideProps = async () => {
 }
 
 const Home = ({posts}) => {
-  // console.log(posts)
+  console.log(posts)
+
   const csrf = () => axios.get('/sanctum/csrf-cookie')
 
   /* 二度押し監視 */
@@ -101,30 +102,46 @@ const Home = ({posts}) => {
       </section>
 
       <section className={styles.popular}>
-        <Container small>
+        <Container>
           <h2 className="ttl1">人気のストア</h2>
         </Container>
         <div className={styles.popularWrap}>
-          <StoreData.Provider value={{popular}}>
-            <PopularStore />
-          </StoreData.Provider>
+          {popular.length !== 0 ?
+            <>
+              <StoreData.Provider value={{popular}}>
+                <PopularStore />
+              </StoreData.Provider>
+              <Container>
+                <Btn01 fa={faTrophy} txt="ストア一覧" link="/dellamall/shop" right />
+              </Container>
+            </>
+            :
+            <Container>
+              <p className={styles.noneLength}>人気のストアがありません</p>
+            </Container>
+          }
         </div>
-        <Container>
-          <Btn01 fa={faTrophy} txt="ストア一覧" link="/dellamall/shop" right />
-        </Container>
       </section>
 
       <section className={styles.pickup}>
         <Container>
           <h2 className="ttl1">PICKUP</h2>
-          <MasonryGridComponent item={pickup} none />
+          {pickup.length !== 0 ?
+            <MasonryGridComponent item={pickup} none />
+            :
+            <p className={styles.noneLength}>PICKUPがありません</p>
+          }
         </Container>
       </section>
 
       <section className={styles.storeList}>
         <Container>
           <h2 className="ttl1">ストア一覧</h2>
-          <MasonryGridComponent item={pics} />
+          {pics?.length !== 0 ?
+            <MasonryGridComponent item={pics} />
+            :
+            <p className={styles.noneLength}>ストア一覧がありません</p>
+          }
           {!data ? <Loader /> : null}
           {processing.current ? <Loader /> : null}
           {data && !isReachingEnd && !processing.current ?

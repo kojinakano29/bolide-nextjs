@@ -201,7 +201,7 @@ const MatterList = ({posts, influencer = false}) => {
   return (
     <section className="cont1">
       <Container small>
-        <h2 className="ttl1">{influencer ? "インフルエンサー" : "企業"}案件一覧</h2>
+        <h2 className="ttl1">{influencer ? "インフルエンサー/ユーザー" : "企業"}案件一覧</h2>
         <form onSubmit={handleSubmit(onSortForm)}>
           <div className={styles.searchBox}>
             <input

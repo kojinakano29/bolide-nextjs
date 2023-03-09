@@ -33,11 +33,11 @@ const InputPlan = ({planInfo, user, plans}) => {
       </div>
       <form onSubmit={handleSubmit(onSubmit)}>
         <article className={`${styles.formContent} ${styles.planChangeForm}`}>
-          {planInfo?.stripe_price === plans.plan_corporate ?
+          {planInfo?.stripe_price === plans.plan_intrust ?
             <dl>
               <dt>会費のみプラン</dt>
               <dd className={styles.courseArea}>
-                {parseInt(user?.coupon) === parseInt(1) ?
+                {user?.coupon === null ?
                   <div className={styles.courseBtn}>
                     <input id="course1" className={styles.changePlanInput} type="checkbox" value="企業・団体" {...register("course", {required: true})} />
                     <label htmlFor="course1">
@@ -50,7 +50,7 @@ const InputPlan = ({planInfo, user, plans}) => {
                     </label>
                   </div>
                 : null}
-                {parseInt(user?.coupon) === parseInt(2) ?
+                {parseInt(user?.coupon) === parseInt(1) ?
                 <div className={styles.courseBtn}>
                   <input id="course2" className={styles.changePlanInput} type="checkbox" value="フリーランス・専門家・個人事業主・一般ユーザー(プレミアム)" {...register("course", {required: true})} />
                   <label htmlFor="course2">
@@ -67,7 +67,7 @@ const InputPlan = ({planInfo, user, plans}) => {
                   </label>
                 </div>
                 : null}
-                {parseInt(user?.coupon) === parseInt(3) ?
+                {parseInt(user?.coupon) === parseInt(2) ?
                 <div className={styles.courseBtn}>
                   <input id="course3" className={styles.changePlanInput} type="checkbox" value="メディア・地方自治体" {...register("course", {required: true})} />
                   <label htmlFor="course3">
@@ -87,11 +87,11 @@ const InputPlan = ({planInfo, user, plans}) => {
               </dd>
             </dl>
           : null}
-          {planInfo?.stripe_price === plans.plan_intrust ?
+          {planInfo?.stripe_price === plans.plan_corporate ?
             <dl>
               <dt>★BJおまかせプラン（※会費込み）</dt>
               <dd className={styles.courseArea}>
-                {parseInt(user?.coupon) === parseInt(1) ?
+                {user?.coupon === null ?
                 <div className={styles.courseBtn}>
                   <input id="course1" className={styles.changePlanInput} type="checkbox" value="★BJおまかせプラン：企業・団体" {...register("course", {required: true})} />
                   <label htmlFor="course1">
@@ -104,7 +104,7 @@ const InputPlan = ({planInfo, user, plans}) => {
                   </label>
                 </div>
                 : null}
-                {parseInt(user?.coupon) === parseInt(2) ?
+                {parseInt(user?.coupon) === parseInt(1) ?
                 <div className={styles.courseBtn}>
                   <input id="course2" className={styles.changePlanInput} type="checkbox" value="★BJおまかせプラン：フリーランス・専門家・個人事業主・一般ユーザー(プレミアム)" {...register("course", {required: true})} />
                   <label htmlFor="course2">
@@ -121,7 +121,7 @@ const InputPlan = ({planInfo, user, plans}) => {
                   </label>
                 </div>
                 : null}
-                {parseInt(user?.coupon) === parseInt(3) ?
+                {parseInt(user?.coupon) === parseInt(2) ?
                 <div className={styles.courseBtn}>
                   <input id="course3" className={styles.changePlanInput} type="checkbox" value="★BJおまかせプラン：メディア・地方自治体" {...register("course", {required: true})} />
                   <label htmlFor="course3">

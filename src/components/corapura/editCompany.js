@@ -374,9 +374,9 @@ const EditCompanyForm = () => {
         <div className={styles.popupBox} onClick={(e) => e.stopPropagation()}>
           <h4 className={styles.midashi}>
             {type === "sns" ? "SNSリンク先" : null}
-            {type === "business_information" ? "ビジネスインフォメーション" : null}
+            {type === "business_information" ? "ニュース/イベント" : null}
             {type === "office" ? "事務所・店舗" : null}
-            {type === "president" ? "プレジデント" : null}
+            {type === "president" ? "プレジデント/リーダー" : null}
             {type === "item" ? "NFT/製品・商品・特許・技術" : null}
             {type === "sust" ? "SDGs" : null}
             {type === "card" ? "名刺" : null}
@@ -419,7 +419,7 @@ const EditCompanyForm = () => {
               : null}
               {/* SNS */}
 
-              {/* ビジネスインフォメーション編集 */}
+              {/* ニュース/イベント編集 */}
               {type === "business_information" ?
                 <form onSubmit={handleSubmit(onSubmitBusinessInformation)}>
                   <dl>
@@ -452,7 +452,7 @@ const EditCompanyForm = () => {
                   <button className={`${styles.btn} hoverEffect`}>編集</button>
                 </form>
               : null}
-              {/* ビジネスインフォメーション編集 */}
+              {/* ニュース/イベント編集 */}
 
               {/* 事務所・店舗編集 */}
               {type === "office" ?
@@ -503,7 +503,7 @@ const EditCompanyForm = () => {
               : null}
               {/* 事務所・店舗編集 */}
 
-              {/* プレジデント編集 */}
+              {/* プレジデント/リーダー編集 */}
               {type === "president" ?
                 <form onSubmit={handleSubmit(onSubmitPresident)}>
                   <dl>
@@ -557,7 +557,7 @@ const EditCompanyForm = () => {
                   <button className={`${styles.btn} hoverEffect`}>編集</button>
                 </form>
               : null}
-              {/* プレジデント編集 */}
+              {/* プレジデント/リーダー編集 */}
 
               {/* NFT/製品・商品・特許・技術編集 */}
               {type === "item" ?
@@ -670,6 +670,7 @@ const EditCompanyForm = () => {
                       <div className={styles.imgBox}>
                         {preview ? <img src={preview} alt="" /> : <div className={styles.imgNone}></div>}
                       </div>
+                      <p className={styles.reco_size}>推奨画像サイズ：352×208</p>
                       <input
                         type="file"
                         id="cardThumbs"
@@ -721,6 +722,7 @@ const EditCompanyForm = () => {
                       <div className={styles.imgBox}>
                         {preview ? <img src={preview} alt="" /> : <div className={styles.imgNone}></div>}
                       </div>
+                      <p className={styles.reco_size}>推奨画像サイズ：352×198</p>
                       <input
                         type="file"
                         id="couponThumbs"
@@ -772,6 +774,7 @@ const EditCompanyForm = () => {
                       <div className={styles.imgBox}>
                         {preview ? <img src={preview} alt="" /> : <div className={styles.imgNone}></div>}
                       </div>
+                      <p className={styles.reco_size}>推奨画像サイズ：198×198</p>
                       <input
                         type="file"
                         id="likeThumbs"

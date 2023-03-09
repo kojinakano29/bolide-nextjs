@@ -2,7 +2,7 @@ import styles from '@/styles/corapura/components/editorMyPage.module.scss'
 import PageLayoutCorapura from "@/components/Layouts/pageLayoutCorapura";
 import Container from '@/components/corapura/Layout/container';
 import { useAuth } from '@/hooks/auth';
-import { Follow, Loader } from '@/components/corapura';
+import { Btn, Follow, Loader } from '@/components/corapura';
 import Link from 'next/link';
 import icon1 from '@/images/corapura/common/linkIcon1.svg'
 import icon2 from '@/images/corapura/common/linkIcon2.svg'
@@ -17,8 +17,8 @@ const EditorMyPage = () => {
   const csrf = () => axios.get('/sanctum/csrf-cookie')
 
   const { user, logout } = useAuth({middleware: 'auth', type: 'corapura'})
-  const [nowFollower, setNowFollower] = useState("")
-  const [nowFollowing, setNowFollowing] = useState("")
+  const [nowFollower, setNowFollower] = useState("0")
+  const [nowFollowing, setNowFollowing] = useState("0")
   const [open, setOpen] = useState(false)
   const [followType, setFollowType] = useState("")
   const [userInfo, setUserInfo] = useState({})
@@ -78,7 +78,7 @@ const EditorMyPage = () => {
                 onClick={() => handleClickOpen("follower")}
               >フォロワー{nowFollower}人</button>
             </div>
-            <article className={styles.navFlex}>
+            <article className={`${styles.navFlex} ${user?.account_type === 0 ? styles.column2 : null}`}>
               {user?.c_profile_id ?
                 <>
                   <Link href={`/corapura/editor/${user?.account_type > 0 ? "company" : "user"}/${user?.c_profile_id}`}>
@@ -111,32 +111,36 @@ const EditorMyPage = () => {
                       </div>
                     </a>
                   </Link>
-                  <Link href={`/corapura/editor/press_release`}>
-                    <a className={`${styles.linkBox} ${styles.blue}`}>
-                      <div className={styles.block}>
-                        <p>
-                          プレスリリース
-                          <br />一覧・作成
-                        </p>
-                      </div>
-                      <div className={styles.iconBox}>
-                        <img src={icon4.src} alt="" />
-                      </div>
-                    </a>
-                  </Link>
-                  <Link href={`/corapura/editor/salon`}>
-                    <a className={`${styles.linkBox} ${styles.pink}`}>
-                      <div className={styles.block}>
-                        <p>
-                          オンラインサロン
-                          <br/>一覧・作成
-                        </p>
-                      </div>
-                      <div className={styles.iconBox}>
-                        <img src={icon5.src} alt="" />
-                      </div>
-                    </a>
-                  </Link>
+                  {user?.account_type !== 0 ?
+                    <>
+                      <Link href={`/corapura/editor/press_release`}>
+                        <a className={`${styles.linkBox} ${styles.blue}`}>
+                          <div className={styles.block}>
+                            <p>
+                              プレスリリース
+                              <br />一覧・作成
+                            </p>
+                          </div>
+                          <div className={styles.iconBox}>
+                            <img src={icon4.src} alt="" />
+                          </div>
+                        </a>
+                      </Link>
+                      <Link href={`/corapura/editor/salon`}>
+                        <a className={`${styles.linkBox} ${styles.pink}`}>
+                          <div className={styles.block}>
+                            <p>
+                              オンラインサロン
+                              <br/>一覧・作成
+                            </p>
+                          </div>
+                          <div className={styles.iconBox}>
+                            <img src={icon5.src} alt="" />
+                          </div>
+                        </a>
+                      </Link>
+                    </>
+                  : null}
                   <Link href={`/corapura/editor/comment/${user?.id}`}>
                     <a className={`${styles.linkBox} ${styles.blue2}`}>
                       <div className={styles.block}>
@@ -161,6 +165,12 @@ const EditorMyPage = () => {
               </Link>
               }
             </article>
+            {user?.account_type === 0 ?
+              <div className={styles.userBtnFlex}>
+                <Btn txt="プレスリリース記事を見る" link="/corapura/press_release" />
+                <Btn txt="オンラインサロンを見る" link="/corapura/salon" />
+              </div>
+            : null}
             <div className={styles.privacyArea}>
               <Link href="/corapura/terms">
                 <a>利用規約</a>

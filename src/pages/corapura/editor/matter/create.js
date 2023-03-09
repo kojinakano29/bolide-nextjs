@@ -3,7 +3,7 @@ import PageLayoutCorapura from "@/components/Layouts/pageLayoutCorapura";
 import Container from '@/components/corapura/Layout/container';
 import { useRouter } from 'next/router';
 import { useAuth } from '@/hooks/auth';
-import { useCallback, useState } from 'react';
+import { useCallback, useEffect, useState } from 'react';
 import { useForm } from 'react-hook-form';
 import axios from '@/lib/axios';
 import { GuidePopup, Loader, PostEditor } from '@/components/corapura';
@@ -28,6 +28,7 @@ const CreateMatter = ({posts}) => {
   const { user } = useAuth({middleware: 'auth', type: 'corapura'})
   const [disabled, setDisabled] = useState(false)
   const [selector, setSelector] = useState(parseInt(1))
+  const [required, setRequired] = useState(true)
   const { register, handleSubmit, reset, formState: { errors } } = useForm({
     mode: "onChange",
   })
@@ -80,6 +81,9 @@ const CreateMatter = ({posts}) => {
       suporter: data?.suporter ? data.suporter : null,
       amount_of_suport: data?.amount_of_suport ? data.amount_of_suport : null,
       medium: data?.medium ? data.medium : null,
+      brand: data?.brand ? data.brand : null,
+      size: data?.size ? data.size : null,
+      item_state: data?.item_state ? data.item_state : null,
       content: editorContent,
       thumbs: data.thumbs[0],
       tag: data.tag,
@@ -108,8 +112,19 @@ const CreateMatter = ({posts}) => {
       suporter: '',
       amount_of_suport: '',
       medium: '',
+      brand: '',
+      size: '',
+      item_state: '',
     })
   }
+
+  useEffect(() => {
+    if (selector === 4 || selector === 5) {
+      setRequired(false)
+    } else {
+      setRequired(true)
+    }
+  }, [selector])
 
   return (
     <>
@@ -180,16 +195,17 @@ const CreateMatter = ({posts}) => {
 
               <article className={styles.selectorArea}>
                 {
-                  selector === 1 ||
-                  selector === 10 ||
-                  selector === 12 ||
-                  selector === 15 ?
+                  selector === 2 ||
+                  selector === 11 ||
+                  selector === 13 ||
+                  selector === 15 ||
+                  selector === 18 ?
                   <dl>
-                    <dt>実施日</dt>
+                    <dt>掲載日</dt>
                     <dd>
                       <input
                         type="date"
-                        {...register("date", {required: true})}
+                        {...register("date", {required: required})}
                       />
                       {errors.date && <p className={styles.error}>必須項目を入力してください</p>}
                     </dd>
@@ -197,13 +213,13 @@ const CreateMatter = ({posts}) => {
                   : null
                 }
                 {
-                  selector !== 18 ?
+                  selector !== 19 ?
                   <dl>
                     <dt>募集期間</dt>
                     <dd>
                       <input
                         type="date"
-                        {...register("limite_date", {required: true})}
+                        {...register("limite_date", {required: required})}
                       />
                       {errors.limite_date && <p className={styles.error}>必須項目を入力してください</p>}
                     </dd>
@@ -211,8 +227,8 @@ const CreateMatter = ({posts}) => {
                   : null
                 }
                 {
-                  selector === 1 ||
-                  selector === 10 ||
+                  selector === 2 ||
+                  selector === 11 ||
                   selector === 15 ?
                   <dl>
                     <dt>
@@ -222,7 +238,7 @@ const CreateMatter = ({posts}) => {
                       <input
                         type="text"
                         id="reward"
-                        {...register("reward", {required: true})}
+                        {...register("reward", {required: required})}
                       />
                       {errors.reward && <p className={styles.error}>必須項目を入力してください</p>}
                     </dd>
@@ -231,15 +247,16 @@ const CreateMatter = ({posts}) => {
                 }
                 {
                   selector === 1 ||
-                  selector === 6 ||
+                  selector === 2 ||
                   selector === 7 ||
                   selector === 8 ||
-                  selector === 10 ||
-                  selector === 12 ||
+                  selector === 9 ||
+                  selector === 11 ||
                   selector === 13 ||
                   selector === 14 ||
                   selector === 15 ||
-                  selector === 16 ?
+                  selector === 16 ||
+                  selector === 18 ?
                   <dl>
                     <dt>
                       <label htmlFor="number_of_people">募集人数</label>
@@ -248,7 +265,7 @@ const CreateMatter = ({posts}) => {
                       <input
                         type="text"
                         id="number_of_people"
-                        {...register("number_of_people", {required: true})}
+                        {...register("number_of_people", {required: required})}
                       />
                       {errors.number_of_people && <p className={styles.error}>必須項目を入力してください</p>}
                     </dd>
@@ -256,21 +273,21 @@ const CreateMatter = ({posts}) => {
                   : null
                 }
                 {
-                  selector === 2 ||
                   selector === 3 ||
                   selector === 4 ||
-                  selector === 7 ||
-                  selector === 11 ||
-                  selector === 12 ?
+                  selector === 5 ||
+                  selector === 8 ||
+                  selector === 12 ||
+                  selector === 13 ?
                   <dl>
                     <dt>
-                      <label htmlFor="hope_reward">希望謝礼</label>
+                      <label htmlFor="hope_reward">希望金額</label>
                     </dt>
                     <dd>
                       <input
                         type="text"
                         id="hope_reward"
-                        {...register("hope_reward", {required: true})}
+                        {...register("hope_reward", {required: required})}
                       />
                       {errors.hope_reward && <p className={styles.error}>必須項目を入力してください</p>}
                     </dd>
@@ -278,11 +295,11 @@ const CreateMatter = ({posts}) => {
                   : null
                 }
                 {
-                  selector === 2 ||
                   selector === 3 ||
                   selector === 4 ||
                   selector === 5 ||
-                  selector === 11 ?
+                  selector === 6 ||
+                  selector === 12 ?
                   <dl>
                     <dt>
                       <label htmlFor="recruitment_quota">募集可能枠</label>
@@ -291,7 +308,7 @@ const CreateMatter = ({posts}) => {
                       <input
                         type="text"
                         id="recruitment_quota"
-                        {...register("recruitment_quota", {required: true})}
+                        {...register("recruitment_quota", {required: required})}
                       />
                       {errors.recruitment_quota && <p className={styles.error}>必須項目を入力してください</p>}
                     </dd>
@@ -299,7 +316,7 @@ const CreateMatter = ({posts}) => {
                   : null
                 }
                 {
-                  selector === 9 ?
+                  selector === 10 ?
                   <dl>
                     <dt>
                       <label htmlFor="speciality">専門分野</label>
@@ -308,7 +325,7 @@ const CreateMatter = ({posts}) => {
                       <input
                         type="text"
                         id="speciality"
-                        {...register("speciality", {required: true})}
+                        {...register("speciality", {required: required})}
                       />
                       {errors.speciality && <p className={styles.error}>必須項目を入力してください</p>}
                     </dd>
@@ -319,13 +336,13 @@ const CreateMatter = ({posts}) => {
                   selector === 17 ?
                   <dl>
                     <dt>
-                      <label htmlFor="suporter">支援者数</label>
+                      <label htmlFor="suporter">目標支援者数</label>
                     </dt>
                     <dd>
                       <input
                         type="text"
                         id="suporter"
-                        {...register("suporter", {required: true})}
+                        {...register("suporter", {required: required})}
                       />
                       {errors.suporter && <p className={styles.error}>必須項目を入力してください</p>}
                     </dd>
@@ -336,13 +353,13 @@ const CreateMatter = ({posts}) => {
                   selector === 17 ?
                   <dl>
                     <dt>
-                      <label htmlFor="amount_of_suport">支援総額</label>
+                      <label htmlFor="amount_of_suport">目標支援総額</label>
                     </dt>
                     <dd>
                       <input
                         type="text"
                         id="amount_of_suport"
-                        {...register("amount_of_suport", {required: true})}
+                        {...register("amount_of_suport", {required: required})}
                       />
                       {errors.amount_of_suport && <p className={styles.error}>必須項目を入力してください</p>}
                     </dd>
@@ -350,7 +367,7 @@ const CreateMatter = ({posts}) => {
                   : null
                 }
                 {
-                  selector === 18 ?
+                  selector === 19 ?
                   <dl>
                     <dt>
                       <label htmlFor="medium">媒体</label>
@@ -359,9 +376,80 @@ const CreateMatter = ({posts}) => {
                       <input
                         type="text"
                         id="medium"
-                        {...register("medium", {required: true})}
+                        {...register("medium", {required: required})}
                       />
                       {errors.medium && <p className={styles.error}>必須項目を入力してください</p>}
+                    </dd>
+                  </dl>
+                  : null
+                }
+                {
+                  selector === 18 ?
+                  <dl>
+                    <dt>
+                      <label htmlFor="reward">参加費</label>
+                    </dt>
+                    <dd>
+                      <input
+                        type="text"
+                        id="reward"
+                        {...register("reward", {required: required})}
+                      />
+                      {errors.reward && <p className={styles.error}>必須項目を入力してください</p>}
+                    </dd>
+                  </dl>
+                  : null
+                }
+                {
+                  selector === 4 ||
+                  selector === 5 ?
+                  <dl>
+                    <dt>
+                      <label htmlFor="brand">ブランド/メーカー</label>
+                    </dt>
+                    <dd>
+                      <input
+                        type="text"
+                        id="brand"
+                        {...register("brand", {required: required})}
+                      />
+                      {errors.brand && <p className={styles.error}>必須項目を入力してください</p>}
+                    </dd>
+                  </dl>
+                  : null
+                }
+                {
+                  selector === 4 ||
+                  selector === 5 ?
+                  <dl>
+                    <dt>
+                      <label htmlFor="size">大きさ/サイズ</label>
+                    </dt>
+                    <dd>
+                      <input
+                        type="text"
+                        id="size"
+                        {...register("size", {required: required})}
+                      />
+                      {errors.size && <p className={styles.error}>必須項目を入力してください</p>}
+                    </dd>
+                  </dl>
+                  : null
+                }
+                {
+                  selector === 4 ||
+                  selector === 5 ?
+                  <dl>
+                    <dt>
+                      <label htmlFor="item_state">使用状況/状態</label>
+                    </dt>
+                    <dd>
+                      <input
+                        type="text"
+                        id="item_state"
+                        {...register("item_state", {required: required})}
+                      />
+                      {errors.item_state && <p className={styles.error}>必須項目を入力してください</p>}
                     </dd>
                   </dl>
                   : null
@@ -370,7 +458,10 @@ const CreateMatter = ({posts}) => {
 
               <article className={styles.editArea}>
                 <dl>
-                  <dt>本文</dt>
+                  <dt>
+                    本文
+                    <GuidePopup txt={`■記入ツール\nテキストの大きさや色の変更、画像の追加など、このなかで色々なツールが使用できます。\n\n■B\n選択したテキストを太くすることができます。何かを強調したい時に使ってみてください。\n\n■U(アンダーバー)\n選択したテキストの下に下線を引くことができます。\n\n■I\n選択したテキストが斜めに表示されます。英語やローマ字をかっこよく見せることができます。\n\n■A↕\nテキストのサイズを調整できます。\n\n■A(アンダーバー)\nテキストの色をかえられます。\n\n■A（■）\nテキストに背景色を引くことができます。\n\n■A三\n選択肢の中からテキストの種類を変更できます。\n\n■ペンのマーク\n選択したテキストにハイライトを付けることができます。\n\n■(‐)\nリンク設定ができます。\n例えば、詳しくは別のWEBページを見てほしい…という時にそのWEBページのURLを設置できます。リンクを設置したいテキストを選択して、そのまま（ー）のマークをクリック。\n別タブでの表示設定も可能です。\n\n■”\nブロックオートです。選択したテキストをまとまりあるかたちで表示させます。\n例えば案件の概要と条件をそれぞれ選択して、ブロックオートをクリックすることで見やすくブロック分けされて区切られます。\n\n■・、1ー\n箇条書き設定ができます。・で箇条書きもしくは、先頭に数字を付けた箇条書きも可能です。\n\n■＝\nテキストの配置を変更できます。\n左寄せ、中央揃え、右寄せから選べます。\n\n■ソース\nコードの入力が可能です。\n※対応していないコードやコードが間違っている場合には、反映がされず入力したコードの内容は削除されますのでご注意ください。\n\n■画像マーク\n画像の挿入が可能です。\nPC内やスマホ内カメラホルダに入ってる画像のアップロードが可能です。\n\n■表\n表の作成が可能です。\n\n■ビデオマーク\nYouTube動画のURLを入力して、動画を表示させることができます。\n\n■←、→\n本文入力の状態を戻したり、進めたりできます。`} />
+                  </dt>
                   <dd>
                     <PostEditor
                       handleChange={(editorContent) => {

@@ -18,6 +18,8 @@
   @include modalBox;
   @include flex(center, center);
   background-color: rgba(0, 0, 0, 0.2);
+  overflow-y: scroll;
+  @include scrollHidden;
 
   .questionBox {
     @include width(720px, 720px, calc(100% - 16px * 2));

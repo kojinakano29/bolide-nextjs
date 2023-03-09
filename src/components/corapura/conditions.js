@@ -10,7 +10,10 @@ import {
   faGlobe,
   faPeopleRobbery,
   faCoins,
-  faHashtag
+  faHashtag,
+  faBagShopping,
+  faRulerVertical,
+  faSignal,
 } from '@fortawesome/free-solid-svg-icons'
 
 const Conditions = ({data}) => {
@@ -20,7 +23,7 @@ const Conditions = ({data}) => {
         <div className={styles.cont}>
           <div className={styles.cat}>
             <FontAwesomeIcon icon={faCalendarCheck} />
-            実施日
+            掲載日
           </div>
           <p className={styles.txt}>{data.date}</p>
         </div>
@@ -31,16 +34,25 @@ const Conditions = ({data}) => {
             <FontAwesomeIcon icon={faClock} />
             募集期間
           </div>
-          <p className={styles.txt}>{data.limite_date}</p>
+          <p className={styles.txt}>{data.created_at.substring(0, 10).replace(/-/g, '.')}~<br className="tab" />{data.limite_date}</p>
         </div>
       : null}
-      {data.reward ?
+      {data.reward && data.c_cat.id !== 18 ?
         <div className={styles.cont}>
           <div className={styles.cat}>
             <FontAwesomeIcon icon={faMoneyCheckDollar} />
             謝礼
           </div>
-          <p className={styles.txt}>{data.reward}</p>
+          <p className={styles.txt}>{data.reward === 0 ? "詳細を確認ください" : data.reward}</p>
+        </div>
+      : null}
+      {data.reward === 0 && data.c_cat.id !== 18 ?
+        <div className={styles.cont}>
+          <div className={styles.cat}>
+            <FontAwesomeIcon icon={faMoneyCheckDollar} />
+            謝礼
+          </div>
+          <p className={styles.txt}>詳細を確認ください</p>
         </div>
       : null}
       {data.number_of_people ?
@@ -56,7 +68,7 @@ const Conditions = ({data}) => {
         <div className={styles.cont}>
           <div className={styles.cat}>
             <FontAwesomeIcon icon={faSackDollar} />
-            希望謝礼
+            希望金額
           </div>
           <p className={styles.txt}>{data.hope_reward}</p>
         </div>
@@ -83,7 +95,7 @@ const Conditions = ({data}) => {
         <div className={styles.cont}>
           <div className={styles.cat}>
             <FontAwesomeIcon icon={faPeopleRobbery} />
-            支援者数
+            目標支援者数
           </div>
           <p className={styles.txt}>{data.suporter}</p>
         </div>
@@ -92,7 +104,7 @@ const Conditions = ({data}) => {
         <div className={styles.cont}>
           <div className={styles.cat}>
             <FontAwesomeIcon icon={faCoins} />
-            支援総額
+            目標支援総額
           </div>
           <p className={styles.txt}>{data.amount_of_suport}</p>
         </div>
@@ -104,6 +116,51 @@ const Conditions = ({data}) => {
             媒体
           </div>
           <p className={styles.txt}>{data.medium}</p>
+        </div>
+      : null}
+      {data.reward && data.c_cat.id === 18 ?
+        <div className={styles.cont}>
+          <div className={styles.cat}>
+            <FontAwesomeIcon icon={faMoneyCheckDollar} />
+            参加費
+          </div>
+          <p className={styles.txt}>{data.reward === 0 ? "詳細を確認ください" : data.reward}</p>
+        </div>
+      : null}
+      {data.reward === 0 && data.c_cat.id === 18 ?
+        <div className={styles.cont}>
+          <div className={styles.cat}>
+            <FontAwesomeIcon icon={faMoneyCheckDollar} />
+            参加費
+          </div>
+          <p className={styles.txt}>詳細を確認ください</p>
+        </div>
+      : null}
+      {data.brand ?
+        <div className={styles.cont}>
+          <div className={styles.cat}>
+            <FontAwesomeIcon icon={faBagShopping} />
+            ブランド/メーカー
+          </div>
+          <p className={styles.txt}>{data.brand}</p>
+        </div>
+      : null}
+      {data.size ?
+        <div className={styles.cont}>
+          <div className={styles.cat}>
+            <FontAwesomeIcon icon={faRulerVertical} />
+            大きさ/サイズ
+          </div>
+          <p className={styles.txt}>{data.size}</p>
+        </div>
+      : null}
+      {data.item_state ?
+        <div className={styles.cont}>
+          <div className={styles.cat}>
+            <FontAwesomeIcon icon={faSignal} />
+            使用状況/状態
+          </div>
+          <p className={styles.txt}>{data.item_state}</p>
         </div>
       : null}
     </article>

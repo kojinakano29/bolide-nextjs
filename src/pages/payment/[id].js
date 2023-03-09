@@ -43,7 +43,7 @@ const Payment = ({posts}) => {
 
   const options = {
     appearance: {
-      theme: 'none',
+      theme: 'flat',
       rules: {}
     },
     clientSecret: posts.intent.client_secret,
@@ -66,10 +66,12 @@ const Payment = ({posts}) => {
 
       <section className={styles.formArea}>
         <Container small900>
-          <p className={styles.catch}>カード情報をご入力ください。</p>
-          <Elements stripe={stripePromise} options={options}>
-            <CheckoutForm user={user} />
-          </Elements>
+          <div className={styles.paymentArea}>
+            <p className={styles.catch}>カード情報をご入力ください。</p>
+            <Elements stripe={stripePromise} options={options}>
+              <CheckoutForm user={user} />
+            </Elements>
+          </div>
         </Container>
       </section>
     </>

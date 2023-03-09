@@ -5,17 +5,19 @@ import { useRouter } from "next/router";
 import { useEffect } from "react";
 import { Btn1 } from '@/components/top';
 
-const PlanChangeThanks = () => {
+const OptionChangeThanks = () => {
   const router = useRouter()
 
   useEffect(() => {
-    const planChange = sessionStorage.getItem('planChange')
+    const optionChange = sessionStorage.getItem('optionChange')
 
-    if (!planChange) {
+    if (!optionChange) {
       router.push({
-        pathname: "/mypage/plan"
+        pathname: "/mypage/option"
       })
     }
+
+    sessionStorage.removeItem('optionChange')
   }, [])
 
   return (
@@ -43,8 +45,8 @@ const PlanChangeThanks = () => {
   );
 }
 
-export default PlanChangeThanks;
+export default OptionChangeThanks;
 
-PlanChangeThanks.getLayout = function getLayout(page) {
+OptionChangeThanks.getLayout = function getLayout(page) {
   return <PageLayoutTop>{page}</PageLayoutTop>
 }

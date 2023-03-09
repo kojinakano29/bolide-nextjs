@@ -236,6 +236,7 @@ const EditUserForm = () => {
                       <div className={styles.imgBox}>
                         {preview ? <img src={preview} alt="" /> : <div className={styles.imgNone}></div>}
                       </div>
+                      <p className={styles.reco_size}>推奨画像サイズ：352×208</p>
                       <input
                         type="file"
                         id="cardThumbs"
@@ -287,6 +288,7 @@ const EditUserForm = () => {
                       <div className={styles.imgBox}>
                         {preview ? <img src={preview} alt="" /> : <div className={styles.imgNone}></div>}
                       </div>
+                      <p className={styles.reco_size}>推奨画像サイズ：198×198</p>
                       <input
                         type="file"
                         id="likeThumbs"

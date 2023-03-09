@@ -389,7 +389,7 @@ const EditOfficial = () => {
                 <form onSubmit={handleSubmit(onSubmitInstagram)}>
                   <dl>
                     <dt>
-                      <label htmlFor="instagramAccount">アカウント名</label>
+                      <label htmlFor="instagramAccount">ビジネスアカウントID</label>
                     </dt>
                     <dd>
                       <input
@@ -402,7 +402,7 @@ const EditOfficial = () => {
                   </dl>
                   <dl>
                     <dt>
-                      <label htmlFor="instagramUser">ユーザ名</label>
+                      <label htmlFor="instagramUser">ユーザー名</label>
                     </dt>
                     <dd>
                       <input
@@ -415,7 +415,7 @@ const EditOfficial = () => {
                   </dl>
                   <dl>
                     <dt>
-                      <label htmlFor="instagramToken">APIトークン</label>
+                      <label htmlFor="instagramToken">APIアクセストークン</label>
                     </dt>
                     <dd>
                       <input

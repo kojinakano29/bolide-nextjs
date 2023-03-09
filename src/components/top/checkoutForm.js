@@ -13,10 +13,8 @@ const CheckoutForm = ({user}) => {
   const [disabled, setDisabled] = useState(false)
   const [plan, setPlan] = useState("")
   const [name, setName] = useState("")
+  const [stripeRoute, setStripeRoute] = useState("")
   const { register, handleSubmit, formState: { errors } } = useForm({
-    defaultValues: {
-      coupon: "",
-    },
     mode: 'onChange',
     criteriaMode: "all",
   })
@@ -32,33 +30,70 @@ const CheckoutForm = ({user}) => {
       setName("intrust")
     } else if (router.query.plan === "option100") {
       setPlan(process.env.NEXT_PUBLIC_SUBSCRIPTION_FUND_100)
-      setName("option100")
+      setName("option")
     } else if (router.query.plan === "option500") {
       setPlan(process.env.NEXT_PUBLIC_SUBSCRIPTION_FUND_500)
-      setName("option500")
+      setName("option")
     } else if (router.query.plan === "option1000") {
       setPlan(process.env.NEXT_PUBLIC_SUBSCRIPTION_FUND_1000)
-      setName("option1000")
+      setName("option")
+    }
+
+    if (router.query.plan === "salon") {
+      setPlan(router.query.salon_plan)
+      setName(`salon${router.query.salon_id}`)
+    }
+
+    if (router.query.type === "subscribe") {
+      setStripeRoute(`/api/subscription/subscribe/${user?.id}`)
+    } else if (router.query.type === "plan_change") {
+      setStripeRoute(`/api/subscription/change_plan/${user?.id}`)
     }
   }
 
   useEffect(() => {
-    if (router) {
+    if (router && user) {
       onLoadCheckParameter()
     }
-  }, [router])
+  }, [user])
 
   const onSuccessStripe = async (pm, data) => {
     await csrf()
 
-    await axios.post(`/api/subscription/subscribe/${user?.id}`, {
+    await axios.post(stripeRoute, {
       payment_method: pm,
       db_name: name,
       plan: plan,
-      coupon: data.coupon,
+      coupon: data.coupon ? data.coupon : "",
     }).then((res) => {
       // console.log(res)
-      alert("サブスクリプションの登録が完了しました。")
+
+      if (router.query.plan === "salon") {
+        axios.post(`/api/corapura/salon_app/store`, {
+          user_id: user?.id,
+          c_salon_id: router.query.salon_id,
+        }).then((res) => {
+          // console.log(res)
+          alert("オンランサロンに入会しました")
+          router.push(`/corapura/salon/${router.query.salon_id}`)
+        }).catch(e => console.error(e))
+      }
+
+      if (router.query.plan === "corporate_plan") {
+        alert("サブスクリプションの登録が完了しました")
+        router.push("/mypage")
+      } else if (router.query.plan === "intrust_plan") {
+        alert("おまかせプランに登録完了しました")
+        router.push("/mypage")
+      } else if (
+        router.query.plan === "option100" ||
+        router.query.plan === "option500" ||
+        router.query.plan === "option1000"
+      ) {
+        sessionStorage.setItem('optionChange', true)
+        alert(`社会貢献活動に参加しました(￥${router.query.plan.substring(6)}/月)`)
+        router.push('/mypage/option/thanks')
+      }
     }).catch((e) => {
       console.error(e)
     })
@@ -89,19 +124,21 @@ const CheckoutForm = ({user}) => {
     <form onSubmit={handleSubmit(onSubmit)}>
       <article className={styles.formContent}>
         <PaymentElement />
-        <dl>
-          <dt>
-            <label htmlFor="coupon">クーポンコード</label>
-            <span className={styles.any}>任意</span>
-          </dt>
-          <dd>
-            <input
-              id="coupon"
-              type="text"
-              {...register("coupon")}
-            />
-          </dd>
-        </dl>
+        {router.query.plan === "corporate_plan" || router.query.plan === "intrust_plan" ?
+          <dl className={styles.paymentDl}>
+            <dt>
+              <label htmlFor="coupon">クーポンコード</label>
+              <span className={styles.any}>任意</span>
+            </dt>
+            <dd>
+              <input
+                id="coupon"
+                type="text"
+                {...register("coupon")}
+              />
+            </dd>
+          </dl>
+        : null}
         <Btn1 txt="確認する" submit disabled={disabled} />
       </article>
     </form>

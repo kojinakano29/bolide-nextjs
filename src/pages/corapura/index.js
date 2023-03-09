@@ -5,10 +5,6 @@ import mv_sp from '@/images/corapura/top/mv_sp.png'
 import mv_big from '@/images/corapura/top/mv_big.png'
 import { Btn, Btn2, CanDo, CardType1, CardType2, CompanyCard, Coupon, Info, Merit, NameCard, Release, SwiperType1, SwiperType2, User } from '@/components/corapura';
 import Container from '@/components/corapura/Layout/container';
-import ttl from '@/images/corapura/common/corapura.svg'
-import txt from '@/images/corapura/top/cont3_img.svg'
-import reco from '@/images/corapura/top/cont4_img.webp'
-import reco_sp from '@/images/corapura/top/cont4_img__sp.webp'
 import { SwiperSlide } from 'swiper/react';
 import dummy1 from '@/images/corapura/common/dummy1.svg'
 import Link from 'next/link';
@@ -67,44 +63,7 @@ const Corapura = ({posts}) => {
       <section className={styles.canDo}>
         <CanDo />
       </section>
-
-      <section className={styles.whatArea}>
-        <Container small900>
-          <h2 className={styles.ttl}>
-            <img src={ttl.src} alt="CORAPURA" />
-            <span>とは？</span>
-          </h2>
-          <div className={styles.imgBox}>
-            <img src={txt.src} alt="Collabolation + Plus" />
-          </div>
-          <p className={styles.txt}>
-            Collaboration+Plusで組み合わせ、
-            <br className="sp" />想いを込めて作った言葉。
-            <br />コラプラのプラットフォームの中で、
-            <br className="sp" />携わるすべての人がプラスに進みますように…
-          </p>
-          <p className={styles.txt}>
-            企業・フリーランス・専門家・個人事業主・インフルエンサー・個人ユーザー
-            <br className="pc" />・自治体・メディアと多種多様の繋がりが持てるプラットフォーム。
-            <br />ビジネスから個人的な事まで無料で案件登録ができ、自由に依頼・やり取りができます。
-            <br />コラプラを活用して＂価値あるつながり＂を見つけてみませんか？
-          </p>
-        </Container>
-      </section>
-
-      <section className={styles.recommendArea}>
-        <Container small>
-          <div className={styles.ttl}>＼ こんな人におすすめ！／</div>
-          <div className={styles.imgBox}>
-            <img className="pc" src={reco.src} alt="こんな人におすすめ" />
-            <img className="sp" src={reco_sp.src} alt="こんな人におすすめ" />
-          </div>
-        </Container>
-      </section>
-
-      <section className={styles.meritArea}>
-        <Merit />
-      </section>
+      <Btn txt="詳しくはこちら" link="/corapura/guide" />
 
       <section className={styles.matchArea}>
         <Container small>
@@ -113,25 +72,37 @@ const Corapura = ({posts}) => {
             テキストサンプルテキストサンプルテキストサンプルテキストサンプルテキストサンプル、
             <br/>テキストサンプルテキストサンプルテキストサンプルテキストサンプル。
           </p>
-          <SwiperType1 matters={matterLimit} />
-          <div className={styles.btnFlex}>
-            <Btn txt="企業案件一覧" link="/corapura/company/matter" />
-            <Btn txt="インフルエンサー案件一覧" link="/corapura/influencer/matter" />
-          </div>
+          {matterLimit.length !== 0 ?
+            <>
+              <SwiperType1 matters={matterLimit} />
+              <div className={styles.btnFlex}>
+                <Btn txt="企業案件一覧" link="/corapura/company/matter" />
+                <Btn txt="インフルエンサー/ユーザー案件一覧" link="/corapura/influencer/matter" />
+              </div>
+            </>
+            :
+            <p className={styles.noneLength}>ビジネスマッチングがありません</p>
+          }
         </Container>
       </section>
 
       <section className={styles.companyArea}>
         <Container small>
           <h2 className="ttl2">おすすめの企業</h2>
-          <SwiperType2 gap={32}>
-            {companies.map((company, index) => (
-              <SwiperSlide key={index}>
-                <CompanyCard data={company} />
-              </SwiperSlide>
-            ))}
-          </SwiperType2>
-          <Btn2 txt="企業一覧" link="/corapura/company" />
+          {companies.length !== 0 ?
+            <>
+              <SwiperType2 gap={32}>
+                {companies.map((company, index) => (
+                  <SwiperSlide key={index}>
+                    <CompanyCard data={company} />
+                  </SwiperSlide>
+                ))}
+              </SwiperType2>
+              <Btn2 txt="企業一覧" link="/corapura/company" />
+            </>
+            :
+            <p className={styles.noneLength}>おすすめの企業がありません</p>
+          }
         </Container>
       </section>
 
@@ -142,57 +113,73 @@ const Corapura = ({posts}) => {
             テキストサンプルテキストサンプルテキストサンプルテキストサンプルテキストサンプル、
             <br/>テキストサンプルテキストサンプルテキストサンプルテキストサンプル。
           </p>
-          <User data={users} />
+          {users.length !== 0 ?
+            <User data={users} />
+            :
+            <p className={styles.noneLength}>ユーザー/インフルエンサーマッチングがありません</p>
+          }
         </Container>
       </section>
 
       <section className={styles.releaseArea}>
         <Container small>
           <h2 className="ttl2">プレスリリース</h2>
-          <SwiperType2 gap={24}>
-            {releases.map((release, index) => (
-              <SwiperSlide key={index}>
-                <Release data={release} swiper />
-              </SwiperSlide>
-            ))}
-          </SwiperType2>
-          <Btn2 txt="プレスリリース一覧へ" link="/corapura/press_release" />
+          {releases.length !== 0 ?
+            <>
+              <SwiperType2 gap={24}>
+                {releases.map((release, index) => (
+                  <SwiperSlide key={index}>
+                    <Release data={release} swiper />
+                  </SwiperSlide>
+                ))}
+              </SwiperType2>
+              <Btn2 txt="プレスリリース一覧へ" link="/corapura/press_release" />
+            </>
+            :
+            <p className={styles.noneLength}>プレスリリースがありません</p>
+          }
         </Container>
       </section>
 
       <section className={styles.salonArea}>
         <Container small>
           <h2 className="ttl2">注目のオンラインサロン</h2>
-          <div className={styles.salonBox}>
-            <div className={styles.left}>
-              {salonLeft.map((salon, index) => (
-                <Link href={`/corapura/salon/${salon.id}`} key={index}>
-                  <a className={styles.imgBox}>
-                    <img src={salon.thumbs ? `${process.env.NEXT_PUBLIC_BACKEND_URL}/storage/${salon.thumbs}` : dummy1.src} alt="" />
-                    <div className={styles.contBox}>
-                      <p className={styles.salonName}>{salon.title}</p>
-                      <p className={styles.salonDesc}>
-                        {salon.content.replace(/<[^>]+>/g, '').replace(/&nbsp;/g, '').substring(0, 60)}
-                      </p>
-                    </div>
-                  </a>
-                </Link>
-              ))}
+          {salons.length !== 0 ?
+            <div className={styles.salonBox}>
+              <div className={styles.left}>
+                {salonLeft.map((salon, index) => (
+                  <Link href={`/corapura/salon/${salon.id}`} key={index}>
+                    <a className={styles.imgBox}>
+                      <img src={salon.thumbs ? `${process.env.NEXT_PUBLIC_BACKEND_URL}/storage/${salon.thumbs}` : dummy1.src} alt="" />
+                      <div className={styles.contBox}>
+                        <p className={styles.salonName}>{salon.title}</p>
+                        <p className={styles.salonDesc}>
+                          {salon.content.replace(/<[^>]+>/g, '').replace(/&nbsp;/g, '').substring(0, 60)}
+                        </p>
+                      </div>
+                    </a>
+                  </Link>
+                ))}
+              </div>
+              <div className={styles.right}>
+                {salonRight.map((salon, index) => (
+                  <Link href={`/corapura/salon/${salon.id}`} key={index}>
+                    <a className={styles.imgBox}>
+                      <img src={salon.thumbs ? `${process.env.NEXT_PUBLIC_BACKEND_URL}/storage/${salon.thumbs}` : dummy1.src} alt="" />
+                      <div className={styles.contBox}>
+                        <p className={styles.salonName}>{salon.title}</p>
+                      </div>
+                    </a>
+                  </Link>
+                ))}
+              </div>
             </div>
-            <div className={styles.right}>
-              {salonRight.map((salon, index) => (
-                <Link href={`/corapura/salon/${salon.id}`} key={index}>
-                  <a className={styles.imgBox}>
-                    <img src={salon.thumbs ? `${process.env.NEXT_PUBLIC_BACKEND_URL}/storage/${salon.thumbs}` : dummy1.src} alt="" />
-                    <div className={styles.contBox}>
-                      <p className={styles.salonName}>{salon.title}</p>
-                    </div>
-                  </a>
-                </Link>
-              ))}
-            </div>
-          </div>
-          <Btn2 txt="オンラインサロン一覧へ" link="/corapura/salon" />
+            :
+            <p className={styles.noneLength}>注目のオンラインサロンがありません</p>
+          }
+          {salons.length > 4 ?
+            <Btn2 txt="オンラインサロン一覧へ" link="/corapura/salon" />
+          : null}
         </Container>
       </section>
 
@@ -203,41 +190,53 @@ const Corapura = ({posts}) => {
             テキストサンプルテキストサンプルテキストサンプルテキストサンプルテキストサンプル、
             <br/>テキストサンプルテキストサンプルテキストサンプルテキストサンプル。
           </p>
-          <SwiperType2 gap={24}>
-            {coupons.map((coupon, index) => (
-              <SwiperSlide key={index}>
-                <Coupon data={coupon} swiper />
-              </SwiperSlide>
-            ))}
-          </SwiperType2>
+          {coupons.length !== 0 ?
+            <SwiperType2 gap={24}>
+              {coupons.map((coupon, index) => (
+                <SwiperSlide key={index}>
+                  <Coupon data={coupon} swiper />
+                </SwiperSlide>
+              ))}
+            </SwiperType2>
+            :
+            <p className={styles.noneLength}>クーポンがありません</p>
+          }
         </Container>
       </section>
 
       <section className={styles.presidentArea}>
         <Container small>
-          <h2 className="ttl2">プレジデント</h2>
+          <h2 className="ttl2">プレジデント/リーダー</h2>
           <p className={styles.desc}>
             テキストサンプルテキストサンプルテキストサンプルテキストサンプルテキストサンプル、
             <br/>テキストサンプルテキストサンプルテキストサンプルテキストサンプル。
           </p>
-          <SwiperType2 gap={24}>
-            {presidents.map((president, index) => (
-              <SwiperSlide key={index}>
-                <CardType1 data={president} swiper />
-              </SwiperSlide>
-            ))}
-          </SwiperType2>
+          {presidents.length !== 0 ?
+            <SwiperType2 gap={24}>
+              {presidents.map((president, index) => (
+                <SwiperSlide key={index}>
+                  <CardType1 data={president} swiper />
+                </SwiperSlide>
+              ))}
+            </SwiperType2>
+            :
+            <p className={styles.noneLength}>プレジデント/リーダーがありません</p>
+          }
         </Container>
       </section>
 
       <section className={styles.infoArea}>
         <Container small>
-          <h2 className="ttl2">ビジネスインフォメーション</h2>
+          <h2 className="ttl2">ニュース/イベント</h2>
           <p className={styles.desc}>
             テキストサンプルテキストサンプルテキストサンプルテキストサンプルテキストサンプル、
             <br/>テキストサンプルテキストサンプルテキストサンプルテキストサンプル。
           </p>
-          <Info data={infos} />
+          {infos.length !== 0 ?
+            <Info data={infos} />
+            :
+            <p className={styles.noneLength}>ニュース/イベントがありません</p>
+          }
         </Container>
       </section>
 
@@ -248,13 +247,17 @@ const Corapura = ({posts}) => {
             テキストサンプルテキストサンプルテキストサンプルテキストサンプルテキストサンプル、
             <br/>テキストサンプルテキストサンプルテキストサンプルテキストサンプル。
           </p>
-          <SwiperType2 gap={24}>
-            {nameCards.map((card, index) => (
-              <SwiperSlide key={index}>
-                <NameCard data={card} />
-              </SwiperSlide>
-            ))}
-          </SwiperType2>
+          {nameCards.length !== 0 ?
+            <SwiperType2 gap={24}>
+              {nameCards.map((card, index) => (
+                <SwiperSlide key={index}>
+                  <NameCard data={card} />
+                </SwiperSlide>
+              ))}
+            </SwiperType2>
+            :
+            <p className={styles.noneLength}>名刺がありません</p>
+          }
         </Container>
       </section>
 
@@ -265,13 +268,17 @@ const Corapura = ({posts}) => {
             テキストサンプルテキストサンプルテキストサンプルテキストサンプルテキストサンプル、
             <br/>テキストサンプルテキストサンプルテキストサンプルテキストサンプル。
           </p>
-          <SwiperType2 gap={24}>
-            {nfts.map((nft, index) => (
-              <SwiperSlide key={index}>
-                <CardType1 data={nft} cat swiper />
-              </SwiperSlide>
-            ))}
-          </SwiperType2>
+          {nfts.length !== 0 ?
+            <SwiperType2 gap={24}>
+              {nfts.map((nft, index) => (
+                <SwiperSlide key={index}>
+                  <CardType1 data={nft} cat swiper />
+                </SwiperSlide>
+              ))}
+            </SwiperType2>
+            :
+            <p className={styles.noneLength}>NFT／製品・商品／特許・技術がありません</p>
+          }
         </Container>
       </section>
 
@@ -282,13 +289,17 @@ const Corapura = ({posts}) => {
             テキストサンプルテキストサンプルテキストサンプルテキストサンプルテキストサンプル、
             <br/>テキストサンプルテキストサンプルテキストサンプルテキストサンプル。
           </p>
-          <SwiperType2 gap={24}>
-            {sdgs.map((sdgs, index) => (
-              <SwiperSlide key={index}>
-                <CardType1 data={sdgs} cat swiper />
-              </SwiperSlide>
-            ))}
-          </SwiperType2>
+          {sdgs.length !== 0 ?
+            <SwiperType2 gap={24}>
+              {sdgs.map((sdgs, index) => (
+                <SwiperSlide key={index}>
+                  <CardType1 data={sdgs} cat swiper />
+                </SwiperSlide>
+              ))}
+            </SwiperType2>
+            :
+            <p className={styles.noneLength}>SDGsがありません</p>
+          }
         </Container>
       </section>
 
@@ -299,7 +310,11 @@ const Corapura = ({posts}) => {
             テキストサンプルテキストサンプルテキストサンプルテキストサンプルテキストサンプル、
             <br/>テキストサンプルテキストサンプルテキストサンプルテキストサンプル。
           </p>
-          <CardType2 data={likes} />
+          {likes.length !== 0 ?
+            <CardType2 data={likes} />
+            :
+            <p className={styles.noneLength}>スポンサー・マスコットがありません</p>
+          }
         </Container>
       </section>
 
@@ -310,7 +325,11 @@ const Corapura = ({posts}) => {
             テキストサンプルテキストサンプルテキストサンプルテキストサンプルテキストサンプル、
             <br/>テキストサンプルテキストサンプルテキストサンプルテキストサンプル。
           </p>
-          <CardType2 data={sponsors} />
+          {sponsors.length !== 0 ?
+            <CardType2 data={sponsors} />
+            :
+            <p className={styles.noneLength}>推し活・ホビーがありません</p>
+          }
         </Container>
       </section>
     </>

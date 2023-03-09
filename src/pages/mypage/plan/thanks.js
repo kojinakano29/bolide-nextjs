@@ -16,6 +16,8 @@ const PlanChangeThanks = () => {
         pathname: "/mypage/plan"
       })
     }
+
+    sessionStorage.removeItem('planChange')
   }, [])
 
   return (

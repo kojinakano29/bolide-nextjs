@@ -285,7 +285,11 @@ const Mypage = ({posts}) => {
               <>
                 {tabState === 1 ?
                   <article className={styles.article}>
-                    <MasonryGridComponent item={createShop} />
+                    {createShop.length !== 0 ?
+                      <MasonryGridComponent item={createShop} />
+                      :
+                      <p className={styles.noneLength}>作成したショップがありません</p>
+                    }
                     {user && user?.id === profile.id && createShop.length !== 0 ?
                       <Btn01 fa={faGear} txt="ショップを編集する" link="/dellamall/admin/shop" />
                     : null}
@@ -293,35 +297,51 @@ const Mypage = ({posts}) => {
                 : null}
                 {tabState === 2 ?
                   <article className={styles.article}>
-                    <MallComponent item={createMall} user={user} />
+                    {createMall.length !== 0 ?
+                      <MallComponent item={createMall} user={user} />
+                      :
+                      <p className={styles.noneLength}>作成したモールがありません</p>
+                    }
                   </article>
                 : null}
                 {tabState === 3 ?
                   <article className={styles.article}>
-                    <MasonryGridComponent item={saveShop} />
+                    {saveShop.length !== 0 ?
+                      <MasonryGridComponent item={saveShop} />
+                      :
+                      <p className={styles.noneLength}>保存したショップがありません</p>
+                    }
                   </article>
                 : null}
                 {tabState === 4 ?
                   <article className={styles.article}>
-                    <MallComponent item={saveMall} user={user} save />
+                    {saveMall.length !== 0 ?
+                      <MallComponent item={saveMall} user={user} save />
+                      :
+                      <p className={styles.noneLength}>保存したモールがありません</p>
+                    }
                   </article>
                 : null}
                 {tabState === 5 ?
                   <article className={styles.article}>
-                    <ul className={styles.commentList}>
-                      <li className={styles.head}>
-                        <p className={styles.shopName}>ショップ名</p>
-                        <p className={styles.shopContent}>コメント内容</p>
-                        <p className={styles.shopGood}>役に立った数</p>
-                      </li>
-                      {comment.map((item, index) => (
-                        <li key={index}>
-                          <p className={styles.shopName}>{item.d_shop.name}</p>
-                          <p className={styles.shopContent}>{item.content}</p>
-                          <p className={styles.shopGood}>{item.d_comment_goods_count}</p>
+                    {comment.length !== 0 ?
+                      <ul className={styles.commentList}>
+                        <li className={styles.head}>
+                          <p className={styles.shopName}>ショップ名</p>
+                          <p className={styles.shopContent}>コメント内容</p>
+                          <p className={styles.shopGood}>役に立った数</p>
                         </li>
-                      ))}
-                    </ul>
+                        {comment.map((item, index) => (
+                          <li key={index}>
+                            <p className={styles.shopName}>{item.d_shop.name}</p>
+                            <p className={styles.shopContent}>{item.content}</p>
+                            <p className={styles.shopGood}>{item.d_comment_goods_count}</p>
+                          </li>
+                        ))}
+                      </ul>
+                      :
+                      <p className={styles.noneLength}>コメントがありません</p>
+                    }
                   </article>
                 : null}
               </>

@@ -135,6 +135,26 @@
       }
     }
   }
+
+  &.column2 {
+    @include width(900px);
+    margin: auto;
+
+    .linkBox {
+      @include width(352px, calc(100% * 1/2 - 32px * 1/2), 100%);
+    }
+  }
+}
+
+.userBtnFlex {
+  @include flex(center, center);
+  @include gap(32px);
+  @include mt(80px, 64px);
+
+  a {
+    @include width(352px, calc(100% * 1/2 - 32px * 1/2), 100%);
+    margin: 0;
+  }
 }
 
 .privacyArea {

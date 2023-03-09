@@ -92,9 +92,10 @@ const AdminSalonList = () => {
                       <img src={salon.thumbs ? `${process.env.NEXT_PUBLIC_BACKEND_URL}/storage/${salon.thumbs}` : dummy.src} alt="" />
                     </a>
                   </Link>
-                  {salon.state === 0 ?
-                    <p className={styles.stateIcon}>下書き</p>
-                  : null}
+                    <p className={styles.stateIcon}>
+                      {salon.state === 0 ? "下書き" : null}
+                      {salon.state === 1 ? "公開" : null}
+                    </p>
                   <p className={styles.ttl}>{salon.title}</p>
                   <div className={styles.btnFlex}>
                     <Link href={`/corapura/editor/salon/${salon.id}`}>

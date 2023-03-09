@@ -103,19 +103,15 @@ const AdminMatterList = () => {
                   <Link href={`/corapura/matter/${matter.id}`}>
                     <a className={styles.imgBox}>
                       <img src={matter.thumbs ? `${process.env.NEXT_PUBLIC_BACKEND_URL}/storage/${matter.thumbs}` : dummy.src} alt="" />
-                      {matter.state === 1 || matter.state === 2 ?
-                        <div className={styles.finishMatter}>
-                          <p>
-                            {matter.state === 1 ? "掲載終了" : null}
-                            {matter.state === 2 ? "案件完了" : null}
-                          </p>
-                        </div>
-                      : null}
                     </a>
                   </Link>
-                  {matter.state === 4 ?
-                    <p className={styles.stateIcon}>下書き</p>
-                  : null}
+                    <p className={styles.stateIcon}>
+                      {matter.state === 0 ? "募集中" : null}
+                      {matter.state === 1 ? "掲載終了" : null}
+                      {matter.state === 2 ? "案件完了" : null}
+                      {matter.state === 3 ? "マッチング" : null}
+                      {matter.state === 4 ? "下書き" : null}
+                    </p>
                   <p className={styles.ttl}>{matter.title}</p>
                   <p className={styles.iconBox}>
                     <span className={styles.icon}>更新日</span>
@@ -134,7 +130,7 @@ const AdminMatterList = () => {
                       type="button"
                       className={`${styles.btn} ${styles.finishBtn} hoverEffect`}
                       onClick={() => handleClickDelete(matter.id)}
-                    >掲載終了</button>
+                    >削除</button>
                   </div>
                 </div>
               ))}

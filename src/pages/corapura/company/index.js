@@ -48,6 +48,7 @@ const CompanyList = ({posts}) => {
   const [card, setCard] = useState(false)
   const [like, setLike] = useState(false)
   const [businessInformation, setBusinessInformation] = useState(false)
+  const [coupon, setCoupon] = useState(false)
   const [tag, setTag] = useState("")
   const [sort, setSort] = useState("new")
   const [page, setPage] = useState(1)
@@ -67,6 +68,7 @@ const CompanyList = ({posts}) => {
       card: card ? 1 : 0,
       like: like ? 1 : 0,
       business_informaition: businessInformation ? 1 : 0,
+      coupon: coupon ? 1 : 0,
       tag: tag,
       sort: sort,
       page: parseInt(page),
@@ -92,6 +94,7 @@ const CompanyList = ({posts}) => {
     card,
     like,
     businessInformation,
+    coupon,
     tag,
     sort,
     page,
@@ -114,6 +117,7 @@ const CompanyList = ({posts}) => {
     card,
     like,
     businessInformation,
+    coupon,
     tag,
     sort,
     page,
@@ -151,6 +155,10 @@ const CompanyList = ({posts}) => {
     setBusinessInformation(e.target.checked)
   }, [setBusinessInformation])
 
+  const handleChangeCoupon = useCallback(async (e) => {
+    setCoupon(e.target.checked)
+  }, [setCoupon])
+
   const handleClickTag = useCallback(async (e) => {
     if (parseInt(tag) === parseInt(e.target.value)) {
       setTag(null)
@@ -187,6 +195,7 @@ const CompanyList = ({posts}) => {
       card: card,
       like: like,
       business_informaition: businessInformation,
+      coupon: coupon,
       tag: tag,
       sort: sort,
       page: parseInt(page),
@@ -216,6 +225,7 @@ const CompanyList = ({posts}) => {
     card,
     like,
     businessInformation,
+    coupon,
     tag,
     sort,
     page,
@@ -228,7 +238,7 @@ const CompanyList = ({posts}) => {
       state: office,
     },
     {
-      name: "プレジデント",
+      name: "プレジデント/リーダー",
       click: handleChangePresident,
       state: president,
     },
@@ -253,9 +263,14 @@ const CompanyList = ({posts}) => {
       state: like,
     },
     {
-      name: "ビジネスインフォメーション",
+      name: "ニュース/イベント",
       click: handleChangeBusinessInformation,
       state: businessInformation,
+    },
+    {
+      name: "クーポン",
+      click: handleChangeCoupon,
+      state: coupon,
     },
   ]
 

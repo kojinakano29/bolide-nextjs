@@ -6,7 +6,7 @@
 
   .footer1 {
     text-align: center;
-    @include pb(56px);
+    @include pb(80px, 64px);
 
     .footer1__title {
       @include fs(20px, 18px);

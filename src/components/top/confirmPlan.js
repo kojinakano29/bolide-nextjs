@@ -62,16 +62,16 @@ const ConfirmPlan = ({planInfo, user, plans}) => {
           <dd>
             {planInfo?.stripe_price === plans.plan_corporate ?
               <>
-                {parseInt(user?.coupon) === parseInt(1) ? "企業・団体\n￥11,000/月" : null}
-                {parseInt(user?.coupon) === parseInt(2) ? "フリーランス 専門家\n個人事業主\n一般ユーザー(プレミアム)\n￥5,500/月" : null}
-                {parseInt(user?.coupon) === parseInt(3) ? "メディア・地方自治体\n￥0/月" : null}
+                {user?.coupon === null ? "企業・団体\n￥11,000/月" : null}
+                {parseInt(user?.coupon) === parseInt(1) ? "フリーランス 専門家\n個人事業主\n一般ユーザー(プレミアム)\n￥5,500/月" : null}
+                {parseInt(user?.coupon) === parseInt(2) ? "メディア・地方自治体\n￥0/月" : null}
               </>
             : null}
             {planInfo?.stripe_price === plans.plan_intrust ?
               <>
-                {parseInt(user?.coupon) === parseInt(1) ? "★BJおまかせプラン（※会費込み）\n企業・団体\n￥55,000/月" : null}
-                {parseInt(user?.coupon) === parseInt(2) ? "★BJおまかせプラン（※会費込み）\nフリーランス 専門家\n個人事業主\n一般ユーザー(プレミアム)\n￥49,500/月" : null}
-                {parseInt(user?.coupon) === parseInt(3) ? "★BJおまかせプラン（※会費込み）\nメディア・地方自治体\n￥44,000/月" : null}
+                {user?.coupon === null ? "★BJおまかせプラン（※会費込み）\n企業・団体\n￥55,000/月" : null}
+                {parseInt(user?.coupon) === parseInt(1) ? "★BJおまかせプラン（※会費込み）\nフリーランス 専門家\n個人事業主\n一般ユーザー(プレミアム)\n￥49,500/月" : null}
+                {parseInt(user?.coupon) === parseInt(2) ? "★BJおまかせプラン（※会費込み）\nメディア・地方自治体\n￥44,000/月" : null}
               </>
             : null}
           </dd>

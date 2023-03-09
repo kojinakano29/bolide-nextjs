@@ -103,7 +103,7 @@ const Follow = () => {
                 ))}
               </ul>
             }
-            {parseInt(pageMax) !== parseInt(page) ?
+            {lists.length !== 0 && pageMax > 1 && parseInt(pageMax) !== parseInt(page) ?
               <div className={`btnCover ${styles.btnCover}`} onClick={handleClickMore}>
                 <Btn01 fa={faSquarePlus} txt="さらに見る" />
               </div>

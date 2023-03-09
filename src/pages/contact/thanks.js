@@ -17,6 +17,8 @@ const BjcThanks = () => {
         pathname: "/contact"
       })
     }
+
+    sessionStorage.removeItem('contact')
   }, [])
 
   return (

@@ -103,7 +103,7 @@ const PostEdit = ({posts}) => {
     onPostForm({
       user_id: user?.id,
       l_category_id: data.child_category,
-      l_series_id: data.l_series_id,
+      l_series_id: data.l_series_id ? data.l_series_id : 0,
       title: data.title,
       thumbs: defaultThumb,
       mv: defaultMv,
@@ -259,7 +259,7 @@ const PostEdit = ({posts}) => {
                   <dt className={styles.dt}>シリーズ選択</dt>
                   <dd className={styles.dd}>
                     <select {...register("l_series_id")}>
-                      <option value="">選択しない</option>
+                      <option value={0}>選択しない</option>
                       {seriesArray.map((series, index) => (
                         <option value={index+1} key={index+1}>{series.name}</option>
                       ))}

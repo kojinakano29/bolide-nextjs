@@ -153,6 +153,7 @@
     @include fs(16px, 14px);
     font-weight: 500;
     @include mb(24px);
+    white-space: pre-wrap;
 
     span {
       font-weight: bold;
@@ -161,13 +162,15 @@
   }
 
   .profileMoreBtn {
-    @include p(8px 32px, 4px 24px);
+    @include p(4px 32px, 4px 24px);
     @include fs(16px, 14px);
     font-weight: 500;
-    color: $w1;
-    background-color: $b8;
+    color: $b8;
+    border: 1px solid $b8;
     border-radius: 5px;
     @include mb(32px);
+    @include flex(center, center);
+    @include gap(4px);
   }
 
   .infoGraph {
@@ -230,6 +233,10 @@
         @include height(48px);
         border-radius: 50%;
         overflow: hidden;
+
+        img {
+          width: 100%;
+        }
       }
     }
 

@@ -23,6 +23,8 @@ export const getServerSideProps = async ({params, query}) => {
 }
 
 const Post = ({posts}) => {
+  console.log(posts)
+
   const router = useRouter(null)
   let current = null
   if (router.query.page) {
@@ -56,55 +58,65 @@ const Post = ({posts}) => {
   }
 
   return (
-    <section className="cont1">
-      <PageTitle title={parentSlug !== null ? upperParentSlug : upperSlug} ivy mb0 />
-      <CatNavi parentSlug={parentSlug !== null ? parentSlug : slug} />
-      <Container>
-        <article className={styles.section}>
-          <div className={styles.flex}>
-            <ArticleColumn sort={sort1} />
-            <Sidebar posts={posts} />
-          </div>
-        </article>
-      </Container>
-      <article className={styles.section2}>
-        <div className={styles.wrapper}>
+    <>
+      {sort1.length !== 0 ?
+        <section className="cont1">
+          <PageTitle title={parentSlug !== null ? upperParentSlug : upperSlug} ivy mb0 />
+          <CatNavi parentSlug={parentSlug !== null ? parentSlug : slug} />
           <Container>
-            <BlogPattern8 pattern={pickupData} must />
+            <article className={styles.section}>
+              <div className={styles.flex}>
+                <ArticleColumn sort={sort1} />
+                {posts.sidebars.length !== 0 ?
+                  <Sidebar posts={posts} />
+                : null}
+              </div>
+            </article>
           </Container>
-        </div>
-      </article>
-      {
-        sort2.length !== 0 ?
-        <Container>
-          <article className={styles.section3}>
-            <div className={styles.flex}>
-              <ArticleColumn sort={sort2} />
-              <Sidebar posts={posts} />
-            </div>
-          </article>
-        </Container>
-        : null
-      }
-      {
-        sort2.length !== 0 ?
-        <article className={styles.section2}>
-          <div className={styles.wrapper}>
+          {pickupData.length !== 0 ?
+            <article className={styles.section2}>
+              <div className={styles.wrapper}>
+                <Container>
+                  <BlogPattern8 pattern={pickupData} must />
+                </Container>
+              </div>
+            </article>
+          : null}
+          {
+            sort2.length !== 0 ?
             <Container>
-                <BlogPattern8 pattern={pickupData} must />
+              <article className={styles.section3}>
+                <div className={styles.flex}>
+                  <ArticleColumn sort={sort2} />
+                  <Sidebar posts={posts} />
+                </div>
+              </article>
             </Container>
-          </div>
-        </article>
-        : null
+            : null
+          }
+          {
+            sort2.length !== 0 ?
+            <article className={styles.section2}>
+              <div className={styles.wrapper}>
+                <Container>
+                    <BlogPattern8 pattern={pickupData} must />
+                </Container>
+              </div>
+            </article>
+            : null
+          }
+          {posts.page_max > 0 ?
+            <div className="pagerBox">
+              {current === 1 ? '' : <button className="pagerBtn pagerPrev" onClick={onClickPrev}></button>}
+              <p className="pagerCurrent en">{current}/{posts.page_max}</p>
+              {posts.page_max === current ? '' : <button className="pagerBtn pagerNext" onClick={onClickNext}></button>}
+            </div>
+          : null}
+        </section>
+        :
+        <p className={`${styles.noneLength} ivy`}>記事がありません</p>
       }
-      {posts.page_max > 0 ?
-        <div className="pagerBox">
-          {current === 1 ? '' : <button className="pagerBtn pagerPrev" onClick={onClickPrev}></button>}
-          <p className="pagerCurrent en">{current}/{posts.page_max}</p>
-          {posts.page_max === current ? '' : <button className="pagerBtn pagerNext" onClick={onClickNext}></button>}
-        </div>
-      : null}
-    </section>
+    </>
   );
 }
 

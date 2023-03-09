@@ -133,7 +133,10 @@ const DetailAreaRight = ({influencer = false}) => {
               type="button"
               className={`${styles.profileMoreBtn} hoverEffect`}
               onClick={handleClickProfileMore}
-            >もっと見る</button>
+            >
+              もっと見る
+              <img src="/corapura/common/more.svg" alt="" />
+            </button>
           }
           <div className={styles.infoGraph}>
             <dl>
@@ -217,7 +220,22 @@ const DetailAreaRight = ({influencer = false}) => {
               onClick={handleClickFollow}
             >{followCheck ? "フォロー中" : "フォローする"}</button>
           </div>
-          <p className={styles.desc}>{profile.profile}</p>
+          <p className={styles.desc}>
+            <span>自己紹介</span>
+            <br/>
+            {profileMore ?
+              profile.profile
+            :
+              profile.profile.substr(0, 60)
+            }
+          </p>
+          {profileMore ? null:
+            <button
+              type="button"
+              className={`${styles.profileMoreBtn} hoverEffect`}
+              onClick={handleClickProfileMore}
+            >もっと見る</button>
+          }
           <Social socials={userSocials} user />
           {profile.c_user_profile.brand ?
             <div className={styles.siteUrl}>
