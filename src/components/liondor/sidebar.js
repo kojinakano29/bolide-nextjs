@@ -7,13 +7,17 @@ const Sidebar = ({posts}) => {
   return (
     <article className={styles.sidebar}>
       <div className={styles.editorBox}>
-        {posts.sidebars.map((sidebar, index) => (
-          <ShowEditor
-            key={index}
-            value={sidebar.content}
-          />
-        ))}
-        <SidebarPost pickUp={pickUp} />
+        {posts.sidebars.length !== 0 ?
+          posts.sidebars.map((sidebar, index) => (
+            <ShowEditor
+              key={index}
+              value={sidebar.content}
+            />
+          ))
+        : null}
+        {pickUp.length !== 0 ?
+          <SidebarPost pickUp={pickUp} />
+        : null}
       </div>
     </article>
   );

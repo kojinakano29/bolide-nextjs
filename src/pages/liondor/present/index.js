@@ -53,9 +53,7 @@ const Present = ({posts}) => {
           <article className={styles.section}>
             <div className={styles.flex}>
               <ArticleColumn sort={sort1} present />
-              {posts.sidebars.length !== 0 ?
-                <Sidebar posts={posts} />
-              : null}
+              <Sidebar posts={posts} />
             </div>
           </article>
           {posts.page_max > 0 ?
