@@ -70,13 +70,13 @@ const Footer = () => {
             <Link href="/dellamall/terms">
               <a className="hoverEffect">利用規約</a>
             </Link>
-            <Link href="/dellamall/privacy">
+            <Link href="/privacy">
               <a className="hoverEffect">プライバシーポリシー</a>
             </Link>
-            <Link href="/dellamall/">
+            <Link href="/tokushoho">
               <a className="hoverEffect">特定商取引法に基づく表示</a>
             </Link>
-            <Link href="/dellamall/">
+            <Link href="/ad">
               <a className="hoverEffect">広告掲載費について</a>
             </Link>
             <Link href="/dellamall/contact">

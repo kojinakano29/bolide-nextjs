@@ -1,5 +1,28 @@
 @import '../../variables.scss';
 
+.tabBtnFlex {
+  @include flex(center, center);
+  @include gap(16px);
+  border-bottom: 1px solid $b8;
+  @include mb(48px, 40px);
+
+  .tabBtn {
+    @include width(160px, 160px, calc(100% * 1/2 - 16px * 1/2));
+    @include height(40px);
+    border: 1px solid $b8;
+    border-bottom: none;
+    color: $b8;
+    @include flex(center, center);
+    @include fs(16px, 14px);
+    font-weight: 900;
+
+    &.on {
+      background-color: $b8;
+      color: $w1;
+    }
+  }
+}
+
 .block {
   @include mb(48px);
 
@@ -13,31 +36,59 @@
     @include mb(16px);
   }
 
-  p {
+  p,
+  li,
+  dd {
     @include fs(16px, 14px);
     font-weight: 500;
-  }
-}
+    @include lh(28px, 26px 24px);
 
-.list {
-  border-top: 2px solid $g2;
+    a {
+      text-decoration: underline;
+      color: $b5;
+
+      &:hover {
+        text-decoration: none;
+      }
+    }
+  }
 
   dl {
-    @include p(32px 0, 24px 0);
+    @include p(24px 0, 16px 0);
     border-bottom: 2px solid $g2;
     @include flex(stretch);
     @include gap(0, 0, 12px);
 
+    &:last-of-type {
+      @include mb(40px);
+    }
+
     dt {
-      @include width(260px, 240px, 100%);
+      @include width(240px, 200px, 100%);
       @include fs(16px, 14x);
       font-weight: bold;
     }
 
     dd {
-      @include width(calc(100% - 260px), calc(100% - 240px), 100%);
+      @include width(calc(100% - 240px), calc(100% - 200px), 100%);
       @include fs(16px, 14px);
-      font-weight: 500;
+    }
+  }
+
+  ul {
+    padding-left: 1.3em;
+    @include mb(32px, 24px);
+
+    &.ol {
+      list-style: decimal;
+    }
+  }
+
+  & > ul {
+    list-style: disc;
+
+    li > ul {
+      list-style: circle;
     }
   }
 }
