@@ -67,9 +67,7 @@ const Post = ({posts}) => {
             <article className={styles.section}>
               <div className={styles.flex}>
                 <ArticleColumn sort={sort1} />
-                {posts.sidebars.length !== 0 ?
-                  <Sidebar posts={posts} />
-                : null}
+                <Sidebar posts={posts} />
               </div>
             </article>
           </Container>
