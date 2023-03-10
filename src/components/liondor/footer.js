@@ -58,7 +58,7 @@ const Footer = () => {
               <Link href="/liondor/copyright">
                 <a>著作権・免責事項について</a>
               </Link>
-              <Link href="/liondor/privacy">
+              <Link href="/privacy">
                 <a>プライバシーポリシー</a>
               </Link>
               <Link href="/liondor/sitemap">
@@ -67,7 +67,7 @@ const Footer = () => {
               <Link href="/liondor/faq">
                 <a>FAQ</a>
               </Link>
-              <Link href="/liondor/ad">
+              <Link href="/ad">
                 <a>広告掲載について</a>
               </Link>
               <Link href="/liondor/contact?check=present">
