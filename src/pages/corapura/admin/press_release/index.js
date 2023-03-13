@@ -1,3 +1,4 @@
+import Container from "@/components/corapura/Layout/container";
 import PageLayoutCorapura from "@/components/Layouts/pageLayoutCorapura";
 
 const AdminPressRelease = () => {
