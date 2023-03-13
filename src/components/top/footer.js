@@ -37,7 +37,7 @@ const Footer = () => {
           </Link>
           <ul className={styles.listFlex}>
             <li className="hoverEffect">
-              <a href="">運営会社</a>
+              <a href="https://bolides.co.jp/company/" target="_blank" rel="noopener noreferrer">運営会社</a>
             </li>
             <li className="pc">|</li>
             <li className="hoverEffect">
@@ -55,6 +55,18 @@ const Footer = () => {
             <li className="hoverEffect">
               <Link href="/privacy">
                 <a>プライバシーポリシー</a>
+              </Link>
+            </li>
+            <li className="pc">|</li>
+            <li className="hoverEffect">
+              <Link href="/ad">
+                <a>広告掲載費について</a>
+              </Link>
+            </li>
+            <li className="pc">|</li>
+            <li className="hoverEffect">
+              <Link href="/tokushoho">
+                <a>特定商取引法に基づく表示</a>
               </Link>
             </li>
             <li className="pc">|</li>

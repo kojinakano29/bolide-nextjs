@@ -40,7 +40,7 @@ const Tokushoho = () => {
           </dl>
           <dl>
             <dt>お問い合わせ</dt>
-            <dd>こちら（ <a href="mailto:info@bolides.co.jp">info@bolides.co.jp</a> ）からお問い合わせください。</dd>
+            <dd>こちら（ <a href="mailto:info@bolidesjapan.com">info@bolidesjapan.com</a> ）からお問い合わせください。</dd>
           </dl>
           <dl>
             <dt>電話番号</dt>
