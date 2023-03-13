@@ -73,13 +73,17 @@ const InfluencerDetail = ({posts}) => {
       <section className={styles.cardArea}>
         <Container small>
           <h2 className="ttl2">名刺</h2>
-          <div className={styles.column3}>
-            {cards.map((card, index) => (
-              <div key={index} onClick={() => handleClickModal(index)}>
-                <NameCard data={card} />
-              </div>
-            ))}
-          </div>
+          {cards.length !== 0 ?
+            <div className={styles.column3}>
+              {cards.map((card, index) => (
+                <div key={index} onClick={() => handleClickModal(index)}>
+                  <NameCard data={card} />
+                </div>
+              ))}
+            </div>
+            :
+            <p className={styles.noneText}>名刺がありません</p>
+          }
         </Container>
       </section>
 
@@ -94,7 +98,11 @@ const InfluencerDetail = ({posts}) => {
       <section className={styles.likeArea}>
         <Container small>
           <h2 className="ttl2">推し活・ホビー</h2>
-          <CardType2 data={likes} detail />
+          {likes.length !== 0 ?
+            <CardType2 data={likes} detail />
+            :
+            <p className={styles.noneText}>推し活・ホビーがありません</p>
+          }
         </Container>
       </section>
     </>

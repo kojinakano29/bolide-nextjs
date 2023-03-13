@@ -4,7 +4,7 @@ import { PaymentElement, useElements, useStripe } from "@stripe/react-stripe-js"
 import { useRouter } from 'next/router';
 import { useEffect, useState } from 'react';
 import { useForm } from 'react-hook-form';
-import Btn1 from './btn1';
+import { Btn1 } from '@/components/top';
 
 const CheckoutForm = ({user}) => {
   const csrf = () => axios.get('/sanctum/csrf-cookie')
@@ -27,7 +27,7 @@ const CheckoutForm = ({user}) => {
       setName("corporate")
     } else if (router.query.plan === "intrust_plan") {
       setPlan(process.env.NEXT_PUBLIC_SUBSCRIPTION_INTRUST)
-      setName("intrust")
+      setName("corporate")
     } else if (router.query.plan === "option100") {
       setPlan(process.env.NEXT_PUBLIC_SUBSCRIPTION_FUND_100)
       setName("option")
@@ -48,6 +48,8 @@ const CheckoutForm = ({user}) => {
       setStripeRoute(`/api/subscription/subscribe/${user?.id}`)
     } else if (router.query.type === "plan_change") {
       setStripeRoute(`/api/subscription/change_plan/${user?.id}`)
+    } else if (router.query.type === "resume") {
+      setStripeRoute(`/api/subscription/resume/${user?.id}`)
     }
   }
 
@@ -97,6 +99,36 @@ const CheckoutForm = ({user}) => {
     }).catch((e) => {
       console.error(e)
     })
+
+    setDisabled(false)
+  }
+
+  const onReturnStripe = async () => {
+    await csrf()
+
+    await axios.post(stripeRoute, {
+      db_name: name,
+    }).then((res) => {
+      // console.log(res)
+
+      if (router.query.plan === "corporate_plan") {
+        alert("サブスクリプションの登録が完了しました")
+        router.push("/mypage")
+      } else if (router.query.plan === "intrust_plan") {
+        alert("おまかせプランに登録完了しました")
+        router.push("/mypage")
+      } else if (
+        router.query.plan === "option100" ||
+        router.query.plan === "option500" ||
+        router.query.plan === "option1000"
+      ) {
+        sessionStorage.setItem('optionChange', true)
+        alert(`社会貢献活動に参加しました(￥${router.query.plan.substring(6)}/月)`)
+        router.push('/mypage/option/thanks')
+      }
+    }).catch(e => console.error(e))
+
+    setDisabled(false)
   }
 
   const onSubmit = async (data) => {
@@ -112,8 +144,11 @@ const CheckoutForm = ({user}) => {
       },
     }).then((res) => {
       // console.log(res)
-      onSuccessStripe(res.setupIntent.payment_method, data)
-      setDisabled(false)
+      if (router.query.type === "subscribe" || router.query.type === "plan_change") {
+        onSuccessStripe(res.setupIntent.payment_method, data)
+      } else if (router.query.type === "resume") {
+        onReturnStripe()
+      }
     }).catch((e) => {
       console.error(e)
       setDisabled(false)
@@ -123,23 +158,32 @@ const CheckoutForm = ({user}) => {
   return (
     <form onSubmit={handleSubmit(onSubmit)}>
       <article className={styles.formContent}>
-        <PaymentElement />
-        {router.query.plan === "corporate_plan" || router.query.plan === "intrust_plan" ?
-          <dl className={styles.paymentDl}>
-            <dt>
-              <label htmlFor="coupon">クーポンコード</label>
-              <span className={styles.any}>任意</span>
-            </dt>
-            <dd>
-              <input
-                id="coupon"
-                type="text"
-                {...register("coupon")}
-              />
-            </dd>
-          </dl>
-        : null}
-        <Btn1 txt="確認する" submit disabled={disabled} />
+        {router.query.type === "resume" ?
+          <p className={styles.catch}>過去に登録したことのあるプランです。</p>
+        :
+          <>
+            <PaymentElement />
+            {
+            router.query.type === "subscribe" &&
+            router.query.plan === "corporate_plan" ||
+            router.query.plan === "intrust_plan" ?
+              <dl className={styles.paymentDl}>
+                <dt>
+                  <label htmlFor="coupon">クーポンコード</label>
+                  <span className={styles.any}>任意</span>
+                </dt>
+                <dd>
+                  <input
+                    id="coupon"
+                    type="text"
+                    {...register("coupon")}
+                  />
+                </dd>
+              </dl>
+            : null}
+          </>
+        }
+        <Btn1 txt="登録する" submit disabled={disabled} />
       </article>
     </form>
   )

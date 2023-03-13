@@ -13,7 +13,7 @@ const OptionChangeThanks = () => {
 
     if (!optionChange) {
       router.push({
-        pathname: "/mypage/option"
+        pathname: "/mypage"
       })
     }
 

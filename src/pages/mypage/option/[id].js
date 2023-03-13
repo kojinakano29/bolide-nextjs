@@ -9,7 +9,20 @@ import { useCallback, useEffect, useState } from 'react';
 import { FormProvider, useForm } from 'react-hook-form';
 import axios from '@/lib/axios';
 
-const MypageOption = () => {
+export const getServerSideProps = async ({params}) => {
+  const res = await fetch(`${process.env.NEXT_PUBLIC_BACKEND_URL}/api/subscription/status/${params.id}/option`)
+  const data = await res.json()
+
+  return {
+    props: {
+      posts: data
+    }
+  }
+}
+
+const MypageOption = ({posts}) => {
+  console.log(posts)
+
   const csrf = () => axios.get('/sanctum/csrf-cookie')
 
   const router = useRouter()
@@ -31,7 +44,7 @@ const MypageOption = () => {
       user_id: user?.id,
       db_name: "option",
     }).then((res) => {
-      // console.log(res)
+      console.log(res)
 
       if (res.data.stripe_status === "active") {
         setCheck(true)
@@ -108,7 +121,7 @@ const MypageOption = () => {
         <Container small900>
           {!check ?
             <FormProvider {...methods}>
-              {!isConfirm ? <InputOption user={user} /> : <ConfirmOption user={user} />}
+              {!isConfirm ? <InputOption user={user} /> : <ConfirmOption user={user} cancel={posts.details.end_date ? true : false} />}
             </FormProvider>
           :
             <div className={styles.optionNowBox}>

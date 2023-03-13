@@ -4,7 +4,7 @@ import { useCallback, useEffect, useState } from 'react';
 import { useFormContext } from 'react-hook-form';
 import { Btn1 } from '@/components/top';
 
-const ConfirmOption = ({user}) => {
+const ConfirmOption = ({user, cancel}) => {
   const router = useRouter()
   const [disabled, setDisabled] = useState(false)
   const { handleSubmit, getValues, formState: { isValid } } = useFormContext()
@@ -27,11 +27,11 @@ const ConfirmOption = ({user}) => {
     setDisabled(true)
 
     if (data.option === "1000") {
-      router.push(`/payment/${user?.id}?plan=option1000&type=subscribe`)
+      router.push(`/payment/${user?.id}?plan=option1000&type=${cancel ? "plan_change" : "subscribe"}`)
     } else if (data.option === "500") {
-      router.push(`/payment/${user?.id}?plan=option500&type=subscribe`)
+      router.push(`/payment/${user?.id}?plan=option500&type=${cancel ? "plan_change" : "subscribe"}`)
     } else if (data.option === "100") {
-      router.push(`/payment/${user?.id}?plan=option100&type=subscribe`)
+      router.push(`/payment/${user?.id}?plan=option100&type=${cancel ? "plan_change" : "subscribe"}`)
     }
 
     setDisabled(false)

@@ -42,6 +42,7 @@ const OnlineSalonDetail = ({posts}) => {
   const [disabled, setDisabled] = useState(false)
   const [followCheck, setFollowCheck] = useState(false)
   const [planCheck, setPlanCheck] = useState(false)
+  const [resume, setResume] = useState(false)
 
   const onLoadCheck = async () => {
     await csrf()
@@ -64,6 +65,15 @@ const OnlineSalonDetail = ({posts}) => {
       // console.log(res)
       if (res.data.includes(salon.id)) {
         setPlanCheck(true)
+      }
+    }).catch(e => console.error(e))
+
+    await axios.get(`/api/subscription/status/${user?.id}/salon${salon.id}`)
+    .then((res) => {
+      // console.log(res.data)
+
+      if (res.data.details?.end_date) {
+        setResume(true)
       }
     }).catch(e => console.error(e))
   }
@@ -129,11 +139,11 @@ const OnlineSalonDetail = ({posts}) => {
         alert("このオンラインサロンから退会しました")
       }).catch(e => console.error(e))
     } else if (!planCheck && salon.stripe_api_id) {
-      router.push(`/payment/${user?.id}/?plan=salon&salon_id=${salon.id}&salon_plan=${salon.stripe_api_id}&type=subscribe`)
+      router.push(`/payment/${user?.id}/?plan=salon&salon_id=${salon.id}&salon_plan=${salon.stripe_api_id}&type=${resume ? "plan_change" : "subscribe"}`)
     }
 
     await setDisabled(false)
-  }, [router, disabled, setDisabled, user, salon, planCheck])
+  }, [router, disabled, setDisabled, user, salon, planCheck, resume])
 
   return (
     <section className="cont1">

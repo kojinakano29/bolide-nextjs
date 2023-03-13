@@ -4,6 +4,11 @@
   @include column3;
 }
 
+.noneText {
+  @include fs(16px, 14px);
+  font-weight: 500;
+}
+
 .commentArea {
   @include pt(128px, 80px, 48px);
 }
@@ -30,6 +35,7 @@
       .desc {
         @include fs(16px, 14px);
         font-weight: 500;
+        white-space: pre-wrap;
       }
     }
 

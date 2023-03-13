@@ -13,7 +13,7 @@ const PlanChangeThanks = () => {
 
     if (!planChange) {
       router.push({
-        pathname: "/mypage/plan"
+        pathname: "/mypage"
       })
     }
 
