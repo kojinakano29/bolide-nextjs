@@ -61,12 +61,15 @@ const Footer = () => {
               <Link href="/privacy">
                 <a>プライバシーポリシー</a>
               </Link>
+              <Link href="/liondor/terms">
+                <a>利用規約</a>
+              </Link>
               <Link href="/liondor/sitemap">
                 <a>サイトマップ</a>
               </Link>
-              <Link href="/liondor/faq">
+              {/* <Link href="/liondor/faq">
                 <a>FAQ</a>
-              </Link>
+              </Link> */}
               <Link href="/ad">
                 <a>広告掲載について</a>
               </Link>
