@@ -109,6 +109,18 @@ const AdminControl = () => {
           </Container>
         </div>
       : null}
+
+      <section className={styles.adminList}>
+        <Container small900>
+          <h2 className="ttl1">管理者用一覧ページリスト</h2>
+          <div className={styles.linkFlex}>
+            <a className="hoverEffect" href="/corapura/admin/matter/?type=company">企業案件一覧</a>
+            <a className="hoverEffect" href="/corapura/admin/matter/?type=user">インフルエンサー/ユーザー案件一覧</a>
+            <a className="hoverEffect" href="/corapura/admin/press_release">プレスリリース一覧</a>
+            <a className="hoverEffect" href="/corapura/admin/salon">オンラインサロン一覧</a>
+          </div>
+        </Container>
+      </section>
     </>
   );
 }

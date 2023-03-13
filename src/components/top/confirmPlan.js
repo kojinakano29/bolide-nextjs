@@ -17,7 +17,7 @@ const ConfirmPlan = ({planInfo, user, plans}) => {
   useEffect(() => {
     if (!isValid) {
       router.push({
-        pathname: "/mypage/plan"
+        pathname: "/mypage"
       })
     }
   }, [])

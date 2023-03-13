@@ -68,3 +68,24 @@
   color: $r1;
   @include mt(8px);
 }
+
+.adminList {
+  @include pt(80px);
+
+  .linkFlex {
+    @include width(640px);
+    @include flex(center, center);
+    @include gap(16px);
+    margin: auto;
+
+    a {
+      @include width(calc(100% * 1/2 - 16px * 1/2), calc(100% * 1/2 - 16px * 1/2), 320px);
+      @include height(48px, 40px);
+      @include flex(center, center);
+      background-color: $o1;
+      color: $w1;
+      border-radius: 10px;
+      font-weight: bold;
+    }
+  }
+}

@@ -8,7 +8,19 @@ import { useEffect, useState } from 'react';
 import { useRouter } from 'next/router';
 import { FormProvider, useForm } from 'react-hook-form';
 
-const PlanCheckChange = () => {
+export const getServerSideProps = async ({params}) => {
+  const res = await fetch(`${process.env.NEXT_PUBLIC_BACKEND_URL}/api/subscription/status/${params.id}/corporate`)
+  const data = await res.json()
+
+  return {
+    props: {
+      posts: data
+    }
+  }
+}
+
+const PlanCheckChange = (posts) => {
+  console.log(posts)
   const csrf = () => axios.get('/sanctum/csrf-cookie')
 
   const router = useRouter()
@@ -61,7 +73,20 @@ const PlanCheckChange = () => {
       <section className={styles.formArea}>
         <Container small900>
           <FormProvider {...methods}>
-            {!isConfirm ? <InputPlan planInfo={planInfo} user={user} plans={plans} /> : <ConfirmPlan planInfo={planInfo} user={user} plans={plans} />}
+            {!isConfirm ?
+              <InputPlan
+                planInfo={planInfo}
+                user={user}
+                plans={plans}
+                accountType={posts.posts.status === "subscribed" ? true : false}
+              />
+              :
+              <ConfirmPlan
+                planInfo={planInfo}
+                user={user}
+                plans={plans}
+              />
+            }
           </FormProvider>
         </Container>
       </section>

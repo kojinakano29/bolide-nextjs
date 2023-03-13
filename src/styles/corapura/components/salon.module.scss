@@ -139,6 +139,9 @@
     position: sticky;
     top: 56px;
     @include width(calc(100% - (720px + 64px)), 100%);
+    @include height(calc(100vh - 56px));
+    overflow-y: scroll;
+    @include scrollHidden;
 
     .userBox {
       @include p(32px, 24px);

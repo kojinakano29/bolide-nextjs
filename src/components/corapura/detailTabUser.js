@@ -113,11 +113,15 @@ const DetailTabUser = ({cards, likes, matters, userInfo}) => {
               <>
                 {tab1 === 0 ?
                   <>
-                    <div className={styles.column3}>
-                      {matter.map((matter, index) => (
-                        <MatterCard matter={matter} user={user} bookmarkList={bookmarkList} key={index} detail />
-                      ))}
-                    </div>
+                    {matter.length !== 0 ?
+                      <div className={styles.column3}>
+                        {matter.map((matter, index) => (
+                          <MatterCard matter={matter} user={user} bookmarkList={bookmarkList} key={index} detail />
+                        ))}
+                      </div>
+                      :
+                      <p className={styles.noneText}>このユーザーの案件がありません</p>
+                    }
                     {matter.length === 3 && matters.length > 3 ?
                       <div className="btnCover" onClick={handleClickMoreMatter}>
                         <Btn txt="さらに見る" />
@@ -127,19 +131,23 @@ const DetailTabUser = ({cards, likes, matters, userInfo}) => {
                 : null}
                 {tab1 === 1 ?
                   <>
-                    <div className={styles.column4}>
-                      {filterMatching.map((match, index) => (
-                        <Link href={`/corapura/matter/${match.id}`} key={index}>
-                          <a className={styles.matteredBox}>
-                            <div className={styles.imgBox}>
-                              <img src={match.thumbs ? `${process.env.NEXT_PUBLIC_BACKEND_URL}/storage/${match.thumbs}` : dummy.src} alt="" />
-                            </div>
-                            <p className={styles.ttl}>{match.title}</p>
-                            <p className={styles.desc}>{match.content.substring(0, 25)}...</p>
-                          </a>
-                        </Link>
-                      ))}
-                    </div>
+                    {filterMatching.length !== 0 ?
+                      <div className={styles.column4}>
+                        {filterMatching.map((match, index) => (
+                          <Link href={`/corapura/matter/${match.id}`} key={index}>
+                            <a className={styles.matteredBox}>
+                              <div className={styles.imgBox}>
+                                <img src={match.thumbs ? `${process.env.NEXT_PUBLIC_BACKEND_URL}/storage/${match.thumbs}` : dummy.src} alt="" />
+                              </div>
+                              <p className={styles.ttl}>{match.title}</p>
+                              <p className={styles.desc}>{match.content.substring(0, 25)}...</p>
+                            </a>
+                          </Link>
+                        ))}
+                      </div>
+                      :
+                      <p className={styles.noneText}>コラプラした案件がありません</p>
+                    }
                     {filterMatching.length === 4 && matching.length > 4 ?
                       <div className="btnCover" onClick={handleClickMoreMatching}>
                         <Btn txt="さらに見る" />

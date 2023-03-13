@@ -19,7 +19,7 @@ const BjcMypage = () => {
           <p>マイページ</p>
         </div>
         <div className={styles.smallMenuBox}>
-          <Link href="/mypage/plan">
+          <Link href={`/mypage/plan/${user?.id}`}>
             <a>
               <div className={styles.iconBox}>
                 <img src="/top/plan_check.svg" alt="プラン確認のアイコン" />
