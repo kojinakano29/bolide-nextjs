@@ -30,7 +30,7 @@ const shopOfficial = ({info, salon}) => {
 
     axios.get(`https://graph.facebook.com/v12.0/${user_id}?fields=business_discovery.username(${user_name}){id,followers_count,media_count,ig_id,media.limit(${get_count}){caption,media_url,like_count}}&access_token=${access_token}`)
     .then((res) => {
-      console.log(res)
+      // console.log(res)
       setInstagramItem(res.data)
     })
     .catch((e) => {

@@ -3,8 +3,11 @@ import { useRouter } from "next/router";
 import { useCallback } from "react";
 import { useFormContext } from "react-hook-form";
 import { Btn1, NowPlan} from '@/components/top'
+import axios from '@/lib/axios';
 
 const InputPlan = ({planInfo, user, plans, accountType}) => {
+  const csrf = () => axios.get('/sanctum/csrf-cookie')
+
   const router = useRouter()
 
   const { register, handleSubmit, formState: { errors, isValid } } = useFormContext()
@@ -15,6 +18,18 @@ const InputPlan = ({planInfo, user, plans, accountType}) => {
     router.push(`/mypage/plan/${user?.id}?confirm=1`)
   }, [user, router])
 
+  const handleClickCancel = async () => {
+    csrf()
+
+    await axios.post(`/api/subscription/cancel/${user?.id}`, {
+      db_name: "corporate",
+    }).then((res) => {
+      // console.log(res)
+      alert("サブスクリプションを解約しました")
+      router.reload()
+    }).catch(e => console.error(e))
+  }
+
   return (
     <>
       <div className={styles.planChangeTop}>
@@ -22,6 +37,9 @@ const InputPlan = ({planInfo, user, plans, accountType}) => {
         <NowPlan user={user} planInfo={planInfo} plans={plans} />
         {accountType ?
           <>
+            <div className={styles.btnCover} onClick={handleClickCancel}>
+              <Btn1 txt="解約する" />
+            </div>
             <h3 className={styles.planChange}>プランを変更する</h3>
             <p className={styles.txt}>もっと自由に使いたい、自分の目的にあったプランへ変更したい...など選択するプランを途中で変更する場合には下記より選択いただき変更手続きが可能です。</p>
             <div className={styles.checkTxt}>

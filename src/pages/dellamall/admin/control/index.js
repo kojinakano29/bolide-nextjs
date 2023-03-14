@@ -111,6 +111,7 @@ const Control = () => {
                 <Btn01 txt="画像表示/非表示" />
               </div>
               <Btn01 txt="ピックアップリスト" link="/dellamall/admin/control/pickup" />
+              <Btn01 txt="ショップ一覧" link="/dellamall/admin/control/shop" />
             </div>
           : <Loader />}
         </Container>

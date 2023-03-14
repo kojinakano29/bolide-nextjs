@@ -223,7 +223,7 @@ const DetailTabCompany = ({businesses, releases, matters, userInfo}) => {
       await axios.post(`/api/corapura/salon/tab_return`, {
         user_id: userInfo.id
       }).then((res) => {
-        console.log(res)
+        // console.log(res)
         setSalon(res.data)
         setFilterSalon(res.data.filter((o, index) => {
           return index < 3

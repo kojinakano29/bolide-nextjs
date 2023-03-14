@@ -48,7 +48,6 @@ const OnlineSalonList = ({posts}) => {
     }).catch((e) => {
       console.error(e)
     })
-
   }, [
     setSalons,
     setNowPage,
