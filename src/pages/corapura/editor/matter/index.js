@@ -21,8 +21,6 @@ const AdminMatterList = () => {
   const [maxPage, setMaxPage] = useState(1)
   const [page, setPage] = useState(1)
 
-  console.log(matters)
-
   const handleSort = useCallback(async () => {
     await csrf()
 

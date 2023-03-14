@@ -1,59 +1,46 @@
-import styles from '@/styles/corapura/components/list.module.scss'
-import Container from "@/components/corapura/Layout/container";
-import PageLayoutCorapura from "@/components/Layouts/pageLayoutCorapura";
+import styles from '@/styles/dellamall/components/list.module.scss'
+import Container from "@/components/dellamall/Layouts/container";
+import PageLayoutDellamall from "@/components/Layouts/PageLayoutDellamall";
 import { useAuth } from "@/hooks/auth";
 import axios from "@/lib/axios";
 import { useRouter } from "next/router";
 import { useCallback, useEffect, useState } from "react";
 import { useForm } from "react-hook-form";
 import searchIcon from '@/images/corapura/common/search.svg'
-import { Date, Loader } from '@/components/corapura';
+import { Date, Loader } from '@/components/dellamall';
 
-export const getServerSideProps = async () => {
-  const res = await fetch(`${process.env.NEXT_PUBLIC_API_CORAPURA}/salon`)
-  const data = await res.json()
-
-  return {
-    props: {
-      posts: data
-    }
-  }
-}
-
-const AdminSalon = ({posts}) => {
-  // console.log(posts)
+const AdminShopList = () => {
   const csrf = () => axios.get('/sanctum/csrf-cookie')
 
   const router = useRouter()
-  const { user } = useAuth({middleware: 'auth', type: 'corapura'})
+  const { user } = useAuth({middleware: 'auth', type: 'dellamall'})
   const [disabled, setDisabled] = useState(false)
   const [search, setSearch] = useState("")
-  const [salons, setSalons] = useState(posts.salon)
-  const [nowPage, setNowPage] = useState(posts.now_page)
-  const [maxPage, setMaxPage] = useState(posts.page_max)
+  const [shops, setShops] = useState([])
+  const [nowPage, setNowPage] = useState(1)
+  const [maxPage, setMaxPage] = useState(1)
   const [page, setPage] = useState(1)
   const { handleSubmit, register } = useForm()
 
   useEffect(() => {
     if (user && user?.account_type < 3) {
-      router.push('/corapura')
+      router.push('/dellamall')
     }
   }, [user])
 
   const handleSort = useCallback(async () => {
     await csrf()
 
-    await axios.post(`/api/corapura/salon`, {
+    await axios.post(`/api/dellamall/shop/search/${page}/new/all`, {
       s: search,
-      page: parseInt(page),
     }).then((res) => {
       // console.log(res)
-      setSalons(res.data.salon)
+      setShops(res.data.shop)
       setNowPage(res.data.now_page)
       setMaxPage(res.data.page_max)
     }).catch(e => console.error(e))
   }, [
-    setSalons,
+    setShops,
     setNowPage,
     setMaxPage,
     search,
@@ -78,12 +65,11 @@ const AdminSalon = ({posts}) => {
     setDisabled(true)
     await csrf()
 
-    await axios.post(`/api/corapura/salon`, {
+    await axios.post(`/api/dellamall/shop/search/${page}/new/all`, {
       s: data.s ? data.s : "",
-      page: parseInt(page),
     }).then((res) => {
       // console.log(res)
-      setSalons(res.data.salon)
+      setShops(res.data.shop)
       setNowPage(res.data.now_page)
       setMaxPage(res.data.page_max)
     }).catch(e => console.error(e))
@@ -93,31 +79,32 @@ const AdminSalon = ({posts}) => {
   }, [
     disabled,
     setDisabled,
-    setSalons,
+    setShops,
     setNowPage,
     setMaxPage,
     setSearch,
     page,
   ])
 
-  const handleClickDeleteSalon = async (id) => {
+  const handleClickDeleteShop = async (id) => {
+    if (disabled) return
+    setDisabled(true)
     await csrf()
 
-    await axios.delete(`/api/corapura/salon/delete`, {
-      data: {
-        c_salon_id: id,
-      }
-    }).then((res) => {
+    await axios.post(`/api/dellamall/shop/delete/${id}`)
+    .then((res) => {
       // console.log(res)
-      alert("このオンラインサロンを削除しました")
+      alert("ショップを削除しました")
       router.reload()
     }).catch(e => console.error(e))
+
+    await setDisabled(false)
   }
 
   return (
     <section className="cont1">
       <Container small>
-        <h2 className="ttl1">オンラインサロン一覧</h2>
+        <h2 className="ttl2">管理者用ショップ一覧</h2>
         <form onSubmit={handleSubmit(onSortForm)}>
           <div className={styles.searchBox}>
             <input
@@ -134,20 +121,29 @@ const AdminSalon = ({posts}) => {
           <>
             <article className={`${styles.adminList}`}>
               <ul>
-                {salons.map((salon, index) => (
+                {shops.map((shop, index) => (
                   <li key={index}>
-                    <p className={styles.date}><Date dateString={salon.created_at} /></p>
                     <p className={styles.txt}>
-                      記事タイトル：<a href={`/corapura/salon/${salon.id}`}>{salon.title}</a>
+                      登録日：<Date dateString={shop.created_at} />
                     </p>
                     <p className={styles.txt}>
-                      作成者：<a href={`/corapura/${salon.user?.account_type === 1 ? "company" : "influencer"}/${salon.user?.id}`}>{salon.user?.c_profile?.nicename}</a>
+                      ショップ名：<a href={`/dellamall/shop/${shop.id}`}>{shop.name}</a>
+                    </p>
+                    <p className={styles.txt}>
+                      作成者：<a href={`/dellamall/mypage/${shop.user.id}`}>{shop.user.d_profile.nicename}</a>
+                    </p>
+                    <p className={styles.txt}>
+                      公式ユーザー：{shop.official_user_id ?
+                        <a href={`/dellamall/mypage/${shop.user.id}`}>{shop?.d_official?.d_profile?.nicename}</a>
+                        :
+                        "非公式"
+                      }
                     </p>
                     <div className={styles.btnFlex}>
-                      <a className={`${styles.btn} hoverEffect`} href={`/corapura/editor/salon/${salon.id}`}>編集</a>
+                      <a className={`${styles.btn} hoverEffect`} href={`/dellamall/admin/shop/edit/${shop.id}`}>編集</a>
                       <button
                         type="button"
-                        onClick={() => handleClickDeleteSalon(salon.id)}
+                        onClick={() => handleClickDeleteShop(shop.id)}
                       >削除</button>
                     </div>
                   </li>
@@ -207,8 +203,8 @@ const AdminSalon = ({posts}) => {
   );
 }
 
-export default AdminSalon;
+export default AdminShopList;
 
-AdminSalon.getLayout = function getLayout(page) {
-  return <PageLayoutCorapura>{page}</PageLayoutCorapura>
+AdminShopList.getLayout = function getLayout(page) {
+  return <PageLayoutDellamall>{page}</PageLayoutDellamall>
 }

@@ -23,7 +23,7 @@ export const getServerSideProps = async ({params, query}) => {
 }
 
 const Post = ({posts}) => {
-  console.log(posts)
+  // console.log(posts)
 
   const router = useRouter(null)
   let current = null

@@ -87,7 +87,7 @@ const CreateShop = () => {
     await axios.post('/api/dellamall/shop_create_url', {
       url: url,
     }).then((res) => {
-      console.log(res)
+      // console.log(res)
       if (res.data !== "すでにショップがあります") {
         setValue("name", res.data.title)
         setValue("tag", res.data.keyword)

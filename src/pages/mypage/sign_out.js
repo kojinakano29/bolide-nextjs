@@ -3,7 +3,7 @@ import PageLayoutTop from "@/components/Layouts/pageLayoutTop";
 import Container from "@/components/top/Layout/container";
 import Link from "next/link";
 import { Btn1 } from '@/components/top';
-import { useCallback, useState } from 'react';
+import { useCallback, useEffect, useState } from 'react';
 import axios from '@/lib/axios';
 import { useAuth } from '@/hooks/auth';
 import { useRouter } from 'next/router';
@@ -14,9 +14,41 @@ const SignOut = () => {
   const router = useRouter()
   const { user } = useAuth({middleware: 'auth', type: 'bjc'})
   const [disabled, setDisabled] = useState(false)
+  const [c_check, setC_check] = useState(true)
+  const [o_check, setO_check] = useState(true)
+
+  const onLoadCheck = async () => {
+    csrf()
+
+    axios.post(`/api/subscription/use_check/`, {
+      user_id: user?.id,
+      db_name: "corporate",
+    }).then((res) => {
+      // console.log(res)
+      if (res.data) {
+        setC_check(false)
+      }
+    }).catch(e => console.error(e))
+
+    await axios.post(`/api/subscription/use_check/`, {
+      user_id: user?.id,
+      db_name: "option",
+    }).then((res) => {
+      // console.log(res)
+      if (res.data) {
+        setO_check(false)
+      }
+    }).catch(e => console.error(e))
+  }
+
+  useEffect(() => {
+    if (user) {
+      onLoadCheck()
+    }
+  }, [user])
 
   const handleClickSignOut = useCallback(async () => {
-    if (disabled) return
+    if (c_check || o_check) return
     setDisabled(true)
     await csrf()
 
@@ -77,7 +109,7 @@ const SignOut = () => {
             <br/>お客様の情報は<span>すべて削除</span>されますがよろしいでしょうか？
           </p>
           <div className={styles.btnBox}>
-            <div className="btnCover" onClick={handleClickSignOut}>
+            <div className={`btnCover ${c_check || o_check ? styles.hold : null}`} onClick={handleClickSignOut}>
               <Btn1 txt="はい、退会します" />
             </div>
             <Link href="/mypage">

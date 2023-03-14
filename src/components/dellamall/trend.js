@@ -15,7 +15,7 @@ const Trend = ({mb40 = false, sp}) => {
 
     await axios.post(`/api/dellamall/tag/list`)
     .then((res) => {
-      console.log(res)
+      // console.log(res)
       setTrends(res.data.filter((tag, index) => {
         return index < 10 || parseInt(router.query.tag_id) === parseInt(tag.id)
       }))
@@ -39,8 +39,6 @@ const Trend = ({mb40 = false, sp}) => {
       query: path,
     })
   }
-
-  console.log(trends)
 
   return (
     <>

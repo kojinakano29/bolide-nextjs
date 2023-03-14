@@ -4,7 +4,7 @@ import dummy from '@/images/corapura/common/dummyRelease.svg'
 import view from '@/images/corapura/parts/material_view.svg'
 
 const Release = ({data, detail = false, swiper = false}) => {
-  console.log(data)
+  // console.log(data)
 
   return (
     <Link href={`/corapura/press_release/${data.id}`}>

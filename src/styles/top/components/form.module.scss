@@ -305,3 +305,9 @@
   width: 100%;
   margin-top: 4px;
 }
+
+.btnCover {
+  width: fit-content;
+  margin: auto;
+  @include mt(40px);
+}

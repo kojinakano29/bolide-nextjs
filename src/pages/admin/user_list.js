@@ -1,16 +1,16 @@
 import styles from '@/styles/corapura/components/list.module.scss'
-import Container from "@/components/corapura/Layout/container";
-import PageLayoutCorapura from "@/components/Layouts/pageLayoutCorapura";
+import PageLayoutTop from "@/components/Layouts/pageLayoutTop";
+import Container from "@/components/top/Layout/container";
 import { useAuth } from "@/hooks/auth";
-import axios from "@/lib/axios";
 import { useRouter } from "next/router";
 import { useCallback, useEffect, useState } from "react";
 import { useForm } from "react-hook-form";
 import searchIcon from '@/images/corapura/common/search.svg'
+import axios from '@/lib/axios';
 import { Date, Loader } from '@/components/corapura';
 
 export const getServerSideProps = async () => {
-  const res = await fetch(`${process.env.NEXT_PUBLIC_API_CORAPURA}/salon`)
+  const res = await fetch(`${process.env.NEXT_PUBLIC_BACKEND_URL}/api/administar/user`)
   const data = await res.json()
 
   return {
@@ -20,40 +20,43 @@ export const getServerSideProps = async () => {
   }
 }
 
-const AdminSalon = ({posts}) => {
+const UserList = ({posts}) => {
   // console.log(posts)
   const csrf = () => axios.get('/sanctum/csrf-cookie')
 
   const router = useRouter()
-  const { user } = useAuth({middleware: 'auth', type: 'corapura'})
+  const { user } = useAuth({middleware: 'auth', type: 'bjc'})
   const [disabled, setDisabled] = useState(false)
   const [search, setSearch] = useState("")
-  const [salons, setSalons] = useState(posts.salon)
+  const [users, setUsers] = useState(posts.users)
   const [nowPage, setNowPage] = useState(posts.now_page)
   const [maxPage, setMaxPage] = useState(posts.page_max)
   const [page, setPage] = useState(1)
+  const [popup, setPopup] = useState(false)
+  const [deleteType, setDeleteType] = useState("")
+  const [id, setId] = useState()
   const { handleSubmit, register } = useForm()
 
   useEffect(() => {
     if (user && user?.account_type < 3) {
-      router.push('/corapura')
+      router.push('/')
     }
   }, [user])
 
   const handleSort = useCallback(async () => {
     await csrf()
 
-    await axios.post(`/api/corapura/salon`, {
+    await axios.post(`/api/administar/user`, {
       s: search,
       page: parseInt(page),
     }).then((res) => {
       // console.log(res)
-      setSalons(res.data.salon)
+      setUsers(res.data.users)
       setNowPage(res.data.now_page)
       setMaxPage(res.data.page_max)
     }).catch(e => console.error(e))
   }, [
-    setSalons,
+    setUsers,
     setNowPage,
     setMaxPage,
     search,
@@ -78,12 +81,12 @@ const AdminSalon = ({posts}) => {
     setDisabled(true)
     await csrf()
 
-    await axios.post(`/api/corapura/salon`, {
+    await axios.post(`/api/administar/user`, {
       s: data.s ? data.s : "",
       page: parseInt(page),
     }).then((res) => {
       // console.log(res)
-      setSalons(res.data.salon)
+      setUsers(res.data.users)
       setNowPage(res.data.now_page)
       setMaxPage(res.data.page_max)
     }).catch(e => console.error(e))
@@ -93,32 +96,35 @@ const AdminSalon = ({posts}) => {
   }, [
     disabled,
     setDisabled,
-    setSalons,
+    setUsers,
     setNowPage,
     setMaxPage,
     setSearch,
     page,
   ])
 
-  const handleClickDeleteSalon = async (id) => {
+  const handleClickPopup = useCallback(async (type, id) => {
+    setPopup(prevState => !prevState)
+    setDeleteType(type)
+    setId(id)
+  }, [setPopup, setDeleteType])
+
+  const handleClickDeleteUser = useCallback(async (id, type) => {
     await csrf()
 
-    await axios.delete(`/api/corapura/salon/delete`, {
-      data: {
-        c_salon_id: id,
-      }
-    }).then((res) => {
+    await axios.delete(`/api/${type === "hard" ? "hard_delete" : "delete"}/user/${id}`)
+    .then((res) => {
       // console.log(res)
-      alert("このオンラインサロンを削除しました")
+      alert(res.data)
       router.reload()
     }).catch(e => console.error(e))
-  }
+  }, [router])
 
   return (
     <section className="cont1">
-      <Container small>
-        <h2 className="ttl1">オンラインサロン一覧</h2>
-        <form onSubmit={handleSubmit(onSortForm)}>
+      <Container small900>
+        <h2 className="ttl2">ユーザー一覧</h2>
+        {/* <form onSubmit={handleSubmit(onSortForm)}>
           <div className={styles.searchBox}>
             <input
               type="text"
@@ -129,27 +135,72 @@ const AdminSalon = ({posts}) => {
               <img src={searchIcon.src} alt="検索アイコン" />
             </button>
           </div>
-        </form>
+        </form> */}
         {!disabled ?
           <>
             <article className={`${styles.adminList}`}>
               <ul>
-                {salons.map((salon, index) => (
+                {users.map((use, index) => (
                   <li key={index}>
-                    <p className={styles.date}><Date dateString={salon.created_at} /></p>
                     <p className={styles.txt}>
-                      記事タイトル：<a href={`/corapura/salon/${salon.id}`}>{salon.title}</a>
+                      登録日：<Date dateString={use.created_at} />
                     </p>
                     <p className={styles.txt}>
-                      作成者：<a href={`/corapura/${salon.user?.account_type === 1 ? "company" : "influencer"}/${salon.user?.id}`}>{salon.user?.c_profile?.nicename}</a>
+                      ユーザー名：{use.name}
+                    </p>
+                    <p className={styles.txt}>
+                      LIONDOR：{use.l_profile ?
+                        <a href={`/liondor/mypage/edit/${use.l_profile?.id}`}>{use.l_profile?.nicename}</a>
+                        :
+                        "未作成"
+                      }
+                    </p>
+                    <p className={styles.txt}>
+                      Della Mall：{use.d_profile ?
+                        <a href={`/dellamall/mypage/${use.id}`}>{use.d_profile?.nicename}</a>
+                      :
+                        "未作成"
+                      }
+                    </p>
+                    <p className={styles.txt}>
+                      CORAPURA：{use.c_profile ?
+                        <a href={`/corapura/${use.account_type === 1 ? "company" : "influencer"}/${use.id}`}>{use.c_profile?.nicename}</a>
+                        :
+                        "未作成"
+                      }
                     </p>
                     <div className={styles.btnFlex}>
-                      <a className={`${styles.btn} hoverEffect`} href={`/corapura/editor/salon/${salon.id}`}>編集</a>
                       <button
                         type="button"
-                        onClick={() => handleClickDeleteSalon(salon.id)}
-                      >削除</button>
+                        onClick={() => handleClickPopup("normal", use.id)}
+                      >アカウント凍結</button>
+                      <button
+                        type="button"
+                        onClick={() => handleClickPopup("hard", use.id)}
+                      >アカウント削除</button>
                     </div>
+                    {popup ?
+                      <div className={styles.popupArea} onClick={() => handleClickPopup(id, deleteType)}>
+                        <div className={styles.popupBox} onClick={(e) => e.stopPropagation()}>
+                          <p className={styles.check_ttl}>
+                            本当にアカウントを
+                            {deleteType === "normal" ? "凍結" : null}
+                            {deleteType === "hard" ? "完全に削除" : null}
+                            しますか？
+                          </p>
+                          <div className={styles.btnFlex2}>
+                            <button
+                              type="button"
+                              onClick={() => handleClickDeleteUser(id, deleteType)}
+                            >はい</button>
+                            <button
+                              type="button"
+                              onClick={() => handleClickPopup(id, deleteType)}
+                            >いいえ</button>
+                          </div>
+                        </div>
+                      </div>
+                    : null}
                   </li>
                 ))}
               </ul>
@@ -207,8 +258,8 @@ const AdminSalon = ({posts}) => {
   );
 }
 
-export default AdminSalon;
+export default UserList;
 
-AdminSalon.getLayout = function getLayout(page) {
-  return <PageLayoutCorapura>{page}</PageLayoutCorapura>
+UserList.getLayout = function getLayout(page) {
+  return <PageLayoutTop>{page}</PageLayoutTop>
 }

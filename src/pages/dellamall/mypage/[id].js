@@ -244,6 +244,9 @@ const Mypage = ({posts}) => {
               </>
             : null}
           </div>
+          {user && user?.account_type === 3 ?
+            <a className={styles.adminLink} href="/dellamall/admin/control">管理者</a>
+          : null}
         </Container>
       </section>
 

@@ -60,6 +60,19 @@
   .btnBox {
     @include mb(80px, 64px);
 
+    div {
+      &.hold {
+        button {
+          background-color: $g3;
+          cursor: auto;
+
+          &:hover {
+            opacity: 1;
+          }
+        }
+      }
+    }
+
     .btn {
       margin: auto;
       @include mt(24px, 16px);

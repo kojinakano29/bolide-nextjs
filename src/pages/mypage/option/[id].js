@@ -21,7 +21,7 @@ export const getServerSideProps = async ({params}) => {
 }
 
 const MypageOption = ({posts}) => {
-  console.log(posts)
+  // console.log(posts)
 
   const csrf = () => axios.get('/sanctum/csrf-cookie')
 
@@ -44,7 +44,7 @@ const MypageOption = ({posts}) => {
       user_id: user?.id,
       db_name: "option",
     }).then((res) => {
-      console.log(res)
+      // console.log(res)
 
       if (res.data.stripe_status === "active") {
         setCheck(true)
