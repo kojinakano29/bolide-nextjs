@@ -1,5 +1,5 @@
 import styles from '@/styles/dellamall/components/adminForm.module.scss'
-import { Loader } from "@/components/dellamall";
+import { GuidePopup, Loader } from "@/components/dellamall";
 import Container from "@/components/dellamall/Layouts/container";
 import PageLayoutDellamall from "@/components/Layouts/PageLayoutDellamall";
 import { useAuth } from "@/hooks/auth";
@@ -200,14 +200,10 @@ const EditShop = ({posts}) => {
                 <dl>
                   <dt>
                     <label htmlFor="tag">関連タグ</label>
+                    <GuidePopup txt={`●タグとは？\nそのショップの特徴やサービスなどに沿ったタグを付与できる機能です。\n検索時に同じタグが付いたショップを探すことも可能です。\n\n例えばアパレルショップであれば、「アパレル」「メンズ」「カジュアル」など…\n\n●タグの入力方法\n「タグ①,タグ②,タグ③」のようなかたちで入力可能です。\n↓\n「例）愛知県,ご飯,フレンチ」\n※タグ同士を区切る時は必ず、半角カンマ「,」でお願いします。\n\n●タグの数制限\n公式ショップは無制限で設定できますが、それ以外のショップは\n最大3つまでしか反映されません。`} />
                   </dt>
                   <dd>
                     <textarea id="tag" {...register("tag")} disabled={officialCheck}></textarea>
-                    <p className={styles.txt}>
-                      ※アパレルショップであれば、
-                      <br />「アパレル」「メンズ」「カジュアル」など！サイトに合ったタグを設定できます
-                      <br />※公式ショップ申請をされていない場合、関連タグは最大３つまでしか設定できません
-                    </p>
                   </dd>
                 </dl>
                 <dl>

@@ -1,7 +1,7 @@
 import styles from '@/styles/liondor/components/blogPattern9.module.scss'
 import Link from 'next/link'
 import { BlogTxt } from '@/components/liondor'
-import dummy from '@/images/liondor/cms/dummy.png'
+import dummy from '@/images/liondor/cms/dummy.webp'
 
 const BlogPattern9 = ({pattern}) => {
   const data = pattern?.filter((e, index) => {

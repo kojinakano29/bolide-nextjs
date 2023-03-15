@@ -298,28 +298,30 @@ const ShopDetailArea = ({data, user}) => {
 
       <div className={styles.cont1__flex}>
         <div className={styles.cont1__flexLeft}>
-          <div className={styles.cont1__imgBox}>
+          <a href={shop.url} target="_blank" className={`${styles.cont1__imgBox} hoverEffect`}>
             {shop.image_permission === 1 && shop.thumbs ?
               <img src={`${process.env.NEXT_PUBLIC_BACKEND_URL}/storage/${shop.thumbs}`} alt="" />
               :
-              <div className={styles.imgNone}></div>
+              <div className={styles.imgNone}>
+                {shop.name}
+              </div>
             }
-          </div>
+          </a>
           <div className={styles.cont1__flexLeft__btnFlex}>
             {shop.image_permission === 0 ?
               <Link href="/dellamall/contact/?type=captcha">
-                <a className={`${styles.contactLink} hoverEffect`}>キャプチャ申請</a>
+                <a className={`${styles.contactLink} hoverEffect`}>ショップオーナー<br/>無料キャプチャ申請</a>
               </Link>
             : null}
             {shop.official_user_id ? null :
               <Link href="/dellamall/officialRequest">
-                <a className={`${styles.contactLink} hoverEffect`}>公式申請</a>
+                <a className={`${styles.contactLink} hoverEffect`}>ショップオーナー<br/>公式申請</a>
               </Link>
             }
             {user?.account_type > 2 ?
               <button
                 type="button"
-                className={`${`${styles.pickup} ${pickup.length !== 0 ? styles.on : null}`} hoverEffect`}
+                className={`${`${styles.contactLink} ${pickup.length !== 0 ? styles.on : null}`} hoverEffect`}
                 onClick={handleClickPickup}
               >
                 {pickup.length !== 0 ? "ピックアップから削除" : "ピックアップに追加"}

@@ -1,18 +1,23 @@
 import styles from '@/styles/liondor/components/articleColumn.module.scss'
 import Link from 'next/link';
-import dummy from '@/images/liondor/cms/dummy.png'
+import dummy from '@/images/liondor/cms/dummy.webp'
 import { BlogTxt, Date } from '@/components/liondor';
 
-const ArticleColumn = ({sort, present = false}) => {
+const ArticleColumn = ({sort, present = false, today}) => {
   // console.log(sort)
 
   return (
     <article className={styles.article}>
       {sort.map((item) => (
         <Link href={`/liondor/${present ? 'present' : 'post/show'}/${item.id}`} key={item.id}>
-          <a className={styles.blogLink}>
+          <a className={`${styles.blogLink} ${present && today > item?.limit ? styles.over : null}`}>
             <div className={styles.imgBox}>
               <img src={item.thumbs ? `${process.env.NEXT_PUBLIC_BACKEND_URL}/storage/${item.thumbs}` : dummy.src} alt="" />
+              {present && today > item?.limit ?
+                <div>
+                  <p className="ivy">CLOSING</p>
+                </div>
+              : null}
             </div>
             {present ?
               <div className={styles.txt_box}>

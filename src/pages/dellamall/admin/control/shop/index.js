@@ -130,17 +130,23 @@ const AdminShopList = () => {
                       ショップ名：<a href={`/dellamall/shop/${shop.id}`}>{shop.name}</a>
                     </p>
                     <p className={styles.txt}>
-                      作成者：<a href={`/dellamall/mypage/${shop.user.id}`}>{shop.user.d_profile.nicename}</a>
+                      作成者：<a href={`/dellamall/mypage/${shop.user.id}`}>{shop?.user?.d_profile?.nicename ? shop.user.d_profile.nicename : "プロフィール未作成"}</a>
                     </p>
                     <p className={styles.txt}>
                       公式ユーザー：{shop.official_user_id ?
-                        <a href={`/dellamall/mypage/${shop.user.id}`}>{shop?.d_official?.d_profile?.nicename}</a>
+                        <a href={`/dellamall/mypage/${shop.user.id}`}>{shop?.d_official?.d_profile?.nicename ? shop.d_official.d_profile.nicename : "プロフィール未作成"}</a>
                         :
                         "非公式"
                       }
                     </p>
                     <div className={styles.btnFlex}>
                       <a className={`${styles.btn} hoverEffect`} href={`/dellamall/admin/shop/edit/${shop.id}`}>編集</a>
+                      {shop.official_user_id ?
+                        <>
+                          <a className={`${styles.btn} hoverEffect`} href={`/dellamall/admin/shop/official/${shop.id}`}>公式情報編集</a>
+                          <a className={`${styles.btn} hoverEffect`} href={`/dellamall/admin/shop/comment/${shop.id}`}>コメント</a>
+                        </>
+                      : null}
                       <button
                         type="button"
                         onClick={() => handleClickDeleteShop(shop.id)}

@@ -19,7 +19,6 @@
     position: sticky;
     top: 0;
     overflow-y: scroll;
-    @include scrollHidden;
     @include pb(40px);
   }
 }

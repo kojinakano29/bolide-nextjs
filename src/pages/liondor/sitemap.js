@@ -44,10 +44,10 @@ const Sitemap = () => {
             <a className="ivy">CONTACT</a>
           </Link>
           <div className={styles.hr}></div>
-          <Link href="/liondor/faq">
+          {/* <Link href="/liondor/faq">
             <a className="ivy">FAQ</a>
           </Link>
-          <div className={styles.hr}></div>
+          <div className={styles.hr}></div> */}
           <Link href="/liondor/sitemap">
             <a className="ivy">SITE MAP</a>
           </Link>

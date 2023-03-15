@@ -144,7 +144,7 @@ const AdminSalon = ({posts}) => {
                       作成者：<a href={`/corapura/${salon.user?.account_type === 1 ? "company" : "influencer"}/${salon.user?.id}`}>{salon.user?.c_profile?.nicename}</a>
                     </p>
                     <div className={styles.btnFlex}>
-                      <a className={`${styles.btn} hoverEffect`} href={`/corapura/editor/salon/${salon.id}`}>編集</a>
+                      {/* <a className={`${styles.btn} hoverEffect`} href={`/corapura/editor/salon/${salon.id}`}>編集</a> */}
                       <button
                         type="button"
                         onClick={() => handleClickDeleteSalon(salon.id)}

@@ -148,7 +148,7 @@ const AdminPressRelease = ({posts}) => {
                         作成者：<a href={`/corapura/${pr.user?.account_type === 1 ? "company" : "influencer"}/${pr.user?.id}`}>{pr.user?.c_profile?.nicename}</a>
                       </p>
                       <div className={styles.btnFlex}>
-                        <a className={`${styles.btn} hoverEffect`} href={`/corapura/editor/press_release/${pr.id}`}>編集</a>
+                        {/* <a className={`${styles.btn} hoverEffect`} href={`/corapura/editor/press_release/${pr.id}`}>編集</a> */}
                         <button
                           type="button"
                           onClick={() => handleClickDeletePr(pr.id)}

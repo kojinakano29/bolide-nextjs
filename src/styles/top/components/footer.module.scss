@@ -21,8 +21,7 @@
     }
 
     li {
-      @include fs(16px);
-      font-weight: bold;
+      @include fs(14px);
     }
   }
 

@@ -103,27 +103,45 @@ const Home = ({posts}) => {
 
       <section className={styles.popular}>
         <Container>
-          <h2 className="ttl1">人気のストア</h2>
+          <h2 className="ttl1">人気のショップ</h2>
         </Container>
         <div className={styles.popularWrap}>
-          {popular.length !== 0 ?
+          {/* 代替案 */}
+          {pickup.length !== 0 ?
+            <>
+              <StoreData.Provider value={{pickup}}>
+                <PopularStore />
+              </StoreData.Provider>
+              <Container>
+                <Btn01 fa={faTrophy} txt="ショップ一覧" link="/dellamall/shop" right />
+              </Container>
+            </>
+            :
+            <Container>
+              <p className={styles.noneLength}>人気のショップがありません</p>
+            </Container>
+          }
+          {/* 代替案 */}
+          {/* 初期 */}
+          {/* {popular.length !== 0 ?
             <>
               <StoreData.Provider value={{popular}}>
                 <PopularStore />
               </StoreData.Provider>
               <Container>
-                <Btn01 fa={faTrophy} txt="ストア一覧" link="/dellamall/shop" right />
+                <Btn01 fa={faTrophy} txt="ショップ一覧" link="/dellamall/shop" right />
               </Container>
             </>
             :
             <Container>
-              <p className={styles.noneLength}>人気のストアがありません</p>
+              <p className={styles.noneLength}>人気のショップがありません</p>
             </Container>
-          }
+          } */}
+          {/* 初期 */}
         </div>
       </section>
 
-      <section className={styles.pickup}>
+      {/* <section className={styles.pickup}>
         <Container>
           <h2 className="ttl1">PICKUP</h2>
           {pickup.length !== 0 ?
@@ -132,15 +150,15 @@ const Home = ({posts}) => {
             <p className={styles.noneLength}>PICKUPがありません</p>
           }
         </Container>
-      </section>
+      </section> */}
 
       <section className={styles.storeList}>
         <Container>
-          <h2 className="ttl1">ストア一覧</h2>
+          <h2 className="ttl1">ショップ</h2>
           {pics?.length !== 0 ?
             <MasonryGridComponent item={pics} />
             :
-            <p className={styles.noneLength}>ストア一覧がありません</p>
+            <p className={styles.noneLength}>ショップ一覧がありません</p>
           }
           {!data ? <Loader /> : null}
           {processing.current ? <Loader /> : null}

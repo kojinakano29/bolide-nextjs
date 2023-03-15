@@ -1,6 +1,6 @@
 import styles from '@/styles/liondor/components/form.module.scss'
 import { useRouter } from "next/router"
-import { useCallback } from "react"
+import { useCallback, useEffect } from "react"
 import { useFormContext } from "react-hook-form"
 import Link from 'next/link'
 
@@ -11,12 +11,18 @@ const InputContact = () => {
   const mailRegExp = /^[A-Za-z0-9]{1}[A-Za-z0-9_.-]*@{1}[A-Za-z0-9_.-]+.[A-Za-z0-9]+$/
   const telRegExp = /^0\d{9,10}$/
 
-  const { register, handleSubmit, formState: { errors, isValid } } = useFormContext()
+  const { register, handleSubmit, setValue, formState: { errors, isValid } } = useFormContext()
 
   const onSubmit = useCallback(async (data) => {
     // console.log(data)
 
     router.push(`/liondor/contact/?confirm=1`)
+  }, [router])
+
+  useEffect(() => {
+    if (router.query.check === "present") {
+      setValue("content", ["企業プレゼントについて"])
+    }
   }, [router])
 
   return (
@@ -42,7 +48,7 @@ const InputContact = () => {
                 広告掲載について
               </label>
               <label>
-                <input type="checkbox" value="企業プレゼントについて" {...register("content", {required: true})} checked={router.query.check === "present" ? true : false} />
+                <input type="checkbox" value="企業プレゼントについて" {...register("content", {required: true})} />
                 企業プレゼントについて
               </label>
               <label>

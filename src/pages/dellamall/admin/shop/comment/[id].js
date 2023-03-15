@@ -26,7 +26,7 @@ const CommentList = ({posts}) => {
   const { user } = useAuth({middleware: 'auth', type: 'dellamall'})
 
   const onLoadCheck = async () => {
-    if (parseInt(user?.id) !== parseInt(posts[0]?.d_shop?.user_id)) {
+    if (parseInt(user?.id) !== parseInt(posts[0]?.d_shop?.user_id) && user?.account_type < 3) {
       router.push('/dellamall/admin/shop')
     }
   }

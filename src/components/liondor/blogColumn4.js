@@ -1,7 +1,7 @@
 import styles from '@/styles/liondor/components/blogColumn4.module.scss'
 import Link from 'next/link'
 import { BlogTxt } from '@/components/liondor'
-import dummy from '@/images/liondor/cms/dummy.png'
+import dummy from '@/images/liondor/cms/dummy.webp'
 
 const BlogColumn4 = ({patternData, part2 = false, portrait = false}) => {
   const data = patternData?.l_post?.filter((e, index) => {

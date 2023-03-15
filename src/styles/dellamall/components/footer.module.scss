@@ -21,8 +21,7 @@
 
     a {
       display: block;
-      font-weight: 500;
-      @include fs(16px);
+      @include fs(14px);
       @include mt(0, 0, 24px);
     }
   }

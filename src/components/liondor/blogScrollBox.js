@@ -1,7 +1,7 @@
 import styles from '@/styles/liondor/components/blogScrollBox.module.scss'
 import Link from 'next/link';
 import { BlogTxt } from '@/components/liondor'
-import dummy from '@/images/liondor/cms/dummy.png'
+import dummy from '@/images/liondor/cms/dummy.webp'
 
 const BlogScrollBox = ({patternData, route2 = false, pickup = false}) => {
   const dataOdd = route2 ? patternData?.filter((e, index) => {

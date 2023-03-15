@@ -3,9 +3,10 @@ import Container from '@/components/liondor/Layouts/container';
 import PageLayoutLiondor from '@/components/Layouts/PageLayoutLiondor';
 import styles from '@/styles/liondor/components/registration.module.scss'
 import Image from 'next/image';
-import merit1 from '@/images/liondor/registration/merit1.png'
-import merit2 from '@/images/liondor/registration/merit2.png'
-import merit3 from '@/images/liondor/registration/merit3.png'
+import merit1 from '@/images/liondor/registration/merit1.webp'
+import merit2 from '@/images/liondor/registration/merit2.webp'
+import merit3 from '@/images/liondor/registration/merit3.webp'
+import merit4 from '@/images/liondor/registration/merit4.webp'
 import Link from 'next/link';
 
 const Registration = () => {
@@ -87,7 +88,7 @@ const Registration = () => {
               <p className={`${styles.num} ivy`}>04</p>
               <div className={styles.imgBox}>
                 <Image
-                  src={merit3}
+                  src={merit4}
                   alt=""
                   layout="responsive"
                   sizes="(min-width: 1340px) 440px, (min-width: 768px) 230px, 100vw"

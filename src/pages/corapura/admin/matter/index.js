@@ -159,7 +159,7 @@ const AdminMatter = ({posts}) => {
                         作成者：<a href={`/corapura/${router.query.type === "company" ? "company" : "influencer"}/${matter.user?.id}`}>{matter.user?.c_profile?.nicename}</a>
                       </p>
                       <div className={styles.btnFlex}>
-                        <a className={`${styles.btn} hoverEffect`} href={`/corapura/editor/matter/${matter.id}`}>編集</a>
+                        {/* <a className={`${styles.btn} hoverEffect`} href={`/corapura/editor/matter/${matter.id}`}>編集</a> */}
                         <button
                           type="button"
                           onClick={() => handleClickDeleteMatter(matter.id)}
