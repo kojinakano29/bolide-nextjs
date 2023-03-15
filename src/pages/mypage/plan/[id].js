@@ -78,7 +78,6 @@ const PlanCheckChange = (posts) => {
                 planInfo={planInfo}
                 user={user}
                 plans={plans}
-                accountType={posts.posts.status === "subscribed" ? true : false}
               />
               :
               <ConfirmPlan

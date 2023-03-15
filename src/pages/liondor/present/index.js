@@ -23,6 +23,7 @@ export const getServerSideProps = async ({query}) => {
 
 const Present = ({posts}) => {
   const router = useRouter(null)
+
   let current = null
   if (router.query.page) {
     current = parseInt(router.query.page)
@@ -45,6 +46,12 @@ const Present = ({posts}) => {
     router.push(`/liondor/present/?page=${prevPage}`)
   }
 
+  const date = new Date()
+  const year = date.getFullYear()
+  const month = ("00" + (date.getMonth()+1)).slice(-2)
+  const day = ("00" + date.getDate()).slice(-2)
+  const today = `${year}-${month}-${day}`
+
   return (
     <section className="cont1">
       <PageTitle title="PRESENT" ivy />
@@ -52,7 +59,7 @@ const Present = ({posts}) => {
         <Container>
           <article className={styles.section}>
             <div className={styles.flex}>
-              <ArticleColumn sort={sort1} present />
+              <ArticleColumn sort={sort1} present today={today} />
               <Sidebar posts={posts} />
             </div>
           </article>

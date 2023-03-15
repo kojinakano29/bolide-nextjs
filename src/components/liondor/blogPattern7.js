@@ -2,7 +2,7 @@ import styles from '@/styles/liondor/components/blogPattern7.module.scss'
 import Image from 'next/image';
 import Link from 'next/link';
 import { BlogTxt } from '@/components/liondor'
-import dummy from '@/images/liondor/cms/dummy.png'
+import dummy from '@/images/liondor/cms/dummy.webp'
 
 const BlogPattern7 = ({pattern}) => {
   // console.log(pattern)

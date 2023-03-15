@@ -57,6 +57,26 @@
     letter-spacing: 0;
     text-align: center;
     @include mb(64px, 48px);
+
+    button {
+      text-decoration: underline;
+    }
+  }
+}
+
+.popupArea {
+  @include modalBox;
+  overflow-y: scroll;
+  @include scrollHidden;
+  @include flex(center, center);
+
+  .popupBox {
+    width: fit-content;
+    @include max-width(720px, 720px, calc(100% - 20px * 2));
+    @include p(40px, 32px, 20px);
+    background-color: $w1;
+    border-radius: 20px;
+    cursor: auto;
   }
 }
 

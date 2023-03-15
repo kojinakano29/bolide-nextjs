@@ -16,6 +16,7 @@ const InputPresent = ({present}) => {
 
   const [brands, setBrands] = useState(defaultBrandValue)
   const [cosmetics, setCosmetics] = useState(defaultCosmeticValue)
+  const [popup, setPopup] = useState(false)
 
   const [modalBrand, setModalBrand] = useState(false)
   const toggleModalBrand = useCallback(() => {
@@ -33,12 +34,31 @@ const InputPresent = ({present}) => {
     router.push(`/liondor/present/${present.id}/?confirm=1`)
   }, [router])
 
+  const handleClickPopup = useCallback(async () => {
+    setPopup(prevState => !prevState)
+  }, [setPopup])
+
   return (
     <>
       <p className={styles.desc}>
         <span className="red">＊</span>
         は必須項目です。必ずご入力ください。
+        <br />応募の際の注意事項は
+        <button type="button" onClick={handleClickPopup}>こちら</button>
       </p>
+      {popup ?
+        <div className={styles.popupArea} onClick={handleClickPopup}>
+          <div className={styles.popupBox} onClick={(e) => e.stopPropagation()}>
+            ※応募にあたって、ボリードジャパンのSNSを最低1つフォローすることが必須です
+            <br/>※当選のご連絡はご記載いただいたsnsより通知させていただきます。
+            <br/>
+            <br/>上記2つの注意書きをSNSアカウントの項目「※Facebook・Instagram・Twitterのいずれかにご入力ください」の下に表示したいです。
+            <br/>
+            <br/>また「※応募にあたって、ボリードジャパンのSNSを最低1つフォローすることが必須です」→「※応募にあたって、リオンドールの公式SNS（facebook・Instagram・Twitter）を最低1つフォローすることが必須です。」
+            <br/>に変更していただきたいです。
+          </div>
+        </div>
+      : null}
       <form onSubmit={handleSubmit(onSubmit)}>
         <article className={styles.formContent}>
           <dl className={styles.dl}>

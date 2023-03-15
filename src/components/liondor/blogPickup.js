@@ -1,5 +1,5 @@
 import styles from '@/styles/liondor/components/blogPickup.module.scss'
-import dummy from '@/images/liondor/cms/dummy.png'
+import dummy from '@/images/liondor/cms/dummy.webp'
 import Link from 'next/link';
 import { BlogTxt } from '@/components/liondor'
 

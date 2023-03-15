@@ -1,7 +1,7 @@
 import styles from '@/styles/liondor/components/blogColumn3.module.scss'
 import Link from 'next/link';
 import { BlogTxt } from '@/components/liondor'
-import dummy from '@/images/liondor/cms/dummy.png'
+import dummy from '@/images/liondor/cms/dummy.webp'
 
 const BlogColumn3 = ({patternData, part2 = false, route2 = false}) => {
   const data = route2 ? patternData?.filter((e, index) => {

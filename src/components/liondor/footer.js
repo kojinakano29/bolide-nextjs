@@ -64,6 +64,9 @@ const Footer = () => {
               <Link href="/liondor/terms">
                 <a>利用規約</a>
               </Link>
+              <Link href="/tokushoho">
+                <a>特定商取引法に基づく表示</a>
+              </Link>
               <Link href="/liondor/sitemap">
                 <a>サイトマップ</a>
               </Link>

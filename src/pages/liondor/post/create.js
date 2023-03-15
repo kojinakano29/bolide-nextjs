@@ -38,12 +38,12 @@ const CreatePost = ({posts}) => {
   const [disabled, setDisabled] = useState(false)
   const date = new Date()
   const year = date.getFullYear()
-  const month = ("00" + date.getMonth()+1).slice(-2)
+  const month = ("00" + (date.getMonth()+1)).slice(-2)
   const day = ("00" + date.getDate()).slice(-2)
   const [editorContent, setEditorContent] = useState("")
   const { register, handleSubmit, setValue, formState: { errors } } = useForm({
     defaultValues: {
-      view_date: `${year}-${month}-${day}T00:00`,
+      view_date: `${year}-${month}-${day}T00:00:00`,
     }
   })
 

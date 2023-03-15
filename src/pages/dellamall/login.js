@@ -99,6 +99,21 @@ const Login = () => {
         </Container>
       </section>
 
+      <section className={styles.bjcArea}>
+        <Container small900>
+          <h3>新規のお客様はこちら</h3>
+          <p className={styles.desc}>
+            DellaMall以外にも、Bolide's Japanには様々な機能がございます。
+            <br className="pc" />詳しいコンテンツ内容は下記よりご確認ください！
+          </p>
+          <Link href="/">
+            <a className={`${styles.bjcLink} hoverEffect`}>
+              <img src="/dellamall/bjc_banner.svg" alt="" />
+            </a>
+          </Link>
+        </Container>
+      </section>
+
       <NewBtn />
     </>
   )

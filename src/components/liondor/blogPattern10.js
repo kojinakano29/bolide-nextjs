@@ -1,6 +1,6 @@
 import styles from '@/styles/liondor/components/blogPattern10.module.scss'
 import Link from "next/link";
-import dummy from '@/images/liondor/cms/dummy.png'
+import dummy from '@/images/liondor/cms/dummy.webp'
 
 const BlogPattern10 = ({posts, present = false}) => {
   return (

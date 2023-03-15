@@ -32,8 +32,13 @@ const NowPlan = ({planInfo, user, plans}) => {
           setPlanPrice("44,000")
         }
       }
-    } else if (planInfo.stripe_status !== "active") {
-      setPlanName("一般ユーザー（フリー）")
+    } else if (planInfo) {
+      if (user?.account_type < 1) {
+        setPlanName("一般ユーザー（フリー）")
+      } else if (user?.account_type > 0) {
+        setPlanName("解約済み")
+      }
+
       setPlanPrice("0")
     }
   }, [planInfo, user])

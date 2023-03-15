@@ -2,8 +2,8 @@ import styles from '@/styles/liondor/components/humCont.module.scss'
 import Link from 'next/link';
 import Container from '@/components/liondor/Layouts/container';
 import Image from 'next/image';
-import corapura from '@/images/liondor/common/corapura_bannar.png'
-import dela from '@/images/liondor/common/della-mall_bannar.png'
+import corapura from '@/images/liondor/common/corapura_bannar.webp'
+import dela from '@/images/liondor/common/della-mall_bannar.webp'
 import { SnsFollow } from '@/components/liondor'
 import { editorNaviData } from '@/lib/liondor/constants';
 import { adminNaviData } from '@/lib/liondor/constants';
@@ -77,12 +77,12 @@ const HumCont = ({humOpen, clickHumClose}) => {
               </Link>
             </li>
             <div className={styles.hr}></div>
-            <li>
+            {/* <li>
               <Link href="/liondor/faq">
                 <a className="ivy" onClick={clickHumClose}>FAQ</a>
               </Link>
             </li>
-            <div className={styles.hr}></div>
+            <div className={styles.hr}></div> */}
             <li>
               <Link href="/liondor/sitemap">
                 <a className="ivy" onClick={clickHumClose}>SITE MAP</a>
@@ -130,11 +130,18 @@ const HumCont = ({humOpen, clickHumClose}) => {
               </Link>
             </div>
           </div>
-          <Link href="/liondor/present">
-            <a className={`${styles.right} hoverEffect`} onClick={clickHumClose}>
-              <img src="/liondor/present_banner.png" alt="" />
-            </a>
-          </Link>
+          <div className={styles.bannerFlex}>
+            <Link href="/liondor/present">
+              <a className="hoverEffect" onClick={clickHumClose}>
+                <img src="/liondor/present_banner1.webp" alt="" />
+              </a>
+            </Link>
+            <Link href="/corapura">
+              <a className="hoverEffect" target="_blank" onClick={clickHumClose}>
+                <img src="/liondor/present_banner2.webp" alt="" />
+              </a>
+            </Link>
+          </div>
         </div>
 
         {

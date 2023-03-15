@@ -19,11 +19,11 @@ export const getServerSideProps = async ({params}) => {
 }
 
 const PresentForm = (posts) => {
+  const { user } = useAuth()
+
   const present = posts.posts.presents
   const router = useRouter()
   const isConfirm = router.query.confirm
-
-  const { user } = useAuth()
 
   const methods = useForm({
     defaultValues: {
@@ -36,7 +36,6 @@ const PresentForm = (posts) => {
     mode: "onChange",
     criteriaMode: "all",
   })
-
 
   return (
     <>

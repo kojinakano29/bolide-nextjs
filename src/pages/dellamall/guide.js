@@ -33,7 +33,9 @@ const Guide = () => {
           <h2 className="ttl2">使い方ガイド</h2>
           <div className={styles.cont1__what}><span className="en">Della Mall</span>とは？</div>
           <div className={styles.cont1__text}>
-            説明が入りますテキストサンプルテキストサンプルテキストサンプルテキストサンプルテキストサンプルテキストサンプルテキストサンプルテキストサンプル。
+            あなたのお気に入りのECサイトを自由に登録して共有することができます！
+            <br/>他の人が登録したECサイトの閲覧も可能♪
+            <br/>いいなと思うものがあれば保存をして「モール」としてみんなにシェアしてみましょう
           </div>
           <div className={styles.cont1__who}>Della Mallには一般ユーザー様、<br />企業様向けにこんなメリットがあります！</div>
           <div className={styles.cont1__for}>

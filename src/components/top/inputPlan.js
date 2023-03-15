@@ -5,7 +5,7 @@ import { useFormContext } from "react-hook-form";
 import { Btn1, NowPlan} from '@/components/top'
 import axios from '@/lib/axios';
 
-const InputPlan = ({planInfo, user, plans, accountType}) => {
+const InputPlan = ({planInfo, user, plans}) => {
   const csrf = () => axios.get('/sanctum/csrf-cookie')
 
   const router = useRouter()
@@ -35,7 +35,7 @@ const InputPlan = ({planInfo, user, plans, accountType}) => {
       <div className={styles.planChangeTop}>
         <p className={styles.desc}>お客様が現在ご選択中のプラン内容</p>
         <NowPlan user={user} planInfo={planInfo} plans={plans} />
-        {accountType ?
+        {planInfo && user ?
           <>
             <div className={styles.btnCover} onClick={handleClickCancel}>
               <Btn1 txt="解約する" />
@@ -53,7 +53,7 @@ const InputPlan = ({planInfo, user, plans, accountType}) => {
           </>
         : null}
       </div>
-      {accountType ?
+      {planInfo && user ?
         <form onSubmit={handleSubmit(onSubmit)}>
           <article className={`${styles.formContent} ${styles.planChangeForm}`}>
             {planInfo?.stripe_price === plans.plan_intrust ?

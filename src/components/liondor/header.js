@@ -1,6 +1,6 @@
 import styles from '@/styles/liondor/components/header.module.scss'
 import Link from 'next/link';
-import hLogo from '@/images/liondor/common/h-logo.png'
+import hLogo from '@/images/liondor/common/h-logo.webp'
 import Image from 'next/image';
 import { Hum, SearchIcon, LoginBtn, PageNavi } from '@/components/liondor'
 import { useCallback, useEffect, useState } from 'react';

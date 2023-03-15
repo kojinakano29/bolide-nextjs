@@ -17,6 +17,7 @@
   @include mb(0, 0, 16px);
 
   .cont1__imgBox {
+    display: block;
     border: 1px solid $g1;
     border-radius: 20px;
     overflow: hidden;
@@ -29,6 +30,9 @@
     .imgNone {
       @include height(90vh, 80vh, calc(140vw - 20px * 2));
       background-color: $g2;
+      @include flex(center, center);
+      @include p(20px);
+      @include fs(24px, 20px, 18px);
     }
   }
 }
@@ -381,25 +385,17 @@
   @include mt(16px);
 }
 
-.pickup {
-  @include p(4px 8px);
+.contactLink {
+  @include p(4px 16px);
   @include fs(14px, 12px);
-  font-weight: 500;
   background-color: $o1;
   color: $w1;
-  border-radius: 8px;
+  font-weight: bold;
+  border-radius: 16px;
+  text-align: center;
 
   &.on {
     background-color: $g3;
     color: $b3;
   }
-}
-
-.contactLink {
-  @include p(4px 8px);
-  @include fs(14px, 12px);
-  background-color: $b1;
-  color: $w1;
-  font-weight: bold;
-  border-radius: 8px;
 }

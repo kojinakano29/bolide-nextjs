@@ -11,6 +11,7 @@
     }
 
     input {
+      width: 100%;
       @include input(672px, 100%);
       margin: auto;
       @include pl(56px, 48px);
@@ -35,7 +36,7 @@
     }
 
     .passwordBox {
-      width: fit-content;
+      @include width(672px, 100%);
       margin: auto;
       position: relative;
 
@@ -66,6 +67,36 @@
       &:hover {
         text-decoration: none;
       }
+    }
+  }
+}
+
+.bjcArea {
+  @include pt(80px);
+  text-align: center;
+
+  h3 {
+    @include fs(32px, 24px);
+    font-weight: 500;
+    @include mb(16px);
+  }
+
+  .desc {
+    @include fs(16px, 14px);
+    font-weight: 500;
+    @include mb(24px, 16px);
+  }
+
+  .bjcLink {
+    @include width(533px, 400px);
+    border-radius: 10px;
+    box-shadow: 6px 6px rgba($b1, .1);
+    overflow: hidden;
+    transition: .3s ease;
+
+    &:hover {
+      box-shadow: unset;
+      transform: translate(6px, 6px);
     }
   }
 }

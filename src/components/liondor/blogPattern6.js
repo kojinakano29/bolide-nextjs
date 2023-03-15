@@ -1,6 +1,6 @@
 import styles from '@/styles/liondor/components/blogPattern6.module.scss'
 import Link from 'next/link';
-import dummy from '@/images/liondor/cms/dummy.png'
+import dummy from '@/images/liondor/cms/dummy.webp'
 
 const BlogPattern6 = ({salons}) => {
   const filter = salons.filter((salon, index) => {

@@ -18,7 +18,7 @@ const NewBtn = () => {
             </a>
           </Link>
           <Link href="/register">
-            <a className={`${styles.login__newItem} btn4 hoverEffect`}>個人利用の方</a>
+            <a className={`${styles.login__newItem} btn4 hoverEffect`}>一般ユーザー（フリー）</a>
           </Link>
         </div>
       </Container>

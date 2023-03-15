@@ -1,6 +1,6 @@
 import styles from '@/styles/liondor/components/sidebarPost.module.scss'
 import Link from 'next/link'
-import dummy from '@/images/liondor/cms/dummy.png'
+import dummy from '@/images/liondor/cms/dummy.webp'
 import { BlogTxt } from '@/components/liondor'
 
 const SidebarPost = ({pickUp}) => {

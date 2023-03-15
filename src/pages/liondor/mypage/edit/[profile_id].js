@@ -5,8 +5,8 @@ import { useForm } from 'react-hook-form';
 import Container from '@/components/liondor/Layouts/container';
 import PageLayoutLiondor from '@/components/Layouts/PageLayoutLiondor';
 import { MypageSide, PageTitle } from '@/components/liondor';
-import { industries, workTypes, zip } from '@/lib/liondor/constants'
-import thumb from '@/images/liondor/common/mypage.png'
+import { industries, occupations, workTypes, zip } from '@/lib/liondor/constants'
+import thumb from '@/images/liondor/common/mypage.webp'
 import { useAuth } from '@/hooks/auth';
 import { useRouter } from 'next/router';
 
@@ -238,7 +238,9 @@ const MypageEdit = ({posts}) => {
                   <dt>職種</dt>
                   <dd className={styles.occupationArea}>
                     <select {...register("occupation")}>
-                      <option value="電気通信事業">電気通信事業</option>
+                      {occupations.map((occupation, index) => (
+                        <option value={occupation} key={index}>{occupation}</option>
+                      ))}
                     </select>
                   </dd>
                 </dl>

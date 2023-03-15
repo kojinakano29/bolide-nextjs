@@ -2,7 +2,7 @@ import styles from '@/styles/liondor/components/recommends.module.scss'
 import 'swiper/css/bundle'
 import { Swiper, SwiperSlide } from 'swiper/react'
 import { Pagination, Navigation } from 'swiper'
-import dummy from '@/images/liondor/cms/dummy.png'
+import dummy from '@/images/liondor/cms/dummy.webp'
 import Link from 'next/link'
 import { BlogTxt } from '@/components/liondor'
 

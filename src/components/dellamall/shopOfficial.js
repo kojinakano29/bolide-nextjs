@@ -1,6 +1,6 @@
 import styles from '@/styles/dellamall/components/shopOfficial.module.scss'
 import { useCallback, useEffect, useState } from 'react';
-import dummy from '@/images/dellamall/shopDetail/onlineSalon.webp'
+import dummy from '@/images/dellamall/shopDetail/dummy.webp'
 import { Btn01, Date } from '@/components/dellamall';
 import { faBagShopping } from '@fortawesome/free-solid-svg-icons'
 import { faInstagram } from '@fortawesome/free-brands-svg-icons'

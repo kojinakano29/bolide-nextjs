@@ -3,7 +3,7 @@ import PageLayoutCorapura from "@/components/Layouts/pageLayoutCorapura";
 import mv from '@/images/corapura/top/mv.png'
 import mv_sp from '@/images/corapura/top/mv_sp.png'
 import mv_big from '@/images/corapura/top/mv_big.png'
-import { Btn, Btn2, CanDo, CardType1, CardType2, CompanyCard, Coupon, Info, Merit, NameCard, Release, SwiperType1, SwiperType2, User } from '@/components/corapura';
+import { Btn, Btn2, CanDo, CardType1, CardType2, CompanyCard, Coupon, Info, NameCard, Release, SwiperType1, SwiperType2, User } from '@/components/corapura';
 import Container from '@/components/corapura/Layout/container';
 import { SwiperSlide } from 'swiper/react';
 import dummy1 from '@/images/corapura/common/dummy1.svg'
