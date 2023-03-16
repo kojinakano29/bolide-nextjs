@@ -46,6 +46,14 @@
         color: $g1;
         opacity: 0;
         transition: .3s ease;
+
+        a {
+          text-decoration: underline;
+
+          &:hover {
+            text-decoration: none;
+          }
+        }
       }
 
       &.on {

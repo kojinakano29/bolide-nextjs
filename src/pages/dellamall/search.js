@@ -8,7 +8,16 @@ import { faSquarePlus } from '@fortawesome/free-solid-svg-icons'
 
 export const SortContextSearch = createContext()
 
-const SearchDellamall = () => {
+export const getServerSideProps = async ({query}) => {
+  return {
+      props: {
+          posts: query,
+      }
+  }
+}
+
+const SearchDellamall = ({posts}) => {
+  // console.log(posts)
   const csrf = () => axios.get('/sanctum/csrf-cookie')
 
   const [sort, setSort] = useState({
@@ -32,7 +41,9 @@ const SearchDellamall = () => {
     return `/api/dellamall/shop/search/${pageIndex+1}/${sort.value}/${account.value}`
   }
 
-  const fetcher = url => axios.post(url).then(res => res.data.shop)
+  const fetcher = url => axios.post(url, {
+    s: posts.s,
+  }).then(res => res.data.shop)
 
   const {
     data,

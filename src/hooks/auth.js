@@ -112,7 +112,6 @@ export const useAuth = ({ middleware, redirectIfAuthenticated, type } = {}) => {
         if (middleware === 'guest' && redirectIfAuthenticated && user) router.push(redirectIfAuthenticated)
         if (window.location.pathname === "/verify-email" && user?.email_verified_at) router.push(redirectIfAuthenticated)
         if (middleware === 'auth' && error) {
-            alert("ログインしていないためこのページにはアクセスできません。")
             logout()
         }
     }, [user, error])

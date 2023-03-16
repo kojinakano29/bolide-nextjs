@@ -1,6 +1,6 @@
 import styles from '@/styles/top/components/form.module.scss'
 import Link from 'next/link'
-import { useCallback, useState } from 'react'
+import { useCallback, useEffect, useState } from 'react'
 import PageLayoutTop from '@/components/Layouts/pageLayoutTop'
 import Container from '@/components/top/Layout/container'
 import { useForm } from 'react-hook-form'
@@ -20,10 +20,18 @@ const Register = () => {
         middleware: 'guest',
         redirectIfAuthenticated: '/mypage',
     })
-    const { register, handleSubmit, getValues, formState: { errors } } = useForm({
+    const { register, handleSubmit, setValue, getValues, formState: { errors } } = useForm({
         mode: "onChange",
         criteriaMode: "all",
     })
+
+    useEffect(() => {
+        if (router.query.plan === 'corp') {
+            setValue('account_type', '1')
+        } else if (router.query.plan === 'free') {
+            setValue('account_type', '0')
+        }
+    }, [router])
 
     const onRegister = async (data) => {
         await csrf()
