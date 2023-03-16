@@ -1,13 +1,22 @@
 import { ConfirmOfficialRequest, InputOfficialRequest } from '@/components/dellamall';
 import Container from '@/components/dellamall/Layouts/container';
 import PageLayoutDellamall from '@/components/Layouts/PageLayoutDellamall';
+import { useAuth } from '@/hooks/auth';
 import styles from '@/styles/dellamall/components/form.module.scss'
 import { useRouter } from 'next/router';
+import { useEffect } from 'react';
 import { FormProvider, useForm } from 'react-hook-form';
 
 const OfficialRequest = () => {
   const router = useRouter()
+  const { user } = useAuth({middleware: 'auth', type: 'dellamall'})
   const isConfirm = router.query.confirm
+
+  useEffect(() => {
+    if (user && user?.account_type < 1) {
+      router.push('/dellamall')
+    }
+  }, [user])
 
   const methods = useForm({
     defaultValues: {

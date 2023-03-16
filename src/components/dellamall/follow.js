@@ -79,7 +79,7 @@ const Follow = () => {
                             <img src={`${process.env.NEXT_PUBLIC_BACKEND_URL}/storage/${list.followed.d_profile?.thumbs}`} alt="" />
                           : null}
                         </div>
-                        <span className={styles.name}>{list.followed.d_profile?.nicename}</span>
+                        <span className={styles.name}>{list?.followed?.d_profile?.nicename ? list.followed.d_profile?.nicename : "プロフィール未設定"}</span>
                       </a>
                     </Link>
                   </li>
@@ -96,7 +96,7 @@ const Follow = () => {
                             <img src={`${process.env.NEXT_PUBLIC_BACKEND_URL}/storage/${list.following.d_profile?.thumbs}`} alt="" />
                           : null}
                         </div>
-                        <span className={styles.name}>{list.following.d_profile?.nicename}</span>
+                        <span className={styles.name}>{list?.following?.d_profile?.nicename ? list.following.d_profile?.nicename : "プロフィール未設定"}</span>
                       </a>
                     </Link>
                   </li>

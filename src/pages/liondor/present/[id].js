@@ -19,7 +19,7 @@ export const getServerSideProps = async ({params}) => {
 }
 
 const PresentForm = (posts) => {
-  const { user } = useAuth()
+  const { user } = useAuth({middleware: 'auth', type: 'liondor'})
 
   const present = posts.posts.presents
   const router = useRouter()

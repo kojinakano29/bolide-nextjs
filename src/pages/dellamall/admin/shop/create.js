@@ -27,27 +27,15 @@ const CreateShop = () => {
   const [imgName, setImgName] = useState("")
 
   useEffect(() => {
-    if (user?.account_type > 0) {
-      setOfficialCheck(false)
+    if (user) {
+      if (user?.account_type > 2) {
+        setOfficialCheck(false)
+      }
     }
   }, [user])
 
-  // const handleChangeFile = useCallback((e) => {
-  //   const { files } = e.target
-  //   if (files[0]) {
-  //     setPreview(window.URL.createObjectURL(files[0]))
-  //   } else {
-  //     setPreview("")
-  //   }
-  // }, [])
-
   const onShopCreate = useCallback(async (data) => {
     await csrf()
-
-    // const params = new FormData();
-    // Object.keys(data).forEach(function(key) {
-    //   params.append(key, this[key])
-    // }, data)
 
     await axios.post('/api/dellamall/shop/store', data)
     .then((res) => {
@@ -124,17 +112,6 @@ const CreateShop = () => {
                     <div className={styles.imgBox}>
                       {preview ? <img src={preview} alt="" /> : <div className={styles.imgNone}>ショップのキャプチャが入ります</div>}
                     </div>
-                    {/* <label htmlFor="thumbs" className={`${styles.thumbsBox} ${officialCheck ? styles.disabled : 'hoverEffect'}`}>
-                      キャプチャを選択する
-                      <input
-                        type="file"
-                        id="thumbs"
-                        accept="image/*"
-                        {...register("thumbs")}
-                        onChange={handleChangeFile}
-                        disabled={officialCheck}
-                      />
-                    </label> */}
                   </dd>
                 </dl>
               </div>
@@ -169,7 +146,6 @@ const CreateShop = () => {
                       type="text"
                       id="name"
                       {...register("name", { required: true })}
-                      // placeholder="サイト名、お店の名前を入れてください"
                       disabled={officialCheck}
                     />
                     {errors.name && <p className={styles.error}>必須項目を入力してください</p>}

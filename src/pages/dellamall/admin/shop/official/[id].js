@@ -27,7 +27,7 @@ const OfficialShop = ({posts}) => {
   const router = useRouter()
   const { user } = useAuth({middleware: 'auth', type: 'dellamall'})
   const [disabled, setDisabled] = useState(false)
-  const [officialCheck, setOfficialCheck] = useState(false)
+  const [officialCheck, setOfficialCheck] = useState(true)
   const [popup, setPopup] = useState(false)
   const [mode, setMode] = useState()
   const [type, setType] = useState("")
@@ -43,8 +43,8 @@ const OfficialShop = ({posts}) => {
 
   useEffect(() => {
     if (user) {
-      if (parseInt(user?.id) === parseInt(shop.official_user_id)) {
-        setOfficialCheck(true)
+      if (parseInt(user?.id) === parseInt(shop.official_user_id) || user?.account_type > 2) {
+        setOfficialCheck(false)
       } else {
         router.push({
           pathname: "/dellamall/admin/shop",

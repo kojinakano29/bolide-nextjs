@@ -1,16 +1,45 @@
 import styles from '@/styles/corapura/components/header.module.scss'
 import Link from 'next/link';
-import { useCallback, useState } from 'react';
+import { useCallback, useEffect, useState } from 'react';
 import logo from '@/images/corapura/common/logo.svg'
 import login from '@/images/corapura/header/login.svg'
 import signUp from '@/images/corapura/header/signUp.svg'
 import bookmark from '@/images/corapura/header/bookmark.svg'
 import mypage from '@/images/corapura/header/mypage.svg'
 import { useAuth } from '@/hooks/auth';
+import { useRouter } from 'next/router';
+import axios from '@/lib/axios';
 
 const Header = () => {
+  const csrf = () => axios.get('/sanctum/csrf-cookie')
+
+  const router = useRouter()
   const { user } = useAuth()
   const [humOpen, setHumOpen] = useState(false)
+
+  const onLoadStripeCheck = async () => {
+    csrf()
+
+    await axios.get(`/api/subscription/status/${user?.id}/corporate`)
+    .then((res) => {
+      // console.log(res)
+
+      if (user?.account_type === 1 && res.data?.status !== "subscribed" && res.data.details.length === 0) {
+        router.push(`/membership_register`)
+      }
+    }).catch(e => console.error(e))
+  }
+
+  useEffect(() => {
+    if (user) {
+      // onLoadStripeCheck()
+
+      if (!user?.c_profile_id) {
+        router.push('/corapura/editor/create')
+      }
+    }
+
+  }, [user, router.asPath])
 
   const handleClickHum = useCallback(async () => {
     setHumOpen(prevState => !prevState)

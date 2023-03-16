@@ -3,6 +3,7 @@ import PageLayoutLiondor from "@/components/Layouts/PageLayoutLiondor";
 import { ArticleColumn, PageTitle, Sidebar } from '@/components/liondor';
 import Container from '@/components/liondor/Layouts/container';
 import { useRouter } from 'next/router';
+import { useAuth } from '@/hooks/auth';
 
 // SSR
 export const getServerSideProps = async ({query}) => {
@@ -25,6 +26,8 @@ export const getServerSideProps = async ({query}) => {
 const Search = ({posts}) => {
   // console.log(posts)
   const router = useRouter(null)
+  const { user } = useAuth({middleware: 'auth', type: 'liondor'})
+
   let current = null
   if (router.query.page) {
     current = parseInt(router.query.page)

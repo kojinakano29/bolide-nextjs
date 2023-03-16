@@ -7,7 +7,7 @@ import { useRouter } from "next/router";
 import { useCallback, useEffect, useState } from "react";
 import { useForm } from "react-hook-form";
 import searchIcon from '@/images/corapura/common/search.svg'
-import { Date, Loader } from '@/components/dellamall';
+import { Btn01, Date, Loader } from '@/components/dellamall';
 
 const AdminShopList = () => {
   const csrf = () => axios.get('/sanctum/csrf-cookie')
@@ -202,6 +202,7 @@ const AdminShopList = () => {
                 : null}
               </div>
             : null}
+            <Btn01 txt="戻る" link="/dellamall/admin/control" />
           </>
         : <Loader />}
       </Container>

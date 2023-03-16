@@ -3,6 +3,7 @@ import PageLayoutCorapura from "@/components/Layouts/pageLayoutCorapura";
 import Container from '@/components/corapura/Layout/container';
 import { CardType2, DetailArea, DetailComment, DetailTabUser, NameCard } from '@/components/corapura';
 import { useCallback, useState } from 'react';
+import { useAuth } from '@/hooks/auth';
 
 export const getServerSideProps = async ({params}) => {
   const res = await fetch(`${process.env.NEXT_PUBLIC_API_CORAPURA}/user/show/${params.id}`)
@@ -18,6 +19,7 @@ export const getServerSideProps = async ({params}) => {
 const InfluencerDetail = ({posts}) => {
   // console.log(posts)
 
+  const { user } = useAuth({middleware: 'auth', type: 'corapura'})
   const profile = posts.profile
   const userInfo = posts.user
   const cards = posts.cards

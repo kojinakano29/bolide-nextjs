@@ -29,7 +29,7 @@ const CreatePost = ({posts}) => {
   const { user } = useAuth({middleware: 'auth', type: 'liondor'})
 
   const onLoadCheck = () => {
-    if (user?.account_type < 1) {
+    if (user?.account_type < 2) {
       alert("このページにはアクセスできません。")
       router.push(`/liondor`)
     }

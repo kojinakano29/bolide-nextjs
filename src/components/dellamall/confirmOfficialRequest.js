@@ -25,7 +25,7 @@ const ConfirmOfficialRequest = () => {
   const onContactForm = useCallback(async (data) => {
     await csrf()
 
-    await axios.post("/api/dellamall/official", data)
+    await axios.post("/api/dellamall/officialRequest", data)
     .then((res) => {
       // console.log(res)
       sessionStorage.setItem('officialRequest', true)
@@ -57,7 +57,7 @@ const ConfirmOfficialRequest = () => {
       tel2: values.tel2,
       remarks: values.remarks,
     })
-  }, [onContactForm])
+  }, [onContactForm, values])
 
   return (
     <>

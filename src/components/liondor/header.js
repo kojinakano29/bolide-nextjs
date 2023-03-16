@@ -9,6 +9,13 @@ import { useRouter } from 'next/router';
 
 const Header = () => {
   const router = useRouter()
+  const { user } = useAuth()
+
+  useEffect(() => {
+    if (user && !user?.l_profile_id) {
+      router.push('/liondor/mypage/create')
+    }
+  }, [user, router.asPath])
 
   // ハンバーガーメニュー
   const [humOpen, setHumOpen] = useState(false)
