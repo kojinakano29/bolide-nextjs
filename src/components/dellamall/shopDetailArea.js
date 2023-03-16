@@ -220,7 +220,8 @@ const ShopDetailArea = ({data, user}) => {
     processing.current = true
     await csrf()
 
-    await axios.post('/api/dellamall/', {
+    await axios.post('/api/dellamall/report', {
+      user_id: user?.id,
       message: spamMessage,
     }).then((res) => {
       // console.log(res)

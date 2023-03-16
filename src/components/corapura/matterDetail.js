@@ -231,33 +231,35 @@ const MatterDetail = ({posts}) => {
                   <Btn txt="この案件の募集を終了する" />
                 </div>
               : null}
-              <div className={styles.myMatterBox}>
-                <h3 className={styles.ttl2}>この案件に応募した企業・<br className="sp" />ユーザーステータス状況</h3>
-                {appList.map((list, index) => (
-                  <div className={styles.list} key={index}>
-                    <div className={styles.left}>
-                      <div className={styles.imgBox}>
-                        {list.c_profile.thumbs ? <img src={`${process.env.NEXT_PUBLIC_BACKEND_URL}/storage/${list.c_profile.thumbs}`} alt="" /> : null}
+              {appList.length !== 0 ?
+                <div className={styles.myMatterBox}>
+                  <h3 className={styles.ttl2}>この案件に応募した企業・<br className="sp" />ユーザーステータス状況</h3>
+                  {appList.map((list, index) => (
+                    <div className={styles.list} key={index}>
+                      <div className={styles.left}>
+                        <div className={styles.imgBox}>
+                          {list.c_profile.thumbs ? <img src={`${process.env.NEXT_PUBLIC_BACKEND_URL}/storage/${list.c_profile.thumbs}`} alt="" /> : null}
+                        </div>
+                        <Link href={`/corapura/${list.account_type === 0 ? "influencer" : "company"}/${list.id}`}>
+                          <a className={styles.name}>{list.c_profile.nicename}</a>
+                        </Link>
                       </div>
-                      <Link href={`/corapura/${list.account_type === 0 ? "influencer" : "company"}/${list.id}`}>
-                        <a className={styles.name}>{list.c_profile.nicename}</a>
-                      </Link>
+                      <div className={styles.right}>
+                        <select value={state[index]} onChange={(e) => handleChangeState(e, index)}>
+                          <option value="0">応募中</option>
+                          <option value="3">採用</option>
+                          <option value="5">不採用</option>
+                          <option value="1">完了</option>
+                        </select>
+                        <button
+                          className={`${styles.btn3} hoverEffect`}
+                          onClick={() => handleClickState(state[index], list.pivot.id, list.c_profile.nicename)}
+                        >更新する</button>
+                      </div>
                     </div>
-                    <div className={styles.right}>
-                      <select value={state[index]} onChange={(e) => handleChangeState(e, index)}>
-                        <option value="0">応募中</option>
-                        <option value="3">採用</option>
-                        <option value="5">不採用</option>
-                        <option value="1">完了</option>
-                      </select>
-                      <button
-                        className={`${styles.btn3} hoverEffect`}
-                        onClick={() => handleClickState(state[index], list.pivot.id, list.c_profile.nicename)}
-                      >更新する</button>
-                    </div>
-                  </div>
-                ))}
-              </div>
+                  ))}
+                </div>
+              : null}
             </>
           :
             <div className={styles.btnFlex}>

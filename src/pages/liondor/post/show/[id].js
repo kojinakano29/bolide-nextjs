@@ -13,13 +13,16 @@ import { useRouter } from "next/router";
 import { FacebookIcon, FacebookShareButton, TwitterIcon, TwitterShareButton } from "react-share";
 
 // SSR
-export const getServerSideProps = async ({params}) => {
+export const getServerSideProps = async ({params, query}) => {
   const res = await fetch(`${process.env.NEXT_PUBLIC_API_LIONDOR}/post/show/${params.id}`)
   const data = await res.json()
 
   return {
     props: {
-      posts: data
+      posts: {
+        posts: data,
+        query: query,
+      }
     }
   }
 }
@@ -30,11 +33,11 @@ const DetailPage = ({posts}) => {
 
   const router = useRouter()
   const { user } = useAuth({
-    middleware: parseInt(router.query.preview) === parseInt(1) ? "" : 'auth',
+    middleware: parseInt(posts.query.preview) === parseInt(1) ? "" : 'auth',
     type: 'liondor'
   })
 
-  const post = posts.posts
+  const post = posts.posts.posts
   const parentSlug = post.l_category.parent_slug
   const upperParentSlug = parentSlug?.toUpperCase()
   const slugName = post.l_category.name
@@ -43,12 +46,12 @@ const DetailPage = ({posts}) => {
   const ttl = post.title
   const subTtl = post.sub_title
   const desc = post.discription
-  const seriesPrevPost = posts.series?.prev_post
-  const seriesNextPost = posts.series?.next_post
-  const seriesName = posts.series.series_info?.name
+  const seriesPrevPost = posts.posts.series?.prev_post
+  const seriesNextPost = posts.posts.series?.next_post
+  const seriesName = posts.posts.series.series_info?.name
   const userName = post.user.l_profile.nicename
   const createAt = post.view_date
-  const bookmark = posts.bookmarks
+  const bookmark = posts.posts.bookmarks
   const pickup = post.l_pickup
 
   const [disabled, setDisabled] = useState(false)
@@ -241,7 +244,7 @@ const DetailPage = ({posts}) => {
                 value={post.content}
               />
             </div>
-            <Sidebar posts={posts} />
+            <Sidebar posts={posts.posts} />
           </div>
           <Button2 link={`/liondor/post/${slug}`} name="back to list" left />
         </Container>
@@ -249,7 +252,7 @@ const DetailPage = ({posts}) => {
 
       <section className={styles.recoCont}>
         <Container>
-          <Recommends posts={posts} />
+          <Recommends posts={posts.posts} />
         </Container>
       </section>
     </>

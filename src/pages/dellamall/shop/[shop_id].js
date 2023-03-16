@@ -22,7 +22,7 @@ const ShopDetail = ({posts}) => {
   // console.log(posts)
 
   const router = useRouter()
-  const { user } = useAuth()
+  const { user } = useAuth({middleware: 'auth', type: 'dellamall'})
 
   const connection = posts.kanren
   const shop = posts.shop

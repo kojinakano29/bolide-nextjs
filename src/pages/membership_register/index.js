@@ -6,11 +6,19 @@ import Container from '@/components/top/Layout/container';
 import Link from 'next/link';
 import { ConfirmMembership, InputMembership } from '@/components/top';
 import { useAuth } from '@/hooks/auth';
+import { useEffect } from 'react';
 
 const MembershipRegister = () => {
   const router = useRouter()
   const { user } = useAuth()
   const isConfirm = router.query.confirm
+
+  useEffect(() => {
+    if (user && user?.account_type === 0) {
+      alert("こちらのページの閲覧権限がありません")
+      router.push('/')
+    }
+  }, [user])
 
   const methods = useForm({
     defaultValues: {

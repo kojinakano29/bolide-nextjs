@@ -21,9 +21,10 @@ export const getServerSideProps = async ({params}) => {
 }
 
 const EditShop = ({posts}) => {
-  // console.log(posts)
+  console.log(posts)
   const csrf = () => axios.get('/sanctum/csrf-cookie')
 
+  const router = useRouter()
   const { user } = useAuth({middleware: 'auth', type: 'dellamall'})
   const [disabled, setDisabled] = useState(false)
   const tags = posts?.d_tags
@@ -42,8 +43,14 @@ const EditShop = ({posts}) => {
   const [officialCheck, setOfficialCheck] = useState(true)
 
   useEffect(() => {
-    if (user?.account_type > 0) {
-      setOfficialCheck(false)
+    if (user) {
+      if (posts.official_user_id === user?.id || user?.account_type > 2) {
+        setOfficialCheck(false)
+      }
+
+      if (user?.id !== posts.user_id && user?.account_type < 3) {
+        router.push(`/dellamall/mypage/${user?.id}`)
+      }
     }
   }, [user])
 
@@ -93,45 +100,11 @@ const EditShop = ({posts}) => {
     })
   }, [setDisabled, onShopEdit, user, preview])
 
-  const handleClickSiteData = async (url) => {
-    // console.log(url)
-    await setDisabled(true)
-    await csrf()
-
-    const options = {
-      method: 'GET',
-      mode: 'cors',
-      headers: {
-        Accept: 'application/json',
-        Authorization: 'Bearer p7LE068D2fbq1i1E3v2pSdJV0yYa2MiacS5gnX6b'
-      }
-    };
-
-    const capture = await fetch(`https://screendot.io/api/standard?url=${url}&browserWidth=1920&width=1920&delay=500&format=webp&refresh=true`, options)
-    setPreview(capture.url)
-    // console.log(capture)
-
-    await axios.post('/api/dellamall/shop_create_url', {
-      url: url,
-    }).then((res) => {
-      // console.log(res)
-      setValue("name", res.data.title)
-      setValue("tag", res.data.keyword)
-      setValue("description", res.data.description)
-      alert("サイト情報の取得に成功しました。")
-    }).catch((e) => {
-      console.error(e)
-      alert("サイト情報の取得に失敗しました。")
-    })
-
-    await setDisabled(false)
-  }
-
   return (
     <section className={`${styles.adminForm} cont1`}>
       <Container small>
         <h2 className="ttl2">ショップ編集</h2>
-        {user ?
+        {user?.id === posts.user_id || user?.account_type > 2 ?
           <form onSubmit={handleSubmit(onSubmit)}>
             <h3 className={styles.infoTtl}>基本情報</h3>
             <p className={styles.desc}>※公式ショップ申請をされていない場合、サイトURL以外の情報は入力できません。</p>
@@ -174,14 +147,6 @@ const EditShop = ({posts}) => {
                     {errors.url && <p className={styles.error}>必須項目を入力してください</p>}
                   </dd>
                 </dl>
-                {/* {disabled ? <Loader /> :
-                  <button
-                    type="button"
-                    className={`${styles.btn} ${styles.btn2} hoverEffect`}
-                    onClick={() => handleClickSiteData(getValues("url"))}
-                    disabled={disabled}
-                  >サイト情報を取得する</button>
-                } */}
                 <dl>
                   <dt>
                     <label htmlFor="name">サイト名</label>
@@ -203,7 +168,7 @@ const EditShop = ({posts}) => {
                     <GuidePopup txt={`●タグとは？\nそのショップの特徴やサービスなどに沿ったタグを付与できる機能です。\n検索時に同じタグが付いたショップを探すことも可能です。\n\n例えばアパレルショップであれば、「アパレル」「メンズ」「カジュアル」など…\n\n●タグの入力方法\n「タグ①,タグ②,タグ③」のようなかたちで入力可能です。\n↓\n「例）愛知県,ご飯,フレンチ」\n※タグ同士を区切る時は必ず、半角カンマ「,」でお願いします。\n\n●タグの数制限\n公式ショップは無制限で設定できますが、それ以外のショップは\n最大3つまでしか反映されません。`} />
                   </dt>
                   <dd>
-                    <textarea id="tag" {...register("tag")} disabled={officialCheck}></textarea>
+                    <textarea id="tag" {...register("tag")}></textarea>
                   </dd>
                 </dl>
                 <dl>

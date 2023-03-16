@@ -32,7 +32,7 @@ const OnlineSalonDetail = ({posts}) => {
   const csrf = () => axios.get('/sanctum/csrf-cookie')
 
   const router = useRouter()
-  const { user } = useAuth()
+  const { user } = useAuth({middleware: 'auth', type: 'corapura'})
 
   const salon = posts.salon
   const profile = posts?.user?.c_profile

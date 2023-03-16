@@ -49,7 +49,7 @@ const ConfirmContact = () => {
       tel: values.tel,
       content: values.content,
     })
-  }, [onContactForm])
+  }, [onContactForm, values])
 
   return (
     <>

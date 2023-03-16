@@ -17,7 +17,7 @@ const NewBtn = () => {
               <span>※ショップオーナー様</span>
             </a>
           </Link>
-          <Link href="/register">
+          <Link href="/register/?plan=free">
             <a className={`${styles.login__newItem} btn4 hoverEffect`}>一般ユーザー（フリー）</a>
           </Link>
         </div>

@@ -90,14 +90,10 @@ const EditCompany = ({posts}) => {
   }, [])
 
   useEffect(() => {
-    if (user && user?.account_type !== 1) {
-      if (user?.id !== profile.id) {
+    if (user && user?.account_type < 1) {
+      if (user?.id !== profile.id && user?.account_type < 3) {
         onLoadCheck("このページの閲覧権限がありません。", "/corapura")
       }
-    }
-
-    if (user && !user?.c_profile_id) {
-      onLoadCheck("プロフィールを作成してください。", `/corapura/editor/create`)
     }
   }, [user])
 

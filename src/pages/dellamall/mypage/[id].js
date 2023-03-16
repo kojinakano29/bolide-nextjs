@@ -28,7 +28,7 @@ const Mypage = ({posts}) => {
   const csrf = () => axios.get('/sanctum/csrf-cookie')
 
   const router = useRouter()
-  const { user, logout } = useAuth({type: 'dellamall'})
+  const { user, logout } = useAuth({middleware: 'auth', type: 'dellamall'})
   const profile = posts.profile
   const dProfile = profile.d_profile
   const create_shop = posts.create_shop
@@ -244,7 +244,7 @@ const Mypage = ({posts}) => {
               </>
             : null}
           </div>
-          {user && user?.account_type === 3 ?
+          {user && user?.account_type === 3 && parseInt(router.query.id) === parseInt(user?.id) ?
             <a className={styles.adminLink} href="/dellamall/admin/control">管理者</a>
           : null}
         </Container>

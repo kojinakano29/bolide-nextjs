@@ -19,7 +19,7 @@ const CreateSeries = () => {
   }, [user])
 
   const onLoadCheck = () => {
-    if (user?.account_type < 1) {
+    if (user?.account_type < 2) {
       alert("このページにはアクセスできません。")
       router.push(`/liondor`)
     }

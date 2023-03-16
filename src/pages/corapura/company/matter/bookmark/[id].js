@@ -23,7 +23,7 @@ const CompanyBookmark = ({posts}) => {
   // console.log(posts)
   const csrf = () => axios.get('/sanctum/csrf-cookie')
 
-  const { user } = useAuth()
+  const { user } = useAuth({middleware: 'auth', type: 'corapura'})
   const [disabled, setDisabled] = useState(false)
   const [matters, setMatters] = useState([])
   const [nowPage, setNowPage] = useState(posts.now_page)

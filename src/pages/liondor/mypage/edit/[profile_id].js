@@ -85,6 +85,7 @@ const MypageEdit = ({posts}) => {
       // console.log(res)
       alert("更新しました。")
       setDisabled(false)
+      router.reload()
     })
     .catch((e) => {
       console.error(e)

@@ -4,7 +4,7 @@ import PageLayoutDellamall from "@/components/Layouts/PageLayoutDellamall";
 import { useRouter } from 'next/router';
 import { useAuth } from '@/hooks/auth';
 import { useCallback, useEffect, useState } from 'react';
-import { Loader } from '@/components/dellamall';
+import { Btn01, Loader } from '@/components/dellamall';
 import axios from '@/lib/axios';
 import Link from 'next/link';
 
@@ -64,22 +64,25 @@ const PickupList = () => {
       <Container small>
         <h2 className="ttl2">ピックアップリスト</h2>
         {authCheck ?
-          <article className={styles.listBox}>
-            {lists.length !== 0 ?
-              lists?.map((list, index) => (
-                <div className={styles.list} key={index}>
-                  <Link href={`/dellamall/shop/${list.d_shop.id}`}>
-                    <a className={styles.link}>{list.d_shop.name}</a>
-                  </Link>
-                  <button
-                    type="button"
-                    className={styles.delete}
-                    onClick={() => handleClickDelete(list.id)}
-                  >削除</button>
-                </div>
-              ))
-            : <p className={styles.txt}>ピックアップされたショップがありません</p>}
-          </article>
+          <>
+            <article className={styles.listBox}>
+              {lists.length !== 0 ?
+                lists?.map((list, index) => (
+                  <div className={styles.list} key={index}>
+                    <Link href={`/dellamall/shop/${list.d_shop.id}`}>
+                      <a className={styles.link}>{list.d_shop.name}</a>
+                    </Link>
+                    <button
+                      type="button"
+                      className={styles.delete}
+                      onClick={() => handleClickDelete(list.id)}
+                    >削除</button>
+                  </div>
+                ))
+              : <p className={styles.txt}>ピックアップされたショップがありません</p>}
+            </article>
+            <Btn01 txt="戻る" link="/dellamall/admin/control" />
+          </>
         : <Loader />}
       </Container>
     </section>

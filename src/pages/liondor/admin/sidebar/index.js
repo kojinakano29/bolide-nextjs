@@ -33,7 +33,7 @@ const AdminSidebar = ({posts}) => {
   }, [user])
 
   const onLoadCheck = () => {
-    if (user?.account_type < 2) {
+    if (user?.account_type < 3) {
       alert("このページにはアクセスできません。")
       router.push(`/liondor`)
     }

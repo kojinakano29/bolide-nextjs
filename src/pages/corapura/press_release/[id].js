@@ -28,7 +28,7 @@ const PressReleaseDetail = ({posts}) => {
   // console.log(posts)
   const csrf = () => axios.get('/sanctum/csrf-cookie')
 
-  const { user } = useAuth()
+  const { user } = useAuth({middleware: 'auth', type: 'corapura'})
 
   const release = posts.pr
   const newRelease = posts.pr_new_list

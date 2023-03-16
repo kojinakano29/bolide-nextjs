@@ -16,26 +16,28 @@ const Header = () => {
   const { user } = useAuth()
   const [searchActive, setSearchActive] = useState(false)
 
-  const profileCheck = useCallback(async () => {
-    await csrf()
+  const onLoadStripeCheck = async () => {
+    csrf()
 
-    await axios.post(`/api/d_profile_get`, {
-      id: user?.id,
-    }).then((res) => {
+    await axios.get(`/api/subscription/status/${user?.id}/corporate`)
+    .then((res) => {
       // console.log(res)
-      if (!res.data) {
-        router.push('/dellamall/mypage/create')
+
+      if (user?.account_type === 1 && res.data?.status !== "subscribed" && res.data.details.length === 0) {
+        router.push(`/membership_register`)
       }
-    }).catch((e) => {
-      console.error(e)
-    })
-  }, [user])
+    }).catch(e => console.error(e))
+  }
 
   useEffect(() => {
     if (user) {
-      profileCheck()
+      // onLoadStripeCheck()
+
+      if (!user?.d_profile_id) {
+        router.push('/dellamall/mypage/create')
+      }
     }
-  }, [])
+  }, [user, router.asPath])
 
   const [show, setShow] = useState(false)
 
