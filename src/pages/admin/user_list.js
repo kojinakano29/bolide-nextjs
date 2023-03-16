@@ -21,7 +21,7 @@ export const getServerSideProps = async () => {
 }
 
 const UserList = ({posts}) => {
-  // console.log(posts)
+  console.log(posts)
   const csrf = () => axios.get('/sanctum/csrf-cookie')
 
   const router = useRouter()
@@ -112,12 +112,21 @@ const UserList = ({posts}) => {
   const handleClickDeleteUser = useCallback(async (id, type) => {
     await csrf()
 
-    await axios.delete(`/api/${type === "hard" ? "hard_delete" : "delete"}/user/${id}`)
-    .then((res) => {
-      // console.log(res)
-      alert(res.data)
-      router.reload()
-    }).catch(e => console.error(e))
+    if (type === "hard" || type === "normal") {
+      await axios.delete(`/api/${type === "hard" ? "hard_delete" : "delete"}/user/${id}`)
+      .then((res) => {
+        // console.log(res)
+        alert(res.data)
+        router.reload()
+      }).catch(e => console.error(e))
+    } else if (type === "restoration") {
+      await axios.post(`/api/restore/user/${id}`)
+      .then((res) => {
+        // console.log(res)
+        alert(res.data)
+        router.reload()
+      }).catch(e => console.error(e))
+    }
   }, [router])
 
   return (
@@ -141,7 +150,7 @@ const UserList = ({posts}) => {
             <article className={`${styles.adminList}`}>
               <ul>
                 {users.map((use, index) => (
-                  <li key={index}>
+                  <li className={use.deleted_at ? styles.delete : null} key={index}>
                     <p className={styles.txt}>
                       登録日：<Date dateString={use.created_at} />
                     </p>
@@ -170,10 +179,17 @@ const UserList = ({posts}) => {
                       }
                     </p>
                     <div className={styles.btnFlex}>
-                      <button
-                        type="button"
-                        onClick={() => handleClickPopup("normal", use.id)}
-                      >アカウント凍結</button>
+                      {use.deleted_at ?
+                        <button
+                          type="button"
+                          onClick={() => handleClickPopup("restoration", use.id)}
+                        >アカウント復旧</button>
+                        :
+                        <button
+                          type="button"
+                          onClick={() => handleClickPopup("normal", use.id)}
+                        >アカウント凍結</button>
+                      }
                       <button
                         type="button"
                         onClick={() => handleClickPopup("hard", use.id)}
@@ -186,6 +202,7 @@ const UserList = ({posts}) => {
                             本当にアカウントを
                             {deleteType === "normal" ? "凍結" : null}
                             {deleteType === "hard" ? "完全に削除" : null}
+                            {deleteType === "restoration" ? "復旧" : null}
                             しますか？
                           </p>
                           <div className={styles.btnFlex2}>

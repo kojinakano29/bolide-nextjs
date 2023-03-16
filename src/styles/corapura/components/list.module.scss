@@ -235,8 +235,20 @@
     border-top: 1px solid $g3;
 
     li {
-      @include p(24px 0);
+      @include p(24px);
       border-bottom: 1px solid $g3;
+
+      &.delete {
+        background-color: $g2;
+
+        * {
+          pointer-events: none;
+        }
+
+        button {
+          pointer-events: all;
+        }
+      }
 
       .flex,
       .btnFlex {

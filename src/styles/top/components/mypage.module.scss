@@ -42,6 +42,22 @@
   }
 }
 
+.adminBtn {
+  @include width(200px);
+  @include height(40px);
+  @include flex(center, center);
+  border: 2px solid $b8;
+  margin: auto;
+  @include mb(56px);
+  border-radius: 10px;
+  transition: .3s ease;
+
+  &:hover {
+    background-color: $b8;
+    color: $w1;
+  }
+}
+
 .menuBox {
   @include flex(stretch);
   @include gap(40px 36px, 40px 24px);

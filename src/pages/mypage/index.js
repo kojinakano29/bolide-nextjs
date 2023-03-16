@@ -18,6 +18,9 @@ const BjcMypage = () => {
           <div><img src="/top/breadcrumb.svg" alt="" /></div>
           <p>マイページ</p>
         </div>
+        <Link href="/admin/user_list">
+          <a className={styles.adminBtn}>管理者</a>
+        </Link>
         <div className={styles.smallMenuBox}>
           <Link href={`/mypage/plan/${user?.id}`}>
             <a>

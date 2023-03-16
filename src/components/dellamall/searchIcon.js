@@ -10,11 +10,11 @@ const SearchIcon = ({setSearchActive}) => {
 
   const { register, handleSubmit } = useForm()
 
-  const onSubmit = useCallback((data) => {
+  const onSubmit = (data) => {
     // console.log(data)
 
-    router.push(`/dellamall/search/?s=${data.search}`)
-  }, [])
+    window.location.href = `/dellamall/search/?s=${data.search}`
+  }
 
   return (
     <div className={styles.iconBox}>

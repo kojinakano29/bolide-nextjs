@@ -2,6 +2,7 @@ import { faqs } from '@/lib/top/constants';
 import styles from '@/styles/top/components/faq.module.scss'
 import { useRef, useState } from 'react';
 import Container from "./Layout/container";
+import { TxtParse } from '@/components/top';
 
 const Faq = () => {
   const [target, setTarget] = useState(200)
@@ -40,7 +41,7 @@ const Faq = () => {
                   {maxHeight: "0px"}
                 }
               >
-                {faq.as}
+                <TxtParse value={faq.as} />
               </dd>
             </dl>
           ))}
