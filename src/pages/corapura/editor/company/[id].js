@@ -471,7 +471,8 @@ const EditCompany = ({posts}) => {
                   </dl>
                   <dl>
                     <dt>
-                      <label htmlFor="tag">業種に合ったタグを入力ください</label>
+                      <label htmlFor="tag">関連するタグを入力ください</label>
+                      <GuidePopup txt={`関連するタグを設定できます。\nタグの入力方法\n「タグ①,タグ②,タグ③」のようなかたちで入力可能です。\n\n「例）撮影依頼,美容室,カットモデル」\n※タグ同士を区切る時は必ず、半角カンマ「,」でお願いします。`} />
                     </dt>
                     <dd>
                       <input
@@ -493,7 +494,7 @@ const EditCompany = ({posts}) => {
                   </dl>
                   <dl>
                     <dt>
-                      <label htmlFor="president">代表者</label>
+                      <label htmlFor="president">プレジデント/リーダー</label>
                     </dt>
                     <dd>
                       <input
@@ -517,7 +518,7 @@ const EditCompany = ({posts}) => {
                     </dd>
                   </dl>
                   <dl>
-                    <dt>上場・非上場</dt>
+                    <dt>上場・非上場・自治体</dt>
                     <dd>
                       <select {...register("jojo")}>
                         <option value="非上場">非上場</option>
@@ -538,7 +539,7 @@ const EditCompany = ({posts}) => {
                     </dd>
                   </dl>
                   <dl>
-                    <dt>本社所在地</dt>
+                    <dt>所在地</dt>
                     <dd>
                       <select {...register("zip")}>
                         {zips.map((zip, index) => (
@@ -587,7 +588,7 @@ const EditCompany = ({posts}) => {
                   </dl>
                   <dl>
                     <dt>
-                      <label htmlFor="site_url">コーポレートサイトURL</label>
+                      <label htmlFor="site_url">メインサイトURL</label>
                     </dt>
                     <dd>
                       <input
@@ -776,7 +777,7 @@ const EditCompany = ({posts}) => {
             </div>
             <div className={styles.editorBox}>
               <div className={styles.ttlFlex}>
-                <h4 className={styles.ttl2}>SDGs</h4>
+                <h4 className={styles.ttl2}>SDGs/社会貢献</h4>
                 <button
                   type="button"
                   className={`${styles.btn} hoverEffect`}

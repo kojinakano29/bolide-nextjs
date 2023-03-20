@@ -744,6 +744,9 @@ export const industries = [
 ]
 
 export const occupations = [
+  "経営者",
+  "メディア",
+  "自治体",
   "営業事務",
   "オペレーター",
   "経理・会計・財務",

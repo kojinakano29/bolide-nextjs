@@ -158,6 +158,9 @@ const UserList = ({posts}) => {
                       ユーザー名：{use.name}
                     </p>
                     <p className={styles.txt}>
+                      メールアドレス：<a href={`mailto:${use.email}`}>{use.email}</a>
+                    </p>
+                    <p className={styles.txt}>
                       LIONDOR：{use.l_profile ?
                         <a href={`/liondor/mypage/edit/${use.l_profile?.id}`}>{use.l_profile?.nicename}</a>
                         :

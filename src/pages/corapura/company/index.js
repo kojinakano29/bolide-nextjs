@@ -12,6 +12,7 @@ import { Loader } from '@/components/corapura';
 import Link from 'next/link';
 import { zips } from '@/lib/corapura/constants';
 import searchIcon from '@/images/corapura/common/search.svg'
+import { useRouter } from 'next/router';
 
 export const getServerSideProps = async () => {
   const res = await fetch(`${process.env.NEXT_PUBLIC_API_CORAPURA}/company`)
@@ -34,7 +35,11 @@ const CompanyList = ({posts}) => {
     {name: "お気に入りが多い順", value: "follow"},
   ]
 
+  const router = useRouter()
   const tagList = posts.tag_list
+  const tagFilter = tagList.filter((tag, index) => {
+    return index < 20 || parseInt(router.query.tag_id) === parseInt(tag.id)
+  })
   const [disabled, setDisabled] = useState(false)
   const [company, setCompany] = useState(posts.company)
   const [nowPage, setNowPage] = useState(posts.now_page)
@@ -54,6 +59,19 @@ const CompanyList = ({posts}) => {
   const [page, setPage] = useState(1)
   const [openSort, setOpenSort] = useState(false)
   const { handleSubmit, register } = useForm()
+
+  const onLoadSelectTag = async () => {
+    const nowTag = tagFilter.filter((tag) => {
+      return parseInt(tag.id) === parseInt(router.query.tag_id)
+    })
+    setTag(nowTag?.[0]?.id)
+  }
+
+  useEffect(() => {
+    if (router) {
+      onLoadSelectTag()
+    }
+  }, [router])
 
   const handleSort = useCallback(async () => {
     await csrf()
@@ -101,7 +119,7 @@ const CompanyList = ({posts}) => {
   ])
 
   useEffect(async () => {
-    if (disabled) return
+    // if (disabled) return
     setDisabled(true)
     setOpenSort(false)
 
@@ -233,7 +251,7 @@ const CompanyList = ({posts}) => {
 
   const sorts2 = [
     {
-      name: "事業所・店舗",
+      name: "事業所/店舗/庁舎/支所",
       click: handleChangeOffice,
       state: office,
     },
@@ -248,7 +266,7 @@ const CompanyList = ({posts}) => {
       state: item,
     },
     {
-      name: "SDGs",
+      name: "SDGs/社会貢献",
       click: handleChangeSust,
       state: sust,
     },
@@ -277,7 +295,7 @@ const CompanyList = ({posts}) => {
   return (
     <section className="cont1">
       <Container small>
-        <h2 className="ttl1">企業一覧</h2>
+        <h2 className="ttl1">企業/ビジネスユーザー/自治体一覧</h2>
         <form onSubmit={handleSubmit(onSortForm)}>
           <div className={styles.searchBox}>
             <input

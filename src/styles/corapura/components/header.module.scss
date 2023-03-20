@@ -5,6 +5,12 @@
   @include p(0 32px 0 16px, 0 20px 0 0);
   position: fixed;
   z-index: 100;
+  transition: .3s ease;
+
+  &.active {
+    background-color: $w1;
+    box-shadow: 0 3px 6px rgba(0, 0, 0, .08);
+  }
 
   .flex {
     @include height(56px);

@@ -30,8 +30,9 @@
     background-color: $w1;
 
     &:focus {
-      @include width(196px);
-      @include height(20px);
+      @include width(200px);
+      @include height(24px);
+      @include p(2px 8px);
     }
 
     &::placeholder {

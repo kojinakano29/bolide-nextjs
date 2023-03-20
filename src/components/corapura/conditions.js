@@ -23,7 +23,7 @@ const Conditions = ({data}) => {
         <div className={styles.cont}>
           <div className={styles.cat}>
             <FontAwesomeIcon icon={faCalendarCheck} />
-            掲載日
+            実施日
           </div>
           <p className={styles.txt}>{data.date}</p>
         </div>
@@ -32,9 +32,9 @@ const Conditions = ({data}) => {
         <div className={styles.cont}>
           <div className={styles.cat}>
             <FontAwesomeIcon icon={faClock} />
-            募集期間
+            募集終了日
           </div>
-          <p className={styles.txt}>{data.created_at.substring(0, 10).replace(/-/g, '.')}~<br className="tab" />{data.limite_date}</p>
+          <p className={styles.txt}>{data.limite_date}</p>
         </div>
       : null}
       {data.reward && data.c_cat.id !== 18 ?

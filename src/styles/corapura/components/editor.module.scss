@@ -431,8 +431,7 @@
       }
 
       select {
-        @include select(240px);
-        cursor: pointer;
+        @include select(100%);
       }
     }
   }

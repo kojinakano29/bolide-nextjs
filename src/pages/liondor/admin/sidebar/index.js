@@ -1,6 +1,6 @@
 import Container from '@/components/liondor/Layouts/container'
 import PageLayoutLiondor from '@/components/Layouts/PageLayoutLiondor'
-import { PageTitle } from '@/components/liondor'
+import { Date, PageTitle } from '@/components/liondor'
 import { useAuth } from '@/hooks/auth'
 import axios from '@/lib/axios'
 import styles from '@/styles/liondor/components/adminList.module.scss'
@@ -21,7 +21,7 @@ export const getServerSideProps = async () => {
 }
 
 const AdminSidebar = ({posts}) => {
-  // console.log(posts)
+  console.log(posts)
   const csrf = () => axios.get('/sanctum/csrf-cookie')
 
   const router = useRouter()
@@ -69,6 +69,7 @@ const AdminSidebar = ({posts}) => {
             <ul>
               {posts?.map((item, index) => (
                 <li key={index}>
+                  <p className={styles.time}><Date dateString={item.updated_at} /></p>
                   <Link href={`/liondor/sidebar/edit/${item.id}`}>
                     <a className={styles.ttl}>{item.title}</a>
                   </Link>

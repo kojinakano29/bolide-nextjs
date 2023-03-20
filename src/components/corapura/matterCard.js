@@ -73,13 +73,13 @@ const MatterCard = ({matter, bookmarkList, detail = false, list = false}) => {
               </p>
               {matter.date ?
                 <p className={styles.iconBox}>
-                  <span className={styles.icon}>掲載日</span>
+                  <span className={styles.icon}>実施日</span>
                   {matter.date}
                 </p>
               : null}
               {matter.limite_date ?
                 <p className={styles.iconBox}>
-                  <span className={styles.icon}>募集期間</span>
+                  <span className={styles.icon}>募集終了日</span>
                   {matter.limite_date}
                 </p>
               : null}
@@ -125,7 +125,7 @@ const MatterCard = ({matter, bookmarkList, detail = false, list = false}) => {
               : null}
               {matter.limite_date ?
                 <p className={styles.iconBox}>
-                  <span className={styles.icon}>募集期間</span>
+                  <span className={styles.icon}>募集終了日</span>
                   {matter.limite_date}
                 </p>
               : null}

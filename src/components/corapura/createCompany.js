@@ -334,7 +334,7 @@ const CreateCompanyForm = () => {
             {type === "office" ? "事務所・店舗" : null}
             {type === "president" ? "プレジデント/リーダー" : null}
             {type === "item" ? "NFT/製品・商品・特許・技術" : null}
-            {type === "sust" ? "SDGs" : null}
+            {type === "sust" ? "SDGs/社会貢献" : null}
             {type === "card" ? "名刺" : null}
             {type === "coupon" ? "クーポン" : null}
             {type === "like" ? "スポンサー・マスコット" : null}
@@ -563,7 +563,7 @@ TEL:000-0000-0000`}
             : null}
             {/* NFT/製品・商品・特許・技術作成 */}
 
-            {/* SDGs */}
+            {/* SDGs/社会貢献 */}
             {type === "sust" ?
               <form onSubmit={handleSubmit(onSubmitSust)}>
                 <dl>
@@ -600,7 +600,7 @@ TEL:000-0000-0000`}
                 <button className={`${styles.btn} hoverEffect`}>作成</button>
               </form>
             : null}
-            {/* SDGs */}
+            {/* SDGs/社会貢献 */}
 
             {/* 名刺 */}
             {type === "card" ?

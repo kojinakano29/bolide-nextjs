@@ -33,22 +33,27 @@
   @include media1(sp) {
     border-bottom: 1px solid $g2;
     padding-bottom: 32px;
+    @include flex(stretch);
   }
 
-  &:not(:first-of-type) {
-    @include media1(sp) {
-      display: flex;
-      gap: 16px;
+  @include media1(sp) {
+    .imgBox {
+      min-width: 100px;
+      max-width: 100px;
+      max-height: 100px;
+    }
 
-      .imgBox {
-        min-width: 100px;
-        max-width: 100px;
-        max-height: 100px;
-      }
+    & div:last-of-type {
+      width: calc(100% - (100px + 16px));
     }
   }
 }
 
 .blogLink {
   composes: blogLink from './parts.scss';
+
+  @media screen and (max-width: $sp) {
+    display: flex;
+    gap: 16px;
+  }
 }

@@ -91,7 +91,7 @@ const AdminShopList = () => {
     setDisabled(true)
     await csrf()
 
-    await axios.post(`/api/dellamall/shop/delete/${id}`)
+    await axios.delete(`/api/dellamall/shop/delete/${id}`)
     .then((res) => {
       // console.log(res)
       alert("ショップを削除しました")

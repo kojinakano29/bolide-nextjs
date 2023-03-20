@@ -201,10 +201,10 @@ const CreateMatter = ({posts}) => {
                   selector === 15 ||
                   selector === 18 ?
                   <dl>
-                    <dt>掲載日</dt>
+                    <dt>実施日</dt>
                     <dd>
                       <input
-                        type="date"
+                        type="text"
                         {...register("date", {required: required})}
                       />
                       {errors.date && <p className={styles.error}>必須項目を入力してください</p>}
@@ -215,10 +215,10 @@ const CreateMatter = ({posts}) => {
                 {
                   selector !== 19 ?
                   <dl>
-                    <dt>募集期間</dt>
+                    <dt>募集終了日</dt>
                     <dd>
                       <input
-                        type="date"
+                        type="text"
                         {...register("limite_date", {required: required})}
                       />
                       {errors.limite_date && <p className={styles.error}>必須項目を入力してください</p>}
@@ -481,7 +481,7 @@ const CreateMatter = ({posts}) => {
                     {...register("check", {required: true})}
                   />
                   <p className={styles.txt}>
-                    <Link href={`/corapura/terms`}><a target="_blank">利用規約</a></Link>に同意します
+                    <Link href={`/corapura/terms`}><a target="_blank">利用規約・コンテンツの基準</a></Link>に同意します
                   </p>
                 </label>
                 {errors.check && <p className={styles.error}>チェック必須項目です</p>}
