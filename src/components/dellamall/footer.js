@@ -127,7 +127,7 @@ const Footer = () => {
             このサイトはreCAPTHAによって保護されており、
             <br />Googleの<a href="https://policies.google.com/privacy?hl=ja" target="_blank">プライバシーポリシー</a>と<a href="https://policies.google.com/terms?hl=ja" target="_blank">利用規約</a>が適応されます。
           </div>
-          <p className={`${styles.copy} en`}>© 2022 Della Moll inc.</p>
+          <p className={`${styles.copy} en`}>© 2023 Della Moll inc.</p>
         </Container>
       </footer>
     </>

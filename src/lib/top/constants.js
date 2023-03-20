@@ -1,8 +1,8 @@
 // サイト情報
 export const siteMeta = {
-  siteTitle: `Bolide's`,
-  siteDesc: 'ディスクリプション',
-  siteUrl: 'サイトURL',
+  siteTitle: `Bolide’s Japan`,
+  siteDesc: 'Bolide’s Japanとは1つのアカウント情報だけで「繋がる、知る、探す、買う」を同時に楽しめる新世代SNSプラットフォームです。ビジネスや個人の活動の場としてももちろん、認知拡大にも効果的。中間マージンは一切かかりません。あなたの目的次第で何にでもなれる「BJ（通称 ビージェイ）」今始めてみませんか？',
+  siteUrl: 'https://bolides-japan.com/',
   siteLang: 'ja',
   siteLocale: 'ja_JP',
   siteType: 'website',
@@ -17,7 +17,7 @@ export const faqs = [
   },
   {
     qs: "会員登録について教えてください",
-    as: `会員登録をすると、コラプラをはじめとしたBolide'sJapanの各種サービスをご利用いただけます。	詳しくは<a href="" target="_blank">こちら</a>をご覧ください。`,
+    as: `会員登録をすると、コラプラをはじめとしたBolide'sJapanの各種サービスをご利用いただけます。企業・ビジネスユーザー・自治体の方は<a href="/top/files/business.pdf" target="_blank">こちら</a>、個人ユーザーの方は<a href="/top/files/individual.pdf" target="_blank">こちら</a>をご覧ください。`,
   },
   {
     qs: "料金プランを詳しく教えてください",
@@ -276,7 +276,7 @@ export const plans = [
     name: "/top/liondor-logo.svg",
     graph: [
       {
-        left: `Fashion記事の閲覧\nBeauty記事の閲覧\nTrend記事の閲覧\nLife Style記事の閲覧\nWedding記事の閲覧\nTop Leader記事の閲覧\nFortune記事の閲覧\nVideo記事の閲覧\nPick Up Information記事の閲覧`,
+        left: `全カテゴリー記事の閲覧`,
         center: 1,
         right: 1,
         text1: "",

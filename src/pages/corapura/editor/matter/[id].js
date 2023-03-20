@@ -274,6 +274,7 @@ const EditMatter = ({posts}) => {
                   <dl>
                     <dt>
                       <label htmlFor="reward">謝礼</label>
+                      <GuidePopup txt={`■報酬について\n金額での記入の場合は必ず半角数字のみでご記入ください。\n※半角出なかった場合報酬での検索機能にかからなくなります\n\nお金以外の報酬の場合は、ご自由にご記入ください。\n例）Amazonギフト券、自社商品プレゼント、お食事券、仮想通貨など`} />
                     </dt>
                     <dd>
                       <input

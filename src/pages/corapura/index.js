@@ -106,10 +106,7 @@ const Corapura = ({posts}) => {
       <section className={styles.userArea}>
         <Container small>
           <h2 className="ttl2">ユーザー/インフルエンサーマッチング</h2>
-          {/* <p className={styles.desc}>
-            テキストサンプルテキストサンプルテキストサンプルテキストサンプルテキストサンプル、
-            <br/>テキストサンプルテキストサンプルテキストサンプルテキストサンプル。
-          </p> */}
+          {/* <p className={styles.desc}></p> */}
           {users.length !== 0 ?
             <User data={users} />
             :

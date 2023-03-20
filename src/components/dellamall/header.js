@@ -31,9 +31,9 @@ const Header = () => {
 
   useEffect(() => {
     if (user) {
-      // onLoadStripeCheck()
+      onLoadStripeCheck()
 
-      if (!user?.d_profile_id) {
+      if (!user?.d_profile_id && user?.account_type !== 3) {
         router.push('/dellamall/mypage/create')
       }
     }

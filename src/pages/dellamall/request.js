@@ -70,10 +70,7 @@ const Request = () => {
       <section className={styles.plan}>
         <Container small>
           <h3 className={styles.cont2__title}>Bolide's Japan 料金プラン</h3>
-          <p className={styles.cont2__text}>
-            テキストサンプルテキストサンプルテキストサンプルテキストサンプル、
-            テキストサンプルテキストサンプルテキストサンプル！
-          </p>
+          <p className={styles.cont2__text}></p>
           <div className={`${styles.imgBox} pc`}>
             <Image
               src={graph}

@@ -121,7 +121,7 @@ const Footer = () => {
               このサイトはreCAPTHAによって保護されており、<br />
               Googleの<a href="https://policies.google.com/privacy?hl=ja" target="_blank">プライバシーポリシー</a>と<a href="https://policies.google.com/terms?hl=ja" target="_blank">利用規約</a>が適応されます。
             </div>
-            <div className={styles.footer__cont2Right}>© 2022 CORAPURA inc.</div>
+            <div className={styles.footer__cont2Right}>© 2023 CORAPURA inc.</div>
           </div>
           <ul className={styles.footer__cont3}>
             <li className={`${styles.footer__cont3Item} hoverEffect`}><a href="https://bolides.co.jp/company/" target="_blank" rel="noopener noreferrer">運営会社</a></li>

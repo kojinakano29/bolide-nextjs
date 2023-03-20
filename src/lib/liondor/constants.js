@@ -5,9 +5,9 @@ import bannar4 from '@/images/liondor/common/bannar4.webp'
 
 // サイト情報
 export const siteMeta = {
-  siteTitle: 'Liondor',
-  siteDesc: 'ディスクリプション',
-  siteUrl: 'サイトURL',
+  siteTitle: 'LIONDOR（リオンドール）｜Bolide’s Japan',
+  siteDesc: 'リオンドールは、ビジネス・ファッション・トレンドを突いた最新情報をお届けしています。ファッション、ビューティーはもちろん話題のSDGsやNFTの情報まで様々な内容を取り揃えています。皆さまにとって「見て、知って、体感して、感じて」をありのままに堪能できるメディアをお楽しみください。',
+  siteUrl: 'https://bolides-japan.com/liondor',
   siteLang: 'ja',
   siteLocale: 'ja_JP',
   siteType: 'website',

@@ -1,15 +1,16 @@
-import ApplicationLogo from '@/components/ApplicationLogo'
-import AuthCard from '@/components/AuthCard'
+import styles from '@/styles/top/components/login.module.scss'
 import AuthSessionStatus from '@/components/AuthSessionStatus'
 import Button from '@/components/Button'
-import GuestLayout from '@/components/Layouts/GuestLayout'
 import Input from '@/components/Input'
 import InputError from '@/components/InputError'
 import Label from '@/components/Label'
 import Link from 'next/link'
 import { useAuth } from '@/hooks/auth'
-import { useEffect, useState } from 'react'
+import { useCallback, useEffect, useState } from 'react'
 import { useRouter } from 'next/router'
+import Container from '@/components/top/Layout/container'
+import PageLayoutTop from '@/components/Layouts/pageLayoutTop'
+import { Btn1 } from '@/components/top'
 
 const PasswordReset = () => {
     const router = useRouter()
@@ -21,6 +22,7 @@ const PasswordReset = () => {
     const [passwordConfirmation, setPasswordConfirmation] = useState('')
     const [errors, setErrors] = useState([])
     const [status, setStatus] = useState(null)
+    const [view, setView] = useState(false)
 
     const submitForm = event => {
         event.preventDefault()
@@ -38,79 +40,97 @@ const PasswordReset = () => {
         setEmail(router.query.email || '')
     }, [router.query.email])
 
+    const handleClickView = useCallback(async () => {
+        setView(prevState => !prevState)
+    }, [setView])
+
     return (
-        <GuestLayout>
-            <AuthCard
-                logo={
-                    <Link href="/">
-                        <a>
-                            <ApplicationLogo className="w-20 h-20 fill-current text-gray-500" />
-                        </a>
-                    </Link>
-                }>
-                {/* Session Status */}
-                <AuthSessionStatus className="mb-4" status={status} />
-
-                <form onSubmit={submitForm}>
-                    {/* Email Address */}
-                    <div>
-                        <Label htmlFor="email">Email</Label>
-
-                        <Input
-                            id="email"
-                            type="email"
-                            value={email}
-                            className="block mt-1 w-full"
-                            onChange={event => setEmail(event.target.value)}
-                            required
-                            autoFocus
-                        />
-
-                        <InputError messages={errors.email} className="mt-2" />
+        <>
+            <section className="cont1">
+                <Container small900>
+                <h2 className="ttl2">パスワード再設定</h2>
+                    <div className="breadcrumbBox">
+                        <Link href="/">
+                        <a>トップ</a>
+                        </Link>
+                        <div><img src="/top/breadcrumb.svg" alt="" /></div>
+                        <p>パスワード再設定</p>
                     </div>
+                </Container>
+            </section>
 
-                    {/* Password */}
-                    <div className="mt-4">
-                        <Label htmlFor="password">Password</Label>
-                        <Input
-                            id="password"
-                            type="password"
-                            value={password}
-                            className="block mt-1 w-full"
-                            onChange={event => setPassword(event.target.value)}
-                            required
-                        />
+            <section className={styles.cont2}>
+                <Container small900>
+                    {/* Session Status */}
+                    <AuthSessionStatus className="mb-4" status={status} />
 
-                        <InputError messages={errors.password} className="mt-2" />
-                    </div>
-
-                    {/* Confirm Password */}
-                    <div className="mt-4">
-                        <Label htmlFor="passwordConfirmation">
-                            Confirm Password
-                        </Label>
-
-                        <Input
-                            id="passwordConfirmation"
-                            type="password"
-                            value={passwordConfirmation}
-                            className="block mt-1 w-full"
-                            onChange={event =>
-                                setPasswordConfirmation(event.target.value)
-                            }
-                            required
-                        />
-
-                        <InputError messages={errors.password_confirmation} className="mt-2" />
-                    </div>
-
-                    <div className="flex items-center justify-end mt-4">
-                        <Button>Reset Password</Button>
-                    </div>
-                </form>
-            </AuthCard>
-        </GuestLayout>
+                    <form onSubmit={submitForm}>
+                        <article className={styles.loginBox}>
+                            <div className={styles.inputBox}>
+                                <label htmlFor="email" className="en">Email</label>
+                                <input
+                                    id="email"
+                                    type="email"
+                                    value={email}
+                                    className={styles.email}
+                                    onChange={event => setEmail(event.target.value)}
+                                    required
+                                    autoFocus
+                                />
+                                <InputError messages={errors.email} className="mt-2" />
+                            </div>
+                            <div className={styles.inputBox}>
+                                <label htmlFor="password" className="en">Password</label>
+                                <div className={styles.passwordBox}>
+                                    <input
+                                        id="password"
+                                        type={view ? "text" : "password"}
+                                        className={styles.password}
+                                        onChange={event => setPassword(event.target.value)}
+                                        required
+                                        autoComplete="current-password"
+                                    />
+                                    <p
+                                        className={styles.view}
+                                        onClick={handleClickView}
+                                    >{view ? "非表示" : "表示"}</p>
+                                </div>
+                                <InputError
+                                    messages={errors.password}
+                                    className="mt-2"
+                                />
+                            </div>
+                            <div className={styles.inputBox}>
+                                <label htmlFor="passwordConfirmation" className="en">Confirm Password</label>
+                                <div className={styles.passwordBox}>
+                                    <input
+                                        id="passwordConfirmation"
+                                        type={view ? "text" : "password"}
+                                        className={styles.password}
+                                        onChange={event => setPasswordConfirmation(event.target.value)}
+                                        required
+                                    />
+                                    <p
+                                        className={styles.view}
+                                        onClick={handleClickView}
+                                    >{view ? "非表示" : "表示"}</p>
+                                </div>
+                                <InputError
+                                    messages={errors.passwordConfirmation}
+                                    className="mt-2"
+                                />
+                            </div>
+                            <Btn1 txt="再設定する" submit />
+                        </article>
+                    </form>
+                </Container>
+            </section>
+        </>
     )
 }
 
 export default PasswordReset
+
+PasswordReset.getLayout = function getLayout(page) {
+    return <PageLayoutTop>{page}</PageLayoutTop>
+}

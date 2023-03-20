@@ -115,6 +115,16 @@ const Login = () => {
       </section>
 
       <NewBtn />
+
+      <section className={styles.downloadArea}>
+        <Container small900>
+          <h3>
+            公式ショップ・無料キャプチャに関する
+            <br/>資料はこちら
+          </h3>
+          <a className={styles.downloadBtn} href="/dellamall/files/white_paper.pdf" target="_blank">資料をダウンロード</a>
+        </Container>
+      </section>
     </>
   )
 }

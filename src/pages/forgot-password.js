@@ -1,14 +1,12 @@
-import ApplicationLogo from '@/components/ApplicationLogo'
-import AuthCard from '@/components/AuthCard'
+import styles from '@/styles/top/components/login.module.scss'
 import AuthSessionStatus from '@/components/AuthSessionStatus'
-import Button from '@/components/Button'
-import GuestLayout from '@/components/Layouts/GuestLayout'
-import Input from '@/components/Input'
 import InputError from '@/components/InputError'
-import Label from '@/components/Label'
 import Link from 'next/link'
 import { useAuth } from '@/hooks/auth'
 import { useState } from 'react'
+import Container from '@/components/top/Layout/container'
+import PageLayoutTop from '@/components/Layouts/pageLayoutTop'
+import { Btn1 } from '@/components/top'
 
 const ForgotPassword = () => {
     const { forgotPassword } = useAuth({ middleware: 'guest' })
@@ -24,50 +22,53 @@ const ForgotPassword = () => {
     }
 
     return (
-        <GuestLayout>
-            <AuthCard
-                logo={
-                    <Link href="/liondor">
-                        <a>
-                            <ApplicationLogo className="w-20 h-20 fill-current text-gray-500" />
-                        </a>
-                    </Link>
-                }>
+        <>
+            <section className="cont1">
+                <Container small900>
+                    <h2 className="ttl2">パスワード忘れた方</h2>
+                    <div className="breadcrumbBox">
+                        <Link href="/">
+                        <a>トップ</a>
+                        </Link>
+                        <div><img src="/top/breadcrumb.svg" alt="" /></div>
+                        <p>パスワード忘れた方</p>
+                    </div>
+                </Container>
+            </section>
 
-                <div className="mb-4 text-sm text-gray-600">
-                    Forgot your password? No problem. Just let us know your
-                    email address and we will email you a password reset link
-                    that will allow you to choose a new one.
-                </div>
+            <section className={styles.cont2}>
+                <Container small900>
+                <p className={styles.desc}>パスワードをリセットするには、ご登録のメールアドレスを入力してください。 </p>
 
                 {/* Session Status */}
                 <AuthSessionStatus className="mb-4" status={status} />
 
                 <form onSubmit={submitForm}>
-                    {/* Email Address */}
-                    <div>
-                        <Label htmlFor="email">Email</Label>
-                        <Input
-                            id="email"
-                            type="email"
-                            name="email"
-                            value={email}
-                            className="block mt-1 w-full"
-                            onChange={event => setEmail(event.target.value)}
-                            required
-                            autoFocus
-                        />
-
-                        <InputError messages={errors.email} className="mt-2" />
-                    </div>
-
-                    <div className="flex items-center justify-end mt-4">
-                        <Button>Email Password Reset Link</Button>
-                    </div>
+                    <article className={styles.loginBox}>
+                        <div className={styles.inputBox}>
+                            <label htmlFor="email" className="en">Email</label>
+                            <input
+                                id="email"
+                                type="email"
+                                name="email"
+                                className={styles.email}
+                                onChange={event => setEmail(event.target.value)}
+                                required
+                                autoFocus
+                            />
+                            <InputError messages={errors.email} className="mt-2" />
+                        </div>
+                        <Btn1 txt="送信する" submit />
+                    </article>
                 </form>
-            </AuthCard>
-        </GuestLayout>
+                </Container>
+            </section>
+        </>
     )
 }
 
 export default ForgotPassword
+
+ForgotPassword.getLayout = function getLayout(page) {
+    return <PageLayoutTop>{page}</PageLayoutTop>
+}
