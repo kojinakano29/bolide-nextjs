@@ -7,9 +7,9 @@ import youtube from '@/images/dellamall/shopDetail/youtube.svg'
 
 // サイト情報
 export const siteMeta = {
-  siteTitle: 'Dellamall',
-  siteDesc: 'ディスクリプション',
-  siteUrl: 'サイトURL',
+  siteTitle: 'Della Mall（デラモール）｜Bolide’s Japan',
+  siteDesc: 'デラモールとは、「ECサイト」を集めた日本最大級のモールです。みんなで投稿、みんなでシェア、みんなで楽しめる、これまでにない新しいお買い物体験を提供します。',
+  siteUrl: 'https://bolides-japan.com/dellamall',
   siteLang: 'ja',
   siteLocale: 'ja_JP',
   siteType: 'website',

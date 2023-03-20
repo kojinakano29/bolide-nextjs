@@ -21,7 +21,7 @@ export const getServerSideProps = async ({params}) => {
 }
 
 const EditorComment = ({posts}) => {
-  console.log(posts)
+  // console.log(posts)
   const csrf = () => axios.get('/sanctum/csrf-cookie')
 
   const router = useRouter()

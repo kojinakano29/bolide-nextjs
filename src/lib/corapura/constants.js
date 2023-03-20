@@ -37,9 +37,9 @@ import canRight12 from '@/images/corapura/top/cont2_right_12.webp'
 
 // サイト情報
 export const siteMeta = {
-  siteTitle: 'CORAPURA',
-  siteDesc: 'ディスクリプション',
-  siteUrl: 'サイトURL',
+  siteTitle: 'CORAPURA（コラプラ）｜Bolide’s Japan',
+  siteDesc: 'コラプラとは、企業・フリーランス・専門家・個人事業主・インフルエンサー・個人ユーザー・自治体・メディアと多種多様の繋がりが持てるプラットフォーム。ビジネスから個人的な事まで無料で案件登録ができ、自由に依頼・やり取りができます。コラプラを活用して＂価値あるつながり＂を見つけてみませんか？',
+  siteUrl: 'https://bolides-japan.com/corapura',
   siteLang: 'ja',
   siteLocale: 'ja_JP',
   siteType: 'website',

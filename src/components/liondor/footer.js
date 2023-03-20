@@ -100,7 +100,7 @@ const Footer = () => {
                 <a>お問い合わせ</a>
               </Link>
             </nav>
-            <p className={`en ${styles.copy}`}>© 2022 Liondor Inc.</p>
+            <p className={`en ${styles.copy}`}>© 2023 Liondor Inc.</p>
           </div>
         </Container>
       </footer>

@@ -606,13 +606,13 @@ span > img {
         min-width: 200px;
       }
 
-      &.swiper-slide-active {
-        @include mr(94px, 80px, 64px);
+      // &.swiper-slide-active {
+      //   @include mr(94px, 80px, 64px);
 
-        .matterThumbs {
-          transform: scale(1.2);
-        }
-      }
+      //   .matterThumbs {
+      //     transform: scale(1.2);
+      //   }
+      // }
     }
   }
 }

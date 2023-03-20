@@ -100,3 +100,36 @@
     }
   }
 }
+
+.downloadArea {
+  @include pt(80px);
+
+  h3 {
+    @include fs(32px, 24px);
+    font-weight: 500;
+    @include mb(16px);
+    text-align: center;
+  }
+
+  .downloadBtn {
+    @include width(360px);
+    @include height(90px);
+    @include flex(center, center);
+    @include fs(20px, 18px, 16px);
+    font-weight: 500;
+    color: $o1;
+    border: 3px solid $o1;
+    border-radius: 20px;
+    margin: auto;
+    background-image: url(../../../../public/dellamall/download_icon.svg);
+    background-repeat: no-repeat;
+    background-position: calc(100% - 32px) center;
+    transition: .3s ease;
+
+    &:hover {
+      background-color: $o1;
+      color: $w1;
+      background-image: url(../../../../public/dellamall/download_icon_w.svg);
+    }
+  }
+}

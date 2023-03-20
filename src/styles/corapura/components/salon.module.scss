@@ -139,7 +139,7 @@
     position: sticky;
     top: 56px;
     @include width(calc(100% - (720px + 64px)), 100%);
-    @include height(calc(100vh - 56px));
+    @include height(calc(100vh - 56px), calc(100vh - 56px), unset);
     overflow-y: scroll;
     @include scrollHidden;
 

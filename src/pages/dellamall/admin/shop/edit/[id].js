@@ -110,7 +110,7 @@ const EditShop = ({posts}) => {
             <p className={styles.desc}>
               ※ショップ作成時の注意事項
               <br/>・既に同じURLのサイトがデラモールに登録されている場合は、重複したショップの作成はできません。
-              <br/>・モール型サイトのショップ作成はできません。（楽天やBASE、Amazonなど）
+              <br/>・モール型ショップの場合は個々のショップではなく、モールショップのTOPのURLをお貼りください。
               <br/>・公式ショップ申請をされていない場合、サイトURL・関連タグ以外の情報は入力できません。
             </p>
             <article className={styles.infoFlex}>

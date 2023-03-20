@@ -80,3 +80,7 @@
 .bottomArea {
   @include p(80px 0, 64px 0);
 }
+
+.cont2 {
+  @include pb(80px, 64px);
+}
