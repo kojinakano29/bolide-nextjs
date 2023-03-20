@@ -20,7 +20,7 @@ const Footer = () => {
     <footer className={styles.footer}>
       <div className={styles.footer1}>
         <Container small>
-          <p className={`${styles.footer1__title} en`}>Bolide's Japan Other Site</p>
+          <p className={`${styles.footer1__title} en`}>Bolide's Japan Other Sites</p>
           <div className={styles.footer1__list}>
             <a className="hoverEffect" href="/" target="_blank" rel="noopener noreferrer">
               <Image
@@ -43,7 +43,7 @@ const Footer = () => {
             <a className="hoverEffect" href="/liondor" target="_blank" rel="noopener noreferrer">
               <Image
                 src={liondor}
-                alt="Liondor"
+                alt="LIONDOR"
                 layout="responsive"
                 sizes="274px"
                 priority

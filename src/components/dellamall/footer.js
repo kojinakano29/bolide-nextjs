@@ -65,25 +65,8 @@ const Footer = () => {
               />
             </a>
           </Link>
-          <div className={styles.footer__listPage}>
-            <a className="hoverEffect" href="https://bolides.co.jp/company/" target="_blank" rel="noopener noreferrer">運営会社</a>
-            <Link href="/dellamall/terms">
-              <a className="hoverEffect">利用規約</a>
-            </Link>
-            <Link href="/privacy">
-              <a className="hoverEffect">プライバシーポリシー</a>
-            </Link>
-            <Link href="/tokushoho">
-              <a className="hoverEffect">特定商取引法に基づく表示</a>
-            </Link>
-            <Link href="/ad">
-              <a className="hoverEffect">広告掲載費について</a>
-            </Link>
-            <Link href="/dellamall/contact">
-              <a className="hoverEffect">お問い合わせ</a>
-            </Link>
-          </div>
           <div className={styles.footer__listCompany}>
+            <p className={`${styles.footer__listCompany__text} en`}>Bolide's Japan Other Sites</p>
             <Link href="/">
               <a className="hoverEffect" target="_blank" rel="noopener noreferrer">
                 <Image
@@ -122,6 +105,24 @@ const Footer = () => {
                 priority
               />
             </a>
+          </div>
+          <div className={styles.footer__listPage}>
+            <a className="hoverEffect" href="https://bolides.co.jp/company/" target="_blank" rel="noopener noreferrer">運営会社</a>
+            <Link href="/dellamall/terms">
+              <a className="hoverEffect">利用規約</a>
+            </Link>
+            <Link href="/privacy">
+              <a className="hoverEffect">プライバシーポリシー</a>
+            </Link>
+            <Link href="/tokushoho">
+              <a className="hoverEffect">特定商取引法に基づく表示</a>
+            </Link>
+            <Link href="/ad">
+              <a className="hoverEffect">広告掲載費について</a>
+            </Link>
+            <Link href="/dellamall/contact">
+              <a className="hoverEffect">お問い合わせ</a>
+            </Link>
           </div>
           <div className={styles.footer__text}>
             このサイトはreCAPTHAによって保護されており、

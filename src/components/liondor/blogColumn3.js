@@ -13,13 +13,13 @@ const BlogColumn3 = ({patternData, part2 = false, route2 = false}) => {
   return (
     <article className={styles.bottomArea}>
       {data?.map((item) => (
-        <Link href={`/liondor/post/show/${item.id}`} key={item.id}>
+        <Link href={`/liondor/post/show/${item?.id}`} key={item?.id}>
           <a className={styles.blogLink}>
             <div className={styles.imgBox}>
               {route2 ?
-                <img src={item.l_post.thumbs ? `${process.env.NEXT_PUBLIC_BACKEND_URL}/storage/${item.l_post.thumbs}` : dummy.src} alt="" />
+                <img src={item?.l_post?.thumbs ? `${process.env.NEXT_PUBLIC_BACKEND_URL}/storage/${item?.l_post?.thumbs}` : dummy.src} alt="" />
               :
-                <img src={item.thumbs ? `${process.env.NEXT_PUBLIC_BACKEND_URL}/storage/${item.thumbs}` : dummy.src} alt="" />
+                <img src={item?.thumbs ? `${process.env.NEXT_PUBLIC_BACKEND_URL}/storage/${item?.thumbs}` : dummy.src} alt="" />
               }
             </div>
             {

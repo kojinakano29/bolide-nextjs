@@ -49,12 +49,12 @@ const InputPresent = ({present}) => {
       {popup ?
         <div className={styles.popupArea} onClick={handleClickPopup}>
           <div className={styles.popupBox} onClick={(e) => e.stopPropagation()}>
-            ※応募にあたって、ボリードジャパンのSNSを最低1つフォローすることが必須です
-            <br/>※当選のご連絡はご記載いただいたsnsより通知させていただきます。
+            ※応募にあたって、LIONDORのSNSを最低1つフォローすることが必須です
+            <br/>※当選のご連絡はご記載いただいたSNSより通知させていただきます。
             <br/>
             <br/>上記2つの注意書きをSNSアカウントの項目「※Facebook・Instagram・Twitterのいずれかにご入力ください」の下に表示したいです。
             <br/>
-            <br/>また「※応募にあたって、ボリードジャパンのSNSを最低1つフォローすることが必須です」→「※応募にあたって、リオンドールの公式SNS（facebook・Instagram・Twitter）を最低1つフォローすることが必須です。」
+            <br/>また「※応募にあたって、LIONDORのSNSを最低1つフォローすることが必須です」→「※応募にあたって、リオンドールの公式SNS（facebook・Instagram・Twitter）を最低1つフォローすることが必須です。」
             <br/>に変更していただきたいです。
           </div>
         </div>
@@ -216,7 +216,7 @@ const InputPresent = ({present}) => {
             </dd>
           </dl>
           <div className={styles.descBox}>
-            <p>※応募にあたって、ボリードジャパンのSNSを最低1つフォローすることが必須です</p>
+            <p>※応募にあたって、LIONDORのSNSを最低1つフォローすることが必須です</p>
             <p>※携帯電話メールアドレスをご利用の場合は、必ず送信前に『携帯メールフィルタの解除』を行ってください。</p>
             <p>※お問い合わせ前に「<Link href="/privacy"><a>個人情報保護方針</a></Link>」についてご確認の上、送信をお願いいたします。</p>
             <p>※当選のご連絡はご記載いただいたsnsより通知させていただきます。</p>

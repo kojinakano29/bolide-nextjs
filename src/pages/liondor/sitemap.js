@@ -23,8 +23,8 @@ const Sitemap = () => {
           </div>
         ))}
         <div className={styles.block}>
-          <h3 className="ivy">Pick Up Information</h3>
-          <div className={styles.flex}>
+          <h3 className="ivy"><a className="ivy" href="/liondor/#pickUp">Pickup Information</a></h3>
+          {/* <div className={styles.flex}>
             <Link href="">
               <a>Information</a>
             </Link>
@@ -37,7 +37,7 @@ const Sitemap = () => {
             <Link href="">
               <a>Others</a>
             </Link>
-          </div>
+          </div> */}
         </div>
         <div className={styles.flex2}>
           <Link href="/liondor/contact">

@@ -29,7 +29,7 @@ const InputAd = () => {
           <br/>企業様・ブランド様は下記までご連絡下さい。
         </p>
         <p className={styles.adTxt2}>詳細の注意事項はこちらをご覧ください</p>
-        <a href="" target="_blank" className="btn3 noto">PDFをDLする</a>
+        <a href="" target="_blank" className="btn3 noto">MEDIA GUIDEはこちら</a>
       </div>
       <p className={styles.desc}>
         お申込みは下記のフォームをご利用ください。

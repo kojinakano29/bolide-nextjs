@@ -10,7 +10,7 @@ const Footer = () => {
     <>
       <article className={styles.bannarArea}>
         <Container>
-          <p className="ivy">Bolide's Japan Other Site</p>
+          <p className="ivy">Bolide's Japan Other Sites</p>
           <div className={styles.bannarFlex}>
             {bannarData.map((items, index) => (
               <a href={items.link} key={index} className={styles.bannarLink} target="_blank" rel="noopener noreferrer">
@@ -33,7 +33,7 @@ const Footer = () => {
             <div className={styles.left}>
               <Link href="/liondor">
                 <a className={styles.logo}>
-                  <span className={`ivy ${styles.big}`}>Liondor</span>
+                  <span className={`ivy ${styles.big}`}>LIONDOR</span>
                   <span className={`ivy ${styles.small}`}>CREATED BY Bolide's Japan</span>
                 </a>
               </Link>
@@ -69,9 +69,9 @@ const Footer = () => {
           <div className={styles.bottomArea}>
             <nav className={styles.bottomLeft}>
               <a href="https://bolides.co.jp/company/" target="_blank">運営会社</a>
-              <Link href="/liondor/copyright">
+              {/* <Link href="/liondor/copyright">
                 <a>著作権・免責事項について</a>
-              </Link>
+              </Link> */}
               <Link href="/privacy">
                 <a>プライバシーポリシー</a>
               </Link>
@@ -100,7 +100,7 @@ const Footer = () => {
                 <a>お問い合わせ</a>
               </Link>
             </nav>
-            <p className={`en ${styles.copy}`}>© 2023 Liondor Inc.</p>
+            <p className={`en ${styles.copy}`}>© 2023 LIONDOR Inc.</p>
           </div>
         </Container>
       </footer>

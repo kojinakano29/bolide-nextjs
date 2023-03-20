@@ -26,7 +26,38 @@ const InputAd = () => {
           <br/>ショップ情報の掲載を希望される企業様・ブランド様は下記までご連絡下さい。
         </p>
         <p className={styles.desc2}>詳細の注意事項はこちらをご覧ください</p>
-        <Btn1 txt="PDFをDLする" />
+        <div className={styles.adFlex}>
+          <div className={styles.adLinkBox}>
+            <p className={styles.adTtl}>
+              ビジネスユーザー向け
+              <br/>媒体資料
+            </p>
+            <Btn1 txt="MEDIA GUIDEはこちら" link="/top/files/business.pdf" blank />
+          </div>
+          <div className={styles.adLinkBox}>
+            <p className={styles.adTtl}>
+              個人ユーザー向け
+              <br/>媒体資料
+            </p>
+            <Btn1 txt="MEDIA GUIDEはこちら" link="/top/files/individual.pdf" blank />
+          </div>
+        </div>
+        <div className={styles.adFlex}>
+          <div className={styles.adLinkBox}>
+            <p className={styles.adTtl}>
+              LIONDOR
+              <br/>広告掲載について
+            </p>
+            <Btn1 txt="MEDIA GUIDEはこちら" link="/top/files/liondor_ad.pdf" blank />
+          </div>
+          <div className={styles.adLinkBox}>
+            <p className={styles.adTtl}>
+              Della Mall
+              <br/>広告掲載について
+            </p>
+            <Btn1 txt="MEDIA GUIDEはこちら" link="/top/files/dellamall_ad.pdf" blank />
+          </div>
+        </div>
       </div>
       <form onSubmit={handleSubmit(onSubmit)}>
         <article className={styles.formContent}>

@@ -148,7 +148,7 @@ const BolideTop = () => {
               <a>
                 <img className="pc" src="/top/liondor-banner.svg" alt="" />
                 <img className="sp" src="/top/liondor-banner__sp.svg" alt="" />
-                <p className={`${styles.eName} en`}>Liondor</p>
+                <p className={`${styles.eName} en`}>LIONDOR</p>
                 <p className={styles.jName}>リオンドール</p>
               </a>
             </Link>

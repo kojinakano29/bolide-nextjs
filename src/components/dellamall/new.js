@@ -2,11 +2,11 @@ import styles from '@/styles/dellamall/components/new.module.scss'
 import Link from 'next/link';
 import Container from './Layouts/container';
 
-const NewBtn = () => {
+const NewBtn = ({top = false}) => {
   return (
-    <section className={styles.new}>
+    <section className={`${styles.new} ${top ? styles.top : null}`}>
       <Container small>
-        <h2 className="ttl1 center mb40">今すぐ会員登録</h2>
+        <h2 className="ttl1 center mb40">{top ? '新規のお客様はこちら' : '今すぐ会員登録'}</h2>
         <div className={styles.login__newList}>
           <Link href="/dellamall/officialRequest">
             <a className={`${styles.login__newItem} btn4 hoverEffect`}>公式ショップ申請の方</a>
