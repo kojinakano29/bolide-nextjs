@@ -173,6 +173,12 @@
   }
 }
 
+.editDesc {
+  text-align: center;
+  @include fs(14px);
+  @include mt(16px);
+}
+
 .error {
   color: $r1;
   @include mt(8px);
@@ -478,6 +484,12 @@
 
       label {
         cursor: pointer;
+      }
+
+      .txt2 {
+        @include fs(14px, 12px);
+        font-weight: 500;
+        @include mt(8px);
       }
     }
 

@@ -1,6 +1,6 @@
 import Container from '@/components/liondor/Layouts/container'
 import PageLayoutLiondor from '@/components/Layouts/PageLayoutLiondor'
-import { Date, PageTitle } from '@/components/liondor'
+import { DateFormat, PageTitle } from '@/components/liondor'
 import { useAuth } from '@/hooks/auth'
 import axios from '@/lib/axios'
 import styles from '@/styles/liondor/components/adminList.module.scss'
@@ -69,7 +69,7 @@ const AdminSidebar = ({posts}) => {
             <ul>
               {posts?.map((item, index) => (
                 <li key={index}>
-                  <p className={styles.time}><Date dateString={item.updated_at} /></p>
+                  <p className={styles.time}><DateFormat dateString={item.updated_at} /></p>
                   <Link href={`/liondor/sidebar/edit/${item.id}`}>
                     <a className={styles.ttl}>{item.title}</a>
                   </Link>

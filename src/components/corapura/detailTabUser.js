@@ -62,7 +62,7 @@ const DetailTabUser = ({cards, likes, matters, userInfo}) => {
     await csrf()
 
     await axios.post(`/api/corapura/matching_user/tab_return`, {
-      user_id: userInfo.c_profile_id
+      user_id: userInfo.id,
     }).then((res) => {
       // console.log(res)
       setMatching(res.data.c_post_apps)
@@ -140,7 +140,7 @@ const DetailTabUser = ({cards, likes, matters, userInfo}) => {
                                 <img src={match.thumbs ? `${process.env.NEXT_PUBLIC_BACKEND_URL}/storage/${match.thumbs}` : dummy.src} alt="" />
                               </div>
                               <p className={styles.ttl}>{match.title}</p>
-                              <p className={styles.desc}>{match.content.substring(0, 25)}...</p>
+                              <p className={styles.desc}>{match.content.replace(/<[^>]+>/g, '').replace(/&nbsp;/g, '').substring(0, 38)}...</p>
                             </a>
                           </Link>
                         ))}

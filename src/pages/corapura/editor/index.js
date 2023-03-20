@@ -144,7 +144,7 @@ const EditorMyPage = () => {
                   <Link href={`/corapura/editor/comment/${user?.id}`}>
                     <a className={`${styles.linkBox} ${styles.blue2}`}>
                       <div className={styles.block}>
-                        <p>完了した案件一覧</p>
+                        <p>応募・完了した案件</p>
                       </div>
                       <div className={styles.iconBox}>
                         <img src={icon6.src} alt="" />

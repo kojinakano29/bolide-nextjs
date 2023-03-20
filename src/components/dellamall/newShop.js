@@ -3,7 +3,7 @@ import axios from '@/lib/axios';
 import styles from '@/styles/dellamall/components/newShop.module.scss'
 import Link from 'next/link';
 import { useCallback, useEffect, useState } from 'react';
-import { Btn01, Date, Loader } from '@/components/dellamall'
+import { Btn01, DateFormat, Loader } from '@/components/dellamall'
 
 const NewShop = ({handleClickOpen}) => {
   const csrf = () => axios.get('/sanctum/csrf-cookie')
@@ -43,7 +43,7 @@ const NewShop = ({handleClickOpen}) => {
               <Link href={`/dellamall/shop/${item.d_shop_id}`} key={index}>
                 <a className={`hoverEffect ${styles.newLink}`} onClick={handleClickOpen}>
                   <p className={styles.content}>{item.content}</p>
-                  <p className={styles.time}><Date dateString={item.title} /></p>
+                  <p className={styles.time}><DateFormat dateString={item.title} /></p>
                 </a>
               </Link>
             ))}

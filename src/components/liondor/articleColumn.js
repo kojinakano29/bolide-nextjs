@@ -1,7 +1,7 @@
 import styles from '@/styles/liondor/components/articleColumn.module.scss'
 import Link from 'next/link';
 import dummy from '@/images/liondor/cms/dummy.webp'
-import { BlogTxt, Date } from '@/components/liondor';
+import { BlogTxt, DateFormat } from '@/components/liondor';
 
 const ArticleColumn = ({sort, present = false, today}) => {
   // console.log(sort)
@@ -23,10 +23,10 @@ const ArticleColumn = ({sort, present = false, today}) => {
               <div className={styles.txt_box}>
                 <h3 className={styles.ttl}>{item.title}</h3>
                 <p className={styles.limit}>
-                  応募期限：<Date dateString={item.created_at} />
+                  応募期限：<DateFormat dateString={item.created_at} />
                 </p>
                 <p className={styles.date}>
-                  入稿日：<Date dateString={item.created_at} />
+                  入稿日：<DateFormat dateString={item.created_at} />
                 </p>
               </div>
             :

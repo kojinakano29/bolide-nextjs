@@ -1,7 +1,7 @@
 import styles from '@/styles/dellamall/components/shopOfficial.module.scss'
 import { useCallback, useEffect, useState } from 'react';
 import dummy from '@/images/dellamall/shopDetail/dummy.webp'
-import { Btn01, Date } from '@/components/dellamall';
+import { Btn01, DateFormat } from '@/components/dellamall';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faBagShopping, faHeart, faComment } from '@fortawesome/free-solid-svg-icons'
 import { faInstagram } from '@fortawesome/free-brands-svg-icons'
@@ -132,7 +132,7 @@ const shopOfficial = ({info, salon}) => {
                 <ul className={styles.news}>
                   {infos.map((info) => (
                     <li key={info.id}>
-                      <p className={styles.day}><Date dateString={info.title} /></p>
+                      <p className={styles.day}><DateFormat dateString={info.title} /></p>
                       <p className={styles.txt}>{info.content}</p>
                     </li>
                   ))}

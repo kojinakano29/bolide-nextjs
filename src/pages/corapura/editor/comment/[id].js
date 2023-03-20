@@ -21,7 +21,7 @@ export const getServerSideProps = async ({params}) => {
 }
 
 const EditorComment = ({posts}) => {
-  // console.log(posts)
+  console.log(posts)
   const csrf = () => axios.get('/sanctum/csrf-cookie')
 
   const router = useRouter()
@@ -80,19 +80,29 @@ const EditorComment = ({posts}) => {
     <>
       <section className="cont1">
         <Container small>
-          <h2 className="ttl1">完了した案件一覧</h2>
+          <h2 className="ttl1">応募・完了した案件</h2>
           {!disabled ?
             <article className={styles.listBox}>
               {matters.map((matter, index) => (
                 <div className={styles.listItem} key={index}>
-                  <Link href={`/corapura/matter/${matter.c_post.id}`}>
-                    <a className={styles.ttl}>{matter.c_post.title}</a>
-                  </Link>
-                  <button
-                    type="button"
-                    className={`${styles.btn} hoverEffect`}
-                    onClick={() => handleClickPopup(matter)}
-                  >コメントする</button>
+                  <div className={styles.itemLeft}>
+                    <Link href={`/corapura/matter/${matter.c_post.id}`}>
+                      <a className={styles.ttl}>{matter.c_post.title}</a>
+                    </Link>
+                    <p className={styles.state}>
+                      {matter.state === 0 ? '応募中' : null}
+                      {matter.state === 1 ? '完了' : null}
+                      {matter.state === 2 ? 'コメント送信済み' : null}
+                      {matter.state === 3 ? 'マッチング' : null}
+                    </p>
+                  </div>
+                  {matter.state === 1 ?
+                    <button
+                      type="button"
+                      className={`${styles.btn} hoverEffect`}
+                      onClick={() => handleClickPopup(matter)}
+                    >コメントする</button>
+                  : null}
                 </div>
               ))}
             </article>

@@ -157,11 +157,11 @@ const OnlineSalonDetail = ({posts}) => {
                   <p className={styles.tag} key={index}>{tag.name}</p>
                 ))}
               </div>
-              <button
+              {/* <button
                 type="button"
                 className={`hoverEffect ${followCheck ? styles.on : null}`}
                 onClick={handleClickFollow}
-              >{followCheck ? "フォロー中" : "フォローする"}</button>
+              >{followCheck ? "フォロー中" : "フォローする"}</button> */}
             </div>
             <div className={styles.imgBox}>
               <img src={salon.thumbs ? `${process.env.NEXT_PUBLIC_BACKEND_URL}/storage/${salon.thumbs}` : dummy.src} alt="" />

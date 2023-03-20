@@ -126,7 +126,7 @@ const DetailTabCompany = ({businesses, releases, matters, userInfo}) => {
     await csrf()
 
     await axios.post(`/api/corapura/matching/tab_return`, {
-      user_id: userInfo.c_profile_id
+      user_id: userInfo.id
     }).then((res) => {
       // console.log(res)
       setMatching(res.data)

@@ -7,7 +7,7 @@ import { useRouter } from "next/router";
 import { useCallback, useEffect, useState } from "react";
 import { useForm } from "react-hook-form";
 import searchIcon from '@/images/corapura/common/search.svg'
-import { Date, Loader } from '@/components/corapura';
+import { DateFormat, Loader } from '@/components/corapura';
 
 export const getServerSideProps = async () => {
   const res = await fetch(`${process.env.NEXT_PUBLIC_API_CORAPURA}/post`)
@@ -140,7 +140,7 @@ const AdminMatter = ({posts}) => {
                   {matters.map((matter, index) => (
                     <li key={index}>
                       <div className={styles.flex}>
-                        <p className={styles.date}><Date dateString={matter.created_at} /></p>
+                        <p className={styles.date}><DateFormat dateString={matter.created_at} /></p>
                         <p className={styles.state}>
                           {matter.state === 0 ? "応募中" : null}
                           {matter.state === 1 ? "掲載終了" : null}

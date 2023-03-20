@@ -7,10 +7,17 @@ import check from '@/images/corapura/common/check.svg'
 import { useAuth } from '@/hooks/auth';
 import { useCallback, useState } from 'react';
 import axios from '@/lib/axios';
+import { DateFormat } from '@/components/corapura';
 
 const MatterCard = ({matter, bookmarkList, detail = false, list = false}) => {
   // console.log(matter)
   const csrf = () => axios.get('/sanctum/csrf-cookie')
+
+  const date = new Date()
+  const year = date.getFullYear()
+  const month = ("00" + (date.getMonth()+1)).slice(-2)
+  const day = ("00" + date.getDate()).slice(-2)
+  const today = `${year}-${month}-${day}`
 
   const { user } = useAuth()
   const [disabled, setDisabled] = useState(false)
@@ -56,7 +63,7 @@ const MatterCard = ({matter, bookmarkList, detail = false, list = false}) => {
             <a>
               <div className={`${styles.imgBox} matterThumbs`}>
                 <img src={matter.thumbs ? `${process.env.NEXT_PUBLIC_BACKEND_URL}/storage/${matter.thumbs}` : dummy.src} alt="" />
-                {matter.state === 1 || matter.state === 2 ?
+                {matter.state === 1 || matter.limite_date <= today ?
                   <div className={styles.finishMatter}>
                     <img src={check.src} alt="" />
                     <p>
@@ -71,22 +78,16 @@ const MatterCard = ({matter, bookmarkList, detail = false, list = false}) => {
               <p className={styles.desc}>
                 {matter.content.replace(/<[^>]+>/g, '').replace(/&nbsp;/g, '').substring(0, 50)}
               </p>
-              {matter.date ?
+              {matter.created_at ?
                 <p className={styles.iconBox}>
-                  <span className={styles.icon}>実施日</span>
-                  {matter.date}
+                  <span className={styles.icon}>掲載日</span>
+                  <DateFormat dateString={matter.created_at} />
                 </p>
               : null}
               {matter.limite_date ?
                 <p className={styles.iconBox}>
                   <span className={styles.icon}>募集終了日</span>
-                  {matter.limite_date}
-                </p>
-              : null}
-              {matter.reward ?
-                <p className={styles.iconBox}>
-                  <span className={styles.icon}>報酬</span>
-                  {matter.reward}
+                  {matter.limite_date.replace(/-/g, '.')}
                 </p>
               : null}
               <div className={styles.company}>
@@ -117,22 +118,16 @@ const MatterCard = ({matter, bookmarkList, detail = false, list = false}) => {
               <p className={styles.desc}>
                 {matter.content.replace(/<[^>]+>/g, '').replace(/&nbsp;/g, '').substring(0, 50)}
               </p>
-              {matter.date ?
+              {matter.created_at ?
                 <p className={styles.iconBox}>
-                  <span className={styles.icon}>{detail ? "実施日" : "撮影日"}</span>
-                  {matter.date}
+                  <span className={styles.icon}>掲載日</span>
+                  <DateFormat dateString={matter.created_at} />
                 </p>
               : null}
               {matter.limite_date ?
                 <p className={styles.iconBox}>
                   <span className={styles.icon}>募集終了日</span>
-                  {matter.limite_date}
-                </p>
-              : null}
-              {detail && matter.reward ?
-                <p className={styles.iconBox}>
-                  <span className={styles.icon}>報酬</span>
-                  {matter.reward}
+                  {matter.limite_date.replace(/-/g, '.')}
                 </p>
               : null}
               {detail ? null :

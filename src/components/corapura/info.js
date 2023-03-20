@@ -1,13 +1,13 @@
 import styles from '@/styles/corapura/components/info.module.scss'
 import Link from 'next/link';
-import { Date } from '@/components/corapura'
+import { DateFormat } from '@/components/corapura'
 
 const Info = ({data, detail = false}) => {
   return (
     <div className={styles.infoBox}>
       {data.map((info, index) => (
         <a className={`${styles.link} hoverEffect`} href={info.link} target="_blank" key={index}>
-          <p className={styles.date}><Date dateString={info.created_at} /></p>
+          <p className={styles.date}><DateFormat dateString={info.created_at} /></p>
           <p className={styles.ttl}>{info.title}</p>
           {detail ? null :
             <div className={styles.company}>

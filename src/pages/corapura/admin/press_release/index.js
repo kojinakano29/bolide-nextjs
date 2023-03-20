@@ -5,7 +5,7 @@ import axios from "@/lib/axios";
 import { useCallback, useEffect, useState } from "react";
 import { useForm } from "react-hook-form";
 import searchIcon from '@/images/corapura/common/search.svg'
-import { Date, Loader } from '@/components/corapura';
+import { DateFormat, Loader } from '@/components/corapura';
 import { useRouter } from 'next/router';
 import { useAuth } from '@/hooks/auth';
 
@@ -140,7 +140,7 @@ const AdminPressRelease = ({posts}) => {
                 <ul>
                   {releases.map((pr, index) => (
                     <li key={index}>
-                      <p className={styles.date}><Date dateString={pr.created_at} /></p>
+                      <p className={styles.date}><DateFormat dateString={pr.created_at} /></p>
                       <p className={styles.txt}>
                         記事タイトル：<a href={`/corapura/press_release/${pr.id}`}>{pr.title}</a>
                       </p>

@@ -7,21 +7,21 @@ const SnsFollow = ({right = false, gray = false}) => {
     <div className={styles.followBox}>
       <p className={`en ${right ? styles.textRight : ''}`}>FOLLOW US</p>
       <div className={`${styles.flex} ${gray ? styles.gray : ''}`}>
-        <a href="/" target="_blank">
+        <a href="https://www.facebook.com/realnagoya05/" target="_blank" rel="noopener noreferrer">
           <FontAwesomeIcon icon={faFacebookF} />
         </a>
-        <a href="/" target="_blank">
+        <a href="https://instagram.com/realnagoya/" target="_blank" rel="noopener noreferrer">
           <FontAwesomeIcon icon={faInstagram} />
         </a>
-        <a href="/" target="_blank">
+        <a href="https://twitter.com/realnagoya758" target="_blank" rel="noopener noreferrer">
           <FontAwesomeIcon icon={faTwitter} />
         </a>
-        <a href="/" target="_blank">
+        {/* <a href="/" target="_blank" rel="noopener noreferrer">
           <FontAwesomeIcon icon={faLine} />
         </a>
-        <a href="/" target="_blank">
+        <a href="/" target="_blank" rel="noopener noreferrer">
           <FontAwesomeIcon icon={faYoutube} />
-        </a>
+        </a> */}
       </div>
     </div>
   );

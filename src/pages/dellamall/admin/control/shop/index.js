@@ -7,7 +7,7 @@ import { useRouter } from "next/router";
 import { useCallback, useEffect, useState } from "react";
 import { useForm } from "react-hook-form";
 import searchIcon from '@/images/corapura/common/search.svg'
-import { Btn01, Date, Loader } from '@/components/dellamall';
+import { Btn01, DateFormat, Loader } from '@/components/dellamall';
 
 const AdminShopList = () => {
   const csrf = () => axios.get('/sanctum/csrf-cookie')
@@ -124,7 +124,7 @@ const AdminShopList = () => {
                 {shops.map((shop, index) => (
                   <li key={index}>
                     <p className={styles.txt}>
-                      登録日：<Date dateString={shop.created_at} />
+                      登録日：<DateFormat dateString={shop.created_at} />
                     </p>
                     <p className={styles.txt}>
                       ショップ名：<a href={`/dellamall/shop/${shop.id}`}>{shop.name}</a>
