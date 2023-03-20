@@ -17,7 +17,7 @@ const Trend = ({mb40 = false, sp}) => {
     .then((res) => {
       // console.log(res)
       setTrends(res.data.filter((tag, index) => {
-        return index < 10 || parseInt(router.query.tag_id) === parseInt(tag.id)
+        return index < 20 || parseInt(router.query.tag_id) === parseInt(tag.id)
       }))
     }).catch((e) => {
       console.error(e)

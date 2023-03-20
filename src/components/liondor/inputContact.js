@@ -30,6 +30,7 @@ const InputContact = () => {
       <p className={styles.desc}>
         お問い合わせがございましたら、下記のフォームをご利用ください。
         <br/>担当よりご連絡いたします。
+        <br/><span className="red">※</span>は必須項目です
       </p>
       <form onSubmit={handleSubmit(onSubmit)}>
         <article className={styles.formContent}>
@@ -122,7 +123,7 @@ const InputContact = () => {
             <dt className={styles.inputDt}>
               <label htmlFor="tel">
                 電話番号
-                <span className="red">＊</span>
+                {/* <span className="red">＊</span> */}
               </label>
             </dt>
             <dd>
@@ -130,10 +131,10 @@ const InputContact = () => {
                 type="tel"
                 id="tel"
                 {...register("tel", {
-                  required: {
-                    value: true,
-                    message: "必須項目を入力してください。",
-                  },
+                  // required: {
+                  //   value: true,
+                  //   message: "必須項目を入力してください。",
+                  // },
                   pattern: {
                     value: telRegExp,
                     message: "電話番号の形式で入力してください",
@@ -141,7 +142,7 @@ const InputContact = () => {
                 })}
                 placeholder="ハイフンなしでご入力ください"
               />
-              {errors.tel?.types.required && <p className={`red ${styles.error}`}>{errors.tel.types.required}</p>}
+              {/* {errors.tel?.types.required && <p className={`red ${styles.error}`}>{errors.tel.types.required}</p>} */}
               {errors.tel?.types.pattern && <p className={`red ${styles.error}`}>{errors.tel.types.pattern}</p>}
             </dd>
           </dl>

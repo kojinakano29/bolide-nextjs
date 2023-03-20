@@ -170,7 +170,7 @@ const Home = ({posts}) => {
         </Container>
       </section>
 
-      <NewBtn />
+      <NewBtn top />
 
       <Container small>
         <Link href="/corapura/press_release">

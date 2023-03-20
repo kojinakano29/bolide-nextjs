@@ -11,10 +11,10 @@ const BlogColumn4 = ({patternData, part2 = false, portrait = false}) => {
   return (
     <article className={styles.article}>
       {data?.map((item) => (
-        <Link href={`/liondor/post/show/${item.id}`} key={item.id}>
+        <Link href={`/liondor/post/show/${item?.id}`} key={item?.id}>
           <a className={styles.blogLink}>
             <div className={`${styles.imgBox} ${portrait ? styles.portrait : null}`}>
-              <img src={item.thumbs ? `${process.env.NEXT_PUBLIC_BACKEND_URL}/storage/${item.thumbs}` : dummy.src} alt="" />
+              <img src={item?.thumbs ? `${process.env.NEXT_PUBLIC_BACKEND_URL}/storage/${item?.thumbs}` : dummy.src} alt="" />
             </div>
             <BlogTxt
               smallMb

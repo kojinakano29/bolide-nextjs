@@ -3,6 +3,12 @@
 .new {
   @include pt(112px, 80px);
 
+  &.top {
+    @include pt(56px, 40px);
+    @include mt(56px, 40px);
+    border-top: 1px solid $g3;
+  }
+
   .login__newList {
     @include flex(center);
 

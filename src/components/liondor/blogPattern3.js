@@ -5,20 +5,20 @@ import { BlogTxt } from '@/components/liondor';
 const BlogPattern3 = ({pattern}) => {
   return (
     <article className={styles.article}>
-      <Link href={pattern.url}>
+      <Link href={pattern?.url}>
         <a className={styles.blogLink}>
           <div className={styles.imgFlex}>
             <div className={styles.imgBox}>
-              <img src={`${process.env.NEXT_PUBLIC_BACKEND_URL}/storage/${pattern.image1}`} alt="" />
+              <img src={`${process.env.NEXT_PUBLIC_BACKEND_URL}/storage/${pattern?.image1}`} alt="" />
             </div>
             <div className={styles.imgBox}>
-              <img src={`${process.env.NEXT_PUBLIC_BACKEND_URL}/storage/${pattern.image2}`} alt="" />
+              <img src={`${process.env.NEXT_PUBLIC_BACKEND_URL}/storage/${pattern?.image2}`} alt="" />
             </div>
             <div className={styles.imgBox}>
-              <img src={`${process.env.NEXT_PUBLIC_BACKEND_URL}/storage/${pattern.image3}`} alt="" />
+              <img src={`${process.env.NEXT_PUBLIC_BACKEND_URL}/storage/${pattern?.image3}`} alt="" />
             </div>
             <div className={styles.imgBox}>
-              <img src={`${process.env.NEXT_PUBLIC_BACKEND_URL}/storage/${pattern.image4}`} alt="" />
+              <img src={`${process.env.NEXT_PUBLIC_BACKEND_URL}/storage/${pattern?.image4}`} alt="" />
             </div>
           </div>
           <BlogTxt

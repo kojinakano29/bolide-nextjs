@@ -77,6 +77,7 @@
 .presidentDesc {
   @include fs(16px, 14px);
   font-weight: 500;
+  white-space: pre-wrap;
 
   &:last-of-type {
     @include mt(24px);

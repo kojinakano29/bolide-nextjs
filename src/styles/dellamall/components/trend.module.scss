@@ -21,7 +21,7 @@
 
 .trend__list {
   @include flex(flex-start, left);
-  @include gap(24px 20px, 16px, 12px 16px);
+  @include gap(24px 12px, 16px 12px, 8px);
 
   @include media1(sp) {
     flex-wrap: nowrap;

@@ -6,13 +6,13 @@ const BlogPattern10 = ({posts, present = false}) => {
   return (
     <>
       {posts.map((item, index) => (
-        <Link href={present ? `/liondor/present/${item.id}` : `/liondor/post/show/${item.id}`} key={index}>
+        <Link href={present ? `/liondor/present/${item?.id}` : `/liondor/post/show/${item?.id}`} key={index}>
           <a className={styles.blogLink}>
             <div className={styles.imgBox}>
-              <img src={item.thumbs ? `${process.env.NEXT_PUBLIC_BACKEND_URL}/storage/${item.thumbs}` : dummy.src} alt="" />
+              <img src={item?.thumbs ? `${process.env.NEXT_PUBLIC_BACKEND_URL}/storage/${item?.thumbs}` : dummy.src} alt="" />
             </div>
             <div className={styles.txtBox}>
-              <h4>{item.title}</h4>
+              <h4>{item?.title}</h4>
             </div>
           </a>
         </Link>

@@ -15,7 +15,7 @@ const PageNavi = ({white = false}) => {
           </li>
         ))}
         <li>
-          <a href="/liondor/#pickUp" className="en">Pick Up Information</a>
+          <a href="/liondor/#pickUp" className="en">Pickup Information</a>
         </li>
       </ul>
     </nav>

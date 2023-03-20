@@ -15,10 +15,10 @@ const BlogPattern8 = ({pattern, must = false}) => {
       </h2>
       <div className={styles.flex}>
         {data?.map((item) => (
-          <Link href={`/liondor/post/show/${item.id}`} key={item.id}>
+          <Link href={`/liondor/post/show/${item?.id}`} key={item?.id}>
             <a className={styles.blogLink}>
               <div className={styles.imgBox}>
-                <img src={item.l_post.thumbs ? `${process.env.NEXT_PUBLIC_BACKEND_URL}/storage/${item.l_post.thumbs}` : dummy.src} alt="" />
+                <img src={item?.l_post?.thumbs ? `${process.env.NEXT_PUBLIC_BACKEND_URL}/storage/${item?.l_post?.thumbs}` : dummy.src} alt="" />
               </div>
               <div className={styles.txtBox}>
                 <BlogTxt
