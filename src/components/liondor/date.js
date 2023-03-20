@@ -1,6 +1,6 @@
 import { parseISO, format } from 'date-fns'
 
-const Date = ({ dateString }) => {
+const DateFormat = ({ dateString }) => {
   const date = parseISO(dateString)
 
   return (
@@ -12,4 +12,4 @@ const Date = ({ dateString }) => {
   )
 }
 
-export default Date
+export default DateFormat

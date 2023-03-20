@@ -6,7 +6,7 @@ import plus from '@/images/corapura/common/plusW.svg'
 import { useAuth } from '@/hooks/auth';
 import { useCallback, useEffect, useState } from 'react';
 import axios from '@/lib/axios';
-import { Date, Loader } from '@/components/corapura';
+import { DateFormat, Loader } from '@/components/corapura';
 import dummy from '@/images/corapura/common/dummy1.svg'
 import { useRouter } from 'next/router';
 

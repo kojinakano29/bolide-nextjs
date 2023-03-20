@@ -13,8 +13,14 @@ import Link from 'next/link'
 import { useRouter } from 'next/router'
 
 const MatterDetail = ({posts}) => {
-  // console.log(posts)
+  console.log(posts)
   const csrf = () => axios.get('/sanctum/csrf-cookie')
+
+  const date = new Date()
+  const year = date.getFullYear()
+  const month = ("00" + (date.getMonth()+1)).slice(-2)
+  const day = ("00" + date.getDate()).slice(-2)
+  const today = `${year}-${month}-${day}`
 
   const router = useRouter()
   const { user } = useAuth()
@@ -230,10 +236,10 @@ const MatterDetail = ({posts}) => {
             <>
               {posts.state < 1 ?
                 <div className="btnCover" onClick={handleClickPopup}>
-                  <Btn txt="この案件の募集を終了する" />
+                  <Btn txt="この案件を完了する" />
                 </div>
               : null}
-              {appList.length !== 0 ?
+              {appList.length !== 0 && posts.state !== 1 ?
                 <div className={styles.myMatterBox}>
                   <h3 className={styles.ttl2}>この案件に応募した企業・<br className="sp" />ユーザーステータス状況</h3>
                   {appList.map((list, index) => (
@@ -247,7 +253,7 @@ const MatterDetail = ({posts}) => {
                         </Link>
                       </div>
                       <div className={styles.right}>
-                        <select value={state[index]} onChange={(e) => handleChangeState(e, index)}>
+                        <select value={state[index] !== 2 ? state[index] : 1} onChange={(e) => handleChangeState(e, index)}>
                           <option value="0">応募中</option>
                           <option value="3">採用</option>
                           <option value="5">不採用</option>
@@ -264,20 +270,24 @@ const MatterDetail = ({posts}) => {
               : null}
             </>
           :
-            <div className={styles.btnFlex}>
-              <button
-                type="button"
-                className={`${styles.btn} ${check ? styles.check : null}`}
-                onClick={handleClickMatterAdd}
-              >
-                <img src={mail.src} alt="" />
-                <span>{check ? "応募済み" : "この案件に応募する"}</span>
-              </button>
-              <a href={`mailto:${posts.user.email}`} className={`${styles.btn} ${styles.btn2}`}>
-                <img src={question.src} alt="" />
-                <span>質問する</span>
-              </a>
-            </div>
+            <>
+              {posts.limite_date >= today ?
+                <div className={styles.btnFlex}>
+                  <button
+                    type="button"
+                    className={`${styles.btn} ${check ? styles.check : null}`}
+                    onClick={handleClickMatterAdd}
+                  >
+                    <img src={mail.src} alt="" />
+                    <span>{check ? "応募済み" : "この案件に応募する"}</span>
+                  </button>
+                  <a href={`mailto:${posts.user.email}`} className={`${styles.btn} ${styles.btn2}`}>
+                    <img src={question.src} alt="" />
+                    <span>質問する</span>
+                  </a>
+                </div>
+              : null}
+            </>
           }
         </Container>
       </section>
@@ -285,7 +295,7 @@ const MatterDetail = ({posts}) => {
       {popup ?
         <section className={styles.popupArea} onClick={handleClickPopup}>
           <div className={styles.popupBox} onClick={(e) => e.stopPropagation()}>
-            <p>本当に掲載終了していいですか？</p>
+            <p>本当にこの案件を完了にしていいですか？</p>
             <div className={styles.buttonFlex}>
               <button
                 type="button"

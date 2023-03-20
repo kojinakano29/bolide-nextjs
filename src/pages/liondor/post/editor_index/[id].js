@@ -1,7 +1,7 @@
 import styles from '@/styles/liondor/components/adminList.module.scss'
 import Container from '@/components/liondor/Layouts/container'
 import PageLayoutLiondor from '@/components/Layouts/PageLayoutLiondor'
-import { Date, PageTitle } from '@/components/liondor'
+import { DateFormat, PageTitle } from '@/components/liondor'
 import { useAuth } from '@/hooks/auth'
 import axios from '@/lib/axios'
 import Link from 'next/link'
@@ -183,7 +183,7 @@ const PostList = ({posts}) => {
                   {list.state === 0 ?
                     <p  className={styles.iconP}>下書き</p>
                   : null}
-                  <p className={styles.time}><Date dateString={list.view_date} />{list.view_date.substr(11, 5).replace(":", "時")}分</p>
+                  <p className={styles.time}><DateFormat dateString={list.view_date} />{list.view_date.substr(11, 5).replace(":", "時")}分</p>
                   <Link href={`/liondor/post/show/${list.id}`}>
                     <a className={styles.ttl}>{list.title ? list.title : "タイトル未入力"}</a>
                   </Link>

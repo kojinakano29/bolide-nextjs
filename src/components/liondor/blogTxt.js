@@ -1,5 +1,5 @@
 import styles from '@/styles/liondor/components/blogTxt.module.scss'
-import { Date } from '@/components/liondor'
+import { DateFormat } from '@/components/liondor'
 
 const BlogTxt = (
   {
@@ -55,7 +55,7 @@ const BlogTxt = (
         <span className="space"></span>
         <span className="en">{name ? name : "未設定"}</span>
       </p>
-      <p className={`en ${styles.time}`}><Date dateString={time} /></p>
+      <p className={`en ${styles.time}`}><DateFormat dateString={time} /></p>
     </div>
   );
 }

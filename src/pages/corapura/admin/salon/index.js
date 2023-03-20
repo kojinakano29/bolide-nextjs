@@ -7,7 +7,7 @@ import { useRouter } from "next/router";
 import { useCallback, useEffect, useState } from "react";
 import { useForm } from "react-hook-form";
 import searchIcon from '@/images/corapura/common/search.svg'
-import { Date, Loader } from '@/components/corapura';
+import { DateFormat, Loader } from '@/components/corapura';
 
 export const getServerSideProps = async () => {
   const res = await fetch(`${process.env.NEXT_PUBLIC_API_CORAPURA}/salon`)
@@ -136,7 +136,7 @@ const AdminSalon = ({posts}) => {
               <ul>
                 {salons.map((salon, index) => (
                   <li key={index}>
-                    <p className={styles.date}><Date dateString={salon.created_at} /></p>
+                    <p className={styles.date}><DateFormat dateString={salon.created_at} /></p>
                     <p className={styles.txt}>
                       記事タイトル：<a href={`/corapura/salon/${salon.id}`}>{salon.title}</a>
                     </p>

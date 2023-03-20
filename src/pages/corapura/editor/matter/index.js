@@ -6,12 +6,18 @@ import plus from '@/images/corapura/common/plusW.svg'
 import { useAuth } from '@/hooks/auth';
 import { useCallback, useEffect, useState } from 'react';
 import axios from '@/lib/axios';
-import { Date, Loader } from '@/components/corapura';
+import { DateFormat, Loader } from '@/components/corapura';
 import dummy from '@/images/corapura/common/dummy1.svg'
 import { useRouter } from 'next/router';
 
 const AdminMatterList = () => {
   const csrf = () => axios.get('/sanctum/csrf-cookie')
+
+  const date = new Date()
+  const year = date.getFullYear()
+  const month = ("00" + (date.getMonth()+1)).slice(-2)
+  const day = ("00" + date.getDate()).slice(-2)
+  const today = `${year}-${month}-${day}`
 
   const router = useRouter()
   const { user } = useAuth({middleware: 'auth', type: 'corapura'})
@@ -28,7 +34,7 @@ const AdminMatterList = () => {
       user_id: user?.id,
       page: parseInt(page),
     }).then((res) => {
-      // console.log(res)
+      console.log(res)
       setMatters(res.data.post)
       setNowPage(res.data.now_page)
       setMaxPage(res.data.page_max)
@@ -104,16 +110,20 @@ const AdminMatterList = () => {
                     </a>
                   </Link>
                     <p className={styles.stateIcon}>
-                      {matter.state === 0 ? "募集中" : null}
-                      {matter.state === 1 ? "掲載終了" : null}
-                      {matter.state === 2 ? "案件完了" : null}
-                      {matter.state === 3 ? "マッチング" : null}
+                      {
+                        matter.limite_date <= today &&
+                        matter.state !== 1 &&
+                        matter.state !== 4 ?
+                        "募集期限切れ" : null
+                      }
+                      {matter.state === 0 && matter.limite_date >= today ? "募集中" : null}
+                      {matter.state === 1 ? "完了" : null}
                       {matter.state === 4 ? "下書き" : null}
                     </p>
                   <p className={styles.ttl}>{matter.title}</p>
                   <p className={styles.iconBox}>
                     <span className={styles.icon}>更新日</span>
-                    <Date dateString={matter.updated_at} />
+                    <DateFormat dateString={matter.updated_at} />
                   </p>
                   <div className={styles.btnFlex}>
                     <Link href={`/corapura/editor/matter/${matter.id}`}>

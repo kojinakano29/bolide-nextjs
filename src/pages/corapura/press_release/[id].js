@@ -10,7 +10,7 @@ import view from '@/images/corapura/parts/material_view.svg'
 import viewB from '@/images/corapura/common/view.svg'
 import viewA from '@/images/corapura/common/view_a.svg'
 import clock from '@/images/corapura/common/clock.svg'
-import { Btn, Date, ShowEditor } from '@/components/corapura';
+import { Btn, DateFormat, ShowEditor } from '@/components/corapura';
 
 export const getServerSideProps = async ({params}) => {
   const res = await fetch(`${process.env.NEXT_PUBLIC_API_CORAPURA}/pr/show/${params.id}`)
@@ -94,7 +94,7 @@ const PressReleaseDetail = ({posts}) => {
                 <p className={styles.name}>{profile.nicename}</p>
                 <div className={styles.date}>
                   <img src={clock.src} alt="" />
-                  <Date dateString={release.created_at} />
+                  <DateFormat dateString={release.created_at} />
                 </div>
               </div>
               <button

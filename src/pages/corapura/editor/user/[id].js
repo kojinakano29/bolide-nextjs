@@ -549,6 +549,10 @@ const EditUser = ({posts}) => {
                   disabled={disabled}
                 >編集</button>
               </div>
+              <p className={styles.editDesc}>
+                ※こちらの「編集」ボタンは基本情報に対するボタンです。
+                <br/>SNSリンク先以降の情報の更新とは別になります。
+              </p>
             </form>
           </Container>
         </section>

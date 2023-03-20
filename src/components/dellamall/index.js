@@ -11,7 +11,7 @@ export {default as MasonryGridComponent} from '@/components/dellamall/masonryGri
 export {default as Loader} from '@/components/dellamall/loader'
 export {default as ShopDetailArea} from '@/components/dellamall/shopDetailArea'
 export {default as ShopOfficial} from '@/components/dellamall/shopOfficial'
-export {default as Date} from '@/components/dellamall/date'
+export {default as DateFormat} from '@/components/dellamall/date'
 export {default as InputContact} from '@/components/dellamall/inputContact'
 export {default as ConfirmContact} from '@/components/dellamall/confirmContact'
 export {default as InputOfficialRequest} from '@/components/dellamall/inputOfficialRequest'

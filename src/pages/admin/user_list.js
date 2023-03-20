@@ -7,7 +7,7 @@ import { useCallback, useEffect, useState } from "react";
 import { useForm } from "react-hook-form";
 import searchIcon from '@/images/corapura/common/search.svg'
 import axios from '@/lib/axios';
-import { Date, Loader } from '@/components/corapura';
+import { DateFormat, Loader } from '@/components/corapura';
 
 export const getServerSideProps = async () => {
   const res = await fetch(`${process.env.NEXT_PUBLIC_BACKEND_URL}/api/administar/user`)
@@ -152,7 +152,7 @@ const UserList = ({posts}) => {
                 {users.map((use, index) => (
                   <li className={use.deleted_at ? styles.delete : null} key={index}>
                     <p className={styles.txt}>
-                      登録日：<Date dateString={use.created_at} />
+                      登録日：<DateFormat dateString={use.created_at} />
                     </p>
                     <p className={styles.txt}>
                       ユーザー名：{use.name}

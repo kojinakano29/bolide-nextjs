@@ -1,4 +1,4 @@
-import { Button2, Date, Recommends, ShowEditor, Sidebar } from "@/components/liondor";
+import { Button2, DateFormat, Recommends, ShowEditor, Sidebar } from "@/components/liondor";
 import Container from "@/components/liondor/Layouts/container";
 import PageLayoutLiondor from "@/components/Layouts/PageLayoutLiondor";
 import styles from '@/styles/liondor/components/postShow.module.scss'
@@ -190,7 +190,7 @@ const DetailPage = ({posts}) => {
                 <span className="space"></span>
                 <span className="en">{userName}</span>
               </p>
-              <p className={`en ${styles.time}`}><Date dateString={createAt} /></p>
+              <p className={`en ${styles.time}`}><DateFormat dateString={createAt} /></p>
               <div className={styles.snsShare}>
                 <FacebookShareButton url={`${process.env.NEXT_PUBLIC_FRONTEND_URL}/${router.asPath}`}>
                   <FacebookIcon size={40} round />
