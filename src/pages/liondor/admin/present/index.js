@@ -92,10 +92,13 @@ const AdminPresent = ({posts}) => {
             <ul>
               {presents?.map((item, index) => (
                 <li key={index}>
-                  <Link href={`/liondor/admin/present/${item.id}`}>
+                  <Link href={`/liondor/present/${item.id}`}>
                     <a className={styles.ttl}>{item.title}</a>
                   </Link>
                   <div className={styles.btnBox}>
+                    <Link href={`/liondor/admin/present/${item.id}`}>
+                      <a className={styles.edit}>プレゼント応募者</a>
+                    </Link>
                     <Link href={`/liondor/present/edit/${item.id}`}>
                       <a className={styles.edit}>編集</a>
                     </Link>

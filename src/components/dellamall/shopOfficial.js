@@ -2,7 +2,8 @@ import styles from '@/styles/dellamall/components/shopOfficial.module.scss'
 import { useCallback, useEffect, useState } from 'react';
 import dummy from '@/images/dellamall/shopDetail/dummy.webp'
 import { Btn01, Date } from '@/components/dellamall';
-import { faBagShopping } from '@fortawesome/free-solid-svg-icons'
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faBagShopping, faHeart, faComment } from '@fortawesome/free-solid-svg-icons'
 import { faInstagram } from '@fortawesome/free-brands-svg-icons'
 import axios from 'axios';
 
@@ -27,11 +28,13 @@ const shopOfficial = ({info, salon}) => {
     const access_token = instagramApi[0]?.api_token
     const user_id = instagramApi[0]?.account_name
     const get_count = 8
+    const media = `id,caption,media_url,permalink,media_type,like_count,comments_count,timestamp`
+    const fields = `business_discovery.username(${user_name}){profile_picture_url,follows_count,biography,name,username,followers_count,media_count,website,media.limit(${get_count}){${media}}}`
 
-    axios.get(`https://graph.facebook.com/v12.0/${user_id}?fields=business_discovery.username(${user_name}){id,followers_count,media_count,ig_id,media.limit(${get_count}){caption,media_url,like_count}}&access_token=${access_token}`)
+    axios.get(`https://graph.facebook.com/v14.0/${user_id}?fields=${fields}&access_token=${access_token}`)
     .then((res) => {
       console.log(res)
-      setInstagramItem(res.data)
+      setInstagramItem(res.data.business_discovery)
     })
     .catch((e) => {
       console.error(e)
@@ -148,9 +151,30 @@ const shopOfficial = ({info, salon}) => {
         {instagramItem.length !== 0 ?
           <>
             <ul className={styles.instaBox}>
-              <li></li>
+              {instagramItem?.media?.data?.map((item, index) => (
+                <li key={index}>
+                  <a href={item?.permalink} target="_blank" rel="noopener noreferrer">
+                    <img src={item?.media_url} alt="" />
+                    <div className={styles.hoverBox}>
+                      <div>
+                        <FontAwesomeIcon icon={faHeart} />
+                        {item?.like_count ? item.like_count : 0}
+                      </div>
+                      {item?.comments_count || item?.comments_count === 0 ?
+                        <div>
+                          <FontAwesomeIcon icon={faComment} />
+                          {item.comments_count}
+                        </div>
+                      : null}
+                    </div>
+                    {/* <div className={styles.type}>
+                      <img src={`${item.media_type === "VIDEO" ? 'bb' : ''}${item.media_type === "CAROUSEL_ALBUM" ? 'cc' : ''}`} alt="" />
+                    </div> */}
+                  </a>
+                </li>
+              ))}
             </ul>
-            <Btn01 fa={faInstagram} txt="Instagram" link="/" />
+            <Btn01 fa={faInstagram} txt="Instagram" link={`https://www.instagram.com/${instagramItem.username}`} blank />
           </>
           :
           <p className={styles.noneLength}>Instagramがありません</p>

@@ -186,8 +186,8 @@
 }
 
 .title {
-  @include mt(16px, 8px);
-  @include fs(16px, 14px);
+  @include mt(8px);
+  @include fs(14px, 12px, 10px);
   font-weight: 500;
   letter-spacing: 0;
 }

@@ -125,7 +125,7 @@ const Footer = () => {
           </div>
           <ul className={styles.footer__cont3}>
             <li className={`${styles.footer__cont3Item} hoverEffect`}><a href="https://bolides.co.jp/company/" target="_blank" rel="noopener noreferrer">運営会社</a></li>
-            <li className={`${styles.footer__cont3Item} hoverEffect`}><a href="/corapura/terms">利用規約</a></li>
+            <li className={`${styles.footer__cont3Item} hoverEffect`}><a href="/corapura/terms">利用規約・コンテンツの基準</a></li>
             <li className={`${styles.footer__cont3Item} hoverEffect`}><a href="/tokushoho">特定商品取引法に基づく表記</a></li>
             <li className={`${styles.footer__cont3Item} hoverEffect`}><a href="/privacy">プライバシーポリシー</a></li>
             <li className={`${styles.footer__cont3Item} hoverEffect`}><a href="/ad">広告掲載について</a></li>

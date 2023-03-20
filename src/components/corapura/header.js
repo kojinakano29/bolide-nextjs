@@ -16,6 +16,7 @@ const Header = () => {
   const router = useRouter()
   const { user } = useAuth()
   const [humOpen, setHumOpen] = useState(false)
+  const [show, setShow] = useState(false)
 
   const onLoadStripeCheck = async () => {
     csrf()
@@ -45,8 +46,23 @@ const Header = () => {
     setHumOpen(prevState => !prevState)
   }, [setHumOpen])
 
+  const handleScroll = useCallback(() => {
+    const nowPos = window.scrollY
+
+    if (nowPos > 300) {
+      setShow(true)
+    } else {
+      setShow(false)
+    }
+  }, [setShow])
+
+  useEffect(() => {
+    window.addEventListener("scroll", handleScroll)
+    return () => window.removeEventListener("scroll", handleScroll)
+  }, [])
+
   return (
-    <header className={styles.header}>
+    <header className={`${styles.header} ${show ? styles.active : null}`}>
       <div className={styles.flex}>
         <div className={styles.left}>
           <button
@@ -119,7 +135,7 @@ const Header = () => {
         <li>
           <Link href="/corapura/company/matter">
             <a onClick={handleClickHum}>
-              <p className={styles.jp}>企業案件一覧</p>
+              <p className={styles.jp}>企業/ビジネスユーザー/自治体案件一覧</p>
               <p className={`en ${styles.en}`}>Company Project List</p>
             </a>
           </Link>
@@ -135,7 +151,7 @@ const Header = () => {
         <li>
           <Link href="/corapura/company">
             <a onClick={handleClickHum}>
-              <p className={styles.jp}>企業一覧</p>
+              <p className={styles.jp}>企業/ビジネスユーザー/自治体一覧</p>
               <p className={`en ${styles.en}`}>Company List</p>
             </a>
           </Link>

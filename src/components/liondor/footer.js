@@ -41,14 +41,28 @@ const Footer = () => {
             </div>
             <div className={styles.right}>
               <PageNavi white />
-              <p className={styles.privacy}>
-                このサイトはrecapthaによって保護されており、
-                <br/>Googleの
-                <a href="https://policies.google.com/privacy?hl=ja" target="_blank">プライバシーポリシー</a>
-                と
-                <a href="https://policies.google.com/terms?hl=ja" target="_blank">利用規約</a>
-                が適応されます。
-              </p>
+              <div className={styles.rightBox}>
+                <div className={styles.bannerFlex}>
+                  <Link href="/liondor/present">
+                    <a className="hoverEffect">
+                      <img src="/liondor/present_banner1.webp" alt="" />
+                    </a>
+                  </Link>
+                  <Link href="/corapura">
+                    <a className="hoverEffect" target="_blank">
+                      <img src="/liondor/present_banner2.webp" alt="" />
+                    </a>
+                  </Link>
+                </div>
+                <p className={styles.privacy}>
+                  このサイトはrecapthaによって保護されており、
+                  <br/>Googleの
+                  <a href="https://policies.google.com/privacy?hl=ja" target="_blank">プライバシーポリシー</a>
+                  と
+                  <a href="https://policies.google.com/terms?hl=ja" target="_blank">利用規約</a>
+                  が適応されます。
+                </p>
+              </div>
             </div>
           </div>
 

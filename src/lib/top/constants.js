@@ -53,7 +53,7 @@ export const canCorapura = [
   },
   {
     src: "/top/corapura6.svg",
-    txt: "SDGS・NFTなどを\n取り入れて企業力UP",
+    txt: "SDGs/社会貢献・NFTなどを\n取り入れて企業力UP",
   },
   {
     src: "/top/corapura7.svg",
@@ -228,7 +228,7 @@ export const plans = [
         text2: "※閲覧のみ",
       },
       {
-        left: "社会貢献・SDGs取り組み掲載★",
+        left: "社会貢献・SDGs/社会貢献取り組み掲載★",
         center: 1,
         right: 2,
         text1: "",

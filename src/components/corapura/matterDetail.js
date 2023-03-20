@@ -204,11 +204,13 @@ const MatterDetail = ({posts}) => {
             <div className={styles.headRight}>
               <p className={styles.cat}>{posts.c_cat.name}</p>
               <p className={styles.ttl}>{posts.title}</p>
-              <div className={styles.tags}>
+              <ul className={styles.tags}>
                 {posts.c_tags.map((tag, index) => (
-                  <p className={styles.tag} key={index}>{tag.name}</p>
+                  <li className={styles.tag} key={index}>
+                    <a href={`/corapura/${posts.user.account_type === 0 ? 'influencer' : 'company'}/matter/?tag_id=${tag.id}`} className="hoverEffect">{tag.name}</a>
+                  </li>
                 ))}
-              </div>
+              </ul>
               <div className={styles.company}>
                 <div className={styles.logoBox}>
                   {posts.user.c_profile.thumbs ? <img src={`${process.env.NEXT_PUBLIC_BACKEND_URL}/storage/${posts.user.c_profile.thumbs}`} alt="" /> : null}

@@ -42,8 +42,8 @@ const Merit = ({detail = false}) => {
             <p>コラプラでできるアピール方法はなんと12種類。多方面からのアプローチで認知拡大。</p>
           </li>
           <li>
-            <img src={merit6.src} alt="SDGS・NFTなど取り入れ企業力UP" />
-            <div className={styles.height60}><span>SDGS・NFT</span><br className="sp" />など取り入れ<br />企業力<span>UP</span></div>
+            <img src={merit6.src} alt="SDGs/社会貢献・NFTなど取り入れ企業力UP" />
+            <div className={styles.height60}><span>SDGs/社会貢献・NFT</span><br className="sp" />など取り入れ<br />企業力<span>UP</span></div>
             <p>
               新しい価値観は重要なカギとなる時代。コラプラで取り組みを開示することで企業力が大幅UP。
             </p>

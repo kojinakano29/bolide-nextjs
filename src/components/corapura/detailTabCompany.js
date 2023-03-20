@@ -317,7 +317,7 @@ const DetailTabCompany = ({businesses, releases, matters, userInfo}) => {
               type="button"
               className={`${tab1 === 0 ? styles.tabOn : null}`}
               onClick={() => handleClickTab1(0)}
-            >この企業の案件一覧</button>
+            >この企業/ビジネスユーザー/自治体の案件一覧</button>
             <button
               type="button"
               className={`${tab1 === 1 ? styles.tabOn : null}`}
@@ -382,7 +382,7 @@ const DetailTabCompany = ({businesses, releases, matters, userInfo}) => {
               type="button"
               className={`${tab2 === 1 ? styles.tabOn : null}`}
               onClick={() => handleClickTab2(1)}
-            >事業所・店舗</button>
+            >事業所/店舗/庁舎/支所</button>
             <button
               type="button"
               className={`${tab2 === 2 ? styles.tabOn : null}`}
@@ -400,7 +400,7 @@ const DetailTabCompany = ({businesses, releases, matters, userInfo}) => {
               type="button"
               className={`${tab2 === 4 ? styles.tabOn : null}`}
               onClick={() => handleClickTab2(4)}
-            >SDGs</button>
+            >SDGs/社会貢献</button>
           </div>
         </Container>
         <div className={styles.tabBox}>
@@ -490,7 +490,7 @@ const DetailTabCompany = ({businesses, releases, matters, userInfo}) => {
                         ))}
                       </div>
                       :
-                      <p className={styles.noneText}>SDGsがありません</p>
+                      <p className={styles.noneText}>SDGs/社会貢献がありません</p>
                     }
                     {filterSdgs.length === 3 && sdgs.length > 3 ?
                       <div className="btnCover" onClick={handleClickMoreSdgs}>

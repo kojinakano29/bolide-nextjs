@@ -48,8 +48,8 @@ const InputOfficialRequest = () => {
                 新規で公式申請
               </label>
               <label>
-                <input type="checkbox" value="既存を公式に更新" {...register("content", {required: true})} />
-                既存を公式に更新
+                <input type="checkbox" value="既存を公式に更新（無料キャプチャ設定済）" {...register("content", {required: true})} />
+                既存を公式に更新（無料キャプチャ設定済）
               </label>
               {errors.content && <p className={`orange ${styles.error}`}>※こちらの項目は入力必須です</p>}
             </dd>

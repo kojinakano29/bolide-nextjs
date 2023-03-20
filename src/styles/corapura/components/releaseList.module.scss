@@ -107,7 +107,7 @@
   position: relative;
 
   .detailLeft {
-    @include width(720px, 100%);
+    @include width(800px, 100%);
 
     h2 {
       @include mb(16px);
@@ -119,12 +119,16 @@
       @include mb(32px, 24px);
 
       .tag {
-        @include p(2px 8px);
         border-radius: 12px;
         border: 1px solid $r2;
-        color: $r2;
-        @include fs(14px, 12px);
-        font-weight: 500;
+
+        a {
+          display: block;
+          color: $r2;
+          @include fs(14px, 12px);
+          font-weight: 500;
+          @include p(2px 8px);
+        }
       }
     }
 
@@ -172,7 +176,7 @@
   .detailRight {
     position: sticky;
     top: 56px;
-    @include width(calc(100% - (720px + 64px)), 100%);
+    @include width(calc(100% - (800px + 64px)), 100%);
 
     .midashi {
       @include fs(20px, 16px);

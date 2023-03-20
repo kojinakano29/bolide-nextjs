@@ -12,6 +12,7 @@ import { Loader } from '@/components/corapura';
 import Link from 'next/link';
 import { zips, socialNetworkingService, followers } from '@/lib/corapura/constants';
 import searchIcon from '@/images/corapura/common/search.svg'
+import { useRouter } from 'next/router';
 
 export const getServerSideProps = async () => {
   const res = await fetch(`${process.env.NEXT_PUBLIC_API_CORAPURA}/user`)
@@ -35,7 +36,11 @@ const InfluencerList = ({posts}) => {
     {name: "フォロワー数が多い順", value: "sns_follower"},
   ]
 
+  const router = useRouter()
   const tagList = posts.tag_list
+  const tagFilter = tagList.filter((tag, index) => {
+    return index < 20 || parseInt(router.query.tag_id) === parseInt(tag.id)
+  })
   const skills = posts.skill
   const [disabled, setDisabled] = useState(false)
   const [influencer, setInfluencer] = useState(posts.user)
@@ -53,6 +58,19 @@ const InfluencerList = ({posts}) => {
   const [page, setPage] = useState(1)
   const [openSort, setOpenSort] = useState(false)
   const { handleSubmit, register } = useForm()
+
+  const onLoadSelectTag = async () => {
+    const nowTag = tagFilter.filter((tag) => {
+      return parseInt(tag.id) === parseInt(router.query.tag_id)
+    })
+    setTag(nowTag?.[0]?.id)
+  }
+
+  useEffect(() => {
+    if (router) {
+      onLoadSelectTag()
+    }
+  }, [router])
 
   const handleSort = useCallback(async () => {
     await csrf()
@@ -93,7 +111,7 @@ const InfluencerList = ({posts}) => {
   ])
 
   useEffect(async () => {
-    if (disabled) return
+    // if (disabled) return
     setDisabled(true)
     setOpenSort(false)
 

@@ -22,14 +22,13 @@
   .user__info__name {
     @include fs(32px, 24px);
     font-weight: 500;
-    @include mb(8px);
+    @include mb(40px);
   }
 
   .user__info__id {
     @include fs(16px, 14px);
     font-weight: 500;
     color: $g1;
-    @include mb(40px);
   }
 
   .user__info__follow {
@@ -98,6 +97,7 @@
   letter-spacing: 0;
   @include pb(12px);
   position: relative;
+  line-height: 1;
 
   &::after {
     content: "";
@@ -111,6 +111,11 @@
     transform: scaleX(0);
     transform-origin: center;
     transition: .2s ease-out;
+  }
+
+  span {
+    @include fs(12px, 10px);
+    color: $g1;
   }
 
   &.on,

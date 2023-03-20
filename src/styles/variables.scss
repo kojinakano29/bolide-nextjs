@@ -439,7 +439,9 @@ $breakpoints: (
 @mixin select($pc:0, $tab:$pc, $sp:$tab) {
   @include px(24px, 20px);
   @include width($pc, $tab, $sp);
-  @include height(56px, 48px);
+  @include min-height(56px, 48px);
+  white-space: pre-wrap;
+  cursor: pointer;
   @include fs(16px, 14px);
   display: block;
   border: 1px solid $g4;

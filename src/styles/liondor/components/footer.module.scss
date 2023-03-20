@@ -86,6 +86,22 @@
     flex-direction: column;
     justify-content: space-between;
 
+    .rightBox {
+      @include width(480px);
+      @include ml(auto);
+
+      .bannerFlex {
+        @include flex(center, center);
+        @include gap(16px);
+        @include mb(16px);
+
+        a {
+          @include width(calc(100% * 1/2 - 16px * 1/2), calc(100% * 1/2 - 16px * 1/2), 100%);
+          display: block;
+        }
+      }
+    }
+
     .privacy {
       font-size: 12px;
       color: $g1;

@@ -68,10 +68,7 @@ const Corapura = ({posts}) => {
       <section className={styles.matchArea}>
         <Container small>
           <h2 className="ttl2">ビジネスマッチング</h2>
-          <p className={styles.desc}>
-            テキストサンプルテキストサンプルテキストサンプルテキストサンプルテキストサンプル、
-            <br/>テキストサンプルテキストサンプルテキストサンプルテキストサンプル。
-          </p>
+          <p className={styles.desc}>案件を掲載して自由にやり取りが可能。新たなビジネスパートナーやクライアント・インフルエンサーを見つけたり、個人ユーザーとのマッチングでスクール会員や趣味仲間などを見つけることができます。攻めの姿勢で活躍の場拡大につながります。</p>
           {matterLimit.length !== 0 ?
             <>
               <SwiperType1 matters={matterLimit} />
@@ -88,7 +85,7 @@ const Corapura = ({posts}) => {
 
       <section className={styles.companyArea}>
         <Container small>
-          <h2 className="ttl2">おすすめの企業</h2>
+          <h2 className="ttl2">おすすめの企業/ビジネスユーザー/自治体</h2>
           {companies.length !== 0 ?
             <>
               <SwiperType2 gap={32}>
@@ -98,10 +95,10 @@ const Corapura = ({posts}) => {
                   </SwiperSlide>
                 ))}
               </SwiperType2>
-              <Btn2 txt="企業一覧" link="/corapura/company" />
+              <Btn2 txt="企業/ビジネスユーザー/自治体一覧" link="/corapura/company" />
             </>
             :
-            <p className={styles.noneLength}>おすすめの企業がありません</p>
+            <p className={styles.noneLength}>おすすめの企業/ビジネスユーザー/自治体がありません</p>
           }
         </Container>
       </section>
@@ -109,10 +106,10 @@ const Corapura = ({posts}) => {
       <section className={styles.userArea}>
         <Container small>
           <h2 className="ttl2">ユーザー/インフルエンサーマッチング</h2>
-          <p className={styles.desc}>
+          {/* <p className={styles.desc}>
             テキストサンプルテキストサンプルテキストサンプルテキストサンプルテキストサンプル、
             <br/>テキストサンプルテキストサンプルテキストサンプルテキストサンプル。
-          </p>
+          </p> */}
           {users.length !== 0 ?
             <User data={users} />
             :
@@ -124,6 +121,7 @@ const Corapura = ({posts}) => {
       <section className={styles.releaseArea}>
         <Container small>
           <h2 className="ttl2">プレスリリース</h2>
+          <p className={styles.desc}>自社の新商品や新サービスを自由に何度でも無制限で掲載できます。</p>
           {releases.length !== 0 ?
             <>
               <SwiperType2 gap={24}>
@@ -144,6 +142,7 @@ const Corapura = ({posts}) => {
       <section className={styles.salonArea}>
         <Container small>
           <h2 className="ttl2">注目のオンラインサロン</h2>
+          <p className={styles.desc}>オンラインサロンのメンバー募集・入会ができます。</p>
           {salons.length !== 0 ?
             <div className={styles.salonBox}>
               <div className={styles.left}>
@@ -186,10 +185,7 @@ const Corapura = ({posts}) => {
       <section className={styles.couponArea}>
         <Container small>
           <h2 className="ttl2">クーポン</h2>
-          <p className={styles.desc}>
-            テキストサンプルテキストサンプルテキストサンプルテキストサンプルテキストサンプル、
-            <br/>テキストサンプルテキストサンプルテキストサンプルテキストサンプル。
-          </p>
+          <p className={styles.desc}>クーポンを掲載できます。興味や関心を持ってもらいやすくなります。</p>
           {coupons.length !== 0 ?
             <SwiperType2 gap={24}>
               {coupons.map((coupon, index) => (
@@ -207,10 +203,7 @@ const Corapura = ({posts}) => {
       <section className={styles.presidentArea}>
         <Container small>
           <h2 className="ttl2">プレジデント/リーダー</h2>
-          <p className={styles.desc}>
-            テキストサンプルテキストサンプルテキストサンプルテキストサンプルテキストサンプル、
-            <br/>テキストサンプルテキストサンプルテキストサンプルテキストサンプル。
-          </p>
+          <p className={styles.desc}>社長やリーダーの紹介ができます。</p>
           {presidents.length !== 0 ?
             <SwiperType2 gap={24}>
               {presidents.map((president, index) => (
@@ -228,10 +221,7 @@ const Corapura = ({posts}) => {
       <section className={styles.infoArea}>
         <Container small>
           <h2 className="ttl2">ニュース/イベント</h2>
-          <p className={styles.desc}>
-            テキストサンプルテキストサンプルテキストサンプルテキストサンプルテキストサンプル、
-            <br/>テキストサンプルテキストサンプルテキストサンプルテキストサンプル。
-          </p>
+          <p className={styles.desc}>お知らせを随時更新できます。信頼やイメージの向上に繋がります。</p>
           {infos.length !== 0 ?
             <Info data={infos} />
             :
@@ -243,15 +233,12 @@ const Corapura = ({posts}) => {
       <section className={styles.nameCardArea}>
         <Container small>
           <h2 className="ttl2">名刺</h2>
-          <p className={styles.desc}>
-            テキストサンプルテキストサンプルテキストサンプルテキストサンプルテキストサンプル、
-            <br/>テキストサンプルテキストサンプルテキストサンプルテキストサンプル。
-          </p>
+          <p className={styles.desc}>名刺を掲載できます。仕事の獲得やコミュニケーションの糸口にご活用ください。</p>
           {nameCards.length !== 0 ?
             <SwiperType2 gap={24}>
               {nameCards.map((card, index) => (
                 <SwiperSlide key={index}>
-                  <NameCard data={card} />
+                  <NameCard data={card} slider />
                 </SwiperSlide>
               ))}
             </SwiperType2>
@@ -264,10 +251,7 @@ const Corapura = ({posts}) => {
       <section className={styles.nftArea}>
         <Container small>
           <h2 className="ttl2">NFT／製品・商品／特許・技術</h2>
-          <p className={styles.desc}>
-            テキストサンプルテキストサンプルテキストサンプルテキストサンプルテキストサンプル、
-            <br/>テキストサンプルテキストサンプルテキストサンプルテキストサンプル。
-          </p>
+          <p className={styles.desc}>自社の魅力を思う存分紹介できます。</p>
           {nfts.length !== 0 ?
             <SwiperType2 gap={24}>
               {nfts.map((nft, index) => (
@@ -284,11 +268,8 @@ const Corapura = ({posts}) => {
 
       <section className={styles.sdgsArea}>
         <Container small>
-          <h2 className="ttl2">SDGs</h2>
-          <p className={styles.desc}>
-            テキストサンプルテキストサンプルテキストサンプルテキストサンプルテキストサンプル、
-            <br/>テキストサンプルテキストサンプルテキストサンプルテキストサンプル。
-          </p>
+          <h2 className="ttl2">SDGs/社会貢献</h2>
+          <p className={styles.desc}>活動内容を紹介できます。新たな市場機会を創出する可能性を生み出しましょう。</p>
           {sdgs.length !== 0 ?
             <SwiperType2 gap={24}>
               {sdgs.map((sdgs, index) => (
@@ -298,7 +279,7 @@ const Corapura = ({posts}) => {
               ))}
             </SwiperType2>
             :
-            <p className={styles.noneLength}>SDGsがありません</p>
+            <p className={styles.noneLength}>SDGs/社会貢献がありません</p>
           }
         </Container>
       </section>
@@ -306,10 +287,7 @@ const Corapura = ({posts}) => {
       <section className={styles.sponsorArea}>
         <Container small>
           <h2 className="ttl2">スポンサー・マスコット</h2>
-          <p className={styles.desc}>
-            テキストサンプルテキストサンプルテキストサンプルテキストサンプルテキストサンプル、
-            <br/>テキストサンプルテキストサンプルテキストサンプルテキストサンプル。
-          </p>
+          <p className={styles.desc}>自社のスポンサーやマスコットを紹介できます。ブランドイメージが伝わりやすくなります。</p>
           {likes.length !== 0 ?
             <CardType2 data={likes} />
             :
@@ -321,10 +299,7 @@ const Corapura = ({posts}) => {
       <section className={styles.hobbyArea}>
         <Container small>
           <h2 className="ttl2">推し活・ホビー</h2>
-          <p className={styles.desc}>
-            テキストサンプルテキストサンプルテキストサンプルテキストサンプルテキストサンプル、
-            <br/>テキストサンプルテキストサンプルテキストサンプルテキストサンプル。
-          </p>
+          <p className={styles.desc}>あなたの推しや趣味を教えてください。仲間と共有してみませんか？</p>
           {sponsors.length !== 0 ?
             <CardType2 data={sponsors} />
             :

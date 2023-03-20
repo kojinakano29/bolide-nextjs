@@ -113,7 +113,7 @@ const Home = ({posts}) => {
                 <PopularStore />
               </StoreData.Provider>
               <Container>
-                <Btn01 fa={faTrophy} txt="ショップ一覧" link="/dellamall/shop" right />
+                <Btn01 txt="ショップ一覧" link="/dellamall/shop" right />
               </Container>
             </>
             :

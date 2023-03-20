@@ -33,9 +33,9 @@ const Guide = () => {
           <h2 className="ttl2">使い方ガイド</h2>
           <div className={styles.cont1__what}><span className="en">Della Mall</span>とは？</div>
           <div className={styles.cont1__text}>
-            あなたのお気に入りのECサイトを自由に登録して共有することができます！
-            <br/>他の人が登録したECサイトの閲覧も可能♪
-            <br/>いいなと思うものがあれば保存をして「モール」としてみんなにシェアしてみましょう
+            「ECサイト」を集めた日本最大級のモールです。
+            <br/>みんなで投稿、みんなでシェア、みんなで楽しめる、
+            <br/>これまでにない新しいお買い物体験を提供します。
           </div>
           <div className={styles.cont1__who}>Della Mallには一般ユーザー様、<br />企業様向けにこんなメリットがあります！</div>
           <div className={styles.cont1__for}>
@@ -168,8 +168,9 @@ const Guide = () => {
         <Container small>
           <h3 className="ttl3">ショップ作成方法</h3>
           <p className={styles.section__text}>
-            テキストサンプルテキストサンプルテキストサンプルテキストサンプル
-            テキストサンプルテキストサンプル。
+            あなたのお気に入りショップを投稿（作成）して、
+            <br/>Della Mallを一緒に作りましょう！
+            <br/>ショップの作成者として、あなたのニックネームが残ります！
           </p>
           <ul className={styles.cont2__methodList}>
             <li className={styles.cont2__methodItem}>
@@ -183,7 +184,10 @@ const Guide = () => {
                 />
               </div>
               <div className={styles.cont2__methodItem__forte}>お気に入りのECサイトの<br />TOPのURLをコピー！</div>
-              <div className={styles.cont2__methodItem__text}>テキストサンプルテキストサンプルテキストサンプルテキストサンプルテキストサンプルテキストサンプル。</div>
+              <div className={styles.cont2__methodItem__text}>
+                あなたの「推し」をみんなに知ってもらおう！
+                <br/>サイトのTOPページのURLをコピーして次のステップへ！
+              </div>
             </li>
             <li className={styles.cont2__methodItem}>
               <div className={styles.imgBox}>
@@ -195,8 +199,12 @@ const Guide = () => {
                   priority
                 />
               </div>
-              <div className={styles.cont2__methodItem__forte}>フォーム内にURLを<br />貼り付け！</div>
-              <div className={styles.cont2__methodItem__text}>テキストサンプルテキストサンプルテキストサンプルテキストサンプルテキストサンプルテキストサンプル。</div>
+              <div className={styles.cont2__methodItem__forte}>「ショップを作る」の<br/>フォーム内にURLを<br />貼り付け！</div>
+              <div className={styles.cont2__methodItem__text}>
+                Della Mallのトップページorマイページの「ショップを作る」をクリック！
+                <br/>「サイトURL」の項目に、さっきコピーしたURLを貼り付けよう！
+                <br/>「サイト情報を取得する」をクリックすると、自動的にサイト情報を反映！
+              </div>
             </li>
             <li className={styles.cont2__methodItem}>
               <div className={styles.imgBox}>
@@ -208,8 +216,8 @@ const Guide = () => {
                   priority
                 />
               </div>
-              <div className={styles.cont2__methodItem__forte}>あてはまるタグを<br />設定しよう</div>
-              <div className={styles.cont2__methodItem__text}>テキストサンプルテキストサンプルテキストサンプルテキストサンプルテキストサンプルテキストサンプル。</div>
+              <div className={styles.cont2__methodItem__forte}>関連するタグを<br />設定しよう</div>
+              <div className={styles.cont2__methodItem__text}>サイトを見つけやすくするように関連するタグを設定しよう！</div>
             </li>
             <li className={styles.cont2__methodItem}>
               <div className={styles.imgBox}>
@@ -221,8 +229,8 @@ const Guide = () => {
                   priority
                 />
               </div>
-              <div className={styles.cont2__methodItem__forte}>保存をクリック</div>
-              <div className={styles.cont2__methodItem__text}>テキストサンプルテキストサンプルテキストサンプルテキストサンプルテキストサンプルテキストサンプル。</div>
+              <div className={styles.cont2__methodItem__forte}>作成をクリック！</div>
+              <div className={styles.cont2__methodItem__text}>「利用規約」を確認して、同意の上作成をクリック！</div>
             </li>
             <li className={styles.cont2__methodItem}>
               <div className={styles.imgBox}>
@@ -235,7 +243,7 @@ const Guide = () => {
                 />
               </div>
               <div className={styles.cont2__methodItem__forte}>登録完了♪</div>
-              <div className={styles.cont2__methodItem__text}>テキストサンプルテキストサンプルテキストサンプルテキストサンプルテキストサンプルテキストサンプル。</div>
+              <div className={styles.cont2__methodItem__text}>これであなたのお気に入りのECサイトが登録されました！</div>
             </li>
           </ul>
         </Container>
@@ -245,10 +253,7 @@ const Guide = () => {
         <Container small>
           <p className={styles.bkText}>Keep Shop</p>
           <h3 className="ttl3">ショップ保存方法</h3>
-          <p className={styles.section__text}>
-            テキストサンプルテキストサンプルテキストサンプルテキストサンプル
-            テキストサンプルテキストサンプル。
-          </p>
+          <p className={styles.section__text}>ショップ保存機能を使って、簡単にお気に入りECサイトへアクセスしよう！</p>
           <div className={styles.cont3__main}>
             <div className={styles.cont3__mainLeft}>
               <Image
@@ -264,21 +269,25 @@ const Guide = () => {
                 <div className={styles.cont3__mainRight__num}></div>
                 <div className={styles.cont3__mainRight__text}>
                   ショップ詳細ページへGO
-                  <p>テキストサンプルテキストサンプルテキストサンプルテキストサンプルテキストサンプルテキストサンプル。</p>
+                  <p>気になるショップを見つけたらクリック！ショップの詳細ページを見てみよう！</p>
                 </div>
               </li>
               <li>
                 <div className={styles.cont3__mainRight__num}></div>
                 <div className={styles.cont3__mainRight__text}>
-                  気に入った！気になる！と思ったら♡マークをクリック
-                  <p>テキストサンプルテキストサンプルテキストサンプルテキストサンプルテキストサンプルテキストサンプル。</p>
+                  気に入った！いいな！と思ったら
+                  <br/>♥マークをクリックしよう！
+                  <p>これでショップの保存は完了！お気に入りショップをどんどん増やしていこう！</p>
                 </div>
               </li>
               <li>
                 <div className={styles.cont3__mainRight__num}></div>
                 <div className={styles.cont3__mainRight__text}>
-                  マイページの「保存ショップ」からいつでも確認可能
-                  <p>テキストサンプルテキストサンプルテキストサンプルテキストサンプルテキストサンプルテキストサンプル。</p>
+                  マイページの「保存ショップ」からいつでも確認できる！
+                  <p>
+                    保存したショップはマイページからアクセスできます！
+                    <br/>最新情報をスムーズに手に入れて、快適なお買い物を楽しもう！
+                  </p>
                 </div>
               </li>
             </ul>
@@ -289,69 +298,65 @@ const Guide = () => {
       <section className={styles.mallCreate}>
         <Container small>
           <p className={styles.bkText}>Create Mall</p>
-          <h3 className="ttl3">モール作成方法</h3>
+          <h3 className="ttl3">マイモール作成方法</h3>
           <div className={styles.cont4__mallWhat}>
-            <div className={styles.cont4__mallWhat__title}>モールってそもそも何だろう？</div>
+            <div className={styles.cont4__mallWhat__title}>マイモールってそもそも何だろう？</div>
             <p className={styles.cont4__mallWhat__text}>
-              テキストサンプルテキストサンプルテキストサンプルテキストテキストサンプルテキストサンプル。
-              <br />テキストサンプルテキストサンプルテキストサンプルテキストサンプル、
-              <br />テキストサンプルテキストサンプルテキストサンプルテキストサンプルテキストサンプルテキストサンプル。<br />
+              「マイモール」はあなたのお気に入りショップを集めてまとめることができます！
+              <br />ジャンル毎にモールを作ったり、ギフトを選ぶ時のショップだけを集めたり、使い方はあなた次第！
+              <br />シェアもできるので、あなただけのモールをみんなに広めましょう！
             </p>
           </div>
           <div className={styles.section__text}>
-            テキストサンプルテキストサンプルテキストサンプルテキストサンプル
-            テキストサンプルテキストサンプル。
+            使い方はとっても簡単！
+            <br/>簡単ステップでどんどんマイモールを作ってシェアしよう！
           </div>
           <ul className={styles.cont4__mallMethodList}>
             <li className={styles.cont4__mallMethodItem}>
               <p className={styles.cont4__mallMethodItem__num}></p>
               <div className={styles.cont4__mallMethodItem__forte}>
                 マイページから
-                <br />新規モールを作ろう
+                <br />マイモールを作ろう！
               </div>
-              <p className={styles.cont4__mallMethodItem__text}>
-                テキストサンプルテキストサンプルテキストサンプルテキストテキストサンプル。
-              </p>
+              <p className={styles.cont4__mallMethodItem__text}>マイページ内の「マイモールを作成する」をクリック！</p>
             </li>
             <li className={styles.cont4__mallMethodItem}>
               <p className={styles.cont4__mallMethodItem__num}></p>
               <div className={styles.cont4__mallMethodItem__forte}>
-                モール名を
+                マイモール名を
                 <br />入力し保存！
               </div>
               <p className={styles.cont4__mallMethodItem__text}>
-                テキストサンプルテキストサンプルテキストサンプルテキストテキストサンプル。
+                マイモール名を入力して「作成する」を押すだけ！
+                <br/>シェアしたくない場合は「プライベート」にチェックを入れよう。
               </p>
             </li>
             <li className={styles.cont4__mallMethodItem}>
               <p className={styles.cont4__mallMethodItem__num}></p>
               <div className={styles.cont4__mallMethodItem__forte}>
-                モールに保存したい
-                <br />ショップの詳細ページ
-                <br />で保存をクリック
+                マイモールに保存したい
+                <br />ショップの詳細ページで
+                <br />「＊アイコン」をクリック
               </div>
-              <p className={styles.cont4__mallMethodItem__text}>
-                テキストサンプルテキストサンプルテキストサンプルテキストテキストサンプル。
-              </p>
+              <p className={styles.cont4__mallMethodItem__text}>お気に入りのショップページ詳細の右上にある「＊アイコン」をクリックして次のステップへ！</p>
             </li>
             <li className={styles.cont4__mallMethodItem}>
               <p className={styles.cont4__mallMethodItem__num}></p>
               <div className={styles.cont4__mallMethodItem__forte}>
                 保存先の
-                <br />モールを選ぶ
+                <br />モールを選ぼう！
               </div>
-              <p className={styles.cont4__mallMethodItem__text}>
-                テキストサンプルテキストサンプルテキストサンプルテキストテキストサンプル。
-              </p>
+              <p className={styles.cont4__mallMethodItem__text}>どのマイモールに保存するかを決めよう！</p>
             </li>
             <li className={styles.cont4__mallMethodItem}>
               <p className={styles.cont4__mallMethodItem__num}></p>
               <div className={styles.cont4__mallMethodItem__forte}>
-                自分なりのモールを
-                <br />どんどん作ろう♪
+                マイモールをどんどん
+                <br />作ってシェアしよう♪
               </div>
               <p className={styles.cont4__mallMethodItem__text}>
-                テキストサンプルテキストサンプルテキストサンプルテキストテキストサンプル。
+                作れるマイモールは一つだけじゃありません！いろんなモールを作って、お買い物をより便利に、より楽しくしよう！
+                <br/>さらにシェアして楽しみを拡散させよう！
               </p>
             </li>
           </ul>

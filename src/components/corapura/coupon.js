@@ -11,12 +11,15 @@ const Coupon = ({data, detail = false, swiper = false}) => {
         <p className={styles.name}>{data.title}</p>
         <p className={styles.limit}>期間：{data.limit}まで</p>
         {!detail ?
-          <div className={styles.company}>
+          <a
+            href={`/corapura/${data.c_profile.user.account_type === 0 ? 'influencer' : 'company'}/${data.c_profile.user.id}`}
+            className={`${styles.company} hoverEffect`}
+          >
             <div className={styles.logoBox}>
               {data.c_profile.thumbs ? <img src={`${process.env.NEXT_PUBLIC_BACKEND_URL}/storage/${data.c_profile.thumbs}`} alt="" /> : null}
             </div>
             {data.c_profile.nicename}
-          </div>
+          </a>
         : null}
       </div>
     </article>

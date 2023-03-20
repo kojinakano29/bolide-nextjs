@@ -98,11 +98,13 @@ const DetailAreaRight = ({influencer = false}) => {
             <div className={styles.headRight}>
               <p className={styles.type}>{profile.title}</p>
               <p className={styles.name}>{profile.nicename}</p>
-              <div className={styles.tags}>
+              <ul className={styles.tags}>
                 {profile.c_tags.map((tag, index) => (
-                  <p className={styles.tag} key={index}>{tag.name}</p>
+                  <li className={styles.tag} key={index}>
+                    <a href={`/corapura/company/?tag_id=${tag.id}`} className="hoverEffect">{tag.name}</a>
+                  </li>
                 ))}
-              </div>
+              </ul>
             </div>
           </div>
           <div className={styles.followBox}>
@@ -140,11 +142,11 @@ const DetailAreaRight = ({influencer = false}) => {
           }
           <div className={styles.infoGraph}>
             <dl>
-              <dt>代表者</dt>
+              <dt>プレジデント/リーダー</dt>
               <dd>{profile.c_company_profile.president}</dd>
             </dl>
             <dl>
-              <dt>設立</dt>
+              <dt>上場・非上場・自治体</dt>
               <dd>{profile.c_company_profile.maked}</dd>
             </dl>
             <dl>
@@ -156,7 +158,7 @@ const DetailAreaRight = ({influencer = false}) => {
               <dd>{profile.c_company_profile.capital}</dd>
             </dl>
             <dl>
-              <dt>本社所在地</dt>
+              <dt>所在地</dt>
               <dd>{profile.c_company_profile.address}</dd>
             </dl>
             <dl>
@@ -168,7 +170,7 @@ const DetailAreaRight = ({influencer = false}) => {
           <div className={styles.siteUrl}>
             {profile.c_company_profile.site_url ?
               <>
-                <p>コーポレートサイト</p>
+                <p>メインサイト</p>
                 <a href={profile.c_company_profile.site_url} target="_balnk">{profile.c_company_profile.site_url}</a>
               </>
             : null}
@@ -194,17 +196,22 @@ const DetailAreaRight = ({influencer = false}) => {
               <p className={styles.catch}>{profile.title}</p>
               <p className={styles.name}>{profile.nicename}</p>
               <p className={styles.type}>個人</p>
-              <div className={styles.tags}>
+              <ul className={styles.tags}>
                 {profile.c_tags.map((tag, index) => (
-                  <p className={styles.tag} key={index}>{tag.name}</p>
+                  <li className={styles.tag} key={index}>
+                    <a href={`/corapura/influencer/?tag_id=${tag.id}`} className="hoverEffect">{tag.name}</a>
+                  </li>
                 ))}
-              </div>
+              </ul>
             </div>
           </div>
-          <div className={styles.skills}>
-            {profile.c_user_profile.c_user_skills.map((skill, index) => (
-              <p className={styles.skill} key={index}>{skill.name}</p>
-            ))}
+          <div className={styles.skillBox}>
+            <p className={styles.skillName}>得意分野</p>
+            <div className={styles.skills}>
+              {profile.c_user_profile.c_user_skills.map((skill, index) => (
+                <p className={styles.skill} key={index}>{skill.name}</p>
+              ))}
+            </div>
           </div>
           <div className={styles.followBox}>
             <p className={styles.count}>

@@ -46,11 +46,26 @@ const Mypage = ({posts}) => {
   const [followCount, setFollowCount] = useState(profile.d_followed_count)
 
   const tabItems = [
-    "作成ショップ",
-    "作成モール",
-    "保存ショップ",
-    "保存モール",
-    "コメント",
+    {
+      txt1: "作成ショップ",
+      txt2: "あなたが作成したショップ",
+    },
+    {
+      txt1: "作成モール",
+      txt2: "あなたが作成したモール",
+    },
+    {
+      txt1: "保存ショップ",
+      txt2: "保存したショップ",
+    },
+    {
+      txt1: "保存モール",
+      txt2: "保存したモール",
+    },
+    {
+      txt1: "コメント",
+      txt2: "",
+    },
   ]
 
   useEffect(() => {
@@ -194,7 +209,7 @@ const Mypage = ({posts}) => {
               <img src={dProfile?.thumbs ? `${process.env.NEXT_PUBLIC_BACKEND_URL}/storage/${dProfile.thumbs}` : notSet.src} alt="プロフィール画像" />
             </div>
             <div className={styles.user__info__name}>{dProfile?.nicename}</div>
-            <div className={styles.user__info__id}>{profile.name}</div>
+            {/* <div className={styles.user__info__id}>{profile.name}</div> */}
             <ul className={styles.user__info__follow}>
               <li>投稿 {create_shop.length} 件</li>
               <li>
@@ -276,7 +291,8 @@ const Mypage = ({posts}) => {
                   }}
                   key={index}
                 >
-                  {item}
+                  {item.txt1}
+                  <br/><span>{item.txt2}</span>
                 </button>
               ))}
             </div>
@@ -291,7 +307,9 @@ const Mypage = ({posts}) => {
                     {createShop.length !== 0 ?
                       <MasonryGridComponent item={createShop} />
                       :
-                      <p className={styles.noneLength}>作成したショップがありません</p>
+                      <p className={styles.noneLength}>
+                        作成したショップがありません
+                      </p>
                     }
                     {user && user?.id === profile.id && createShop.length !== 0 ?
                       <Btn01 fa={faGear} txt="ショップを編集する" link="/dellamall/admin/shop" />

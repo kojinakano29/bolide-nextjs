@@ -6,7 +6,6 @@ import axios from "@/lib/axios";
 import { useCallback, useEffect, useState } from "react";
 import Link from 'next/link';
 import dummy2 from '@/images/corapura/common/dummy5.svg'
-import dummy from '@/images/corapura/common/dummy8.svg'
 import view from '@/images/corapura/parts/material_view.svg'
 import viewB from '@/images/corapura/common/view.svg'
 import viewA from '@/images/corapura/common/view_a.svg'
@@ -83,11 +82,13 @@ const PressReleaseDetail = ({posts}) => {
         <div className={styles.detailFlex}>
           <div className={styles.detailLeft}>
             <h2 className="ttl2">{release.title}</h2>
-            <div className={styles.tags}>
+            <ul className={styles.tags}>
               {release.c_tags.map((tag, index) => (
-                <p className={styles.tag} key={index}>{tag.name}</p>
+                <li className={styles.tag} key={index}>
+                  <a href={`/corapura/press_release/?tag_id=${tag.id}`} className="hoverEffect">{tag.name}</a>
+                </li>
               ))}
-            </div>
+            </ul>
             <div className={styles.headFlex}>
               <div className={styles.txtBox}>
                 <p className={styles.name}>{profile.nicename}</p>

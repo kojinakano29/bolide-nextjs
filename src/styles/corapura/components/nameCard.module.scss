@@ -22,3 +22,14 @@
   color: $w1;
   @include mt(8px);
 }
+
+.modalBox {
+  width: fit-content;
+  margin: auto;
+  cursor: auto;
+  max-width: 800px;
+
+  .nameCard {
+    width: 100%;
+  }
+}

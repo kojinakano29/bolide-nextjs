@@ -175,12 +175,29 @@
 }
 
 .cont1__flexRight__topUrl {
+  @include flex(center, left);
+  @include gap(8px);
+  flex-wrap: nowrap;
+  @include mb(24px, 16px);
+
+  .official_icon {
+    @include width(20px);
+    @include height(20px);
+    border-radius: 50%;
+    @include flex(center, center);
+    background-color: $o1;
+
+    * {
+      color: $w1;
+      font-size: 12px;
+    }
+  }
+
   a {
     @include fs(14px, 12px);
     font-weight: bold;
     letter-spacing: 0;
     text-decoration: underline;
-    @include mb(24px, 16px);
 
     &:hover {
       text-decoration: none;

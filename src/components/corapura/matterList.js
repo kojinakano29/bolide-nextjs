@@ -10,6 +10,7 @@ import { Loader, MatterCard } from '@/components/corapura';
 import { zips } from '@/lib/corapura/constants';
 import { useAuth } from '@/hooks/auth';
 import searchIcon from '@/images/corapura/common/search.svg'
+import { useRouter } from 'next/router';
 
 const MatterList = ({posts, influencer = false}) => {
   // console.log(posts)
@@ -23,8 +24,12 @@ const MatterList = ({posts, influencer = false}) => {
     {name: "締切日が遠い順", value: "limit_desc"},
   ]
 
+  const router = useRouter()
   const { user } = useAuth()
   const tagList = posts.tag_list
+  const tagFilter = tagList.filter((tag, index) => {
+    return index < 20 || parseInt(router.query.tag_id) === parseInt(tag.id)
+  })
   const cats = posts.cat_list
   const [disabled, setDisabled] = useState(false)
   const [matters, setMatters] = useState([])
@@ -54,6 +59,19 @@ const MatterList = ({posts, influencer = false}) => {
       console.error(e)
     })
   }
+
+  const onLoadSelectTag = async () => {
+    const nowTag = tagFilter.filter((tag) => {
+      return parseInt(tag.id) === parseInt(router.query.tag_id)
+    })
+    setTag(nowTag?.[0]?.id)
+  }
+
+  useEffect(() => {
+    if (router) {
+      onLoadSelectTag()
+    }
+  }, [router])
 
   const handleSort = useCallback(async () => {
     await csrf()
@@ -97,7 +115,7 @@ const MatterList = ({posts, influencer = false}) => {
   }, [user])
 
   useEffect(async () => {
-    if (disabled) return
+    // if (disabled) return
     setDisabled(true)
     setOpenSort(false)
 
@@ -256,7 +274,7 @@ const MatterList = ({posts, influencer = false}) => {
         <div className={styles.tagBtnArea}>
           <p className={styles.midashi}>タグから探す</p>
           <div className={styles.tagBtnBox}>
-            {tagList.map((item, index) => (
+            {tagFilter.map((item, index) => (
               <button
                 value={item.id}
                 className={`${styles.tagBtn} ${item.id === parseInt(tag) ? styles.current : null}`}

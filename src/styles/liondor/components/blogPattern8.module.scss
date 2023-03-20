@@ -21,17 +21,6 @@
     padding-bottom: 32px;
     border-bottom: 1px solid $g2;
   }
-
-  &:first-of-type {
-    @include media1(sp) {
-      flex-direction: column;
-
-      .imgBox {
-        width: 100%;
-        margin-bottom: 16px;
-      }
-    }
-  }
 }
 
 .imgBox {

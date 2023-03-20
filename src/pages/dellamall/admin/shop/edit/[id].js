@@ -107,7 +107,12 @@ const EditShop = ({posts}) => {
         {user?.id === posts.user_id || user?.account_type > 2 ?
           <form onSubmit={handleSubmit(onSubmit)}>
             <h3 className={styles.infoTtl}>基本情報</h3>
-            <p className={styles.desc}>※公式ショップ申請をされていない場合、サイトURL以外の情報は入力できません。</p>
+            <p className={styles.desc}>
+              ※ショップ作成時の注意事項
+              <br/>・既に同じURLのサイトがデラモールに登録されている場合は、重複したショップの作成はできません。
+              <br/>・モール型サイトのショップ作成はできません。（楽天やBASE、Amazonなど）
+              <br/>・公式ショップ申請をされていない場合、サイトURL・関連タグ以外の情報は入力できません。
+            </p>
             <article className={styles.infoFlex}>
               <div className={styles.infoLeft}>
                 <dl>
@@ -136,6 +141,11 @@ const EditShop = ({posts}) => {
                 <dl>
                   <dt>
                     <label htmlFor="url">サイトURL</label>
+                    <br/>
+                    <span>
+                      ※必ずサイトTOPページのURLを入力ください！
+                      <br/>※公式ショップ登録したい方で、URLが登録できない場合にはお問合せください。(お問合せがリンク)
+                    </span>
                   </dt>
                   <dd>
                     <input

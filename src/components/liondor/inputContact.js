@@ -108,10 +108,14 @@ const InputContact = () => {
           </dl>
           <dl className={styles.dl}>
             <dt className={styles.inputDt}>
-              <label htmlFor="storeName">会社・店名</label>
+              <label htmlFor="storeName">
+                会社・店名
+                <span className="red">＊</span>
+              </label>
             </dt>
             <dd>
-              <input type="text" id="storeName" {...register("storeName")} placeholder="株式会社サンプル" />
+              <input type="text" id="storeName" {...register("storeName", {required: true})} placeholder="株式会社サンプル" />
+              {errors.storeName && <p className={`red ${styles.error}`}>必須項目を入力してください。</p>}
             </dd>
           </dl>
           <dl className={styles.dl}>
@@ -135,7 +139,7 @@ const InputContact = () => {
                     message: "電話番号の形式で入力してください",
                   }
                 })}
-                placeholder="0123456789"
+                placeholder="ハイフンなしでご入力ください"
               />
               {errors.tel?.types.required && <p className={`red ${styles.error}`}>{errors.tel.types.required}</p>}
               {errors.tel?.types.pattern && <p className={`red ${styles.error}`}>{errors.tel.types.pattern}</p>}

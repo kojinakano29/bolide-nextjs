@@ -2,7 +2,6 @@ import styles from '@/styles/corapura/components/detail.module.scss'
 import PageLayoutCorapura from "@/components/Layouts/pageLayoutCorapura";
 import Container from '@/components/corapura/Layout/container';
 import { CardType2, DetailArea, DetailComment, DetailTabUser, NameCard } from '@/components/corapura';
-import { useCallback, useState } from 'react';
 import { useAuth } from '@/hooks/auth';
 
 export const getServerSideProps = async ({params}) => {
@@ -26,14 +25,6 @@ const InfluencerDetail = ({posts}) => {
   const comments = posts.comments
   const likes = posts.likes
   const matters = posts.posts
-
-  const [modal, setModal] = useState(false)
-  const [active, setActive] = useState()
-
-  const handleClickModal = useCallback(async (num) => {
-    setModal(prevState => !prevState)
-    setActive(num)
-  }, [setModal])
 
   return (
     <>
@@ -78,9 +69,7 @@ const InfluencerDetail = ({posts}) => {
           {cards.length !== 0 ?
             <div className={styles.column3}>
               {cards.map((card, index) => (
-                <div key={index} onClick={() => handleClickModal(index)}>
-                  <NameCard data={card} />
-                </div>
+                <NameCard data={card} key={index} />
               ))}
             </div>
             :
@@ -88,14 +77,6 @@ const InfluencerDetail = ({posts}) => {
           }
         </Container>
       </section>
-
-      {modal ?
-        <div className="modalArea" onClick={() => handleClickModal(active)}>
-          <div className={styles.modalBox} onClick={(e) => e.stopPropagation()}>
-            <NameCard data={cards[active]} detail />
-          </div>
-        </div>
-      : null}
 
       <section className={styles.likeArea}>
         <Container small>

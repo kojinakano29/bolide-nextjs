@@ -1,6 +1,6 @@
 import styles from '@/styles/dellamall/components/shopDetailArea.module.scss'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { faComment, faHeart, faBookmark, faReply, faFlag, faChevronDown, faThumbsUp } from '@fortawesome/free-solid-svg-icons'
+import { faComment, faHeart, faBookmark, faReply, faFlag, faChevronDown, faThumbsUp, faCheck } from '@fortawesome/free-solid-svg-icons'
 import notSet from '@/images/dellamall/shopDetail/user-after.svg'
 import notSet2 from '@/images/dellamall/shopDetail/user.svg'
 import Link from 'next/link'
@@ -16,7 +16,7 @@ import useRedirect from '@/hooks/redirect'
 export const SaveMallContext = createContext()
 
 const ShopDetailArea = ({data, user}) => {
-  // console.log(data)
+  console.log(data)
   const csrf = () => axios.get('/sanctum/csrf-cookie')
 
   const { loginCheck } = useRedirect()
@@ -413,6 +413,11 @@ const ShopDetailArea = ({data, user}) => {
             </ul>
           </div>
           <div className={styles.cont1__flexRight__topUrl}>
+            {shop.official_user_id ?
+              <div className={styles.official_icon}>
+                <FontAwesomeIcon icon={faCheck} />
+              </div>
+            : null}
             <a href={shop.url} target="_blank">{shop.url}</a>
           </div>
           <p className={styles.cont1__flexRight__topName}>{shop.name}</p>
