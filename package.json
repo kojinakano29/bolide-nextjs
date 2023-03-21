@@ -5,8 +5,7 @@
   "scripts": {
     "dev": "next dev",
     "dev:proxy": "next dev & local-ssl-proxy --key localhost-key.pem --cert localhost.pem --source 3001 --target 3000",
-    "build": "next build",
-    "postbuild": "next-sitemap",
+    "build": "next build && next-sitemap --config sitemap.config.js",
     "start": "next start"
   },
   "dependencies": {

@@ -12,6 +12,8 @@
 /out/
 next.config.js
 package-lock.json
+/public/sitemap.xml
+/public/robots.txt
 
 # production
 /build
