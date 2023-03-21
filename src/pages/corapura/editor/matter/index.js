@@ -34,7 +34,7 @@ const AdminMatterList = () => {
       user_id: user?.id,
       page: parseInt(page),
     }).then((res) => {
-      console.log(res)
+      // console.log(res)
       setMatters(res.data.post)
       setNowPage(res.data.now_page)
       setMaxPage(res.data.page_max)

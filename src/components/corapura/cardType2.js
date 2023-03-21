@@ -2,7 +2,7 @@ import styles from '@/styles/corapura/components/cardType2.module.scss'
 import dummy from '@/images/corapura/common/userDummy.svg'
 
 const CardType2 = ({data, detail = false}) => {
-  console.log(data)
+  // console.log(data)
 
   return (
     <div className={styles.flex}>

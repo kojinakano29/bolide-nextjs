@@ -32,7 +32,7 @@ const ConfirmContact = () => {
   const onContactForm = useCallback(async (data) => {
     await csrf()
 
-    await axios.post("/api", data)
+    await axios.post("/api/bolides_japan/contact_form", data)
     .then((res) => {
       // console.log(res)
       sessionStorage.setItem('contact', true)
