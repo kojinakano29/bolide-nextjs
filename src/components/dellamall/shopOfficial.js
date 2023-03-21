@@ -33,7 +33,7 @@ const shopOfficial = ({info, salon}) => {
 
     axios.get(`https://graph.facebook.com/v14.0/${user_id}?fields=${fields}&access_token=${access_token}`)
     .then((res) => {
-      console.log(res)
+      // console.log(res)
       setInstagramItem(res.data.business_discovery)
     })
     .catch((e) => {

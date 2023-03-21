@@ -31,7 +31,7 @@ const ConfirmAd = () => {
   const onAdForm = useCallback(async (data) => {
     await csrf()
 
-    await axios.post("/api/liondor/ad", data)
+    await axios.post("/api/bolides_japan/ad_form", data)
     .then((res) => {
       // console.log(res)
       sessionStorage.setItem('ad', true)

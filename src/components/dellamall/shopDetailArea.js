@@ -16,7 +16,7 @@ import useRedirect from '@/hooks/redirect'
 export const SaveMallContext = createContext()
 
 const ShopDetailArea = ({data, user}) => {
-  console.log(data)
+  // console.log(data)
   const csrf = () => axios.get('/sanctum/csrf-cookie')
 
   const { loginCheck } = useRedirect()

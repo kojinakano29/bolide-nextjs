@@ -21,7 +21,7 @@ export const getServerSideProps = async () => {
 }
 
 const AdminSidebar = ({posts}) => {
-  console.log(posts)
+  // console.log(posts)
   const csrf = () => axios.get('/sanctum/csrf-cookie')
 
   const router = useRouter()
