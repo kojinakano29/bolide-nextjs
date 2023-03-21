@@ -442,7 +442,7 @@ const DetailTabCompany = ({businesses, releases, matters, userInfo}) => {
                         <div className={styles.presidentBox}>
                           {president?.thumbs ?
                             <div className={styles.imgBox}>
-                              <img src={`${process.env.NEXT_PUBLIC_BACKEND_URL}/storage/${president?.thumbs}`} alt="" />
+                              <img src={`${process.env.NEXT_PUBLIC_BACKEND_URL}/storage/${president?.thumbs}`} alt="プレジデント/リーダーの画像" />
                             </div>
                           : null}
                           <div className={styles.right}>
@@ -586,7 +586,7 @@ const DetailTabCompany = ({businesses, releases, matters, userInfo}) => {
                           <a href={`/corapura/salon/${salon.id}`} className={styles.salonBox} key={index}>
                             <div className={styles.imgBox}>
                               {salon.thumbs ?
-                                <img src={`${process.env.NEXT_PUBLIC_BACKEND_URL}/storage/${salon.thumbs}`} alt="" />
+                                <img src={`${process.env.NEXT_PUBLIC_BACKEND_URL}/storage/${salon.thumbs}`} alt="オンラインサロンの画像" />
                               : null}
                             </div>
                             <p className={styles.ttl}>{salon.title}</p>

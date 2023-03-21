@@ -301,7 +301,7 @@ const ShopDetailArea = ({data, user}) => {
         <div className={styles.cont1__flexLeft}>
           <a href={shop.url} target="_blank" className={`${styles.cont1__imgBox} hoverEffect`}>
             {shop.image_permission === 1 && shop.thumbs ?
-              <img src={`${process.env.NEXT_PUBLIC_BACKEND_URL}/storage/${shop.thumbs}`} alt="" />
+              <img src={`${process.env.NEXT_PUBLIC_BACKEND_URL}/storage/${shop.thumbs}`} alt="ショップの画像" />
               :
               <div className={styles.imgNone}>
                 {shop.name}
@@ -456,7 +456,7 @@ const ShopDetailArea = ({data, user}) => {
                           `${process.env.NEXT_PUBLIC_BACKEND_URL}/storage/${comment.user.d_profile.thumbs}` :
                           notSet.src
                         }
-                        alt=""
+                        alt="プロフィール画像"
                       />
                     </div>
                     <div className={styles.user__comment}>
@@ -493,7 +493,7 @@ const ShopDetailArea = ({data, user}) => {
                 <div className={styles.user__img}>
                   <img
                     src={userThumbs ? `${process.env.NEXT_PUBLIC_BACKEND_URL}/storage/${userThumbs}` : notSet2.src}
-                    alt=""
+                    alt="プロフィール画像"
                   />
                 </div>
                 <textarea

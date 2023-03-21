@@ -22,7 +22,7 @@ const Request = () => {
               <div className={styles.imgBox}>
                 <Image
                   src={item1}
-                  alt=""
+                  alt="商品掲載でもっとショップをアピール！"
                   layout="responsive"
                   sizes="(min-width: 1340px) 312px, (min-width: 768px) 180px, 100vw"
                   priority
@@ -37,7 +37,7 @@ const Request = () => {
               <div className={styles.imgBox}>
                 <Image
                   src={item2}
-                  alt=""
+                  alt="SNSを設置してリアルタイム情報を拡散可能"
                   layout="responsive"
                   sizes="(min-width: 1340px) 312px, (min-width: 768px) 180px, 100vw"
                   priority
@@ -52,7 +52,7 @@ const Request = () => {
               <div className={styles.imgBox}>
                 <Image
                   src={item3}
-                  alt=""
+                  alt="グループサイトと併せた活用で更なる販路拡大！！"
                   layout="responsive"
                   sizes="(min-width: 1340px) 312px, (min-width: 768px) 180px, 100vw"
                   priority
@@ -74,7 +74,7 @@ const Request = () => {
           <div className={`${styles.imgBox} pc`}>
             <Image
               src={graph}
-              alt=""
+              alt="Bolide's Japan 料金プラン"
               layout="responsive"
               sizes="(min-width: 1340px) 1000px, (min-width: 768px) 720px, 100vw"
               priority
@@ -83,7 +83,7 @@ const Request = () => {
           <div className={`${styles.imgBox} sp`}>
             <Image
               src={graphSp}
-              alt=""
+              alt="Bolide's Japan 料金プラン"
               layout="responsive"
               sizes="100vw"
               priority

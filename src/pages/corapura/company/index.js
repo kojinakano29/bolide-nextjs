@@ -353,7 +353,7 @@ const CompanyList = ({posts}) => {
             onClick={handleClickOpenSort}
           >
             <div className={styles.icon}>
-              <img src={sortIcon.src} alt="" />
+              <img src={sortIcon.src} alt="ソートアイコン" />
             </div>
             並べ替え
           </button>
@@ -378,7 +378,7 @@ const CompanyList = ({posts}) => {
                 <Link href={`/corapura/company/${comp?.user?.id}`} key={index}>
                   <a>
                     <div className={styles.imgBox}>
-                      <img src={comp.thumbs ? `${process.env.NEXT_PUBLIC_BACKEND_URL}/storage/${comp.thumbs}` : dummy.src} alt="" />
+                      <img src={comp.thumbs ? `${process.env.NEXT_PUBLIC_BACKEND_URL}/storage/${comp.thumbs}` : dummy.src} alt="企業情報のサムネイル画像" />
                     </div>
                     <p className={styles.catch}>{comp.title}</p>
                     <p className={styles.name}>{comp.nicename}</p>
@@ -395,7 +395,7 @@ const CompanyList = ({posts}) => {
                     value={nowPage-1}
                     onClick={handleClickPage}
                   >
-                    <img src={prev.src} alt="" />
+                    <img src={prev.src} alt="アイコン" />
                     <span>前のページへ</span>
                   </button>
                 : null}
@@ -426,7 +426,7 @@ const CompanyList = ({posts}) => {
                     value={nowPage+1}
                     onClick={handleClickPage}
                   >
-                    <img src={next.src} alt="" />
+                    <img src={next.src} alt="アイコン" />
                     <span>次のページへ</span>
                   </button>
                 : null}

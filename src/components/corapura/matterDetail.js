@@ -198,13 +198,13 @@ const MatterDetail = ({posts}) => {
         <Container small>
           <div className={styles.headFlex}>
             <div className={styles.headLeft}>
-              <img src={posts.thumbs ? `${process.env.NEXT_PUBLIC_BACKEND_URL}/storage/${posts.thumbs}` : dummy.src} alt="" />
+              <img src={posts.thumbs ? `${process.env.NEXT_PUBLIC_BACKEND_URL}/storage/${posts.thumbs}` : dummy.src} alt="案件のサムネイル画像" />
               <button
                 type="button"
                 className={`${styles.bookmarkBtn} hoverEffect`}
                 onClick={handleClickBookmark}
               >
-                <img src={bookmark.includes(posts.id) ? starA.src : starB.src} alt="" />
+                <img src={bookmark.includes(posts.id) ? starA.src : starB.src} alt="ブックマークのアイコン" />
               </button>
             </div>
             <div className={styles.headRight}>
@@ -219,7 +219,7 @@ const MatterDetail = ({posts}) => {
               </ul>
               <div className={styles.company}>
                 <div className={styles.logoBox}>
-                  {posts.user.c_profile.thumbs ? <img src={`${process.env.NEXT_PUBLIC_BACKEND_URL}/storage/${posts.user.c_profile.thumbs}`} alt="" /> : null}
+                  {posts.user.c_profile.thumbs ? <img src={`${process.env.NEXT_PUBLIC_BACKEND_URL}/storage/${posts.user.c_profile.thumbs}`} alt="プロフィール画像" /> : null}
                 </div>
                 {posts.user.c_profile.nicename}
               </div>
@@ -246,7 +246,7 @@ const MatterDetail = ({posts}) => {
                     <div className={styles.list} key={index}>
                       <div className={styles.left}>
                         <div className={styles.imgBox}>
-                          {list.c_profile.thumbs ? <img src={`${process.env.NEXT_PUBLIC_BACKEND_URL}/storage/${list.c_profile.thumbs}`} alt="" /> : null}
+                          {list.c_profile.thumbs ? <img src={`${process.env.NEXT_PUBLIC_BACKEND_URL}/storage/${list.c_profile.thumbs}`} alt="プロフィール画像" /> : null}
                         </div>
                         <Link href={`/corapura/${list.account_type === 0 ? "influencer" : "company"}/${list.id}`}>
                           <a className={styles.name}>{list.c_profile.nicename}</a>
@@ -278,11 +278,11 @@ const MatterDetail = ({posts}) => {
                     className={`${styles.btn} ${check ? styles.check : null}`}
                     onClick={handleClickMatterAdd}
                   >
-                    <img src={mail.src} alt="" />
+                    <img src={mail.src} alt="メールのアイコン" />
                     <span>{check ? "応募済み" : "この案件に応募する"}</span>
                   </button>
                   <a href={`mailto:${posts.user.email}`} className={`${styles.btn} ${styles.btn2}`}>
-                    <img src={question.src} alt="" />
+                    <img src={question.src} alt="質問のアイコン" />
                     <span>質問する</span>
                   </a>
                 </div>

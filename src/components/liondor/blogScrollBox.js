@@ -31,9 +31,9 @@ const BlogScrollBox = ({patternData, route2 = false, pickup = false}) => {
               <a className={styles.blogLink}>
                 <div className={styles.imgBox}>
                   {route2 ?
-                    <img src={item?.l_post?.thumbs ? `${process.env.NEXT_PUBLIC_BACKEND_URL}/storage/${item?.l_post?.thumbs}` : dummy.src} alt="" />
+                    <img src={item?.l_post?.thumbs ? `${process.env.NEXT_PUBLIC_BACKEND_URL}/storage/${item?.l_post?.thumbs}` : dummy.src} alt="記事のサムネイル画像" />
                   :
-                    <img src={item?.thumbs ? `${process.env.NEXT_PUBLIC_BACKEND_URL}/storage/${item?.thumbs}` : dummy.src} alt="" />
+                    <img src={item?.thumbs ? `${process.env.NEXT_PUBLIC_BACKEND_URL}/storage/${item?.thumbs}` : dummy.src} alt="記事のサムネイル画像" />
                   }
                 </div>
                 {
@@ -67,9 +67,9 @@ const BlogScrollBox = ({patternData, route2 = false, pickup = false}) => {
               <a className={styles.blogLink}>
                 <div className={styles.imgBox}>
                   {route2 ?
-                    <img src={item?.l_post?.thumbs ? `${process.env.NEXT_PUBLIC_BACKEND_URL}/storage/${item?.l_post?.thumbs}` : dummy.src} alt="" />
+                    <img src={item?.l_post?.thumbs ? `${process.env.NEXT_PUBLIC_BACKEND_URL}/storage/${item?.l_post?.thumbs}` : dummy.src} alt="記事のサムネイル画像" />
                   :
-                    <img src={item?.thumbs ? `${process.env.NEXT_PUBLIC_BACKEND_URL}/storage/${item?.thumbs}` : dummy.src} alt="" />
+                    <img src={item?.thumbs ? `${process.env.NEXT_PUBLIC_BACKEND_URL}/storage/${item?.thumbs}` : dummy.src} alt="記事のサムネイル画像" />
                   }
                 </div>
                 {
@@ -106,9 +106,9 @@ const BlogScrollBox = ({patternData, route2 = false, pickup = false}) => {
               <a className={styles.blogLink}>
                 <div className={styles.imgBox}>
                   {route2 ?
-                    <img src={item?.l_post?.thumbs ? `${process.env.NEXT_PUBLIC_BACKEND_URL}/storage/${item?.l_post?.thumbs}` : dummy.src} alt="" />
+                    <img src={item?.l_post?.thumbs ? `${process.env.NEXT_PUBLIC_BACKEND_URL}/storage/${item?.l_post?.thumbs}` : dummy.src} alt="記事のサムネイル画像" />
                   :
-                    <img src={item?.thumbs ? `${process.env.NEXT_PUBLIC_BACKEND_URL}/storage/${item?.thumbs}` : dummy.src} alt="" />
+                    <img src={item?.thumbs ? `${process.env.NEXT_PUBLIC_BACKEND_URL}/storage/${item?.thumbs}` : dummy.src} alt="記事のサムネイル画像" />
                   }
                 </div>
                 {

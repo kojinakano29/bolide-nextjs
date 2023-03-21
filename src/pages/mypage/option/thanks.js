@@ -26,9 +26,9 @@ const OptionChangeThanks = () => {
         <h2 className="ttl2">オプション</h2>
         <div className="breadcrumbBox">
           <a href="/">トップ</a>
-          <div><img src="/top/breadcrumb.svg" alt="" /></div>
+          <div><img src="/top/breadcrumb.svg" alt=">" /></div>
           <a href="/mypage">マイページ</a>
-          <div><img src="/top/breadcrumb.svg" alt="" /></div>
+          <div><img src="/top/breadcrumb.svg" alt=">" /></div>
           <p>オプション</p>
         </div>
         <div className={styles.thanksBox}>

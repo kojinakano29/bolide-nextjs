@@ -66,9 +66,9 @@ const PlanCheckChange = (posts) => {
           <h2 className="ttl2">プラン確認・変更</h2>
           <div className="breadcrumbBox">
             <a href="/">トップ</a>
-            <div><img src="/top/breadcrumb.svg" alt="" /></div>
+            <div><img src="/top/breadcrumb.svg" alt=">" /></div>
             <a href="/mypage">マイページ</a>
-            <div><img src="/top/breadcrumb.svg" alt="" /></div>
+            <div><img src="/top/breadcrumb.svg" alt=">" /></div>
             <p>プラン確認・変更</p>
           </div>
         </Container>

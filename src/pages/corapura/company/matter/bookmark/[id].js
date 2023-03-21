@@ -102,7 +102,7 @@ const CompanyBookmark = ({posts}) => {
                     value={nowPage-1}
                     onClick={handleClickPage}
                   >
-                    <img src={prev.src} alt="" />
+                    <img src={prev.src} alt="アイコン" />
                     <span>前のページへ</span>
                   </button>
                 : null}
@@ -133,7 +133,7 @@ const CompanyBookmark = ({posts}) => {
                     value={nowPage+1}
                     onClick={handleClickPage}
                   >
-                    <img src={next.src} alt="" />
+                    <img src={next.src} alt="アイコン" />
                     <span>次のページへ</span>
                   </button>
                 : null}

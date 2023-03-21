@@ -133,7 +133,7 @@ const PresentEdit = ({posts}) => {
                   </dt>
                   <dd className={styles.dd}>
                     <input id="thumbs" type="file" accept="image/*" {...register("thumbs")} onChange={handleChangeFile} />
-                    <img src={preview} alt="" />
+                    <img src={preview} alt="プレビュー画像" />
                   </dd>
                 </dl>
               </div>

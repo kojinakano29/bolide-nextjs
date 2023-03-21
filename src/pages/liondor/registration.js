@@ -34,7 +34,7 @@ const Registration = () => {
               <div className={styles.imgBox}>
                 <Image
                   src={merit1}
-                  alt=""
+                  alt="あらゆるカテゴリーの最新情報で本能を刺激する"
                   layout="responsive"
                   sizes="(min-width: 1340px) 440px, (min-width: 768px) 230px, 100vw"
                   priority
@@ -50,7 +50,7 @@ const Registration = () => {
               <div className={styles.imgBox}>
                 <Image
                   src={merit2}
-                  alt=""
+                  alt="会員様はプレゼント応募企画で素敵な商品があたるチャンス"
                   layout="responsive"
                   sizes="(min-width: 1340px) 440px, (min-width: 768px) 230px, 100vw"
                   priority
@@ -69,7 +69,7 @@ const Registration = () => {
               <div className={styles.imgBox}>
                 <Image
                   src={merit3}
-                  alt=""
+                  alt="ビジネス性とファッション性を兼ね備えたサイトでサービスや商品を情報拡散できる"
                   layout="responsive"
                   sizes="(min-width: 1340px) 440px, (min-width: 768px) 230px, 100vw"
                   priority
@@ -89,7 +89,7 @@ const Registration = () => {
               <div className={styles.imgBox}>
                 <Image
                   src={merit4}
-                  alt=""
+                  alt="ボリードジャパンのすべての機能が使える"
                   layout="responsive"
                   sizes="(min-width: 1340px) 440px, (min-width: 768px) 230px, 100vw"
                   priority

@@ -83,7 +83,7 @@ const Register = () => {
                         <Link href="/">
                         <a>トップ</a>
                         </Link>
-                        <div><img src="/top/breadcrumb.svg" alt="" /></div>
+                        <div><img src="/top/breadcrumb.svg" alt=">" /></div>
                         <p>新規会員登録</p>
                     </div>
                 </Container>

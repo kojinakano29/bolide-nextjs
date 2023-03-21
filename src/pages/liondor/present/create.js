@@ -110,7 +110,7 @@ const CreatePresent = () => {
                   </dt>
                   <dd className={styles.dd}>
                     <input id="thumbs" type="file" accept="image/*" {...register("thumbs", { required: true })} onChange={handleChangeFile} />
-                    <img src={preview} alt="" />
+                    <img src={preview} alt="プレビュー画像" />
                     {errors.thumbs && <p className={`red ${styles.error}`}>必須項目を入力してください</p>}
                   </dd>
                 </dl>

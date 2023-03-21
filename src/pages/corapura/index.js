@@ -23,28 +23,28 @@ export const getServerSideProps = async () => {
 const Corapura = ({posts}) => {
   // console.log(posts)
 
-  const matters = posts.post
+  const matters = posts?.post
   const matterLimit = matters.filter((matter, index) => {
     return index < 10
   })
-  const companies = posts.company
-  const users = posts.user
-  const releases = posts.pr
-  const salons = posts.salon
+  const companies = posts?.company
+  const users = posts?.user
+  const releases = posts?.pr
+  const salons = posts?.salon
   const salonLeft = salons.filter((salon, index) => {
     return index === 0
   })
   const salonRight = salons.filter((salon, index) => {
     return index > 0 && index < 5
   })
-  const coupons = posts.coupon
-  const presidents = posts.president
-  const infos = posts.bi
-  const nameCards = posts.card
-  const nfts = posts.item
-  const sdgs = posts.sust
-  const sponsors = posts.sponsor
-  const likes = posts.like
+  const coupons = posts?.coupon
+  const presidents = posts?.president
+  const infos = posts?.bi
+  const nameCards = posts?.card
+  const nfts = posts?.item
+  const sdgs = posts?.sust
+  const sponsors = posts?.sponsor
+  const likes = posts?.like
 
   return (
     <>
@@ -89,7 +89,7 @@ const Corapura = ({posts}) => {
           {companies.length !== 0 ?
             <>
               <SwiperType2 gap={32}>
-                {companies.map((company, index) => (
+                {companies?.map((company, index) => (
                   <SwiperSlide key={index}>
                     <CompanyCard data={company} />
                   </SwiperSlide>
@@ -122,7 +122,7 @@ const Corapura = ({posts}) => {
           {releases.length !== 0 ?
             <>
               <SwiperType2 gap={24}>
-                {releases.map((release, index) => (
+                {releases?.map((release, index) => (
                   <SwiperSlide key={index}>
                     <Release data={release} swiper />
                   </SwiperSlide>
@@ -146,7 +146,7 @@ const Corapura = ({posts}) => {
                 {salonLeft.map((salon, index) => (
                   <Link href={`/corapura/salon/${salon.id}`} key={index}>
                     <a className={styles.imgBox}>
-                      <img src={salon.thumbs ? `${process.env.NEXT_PUBLIC_BACKEND_URL}/storage/${salon.thumbs}` : dummy1.src} alt="" />
+                      <img src={salon.thumbs ? `${process.env.NEXT_PUBLIC_BACKEND_URL}/storage/${salon.thumbs}` : dummy1.src} alt="オンラインサロンのサムネイル画像" />
                       <div className={styles.contBox}>
                         <p className={styles.salonName}>{salon.title}</p>
                         <p className={styles.salonDesc}>
@@ -161,7 +161,7 @@ const Corapura = ({posts}) => {
                 {salonRight.map((salon, index) => (
                   <Link href={`/corapura/salon/${salon.id}`} key={index}>
                     <a className={styles.imgBox}>
-                      <img src={salon.thumbs ? `${process.env.NEXT_PUBLIC_BACKEND_URL}/storage/${salon.thumbs}` : dummy1.src} alt="" />
+                      <img src={salon.thumbs ? `${process.env.NEXT_PUBLIC_BACKEND_URL}/storage/${salon.thumbs}` : dummy1.src} alt="オンラインサロンのサムネイル画像" />
                       <div className={styles.contBox}>
                         <p className={styles.salonName}>{salon.title}</p>
                       </div>

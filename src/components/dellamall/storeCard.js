@@ -19,13 +19,13 @@ const StoreCard = ({item, swiper = false, none = false}) => {
                         <img
                             className={styles.shopImg}
                             src={dummyDefault.src}
-                            alt=""
+                            alt="ショップの画像（未設定時）"
                         />
                     :
                         <img
                             className={styles.shopImg}
                             src={item.thumbs ? `${process.env.NEXT_PUBLIC_BACKEND_URL}/storage/${item.thumbs}` : dummyDefault.src}
-                            alt=""
+                            alt="ショップの画像"
                         />
                     }
                     {item.image_permission === 0 ?

@@ -7,7 +7,7 @@ const CardType1 = ({data, cat = false, detail = false, swiper = false}) => {
   return (
     <article className={`${styles.box} ${swiper ? styles.swiper : null}`}>
       <div className={styles.imgBox}>
-        <img src={data.thumbs ? `${process.env.NEXT_PUBLIC_BACKEND_URL}/storage/${data.thumbs}` : dummy.src} alt="" />
+        <img src={data.thumbs ? `${process.env.NEXT_PUBLIC_BACKEND_URL}/storage/${data.thumbs}` : dummy.src} alt={data.title} />
       </div>
       {cat ? <p className={styles.cat}>{data?.category}</p> : null}
       <p className={styles.name}>{data.title}</p>
@@ -17,7 +17,7 @@ const CardType1 = ({data, cat = false, detail = false, swiper = false}) => {
           className={`${styles.company} hoverEffect`}
         >
           <div className={styles.logoBox}>
-            {data.c_profile.thumbs ? <img src={`${process.env.NEXT_PUBLIC_BACKEND_URL}/storage/${data.c_profile.thumbs}`} alt="" /> : null}
+            {data.c_profile.thumbs ? <img src={`${process.env.NEXT_PUBLIC_BACKEND_URL}/storage/${data.c_profile.thumbs}`} alt="プロフィール画像" /> : null}
           </div>
           {data.c_profile.nicename}
         </a>

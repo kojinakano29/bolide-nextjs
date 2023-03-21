@@ -28,11 +28,11 @@ const MatterCard = ({matter, bookmarkList, detail = false, list = false}) => {
     setDisabled(true)
     await csrf()
 
-    if (bookmark.includes(matter.id)) {
+    if (bookmark.includes(matter?.id)) {
       await axios.delete('/api/corapura/post_bookmark/delete', {
         data: {
           user_id: user?.id,
-          c_post_id: matter.id,
+          c_post_id: matter?.id,
         }
       }).then((res) => {
         // console.log(res)
@@ -43,7 +43,7 @@ const MatterCard = ({matter, bookmarkList, detail = false, list = false}) => {
     } else {
       await axios.post('/api/corapura/post_bookmark/store', {
         user_id: user?.id,
-        c_post_id: matter.id,
+        c_post_id: matter?.id,
       }).then((res) => {
         // console.log(res)
         setBookmark(res.data)
@@ -59,13 +59,13 @@ const MatterCard = ({matter, bookmarkList, detail = false, list = false}) => {
     <>
       {list ?
         <article className={`${styles.matterCard} ${styles.list}`}>
-          <Link href={`/corapura/matter/${matter.id}`}>
+          <Link href={`/corapura/matter/${matter?.id}`}>
             <a>
               <div className={`${styles.imgBox} matterThumbs`}>
-                <img src={matter.thumbs ? `${process.env.NEXT_PUBLIC_BACKEND_URL}/storage/${matter.thumbs}` : dummy.src} alt="" />
-                {matter.state === 1 || matter.limite_date <= today ?
+                <img src={matter?.thumbs ? `${process.env.NEXT_PUBLIC_BACKEND_URL}/storage/${matter?.thumbs}` : dummy.src} alt="案件のサムネイル画像" />
+                {matter?.state === 1 || matter?.limite_date <= today ?
                   <div className={styles.finishMatter}>
-                    <img src={check.src} alt="" />
+                    <img src={check.src} alt="チェックのアイコン" />
                     <p>
                       この募集は
                       <br/>終了しました
@@ -74,27 +74,27 @@ const MatterCard = ({matter, bookmarkList, detail = false, list = false}) => {
                   : null
                 }
               </div>
-              <p className={styles.ttl}>{matter.title}</p>
+              <p className={styles.ttl}>{matter?.title}</p>
               <p className={styles.desc}>
-                {matter.content.replace(/<[^>]+>/g, '').replace(/&nbsp;/g, '').substring(0, 50)}
+                {matter?.content.replace(/<[^>]+>/g, '').replace(/&nbsp;/g, '').substring(0, 50)}
               </p>
-              {matter.created_at ?
+              {matter?.created_at ?
                 <p className={styles.iconBox}>
                   <span className={styles.icon}>掲載日</span>
-                  <DateFormat dateString={matter.created_at} />
+                  <DateFormat dateString={matter?.created_at} />
                 </p>
               : null}
-              {matter.limite_date ?
+              {matter?.limite_date ?
                 <p className={styles.iconBox}>
                   <span className={styles.icon}>募集終了日</span>
-                  {matter.limite_date.replace(/-/g, '.')}
+                  {matter?.limite_date.replace(/-/g, '.')}
                 </p>
               : null}
               <div className={styles.company}>
                 <div className={styles.logoBox}>
-                  {matter.user.c_profile.thumbs ? <img src={`${process.env.NEXT_PUBLIC_BACKEND_URL}/storage/${matter.user.c_profile.thumbs}`} alt="" /> : null}
+                  {matter?.user?.c_profile?.thumbs ? <img src={`${process.env.NEXT_PUBLIC_BACKEND_URL}/storage/${matter?.user?.c_profile?.thumbs}`} alt="プロフィール画像" /> : null}
                 </div>
-                {matter.user.c_profile.nicename}
+                {matter?.user?.c_profile?.nicename}
               </div>
             </a>
           </Link>
@@ -103,39 +103,39 @@ const MatterCard = ({matter, bookmarkList, detail = false, list = false}) => {
             className={`${styles.bookmarkBtn} hoverEffect`}
             onClick={handleClickBookmark}
           >
-            <img src={bookmark.includes(matter.id) ? starA.src : starB.src} alt="" />
+            <img src={bookmark.includes(matter?.id) ? starA.src : starB.src} alt="ブックマークのアイコン" />
           </button>
         </article>
       :
         <article className={`${styles.matterCard} ${detail ? styles.detail : null}`}>
-          <Link href={`/corapura/matter/${matter.id}`}>
+          <Link href={`/corapura/matter/${matter?.id}`}>
             <a>
               <div className={`${styles.imgBox} matterThumbs`}>
-                <img src={matter.thumbs ? `${process.env.NEXT_PUBLIC_BACKEND_URL}/storage/${matter.thumbs}` : dummy.src} alt="" />
+                <img src={matter?.thumbs ? `${process.env.NEXT_PUBLIC_BACKEND_URL}/storage/${matter?.thumbs}` : dummy.src} alt="案件のサムネイル画像" />
               </div>
-              <p className={styles.tag}>{matter.c_cat?.name}</p>
-              <p className={styles.ttl}>{matter.title}</p>
+              <p className={styles.tag}>{matter?.c_cat?.name}</p>
+              <p className={styles.ttl}>{matter?.title}</p>
               <p className={styles.desc}>
-                {matter.content.replace(/<[^>]+>/g, '').replace(/&nbsp;/g, '').substring(0, 50)}
+                {matter?.content.replace(/<[^>]+>/g, '').replace(/&nbsp;/g, '').substring(0, 50)}
               </p>
-              {matter.created_at ?
+              {matter?.created_at ?
                 <p className={styles.iconBox}>
                   <span className={styles.icon}>掲載日</span>
-                  <DateFormat dateString={matter.created_at} />
+                  <DateFormat dateString={matter?.created_at} />
                 </p>
               : null}
-              {matter.limite_date ?
+              {matter?.limite_date ?
                 <p className={styles.iconBox}>
                   <span className={styles.icon}>募集終了日</span>
-                  {matter.limite_date.replace(/-/g, '.')}
+                  {matter?.limite_date.replace(/-/g, '.')}
                 </p>
               : null}
               {detail ? null :
                 <div className={styles.company}>
                   <div className={styles.logoBox}>
-                    {matter.user.c_profile.thumbs ? <img src={`${process.env.NEXT_PUBLIC_BACKEND_URL}/storage/${matter.user.c_profile.thumbs}`} alt="" /> : null}
+                    {matter?.user?.c_profile?.thumbs ? <img src={`${process.env.NEXT_PUBLIC_BACKEND_URL}/storage/${matter?.user?.c_profile?.thumbs}`} alt="プロフィール画像" /> : null}
                   </div>
-                  {matter.user.c_profile.nicename}
+                  {matter?.user?.c_profile?.nicename}
                 </div>
               }
             </a>
@@ -146,7 +146,7 @@ const MatterCard = ({matter, bookmarkList, detail = false, list = false}) => {
               className={`${styles.bookmarkBtn} hoverEffect`}
               onClick={handleClickBookmark}
             >
-              <img src={bookmark.includes(matter.id) ? starA.src : starB.src} alt="" />
+              <img src={bookmark.includes(matter?.id) ? starA.src : starB.src} alt="ブックマークのアイコン" />
             </button>
           : null}
         </article>

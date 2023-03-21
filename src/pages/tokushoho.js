@@ -12,7 +12,7 @@ const Tokushoho = () => {
           <Link href="/">
             <a>トップ</a>
           </Link>
-          <div><img src="/top/breadcrumb.svg" alt="" /></div>
+          <div><img src="/top/breadcrumb.svg" alt=">" /></div>
           <p>特定商品取引法に基づく表記</p>
         </div>
         <div className={styles.list}>

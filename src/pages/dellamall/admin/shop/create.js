@@ -115,7 +115,7 @@ const CreateShop = () => {
                   </dt>
                   <dd>
                     <div className={styles.imgBox}>
-                      {preview ? <img src={preview} alt="" /> : <div className={styles.imgNone}>ショップのキャプチャが入ります</div>}
+                      {preview ? <img src={preview} alt="プレビュー画像" /> : <div className={styles.imgNone}>ショップのキャプチャが入ります</div>}
                     </div>
                   </dd>
                 </dl>

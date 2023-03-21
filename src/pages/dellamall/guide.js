@@ -57,7 +57,7 @@ const Guide = () => {
                   <div className={styles.imgBox}>
                     <Image
                       src={individual1}
-                      alt=""
+                      alt="これまで見つけることのできなかったECサイトに出会える"
                       layout="responsive"
                       sizes="(min-width: 1340px) 312px, (min-width: 768px) 180px, 100vw"
                       priority
@@ -72,7 +72,7 @@ const Guide = () => {
                   <div className={styles.imgBox}>
                     <Image
                       src={individual2}
-                      alt=""
+                      alt="あなたのオススメECサイトを自由に登録"
                       layout="responsive"
                       sizes="(min-width: 1340px) 312px, (min-width: 768px) 180px, 100vw"
                       priority
@@ -89,7 +89,7 @@ const Guide = () => {
                   <div className={styles.imgBox}>
                     <Image
                       src={individual3}
-                      alt=""
+                      alt="推しサイトを「マイモール」としてまとめ、シェア可能♪"
                       layout="responsive"
                       sizes="(min-width: 1340px) 312px, (min-width: 768px) 180px, 100vw"
                       priority
@@ -113,7 +113,7 @@ const Guide = () => {
                   <div className={styles.imgBox}>
                     <Image
                       src={company1}
-                      alt=""
+                      alt="アクセス数増加で、”選ばれる”ECサイトになれる！"
                       layout="responsive"
                       sizes="(min-width: 1340px) 312px, (min-width: 768px) 180px, 100vw"
                       priority
@@ -128,7 +128,7 @@ const Guide = () => {
                   <div className={styles.imgBox}>
                     <Image
                       src={company2}
-                      alt=""
+                      alt="「マルシェドール」との連携で、掲載から購入までの導線を確保"
                       layout="responsive"
                       sizes="(min-width: 1340px) 312px, (min-width: 768px) 180px, 100vw"
                       priority
@@ -144,7 +144,7 @@ const Guide = () => {
                   <div className={styles.imgBox}>
                     <Image
                       src={company3}
-                      alt=""
+                      alt="「コラプラ」を利用した更なる販路拡大も可能！"
                       layout="responsive"
                       sizes="(min-width: 1340px) 312px, (min-width: 768px) 180px, 100vw"
                       priority
@@ -177,7 +177,7 @@ const Guide = () => {
               <div className={styles.imgBox}>
                 <Image
                   src={method1}
-                  alt=""
+                  alt="お気に入りのECサイトのTOPのURLをコピー！"
                   layout="responsive"
                   sizes="(min-width: 1340px) 312px, (min-width: 768px) 180px, 100vw"
                   priority
@@ -193,7 +193,7 @@ const Guide = () => {
               <div className={styles.imgBox}>
                 <Image
                   src={method2}
-                  alt=""
+                  alt="「ショップを作る」のフォーム内にURLを貼り付け！"
                   layout="responsive"
                   sizes="(min-width: 1340px) 312px, (min-width: 768px) 180px, 100vw"
                   priority
@@ -210,7 +210,7 @@ const Guide = () => {
               <div className={styles.imgBox}>
                 <Image
                   src={method3}
-                  alt=""
+                  alt="関連するタグを設定しよう"
                   layout="responsive"
                   sizes="(min-width: 1340px) 312px, (min-width: 768px) 180px, 100vw"
                   priority
@@ -223,7 +223,7 @@ const Guide = () => {
               <div className={styles.imgBox}>
                 <Image
                   src={method4}
-                  alt=""
+                  alt="作成をクリック！"
                   layout="responsive"
                   sizes="(min-width: 1340px) 312px, (min-width: 768px) 180px, 100vw"
                   priority
@@ -236,7 +236,7 @@ const Guide = () => {
               <div className={styles.imgBox}>
                 <Image
                   src={method5}
-                  alt=""
+                  alt="登録完了♪"
                   layout="responsive"
                   sizes="(min-width: 1340px) 312px, (min-width: 768px) 180px, 100vw"
                   priority
@@ -258,7 +258,7 @@ const Guide = () => {
             <div className={styles.cont3__mainLeft}>
               <Image
                 src={save}
-                alt=""
+                alt="ショップ保存方法"
                 layout="responsive"
                 sizes="(min-width: 1340px) 420px, (min-width: 768px) 300px, 100vw"
                 priority

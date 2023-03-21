@@ -73,7 +73,7 @@ const Follow = ({handleClickOpen, userInfo, followType}) => {
                       <a onClick={() => handleClickOpen(null)}>
                         <div className={styles.imgBox}>
                           {list.followed.c_profile?.thumbs ?
-                            <img src={`${process.env.NEXT_PUBLIC_BACKEND_URL}/storage/${list.followed.c_profile?.thumbs}`} alt="" />
+                            <img src={`${process.env.NEXT_PUBLIC_BACKEND_URL}/storage/${list.followed.c_profile?.thumbs}`} alt="プロフィール画像" />
                           : null}
                         </div>
                         <span className={styles.name}>{list?.followed?.c_profile?.nicename ? list.followed.c_profile?.nicename : "プロフィール未設定"}</span>
@@ -90,7 +90,7 @@ const Follow = ({handleClickOpen, userInfo, followType}) => {
                       <a onClick={() => handleClickOpen(null)}>
                         <div className={styles.imgBox}>
                           {list.following.c_profile?.thumbs ?
-                            <img src={`${process.env.NEXT_PUBLIC_BACKEND_URL}/storage/${list.following.c_profile?.thumbs}`} alt="" />
+                            <img src={`${process.env.NEXT_PUBLIC_BACKEND_URL}/storage/${list.following.c_profile?.thumbs}`} alt="プロフィール画像" />
                           : null}
                         </div>
                         <span className={styles.name}>{list?.following?.c_profile?.nicename ? list.following.c_profile?.nicename : "プロフィール未設定"}</span>

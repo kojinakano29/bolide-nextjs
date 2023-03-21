@@ -16,7 +16,7 @@ const Footer = () => {
               <a href={items.link} key={index} className={styles.bannarLink} target="_blank" rel="noopener noreferrer">
                 <Image
                   src={items.src}
-                  alt=""
+                  alt={`バナー画像${index+1}`}
                   layout="responsive"
                   sizes="(min-width: 1340px) 274px, (min-width: 768px) 180px, 100vw"
                   priority
@@ -45,12 +45,12 @@ const Footer = () => {
                 <div className={styles.bannerFlex}>
                   <Link href="/liondor/present">
                     <a className="hoverEffect">
-                      <img src="/liondor/present_banner1.webp" alt="" />
+                      <img src="/liondor/present_banner1.webp" alt="プレゼントのバナー" />
                     </a>
                   </Link>
                   <Link href="/corapura">
                     <a className="hoverEffect" target="_blank">
-                      <img src="/liondor/present_banner2.webp" alt="" />
+                      <img src="/liondor/present_banner2.webp" alt="オンラインサロンのバナー" />
                     </a>
                   </Link>
                 </div>

@@ -46,7 +46,7 @@ const Footer = () => {
       >
         <Image
           src={top}
-          alt=""
+          alt="TOPへ戻る"
           layout="responsive"
           sizes="56px"
           priority
@@ -58,7 +58,7 @@ const Footer = () => {
             <a className={`${styles.logo} hoverEffect`}>
               <Image
                 src={logo}
-                alt="della mall"
+                alt="Della Mall"
                 layout="responsive"
                 sizes="144px"
                 priority
@@ -71,7 +71,7 @@ const Footer = () => {
               <a className="hoverEffect" target="_blank" rel="noopener noreferrer">
                 <Image
                   src={bolides}
-                  alt=""
+                  alt="Bolide's Japan"
                   layout="responsive"
                   sizes="240px"
                   priority
@@ -81,7 +81,7 @@ const Footer = () => {
             <a href="https://marche-dor.jp/" className="hoverEffect" target="_blank" rel="noopener noreferrer">
               <Image
                 src={marchedor}
-                alt=""
+                alt="Marche Dor"
                 layout="responsive"
                 sizes="240px"
                 priority
@@ -90,7 +90,7 @@ const Footer = () => {
             <a href="/corapura" className="hoverEffect" target="_blank" rel="noopener noreferrer">
               <Image
                 src={corapura}
-                alt=""
+                alt="CORAPURA"
                 layout="responsive"
                 sizes="240px"
                 priority
@@ -99,7 +99,7 @@ const Footer = () => {
             <a href="/liondor" className="hoverEffect" target="_blank" rel="noopener noreferrer">
               <Image
                 src={liondor}
-                alt=""
+                alt="LIONDOR"
                 layout="responsive"
                 sizes="240px"
                 priority

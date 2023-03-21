@@ -87,7 +87,7 @@ const EditorMyPage = () => {
                         <p>基本情報設定</p>
                       </div>
                       <div className={styles.iconBox}>
-                        <img src={icon1.src} alt="" />
+                        <img src={icon1.src} alt="基本情報設定アイコン" />
                       </div>
                     </a>
                   </Link>
@@ -97,7 +97,7 @@ const EditorMyPage = () => {
                         <p>案件一覧・作成</p>
                       </div>
                       <div className={styles.iconBox}>
-                        <img src={icon2.src} alt="" />
+                        <img src={icon2.src} alt="案件一覧・作成アイコン" />
                       </div>
                     </a>
                   </Link>
@@ -107,7 +107,7 @@ const EditorMyPage = () => {
                         <p>お気に入り一覧</p>
                       </div>
                       <div className={styles.iconBox}>
-                        <img src={icon3.src} alt="" />
+                        <img src={icon3.src} alt="お気に入り一覧アイコン" />
                       </div>
                     </a>
                   </Link>
@@ -122,7 +122,7 @@ const EditorMyPage = () => {
                             </p>
                           </div>
                           <div className={styles.iconBox}>
-                            <img src={icon4.src} alt="" />
+                            <img src={icon4.src} alt="プレスリリース一覧・作成アイコン" />
                           </div>
                         </a>
                       </Link>
@@ -135,7 +135,7 @@ const EditorMyPage = () => {
                             </p>
                           </div>
                           <div className={styles.iconBox}>
-                            <img src={icon5.src} alt="" />
+                            <img src={icon5.src} alt="オンラインサロン一覧・作成アイコン" />
                           </div>
                         </a>
                       </Link>
@@ -147,7 +147,7 @@ const EditorMyPage = () => {
                         <p>応募・完了した案件</p>
                       </div>
                       <div className={styles.iconBox}>
-                        <img src={icon6.src} alt="" />
+                        <img src={icon6.src} alt="応募・完了した案件アイコン" />
                       </div>
                     </a>
                   </Link>
@@ -159,7 +159,7 @@ const EditorMyPage = () => {
                     <p>基本情報設定</p>
                   </div>
                   <div className={styles.iconBox}>
-                    <img src={icon1.src} alt="" />
+                    <img src={icon1.src} alt="基本情報設定アイコン" />
                   </div>
                 </a>
               </Link>

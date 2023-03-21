@@ -78,7 +78,7 @@ const AdminPressReleaseList = () => {
         <h2 className="ttl1">作成したプレスリリース一覧</h2>
         <Link href={`/corapura/editor/press_release/create`}>
           <a className={styles.createLink}>
-            <img src={plus.src} alt="" />
+            <img src={plus.src} alt="アイコン" />
             プレスリリースを新規作成
           </a>
         </Link>
@@ -89,7 +89,7 @@ const AdminPressReleaseList = () => {
                 <div className={styles.itemBox} key={index}>
                   <Link href={`/corapura/press_release/${pr.id}`}>
                     <a className={styles.imgBox}>
-                      <img src={pr.thumbs ? `${process.env.NEXT_PUBLIC_BACKEND_URL}/storage/${pr.thumbs}` : dummy.src} alt="" />
+                      <img src={pr.thumbs ? `${process.env.NEXT_PUBLIC_BACKEND_URL}/storage/${pr.thumbs}` : dummy.src} alt="プレスリリースのサムネイル画像" />
                     </a>
                   </Link>
                     <p className={styles.stateIcon}>
@@ -118,7 +118,7 @@ const AdminPressReleaseList = () => {
                     value={nowPage-1}
                     onClick={handleClickPage}
                   >
-                    <img src={prev.src} alt="" />
+                    <img src={prev.src} alt="アイコン" />
                     <span>前のページへ</span>
                   </button>
                 : null}
@@ -149,7 +149,7 @@ const AdminPressReleaseList = () => {
                     value={nowPage+1}
                     onClick={handleClickPage}
                   >
-                    <img src={next.src} alt="" />
+                    <img src={next.src} alt="アイコン" />
                     <span>次のページへ</span>
                   </button>
                 : null}

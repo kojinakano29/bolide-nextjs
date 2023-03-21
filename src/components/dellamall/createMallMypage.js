@@ -55,7 +55,7 @@ const CreateMallMypage = () => {
             <img
               className={`${styles.closeBtn} hoverEffect`}
               src="/dellamall/close.svg"
-              alt=""
+              alt="閉じるアイコン"
               onClick={handleClickPopup}
             />
             <h3 className="ttl2">新規モールを作成する</h3>

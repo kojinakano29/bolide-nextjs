@@ -121,7 +121,7 @@ const OnlineSalonList = ({posts}) => {
                 <Link href={`/corapura/salon/${salon.id}`} key={index}>
                   <a>
                     <div className={styles.imgBox}>
-                      <img src={salon.thumbs ? `${process.env.NEXT_PUBLIC_BACKEND_URL}/storage/${salon.thumbs}` : dummy.src} alt="" />
+                      <img src={salon.thumbs ? `${process.env.NEXT_PUBLIC_BACKEND_URL}/storage/${salon.thumbs}` : dummy.src} alt="オンラインサロンのサムネイル画像" />
                     </div>
                     <p className={styles.ttl}>{salon.title}</p>
                     <p className={styles.desc}>
@@ -144,7 +144,7 @@ const OnlineSalonList = ({posts}) => {
                     value={nowPage-1}
                     onClick={handleClickPage}
                   >
-                    <img src={prev.src} alt="" />
+                    <img src={prev.src} alt="アイコン" />
                     <span>前のページへ</span>
                   </button>
                 : null}
@@ -175,7 +175,7 @@ const OnlineSalonList = ({posts}) => {
                     value={nowPage+1}
                     onClick={handleClickPage}
                   >
-                    <img src={next.src} alt="" />
+                    <img src={next.src} alt="アイコン" />
                     <span>次のページへ</span>
                   </button>
                 : null}

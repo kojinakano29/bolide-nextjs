@@ -93,7 +93,7 @@ const PressReleaseDetail = ({posts}) => {
               <div className={styles.txtBox}>
                 <p className={styles.name}>{profile.nicename}</p>
                 <div className={styles.date}>
-                  <img src={clock.src} alt="" />
+                  <img src={clock.src} alt="時計のアイコン" />
                   <DateFormat dateString={release.created_at} />
                 </div>
               </div>
@@ -103,11 +103,11 @@ const PressReleaseDetail = ({posts}) => {
                 onClick={handleClickView}
                 disabled={disabled}
               >
-                <img src={viewCheck ? viewB.src : viewA.src} alt="" />
+                <img src={viewCheck ? viewB.src : viewA.src} alt="アイコン" />
               </button>
             </div>
             {/* <div className={styles.imgBox}>
-              <img src={release.thumbs ? `${process.env.NEXT_PUBLIC_BACKEND_URL}/storage/${release.thumbs}` : dummy.src} alt="" />
+              <img src={release.thumbs ? `${process.env.NEXT_PUBLIC_BACKEND_URL}/storage/${release.thumbs}` : dummy.src} alt="プレスリリースのMV画像" />
             </div> */}
             <div className={styles.editBox}>
               <ShowEditor value={release.content} />
@@ -120,12 +120,12 @@ const PressReleaseDetail = ({posts}) => {
                 <Link href={`/corapura/press_release/${release.id}`} key={index}>
                   <a>
                     <div className={styles.thumbsBox}>
-                      <img src={release.thumbs ? `${process.env.NEXT_PUBLIC_BACKEND_URL}/storage/${release.thumbs}` : dummy2.src} alt="" />
+                      <img src={release.thumbs ? `${process.env.NEXT_PUBLIC_BACKEND_URL}/storage/${release.thumbs}` : dummy2.src} alt="プレスリリースのサムネイル画像" />
                     </div>
                     <div className={styles.newTxt}>
                       <p className={styles.newTtl}>{release.title}</p>
                       <div className={`${styles.newView} en`}>
-                        <img src={view.src} alt="" />
+                        <img src={view.src} alt="アイコン" />
                         {release.c_pr_counts_count}view
                       </div>
                       <p className={styles.newName}>{release.user.c_profile.nicename}</p>

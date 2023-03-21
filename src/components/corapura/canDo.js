@@ -34,9 +34,9 @@ const CanDo = () => {
               >
                 <div className={styles.cont2__item__left}>
                   {current === index + 1 ?
-                    <img className={styles.click__after} src={can.af.src} alt="" />
+                    <img className={styles.click__after} src={can.af.src} alt={`${can.name}のアイコン`} />
                   :
-                    <img className={styles.click__before} src={can.bf.src} alt="" />
+                    <img className={styles.click__before} src={can.bf.src} alt={`${can.name}のアイコン`} />
                   }
                 </div>
                 <div className={styles.cont2__item__right}>
@@ -66,9 +66,9 @@ const CanDo = () => {
               >
                 <div className={styles.cont2__item__left}>
                   {current === index + 7 ?
-                    <img className={styles.click__after} src={can.af.src} alt="" />
+                    <img className={styles.click__after} src={can.af.src} alt={`${can.name}のアイコン`} />
                   :
-                    <img className={styles.click__before} src={can.bf.src} alt="" />
+                    <img className={styles.click__before} src={can.bf.src} alt={`${can.name}のアイコン`} />
                   }
                 </div>
                 <div className={styles.cont2__item__right}>
@@ -94,7 +94,7 @@ const CanDo = () => {
         >
           <Image
             src={img.url}
-            alt=""
+            alt={img.alt}
             layout="responsive"
             priority
           />

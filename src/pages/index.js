@@ -10,11 +10,11 @@ const BolideTop = () => {
     <>
       <section className={styles.mv}>
         <div className={styles.mvBox}>
-          <img className="pc" src="/top/mv-text.svg" alt="" />
-          <img className="sp" src="/top/mv-text__sp.svg" alt="" />
+          <img className="pc" src="/top/mv-text.svg" alt="つながりを強化する新世代SNSBolide's Japan　自らの攻めが生きる”連鎖型SNS”という選択" />
+          <img className="sp" src="/top/mv-text__sp.svg" alt="つながりを強化する新世代SNSBolide's Japan　自らの攻めが生きる”連鎖型SNS”という選択" />
         </div>
         <div className={`${styles.mvBottom} sp`}>
-          <img src="/top/mv-icons__sp.svg" alt="" />
+          <img src="/top/mv-icons__sp.svg" alt="mv" />
         </div>
       </section>
 
@@ -36,8 +36,8 @@ const BolideTop = () => {
             <br className="sp" />「BJ（通称 ビージェイ）」今始めてみませんか？
           </p>
           <div className={styles.imgBox}>
-            <img className="pc" src="/top/about.svg" alt="" />
-            <img className="sp" src="/top/about__sp.svg" alt="" />
+            <img className="pc" src="/top/about.svg" alt="Bolide's Japanとは？" />
+            <img className="sp" src="/top/about__sp.svg" alt="Bolide's Japanとは？" />
           </div>
         </Container>
       </section>
@@ -62,7 +62,7 @@ const BolideTop = () => {
               </p>
             </div>
             <div className={styles.right}>
-              <img src="/top/bjc__1.svg" alt="" />
+              <img src="/top/bjc__1.svg" alt="BJC認証マーク" />
             </div>
           </div>
           <div className={styles.flexType2}>
@@ -79,7 +79,7 @@ const BolideTop = () => {
               </p>
             </div>
             <div className={styles.right}>
-              <img src="/top/bjc__2.svg" alt="" />
+              <img src="/top/bjc__2.svg" alt="BJC(Bolide's Japan Club)" />
             </div>
           </div>
           <div className={styles.flexType2}>
@@ -98,7 +98,7 @@ const BolideTop = () => {
               </p>
             </div>
             <div className={styles.right}>
-              <img src="/top/bjc__3.svg" alt="" />
+              <img src="/top/bjc__3.svg" alt="社会貢献活動" />
             </div>
           </div>
         </Container>
@@ -114,8 +114,8 @@ const BolideTop = () => {
           </h2>
           <article className={styles.planSlide}>
             <div className={styles.planCard}>
-              <img src="/top/premium-plan.svg" alt="" />
-              <img src="/top/free-plan.svg" alt="" />
+              <img src="/top/premium-plan.svg" alt="プレミアムプラン" />
+              <img src="/top/free-plan.svg" alt="フリープラン" />
             </div>
             <div className={styles.planBox}>
               {plans.map((plan, index) => (
@@ -138,31 +138,31 @@ const BolideTop = () => {
           <div className={styles.flex}>
             <Link href="/corapura">
               <a>
-                <img className="pc" src="/top/corapura-banner.svg" alt="" />
-                <img className="sp" src="/top/corapura-banner__sp.svg" alt="" />
+                <img className="pc" src="/top/corapura-banner.svg" alt="CORAPURA" />
+                <img className="sp" src="/top/corapura-banner__sp.svg" alt="CORAPURA" />
                 <p className={`${styles.eName} en`}>Corapura</p>
                 <p className={styles.jName}>コラプラ</p>
               </a>
             </Link>
             <Link href="/liondor">
               <a>
-                <img className="pc" src="/top/liondor-banner.svg" alt="" />
-                <img className="sp" src="/top/liondor-banner__sp.svg" alt="" />
+                <img className="pc" src="/top/liondor-banner.svg" alt="LIONDOR" />
+                <img className="sp" src="/top/liondor-banner__sp.svg" alt="LIONDOR" />
                 <p className={`${styles.eName} en`}>LIONDOR</p>
                 <p className={styles.jName}>リオンドール</p>
               </a>
             </Link>
             <Link href="/dellamall">
               <a>
-                <img className="pc" src="/top/della-banner.svg" alt="" />
-                <img className="sp" src="/top/della-banner__sp.svg" alt="" />
+                <img className="pc" src="/top/della-banner.svg" alt="Della Mall" />
+                <img className="sp" src="/top/della-banner__sp.svg" alt="Della Mall" />
                 <p className={`${styles.eName} en`}>Della Mall</p>
                 <p className={styles.jName}>デラモール</p>
               </a>
             </Link>
             <a href="https://marche-dor.jp/" target="_blank" rel="noopener noreferrer">
-              <img className="pc" src="/top/marche-banner.svg" alt="" />
-              <img className="sp" src="/top/marche-banner__sp.svg" alt="" />
+              <img className="pc" src="/top/marche-banner.svg" alt="Marche Dor" />
+              <img className="sp" src="/top/marche-banner__sp.svg" alt="Marche Dor" />
               <p className={`${styles.eName} en`}>Marche Dor</p>
               <p className={styles.jName}>マルシェドール</p>
             </a>

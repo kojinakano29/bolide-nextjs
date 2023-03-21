@@ -125,7 +125,7 @@ const Method = () => {
 
         <article className={styles.methodBox}>
           <div className={styles.left}>
-            <img src={putOn4.src} alt="" />
+            <img src={putOn4.src} alt="制約のアイコン" />
           </div>
           <div className={styles.center}>
             <p>成約</p>
@@ -135,7 +135,7 @@ const Method = () => {
             </span>
           </div>
           <div className={styles.right}>
-            <img src={find5.src} alt="" />
+            <img src={find5.src} alt="制約のアイコン" />
           </div>
         </article>
 
@@ -143,7 +143,7 @@ const Method = () => {
 
         <article className={styles.methodBox}>
           <div className={styles.left}>
-            <img src={putOn5.src} alt="" />
+            <img src={putOn5.src} alt="案件内容実施のアイコン" />
           </div>
           <div className={styles.center}>
             <p>案件内容実施</p>
@@ -153,7 +153,7 @@ const Method = () => {
             </span>
           </div>
           <div className={styles.right}>
-            <img src={find6.src} alt="" />
+            <img src={find6.src} alt="案件内容実施のアイコン" />
           </div>
         </article>
 
@@ -191,8 +191,8 @@ const Method = () => {
         </article>
 
         <div className={styles.linkArea}>
-          <img className={styles.parts1} src={parts1.src} alt="" />
-          <img className={styles.parts2} src={parts2.src} alt="" />
+          <img className={styles.parts1} src={parts1.src} alt="イラスト" />
+          <img className={styles.parts2} src={parts2.src} alt="イラスト" />
           <p>
             例えば、
             <span>「コラボしたい」</span>
@@ -205,7 +205,7 @@ const Method = () => {
           </p>
           <Link href="/corapura">
             <a className={`${styles.btn} ${styles.reverse}`}>
-              <img src={iconR.src} alt="" />
+              <img src={iconR.src} alt="アイコン" />
               <span>
                 より詳しい案件別の
                 <br className="sp" />活用事例はコチラから！

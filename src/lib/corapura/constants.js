@@ -127,18 +127,54 @@ export const canDoRight = [
 ]
 
 export const canDoImage = [
-  {url: canRight1},
-  {url: canRight2},
-  {url: canRight3},
-  {url: canRight4},
-  {url: canRight5},
-  {url: canRight6},
-  {url: canRight7},
-  {url: canRight8},
-  {url: canRight9},
-  {url: canRight10},
-  {url: canRight11},
-  {url: canRight12},
+  {
+    url: canRight1,
+    alt: "ビジネスマッチング",
+  },
+  {
+    url: canRight2,
+    alt: "ユーザー・インフルエンサーマッチング",
+  },
+  {
+    url: canRight3,
+    alt: "プレスリリース",
+  },
+  {
+    url: canRight4,
+    alt: "オンラインサロン",
+  },
+  {
+    url: canRight5,
+    alt: "クーポン",
+  },
+  {
+    url: canRight6,
+    alt: "プレジデント/リーダー",
+  },
+  {
+    url: canRight7,
+    alt: "ニュース/イベント",
+  },
+  {
+    url: canRight8,
+    alt: "推し活・ホビー",
+  },
+  {
+    url: canRight9,
+    alt: "スポンサー・マスコット",
+  },
+  {
+    url: canRight10,
+    alt: "NFT/製品・商品/特許・技術",
+  },
+  {
+    url: canRight11,
+    alt: "SDGs/社会貢献",
+  },
+  {
+    url: canRight12,
+    alt: "名刺",
+  },
 ]
 
 export const faqSalon = [

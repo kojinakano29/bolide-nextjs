@@ -58,7 +58,7 @@ const Payment = ({posts}) => {
               <Link href="/">
               <a>トップ</a>
               </Link>
-              <div><img src="/top/breadcrumb.svg" alt="" /></div>
+              <div><img src="/top/breadcrumb.svg" alt=">" /></div>
               <p>決済画面</p>
           </div>
         </Container>

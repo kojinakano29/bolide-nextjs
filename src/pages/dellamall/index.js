@@ -78,7 +78,7 @@ const Home = ({posts}) => {
   return (
     <>
       <section className={styles.mv}>
-        <img className={`sp ${styles.bg_mv_sp}`} src={mv__sp.src} alt="" />
+        <img className={`sp ${styles.bg_mv_sp}`} src={mv__sp.src} alt="mv" />
         <Container small>
           <h1 className={styles.sitename}>
             <Image
@@ -175,7 +175,7 @@ const Home = ({posts}) => {
       <Container small>
         <Link href="/corapura/press_release">
           <a className={styles.banner}>
-            <img src="" alt="" />
+            <img src="" alt="プレスリリースのバナー" />
           </a>
         </Link>
       </Container>

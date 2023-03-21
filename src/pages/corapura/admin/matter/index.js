@@ -178,7 +178,7 @@ const AdminMatter = ({posts}) => {
                       value={nowPage-1}
                       onClick={handleClickPage}
                     >
-                      <img src={prev.src} alt="" />
+                      <img src={prev.src} alt="前のページへ" />
                       <span>前のページへ</span>
                     </button>
                   : null}
@@ -209,7 +209,7 @@ const AdminMatter = ({posts}) => {
                       value={nowPage+1}
                       onClick={handleClickPage}
                     >
-                      <img src={next.src} alt="" />
+                      <img src={next.src} alt="次のページへ" />
                       <span>次のページへ</span>
                     </button>
                   : null}

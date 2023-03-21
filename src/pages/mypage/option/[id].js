@@ -107,11 +107,11 @@ const MypageOption = ({posts}) => {
             <Link href="/">
               <a>トップ</a>
             </Link>
-            <div><img src="/top/breadcrumb.svg" alt="" /></div>
+            <div><img src="/top/breadcrumb.svg" alt=">" /></div>
             <Link href="/mypage">
               <a>マイページ</a>
             </Link>
-            <div><img src="/top/breadcrumb.svg" alt="" /></div>
+            <div><img src="/top/breadcrumb.svg" alt=">" /></div>
             <p>オプション</p>
           </div>
         </Container>

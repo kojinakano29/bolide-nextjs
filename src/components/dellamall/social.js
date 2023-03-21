@@ -13,7 +13,7 @@ const Social = ({socials, salon}) => {
           {socials.map((social, index) => (
             <li className={styles.socialList} key={index}>
               <a className="hoverEffect" href={social.link} target="_blank" rel="noopener noreferrer">
-                <img src={socialNetworkingServiceIcons[social.name]} alt="" />
+                <img src={socialNetworkingServiceIcons[social.name]} alt="SNSアイコン" />
               </a>
             </li>
           ))}

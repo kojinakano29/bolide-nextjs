@@ -108,7 +108,7 @@ const Login = () => {
           </p>
           <Link href="/">
             <a className={`${styles.bjcLink} hoverEffect`}>
-              <img src="/dellamall/bjc_banner.svg" alt="" />
+              <img src="/dellamall/bjc_banner.svg" alt="Bolide's Japanのバナー" />
             </a>
           </Link>
         </Container>

@@ -42,7 +42,7 @@ const InfluencerDetail = ({posts}) => {
               <p className={styles.desc}>{profile.c_user_profile.appeal_text}</p>
             </div>
             <div className={styles.imgBox}>
-              <img src={profile.c_user_profile.appeal_image ? `${process.env.NEXT_PUBLIC_BACKEND_URL}/storage/${profile.c_user_profile.appeal_image}` : null} alt="" />
+              <img src={profile.c_user_profile.appeal_image ? `${process.env.NEXT_PUBLIC_BACKEND_URL}/storage/${profile.c_user_profile.appeal_image}` : null} alt="アピールの画像" />
             </div>
           </div>
         </Container>

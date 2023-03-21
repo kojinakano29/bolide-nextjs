@@ -7,7 +7,7 @@ const Make = () => {
     <section className={styles.makeArea}>
       <Container small>
         <div className={styles.midashiBox}>
-          <img src="/top/t-min.svg" alt="" />
+          <img src="/top/t-min.svg" alt="Bolide's Japan" />
         </div>
         <h2 className="ttl1">
           <span className="big">Bolide's Japan</span>

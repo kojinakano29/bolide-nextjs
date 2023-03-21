@@ -34,7 +34,7 @@ const BjcContact = () => {
             <Link href="/">
               <a>トップ</a>
             </Link>
-            <div><img src="/top/breadcrumb.svg" alt="" /></div>
+            <div><img src="/top/breadcrumb.svg" alt=">" /></div>
             <p>お問い合わせ</p>
           </div>
         </Container>

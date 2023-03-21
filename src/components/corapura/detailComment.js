@@ -29,7 +29,7 @@ const DetailComment = ({comments}) => {
             <Link href={`/corapura/${comment.user.account_type === 0 ? "influencer" : "company"}/${comment.user.id}`}>
               <a className={styles.profile}>
                 <div className={styles.iconBox}>
-                  <img src={comment.user.c_profile.thumbs ? `${process.env.NEXT_PUBLIC_BACKEND_URL}/storage/${comment.user.c_profile.thumbs}` : dummy.src} alt="" />
+                  <img src={comment.user.c_profile.thumbs ? `${process.env.NEXT_PUBLIC_BACKEND_URL}/storage/${comment.user.c_profile.thumbs}` : dummy.src} alt="プロフィール画像" />
                 </div>
                 {comment.user.c_profile.nicename}
               </a>

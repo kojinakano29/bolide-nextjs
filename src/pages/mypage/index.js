@@ -15,7 +15,7 @@ const BjcMypage = () => {
           <Link href="/">
             <a>トップ</a>
           </Link>
-          <div><img src="/top/breadcrumb.svg" alt="" /></div>
+          <div><img src="/top/breadcrumb.svg" alt=">" /></div>
           <p>マイページ</p>
         </div>
         {user?.account_type > 2 ?
@@ -53,39 +53,39 @@ const BjcMypage = () => {
           <Link href="/corapura">
             <a>
               <div className={styles.imgBox}>
-                <img src="/top/mypage_c.svg" alt="" />
+                <img src="/top/mypage_c.svg" alt="CORAPURA" />
               </div>
               <div className={styles.nameBox}>
-                <img src="/top/corapura-logo.svg" alt="" />
+                <img src="/top/corapura-logo.svg" alt="CORAPURA" />
               </div>
             </a>
           </Link>
           <Link href="/liondor">
             <a>
               <div className={styles.imgBox}>
-                <img src="/top/mypage_l.svg" alt="" />
+                <img src="/top/mypage_l.svg" alt="LIONDOR" />
               </div>
               <div className={styles.nameBox}>
-                <img src="/top/liondor-logo.svg" alt="" />
+                <img src="/top/liondor-logo.svg" alt="LIONDOR" />
               </div>
             </a>
           </Link>
           <Link href="/dellamall">
             <a>
               <div className={styles.imgBox}>
-                <img src="/top/mypage_d.svg" alt="" />
+                <img src="/top/mypage_d.svg" alt="Della Mall" />
               </div>
               <div className={styles.nameBox}>
-                <img src="/top/della-logo.svg" alt="" />
+                <img src="/top/della-logo.svg" alt="Della Mall" />
               </div>
             </a>
           </Link>
           <a href="https://marche-dor.jp/" target="_blank" rel="noopener noreferrer">
             <div className={styles.imgBox}>
-              <img src="/top/mypage_m.svg" alt="" />
+              <img src="/top/mypage_m.svg" alt="Marche Dor" />
             </div>
             <div className={styles.nameBox}>
-              <img src="/top/marche-logo.svg" alt="" />
+              <img src="/top/marche-logo.svg" alt="Marche Dor" />
             </div>
           </a>
         </div>
@@ -94,7 +94,7 @@ const BjcMypage = () => {
           className={`${styles.logout} hoverEffect`}
           onClick={() => logout()}
         >
-          <img src="/top/logout.svg" alt="" />
+          <img src="/top/logout.svg" alt="ログアウトのアイコン" />
           ログアウト
         </button>
         <p className={styles.signOut}>

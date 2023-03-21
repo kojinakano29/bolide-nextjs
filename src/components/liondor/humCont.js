@@ -112,7 +112,7 @@ const HumCont = ({humOpen, clickHumClose}) => {
                 <a target="_blank" rel="noopener noreferrer" onClick={clickHumClose}>
                   <Image
                     src={corapura}
-                    alt=""
+                    alt="CORAPURA"
                     layout="responsive"
                     sizes="(min-width: 1340px) 228px, 100vw"
                   />
@@ -122,7 +122,7 @@ const HumCont = ({humOpen, clickHumClose}) => {
                 <a target="_blank" rel="noopener noreferrer" onClick={clickHumClose}>
                   <Image
                     src={dela}
-                    alt=""
+                    alt="Della Mall"
                     layout="responsive"
                     sizes="(min-width: 1340px) 228px, 100vw"
                   />
@@ -133,12 +133,12 @@ const HumCont = ({humOpen, clickHumClose}) => {
           <div className={styles.bannerFlex}>
             <Link href="/liondor/present">
               <a className="hoverEffect" onClick={clickHumClose}>
-                <img src="/liondor/present_banner1.webp" alt="" />
+                <img src="/liondor/present_banner1.webp" alt="プレゼントのバナー" />
               </a>
             </Link>
             <Link href="/corapura">
               <a className="hoverEffect" target="_blank" onClick={clickHumClose}>
-                <img src="/liondor/present_banner2.webp" alt="" />
+                <img src="/liondor/present_banner2.webp" alt="オンラインサロンのバナー" />
               </a>
             </Link>
           </div>

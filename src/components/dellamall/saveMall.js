@@ -100,7 +100,7 @@ const SaveMall = () => {
                 >
                   <div className={styles.imgBox}>
                     {list.d_mall_in?.[0]?.thumbs && list.d_mall_in?.[0]?.image_permission === 1 ?
-                      <img src={`${process.env.NEXT_PUBLIC_BACKEND_URL}/storage/${list.d_mall_in?.[0]?.thumbs}`} alt="" />
+                      <img src={`${process.env.NEXT_PUBLIC_BACKEND_URL}/storage/${list.d_mall_in?.[0]?.thumbs}`} alt="モールの画像" />
                     : null}
                   </div>
                   <span className={styles.saveMallBox__name}>{list.name}</span>
