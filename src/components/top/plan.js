@@ -20,7 +20,7 @@ const Plan = ({plan, num}) => {
         onClick={() => setIsOpen(!isOpen)}
       >
         <div>{isOpen ? "ー" : "＋"}</div>
-        <img src={plan.name} alt="" />
+        <img src={plan.name} alt={plan.name} />
         {plan.color === "bj" ?
           <span>※プレミアムプランを含みます</span>
         : null}
@@ -32,20 +32,20 @@ const Plan = ({plan, num}) => {
         ref={accordionRef}
       >
         {plan.color === "bj" ?
-        <img src={plan.graph} alt="" />
+        <img src={plan.graph} alt={plan.name} />
         :
         plan.graph.map((item, index) => (
           <dl key={index}>
             <dt className={styles.left}>{item.left}</dt>
             <dd className={styles.center}>
               {item.center === 1 ?
-                <img src="/top/graph_check.svg" alt="" />
+                <img src="/top/graph_check.svg" alt="チェックアイコン" />
               : null}
               {item.center === 2 ?
-                <img src="/top/graph_limit.svg" alt="" />
+                <img src="/top/graph_limit.svg" alt="閲覧のみアイコン" />
               : null}
               {item.center === 3 ?
-                <img src="/top/graph_none.svg" alt="" />
+                <img src="/top/graph_none.svg" alt="バツのアイコン" />
               : null}
               {item.text1 !== "" ?
                 <span className={styles.txt}>{item.text1}</span>
@@ -53,13 +53,13 @@ const Plan = ({plan, num}) => {
             </dd>
             <dd className={styles.right}>
               {item.right === 1 ?
-                <img src="/top/graph_check.svg" alt="" />
+                <img src="/top/graph_check.svg" alt="チェックアイコン" />
               : null}
               {item.right === 2 ?
-                <img src="/top/graph_limit.svg" alt="" />
+                <img src="/top/graph_limit.svg" alt="閲覧のみアイコン" />
               : null}
               {item.right === 3 ?
-                <img src="/top/graph_none.svg" alt="" />
+                <img src="/top/graph_none.svg" alt="バツのアイコン" />
               : null}
               {item.text2 !== "" ?
                 <span className={styles.txt}>{item.text2}</span>

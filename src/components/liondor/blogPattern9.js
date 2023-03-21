@@ -14,7 +14,7 @@ const BlogPattern9 = ({pattern}) => {
         <Link href={`/liondor/present/${item?.id}`} key={item?.id}>
           <a className={styles.blogLink}>
             <div className={styles.imgBox}>
-              <img src={item?.thumbs ? `${process.env.NEXT_PUBLIC_BACKEND_URL}/storage/${item?.thumbs}` : dummy.src} alt="" />
+              <img src={item?.thumbs ? `${process.env.NEXT_PUBLIC_BACKEND_URL}/storage/${item?.thumbs}` : dummy.src} alt="プレゼントのサムネイル画像" />
             </div>
             <BlogTxt
               smallMb

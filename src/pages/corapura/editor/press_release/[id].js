@@ -112,7 +112,7 @@ const EditPressRelease = ({posts}) => {
                 <div className={styles.matterLeft}>
                   <label className={`hoverEffect ${styles.fileBox}`}>
                     {preview ?
-                      <img src={preview} alt="" />
+                      <img src={preview} alt="プレビュー画像" />
                     :
                       "フォルダから画像を選択"
                     }

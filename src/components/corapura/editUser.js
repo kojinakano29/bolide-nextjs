@@ -234,7 +234,7 @@ const EditUserForm = () => {
                     </dt>
                     <dd>
                       <div className={styles.imgBox}>
-                        {preview ? <img src={preview} alt="" /> : <div className={styles.imgNone}></div>}
+                        {preview ? <img src={preview} alt="名刺のプレビュー" /> : <div className={styles.imgNone}></div>}
                       </div>
                       <p className={styles.reco_size}>推奨画像サイズ：352×208</p>
                       <input
@@ -286,7 +286,7 @@ const EditUserForm = () => {
                     </dt>
                     <dd>
                       <div className={styles.imgBox}>
-                        {preview ? <img src={preview} alt="" /> : <div className={styles.imgNone}></div>}
+                        {preview ? <img src={preview} alt="推し活・ホビーのプレビュー" /> : <div className={styles.imgNone}></div>}
                       </div>
                       <p className={styles.reco_size}>推奨画像サイズ：198×198</p>
                       <input

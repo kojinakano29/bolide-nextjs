@@ -106,22 +106,22 @@ const MallComponent = ({item, user, save = false}) => {
             }} >
               <div className={styles.box}>
                 {mall.d_mall_in?.[0]?.image_permission === 1 && mall.d_mall_in?.[0]?.thumbs ?
-                  <img src={`${process.env.NEXT_PUBLIC_BACKEND_URL}/storage/${mall.d_mall_in?.[0]?.thumbs}`} alt="" />
+                  <img src={`${process.env.NEXT_PUBLIC_BACKEND_URL}/storage/${mall.d_mall_in?.[0]?.thumbs}`} alt="モール画像１" />
                 : null}
               </div>
               <div className={styles.box}>
                 {mall.d_mall_in?.[1]?.image_permission === 1 && mall.d_mall_in?.[1]?.thumbs ?
-                  <img src={`${process.env.NEXT_PUBLIC_BACKEND_URL}/storage/${mall.d_mall_in?.[1]?.thumbs}`} alt="" />
+                  <img src={`${process.env.NEXT_PUBLIC_BACKEND_URL}/storage/${mall.d_mall_in?.[1]?.thumbs}`} alt="モール画像２" />
                 : null}
               </div>
               <div className={styles.box}>
                 {mall.d_mall_in?.[2]?.image_permission === 1 && mall.d_mall_in?.[2]?.thumbs ?
-                  <img src={`${process.env.NEXT_PUBLIC_BACKEND_URL}/storage/${mall.d_mall_in?.[2]?.thumbs}`} alt="" />
+                  <img src={`${process.env.NEXT_PUBLIC_BACKEND_URL}/storage/${mall.d_mall_in?.[2]?.thumbs}`} alt="モール画像３" />
                 : null}
               </div>
               <div className={styles.box}>
                 {mall.d_mall_in?.[3]?.image_permission === 1 && mall.d_mall_in?.[3]?.thumbs ?
-                  <img src={`${process.env.NEXT_PUBLIC_BACKEND_URL}/storage/${mall.d_mall_in?.[3]?.thumbs}`} alt="" />
+                  <img src={`${process.env.NEXT_PUBLIC_BACKEND_URL}/storage/${mall.d_mall_in?.[3]?.thumbs}`} alt="モール画像４" />
                 : null}
               </div>
             </button>
@@ -150,7 +150,7 @@ const MallComponent = ({item, user, save = false}) => {
             {save ?
               <div className={styles.userArea}>
                 <div className={styles.imgBox}>
-                  <img src={mall.user.d_profile.thumbs ? `${process.env.NEXT_PUBLIC_BACKEND_URL}/storage/${mall.user.d_profile.thumbs}` : notSet.src} alt="" />
+                  <img src={mall.user.d_profile.thumbs ? `${process.env.NEXT_PUBLIC_BACKEND_URL}/storage/${mall.user.d_profile.thumbs}` : notSet.src} alt="プロフィール画像" />
                 </div>
                 <p className={styles.nicename}>{mall.user.d_profile.nicename}</p>
               </div>

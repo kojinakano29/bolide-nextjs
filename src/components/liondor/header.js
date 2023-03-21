@@ -80,7 +80,7 @@ const Header = () => {
             <a className={styles.logo}>
               <Image
                 src={hLogo}
-                alt=""
+                alt="LIONDOR"
                 layout="responsive"
                 sizes="(min-width: 1340px) 300px, 100vw"
                 priority

@@ -6,7 +6,7 @@ const Btn2 = ({link, txt}) => {
   return (
     <Link href={link}>
       <a className={styles.btn2}>
-        <img src={icon.src} alt="" />
+        <img src={icon.src} alt="ボタンのアイコン" />
         {txt}
       </a>
     </Link>

@@ -142,7 +142,7 @@ const MypageEdit = ({posts}) => {
                   <dt>写真</dt>
                   <dd className={styles.thumbArea}>
                     <div className={styles.thumbBox}>
-                      <img src={preview} alt="" />
+                      <img src={preview} alt="プレビュー画像" />
                     </div>
                     <label>
                       変更する

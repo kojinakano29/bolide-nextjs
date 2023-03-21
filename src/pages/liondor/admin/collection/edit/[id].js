@@ -176,7 +176,7 @@ const CreateCollection = ({posts}) => {
                         {...register(`image${index+1}`)}
                         onChange={(e) => handleChangeFile(e, index+1)}
                       />
-                      {pre.preview ? <img src={pre.preview} alt="" /> : null}
+                      {pre.preview ? <img src={pre.preview} alt="プレビュー画像" /> : null}
                     </dd>
                   </dl>
                 ))}

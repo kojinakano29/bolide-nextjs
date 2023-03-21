@@ -95,7 +95,7 @@ const AdminMatterList = () => {
         <h2 className="ttl1">作成した案件一覧</h2>
         <Link href={`/corapura/editor/matter/create`}>
           <a className={styles.createLink}>
-            <img src={plus.src} alt="" />
+            <img src={plus.src} alt="アイコン" />
             案件を新規作成
           </a>
         </Link>
@@ -106,7 +106,7 @@ const AdminMatterList = () => {
                 <div className={styles.itemBox} key={index}>
                   <Link href={`/corapura/matter/${matter.id}`}>
                     <a className={styles.imgBox}>
-                      <img src={matter.thumbs ? `${process.env.NEXT_PUBLIC_BACKEND_URL}/storage/${matter.thumbs}` : dummy.src} alt="" />
+                      <img src={matter.thumbs ? `${process.env.NEXT_PUBLIC_BACKEND_URL}/storage/${matter.thumbs}` : dummy.src} alt="案件のサムネイル画像" />
                     </a>
                   </Link>
                     <p className={styles.stateIcon}>
@@ -151,7 +151,7 @@ const AdminMatterList = () => {
                     value={nowPage-1}
                     onClick={handleClickPage}
                   >
-                    <img src={prev.src} alt="" />
+                    <img src={prev.src} alt="アイコン" />
                     <span>前のページへ</span>
                   </button>
                 : null}
@@ -182,7 +182,7 @@ const AdminMatterList = () => {
                     value={nowPage+1}
                     onClick={handleClickPage}
                   >
-                    <img src={next.src} alt="" />
+                    <img src={next.src} alt="アイコン" />
                     <span>次のページへ</span>
                   </button>
                 : null}

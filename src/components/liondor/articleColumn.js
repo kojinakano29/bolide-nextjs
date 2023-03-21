@@ -12,7 +12,7 @@ const ArticleColumn = ({sort, present = false, today}) => {
         <Link href={`/liondor/${present ? 'present' : 'post/show'}/${item?.id}`} key={item?.id}>
           <a className={`${styles.blogLink} ${present && today > item?.limit ? styles.over : null}`}>
             <div className={styles.imgBox}>
-              <img src={item?.thumbs ? `${process.env.NEXT_PUBLIC_BACKEND_URL}/storage/${item?.thumbs}` : dummy.src} alt="" />
+              <img src={item?.thumbs ? `${process.env.NEXT_PUBLIC_BACKEND_URL}/storage/${item?.thumbs}` : dummy.src} alt="記事のサムネイル画像" />
               {present && today > item?.limit ?
                 <div>
                   <p className="ivy">CLOSING</p>

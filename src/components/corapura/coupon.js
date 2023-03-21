@@ -16,7 +16,7 @@ const Coupon = ({data, detail = false, swiper = false}) => {
             className={`${styles.company} hoverEffect`}
           >
             <div className={styles.logoBox}>
-              {data.c_profile.thumbs ? <img src={`${process.env.NEXT_PUBLIC_BACKEND_URL}/storage/${data.c_profile.thumbs}`} alt="" /> : null}
+              {data.c_profile.thumbs ? <img src={`${process.env.NEXT_PUBLIC_BACKEND_URL}/storage/${data.c_profile.thumbs}`} alt="プロフィール画像" /> : null}
             </div>
             {data.c_profile.nicename}
           </a>

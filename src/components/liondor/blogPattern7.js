@@ -26,7 +26,7 @@ const BlogPattern7 = ({pattern}) => {
         <Link href={`/liondor/post/show/${dailies?.[0]?.id}`}>
           <a className={styles.blogLink}>
             <div className={styles.imgBox}>
-              <img src={dailies?.[0]?.thumbs ? `${process.env.NEXT_PUBLIC_BACKEND_URL}/storage/${dailies?.[0].thumbs}` : dummy.src} alt="" />
+              <img src={dailies?.[0]?.thumbs ? `${process.env.NEXT_PUBLIC_BACKEND_URL}/storage/${dailies?.[0].thumbs}` : dummy.src} alt="記事のサムネイル画像" />
             </div>
             <BlogTxt
               smallMb
@@ -45,7 +45,7 @@ const BlogPattern7 = ({pattern}) => {
         <Link href={`/liondor/post/show/${monthlies?.[0]?.id}`}>
           <a className={styles.blogLink}>
             <div className={styles.imgBox}>
-              <img src={monthlies?.[0]?.thumbs ? `${process.env.NEXT_PUBLIC_BACKEND_URL}/storage/${monthlies?.[0].thumbs}` : dummy.src} alt="" />
+              <img src={monthlies?.[0]?.thumbs ? `${process.env.NEXT_PUBLIC_BACKEND_URL}/storage/${monthlies?.[0].thumbs}` : dummy.src} alt="記事のサムネイル画像" />
             </div>
             <BlogTxt
               smallMb
@@ -64,7 +64,7 @@ const BlogPattern7 = ({pattern}) => {
         <Link href={`/liondor/post/show/${yearlies?.[0]?.id}`}>
           <a className={styles.blogLink}>
             <div className={styles.imgBox}>
-              <img src={yearlies?.[0]?.thumbs ? `${process.env.NEXT_PUBLIC_BACKEND_URL}/storage/${yearlies?.[0].thumbs}` : dummy.src} alt="" />
+              <img src={yearlies?.[0]?.thumbs ? `${process.env.NEXT_PUBLIC_BACKEND_URL}/storage/${yearlies?.[0].thumbs}` : dummy.src} alt="記事のサムネイル画像" />
             </div>
             <BlogTxt
               smallMb

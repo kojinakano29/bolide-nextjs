@@ -13,7 +13,7 @@ const BlogPattern6 = ({salons}) => {
         <Link href={`/corapura/salon/${salon?.id}`} key={index}>
           <a className={styles.blogLink}>
             <div className={styles.imgBox}>
-              <img src={salon?.thumbs ? `${process.env.NEXT_PUBLIC_BACKEND_URL}/storage/${salon?.thumbs}` : dummy.src} alt="" />
+              <img src={salon?.thumbs ? `${process.env.NEXT_PUBLIC_BACKEND_URL}/storage/${salon?.thumbs}` : dummy.src} alt="オンラインサロンのサムネイル画像" />
             </div>
             <div className={styles.singleTxt}>
               <h3>{salon?.title}</h3>

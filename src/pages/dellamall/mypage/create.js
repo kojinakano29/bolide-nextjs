@@ -112,7 +112,7 @@ const CreateMypage = () => {
                 </dt>
                 <dd className={styles.profileThumbs}>
                   <div className={styles.imgBox}>
-                    {preview ? <img src={preview} alt="" /> : <div className={styles.imgNone}>プロフィール画像</div>}
+                    {preview ? <img src={preview} alt="プレビュー画像" /> : <div className={styles.imgNone}>プロフィール画像</div>}
                   </div>
                   <label htmlFor="thumbs" className={`${styles.thumbsBox} hoverEffect`}>
                     画像を選択する

@@ -20,7 +20,7 @@ const HeaderNav = () => {
     <>
       <div className={styles.flex}>
         <button className={`${styles.btn1} hoverEffect`} onClick={handleClickOpen}>
-          <img src="/dellamall/news.svg" alt="" />
+          <img src="/dellamall/news.svg" alt="メガホンのアイコン" />
         </button>
         <Link href={user ? `/dellamall/mypage/${user?.id}?state=4` : "/dellamall/login"}>
           <a className={`${styles.btn1} hoverEffect`}>
@@ -34,7 +34,7 @@ const HeaderNav = () => {
         </Link>
         <Link href="/dellamall/admin/shop/create">
           <a className={`${styles.btn2} hoverEffect`}>
-            <img src="/dellamall/make.svg" alt="" />
+            <img src="/dellamall/make.svg" alt="ショップを作るのアイコン" />
             <span className="pc">ショップを作る</span>
           </a>
         </Link>

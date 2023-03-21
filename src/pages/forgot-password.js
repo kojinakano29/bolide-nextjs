@@ -30,7 +30,7 @@ const ForgotPassword = () => {
                         <Link href="/">
                         <a>トップ</a>
                         </Link>
-                        <div><img src="/top/breadcrumb.svg" alt="" /></div>
+                        <div><img src="/top/breadcrumb.svg" alt=">" /></div>
                         <p>パスワード忘れた方</p>
                     </div>
                 </Container>

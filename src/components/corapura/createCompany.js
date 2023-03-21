@@ -496,7 +496,7 @@ TEL:000-0000-0000`}
                   </dt>
                   <dd>
                     <div className={styles.imgBox}>
-                      {preview ? <img src={preview} alt="" /> : <div className={styles.imgNone}></div>}
+                      {preview ? <img src={preview} alt="プレジデント/リーダーのプレビュー" /> : <div className={styles.imgNone}></div>}
                     </div>
                     <input
                       type="file"
@@ -546,7 +546,7 @@ TEL:000-0000-0000`}
                   </dt>
                   <dd>
                     <div className={styles.imgBox}>
-                      {preview ? <img src={preview} alt="" /> : <div className={styles.imgNone}></div>}
+                      {preview ? <img src={preview} alt="NFT/製品・商品・特許・技術のプレビュー" /> : <div className={styles.imgNone}></div>}
                     </div>
                     <input
                       type="file"
@@ -585,7 +585,7 @@ TEL:000-0000-0000`}
                   </dt>
                   <dd>
                     <div className={styles.imgBox}>
-                      {preview ? <img src={preview} alt="" /> : <div className={styles.imgNone}></div>}
+                      {preview ? <img src={preview} alt="SDGs/社会貢献のプレビュー" /> : <div className={styles.imgNone}></div>}
                     </div>
                     <input
                       type="file"
@@ -624,7 +624,7 @@ TEL:000-0000-0000`}
                   </dt>
                   <dd>
                     <div className={styles.imgBox}>
-                      {preview ? <img src={preview} alt="" /> : <div className={styles.imgNone}></div>}
+                      {preview ? <img src={preview} alt="名刺のプレビュー" /> : <div className={styles.imgNone}></div>}
                     </div>
                     <p className={styles.reco_size}>推奨画像サイズ：352×208</p>
                     <input
@@ -677,7 +677,7 @@ TEL:000-0000-0000`}
                   </dt>
                   <dd>
                     <div className={styles.imgBox}>
-                      {preview ? <img src={preview} alt="" /> : <div className={styles.imgNone}></div>}
+                      {preview ? <img src={preview} alt="クーポンのプレビュー" /> : <div className={styles.imgNone}></div>}
                     </div>
                     <p className={styles.reco_size}>推奨画像サイズ：352×198</p>
                     <input
@@ -730,7 +730,7 @@ TEL:000-0000-0000`}
                   </dt>
                   <dd>
                     <div className={styles.imgBox}>
-                      {preview ? <img src={preview} alt="" /> : <div className={styles.imgNone}></div>}
+                      {preview ? <img src={preview} alt="スポンサー・マスコットのプレビュー" /> : <div className={styles.imgNone}></div>}
                     </div>
                     <p className={styles.reco_size}>推奨画像サイズ：198×198</p>
                     <input

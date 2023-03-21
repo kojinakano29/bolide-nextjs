@@ -141,7 +141,7 @@ const EditFirstClass = ({posts}) => {
                   </dt>
                   <dd className={styles.dd}>
                     <input id="thumb" type="file" accept="image/*" {...register("thumbs")} onChange={handleChangeFile} />
-                    <img src={preview ? preview : null} alt="" />
+                    <img src={preview ? preview : null} alt="プレビュー画像" />
                   </dd>
                 </dl>
               </div>

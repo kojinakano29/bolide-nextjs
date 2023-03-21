@@ -54,7 +54,7 @@ const ShopSort = () => {
           <div className={styles.icon}>
             <Image
               src={sortIcon}
-              alt=""
+              alt="ソートアイコン"
               layout="responsive"
               sizes="20px"
               priority
@@ -81,7 +81,7 @@ const ShopSort = () => {
           <div className={styles.icon}>
             <Image
               src={accountIcon}
-              alt=""
+              alt="アカウントアイコン"
               layout="responsive"
               sizes="20px"
               priority

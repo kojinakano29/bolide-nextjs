@@ -32,7 +32,7 @@ const Footer = () => {
         <Container>
           <Link href="/">
             <a className={`${styles.logo} hoverEffect`}>
-              <img src="/top/logo.svg" alt="" />
+              <img src="/top/logo.svg" alt="Bolide's Japan" />
             </a>
           </Link>
           <ul className={styles.listFlex}>
@@ -85,7 +85,7 @@ const Footer = () => {
         className={`${styles.topBtn} ${show ? styles.active : null} hoverEffect`}
         onClick={scrollTop}
       >
-        <img src="/top/pagetop.svg" alt="" />
+        <img src="/top/pagetop.svg" alt="TOPへ戻るアイコン" />
       </button>
     </>
   );

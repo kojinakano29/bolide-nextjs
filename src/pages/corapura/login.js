@@ -110,13 +110,13 @@ const Login = () => {
           <div className={styles.login__newList}>
             <Link href="/corapura/guide">
               <a className="hoverEffect">
-                <img src={know.src} alt="" />
+                <img src={know.src} alt="アイコン" />
                 <p>コラプラについて知る</p>
               </a>
             </Link>
             <Link href="/register">
               <a className={`hoverEffect ${styles.rev}`}>
-                <img src={user.src} alt="" />
+                <img src={user.src} alt="アイコン" />
                 <p>新規会員登録</p>
               </a>
             </Link>

@@ -55,7 +55,7 @@ const Login = () => {
             <Link href="/">
               <a>トップ</a>
             </Link>
-            <div><img src="/top/breadcrumb.svg" alt="" /></div>
+            <div><img src="/top/breadcrumb.svg" alt=">" /></div>
             <p>ログイン</p>
           </div>
           <p className={styles.desc}>IDとパスワードを入力して「ログイン」ボタンをクリックしてください。</p>

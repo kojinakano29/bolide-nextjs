@@ -135,7 +135,7 @@ const CreateCompany = () => {
                       ${styles.imgBox}
                       ${user?.account_type === 0 ? styles.user : null}
                     `} key={index}>
-                      {preview ? <img src={preview} alt="" /> : null}
+                      {preview ? <img src={preview} alt="プロフィール画像のプレビュー" /> : null}
                     </div>
                     <label className={`hoverEffect ${styles.fileBtn}`}>
                       ファイルから画像を選択
@@ -153,7 +153,7 @@ const CreateCompany = () => {
               <div className={styles.profileRight}>
                 <div className={styles.iconFlex}>
                   <div className={styles.iconBox}>
-                    {previewIcon ? <img src={previewIcon} alt="" /> : null}
+                    {previewIcon ? <img src={previewIcon} alt="プレビュー画像" /> : null}
                   </div>
                   <GuidePopup txt={`アイコンを登録してみましょう♪\n\n企業様であれば、オフィス外観やオフィス内風景、会社ロゴ(マーク)、代表者様の素敵なお写真など…\n御社を表すトレードマークのようなイメージをここに登録してみましょう。\n\nユーザー様であれば、ご自身の宣材写真やブランドロゴ、好きなもの、趣味に関するもの、景色など…\nご自身を象徴する素敵な一枚をここに登録してみましょう。\n\n※推奨画像サイズ：\n【ユーザー様】小アイコン80×80、アイキャッチ374×374\n【企業様】小アイコン80×80、アイキャッチ496×496`} />
                   <label className={`hoverEffect ${styles.fileBtn}`}>

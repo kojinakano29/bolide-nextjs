@@ -164,7 +164,7 @@ const OnlineSalonDetail = ({posts}) => {
               >{followCheck ? "フォロー中" : "フォローする"}</button> */}
             </div>
             <div className={styles.imgBox}>
-              <img src={salon.thumbs ? `${process.env.NEXT_PUBLIC_BACKEND_URL}/storage/${salon.thumbs}` : dummy.src} alt="" />
+              <img src={salon.thumbs ? `${process.env.NEXT_PUBLIC_BACKEND_URL}/storage/${salon.thumbs}` : dummy.src} alt="オンラインサロンのサムネイル画像" />
             </div>
             <div className={styles.conditions}>
               <div className={styles.block}>
@@ -212,7 +212,7 @@ const OnlineSalonDetail = ({posts}) => {
               className={`${styles.btn} ${planCheck ? styles.on : null}`}
               onClick={handleClickPlan}
             >
-              <img src={userIcon.src} alt="" />
+              <img src={userIcon.src} alt="アイコン" />
               <span>{planCheck ? "このプランを退会する" : "このプランに入会する"}</span>
             </button>
           </div>

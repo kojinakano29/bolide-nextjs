@@ -32,7 +32,7 @@ const SwiperType1 = ({matters}) => {
               setCurrent(realIndex+1)
             }}
           >
-            {matters.map((matter, index) => (
+            {matters?.map((matter, index) => (
               <SwiperSlide key={index}>
                 <MatterCard matter={matter} />
               </SwiperSlide>
@@ -59,10 +59,10 @@ const SwiperType1 = ({matters}) => {
           </div>
           <div className={styles.btnBox}>
             <button type="button" className={`swiper-button-prev ${styles.prev} hoverEffect`}>
-              <img src={left.src} alt="" />
+              <img src={left.src} alt="PREVアイコン" />
             </button>
             <button type="button" className={`swiper-button-next ${styles.next} hoverEffect`}>
-              <img src={right.src} alt="" />
+              <img src={right.src} alt="NEXTアイコン" />
             </button>
           </div>
         </div>

@@ -314,7 +314,7 @@ const InfluencerList = ({posts}) => {
             onClick={handleClickOpenSort}
           >
             <div className={styles.icon}>
-              <img src={sortIcon.src} alt="" />
+              <img src={sortIcon.src} alt="アイコン" />
             </div>
             並べ替え
           </button>
@@ -339,7 +339,7 @@ const InfluencerList = ({posts}) => {
                 <Link href={`/corapura/influencer/${item.user.id}`} key={index}>
                   <a>
                     <div className={styles.imgBox}>
-                      <img src={item.thumbs ? `${process.env.NEXT_PUBLIC_BACKEND_URL}/storage/${item.thumbs}` : dummy.src} alt="" />
+                      <img src={item.thumbs ? `${process.env.NEXT_PUBLIC_BACKEND_URL}/storage/${item.thumbs}` : dummy.src} alt="インフルエンサーのサムネイル画像" />
                     </div>
                     <p className={styles.catch}>{item.title}</p>
                     <p className={styles.name}>{item.nicename}</p>
@@ -356,7 +356,7 @@ const InfluencerList = ({posts}) => {
                     value={nowPage-1}
                     onClick={handleClickPage}
                   >
-                    <img src={prev.src} alt="" />
+                    <img src={prev.src} alt="アイコン" />
                     <span>前のページへ</span>
                   </button>
                 : null}
@@ -387,7 +387,7 @@ const InfluencerList = ({posts}) => {
                     value={nowPage+1}
                     onClick={handleClickPage}
                   >
-                    <img src={next.src} alt="" />
+                    <img src={next.src} alt="アイコン" />
                     <span>次のページへ</span>
                   </button>
                 : null}

@@ -36,7 +36,7 @@ const Header = () => {
             <h1 className={styles.logo}>
               <Link href="/">
                 <a className="hoverEffect">
-                  <img src="/top/logo.svg" alt="" />
+                  <img src="/top/logo.svg" alt="Bolide's Japan" />
                 </a>
               </Link>
             </h1>
@@ -59,19 +59,19 @@ const Header = () => {
               <li className={styles.type2}>
                 <Link href="/contact">
                   <a className={`${styles.btn} hoverEffect`}>
-                    <img src="/top/mail-icon.svg" alt="" />
+                    <img src="/top/mail-icon.svg" alt="メールのアイコン" />
                     <span>お問い合わせ</span>
                   </a>
                 </Link>
                 <Link href={user ? "/mypage" : "/login"}>
                   <a className={`${styles.btn} ${styles.color1} hoverEffect`}>
-                    <img src={`/top/${user ? "mypage-icon.svg" : "login-icon.svg"}`} alt="" />
+                    <img src={`/top/${user ? "mypage-icon.svg" : "login-icon.svg"}`} alt="ログインアイコン" />
                     <span>{user ? "マイページ" : "ログイン"}</span>
                   </a>
                 </Link>
                 <Link href="/register">
                   <a className={`${styles.btn} ${styles.color2} hoverEffect`}>
-                    <img src="/top/registar-icon.svg" alt="" />
+                    <img src="/top/registar-icon.svg" alt="会員登録のアイコン" />
                     <span>会員登録</span>
                   </a>
                 </Link>

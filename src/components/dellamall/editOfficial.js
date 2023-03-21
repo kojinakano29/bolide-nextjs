@@ -468,7 +468,7 @@ const EditOfficial = () => {
                     </dt>
                     <dd>
                       <div className={styles.imgBox}>
-                        {preview ? <img src={preview} alt="" /> : <div className={styles.imgNone}>商品写真を入れてください</div>}
+                        {preview ? <img src={preview} alt="商品情報のプレビュー画像" /> : <div className={styles.imgNone}>商品写真を入れてください</div>}
                       </div>
                       <input
                         type="file"

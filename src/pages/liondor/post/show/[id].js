@@ -153,7 +153,7 @@ const DetailPage = ({posts}) => {
       <section className={styles.headline}>
         <Container>
           <div className={styles.headlineMv}>
-            <img src={`${process.env.NEXT_PUBLIC_BACKEND_URL}/storage/${post.mv}`} alt="" />
+            <img src={`${process.env.NEXT_PUBLIC_BACKEND_URL}/storage/${post.mv}`} alt="記事のメインビジュアル" />
           </div>
           <div className={styles.headlineWrap}>
             <div className={styles.headlineBox}>
@@ -209,9 +209,9 @@ const DetailPage = ({posts}) => {
               >
                 {
                   bookmarkState ?
-                  <img src="/liondor/bookmark-b.svg" alt="" />
+                  <img src="/liondor/bookmark-b.svg" alt="ブックマークアイコン" />
                   :
-                  <img src="/liondor/bookmark.svg" alt="" />
+                  <img src="/liondor/bookmark.svg" alt="ブックマークアイコン" />
                 }
               </button>
               : null

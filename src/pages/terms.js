@@ -12,7 +12,7 @@ const Terms = () => {
           <Link href="/">
             <a>トップ</a>
           </Link>
-          <div><img src="/top/breadcrumb.svg" alt="" /></div>
+          <div><img src="/top/breadcrumb.svg" alt=">" /></div>
           <p>利用規約</p>
         </div>
         <p className={styles.desc}>Bolide’s Japanをご利用の際には、この「Bolide’s Japan利用規約」が適用されますので、ご利用の前に、必ずお読みください。</p>

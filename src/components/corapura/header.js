@@ -87,7 +87,7 @@ const Header = () => {
             <Link href="/corapura/login">
               <a className={`${styles.btn} ${styles.login} hoverEffect`}>
                 <div className={styles.iconBox}>
-                  <img src={login.src} alt="" />
+                  <img src={login.src} alt="ログインのアイコン" />
                 </div>
                 <span className="pc">ログイン</span>
               </a>
@@ -95,7 +95,7 @@ const Header = () => {
             <Link href="/register">
               <a className={`${styles.btn} ${styles.signUp} hoverEffect`}>
                 <div className={styles.iconBox}>
-                  <img src={signUp.src} alt="" />
+                  <img src={signUp.src} alt="新規登録のアイコン" />
                 </div>
                 <span className="pc">新規登録</span>
               </a>
@@ -106,7 +106,7 @@ const Header = () => {
             <Link href={`/corapura/company/matter/bookmark/${user?.id}`}>
               <a className={`${styles.btn} ${styles.bookmark} hoverEffect`}>
                 <div className={styles.iconBox}>
-                  <img src={bookmark.src} alt="" />
+                  <img src={bookmark.src} alt="お気に入りリストのアイコン" />
                 </div>
                 <span className="pc">お気に入りリスト</span>
               </a>
@@ -114,7 +114,7 @@ const Header = () => {
             <Link href={`/corapura/editor`}>
               <a className={`${styles.btn} ${styles.mypage} hoverEffect`}>
                 <div className={styles.iconBox}>
-                  <img src={mypage.src} alt="" />
+                  <img src={mypage.src} alt="マイページのアイコン" />
                 </div>
                 <span className="pc">マイページ</span>
               </a>

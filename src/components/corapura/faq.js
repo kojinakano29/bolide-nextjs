@@ -39,7 +39,7 @@ const Faq = ({faqs}) => {
               <dt onClick={() => handleClickFaq(index)}>
                 <div>Q</div>
                 <p>{faq.qs}</p>
-                <img src={current === index ? minus.src : plus.src} alt="" />
+                <img src={current === index ? minus.src : plus.src} alt="アイコン" />
               </dt>
               <dd>
                 <p>{faq.as}</p>
@@ -52,7 +52,7 @@ const Faq = ({faqs}) => {
                 <dt onClick={() => handleClickFaq(index+4)}>
                   <div>Q</div>
                   <p>{faq.qs}</p>
-                  <img src={current === index+4 ? minus.src : plus.src} alt="" />
+                  <img src={current === index+4 ? minus.src : plus.src} alt="アイコン" />
                 </dt>
                 <dd>
                   <p>{faq.as}</p>

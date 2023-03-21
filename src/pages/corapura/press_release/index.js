@@ -183,7 +183,7 @@ const PressReleaseList = ({posts}) => {
             onClick={handleClickOpenSort}
           >
             <div className={styles.icon}>
-              <img src={sortIcon.src} alt="" />
+              <img src={sortIcon.src} alt="アイコン" />
             </div>
             並べ替え
           </button>
@@ -219,16 +219,16 @@ const PressReleaseList = ({posts}) => {
                 <Link href={`/corapura/press_release/${release.id}`} key={index}>
                   <a>
                     <div className={styles.imgBox}>
-                      <img src={release.thumbs ? `${process.env.NEXT_PUBLIC_BACKEND_URL}/storage/${release.thumbs}` : dummy.src} alt="" />
+                      <img src={release.thumbs ? `${process.env.NEXT_PUBLIC_BACKEND_URL}/storage/${release.thumbs}` : dummy.src} alt="プレスリリースのサムネイル画像" />
                     </div>
                     <p className={styles.ttl}>{release.title}</p>
                     <div className={`${styles.view} en`}>
-                      <img src={view.src} alt="" />
+                      <img src={view.src} alt="アイコン" />
                       {release.c_pr_counts_count}view
                     </div>
                     <div className={styles.company}>
                       <div className={styles.logoBox}>
-                        {release.user.c_profile.thumbs ? <img src={`${process.env.NEXT_PUBLIC_BACKEND_URL}/storage/${release.user.c_profile.thumbs}`} alt="" /> : null}
+                        {release.user.c_profile.thumbs ? <img src={`${process.env.NEXT_PUBLIC_BACKEND_URL}/storage/${release.user.c_profile.thumbs}`} alt="プロフィール画像" /> : null}
                       </div>
                       {release.user.c_profile.nicename}
                     </div>
@@ -249,7 +249,7 @@ const PressReleaseList = ({posts}) => {
                     value={nowPage-1}
                     onClick={handleClickPage}
                   >
-                    <img src={prev.src} alt="" />
+                    <img src={prev.src} alt="アイコン" />
                     <span>前のページへ</span>
                   </button>
                 : null}
@@ -280,7 +280,7 @@ const PressReleaseList = ({posts}) => {
                     value={nowPage+1}
                     onClick={handleClickPage}
                   >
-                    <img src={next.src} alt="" />
+                    <img src={next.src} alt="アイコン" />
                     <span>次のページへ</span>
                   </button>
                 : null}

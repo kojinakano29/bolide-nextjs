@@ -9,13 +9,13 @@ const Btn = ({txt, link, reverse = false, bottom = false, submit = false}) => {
       {link ?
         <Link href={link}>
           <a className={`${styles.btn} ${reverse ? styles.reverse : null}`}>
-            <img src={reverse ? iconR.src : icon.src} alt="" />
+            <img src={reverse ? iconR.src : icon.src} alt="ボタンのアイコン" />
             <span>{txt}</span>
           </a>
         </Link>
       :
         <button type={submit ? null : "button"} className={`${styles.btn} ${reverse ? styles.reverse : null}`}>
-          <img src={reverse ? iconR.src : icon.src} alt="" />
+          <img src={reverse ? iconR.src : icon.src} alt="ボタンのアイコン" />
           <span>{txt}</span>
         </button>
       }

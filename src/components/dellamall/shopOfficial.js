@@ -107,7 +107,7 @@ const shopOfficial = ({info, salon}) => {
               {salon ?
                 <div className={styles.onlineSalon}>
                   <div className={styles.left}>
-                    <img src={salon.thumbs ? `${process.env.NEXT_PUBLIC_BACKEND_URL}/storage/${salon.thumbs}` : dummy.src} alt="" />
+                    <img src={salon.thumbs ? `${process.env.NEXT_PUBLIC_BACKEND_URL}/storage/${salon.thumbs}` : dummy.src} alt="オンラインサロンのサムネイル" />
                   </div>
                   <div className={styles.right}>
                     <p className={styles.ttl}>{salon.title}</p>
@@ -154,7 +154,7 @@ const shopOfficial = ({info, salon}) => {
               {instagramItem?.media?.data?.map((item, index) => (
                 <li key={index}>
                   <a href={item?.permalink} target="_blank" rel="noopener noreferrer">
-                    <img src={item?.media_url} alt="" />
+                    <img src={item?.media_url} alt="SNSアイコン" />
                     <div className={styles.hoverBox}>
                       <div>
                         <FontAwesomeIcon icon={faHeart} />
@@ -168,7 +168,7 @@ const shopOfficial = ({info, salon}) => {
                       : null}
                     </div>
                     {/* <div className={styles.type}>
-                      <img src={`${item.media_type === "VIDEO" ? 'bb' : ''}${item.media_type === "CAROUSEL_ALBUM" ? 'cc' : ''}`} alt="" />
+                      <img src={`${item.media_type === "VIDEO" ? 'bb' : ''}${item.media_type === "CAROUSEL_ALBUM" ? 'cc' : ''}`} alt="アイコン" />
                     </div> */}
                   </a>
                 </li>
@@ -189,7 +189,7 @@ const shopOfficial = ({info, salon}) => {
               {items.map((item) => (
                 <li key={item.id}>
                   <div className={styles.imgBox}>
-                    <img src={item.thumbs ? `${process.env.NEXT_PUBLIC_BACKEND_URL}/storage/${item.thumbs}` : null} alt="" />
+                    <img src={item.thumbs ? `${process.env.NEXT_PUBLIC_BACKEND_URL}/storage/${item.thumbs}` : null} alt="商品の画像" />
                   </div>
                   <p className={styles.product}>{item.title}</p>
                   <p className={styles.cost}>￥{item.price}<span>(税込)</span></p>

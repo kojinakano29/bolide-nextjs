@@ -93,7 +93,7 @@ const DetailAreaRight = ({influencer = false}) => {
         <div className={styles.detailRight}>
           <div className={styles.detailHead}>
             <div className={styles.headLeft}>
-              <img src={profile.thumbs ? `${process.env.NEXT_PUBLIC_BACKEND_URL}/storage/${profile.thumbs}` : dummy1.src} alt="" />
+              <img src={profile.thumbs ? `${process.env.NEXT_PUBLIC_BACKEND_URL}/storage/${profile.thumbs}` : dummy1.src} alt="プロフィール画像" />
             </div>
             <div className={styles.headRight}>
               <p className={styles.type}>{profile.title}</p>
@@ -137,7 +137,7 @@ const DetailAreaRight = ({influencer = false}) => {
               onClick={handleClickProfileMore}
             >
               もっと見る
-              <img src="/corapura/common/more.svg" alt="" />
+              <img src="/corapura/common/more.svg" alt="もっと見るのアイコン" />
             </button>
           }
           <div className={styles.infoGraph}>
@@ -182,7 +182,7 @@ const DetailAreaRight = ({influencer = false}) => {
             : null}
           </div>
           <a href={`mailto:${userInfo.email}`} className={styles.btn}>
-            <img src={mail.src} alt="" />
+            <img src={mail.src} alt="メールのアイコン" />
             <span>この企業にメッセージを送る</span>
           </a>
         </div>
@@ -190,7 +190,7 @@ const DetailAreaRight = ({influencer = false}) => {
         <div className={styles.detailRight}>
           <div className={styles.detailHead}>
             <div className={styles.headLeft}>
-              <img src={profile.thumbs ? `${process.env.NEXT_PUBLIC_BACKEND_URL}/storage/${profile.thumbs}` : dummy1.src} alt="" />
+              <img src={profile.thumbs ? `${process.env.NEXT_PUBLIC_BACKEND_URL}/storage/${profile.thumbs}` : dummy1.src} alt="プロフィール画像" />
             </div>
             <div className={styles.headRight}>
               <p className={styles.catch}>{profile.title}</p>
@@ -251,7 +251,7 @@ const DetailAreaRight = ({influencer = false}) => {
             </div>
           : null}
           <a href={`mailto:${userInfo.email}`} className={styles.btn}>
-            <img src={mail.src} alt="" />
+            <img src={mail.src} alt="メールのアイコン" />
             <span>このインフルエンサーに<br className="sp" />メッセージを送る</span>
           </a>
         </div>

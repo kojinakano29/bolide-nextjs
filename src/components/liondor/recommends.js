@@ -31,7 +31,7 @@ const Recommends = ({posts}) => {
                     <Link href={`/liondor/post/show/${item.id}`}>
                       <a className={styles.blogLink}>
                         <div className={styles.imgBox}>
-                          <img src={item.l_post.thumbs ? `${process.env.NEXT_PUBLIC_BACKEND_URL}/storage/${item.l_post.thumbs}` : dummy.src} alt="" />
+                          <img src={item.l_post.thumbs ? `${process.env.NEXT_PUBLIC_BACKEND_URL}/storage/${item.l_post.thumbs}` : dummy.src} alt="RECOMMENDS記事のサムネイル画像" />
                         </div>
                         <BlogTxt
                           cat={item?.l_post?.l_category?.parent_slug?.toUpperCase()}

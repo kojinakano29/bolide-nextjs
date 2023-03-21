@@ -197,7 +197,7 @@ const PostEdit = ({posts}) => {
                   </dt>
                   <dd className={styles.dd}>
                     <input id="thumb" type="file" accept="image/*" {...register("thumbs")} onChange={handleChangeFile} />
-                    <img src={preview} alt="" />
+                    <img src={preview} alt="プレビュー画像" />
                   </dd>
                 </dl>
                 <dl className={styles.dl}>
@@ -206,7 +206,7 @@ const PostEdit = ({posts}) => {
                   </dt>
                   <dd className={styles.dd}>
                     <input id="mv" type="file" accept="image/*" {...register("mv")} onChange={handleChangeFile2} />
-                    <img src={preview2} alt="" />
+                    <img src={preview2} alt="プレビュー画像" />
                   </dd>
                 </dl>
               </div>

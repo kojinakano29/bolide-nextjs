@@ -33,7 +33,7 @@ const BjcAd = () => {
             <Link href="/">
               <a>トップ</a>
             </Link>
-            <div><img src="/top/breadcrumb.svg" alt="" /></div>
+            <div><img src="/top/breadcrumb.svg" alt=">" /></div>
             <p>広告掲載について</p>
           </div>
         </Container>
