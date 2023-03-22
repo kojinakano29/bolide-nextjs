@@ -110,6 +110,8 @@
       @include width(150px, 80px, 120px);
       aspect-ratio: 1 / 1;
       border-radius: 50%;
+      overflow: hidden;
+      isolation: isolate;
       background-color: $w1;
       @include flex(center, center);
       position: absolute;

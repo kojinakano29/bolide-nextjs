@@ -63,6 +63,7 @@
         .thumbBox {
           border-radius: 50%;
           overflow: hidden;
+          isolation: isolate;
           @include width(144px);
           @include height(144px);
 

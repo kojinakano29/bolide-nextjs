@@ -31,16 +31,16 @@
 .cat {
   display: flex;
   align-items: center;
-  @include gap(.5em);
+  @include gap(.5em, 5px);
   @include mb(16px);
 
   span {
-    font-size: 13px;
+    @include fs(14px, 12px);
   }
 
   .hr {
     width: 1px;
-    height: 12px;
+    @include height(12px, 10px);
     background-color: $b1;
     transform: rotate(20deg);
   }

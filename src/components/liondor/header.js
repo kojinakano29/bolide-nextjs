@@ -34,6 +34,9 @@ const Header = () => {
 
   const clickHumClose = () => {
     setHumOpen(false)
+
+    document.body.style.overflow = 'unset'
+    document.body.style.height = 'unset'
   }
   // ハンバーガーメニュー
 

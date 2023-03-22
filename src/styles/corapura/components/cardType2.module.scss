@@ -12,6 +12,7 @@
       border-radius: 50%;
       overflow: hidden;
       @include mb(16px);
+      isolation: isolate;
 
       img {
         width: 100%;

@@ -21,6 +21,7 @@
 
     &.user {
       border-radius: 50%;
+      isolation: isolate;
     }
 
     img {
@@ -48,6 +49,7 @@
     background-color: $g3;
     box-shadow: 0 3px 6px rgba(0, 0, 0, .16);
     overflow: hidden;
+    isolation: isolate;
 
     img {
       width: 100%;
