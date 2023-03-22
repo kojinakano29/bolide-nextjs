@@ -13,6 +13,7 @@
       @include height(86px, 86px, 72px);
       border-radius: 50%;
       overflow: hidden;
+      isolation: isolate;
 
       img {
         width: 100%;

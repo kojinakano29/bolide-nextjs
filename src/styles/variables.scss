@@ -350,7 +350,6 @@ $breakpoints: (
 @mixin scrollHidden {
   -ms-overflow-style: none;
   scrollbar-width: none;
-  -webkit-overflow-scrolling:touch;
 
   &::-webkit-scrollbar {
     display: none;
@@ -634,6 +633,7 @@ $breakpoints: (
     @include height(40px, 32px);
     border-radius: 50%;
     overflow: hidden;
+    isolation: isolate;
     box-shadow: 0 3px 6px rgba(0, 0, 0, .16);
     background-color: $w1;
     object-fit: cover;

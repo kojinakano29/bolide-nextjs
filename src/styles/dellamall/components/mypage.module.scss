@@ -8,6 +8,7 @@
     @include height(150px);
     border-radius: 50%;
     overflow: hidden;
+    isolation: isolate;
     margin: auto;
     @include mb(40px);
 

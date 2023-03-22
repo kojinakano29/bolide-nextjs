@@ -45,11 +45,13 @@
   &.influencer {
     .currentImg {
       border-radius: 50%;
+      isolation: isolate;
     }
 
     .selectImg {
       button {
         border-radius: 50%;
+        isolation: isolate;
       }
     }
   }
@@ -69,6 +71,7 @@
       border-radius: 50%;
       box-shadow: 0 3px 6px rgba(0, 0, 0, .16);
       overflow: hidden;
+      isolation: isolate;
 
       img {
         width: 100%;
@@ -243,6 +246,7 @@
         @include height(48px);
         border-radius: 50%;
         overflow: hidden;
+        isolation: isolate;
 
         img {
           width: 100%;
@@ -266,6 +270,7 @@
           @include height(40px);
           border-radius: 50%;
           overflow: hidden;
+          isolation: isolate;
         }
       }
     }

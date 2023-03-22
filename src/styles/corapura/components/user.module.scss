@@ -21,6 +21,7 @@
       aspect-ratio: 1 / 1;
       overflow: hidden;
       border-radius: 50%;
+      isolation: isolate;
       @include mb(10px);
 
       img {
