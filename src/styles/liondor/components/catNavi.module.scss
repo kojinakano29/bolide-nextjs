@@ -7,24 +7,22 @@
   @include media1(sp) {
     overflow-x: auto;
     @include scrollHidden;
+    padding: 0 20px;
   }
 
   ul {
     @include flex(center, center);
+    flex-wrap: nowrap;
     @include gap(40px, 20px);
-    @include width(unset, unset, 800px);
+    @include width(unset, unset, fit-content);
     max-width: unset;
-
-    @include media1(sp) {
-      justify-content: left;
-      padding-left: 20px;
-    }
 
     a {
       font-size: 14px;
       @include p(24px 0, 12px 0);
       position: relative;
       transition: .2s ease-out;
+      white-space: pre;
 
       &::after {
         content: "";

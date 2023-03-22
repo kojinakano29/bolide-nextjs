@@ -2,8 +2,10 @@ import styles from '@/styles/liondor/components/humCont.module.scss'
 import Link from 'next/link';
 import Container from '@/components/liondor/Layouts/container';
 import Image from 'next/image';
-import corapura from '@/images/liondor/common/corapura_bannar.webp'
-import dela from '@/images/liondor/common/della-mall_bannar.webp'
+import bolide from '@/images/liondor/common/bolide_banner.svg'
+import marche from '@/images/liondor/common/marchedor_banner.svg'
+import corapura from '@/images/liondor/common/corapura_bannar.svg'
+import dela from '@/images/liondor/common/della-mall_bannar.svg'
 import { SnsFollow } from '@/components/liondor'
 import { editorNaviData } from '@/lib/liondor/constants';
 import { adminNaviData } from '@/lib/liondor/constants';
@@ -107,6 +109,26 @@ const HumCont = ({humOpen, clickHumClose}) => {
               <SnsFollow />
             </div>
             <p className="ivy">Bolid's Japan Other Site</p>
+            <div className={styles.bannarBox}>
+              <Link href="/">
+                <a target="_blank" rel="noopener noreferrer" onClick={clickHumClose}>
+                  <Image
+                    src={bolide}
+                    alt="Bolide's Japan"
+                    layout="responsive"
+                    sizes="(min-width: 1340px) 228px, 100vw"
+                  />
+                </a>
+              </Link>
+              <a href="https://marche-dor.jp/" target="_blank" rel="noopener noreferrer" onClick={clickHumClose}>
+                <Image
+                  src={marche}
+                  alt="marche dor"
+                  layout="responsive"
+                  sizes="(min-width: 1340px) 228px, 100vw"
+                />
+              </a>
+            </div>
             <div className={styles.bannarBox}>
               <Link href="/corapura">
                 <a target="_blank" rel="noopener noreferrer" onClick={clickHumClose}>

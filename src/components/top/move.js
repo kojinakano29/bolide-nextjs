@@ -102,7 +102,7 @@ const Move = () => {
                 </div>
                 <div className={styles.right}>
                   <Link href="/liondor">
-                    <a className="hoverEffect btn1 btn2">Liondor公式サイト</a>
+                    <a className="hoverEffect btn1 btn2">LIONDOR公式サイト</a>
                   </Link>
                 </div>
               </div>

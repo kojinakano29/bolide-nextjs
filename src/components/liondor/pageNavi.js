@@ -2,12 +2,12 @@ import styles from '@/styles/liondor/components/pageNavi.module.scss'
 import { pageNaviData } from '@/lib/liondor/constants'
 import { useRouter } from 'next/router';
 
-const PageNavi = ({white = false}) => {
+const PageNavi = ({white = false, footer = false}) => {
   const router = useRouter();
   const { category } = router.query
 
   return (
-    <nav className={styles.naviList}>
+    <nav className={`${styles.naviList} ${footer ? styles.footer : null}`}>
       <ul className={white ? styles.colorWhite : ''}>
         {pageNaviData.map((items, index) => (
           <li key={index}>

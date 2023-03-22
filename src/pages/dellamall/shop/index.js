@@ -62,10 +62,10 @@ const ShopSearch = () => {
 
   return (
     <>
-      <section className="cont1">
+      <section className={`cont1 ${styles.cont1}`}>
         <Container small>
           <div className={styles.trend}>
-            <Trend />
+            <Trend sp />
           </div>
         </Container>
       </section>
