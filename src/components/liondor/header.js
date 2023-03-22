@@ -1,6 +1,6 @@
 import styles from '@/styles/liondor/components/header.module.scss'
 import Link from 'next/link';
-import hLogo from '@/images/liondor/common/h-logo.webp'
+import hLogo from '@/images/liondor/common/h-logo.svg'
 import Image from 'next/image';
 import { Hum, SearchIcon, LoginBtn, PageNavi } from '@/components/liondor'
 import { useCallback, useEffect, useState } from 'react';
@@ -22,6 +22,14 @@ const Header = () => {
 
   const clickHumOpen = () => {
     setHumOpen((prev) => !prev)
+
+    if (!humOpen) {
+      document.body.style.overflow = 'hidden'
+      document.body.style.height = '100vh'
+    } else {
+      document.body.style.overflow = 'unset'
+      document.body.style.height = 'unset'
+    }
   }
 
   const clickHumClose = () => {

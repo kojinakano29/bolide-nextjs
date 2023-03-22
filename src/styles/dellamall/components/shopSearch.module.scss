@@ -1,5 +1,10 @@
 @import '../../variables.scss';
 
-.trend {
+.cont1 {
   @include mb(64px, 48px);
+
+  & > div {
+    max-width: 100%;
+    @include p(0 64px, 0 40px, 0);
+  }
 }

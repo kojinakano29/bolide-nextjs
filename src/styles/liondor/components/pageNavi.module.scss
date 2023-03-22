@@ -4,12 +4,24 @@
   @include media1(sp) {
     overflow-x: auto;
     @include scrollHidden;
+    padding: 0 20px;
+  }
+
+  &.footer {
+    ul {
+      flex-wrap: wrap !important;
+
+      a {
+        padding: 0 !important;
+      }
+    }
   }
 
   ul {
     @include flex(center, center);
-    @include gap(4px 40px, 4px 20px);
-    @include width(unset, unset, 800px);
+    flex-wrap: nowrap;
+    @include gap(4px 40px, 4px 20px, 16px 20px);
+    @include width(unset, unset, fit-content);
     max-width: unset;
 
     a {
@@ -17,6 +29,7 @@
       @include p(24px 0, 12px 0);
       transition: .2s ease-out;
       position: relative;
+      white-space: pre;
 
       &::after {
         content: "";

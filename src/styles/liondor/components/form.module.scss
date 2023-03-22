@@ -378,7 +378,7 @@
   }
 
   a {
-    @include mt(64px);
+    @include mt(64px !important);
   }
 }
 
@@ -405,5 +405,28 @@
   a {
     @include mt(16px);
     font-family: $nsj;
+  }
+}
+
+.toggleBox {
+  margin: auto;
+  text-align: center;
+
+  p {
+    @include fs(16px, 14px);
+    font-weight: 500;
+    @include mb(4px);
+  }
+
+  a {
+    @include p(4px 16px);
+    display: inline-block;
+    border: 1px solid $b1;
+    transition: .3s ease;
+
+    &:hover {
+      background-color: $b1;
+      color: $w1;
+    }
   }
 }

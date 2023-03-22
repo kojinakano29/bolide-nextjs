@@ -52,7 +52,7 @@ const Login = () => {
             <Container small900>
                 <p className={styles.desc}>
                     ログインすると、好きな記事を保存することができる他、便利な機能を使って
-                    <br/>Liondorをあなた専用にカスタマイズできます。
+                    <br/>LIONDORをあなた専用にカスタマイズできます。
                 </p>
                 <p className={`${styles.desc} ${styles.desc2}`}>まだ登録がお済みでない方はこちら</p>
                 <div className={styles.register}>

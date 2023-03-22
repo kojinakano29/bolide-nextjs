@@ -117,6 +117,11 @@
     .bannarBox {
       @include flex(center, left);
       @include gap(16px, 12px);
+      @include mb(16px, 12px);
+
+      &:last-of-type {
+        margin-bottom: 0;
+      }
 
       a {
         @include width(228px, 162px, calc(100% * 1/2 - 12px * 1/2));

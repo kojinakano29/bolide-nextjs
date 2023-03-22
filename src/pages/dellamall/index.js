@@ -172,13 +172,13 @@ const Home = ({posts}) => {
 
       <NewBtn top />
 
-      <Container small>
+      {/* <Container small>
         <Link href="/corapura/press_release">
           <a className={styles.banner}>
             <img src="" alt="プレスリリースのバナー" />
           </a>
         </Link>
-      </Container>
+      </Container> */}
     </>
   );
 }

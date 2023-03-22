@@ -231,7 +231,7 @@ const Register = () => {
                             </dl>
                             <div className={styles.privacyArea}>
                                 <p>
-                                    Liondorの
+                                    LIONDORの
                                     <a href="/liondor/terms" target="_blank" rel="noopener noreferrer">利用規約</a>
                                     はこちら
                                 </p>

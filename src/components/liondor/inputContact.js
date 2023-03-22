@@ -1,6 +1,6 @@
 import styles from '@/styles/liondor/components/form.module.scss'
 import { useRouter } from "next/router"
-import { useCallback, useEffect } from "react"
+import { useCallback, useEffect, useState } from "react"
 import { useFormContext } from "react-hook-form"
 import Link from 'next/link'
 
@@ -11,7 +11,8 @@ const InputContact = () => {
   const mailRegExp = /^[A-Za-z0-9]{1}[A-Za-z0-9_.-]*@{1}[A-Za-z0-9_.-]+.[A-Za-z0-9]+$/
   const telRegExp = /^0\d{9,10}$/
 
-  const { register, handleSubmit, setValue, formState: { errors, isValid } } = useFormContext()
+  const [checked, setChecked] = useState(false)
+  const { register, handleSubmit, setValue, getValues, formState: { errors, isValid } } = useFormContext()
 
   const onSubmit = useCallback(async (data) => {
     // console.log(data)
@@ -24,6 +25,14 @@ const InputContact = () => {
       setValue("content", ["企業プレゼントについて"])
     }
   }, [router])
+
+  const handleClickChange = (e) => {
+    if (e.target.checked) {
+      setChecked(true)
+    } else {
+      setChecked(false)
+    }
+  }
 
   return (
     <>
@@ -49,13 +58,19 @@ const InputContact = () => {
                 広告掲載について
               </label>
               <label>
-                <input type="checkbox" value="企業プレゼントについて" {...register("content", {required: true})} />
+                <input type="checkbox" value="企業プレゼントについて" {...register("content", {required: true})} onClick={handleClickChange} />
                 企業プレゼントについて
               </label>
               <label>
                 <input type="checkbox" value="その他" {...register("content", {required: true})} />
                 その他
               </label>
+              {getValues('content').includes('企業プレゼントについて') || checked ?
+                <div className={styles.toggleBox}>
+                  <p>企業プレゼントに関する資料はこちら</p>
+                  <a href="/liondor/files/liondor_ad.pdf" target="_blank">PDFをダウンロード</a>
+                </div>
+              : null}
               {errors.content && <p className={`red ${styles.error}`}>必須項目を選択してください</p>}
             </dd>
           </dl>

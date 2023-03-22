@@ -89,6 +89,7 @@
     .rightBox {
       @include width(480px);
       @include ml(auto);
+      @include mt(16px);
 
       .bannerFlex {
         @include flex(center, center);
@@ -161,7 +162,7 @@
   }
 
   .copy {
-    @include width(128px, 128px, 100%);
+    @include width(136px, 136px, 100%);
     font-size: 12px;
     color: $w1;
 

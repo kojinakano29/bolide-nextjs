@@ -40,7 +40,7 @@ const Footer = () => {
               <SnsFollow />
             </div>
             <div className={styles.right}>
-              <PageNavi white />
+              <PageNavi white footer />
               <div className={styles.rightBox}>
                 <div className={styles.bannerFlex}>
                   <Link href="/liondor/present">

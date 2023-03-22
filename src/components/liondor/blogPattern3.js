@@ -3,6 +3,8 @@ import Link from 'next/link';
 import { BlogTxt } from '@/components/liondor';
 
 const BlogPattern3 = ({pattern}) => {
+  // console.log(pattern)
+
   return (
     <article className={styles.article}>
       <Link href={pattern?.url}>
@@ -26,7 +28,7 @@ const BlogPattern3 = ({pattern}) => {
             cat2={pattern?.l_category?.name}
             ttl={pattern?.title}
             name={pattern?.user?.l_profile?.nicename}
-            time={pattern?.created_at}
+            time={pattern?.updated_at}
             fs24
           />
         </a>

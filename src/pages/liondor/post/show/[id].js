@@ -152,9 +152,11 @@ const DetailPage = ({posts}) => {
     <>
       <section className={styles.headline}>
         <Container>
-          <div className={styles.headlineMv}>
-            <img src={`${process.env.NEXT_PUBLIC_BACKEND_URL}/storage/${post.mv}`} alt="記事のメインビジュアル" />
-          </div>
+          {post.mv ?
+            <div className={styles.headlineMv}>
+              <img src={`${process.env.NEXT_PUBLIC_BACKEND_URL}/storage/${post.mv}`} alt="記事のメインビジュアル" />
+            </div>
+          : null}
           <div className={styles.headlineWrap}>
             <div className={styles.headlineBox}>
               <p className={styles.cat}>

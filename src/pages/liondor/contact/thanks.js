@@ -9,15 +9,15 @@ import { useRouter } from 'next/router';
 const ContactThanks = () => {
   const router = useRouter()
 
-  useEffect(() => {
-    const contact = sessionStorage.getItem('contact')
+  // useEffect(() => {
+  //   const contact = sessionStorage.getItem('contact')
 
-    if (!contact) {
-      router.push(`/liondor/contact`)
-    }
+  //   if (!contact) {
+  //     router.push(`/liondor/contact`)
+  //   }
 
-    sessionStorage.removeItem('contact')
-  }, [])
+  //   sessionStorage.removeItem('contact')
+  // }, [])
 
   return (
     <section className="cont1">

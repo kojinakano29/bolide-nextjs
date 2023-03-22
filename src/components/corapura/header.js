@@ -44,7 +44,15 @@ const Header = () => {
 
   const handleClickHum = useCallback(async () => {
     setHumOpen(prevState => !prevState)
-  }, [setHumOpen])
+
+    if (!humOpen) {
+      document.body.style.overflow = 'hidden'
+      document.body.style.height = '100vh'
+    } else {
+      document.body.style.overflow = 'unset'
+      document.body.style.height = 'unset'
+    }
+  }, [humOpen, setHumOpen])
 
   const handleScroll = useCallback(() => {
     const nowPos = window.scrollY
