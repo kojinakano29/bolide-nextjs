@@ -9,7 +9,6 @@ import { faTrophy, faSquarePlus } from '@fortawesome/free-solid-svg-icons'
 import { createContext, useEffect, useRef } from 'react';
 import axios from '@/lib/axios';
 import useSWRInfinite from "swr/infinite"
-import Link from 'next/link';
 
 export const StoreData = createContext()
 
@@ -173,11 +172,9 @@ const Home = ({posts}) => {
       <NewBtn top />
 
       {/* <Container small>
-        <Link href="/corapura/press_release">
-          <a className={styles.banner}>
-            <img src="" alt="プレスリリースのバナー" />
-          </a>
-        </Link>
+        <a href="/corapura/press_release" className={styles.banner}>
+          <img src="" alt="プレスリリースのバナー" />
+        </a>
       </Container> */}
     </>
   );

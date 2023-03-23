@@ -7,7 +7,6 @@ import { useCallback, useEffect, useState } from 'react';
 import { useForm } from 'react-hook-form';
 import axios from '@/lib/axios';
 import { GuidePopup, Loader, PostEditor } from '@/components/corapura';
-import Link from 'next/link';
 
 export const getServerSideProps = async () => {
   const res = await fetch(`${process.env.NEXT_PUBLIC_API_CORAPURA}/post/create`)
@@ -486,7 +485,7 @@ const CreateMatter = ({posts}) => {
                     {...register("check", {required: true})}
                   />
                   <p className={styles.txt}>
-                    <Link href={`/corapura/terms`}><a target="_blank">利用規約・コンテンツの基準</a></Link>に同意します
+                    <a href={`/corapura/terms`} target="_blank">利用規約・コンテンツの基準</a>に同意します
                   </p>
                 </label>
                 {errors.check && <p className={styles.error}>チェック必須項目です</p>}

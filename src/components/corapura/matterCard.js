@@ -1,6 +1,5 @@
 import styles from '@/styles/corapura/components/matterCard.module.scss'
 import dummy from '@/images/corapura/common/dummy1.svg'
-import Link from 'next/link';
 import starB from '@/images/corapura/common/starB.svg'
 import starA from '@/images/corapura/common/starA.svg'
 import check from '@/images/corapura/common/check.svg'
@@ -59,45 +58,43 @@ const MatterCard = ({matter, bookmarkList, detail = false, list = false}) => {
     <>
       {list ?
         <article className={`${styles.matterCard} ${styles.list}`}>
-          <Link href={`/corapura/matter/${matter?.id}`}>
-            <a>
-              <div className={`${styles.imgBox} matterThumbs`}>
-                <img src={matter?.thumbs ? `${process.env.NEXT_PUBLIC_BACKEND_URL}/storage/${matter?.thumbs}` : dummy.src} alt="案件のサムネイル画像" />
-                {matter?.state === 1 || matter?.limite_date <= today ?
-                  <div className={styles.finishMatter}>
-                    <img src={check.src} alt="チェックのアイコン" />
-                    <p>
-                      この募集は
-                      <br/>終了しました
-                    </p>
-                  </div>
-                  : null
-                }
-              </div>
-              <p className={styles.ttl}>{matter?.title}</p>
-              <p className={styles.desc}>
-                {matter?.content.replace(/<[^>]+>/g, '').replace(/&nbsp;/g, '').substring(0, 50)}
-              </p>
-              {matter?.created_at ?
-                <p className={styles.iconBox}>
-                  <span className={styles.icon}>掲載日</span>
-                  <DateFormat dateString={matter?.created_at} />
-                </p>
-              : null}
-              {matter?.limite_date ?
-                <p className={styles.iconBox}>
-                  <span className={styles.icon}>募集終了日</span>
-                  {matter?.limite_date.replace(/-/g, '.')}
-                </p>
-              : null}
-              <div className={styles.company}>
-                <div className={styles.logoBox}>
-                  {matter?.user?.c_profile?.thumbs ? <img src={`${process.env.NEXT_PUBLIC_BACKEND_URL}/storage/${matter?.user?.c_profile?.thumbs}`} alt="プロフィール画像" /> : null}
+          <a href={`/corapura/matter/${matter?.id}`}>
+            <div className={`${styles.imgBox} matterThumbs`}>
+              <img src={matter?.thumbs ? `${process.env.NEXT_PUBLIC_BACKEND_URL}/storage/${matter?.thumbs}` : dummy.src} alt="案件のサムネイル画像" />
+              {matter?.state === 1 || matter?.limite_date <= today ?
+                <div className={styles.finishMatter}>
+                  <img src={check.src} alt="チェックのアイコン" />
+                  <p>
+                    この募集は
+                    <br/>終了しました
+                  </p>
                 </div>
-                {matter?.user?.c_profile?.nicename}
+                : null
+              }
+            </div>
+            <p className={styles.ttl}>{matter?.title}</p>
+            <p className={styles.desc}>
+              {matter?.content.replace(/<[^>]+>/g, '').replace(/&nbsp;/g, '').substring(0, 50)}
+            </p>
+            {matter?.created_at ?
+              <p className={styles.iconBox}>
+                <span className={styles.icon}>掲載日</span>
+                <DateFormat dateString={matter?.created_at} />
+              </p>
+            : null}
+            {matter?.limite_date ?
+              <p className={styles.iconBox}>
+                <span className={styles.icon}>募集終了日</span>
+                {matter?.limite_date.replace(/-/g, '.')}
+              </p>
+            : null}
+            <div className={styles.company}>
+              <div className={styles.logoBox}>
+                {matter?.user?.c_profile?.thumbs ? <img src={`${process.env.NEXT_PUBLIC_BACKEND_URL}/storage/${matter?.user?.c_profile?.thumbs}`} alt="プロフィール画像" /> : null}
               </div>
-            </a>
-          </Link>
+              {matter?.user?.c_profile?.nicename}
+            </div>
+          </a>
           <button
             type="button"
             className={`${styles.bookmarkBtn} hoverEffect`}
@@ -108,38 +105,36 @@ const MatterCard = ({matter, bookmarkList, detail = false, list = false}) => {
         </article>
       :
         <article className={`${styles.matterCard} ${detail ? styles.detail : null}`}>
-          <Link href={`/corapura/matter/${matter?.id}`}>
-            <a>
-              <div className={`${styles.imgBox} matterThumbs`}>
-                <img src={matter?.thumbs ? `${process.env.NEXT_PUBLIC_BACKEND_URL}/storage/${matter?.thumbs}` : dummy.src} alt="案件のサムネイル画像" />
-              </div>
-              <p className={styles.tag}>{matter?.c_cat?.name}</p>
-              <p className={styles.ttl}>{matter?.title}</p>
-              <p className={styles.desc}>
-                {matter?.content.replace(/<[^>]+>/g, '').replace(/&nbsp;/g, '').substring(0, 50)}
+          <a href={`/corapura/matter/${matter?.id}`}>
+            <div className={`${styles.imgBox} matterThumbs`}>
+              <img src={matter?.thumbs ? `${process.env.NEXT_PUBLIC_BACKEND_URL}/storage/${matter?.thumbs}` : dummy.src} alt="案件のサムネイル画像" />
+            </div>
+            <p className={styles.tag}>{matter?.c_cat?.name}</p>
+            <p className={styles.ttl}>{matter?.title}</p>
+            <p className={styles.desc}>
+              {matter?.content.replace(/<[^>]+>/g, '').replace(/&nbsp;/g, '').substring(0, 50)}
+            </p>
+            {matter?.created_at ?
+              <p className={styles.iconBox}>
+                <span className={styles.icon}>掲載日</span>
+                <DateFormat dateString={matter?.created_at} />
               </p>
-              {matter?.created_at ?
-                <p className={styles.iconBox}>
-                  <span className={styles.icon}>掲載日</span>
-                  <DateFormat dateString={matter?.created_at} />
-                </p>
-              : null}
-              {matter?.limite_date ?
-                <p className={styles.iconBox}>
-                  <span className={styles.icon}>募集終了日</span>
-                  {matter?.limite_date.replace(/-/g, '.')}
-                </p>
-              : null}
-              {detail ? null :
-                <div className={styles.company}>
-                  <div className={styles.logoBox}>
-                    {matter?.user?.c_profile?.thumbs ? <img src={`${process.env.NEXT_PUBLIC_BACKEND_URL}/storage/${matter?.user?.c_profile?.thumbs}`} alt="プロフィール画像" /> : null}
-                  </div>
-                  {matter?.user?.c_profile?.nicename}
+            : null}
+            {matter?.limite_date ?
+              <p className={styles.iconBox}>
+                <span className={styles.icon}>募集終了日</span>
+                {matter?.limite_date.replace(/-/g, '.')}
+              </p>
+            : null}
+            {detail ? null :
+              <div className={styles.company}>
+                <div className={styles.logoBox}>
+                  {matter?.user?.c_profile?.thumbs ? <img src={`${process.env.NEXT_PUBLIC_BACKEND_URL}/storage/${matter?.user?.c_profile?.thumbs}`} alt="プロフィール画像" /> : null}
                 </div>
-              }
-            </a>
-          </Link>
+                {matter?.user?.c_profile?.nicename}
+              </div>
+            }
+          </a>
           {detail ?
             <button
               type="button"

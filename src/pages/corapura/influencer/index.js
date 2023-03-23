@@ -9,7 +9,6 @@ import next from '@/images/corapura/common/next.svg'
 import sortIcon from '@/images/corapura/common/sort.svg'
 import dummy from '@/images/corapura/common/dummy1.svg'
 import { Loader } from '@/components/corapura';
-import Link from 'next/link';
 import { zips, socialNetworkingService, followers } from '@/lib/corapura/constants';
 import searchIcon from '@/images/corapura/common/search.svg'
 import { useRouter } from 'next/router';
@@ -336,16 +335,14 @@ const InfluencerList = ({posts}) => {
           <>
             <article className={`${styles.list} ${styles.influencerList}`}>
               {influencer.map((item, index) => (
-                <Link href={`/corapura/influencer/${item.user.id}`} key={index}>
-                  <a>
-                    <div className={styles.imgBox}>
-                      <img src={item.thumbs ? `${process.env.NEXT_PUBLIC_BACKEND_URL}/storage/${item.thumbs}` : dummy.src} alt="インフルエンサーのサムネイル画像" />
-                    </div>
-                    <p className={styles.catch}>{item.title}</p>
-                    <p className={styles.name}>{item.nicename}</p>
-                    <p className={styles.desc}>{item.profile.substring(0, 35)}...</p>
-                  </a>
-                </Link>
+                <a href={`/corapura/influencer/${item.user.id}`} key={index}>
+                  <div className={styles.imgBox}>
+                    <img src={item.thumbs ? `${process.env.NEXT_PUBLIC_BACKEND_URL}/storage/${item.thumbs}` : dummy.src} alt="インフルエンサーのサムネイル画像" />
+                  </div>
+                  <p className={styles.catch}>{item.title}</p>
+                  <p className={styles.name}>{item.nicename}</p>
+                  <p className={styles.desc}>{item.profile.substring(0, 35)}...</p>
+                </a>
               ))}
             </article>
             {parseInt(maxPage) > 1 ?

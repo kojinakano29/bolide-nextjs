@@ -1,7 +1,6 @@
 import styles from '@/styles/liondor/components/modalBrand.module.scss'
 import { brand } from '@/lib/liondor/constants'
 import { useFormContext } from 'react-hook-form'
-import Link from 'next/link'
 import { useCallback } from 'react'
 
 const ModalBrand = ({show, close, brands, setBrands}) => {
@@ -30,9 +29,7 @@ const ModalBrand = ({show, close, brands, setBrands}) => {
               <ul>
                 {brand.map((item, index) => (
                   <li key={index}>
-                    <Link href={`#brand${item.initial}`}>
-                      <a>{item.initial}</a>
-                    </Link>
+                    <a href={`#brand${item.initial}`}>{item.initial}</a>
                     <div className={styles.hr}></div>
                   </li>
                 ))}

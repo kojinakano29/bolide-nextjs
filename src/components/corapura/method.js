@@ -1,5 +1,4 @@
 import styles from '@/styles/corapura/components/method.module.scss'
-import Link from 'next/link';
 import Container from './Layout/container';
 import putOn from '@/images/corapura/use/putOn.svg'
 import find from '@/images/corapura/use/find.svg'
@@ -40,9 +39,7 @@ const Method = () => {
                 <p className="pc">会員登録</p>
                 <span>
                   まずはBolide's Japanで
-                  <Link href="/register">
-                    <a>アカウント登録</a>
-                  </Link>
+                  <a href="/register">アカウント登録</a>
                 </span>
               </div>
             </div>
@@ -82,9 +79,7 @@ const Method = () => {
                 <p className="pc">ユーザー登録</p>
                 <span>
                   まずはBolide's Japanで
-                  <Link href="/register">
-                    <a>アカウント登録</a>
-                  </Link>
+                  <a href="/register">アカウント登録</a>
                 </span>
               </div>
             </div>
@@ -203,15 +198,13 @@ const Method = () => {
             <br className="sp" />発生しないような案件も
             <br className="sp" />多種掲載できます！
           </p>
-          <Link href="/corapura">
-            <a className={`${styles.btn} ${styles.reverse}`}>
-              <img src={iconR.src} alt="アイコン" />
-              <span>
-                より詳しい案件別の
-                <br className="sp" />活用事例はコチラから！
-              </span>
-            </a>
-          </Link>
+          <a href="/corapura" className={`${styles.btn} ${styles.reverse}`}>
+            <img src={iconR.src} alt="アイコン" />
+            <span>
+              より詳しい案件別の
+              <br className="sp" />活用事例はコチラから！
+            </span>
+          </a>
         </div>
       </Container>
     </section>

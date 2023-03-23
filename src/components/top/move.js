@@ -1,6 +1,5 @@
 import { canCorapura, canDellamall, canLiondor, canMarche } from '@/lib/top/constants';
 import styles from '@/styles/top/components/move.module.scss'
-import Link from 'next/link';
 import React from 'react';
 import { useCallback, useState } from 'react';
 import Container from './Layout/container';
@@ -42,9 +41,7 @@ const Move = () => {
                   <p className={styles.desc}>自由な発想で案件登録して、企業や自治体、フリーランス、専門家、インフルエンサー、一般ユーザー、メディアと気軽に多種多様のつながりをもてるアプローチツール。"つながる" "認知拡大""楽しむ"が満載で、お仕事や認知向上につながるプロモーションがいっぱい。</p>
                 </div>
                 <div className={styles.right}>
-                  <Link href="/corapura">
-                    <a className="hoverEffect btn1 btn2">CARAPURA公式サイト</a>
-                  </Link>
+                  <a href="/corapura" className="hoverEffect btn1 btn2">CARAPURA公式サイト</a>
                 </div>
               </div>
               <div className={styles.afterCan}>
@@ -101,9 +98,7 @@ const Move = () => {
                   </p>
                 </div>
                 <div className={styles.right}>
-                  <Link href="/liondor">
-                    <a className="hoverEffect btn1 btn2">LIONDOR公式サイト</a>
-                  </Link>
+                  <a href="/liondor" className="hoverEffect btn1 btn2">LIONDOR公式サイト</a>
                 </div>
               </div>
               <div className={styles.afterCan}>
@@ -159,9 +154,7 @@ const Move = () => {
                   </p>
                 </div>
                 <div className={styles.right}>
-                  <Link href="/dellamall">
-                    <a className="hoverEffect btn1 btn2">Della Mall公式サイト</a>
-                  </Link>
+                  <a href="/dellamall" className="hoverEffect btn1 btn2">Della Mall公式サイト</a>
                 </div>
               </div>
               <div className={styles.afterCan}>

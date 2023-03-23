@@ -4,7 +4,6 @@ import PageLayoutLiondor from '@/components/Layouts/PageLayoutLiondor'
 import { DateFormat, PageTitle } from '@/components/liondor'
 import { useAuth } from '@/hooks/auth'
 import axios from '@/lib/axios'
-import Link from 'next/link'
 import { useRouter } from 'next/router'
 import { useCallback, useEffect, useState } from 'react'
 
@@ -172,9 +171,7 @@ const PostList = ({posts}) => {
           </div>
           <h3 className={styles.catTtl}>
             {catName.toUpperCase()}
-            <Link href="/liondor/post/create">
-              <a className={`btn2 ${styles.create}`}>新規作成</a>
-            </Link>
+            <a href="/liondor/post/create" className={`btn2 ${styles.create}`}>新規作成</a>
           </h3>
           <article className={styles.article}>
             <ul>
@@ -184,18 +181,12 @@ const PostList = ({posts}) => {
                     <p  className={styles.iconP}>下書き</p>
                   : null}
                   <p className={styles.time}><DateFormat dateString={list.view_date} />{list.view_date.substr(11, 5).replace(":", "時")}分</p>
-                  <Link href={`/liondor/post/show/${list.id}`}>
-                    <a className={styles.ttl}>{list.title ? list.title : "タイトル未入力"}</a>
-                  </Link>
+                  <a href={`/liondor/post/show/${list.id}`} className={styles.ttl}>{list.title ? list.title : "タイトル未入力"}</a>
                   <div className={styles.btnBox}>
-                    <Link href={`/liondor/post/edit/${list.id}`}>
-                      <a className={styles.edit}>編集</a>
-                    </Link>
+                    <a href={`/liondor/post/edit/${list.id}`} className={styles.edit}>編集</a>
                     <button className={styles.delete} onClick={() => onClickDelete(list)} disabled={disabled}>削除</button>
                     {list.state === 0 ?
-                      <Link href={`/liondor/post/show/${list.id}/?preview=1`}>
-                        <a className={styles.edit} target="_blank" rel="noopener noreferrer">プレビュー</a>
-                      </Link>
+                      <a href={`/liondor/post/show/${list.id}/?preview=1`} className={styles.edit} target="_blank" rel="noopener noreferrer">プレビュー</a>
                     : null}
                   </div>
                 </li>

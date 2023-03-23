@@ -1,7 +1,6 @@
 import styles from '@/styles/liondor/components/login.module.scss'
 import AuthSessionStatus from '@/components/AuthSessionStatus'
 import InputError from '@/components/InputError'
-import Link from 'next/link'
 import { useAuth } from '@/hooks/auth'
 import { useCallback, useEffect, useState } from 'react'
 import { useRouter } from 'next/router'
@@ -56,12 +55,8 @@ const Login = () => {
                 </p>
                 <p className={`${styles.desc} ${styles.desc2}`}>まだ登録がお済みでない方はこちら</p>
                 <div className={styles.register}>
-                    <Link href="/register">
-                        <a className="btn5">企業様はこちら</a>
-                    </Link>
-                    <Link href="/register">
-                        <a className="btn5">一般ユーザーの方はこちら</a>
-                    </Link>
+                    <a href="/register" className="btn5">企業様はこちら</a>
+                    <a href="/register" className="btn5">一般ユーザーの方はこちら</a>
                 </div>
                 {/* Session Status */}
                 <AuthSessionStatus className="mb-4" status={status} />
@@ -108,7 +103,7 @@ const Login = () => {
                             <button className="btn3 noto">ログインする</button>
                             <p className={styles.forgot}>
                                 ※パスワードをお忘れの方は
-                                <Link href="/forgot-password"><a>こちら</a></Link>
+                                <a href="/forgot-password">こちら</a>
                             </p>
                         </div>
                     </article>

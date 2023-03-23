@@ -7,7 +7,6 @@ import merit1 from '@/images/liondor/registration/merit1.webp'
 import merit2 from '@/images/liondor/registration/merit2.webp'
 import merit3 from '@/images/liondor/registration/merit3.webp'
 import merit4 from '@/images/liondor/registration/merit4.webp'
-import Link from 'next/link';
 
 const Registration = () => {
   return (
@@ -60,9 +59,7 @@ const Registration = () => {
                 会員様はプレゼント応募企画で
                 <br/>素敵な商品があたるチャンス
               </p>
-              <Link href="/liondor/present">
-                <a className={styles.link}>プレゼント応募はこちら</a>
-              </Link>
+              <a href="/liondor/present" className={styles.link}>プレゼント応募はこちら</a>
             </div>
             <div className={styles.box}>
               <p className={`${styles.num} ivy`}>03</p>
@@ -80,9 +77,7 @@ const Registration = () => {
                 <br/>兼ね備えたサイトでサービスや
                 <br/>商品を情報拡散できる
               </p>
-              <Link href="/liondor/contact">
-                <a className={styles.link}>お問い合わせはこちらから</a>
-              </Link>
+              <a href="/liondor/contact" className={styles.link}>お問い合わせはこちらから</a>
             </div>
             <div className={styles.box}>
               <p className={`${styles.num} ivy`}>04</p>

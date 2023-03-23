@@ -1,7 +1,6 @@
 import styles from '@/styles/top/components/privacy.module.scss'
 import PageLayoutTop from "@/components/Layouts/pageLayoutTop";
 import Container from "@/components/top/Layout/container";
-import Link from 'next/link';
 
 const Privacy = () => {
   return (
@@ -9,9 +8,7 @@ const Privacy = () => {
       <Container small900>
         <h2 className="ttl2">プライバシーポリシー</h2>
         <div className="breadcrumbBox">
-          <Link href="/">
-            <a>トップ</a>
-          </Link>
+          <a href="/">トップ</a>
           <div><img src="/top/breadcrumb.svg" alt=">" /></div>
           <p>プライバシーポリシー</p>
         </div>

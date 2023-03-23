@@ -1,6 +1,5 @@
 import styles from '@/styles/corapura/components/detailComment.module.scss'
 import corapura from '@/images/corapura/companyDetail/cont5_title.svg'
-import Link from 'next/link';
 import dummy from '@/images/corapura/common/userDummy.svg'
 import { useCallback, useState } from 'react';
 import { Btn } from '@/components/corapura';
@@ -26,14 +25,12 @@ const DetailComment = ({comments}) => {
       <ul className={styles.list}>
         {comment.map((comment, index) => (
           <li className={styles.item} key={index}>
-            <Link href={`/corapura/${comment.user.account_type === 0 ? "influencer" : "company"}/${comment.user.id}`}>
-              <a className={styles.profile}>
-                <div className={styles.iconBox}>
-                  <img src={comment.user.c_profile.thumbs ? `${process.env.NEXT_PUBLIC_BACKEND_URL}/storage/${comment.user.c_profile.thumbs}` : dummy.src} alt="プロフィール画像" />
-                </div>
-                {comment.user.c_profile.nicename}
-              </a>
-            </Link>
+            <a href={`/corapura/${comment.user.account_type === 0 ? "influencer" : "company"}/${comment.user.id}`} className={styles.profile}>
+              <div className={styles.iconBox}>
+                <img src={comment.user.c_profile.thumbs ? `${process.env.NEXT_PUBLIC_BACKEND_URL}/storage/${comment.user.c_profile.thumbs}` : dummy.src} alt="プロフィール画像" />
+              </div>
+              {comment.user.c_profile.nicename}
+            </a>
             <p className={styles.txt}>{comment.content}</p>
           </li>
         ))}

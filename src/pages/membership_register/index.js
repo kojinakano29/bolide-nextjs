@@ -3,7 +3,6 @@ import PageLayoutTop from "@/components/Layouts/pageLayoutTop";
 import { useRouter } from 'next/router';
 import { FormProvider, useForm } from 'react-hook-form';
 import Container from '@/components/top/Layout/container';
-import Link from 'next/link';
 import { ConfirmMembership, InputMembership } from '@/components/top';
 import { useAuth } from '@/hooks/auth';
 import { useEffect } from 'react';
@@ -42,9 +41,7 @@ const MembershipRegister = () => {
         <Container small900>
           <h2 className="ttl2">会員登録申請フォーム</h2>
           <div className="breadcrumbBox">
-            <Link href="/">
-              <a>トップ</a>
-            </Link>
+            <a href="/">トップ</a>
             <div><img src="/top/breadcrumb.svg" alt=">" /></div>
             <p>会員登録申請フォーム</p>
           </div>

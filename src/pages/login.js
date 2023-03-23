@@ -1,7 +1,6 @@
 import styles from '@/styles/top/components/login.module.scss'
 import AuthSessionStatus from '@/components/AuthSessionStatus'
 import InputError from '@/components/InputError'
-import Link from 'next/link'
 import { useAuth } from '@/hooks/auth'
 import { useCallback, useEffect, useState } from 'react'
 import { useRouter } from 'next/router'
@@ -52,9 +51,7 @@ const Login = () => {
         <Container small900>
           <h2 className="ttl2">ログイン</h2>
           <div className="breadcrumbBox">
-            <Link href="/">
-              <a>トップ</a>
-            </Link>
+            <a href="/">トップ</a>
             <div><img src="/top/breadcrumb.svg" alt=">" /></div>
             <p>ログイン</p>
           </div>
@@ -99,7 +96,7 @@ const Login = () => {
               <Btn1 txt="ログイン" submit />
               <p className={styles.forgot}>
                 ※パスワードをお忘れの方は
-                <Link href="/forgot-password"><a>こちら</a></Link>
+                <a href="/forgot-password">こちら</a>
               </p>
             </article>
           </form>

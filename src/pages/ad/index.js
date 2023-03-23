@@ -2,7 +2,6 @@ import PageLayoutTop from '@/components/Layouts/pageLayoutTop';
 import { ConfirmAd, InputAd } from '@/components/top';
 import Container from '@/components/top/Layout/container';
 import styles from '@/styles/top/components/form.module.scss'
-import Link from 'next/link';
 import { useRouter } from 'next/router';
 import { FormProvider, useForm } from 'react-hook-form';
 
@@ -30,9 +29,7 @@ const BjcAd = () => {
         <Container small900>
           <h2 className="ttl2">広告掲載について</h2>
           <div className="breadcrumbBox">
-            <Link href="/">
-              <a>トップ</a>
-            </Link>
+            <a href="/">トップ</a>
             <div><img src="/top/breadcrumb.svg" alt=">" /></div>
             <p>広告掲載について</p>
           </div>

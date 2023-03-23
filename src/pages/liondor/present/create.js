@@ -7,7 +7,6 @@ import { useRouter } from 'next/router';
 import { useAuth } from '@/hooks/auth';
 import { PageTitle } from '@/components/liondor';
 import PageLayoutLiondor from '@/components/Layouts/PageLayoutLiondor';
-import Link from 'next/link';
 
 const CreatePresent = () => {
   const csrf = () => axios.get('/sanctum/csrf-cookie')
@@ -127,9 +126,7 @@ const CreatePresent = () => {
                     {errors.limit && <p className={`red ${styles.error}`}>必須項目を入力してください</p>}
                   </dd>
                 </dl>
-                <Link href={`/liondor/admin/present`}>
-                  <a className="btn2">一覧へ戻る</a>
-                </Link>
+                <a href={`/liondor/admin/present`} className="btn2">一覧へ戻る</a>
               </div>
             </article>
           </form>

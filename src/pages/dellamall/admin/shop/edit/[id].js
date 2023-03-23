@@ -7,7 +7,6 @@ import axios from "@/lib/axios";
 import { useRouter } from "next/router";
 import { useCallback, useEffect, useState } from "react";
 import { useForm } from "react-hook-form";
-import Link from 'next/link';
 
 export const getServerSideProps = async ({params}) => {
   const res = await fetch(`${process.env.NEXT_PUBLIC_API_DELLAMALL}/shop/edit/${params.id}`)
@@ -201,9 +200,7 @@ const EditShop = ({posts}) => {
                 className={`${styles.btn} hoverEffect`}
                 disabled={disabled}
               >編集</button>
-              <Link href="/dellamall/admin/shop">
-                <a className={`${styles.btn} ${styles.btn3} hoverEffect`}>戻る</a>
-              </Link>
+              <a href="/dellamall/admin/shop" className={`${styles.btn} ${styles.btn3} hoverEffect`}>戻る</a>
             </div>
           </form>
         : <Loader />}

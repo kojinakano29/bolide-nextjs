@@ -7,7 +7,6 @@ import axios from "@/lib/axios";
 import { useRouter } from "next/router";
 import { useCallback, useEffect, useState } from "react";
 import { useForm } from "react-hook-form";
-import Link from 'next/link';
 
 const CreateShop = () => {
   const csrf = () => axios.get('/sanctum/csrf-cookie')
@@ -189,9 +188,7 @@ const CreateShop = () => {
               <label>
                 <span className={styles.require}>必須</span>
                 <input type="checkbox" {...register("check", {required: true})} />
-                <Link href="/dellamall/terms">
-                  <a  target="_blank">利用規約</a>
-                </Link>
+                <a href="/dellamall/terms" target="_blank">利用規約</a>
                 に同意する
               </label>
               {errors.check && <p className={`orange ${styles.error} ${styles.error2}`}>※こちらの項目は入力必須です</p>}

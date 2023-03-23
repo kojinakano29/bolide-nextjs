@@ -1,10 +1,6 @@
 import styles from '@/styles/top/components/login.module.scss'
 import AuthSessionStatus from '@/components/AuthSessionStatus'
-import Button from '@/components/Button'
-import Input from '@/components/Input'
 import InputError from '@/components/InputError'
-import Label from '@/components/Label'
-import Link from 'next/link'
 import { useAuth } from '@/hooks/auth'
 import { useCallback, useEffect, useState } from 'react'
 import { useRouter } from 'next/router'
@@ -50,9 +46,7 @@ const PasswordReset = () => {
                 <Container small900>
                 <h2 className="ttl2">パスワード再設定</h2>
                     <div className="breadcrumbBox">
-                        <Link href="/">
-                        <a>トップ</a>
-                        </Link>
+                        <a href="/">トップ</a>
                         <div><img src="/top/breadcrumb.svg" alt=">" /></div>
                         <p>パスワード再設定</p>
                     </div>

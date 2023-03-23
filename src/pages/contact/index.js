@@ -3,7 +3,6 @@ import PageLayoutTop from "@/components/Layouts/pageLayoutTop";
 import { useRouter } from 'next/router';
 import { FormProvider, useForm } from 'react-hook-form';
 import Container from '@/components/top/Layout/container';
-import Link from 'next/link';
 import { ConfirmContact, InputContact } from '@/components/top';
 
 const BjcContact = () => {
@@ -31,9 +30,7 @@ const BjcContact = () => {
         <Container small900>
           <h2 className="ttl2">お問い合わせ</h2>
           <div className="breadcrumbBox">
-            <Link href="/">
-              <a>トップ</a>
-            </Link>
+            <a href="/">トップ</a>
             <div><img src="/top/breadcrumb.svg" alt=">" /></div>
             <p>お問い合わせ</p>
           </div>

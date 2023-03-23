@@ -1,5 +1,4 @@
 import styles from '@/styles/corapura/components/info.module.scss'
-import Link from 'next/link';
 import { DateFormat } from '@/components/corapura'
 
 const Info = ({data, detail = false}) => {

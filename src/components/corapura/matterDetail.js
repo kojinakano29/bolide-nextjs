@@ -9,7 +9,6 @@ import { useCallback, useEffect, useState } from 'react'
 import axios from '@/lib/axios'
 import mail from '@/images/corapura/common/mail_icon.svg'
 import question from '@/images/corapura/common/question_icon.svg'
-import Link from 'next/link'
 import { useRouter } from 'next/router'
 
 const MatterDetail = ({posts}) => {
@@ -248,9 +247,7 @@ const MatterDetail = ({posts}) => {
                         <div className={styles.imgBox}>
                           {list.c_profile.thumbs ? <img src={`${process.env.NEXT_PUBLIC_BACKEND_URL}/storage/${list.c_profile.thumbs}`} alt="プロフィール画像" /> : null}
                         </div>
-                        <Link href={`/corapura/${list.account_type === 0 ? "influencer" : "company"}/${list.id}`}>
-                          <a className={styles.name}>{list.c_profile.nicename}</a>
-                        </Link>
+                        <a href={`/corapura/${list.account_type === 0 ? "influencer" : "company"}/${list.id}`} className={styles.name}>{list.c_profile.nicename}</a>
                       </div>
                       <div className={styles.right}>
                         <select value={state[index] !== 2 ? state[index] : 1} onChange={(e) => handleChangeState(e, index)}>

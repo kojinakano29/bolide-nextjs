@@ -1,7 +1,6 @@
 import styles from '@/styles/corapura/components/login.module.scss'
 import AuthSessionStatus from '@/components/AuthSessionStatus'
 import InputError from '@/components/InputError'
-import Link from 'next/link'
 import { useAuth } from '@/hooks/auth'
 import { useCallback, useEffect, useState } from 'react'
 import { useRouter } from 'next/router'
@@ -97,7 +96,7 @@ const Login = () => {
               <Btn txt="ログイン" submit />
               <p className={styles.forgot}>
                 ※パスワードをお忘れの方は
-                <Link href="/forgot-password"><a>こちら</a></Link>
+                <a href="/forgot-password">こちら</a>
               </p>
             </article>
           </form>
@@ -108,18 +107,14 @@ const Login = () => {
         <Container small>
           <h3 className={styles.txt}>まだ登録がお済みでない方はこちら</h3>
           <div className={styles.login__newList}>
-            <Link href="/corapura/guide">
-              <a className="hoverEffect">
-                <img src={know.src} alt="アイコン" />
-                <p>コラプラについて知る</p>
-              </a>
-            </Link>
-            <Link href="/register">
-              <a className={`hoverEffect ${styles.rev}`}>
-                <img src={user.src} alt="アイコン" />
-                <p>新規会員登録</p>
-              </a>
-            </Link>
+            <a href="/corapura/guide" className="hoverEffect">
+              <img src={know.src} alt="アイコン" />
+              <p>コラプラについて知る</p>
+            </a>
+            <a href="/register" className={`hoverEffect ${styles.rev}`}>
+              <img src={user.src} alt="アイコン" />
+              <p>新規会員登録</p>
+            </a>
           </div>
         </Container>
       </section>

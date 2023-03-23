@@ -6,7 +6,6 @@ import { useAuth } from '@/hooks/auth';
 import { useCallback, useEffect, useState } from 'react';
 import { Btn01, Loader } from '@/components/dellamall';
 import axios from '@/lib/axios';
-import Link from 'next/link';
 
 const PickupList = () => {
   const csrf = () => axios.get('/sanctum/csrf-cookie')
@@ -69,9 +68,7 @@ const PickupList = () => {
               {lists.length !== 0 ?
                 lists?.map((list, index) => (
                   <div className={styles.list} key={index}>
-                    <Link href={`/dellamall/shop/${list.d_shop.id}`}>
-                      <a className={styles.link}>{list.d_shop.name}</a>
-                    </Link>
+                    <a href={`/dellamall/shop/${list.d_shop.id}`} className={styles.link}>{list.d_shop.name}</a>
                     <button
                       type="button"
                       className={styles.delete}

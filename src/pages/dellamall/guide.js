@@ -18,7 +18,6 @@ import Image from 'next/image';
 import { Btn01 } from '@/components/dellamall';
 import { faSquarePlus } from '@fortawesome/free-regular-svg-icons'
 import { faCircleCheck } from '@fortawesome/free-solid-svg-icons'
-import Link from 'next/link';
 
 const Guide = () => {
   const [current, setCurrent] = useState(1)
@@ -154,7 +153,7 @@ const Guide = () => {
                   <p className={styles.cont1__meritItem__text}>
                     グループサイトの「コラプラ」では様々な内容で案件をポストすることができます。例えば「アンケート」を掲載して回答からユーザーニーズの分析をしたり、「タイアップ」を依頼して人気インフルエンサーとのコラボ企画実施…なんてことも可能！使い方次第で販路の拡大は自由自在です。
                   </p>
-                  <p className={styles.cont1__meritItem__link}>コラプラ：<Link href="/corapura"><a target="_blank" rel="noopener noreferrer">https://bolides-japan.com/corapura</a></Link></p>
+                  <p className={styles.cont1__meritItem__link}>コラプラ：<a href="/corapura" target="_blank" rel="noopener noreferrer">https://bolides-japan.com/corapura</a></p>
                 </li>
               </ul>
               <Btn01 fa={faCircleCheck} txt="公式ショップ申請" link="/dellamall/officialRequest" />

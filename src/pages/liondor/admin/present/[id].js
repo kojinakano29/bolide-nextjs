@@ -3,7 +3,6 @@ import PageLayoutLiondor from '@/components/Layouts/PageLayoutLiondor'
 import { PageTitle } from '@/components/liondor'
 import { useAuth } from '@/hooks/auth'
 import styles from '@/styles/liondor/components/adminList.module.scss'
-import Link from 'next/link'
 import { useRouter } from 'next/router'
 import { useEffect } from 'react'
 
@@ -55,9 +54,7 @@ const AdminPresentUserList = ({posts}) => {
               }
             </ul>
           </article>
-          <Link href="/liondor/admin/present">
-            <a className="btn3 ivy">back to list</a>
-          </Link>
+          <a href="/liondor/admin/present" className="btn3 ivy">back to list</a>
         </Container>
         : null
       }

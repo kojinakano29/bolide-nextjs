@@ -9,7 +9,6 @@ import next from '@/images/corapura/common/next.svg'
 import sortIcon from '@/images/corapura/common/sort.svg'
 import dummy from '@/images/corapura/common/dummy1.svg'
 import { Loader } from '@/components/corapura';
-import Link from 'next/link';
 import { zips } from '@/lib/corapura/constants';
 import searchIcon from '@/images/corapura/common/search.svg'
 import { useRouter } from 'next/router';
@@ -375,16 +374,14 @@ const CompanyList = ({posts}) => {
           <>
             <article className={styles.list}>
               {company.map((comp, index) => (
-                <Link href={`/corapura/company/${comp?.user?.id}`} key={index}>
-                  <a>
-                    <div className={styles.imgBox}>
-                      <img src={comp.thumbs ? `${process.env.NEXT_PUBLIC_BACKEND_URL}/storage/${comp.thumbs}` : dummy.src} alt="企業情報のサムネイル画像" />
-                    </div>
-                    <p className={styles.catch}>{comp.title}</p>
-                    <p className={styles.name}>{comp.nicename}</p>
-                    <p className={styles.desc}>{comp.profile.substring(0, 35)}...</p>
-                  </a>
-                </Link>
+                <a href={`/corapura/company/${comp?.user?.id}`} key={index}>
+                  <div className={styles.imgBox}>
+                    <img src={comp.thumbs ? `${process.env.NEXT_PUBLIC_BACKEND_URL}/storage/${comp.thumbs}` : dummy.src} alt="企業情報のサムネイル画像" />
+                  </div>
+                  <p className={styles.catch}>{comp.title}</p>
+                  <p className={styles.name}>{comp.nicename}</p>
+                  <p className={styles.desc}>{comp.profile.substring(0, 35)}...</p>
+                </a>
               ))}
             </article>
             {parseInt(maxPage) > 1 ?

@@ -1,6 +1,5 @@
 import styles from '@/styles/dellamall/components/footer.module.scss'
 import Container from '@/components/dellamall/Layouts/container';
-import Link from 'next/link';
 import Image from 'next/image';
 import logo from '@/images/dellamall/parts/footer/footer__logo.svg'
 import bolides from '@/images/dellamall/parts/footer/bolides.svg'
@@ -54,30 +53,26 @@ const Footer = () => {
       </button>
       <footer className={styles.footer}>
         <Container small>
-          <Link href="/dellamall">
-            <a className={`${styles.logo} hoverEffect`}>
+          <a href="/dellamall" className={`${styles.logo} hoverEffect`}>
+            <Image
+              src={logo}
+              alt="Della Mall"
+              layout="responsive"
+              sizes="144px"
+              priority
+            />
+          </a>
+          <div className={styles.footer__listCompany}>
+            <p className={`${styles.footer__listCompany__text} en`}>Bolide's Japan Other Sites</p>
+            <a href="/" className="hoverEffect" target="_blank" rel="noopener noreferrer">
               <Image
-                src={logo}
-                alt="Della Mall"
+                src={bolides}
+                alt="Bolide's Japan"
                 layout="responsive"
-                sizes="144px"
+                sizes="240px"
                 priority
               />
             </a>
-          </Link>
-          <div className={styles.footer__listCompany}>
-            <p className={`${styles.footer__listCompany__text} en`}>Bolide's Japan Other Sites</p>
-            <Link href="/">
-              <a className="hoverEffect" target="_blank" rel="noopener noreferrer">
-                <Image
-                  src={bolides}
-                  alt="Bolide's Japan"
-                  layout="responsive"
-                  sizes="240px"
-                  priority
-                />
-              </a>
-            </Link>
             <a href="https://marche-dor.jp/" className="hoverEffect" target="_blank" rel="noopener noreferrer">
               <Image
                 src={marchedor}
@@ -108,21 +103,11 @@ const Footer = () => {
           </div>
           <div className={styles.footer__listPage}>
             <a className="hoverEffect" href="https://bolides.co.jp/company/" target="_blank" rel="noopener noreferrer">運営会社</a>
-            <Link href="/dellamall/terms">
-              <a className="hoverEffect">利用規約</a>
-            </Link>
-            <Link href="/privacy">
-              <a className="hoverEffect">プライバシーポリシー</a>
-            </Link>
-            <Link href="/tokushoho">
-              <a className="hoverEffect">特定商取引法に基づく表示</a>
-            </Link>
-            <Link href="/ad">
-              <a className="hoverEffect">広告掲載費について</a>
-            </Link>
-            <Link href="/dellamall/contact">
-              <a className="hoverEffect">お問い合わせ</a>
-            </Link>
+            <a href="/dellamall/terms" className="hoverEffect">利用規約</a>
+            <a href="/privacy" className="hoverEffect">プライバシーポリシー</a>
+            <a href="/tokushoho" className="hoverEffect">特定商取引法に基づく表示</a>
+            <a href="/ad" className="hoverEffect">広告掲載費について</a>
+            <a href="/dellamall/contact" className="hoverEffect">お問い合わせ</a>
           </div>
           <div className={styles.footer__text}>
             このサイトはreCAPTHAによって保護されており、

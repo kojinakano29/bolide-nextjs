@@ -3,7 +3,6 @@ import 'swiper/css/bundle'
 import { Swiper, SwiperSlide } from 'swiper/react'
 import { Pagination, Navigation } from 'swiper'
 import dummy from '@/images/liondor/cms/dummy.webp'
-import Link from 'next/link'
 import { BlogTxt } from '@/components/liondor'
 
 const Recommends = ({posts}) => {
@@ -28,21 +27,19 @@ const Recommends = ({posts}) => {
               {pickup.map((item, index) => (
                 <SwiperSlide key={index}>
                   <div className={styles.slideBox}>
-                    <Link href={`/liondor/post/show/${item.id}`}>
-                      <a className={styles.blogLink}>
-                        <div className={styles.imgBox}>
-                          <img src={item.l_post.thumbs ? `${process.env.NEXT_PUBLIC_BACKEND_URL}/storage/${item.l_post.thumbs}` : dummy.src} alt="RECOMMENDS記事のサムネイル画像" />
-                        </div>
-                        <BlogTxt
-                          cat={item?.l_post?.l_category?.parent_slug?.toUpperCase()}
-                          cat2={item?.l_post?.l_category?.name}
-                          ttl={item.l_post?.title}
-                          name={item?.l_post.user?.l_profile?.nicename}
-                          time={item?.l_post?.view_date}
-                          smallMb
-                        />
-                      </a>
-                    </Link>
+                    <a href={`/liondor/post/show/${item.id}`} className={styles.blogLink}>
+                      <div className={styles.imgBox}>
+                        <img src={item.l_post.thumbs ? `${process.env.NEXT_PUBLIC_BACKEND_URL}/storage/${item.l_post.thumbs}` : dummy.src} alt="RECOMMENDS記事のサムネイル画像" />
+                      </div>
+                      <BlogTxt
+                        cat={item?.l_post?.l_category?.parent_slug?.toUpperCase()}
+                        cat2={item?.l_post?.l_category?.name}
+                        ttl={item.l_post?.title}
+                        name={item?.l_post.user?.l_profile?.nicename}
+                        time={item?.l_post?.view_date}
+                        smallMb
+                      />
+                    </a>
                   </div>
                 </SwiperSlide>
               ))}

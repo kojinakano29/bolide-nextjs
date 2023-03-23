@@ -1,7 +1,6 @@
 import styles from '@/styles/top/components/login.module.scss'
 import AuthSessionStatus from '@/components/AuthSessionStatus'
 import InputError from '@/components/InputError'
-import Link from 'next/link'
 import { useAuth } from '@/hooks/auth'
 import { useState } from 'react'
 import Container from '@/components/top/Layout/container'
@@ -27,9 +26,7 @@ const ForgotPassword = () => {
                 <Container small900>
                     <h2 className="ttl2">パスワード忘れた方</h2>
                     <div className="breadcrumbBox">
-                        <Link href="/">
-                        <a>トップ</a>
-                        </Link>
+                        <a href="/">トップ</a>
                         <div><img src="/top/breadcrumb.svg" alt=">" /></div>
                         <p>パスワード忘れた方</p>
                     </div>

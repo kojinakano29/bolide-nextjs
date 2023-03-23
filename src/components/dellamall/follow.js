@@ -4,7 +4,6 @@ import styles from '@/styles/dellamall/components/follow.module.scss'
 import { useContext, useEffect, useState } from 'react';
 import { Btn01, Loader } from '@/components/dellamall';
 import { faSquarePlus } from '@fortawesome/free-solid-svg-icons'
-import Link from 'next/link';
 
 const Follow = () => {
   const csrf = () => axios.get('/sanctum/csrf-cookie')
@@ -72,16 +71,14 @@ const Follow = () => {
               <ul>
                 {lists.map((list, index) => (
                   <li key={index}>
-                    <Link href={`/dellamall/mypage/${list.followed_user_id}`}>
-                      <a onClick={() => handleClickOpen(null)}>
-                        <div className={styles.imgBox}>
-                          {list.followed.d_profile?.thumbs ?
-                            <img src={`${process.env.NEXT_PUBLIC_BACKEND_URL}/storage/${list.followed.d_profile?.thumbs}`} alt="プロフィール画像" />
-                          : null}
-                        </div>
-                        <span className={styles.name}>{list?.followed?.d_profile?.nicename ? list.followed.d_profile?.nicename : "プロフィール未設定"}</span>
-                      </a>
-                    </Link>
+                    <a href={`/dellamall/mypage/${list.followed_user_id}`} onClick={() => handleClickOpen(null)}>
+                      <div className={styles.imgBox}>
+                        {list.followed.d_profile?.thumbs ?
+                          <img src={`${process.env.NEXT_PUBLIC_BACKEND_URL}/storage/${list.followed.d_profile?.thumbs}`} alt="プロフィール画像" />
+                        : null}
+                      </div>
+                      <span className={styles.name}>{list?.followed?.d_profile?.nicename ? list.followed.d_profile?.nicename : "プロフィール未設定"}</span>
+                    </a>
                   </li>
                 ))}
               </ul>
@@ -89,16 +86,14 @@ const Follow = () => {
               <ul>
                 {lists.map((list, index) => (
                   <li key={index}>
-                    <Link href={`/dellamall/mypage/${list.following_user_id}`}>
-                      <a onClick={() => handleClickOpen(null)}>
-                        <div className={styles.imgBox}>
-                          {list.following.d_profile?.thumbs ?
-                            <img src={`${process.env.NEXT_PUBLIC_BACKEND_URL}/storage/${list.following.d_profile?.thumbs}`} alt="プロフィール画像" />
-                          : null}
-                        </div>
-                        <span className={styles.name}>{list?.following?.d_profile?.nicename ? list.following.d_profile?.nicename : "プロフィール未設定"}</span>
-                      </a>
-                    </Link>
+                    <a href={`/dellamall/mypage/${list.following_user_id}`} onClick={() => handleClickOpen(null)}>
+                      <div className={styles.imgBox}>
+                        {list.following.d_profile?.thumbs ?
+                          <img src={`${process.env.NEXT_PUBLIC_BACKEND_URL}/storage/${list.following.d_profile?.thumbs}`} alt="プロフィール画像" />
+                        : null}
+                      </div>
+                      <span className={styles.name}>{list?.following?.d_profile?.nicename ? list.following.d_profile?.nicename : "プロフィール未設定"}</span>
+                    </a>
                   </li>
                 ))}
               </ul>

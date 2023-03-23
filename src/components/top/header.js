@@ -1,6 +1,5 @@
 import { useAuth } from '@/hooks/auth';
 import styles from '@/styles/top/components/header.module.scss'
-import Link from 'next/link';
 import { useCallback, useEffect, useState } from 'react';
 import Container from './Layout/container';
 
@@ -34,47 +33,33 @@ const Header = () => {
         <Container>
           <div className={styles.headerFlex}>
             <h1 className={styles.logo}>
-              <Link href="/">
-                <a className="hoverEffect">
-                  <img src="/top/logo.svg" alt="Bolide's Japan" />
-                </a>
-              </Link>
+              <a href="/" className="hoverEffect">
+                <img src="/top/logo.svg" alt="Bolide's Japan" />
+              </a>
             </h1>
             <ul className={styles.nav}>
               <li className={`${styles.type1} pc`}>
-                <Link href="/#about">
-                  <a className="hoverEffect">Bolide's Japanとは？</a>
-                </Link>
+                <a href="/#about" className="hoverEffect">Bolide's Japanとは？</a>
               </li>
               <li className={`${styles.type1} pc`}>
-                <Link href="/#plan">
-                  <a className="hoverEffect">料金プラン</a>
-                </Link>
+                <a href="/#plan" className="hoverEffect">料金プラン</a>
               </li>
               <li className={`${styles.type1} pc`}>
-                <Link href="/#faq">
-                  <a className="hoverEffect">よくあるご質問</a>
-                </Link>
+                <a href="/#faq" className="hoverEffect">よくあるご質問</a>
               </li>
               <li className={styles.type2}>
-                <Link href="/contact">
-                  <a className={`${styles.btn} hoverEffect`}>
-                    <img src="/top/mail-icon.svg" alt="メールのアイコン" />
-                    <span>お問い合わせ</span>
-                  </a>
-                </Link>
-                <Link href={user ? "/mypage" : "/login"}>
-                  <a className={`${styles.btn} ${styles.color1} hoverEffect`}>
-                    <img src={`/top/${user ? "mypage-icon.svg" : "login-icon.svg"}`} alt="ログインアイコン" />
-                    <span>{user ? "マイページ" : "ログイン"}</span>
-                  </a>
-                </Link>
-                <Link href="/register">
-                  <a className={`${styles.btn} ${styles.color2} hoverEffect`}>
-                    <img src="/top/registar-icon.svg" alt="会員登録のアイコン" />
-                    <span>会員登録</span>
-                  </a>
-                </Link>
+                <a href="/contact" className={`${styles.btn} hoverEffect`}>
+                  <img src="/top/mail-icon.svg" alt="メールのアイコン" />
+                  <span>お問い合わせ</span>
+                </a>
+                <a href={user ? "/mypage" : "/login"} className={`${styles.btn} ${styles.color1} hoverEffect`}>
+                  <img src={`/top/${user ? "mypage-icon.svg" : "login-icon.svg"}`} alt="ログインアイコン" />
+                  <span>{user ? "マイページ" : "ログイン"}</span>
+                </a>
+                <a href="/register" className={`${styles.btn} ${styles.color2} hoverEffect`}>
+                  <img src="/top/registar-icon.svg" alt="会員登録のアイコン" />
+                  <span>会員登録</span>
+                </a>
               </li>
               <li className={`${styles.type3} sp`}>
                 <button
@@ -91,19 +76,13 @@ const Header = () => {
           </div>
           <ul className={styles.humNav}>
             <li>
-              <Link href="/#about">
-                <a>Bolide's Japanとは？</a>
-              </Link>
+              <a href="/#about">Bolide's Japanとは？</a>
             </li>
             <li>
-              <Link href="/#plan">
-                <a>料金プラン</a>
-              </Link>
+              <a href="/#plan">料金プラン</a>
             </li>
             <li>
-              <Link href="/#faq">
-                <a>よくあるご質問</a>
-              </Link>
+              <a href="/#faq">よくあるご質問</a>
             </li>
           </ul>
         </Container>

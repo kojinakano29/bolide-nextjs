@@ -4,7 +4,6 @@ import Container from '@/components/corapura/Layout/container';
 import { useForm } from 'react-hook-form';
 import { useCallback, useEffect, useState } from 'react';
 import axios from '@/lib/axios';
-import Link from 'next/link';
 import dummy from '@/images/corapura/common/dummy5.svg'
 import prev from '@/images/corapura/common/prev.svg'
 import next from '@/images/corapura/common/next.svg'
@@ -118,22 +117,20 @@ const OnlineSalonList = ({posts}) => {
           <>
             <article className={styles.salonList}>
               {salons.map((salon, index) => (
-                <Link href={`/corapura/salon/${salon.id}`} key={index}>
-                  <a>
-                    <div className={styles.imgBox}>
-                      <img src={salon.thumbs ? `${process.env.NEXT_PUBLIC_BACKEND_URL}/storage/${salon.thumbs}` : dummy.src} alt="オンラインサロンのサムネイル画像" />
-                    </div>
-                    <p className={styles.ttl}>{salon.title}</p>
-                    <p className={styles.desc}>
-                      {salon.content.replace(/<[^>]+>/g, '').replace(/&nbsp;/g, '').substring(0, 45)}
-                    </p>
-                    <div className={styles.tags}>
-                      {salon.c_tags.map((tag, index) => (
-                        <p className={styles.tag} key={index}>{tag.name}</p>
-                      ))}
-                    </div>
-                  </a>
-                </Link>
+                <a href={`/corapura/salon/${salon.id}`} key={index}>
+                  <div className={styles.imgBox}>
+                    <img src={salon.thumbs ? `${process.env.NEXT_PUBLIC_BACKEND_URL}/storage/${salon.thumbs}` : dummy.src} alt="オンラインサロンのサムネイル画像" />
+                  </div>
+                  <p className={styles.ttl}>{salon.title}</p>
+                  <p className={styles.desc}>
+                    {salon.content.replace(/<[^>]+>/g, '').replace(/&nbsp;/g, '').substring(0, 45)}
+                  </p>
+                  <div className={styles.tags}>
+                    {salon.c_tags.map((tag, index) => (
+                      <p className={styles.tag} key={index}>{tag.name}</p>
+                    ))}
+                  </div>
+                </a>
               ))}
             </article>
             {parseInt(maxPage) > 1 ?

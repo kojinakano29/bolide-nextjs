@@ -4,7 +4,6 @@ import { PageTitle } from '@/components/liondor'
 import { useAuth } from '@/hooks/auth'
 import axios from '@/lib/axios'
 import styles from '@/styles/liondor/components/adminList.module.scss'
-import Link from 'next/link'
 import { useRouter } from 'next/router'
 import { useEffect, useState } from 'react'
 
@@ -69,21 +68,15 @@ const AdminFaq = ({posts}) => {
       <PageTitle title="よくあるご質問一覧" />
       {user?.account_type > 2 ?
         <Container small900>
-          <Link href="/liondor/faq/create">
-            <a className={`btn2 ${styles.create}`}>新規作成</a>
-          </Link>
+          <a href="/liondor/faq/create" className={`btn2 ${styles.create}`}>新規作成</a>
           <article className={styles.article}>
             <h3 className={styles.faqTtl}>企業様向け</h3>
             <ul>
               {faqCompany?.map((item, index) => (
                 <li key={index}>
-                  <Link href={`/liondor/faq/edit/${item.id}`}>
-                    <a className={styles.ttl}>{item.question}</a>
-                  </Link>
+                  <a href={`/liondor/faq/edit/${item.id}`} className={styles.ttl}>{item.question}</a>
                   <div className={styles.btnBox}>
-                    <Link href={`/liondor/faq/edit/${item.id}`}>
-                      <a className={styles.edit}>編集</a>
-                    </Link>
+                    <a href={`/liondor/faq/edit/${item.id}`} className={styles.edit}>編集</a>
                     <button className={styles.delete} onClick={() => onClickDelete(item)} disabled={disabled}>削除</button>
                   </div>
                 </li>
@@ -95,13 +88,9 @@ const AdminFaq = ({posts}) => {
             <ul>
               {faqUser?.map((item, index) => (
                 <li key={index}>
-                  <Link href={`/liondor/faq/edit/${item.id}`}>
-                    <a className={styles.ttl}>{item.question}</a>
-                  </Link>
+                  <a href={`/liondor/faq/edit/${item.id}`} className={styles.ttl}>{item.question}</a>
                   <div className={styles.btnBox}>
-                    <Link href={`/liondor/faq/edit/${item.id}`}>
-                      <a className={styles.edit}>編集</a>
-                    </Link>
+                    <a href={`/liondor/faq/edit/${item.id}`} className={styles.edit}>編集</a>
                     <button className={styles.delete} onClick={() => onClickDelete(item)} disabled={disabled}>削除</button>
                   </div>
                 </li>

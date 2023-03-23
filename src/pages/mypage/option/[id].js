@@ -1,7 +1,6 @@
 import styles from '@/styles/top/components/option.module.scss'
 import PageLayoutTop from "@/components/Layouts/pageLayoutTop";
 import Container from "@/components/top/Layout/container";
-import Link from "next/link";
 import { Btn1, ConfirmOption, InputOption } from '@/components/top';
 import { useRouter } from 'next/router';
 import { useAuth } from '@/hooks/auth';
@@ -104,13 +103,9 @@ const MypageOption = ({posts}) => {
         <Container small900>
           <h2 className="ttl2">オプション</h2>
           <div className="breadcrumbBox">
-            <Link href="/">
-              <a>トップ</a>
-            </Link>
+            <a href="/">トップ</a>
             <div><img src="/top/breadcrumb.svg" alt=">" /></div>
-            <Link href="/mypage">
-              <a>マイページ</a>
-            </Link>
+            <a href="/mypage">マイページ</a>
             <div><img src="/top/breadcrumb.svg" alt=">" /></div>
             <p>オプション</p>
           </div>

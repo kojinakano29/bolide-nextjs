@@ -1,7 +1,6 @@
 import styles from '@/styles/top/components/sign_out.module.scss'
 import PageLayoutTop from "@/components/Layouts/pageLayoutTop";
 import Container from "@/components/top/Layout/container";
-import Link from "next/link";
 import { Btn1 } from '@/components/top';
 import { useCallback, useEffect, useState } from 'react';
 import axios from '@/lib/axios';
@@ -69,13 +68,9 @@ const SignOut = () => {
       <Container small900>
         <h2 className="ttl2">退会申請</h2>
         <div className="breadcrumbBox">
-          <Link href="/">
-            <a>トップ</a>
-          </Link>
+          <a href="/">トップ</a>
           <div><img src="/top/breadcrumb.svg" alt=">" /></div>
-          <Link href="/mypage">
-            <a>マイページ</a>
-          </Link>
+          <a href="/mypage">マイページ</a>
           <div><img src="/top/breadcrumb.svg" alt=">" /></div>
           <p>退会申請</p>
         </div>
@@ -112,9 +107,7 @@ const SignOut = () => {
             <div className={`btnCover ${c_check || o_check ? styles.hold : null}`} onClick={handleClickSignOut}>
               <Btn1 txt="はい、退会します" />
             </div>
-            <Link href="/mypage">
-              <a className={`btn1 ${styles.btn}`}>いいえ、退会しません</a>
-            </Link>
+            <a href="/mypage" className={`btn1 ${styles.btn}`}>いいえ、退会しません</a>
           </div>
         </div>
       </Container>

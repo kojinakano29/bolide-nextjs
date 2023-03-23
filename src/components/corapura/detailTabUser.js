@@ -4,7 +4,6 @@ import Container from './Layout/container';
 import { Loader, MatterCard, Btn } from '@/components/corapura';
 import axios from '@/lib/axios';
 import dummy from '@/images/corapura/common/dummy1.svg'
-import Link from 'next/link';
 import { useAuth } from '@/hooks/auth';
 
 const DetailTabUser = ({cards, likes, matters, userInfo}) => {
@@ -134,15 +133,13 @@ const DetailTabUser = ({cards, likes, matters, userInfo}) => {
                     {filterMatching.length !== 0 ?
                       <div className={styles.column4}>
                         {filterMatching.map((match, index) => (
-                          <Link href={`/corapura/matter/${match.id}`} key={index}>
-                            <a className={styles.matteredBox}>
-                              <div className={styles.imgBox}>
-                                <img src={match.thumbs ? `${process.env.NEXT_PUBLIC_BACKEND_URL}/storage/${match.thumbs}` : dummy.src} alt="案件の画像" />
-                              </div>
-                              <p className={styles.ttl}>{match.title}</p>
-                              <p className={styles.desc}>{match.content.replace(/<[^>]+>/g, '').replace(/&nbsp;/g, '').substring(0, 38)}...</p>
-                            </a>
-                          </Link>
+                          <a href={`/corapura/matter/${match.id}`} key={index} className={styles.matteredBox}>
+                            <div className={styles.imgBox}>
+                              <img src={match.thumbs ? `${process.env.NEXT_PUBLIC_BACKEND_URL}/storage/${match.thumbs}` : dummy.src} alt="案件の画像" />
+                            </div>
+                            <p className={styles.ttl}>{match.title}</p>
+                            <p className={styles.desc}>{match.content.replace(/<[^>]+>/g, '').replace(/&nbsp;/g, '').substring(0, 38)}...</p>
+                          </a>
                         ))}
                       </div>
                       :
