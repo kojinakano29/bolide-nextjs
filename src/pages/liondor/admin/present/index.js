@@ -4,7 +4,6 @@ import { PageTitle } from '@/components/liondor'
 import { useAuth } from '@/hooks/auth'
 import axios from '@/lib/axios'
 import styles from '@/styles/liondor/components/adminList.module.scss'
-import Link from 'next/link'
 import { useRouter } from 'next/router'
 import { useEffect, useState } from 'react'
 
@@ -85,23 +84,15 @@ const AdminPresent = ({posts}) => {
       <PageTitle title="プレゼント一覧" />
       {user?.account_type > 2 ?
         <Container small900>
-          <Link href="/liondor/present/create">
-            <a className={`btn2 ${styles.create}`}>新規作成</a>
-          </Link>
+          <a href="/liondor/present/create" className={`btn2 ${styles.create}`}>新規作成</a>
           <article className={styles.article}>
             <ul>
               {presents?.map((item, index) => (
                 <li key={index}>
-                  <Link href={`/liondor/present/${item.id}`}>
-                    <a className={styles.ttl}>{item.title}</a>
-                  </Link>
+                  <a href={`/liondor/present/${item.id}`} className={styles.ttl}>{item.title}</a>
                   <div className={styles.btnBox}>
-                    <Link href={`/liondor/admin/present/${item.id}`}>
-                      <a className={styles.edit}>プレゼント応募者</a>
-                    </Link>
-                    <Link href={`/liondor/present/edit/${item.id}`}>
-                      <a className={styles.edit}>編集</a>
-                    </Link>
+                    <a href={`/liondor/admin/present/${item.id}`} className={styles.edit}>プレゼント応募者</a>
+                    <a href={`/liondor/present/edit/${item.id}`} className={styles.edit}>編集</a>
                     <button className={styles.delete} onClick={() => onClickDelete(item)} disabled={disabled}>削除</button>
                   </div>
                 </li>

@@ -1,7 +1,6 @@
 import styles from '@/styles/dellamall/components/login.module.scss'
 import AuthSessionStatus from '@/components/AuthSessionStatus'
 import InputError from '@/components/InputError'
-import Link from 'next/link'
 import { useAuth } from '@/hooks/auth'
 import { useCallback, useEffect, useState } from 'react'
 import { useRouter } from 'next/router'
@@ -92,7 +91,7 @@ const Login = () => {
               <Btn01 fa={faArrowRightToBracket} txt="ログイン" />
               <p className={styles.forgot}>
                 ※パスワードをお忘れの方は
-                <Link href="/forgot-password"><a>こちら</a></Link>
+                <a href="/forgot-password">こちら</a>
               </p>
             </article>
           </form>
@@ -106,11 +105,9 @@ const Login = () => {
             DellaMall以外にも、Bolide's Japanには様々な機能がございます。
             <br className="pc" />詳しいコンテンツ内容は下記よりご確認ください！
           </p>
-          <Link href="/">
-            <a className={`${styles.bjcLink} hoverEffect`}>
-              <img src="/dellamall/bjc_banner.svg" alt="Bolide's Japanのバナー" />
-            </a>
-          </Link>
+          <a href="/" className={`${styles.bjcLink} hoverEffect`}>
+            <img src="/dellamall/bjc_banner.svg" alt="Bolide's Japanのバナー" />
+          </a>
         </Container>
       </section>
 

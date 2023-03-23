@@ -2,7 +2,6 @@ import styles from '@/styles/liondor/components/form.module.scss'
 import Container from "@/components/liondor/Layouts/container";
 import PageLayoutLiondor from "@/components/Layouts/PageLayoutLiondor";
 import { PageTitle } from '@/components/liondor';
-import Link from 'next/link';
 import { useEffect } from 'react';
 import { useRouter } from 'next/router';
 
@@ -30,9 +29,7 @@ const AdThanks = () => {
             <br/>お問い合わせ内容を確認させていただき、後ほど担当者よりご回答をさせていただきます。
             <br/>恐れ入りますが、今しばらくお待ちいただけますよう、よろしくお願い申し上げます。
           </p>
-          <Link href="/liondor/">
-            <a className="btn3 ivy">back to top</a>
-          </Link>
+          <a href="/liondor/" className="btn3 ivy">back to top</a>
         </div>
       </Container>
     </section>

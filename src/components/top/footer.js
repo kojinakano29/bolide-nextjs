@@ -1,5 +1,4 @@
 import styles from '@/styles/top/components/footer.module.scss'
-import Link from 'next/link';
 import { useCallback, useEffect, useState } from 'react';
 import Container from './Layout/container';
 import { animateScroll as scroll } from "react-scroll";
@@ -30,50 +29,36 @@ const Footer = () => {
     <>
       <footer className={styles.footer}>
         <Container>
-          <Link href="/">
-            <a className={`${styles.logo} hoverEffect`}>
-              <img src="/top/logo.svg" alt="Bolide's Japan" />
-            </a>
-          </Link>
+          <a href="/" className={`${styles.logo} hoverEffect`}>
+            <img src="/top/logo.svg" alt="Bolide's Japan" />
+          </a>
           <ul className={styles.listFlex}>
             <li className="hoverEffect">
               <a href="https://bolides.co.jp/company/" target="_blank" rel="noopener noreferrer">運営会社</a>
             </li>
             <li className="pc">|</li>
             <li className="hoverEffect">
-              <Link href="/#faq">
-                <a>よくある質問</a>
-              </Link>
+              <a href="/#faq">よくある質問</a>
             </li>
             <li className="pc">|</li>
             <li className="hoverEffect">
-              <Link href="/terms">
-                <a>利用規約</a>
-              </Link>
+              <a href="/terms">利用規約</a>
             </li>
             <li className="pc">|</li>
             <li className="hoverEffect">
-              <Link href="/privacy">
-                <a>プライバシーポリシー</a>
-              </Link>
+              <a href="/privacy">プライバシーポリシー</a>
             </li>
             <li className="pc">|</li>
             <li className="hoverEffect">
-              <Link href="/ad">
-                <a>広告掲載費について</a>
-              </Link>
+              <a href="/ad">広告掲載費について</a>
             </li>
             <li className="pc">|</li>
             <li className="hoverEffect">
-              <Link href="/tokushoho">
-                <a>特定商取引法に基づく表示</a>
-              </Link>
+              <a href="/tokushoho">特定商取引法に基づく表示</a>
             </li>
             <li className="pc">|</li>
             <li className="hoverEffect">
-              <Link href="/contact">
-                <a>お問い合わせ</a>
-              </Link>
+              <a href="/contact">お問い合わせ</a>
             </li>
           </ul>
           <p className={`${styles.copy} en`}>© 2023 Bolide's Japan inc.</p>

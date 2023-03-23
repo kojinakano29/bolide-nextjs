@@ -1,5 +1,4 @@
 import styles from '@/styles/top/components/form.module.scss'
-import Link from 'next/link'
 import { useCallback, useEffect, useState } from 'react'
 import PageLayoutTop from '@/components/Layouts/pageLayoutTop'
 import Container from '@/components/top/Layout/container'
@@ -80,9 +79,7 @@ const Register = () => {
                 <Container small900>
                     <h2 className="ttl2">新規会員登録</h2>
                     <div className="breadcrumbBox">
-                        <Link href="/">
-                        <a>トップ</a>
-                        </Link>
+                        <a href="/">トップ</a>
                         <div><img src="/top/breadcrumb.svg" alt=">" /></div>
                         <p>新規会員登録</p>
                     </div>
@@ -250,9 +247,7 @@ const Register = () => {
                                 <p className={styles.require}>必須</p>
                                 <p className={styles.txt}>
                                 必ず「
-                                <Link href="/privacy">
-                                    <a>個人情報の取扱いについて</a>
-                                </Link>
+                                <a href="/privacy" target="_blank">個人情報の取扱いについて</a>
                                 」をご確認いただき、
                                 <br/>ご同意のうえ、送信してください。
                                 </p>
@@ -263,9 +258,7 @@ const Register = () => {
                                 {errors.privacy && <p className={`red ${styles.error}`}>この項目は必須です</p>}
                             </div>
                             <div className={styles.btnFlex}>
-                                <Link href="/login">
-                                    <a className={styles.registered}>すでに登録済みの方はこちら</a>
-                                </Link>
+                                <a href="/login" className={styles.registered}>すでに登録済みの方はこちら</a>
                                 <Btn1 txt="登録する" submit disabled={disabled} />
                             </div>
                         </article>

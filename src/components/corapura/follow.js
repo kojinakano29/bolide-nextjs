@@ -1,7 +1,6 @@
 import axios from '@/lib/axios';
 import styles from '@/styles/corapura/components/follow.module.scss'
 import { useEffect, useState } from 'react';
-import Link from 'next/link';
 import { Loader } from '@/components/corapura';
 
 const Follow = ({handleClickOpen, userInfo, followType}) => {
@@ -69,16 +68,14 @@ const Follow = ({handleClickOpen, userInfo, followType}) => {
               <ul>
                 {lists.map((list, index) => (
                   <li key={index}>
-                    <Link href={`/corapura/${list.followed.account_type === 1 ? "company" : "influencer"}/${list.followed_user_id}`}>
-                      <a onClick={() => handleClickOpen(null)}>
-                        <div className={styles.imgBox}>
-                          {list.followed.c_profile?.thumbs ?
-                            <img src={`${process.env.NEXT_PUBLIC_BACKEND_URL}/storage/${list.followed.c_profile?.thumbs}`} alt="プロフィール画像" />
-                          : null}
-                        </div>
-                        <span className={styles.name}>{list?.followed?.c_profile?.nicename ? list.followed.c_profile?.nicename : "プロフィール未設定"}</span>
-                      </a>
-                    </Link>
+                    <a href={`/corapura/${list.followed.account_type === 1 ? "company" : "influencer"}/${list.followed_user_id}`} onClick={() => handleClickOpen(null)}>
+                      <div className={styles.imgBox}>
+                        {list.followed.c_profile?.thumbs ?
+                          <img src={`${process.env.NEXT_PUBLIC_BACKEND_URL}/storage/${list.followed.c_profile?.thumbs}`} alt="プロフィール画像" />
+                        : null}
+                      </div>
+                      <span className={styles.name}>{list?.followed?.c_profile?.nicename ? list.followed.c_profile?.nicename : "プロフィール未設定"}</span>
+                    </a>
                   </li>
                 ))}
               </ul>
@@ -86,16 +83,14 @@ const Follow = ({handleClickOpen, userInfo, followType}) => {
               <ul>
                 {lists.map((list, index) => (
                   <li key={index}>
-                    <Link href={`/corapura/${list.following.account_type === 1 ? "company" : "influencer"}/${list.following_user_id}`}>
-                      <a onClick={() => handleClickOpen(null)}>
-                        <div className={styles.imgBox}>
-                          {list.following.c_profile?.thumbs ?
-                            <img src={`${process.env.NEXT_PUBLIC_BACKEND_URL}/storage/${list.following.c_profile?.thumbs}`} alt="プロフィール画像" />
-                          : null}
-                        </div>
-                        <span className={styles.name}>{list?.following?.c_profile?.nicename ? list.following.c_profile?.nicename : "プロフィール未設定"}</span>
-                      </a>
-                    </Link>
+                    <a href={`/corapura/${list.following.account_type === 1 ? "company" : "influencer"}/${list.following_user_id}`} onClick={() => handleClickOpen(null)}>
+                      <div className={styles.imgBox}>
+                        {list.following.c_profile?.thumbs ?
+                          <img src={`${process.env.NEXT_PUBLIC_BACKEND_URL}/storage/${list.following.c_profile?.thumbs}`} alt="プロフィール画像" />
+                        : null}
+                      </div>
+                      <span className={styles.name}>{list?.following?.c_profile?.nicename ? list.following.c_profile?.nicename : "プロフィール未設定"}</span>
+                    </a>
                   </li>
                 ))}
               </ul>

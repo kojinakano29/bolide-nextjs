@@ -7,7 +7,6 @@ import liondor from '@/images/corapura/footer/liondor.svg'
 import Dellamall from '@/images/corapura/footer/Dellamall.svg'
 import logo from '@/images/corapura/footer/footer-logo.svg'
 import topBack from '@/images/corapura/footer/top.svg'
-import Link from 'next/link';
 import { useCallback } from 'react';
 import { animateScroll as scroll } from "react-scroll";
 
@@ -64,55 +63,39 @@ const Footer = () => {
       <div className={styles.footer2}>
         <Container small>
           <div className={styles.footer__cont1}>
-            <Link href="/corapura">
-              <a className={`${styles.footer__logo} hoverEffect`}>
-                <Image
-                  src={logo}
-                  alt="CORAPURA"
-                  layout="responsive"
-                  sizes="316px"
-                  priority
-                />
-              </a>
-            </Link>
+            <a href="/corapura" className={`${styles.footer__logo} hoverEffect`}>
+              <Image
+                src={logo}
+                alt="CORAPURA"
+                layout="responsive"
+                sizes="316px"
+                priority
+              />
+            </a>
             <ul className={styles.footer__cont1List}>
               <li className={`${styles.footer__cont1Item} hoverEffect`}>
-                <Link href="/corapura/company/matter">
-                  <a>企業案件</a>
-                </Link>
+                <a href="/corapura/company/matter">企業案件</a>
               </li>
               <li className={`${styles.footer__cont1Item} hoverEffect`}>
-                <Link href="/corapura/influencer/matter">
-                  <a>インフルエンサー案件</a>
-                </Link>
+                <a href="/corapura/influencer/matter">インフルエンサー案件</a>
               </li>
               <li className={`${styles.footer__cont1Item} hoverEffect`}>
-                <Link href="/corapura/company">
-                  <a>企業一覧</a>
-                </Link>
+                <a href="/corapura/company">企業一覧</a>
               </li>
               <li className={`${styles.footer__cont1Item} hoverEffect`}>
-                <Link href="/corapura/influencer">
-                  <a>インフルエンサー</a>
-                </Link>
+                <a href="/corapura/influencer">インフルエンサー</a>
               </li>
               <li className={`${styles.footer__cont1Item} hoverEffect`}>
-                <Link href="/corapura/salon">
-                  <a>オンラインサロン</a>
-                </Link>
+                <a href="/corapura/salon">オンラインサロン</a>
               </li>
               {/* <li className={`${styles.footer__cont1Item} hoverEffect`}>
                 <a href="https://bolides.co.jp/company/" target="_blank" rel="noopener noreferrer">Bolide's Japanとは</a>
               </li> */}
               <li className={`${styles.footer__cont1Item} hoverEffect`}>
-                <Link href="/corapura/press_release">
-                  <a>プレスリリース</a>
-                </Link>
+                <a href="/corapura/press_release">プレスリリース</a>
               </li>
               <li className={`${styles.footer__cont1Item} hoverEffect`}>
-                <Link href="/corapura/guide">
-                  <a>CORAPURAとは</a>
-                </Link>
+                <a href="/corapura/guide">CORAPURAとは</a>
               </li>
             </ul>
           </div>

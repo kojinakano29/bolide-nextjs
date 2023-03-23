@@ -1,5 +1,4 @@
 import styles from '@/styles/liondor/components/header.module.scss'
-import Link from 'next/link';
 import hLogo from '@/images/liondor/common/h-logo.svg'
 import Image from 'next/image';
 import { Hum, SearchIcon, LoginBtn, PageNavi } from '@/components/liondor'
@@ -87,17 +86,15 @@ const Header = () => {
     >
       <div className={styles.topArea}>
         <h1>
-          <Link href="/liondor">
-            <a className={styles.logo}>
-              <Image
-                src={hLogo}
-                alt="LIONDOR"
-                layout="responsive"
-                sizes="(min-width: 1340px) 300px, 100vw"
-                priority
-              />
-            </a>
-          </Link>
+          <a href="/liondor" className={styles.logo}>
+            <Image
+              src={hLogo}
+              alt="LIONDOR"
+              layout="responsive"
+              sizes="(min-width: 1340px) 300px, 100vw"
+              priority
+            />
+          </a>
         </h1>
         <div className={styles.leftAbs}>
           <Hum humOpen={humOpen} clickHumOpen={clickHumOpen} clickHumClose={clickHumClose} />

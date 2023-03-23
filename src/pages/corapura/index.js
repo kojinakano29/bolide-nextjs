@@ -7,7 +7,6 @@ import { Btn, Btn2, CanDo, CardType1, CardType2, CompanyCard, Coupon, Info, Name
 import Container from '@/components/corapura/Layout/container';
 import { SwiperSlide } from 'swiper/react';
 import dummy1 from '@/images/corapura/common/dummy1.svg'
-import Link from 'next/link';
 
 export const getServerSideProps = async () => {
   const res = await fetch(`${process.env.NEXT_PUBLIC_API_CORAPURA}`)
@@ -144,29 +143,25 @@ const Corapura = ({posts}) => {
             <div className={styles.salonBox}>
               <div className={styles.left}>
                 {salonLeft.map((salon, index) => (
-                  <Link href={`/corapura/salon/${salon.id}`} key={index}>
-                    <a className={styles.imgBox}>
-                      <img src={salon.thumbs ? `${process.env.NEXT_PUBLIC_BACKEND_URL}/storage/${salon.thumbs}` : dummy1.src} alt="オンラインサロンのサムネイル画像" />
-                      <div className={styles.contBox}>
-                        <p className={styles.salonName}>{salon.title}</p>
-                        <p className={styles.salonDesc}>
-                          {salon.content.replace(/<[^>]+>/g, '').replace(/&nbsp;/g, '').substring(0, 60)}
-                        </p>
-                      </div>
-                    </a>
-                  </Link>
+                  <a href={`/corapura/salon/${salon.id}`} key={index} className={styles.imgBox}>
+                    <img src={salon.thumbs ? `${process.env.NEXT_PUBLIC_BACKEND_URL}/storage/${salon.thumbs}` : dummy1.src} alt="オンラインサロンのサムネイル画像" />
+                    <div className={styles.contBox}>
+                      <p className={styles.salonName}>{salon.title}</p>
+                      <p className={styles.salonDesc}>
+                        {salon.content.replace(/<[^>]+>/g, '').replace(/&nbsp;/g, '').substring(0, 60)}
+                      </p>
+                    </div>
+                  </a>
                 ))}
               </div>
               <div className={styles.right}>
                 {salonRight.map((salon, index) => (
-                  <Link href={`/corapura/salon/${salon.id}`} key={index}>
-                    <a className={styles.imgBox}>
-                      <img src={salon.thumbs ? `${process.env.NEXT_PUBLIC_BACKEND_URL}/storage/${salon.thumbs}` : dummy1.src} alt="オンラインサロンのサムネイル画像" />
-                      <div className={styles.contBox}>
-                        <p className={styles.salonName}>{salon.title}</p>
-                      </div>
-                    </a>
-                  </Link>
+                  <a href={`/corapura/salon/${salon.id}`} key={index} className={styles.imgBox}>
+                    <img src={salon.thumbs ? `${process.env.NEXT_PUBLIC_BACKEND_URL}/storage/${salon.thumbs}` : dummy1.src} alt="オンラインサロンのサムネイル画像" />
+                    <div className={styles.contBox}>
+                      <p className={styles.salonName}>{salon.title}</p>
+                    </div>
+                  </a>
                 ))}
               </div>
             </div>

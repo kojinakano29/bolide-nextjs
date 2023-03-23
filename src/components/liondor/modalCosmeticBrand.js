@@ -1,7 +1,6 @@
 import styles from '@/styles/liondor/components/modalBrand.module.scss'
 import { cosmetic } from '@/lib/liondor/constants'
 import { useFormContext } from 'react-hook-form'
-import Link from 'next/link'
 import { useCallback } from 'react'
 
 const ModalCosmeticBrand = ({show, close, cosmetics, setCosmetics}) => {
@@ -30,9 +29,7 @@ const ModalCosmeticBrand = ({show, close, cosmetics, setCosmetics}) => {
               <ul>
                 {cosmetic.map((item, index) => (
                   <li key={index}>
-                    <Link href={`#cosmetic${item.initial}`}>
-                      <a>{item.initial}</a>
-                    </Link>
+                    <a href={`#cosmetic${item.initial}`}>{item.initial}</a>
                     <div className={styles.hr}></div>
                   </li>
                 ))}

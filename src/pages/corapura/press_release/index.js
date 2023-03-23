@@ -8,7 +8,6 @@ import prev from '@/images/corapura/common/prev.svg'
 import next from '@/images/corapura/common/next.svg'
 import view from '@/images/corapura/parts/material_view.svg'
 import sortIcon from '@/images/corapura/common/sort.svg'
-import Link from 'next/link';
 import axios from '@/lib/axios';
 import { Loader } from '@/components/corapura';
 import searchIcon from '@/images/corapura/common/search.svg'
@@ -216,29 +215,27 @@ const PressReleaseList = ({posts}) => {
           <>
             <article className={styles.prList}>
               {releases.map((release, index) => (
-                <Link href={`/corapura/press_release/${release.id}`} key={index}>
-                  <a>
-                    <div className={styles.imgBox}>
-                      <img src={release.thumbs ? `${process.env.NEXT_PUBLIC_BACKEND_URL}/storage/${release.thumbs}` : dummy.src} alt="プレスリリースのサムネイル画像" />
+                <a href={`/corapura/press_release/${release.id}`} key={index}>
+                  <div className={styles.imgBox}>
+                    <img src={release.thumbs ? `${process.env.NEXT_PUBLIC_BACKEND_URL}/storage/${release.thumbs}` : dummy.src} alt="プレスリリースのサムネイル画像" />
+                  </div>
+                  <p className={styles.ttl}>{release.title}</p>
+                  <div className={`${styles.view} en`}>
+                    <img src={view.src} alt="アイコン" />
+                    {release.c_pr_counts_count}view
+                  </div>
+                  <div className={styles.company}>
+                    <div className={styles.logoBox}>
+                      {release.user.c_profile.thumbs ? <img src={`${process.env.NEXT_PUBLIC_BACKEND_URL}/storage/${release.user.c_profile.thumbs}`} alt="プロフィール画像" /> : null}
                     </div>
-                    <p className={styles.ttl}>{release.title}</p>
-                    <div className={`${styles.view} en`}>
-                      <img src={view.src} alt="アイコン" />
-                      {release.c_pr_counts_count}view
-                    </div>
-                    <div className={styles.company}>
-                      <div className={styles.logoBox}>
-                        {release.user.c_profile.thumbs ? <img src={`${process.env.NEXT_PUBLIC_BACKEND_URL}/storage/${release.user.c_profile.thumbs}`} alt="プロフィール画像" /> : null}
-                      </div>
-                      {release.user.c_profile.nicename}
-                    </div>
-                    <div className={styles.tags}>
-                      {release.c_tags.map((tag, index) => (
-                        <p className={styles.tag} key={index}>{tag.name}</p>
-                      ))}
-                    </div>
-                  </a>
-                </Link>
+                    {release.user.c_profile.nicename}
+                  </div>
+                  <div className={styles.tags}>
+                    {release.c_tags.map((tag, index) => (
+                      <p className={styles.tag} key={index}>{tag.name}</p>
+                    ))}
+                  </div>
+                </a>
               ))}
             </article>
             {parseInt(maxPage) > 1 ?

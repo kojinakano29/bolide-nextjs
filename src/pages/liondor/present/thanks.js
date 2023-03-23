@@ -2,7 +2,6 @@ import styles from '@/styles/liondor/components/form.module.scss'
 import Container from "@/components/liondor/Layouts/container";
 import PageLayoutLiondor from "@/components/Layouts/PageLayoutLiondor";
 import { PageTitle } from '@/components/liondor';
-import Link from 'next/link';
 import { useEffect } from 'react';
 import { useRouter } from 'next/router';
 
@@ -25,9 +24,7 @@ const PresentThanks = () => {
       <Container small900>
         <div className={styles.thanksBox}>
           <p className={styles.txt}>ご応募いただきありがとうございました。</p>
-          <Link href="/liondor/present">
-            <a className="btn3 ivy">back to top</a>
-          </Link>
+          <a href="/liondor/present" className="btn3 ivy">back to top</a>
         </div>
       </Container>
     </section>

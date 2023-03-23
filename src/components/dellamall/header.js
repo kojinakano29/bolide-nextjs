@@ -69,17 +69,15 @@ const Header = () => {
               {router.route === "/dellamall" ?
                 null
                 :
-                <Link href="/dellamall">
-                  <a className={`${styles.logo} hoverEffect pc`}>
-                    <Image
-                      src={logo}
-                      alt="della mall"
-                      layout="responsive"
-                      sizes="150px"
-                      priority
-                    />
-                  </a>
-                </Link>
+                <a href="/dellamall" className={`${styles.logo} hoverEffect pc`}>
+                  <Image
+                    src={logo}
+                    alt="della mall"
+                    layout="responsive"
+                    sizes="150px"
+                    priority
+                  />
+                </a>
               }
               <SearchIcon setSearchActive={setSearchActive} />
             </div>

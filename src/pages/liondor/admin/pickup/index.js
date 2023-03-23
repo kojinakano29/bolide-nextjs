@@ -4,7 +4,6 @@ import { PageTitle } from '@/components/liondor'
 import { useAuth } from '@/hooks/auth'
 import axios from '@/lib/axios'
 import styles from '@/styles/liondor/components/adminList.module.scss'
-import Link from 'next/link'
 import { useRouter } from 'next/router'
 import { useEffect, useState } from 'react'
 
@@ -66,13 +65,9 @@ const AdminPickup = ({posts}) => {
             <ul>
               {posts?.map((item, index) => (
                 <li key={index}>
-                  <Link href={`/liondor/post/show/${item.l_post_id}`}>
-                    <a className={styles.ttl}>{item.l_post.title}</a>
-                  </Link>
+                  <a href={`/liondor/post/show/${item.l_post_id}`} className={styles.ttl}>{item.l_post.title}</a>
                   <div className={styles.btnBox}>
-                    <Link href={`/liondor/post/edit/${item.l_post_id}`}>
-                      <a className={styles.edit}>編集</a>
-                    </Link>
+                    <a href={`/liondor/post/edit/${item.l_post_id}`} className={styles.edit}>編集</a>
                     <button className={styles.delete} onClick={() => onClickDelete(item)} disabled={disabled}>削除</button>
                   </div>
                 </li>

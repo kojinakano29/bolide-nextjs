@@ -1,5 +1,4 @@
 import styles from '@/styles/liondor/components/humCont.module.scss'
-import Link from 'next/link';
 import Container from '@/components/liondor/Layouts/container';
 import Image from 'next/image';
 import bolide from '@/images/liondor/common/bolide_banner.svg'
@@ -20,53 +19,35 @@ const HumCont = ({humOpen, clickHumClose}) => {
         <nav className={`${styles.humNav} ${humOpen ? styles.lazyIn : ''}`}>
           <ul className={styles.humUl}>
             <li>
-              <Link href="/liondor/post/fashion">
-                <a className="ivy" onClick={clickHumClose}>Fashion</a>
-              </Link>
+              <a href="/liondor/post/fashion" className="ivy" onClick={clickHumClose}>Fashion</a>
             </li>
             <li>
-              <Link href="/liondor/post/beauty">
-                <a className="ivy" onClick={clickHumClose}>Beauty</a>
-              </Link>
+              <a href="/liondor/post/beauty" className="ivy" onClick={clickHumClose}>Beauty</a>
             </li>
             <li>
-              <Link href="/liondor/post/trend">
-                <a className="ivy" onClick={clickHumClose}>Trend</a>
-              </Link>
+              <a href="/liondor/post/trend" className="ivy" onClick={clickHumClose}>Trend</a>
             </li>
           </ul>
           <ul className={styles.humUl}>
             <li>
-              <Link href="/liondor/post/lifestyle">
-                <a className="ivy" onClick={clickHumClose}>Life Style</a>
-              </Link>
+              <a href="/liondor/post/lifestyle" className="ivy" onClick={clickHumClose}>Life Style</a>
             </li>
             <li>
-              <Link href="/liondor/post/wedding">
-                <a className="ivy" onClick={clickHumClose}>Wedding</a>
-              </Link>
+              <a href="/liondor/post/wedding" className="ivy" onClick={clickHumClose}>Wedding</a>
             </li>
             <li>
-              <Link href="/liondor/post/topleader">
-                <a className="ivy" onClick={clickHumClose}>Top Leader</a>
-              </Link>
+              <a href="/liondor/post/topleader" className="ivy" onClick={clickHumClose}>Top Leader</a>
             </li>
           </ul>
           <ul className={styles.humUl}>
             <li>
-              <Link href="/liondor/post/fortune">
-                <a className="ivy" onClick={clickHumClose}>Fortune</a>
-              </Link>
+              <a href="/liondor/post/fortune" className="ivy" onClick={clickHumClose}>Fortune</a>
             </li>
             <li>
-              <Link href="/liondor/post/video">
-                <a className="ivy" onClick={clickHumClose}>Video</a>
-              </Link>
+              <a href="/liondor/post/video" className="ivy" onClick={clickHumClose}>Video</a>
             </li>
             <li>
-              <Link href="/liondor/#pickUp">
-                <a className="ivy" onClick={clickHumClose}>Pickup Infomation</a>
-              </Link>
+              <a href="/liondor/#pickUp" className="ivy" onClick={clickHumClose}>Pickup Infomation</a>
             </li>
           </ul>
         </nav>
@@ -74,21 +55,15 @@ const HumCont = ({humOpen, clickHumClose}) => {
         <nav className={`${styles.humNav2} ${humOpen ? styles.lazyIn : ''}`}>
           <ul>
             <li>
-              <Link href="/liondor/contact">
-                <a className="ivy" onClick={clickHumClose}>CONTACT</a>
-              </Link>
+              <a href="/liondor/contact" className="ivy" onClick={clickHumClose}>CONTACT</a>
             </li>
             <div className={styles.hr}></div>
             {/* <li>
-              <Link href="/liondor/faq">
-                <a className="ivy" onClick={clickHumClose}>FAQ</a>
-              </Link>
+              <a href="/liondor/faq" className="ivy" onClick={clickHumClose}>FAQ</a>
             </li>
             <div className={styles.hr}></div> */}
             <li>
-              <Link href="/liondor/sitemap">
-                <a className="ivy" onClick={clickHumClose}>SITE MAP</a>
-              </Link>
+              <a href="/liondor/sitemap" className="ivy" onClick={clickHumClose}>SITE MAP</a>
             </li>
             <div className={styles.hr}></div>
             <li>
@@ -96,9 +71,7 @@ const HumCont = ({humOpen, clickHumClose}) => {
             </li>
             <div className={styles.hr}></div>
             <li>
-              <Link href="/liondor/registration">
-                <a className="ivy" onClick={clickHumClose}>ABOUT LIONDOR</a>
-              </Link>
+              <a href="/liondor/registration" className="ivy" onClick={clickHumClose}>ABOUT LIONDOR</a>
             </li>
           </ul>
         </nav>
@@ -110,16 +83,14 @@ const HumCont = ({humOpen, clickHumClose}) => {
             </div>
             <p className="ivy">Bolid's Japan Other Site</p>
             <div className={styles.bannarBox}>
-              <Link href="/">
-                <a target="_blank" rel="noopener noreferrer" onClick={clickHumClose}>
-                  <Image
-                    src={bolide}
-                    alt="Bolide's Japan"
-                    layout="responsive"
-                    sizes="(min-width: 1340px) 228px, 100vw"
-                  />
-                </a>
-              </Link>
+              <a href="/" target="_blank" rel="noopener noreferrer" onClick={clickHumClose}>
+                <Image
+                  src={bolide}
+                  alt="Bolide's Japan"
+                  layout="responsive"
+                  sizes="(min-width: 1340px) 228px, 100vw"
+                />
+              </a>
               <a href="https://marche-dor.jp/" target="_blank" rel="noopener noreferrer" onClick={clickHumClose}>
                 <Image
                   src={marche}
@@ -130,39 +101,31 @@ const HumCont = ({humOpen, clickHumClose}) => {
               </a>
             </div>
             <div className={styles.bannarBox}>
-              <Link href="/corapura">
-                <a target="_blank" rel="noopener noreferrer" onClick={clickHumClose}>
-                  <Image
-                    src={corapura}
-                    alt="CORAPURA"
-                    layout="responsive"
-                    sizes="(min-width: 1340px) 228px, 100vw"
-                  />
-                </a>
-              </Link>
-              <Link href="/dellamall">
-                <a target="_blank" rel="noopener noreferrer" onClick={clickHumClose}>
-                  <Image
-                    src={dela}
-                    alt="Della Mall"
-                    layout="responsive"
-                    sizes="(min-width: 1340px) 228px, 100vw"
-                  />
-                </a>
-              </Link>
+              <a href="/corapura" target="_blank" rel="noopener noreferrer" onClick={clickHumClose}>
+                <Image
+                  src={corapura}
+                  alt="CORAPURA"
+                  layout="responsive"
+                  sizes="(min-width: 1340px) 228px, 100vw"
+                />
+              </a>
+              <a href="/dellamall" target="_blank" rel="noopener noreferrer" onClick={clickHumClose}>
+                <Image
+                  src={dela}
+                  alt="Della Mall"
+                  layout="responsive"
+                  sizes="(min-width: 1340px) 228px, 100vw"
+                />
+              </a>
             </div>
           </div>
           <div className={styles.bannerFlex}>
-            <Link href="/liondor/present">
-              <a className="hoverEffect" onClick={clickHumClose}>
-                <img src="/liondor/present_banner1.webp" alt="プレゼントのバナー" />
-              </a>
-            </Link>
-            <Link href="/corapura">
-              <a className="hoverEffect" target="_blank" onClick={clickHumClose}>
-                <img src="/liondor/present_banner2.webp" alt="オンラインサロンのバナー" />
-              </a>
-            </Link>
+            <a href="/liondor/present" className="hoverEffect" onClick={clickHumClose}>
+              <img src="/liondor/present_banner1.webp" alt="プレゼントのバナー" />
+            </a>
+            <a href="/corapura" className="hoverEffect" target="_blank" onClick={clickHumClose}>
+              <img src="/liondor/present_banner2.webp" alt="オンラインサロンのバナー" />
+            </a>
           </div>
         </div>
 
@@ -175,9 +138,7 @@ const HumCont = ({humOpen, clickHumClose}) => {
                 {
                   editorNaviData.map((item, index) => (
                     <li key={index}>
-                      <Link href={`${item.link}${user?.id}`}>
-                        <a onClick={clickHumClose}>{item.name}</a>
-                      </Link>
+                      <a href={`${item.link}${user?.id}`} onClick={clickHumClose}>{item.name}</a>
                     </li>
                   ))
                 }
@@ -196,9 +157,7 @@ const HumCont = ({humOpen, clickHumClose}) => {
                 {
                   adminNaviData.map((item, index) => (
                     <li key={index}>
-                      <Link href={item.link}>
-                        <a onClick={clickHumClose}>{item.name}</a>
-                      </Link>
+                      <a href={item.link} onClick={clickHumClose}>{item.name}</a>
                     </li>
                   ))
                 }

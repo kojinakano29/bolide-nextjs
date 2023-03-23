@@ -2,7 +2,6 @@ import styles from '@/styles/top/components/home.module.scss'
 import PageLayoutTop from "@/components/Layouts/pageLayoutTop";
 import Container from '@/components/top/Layout/container';
 import { Faq, Make, Move, Plan } from '@/components/top';
-import Link from 'next/link';
 import { plans } from '@/lib/top/constants';
 
 const BolideTop = () => {
@@ -136,30 +135,24 @@ const BolideTop = () => {
             <span className="big en">BRAND</span>
           </h2>
           <div className={styles.flex}>
-            <Link href="/corapura">
-              <a>
-                <img className="pc" src="/top/corapura-banner.svg" alt="CORAPURA" />
-                <img className="sp" src="/top/corapura-banner__sp.svg" alt="CORAPURA" />
-                <p className={`${styles.eName} en`}>Corapura</p>
-                <p className={styles.jName}>コラプラ</p>
-              </a>
-            </Link>
-            <Link href="/liondor">
-              <a>
-                <img className="pc" src="/top/liondor-banner.svg" alt="LIONDOR" />
-                <img className="sp" src="/top/liondor-banner__sp.svg" alt="LIONDOR" />
-                <p className={`${styles.eName} en`}>LIONDOR</p>
-                <p className={styles.jName}>リオンドール</p>
-              </a>
-            </Link>
-            <Link href="/dellamall">
-              <a>
-                <img className="pc" src="/top/della-banner.svg" alt="Della Mall" />
-                <img className="sp" src="/top/della-banner__sp.svg" alt="Della Mall" />
-                <p className={`${styles.eName} en`}>Della Mall</p>
-                <p className={styles.jName}>デラモール</p>
-              </a>
-            </Link>
+            <a href="/corapura">
+              <img className="pc" src="/top/corapura-banner.svg" alt="CORAPURA" />
+              <img className="sp" src="/top/corapura-banner__sp.svg" alt="CORAPURA" />
+              <p className={`${styles.eName} en`}>Corapura</p>
+              <p className={styles.jName}>コラプラ</p>
+            </a>
+            <a href="/liondor">
+              <img className="pc" src="/top/liondor-banner.svg" alt="LIONDOR" />
+              <img className="sp" src="/top/liondor-banner__sp.svg" alt="LIONDOR" />
+              <p className={`${styles.eName} en`}>LIONDOR</p>
+              <p className={styles.jName}>リオンドール</p>
+            </a>
+            <a href="/dellamall">
+              <img className="pc" src="/top/della-banner.svg" alt="Della Mall" />
+              <img className="sp" src="/top/della-banner__sp.svg" alt="Della Mall" />
+              <p className={`${styles.eName} en`}>Della Mall</p>
+              <p className={styles.jName}>デラモール</p>
+            </a>
             <a href="https://marche-dor.jp/" target="_blank" rel="noopener noreferrer">
               <img className="pc" src="/top/marche-banner.svg" alt="Marche Dor" />
               <img className="sp" src="/top/marche-banner__sp.svg" alt="Marche Dor" />

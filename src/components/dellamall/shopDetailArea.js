@@ -3,7 +3,6 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faComment, faHeart, faBookmark, faReply, faFlag, faChevronDown, faThumbsUp, faCheck } from '@fortawesome/free-solid-svg-icons'
 import notSet from '@/images/dellamall/shopDetail/user-after.svg'
 import notSet2 from '@/images/dellamall/shopDetail/user.svg'
-import Link from 'next/link'
 import { createContext, useCallback, useEffect, useRef, useState } from 'react'
 import { useForm } from 'react-hook-form'
 import axios from '@/lib/axios'
@@ -310,14 +309,10 @@ const ShopDetailArea = ({data, user}) => {
           </a>
           <div className={styles.cont1__flexLeft__btnFlex}>
             {shop.image_permission === 0 ?
-              <Link href="/dellamall/contact/?type=captcha">
-                <a className={`${styles.contactLink} hoverEffect`}>ショップオーナー<br/>無料キャプチャ申請</a>
-              </Link>
+              <a href="/dellamall/contact/?type=captcha" className={`${styles.contactLink} hoverEffect`}>ショップオーナー<br/>無料キャプチャ申請</a>
             : null}
             {shop.official_user_id ? null :
-              <Link href="/dellamall/officialRequest">
-                <a className={`${styles.contactLink} hoverEffect`}>ショップオーナー<br/>公式申請</a>
-              </Link>
+              <a href="/dellamall/officialRequest" className={`${styles.contactLink} hoverEffect`}>ショップオーナー<br/>公式申請</a>
             }
             {user?.account_type > 2 ?
               <button
@@ -424,9 +419,7 @@ const ShopDetailArea = ({data, user}) => {
           <ul className={styles.cont1__flexRight__topWords}>
             {tags?.map((tag, index) => (
               <li className={styles.keyWord__item} key={index}>
-                <Link href={`/dellamall/shop/?tag_id=${tag.id}`}>
-                  <a className="hoverEffect">{tag.name}</a>
-                </Link>
+                <a href={`/dellamall/shop/?tag_id=${tag.id}`} className="hoverEffect">{tag.name}</a>
               </li>
             ))}
           </ul>
@@ -460,9 +453,7 @@ const ShopDetailArea = ({data, user}) => {
                       />
                     </div>
                     <div className={styles.user__comment}>
-                      <Link href={`/dellamall/mypage/${comment.user_id}`}>
-                        <a className={styles.name}>{comment.user.d_profile.nicename}</a>
-                      </Link>
+                      <a href={`/dellamall/mypage/${comment.user_id}`} className={styles.name}>{comment.user.d_profile.nicename}</a>
                       <p className={styles.content}>{comment.content}</p>
                     </div>
                     <div className={styles.user__right}>
@@ -480,9 +471,7 @@ const ShopDetailArea = ({data, user}) => {
                         <FontAwesomeIcon icon={faThumbsUp} />
                         <span>参考になった</span>
                       </button>
-                      <Link href="/dellamall/contact/?type=spam">
-                        <a className={`${styles.spamLink} hoverEffect`}>通報する</a>
-                      </Link>
+                      <a href="/dellamall/contact/?type=spam" className={`${styles.spamLink} hoverEffect`}>通報する</a>
                     </div>
                   </li>
                 ))}

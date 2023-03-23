@@ -1,7 +1,6 @@
 import styles from '@/styles/corapura/components/editorList.module.scss'
 import PageLayoutCorapura from "@/components/Layouts/pageLayoutCorapura";
 import Container from '@/components/corapura/Layout/container';
-import Link from 'next/link';
 import plus from '@/images/corapura/common/plusW.svg'
 import { useAuth } from '@/hooks/auth';
 import { useCallback, useEffect, useState } from 'react';
@@ -76,31 +75,25 @@ const AdminPressReleaseList = () => {
     <section className="cont1">
       <Container small>
         <h2 className="ttl1">作成したプレスリリース一覧</h2>
-        <Link href={`/corapura/editor/press_release/create`}>
-          <a className={styles.createLink}>
-            <img src={plus.src} alt="アイコン" />
-            プレスリリースを新規作成
-          </a>
-        </Link>
+        <a href={`/corapura/editor/press_release/create`} className={styles.createLink}>
+          <img src={plus.src} alt="アイコン" />
+          プレスリリースを新規作成
+        </a>
         {!disabled ?
           <>
             <article className={styles.itemList}>
               {releases.map((pr, index) => (
                 <div className={styles.itemBox} key={index}>
-                  <Link href={`/corapura/press_release/${pr.id}`}>
-                    <a className={styles.imgBox}>
-                      <img src={pr.thumbs ? `${process.env.NEXT_PUBLIC_BACKEND_URL}/storage/${pr.thumbs}` : dummy.src} alt="プレスリリースのサムネイル画像" />
-                    </a>
-                  </Link>
-                    <p className={styles.stateIcon}>
-                      {pr.state === 0 ? "下書き" : null}
-                      {pr.state === 1 ? "公開" : null}
-                    </p>
+                  <a href={`/corapura/press_release/${pr.id}`} className={styles.imgBox}>
+                    <img src={pr.thumbs ? `${process.env.NEXT_PUBLIC_BACKEND_URL}/storage/${pr.thumbs}` : dummy.src} alt="プレスリリースのサムネイル画像" />
+                  </a>
+                  <p className={styles.stateIcon}>
+                    {pr.state === 0 ? "下書き" : null}
+                    {pr.state === 1 ? "公開" : null}
+                  </p>
                   <p className={styles.ttl}>{pr.title}</p>
                   <div className={styles.btnFlex}>
-                    <Link href={`/corapura/editor/press_release/${pr.id}`}>
-                      <a className={`${styles.btn} hoverEffect`}>編集する</a>
-                    </Link>
+                    <a href={`/corapura/editor/press_release/${pr.id}`} className={`${styles.btn} hoverEffect`}>編集する</a>
                     <button
                       type="button"
                       className={`${styles.btn} ${styles.finishBtn} hoverEffect`}

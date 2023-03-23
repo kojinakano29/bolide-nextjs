@@ -7,7 +7,6 @@ import axios from "@/lib/axios";
 import { useCallback, useEffect, useState } from "react";
 import { useRouter } from 'next/router';
 import { useForm } from 'react-hook-form';
-import Link from 'next/link';
 
 export const getServerSideProps = async ({params}) => {
   const res = await fetch(`${process.env.NEXT_PUBLIC_API_CORAPURA}/mypost/compleate/${params.id}`)
@@ -86,9 +85,7 @@ const EditorComment = ({posts}) => {
               {matters.map((matter, index) => (
                 <div className={styles.listItem} key={index}>
                   <div className={styles.itemLeft}>
-                    <Link href={`/corapura/matter/${matter.c_post.id}`}>
-                      <a className={styles.ttl}>{matter.c_post.title}</a>
-                    </Link>
+                    <a href={`/corapura/matter/${matter.c_post.id}`} className={styles.ttl}>{matter.c_post.title}</a>
                     <p className={styles.state}>
                       {matter.state === 0 ? '応募中' : null}
                       {matter.state === 1 ? '完了' : null}

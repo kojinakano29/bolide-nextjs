@@ -1,7 +1,6 @@
 import styles from '@/styles/corapura/components/editorList.module.scss'
 import PageLayoutCorapura from "@/components/Layouts/pageLayoutCorapura";
 import Container from '@/components/corapura/Layout/container';
-import Link from 'next/link';
 import plus from '@/images/corapura/common/plusW.svg'
 import { useAuth } from '@/hooks/auth';
 import { useCallback, useEffect, useState } from 'react';
@@ -93,42 +92,36 @@ const AdminMatterList = () => {
     <section className="cont1">
       <Container small>
         <h2 className="ttl1">作成した案件一覧</h2>
-        <Link href={`/corapura/editor/matter/create`}>
-          <a className={styles.createLink}>
-            <img src={plus.src} alt="アイコン" />
-            案件を新規作成
-          </a>
-        </Link>
+        <a href={`/corapura/editor/matter/create`} className={styles.createLink}>
+          <img src={plus.src} alt="アイコン" />
+          案件を新規作成
+        </a>
         {!disabled ?
           <>
             <article className={styles.itemList}>
               {matters.map((matter, index) => (
                 <div className={styles.itemBox} key={index}>
-                  <Link href={`/corapura/matter/${matter.id}`}>
-                    <a className={styles.imgBox}>
-                      <img src={matter.thumbs ? `${process.env.NEXT_PUBLIC_BACKEND_URL}/storage/${matter.thumbs}` : dummy.src} alt="案件のサムネイル画像" />
-                    </a>
-                  </Link>
-                    <p className={styles.stateIcon}>
-                      {
-                        matter.limite_date <= today &&
-                        matter.state !== 1 &&
-                        matter.state !== 4 ?
-                        "募集期限切れ" : null
-                      }
-                      {matter.state === 0 && matter.limite_date >= today ? "募集中" : null}
-                      {matter.state === 1 ? "完了" : null}
-                      {matter.state === 4 ? "下書き" : null}
-                    </p>
+                  <a href={`/corapura/matter/${matter.id}`} className={styles.imgBox}>
+                    <img src={matter.thumbs ? `${process.env.NEXT_PUBLIC_BACKEND_URL}/storage/${matter.thumbs}` : dummy.src} alt="案件のサムネイル画像" />
+                  </a>
+                  <p className={styles.stateIcon}>
+                    {
+                      matter.limite_date <= today &&
+                      matter.state !== 1 &&
+                      matter.state !== 4 ?
+                      "募集期限切れ" : null
+                    }
+                    {matter.state === 0 && matter.limite_date >= today ? "募集中" : null}
+                    {matter.state === 1 ? "完了" : null}
+                    {matter.state === 4 ? "下書き" : null}
+                  </p>
                   <p className={styles.ttl}>{matter.title}</p>
                   <p className={styles.iconBox}>
                     <span className={styles.icon}>更新日</span>
                     <DateFormat dateString={matter.updated_at} />
                   </p>
                   <div className={styles.btnFlex}>
-                    <Link href={`/corapura/editor/matter/${matter.id}`}>
-                      <a className={`${styles.btn} hoverEffect`}>編集する</a>
-                    </Link>
+                    <a href={`/corapura/editor/matter/${matter.id}`} className={`${styles.btn} hoverEffect`}>編集する</a>
                     {/* <button
                       type="button"
                       className={`${styles.btn} ${styles.finishBtn} hoverEffect`}

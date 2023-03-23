@@ -2,7 +2,6 @@ import styles from '@/styles/liondor/components/sitemap.module.scss'
 import { PageTitle } from "@/components/liondor";
 import Container from "@/components/liondor/Layouts/container";
 import PageLayoutLiondor from "@/components/Layouts/PageLayoutLiondor";
-import Link from 'next/link';
 import { sitemap } from '@/lib/liondor/constants';
 
 const Sitemap = () => {
@@ -15,9 +14,7 @@ const Sitemap = () => {
             <h3 className="ivy">{item.cat}</h3>
             <div className={styles.flex}>
               {item.group.map((gr, index) => (
-                <Link href={gr.link} key={index}>
-                  <a className="en">{gr.name}</a>
-                </Link>
+                <a href={gr.link} key={index} className="en">{gr.name}</a>
               ))}
             </div>
           </div>
@@ -25,38 +22,22 @@ const Sitemap = () => {
         <div className={styles.block}>
           <h3 className="ivy"><a className="ivy" href="/liondor/#pickUp">Pickup Information</a></h3>
           {/* <div className={styles.flex}>
-            <Link href="">
-              <a>Information</a>
-            </Link>
-            <Link href="">
-              <a>Influencer</a>
-            </Link>
-            <Link href="/liondor/present">
-              <a>Present</a>
-            </Link>
-            <Link href="">
-              <a>Others</a>
-            </Link>
+            <a href="">Information</a>
+            <a href="">Influencer</a>
+            <a href="/liondor/present">Present</a>
+            <a href="">Others</a>
           </div> */}
         </div>
         <div className={styles.flex2}>
-          <Link href="/liondor/contact">
-            <a className="ivy">CONTACT</a>
-          </Link>
+          <a href="/liondor/contact" className="ivy">CONTACT</a>
           <div className={styles.hr}></div>
-          {/* <Link href="/liondor/faq">
-            <a className="ivy">FAQ</a>
-          </Link>
+          {/* <a href="/liondor/faq" className="ivy">FAQ</a>
           <div className={styles.hr}></div> */}
-          <Link href="/liondor/sitemap">
-            <a className="ivy">SITE MAP</a>
-          </Link>
+          <a href="/liondor/sitemap" className="ivy">SITE MAP</a>
           <div className={styles.hr}></div>
           <a href="https://bolides.co.jp/company/" target="_blank" rel="noopener noreferrer" className="ivy">COMPANY</a>
           <div className={styles.hr}></div>
-          <Link href="/liondor/registration">
-            <a className="ivy">ABOUT LIONDOR</a>
-          </Link>
+          <a href="/liondor/registration" className="ivy">ABOUT LIONDOR</a>
         </div>
       </Container>
     </section>

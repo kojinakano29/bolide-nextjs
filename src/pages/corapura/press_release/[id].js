@@ -4,7 +4,6 @@ import PageLayoutCorapura from "@/components/Layouts/pageLayoutCorapura";
 import { useAuth } from "@/hooks/auth";
 import axios from "@/lib/axios";
 import { useCallback, useEffect, useState } from "react";
-import Link from 'next/link';
 import dummy2 from '@/images/corapura/common/dummy5.svg'
 import view from '@/images/corapura/parts/material_view.svg'
 import viewB from '@/images/corapura/common/view.svg'
@@ -117,21 +116,19 @@ const PressReleaseDetail = ({posts}) => {
             <p className={styles.midashi}>新着プレスリリース</p>
             <article className={styles.newRelease}>
               {newRelease.map((release, index) => (
-                <Link href={`/corapura/press_release/${release.id}`} key={index}>
-                  <a>
-                    <div className={styles.thumbsBox}>
-                      <img src={release.thumbs ? `${process.env.NEXT_PUBLIC_BACKEND_URL}/storage/${release.thumbs}` : dummy2.src} alt="プレスリリースのサムネイル画像" />
+                <a href={`/corapura/press_release/${release.id}`} key={index}>
+                  <div className={styles.thumbsBox}>
+                    <img src={release.thumbs ? `${process.env.NEXT_PUBLIC_BACKEND_URL}/storage/${release.thumbs}` : dummy2.src} alt="プレスリリースのサムネイル画像" />
+                  </div>
+                  <div className={styles.newTxt}>
+                    <p className={styles.newTtl}>{release.title}</p>
+                    <div className={`${styles.newView} en`}>
+                      <img src={view.src} alt="アイコン" />
+                      {release.c_pr_counts_count}view
                     </div>
-                    <div className={styles.newTxt}>
-                      <p className={styles.newTtl}>{release.title}</p>
-                      <div className={`${styles.newView} en`}>
-                        <img src={view.src} alt="アイコン" />
-                        {release.c_pr_counts_count}view
-                      </div>
-                      <p className={styles.newName}>{release.user.c_profile.nicename}</p>
-                    </div>
-                  </a>
-                </Link>
+                    <p className={styles.newName}>{release.user.c_profile.nicename}</p>
+                  </div>
+                </a>
               ) )}
             </article>
           </div>

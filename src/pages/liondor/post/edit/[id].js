@@ -7,7 +7,6 @@ import Container from '@/components/liondor/Layouts/container';
 import { useAuth } from '@/hooks/auth';
 import PageLayoutLiondor from '@/components/Layouts/PageLayoutLiondor';
 import { useRouter } from 'next/router';
-import Link from 'next/link';
 
 // SSR
 export const getServerSideProps = async ({params}) => {
@@ -266,9 +265,7 @@ const PostEdit = ({posts}) => {
                     </select>
                   </dd>
                 </dl>
-                <Link href={`/liondor/post/editor_index/${user?.id}`}>
-                  <a className="btn2">一覧へ戻る</a>
-                </Link>
+                <a href={`/liondor/post/editor_index/${user?.id}`} className="btn2">一覧へ戻る</a>
               </div>
             </article>
           </form>

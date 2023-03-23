@@ -2,7 +2,6 @@ import { Button2, DateFormat, Recommends, ShowEditor, Sidebar } from "@/componen
 import Container from "@/components/liondor/Layouts/container";
 import PageLayoutLiondor from "@/components/Layouts/PageLayoutLiondor";
 import styles from '@/styles/liondor/components/postShow.module.scss'
-import Link from "next/link";
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faStar as starRegular } from '@fortawesome/free-regular-svg-icons'
 import { faStar as starSolid } from '@fortawesome/free-solid-svg-icons'
@@ -171,18 +170,14 @@ const DetailPage = ({posts}) => {
                 {
                   seriesPrevPost !== null
                   ?
-                  <Link href={`/liondor/post/show/${seriesPrevPost.id}`}>
-                    <a className={styles.seriesLink}>{seriesPrevPost.title ? seriesPrevPost.title : "タイトル未入力"}</a>
-                  </Link>
+                  <a href={`/liondor/post/show/${seriesPrevPost.id}`} className={styles.seriesLink}>{seriesPrevPost.title ? seriesPrevPost.title : "タイトル未入力"}</a>
                   :
                   ''
                 }
                 {
                   seriesNextPost !== null
                   ?
-                  <Link href={`/liondor/post/show/${seriesNextPost.id}`}>
-                    <a className={styles.seriesLink}>{seriesNextPost.title ? seriesNextPost.title : "タイトル未入力"}</a>
-                  </Link>
+                  <a href={`/liondor/post/show/${seriesNextPost.id}`} className={styles.seriesLink}>{seriesNextPost.title ? seriesNextPost.title : "タイトル未入力"}</a>
                   :
                   ''
                 }

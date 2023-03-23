@@ -1,7 +1,6 @@
 import styles from '@/styles/top/components/mypage.module.scss'
 import PageLayoutTop from "@/components/Layouts/pageLayoutTop";
 import Container from "@/components/top/Layout/container";
-import Link from "next/link";
 import { useAuth } from '@/hooks/auth';
 
 const BjcMypage = () => {
@@ -12,74 +11,60 @@ const BjcMypage = () => {
       <Container small900>
         <h2 className="ttl2">マイページ</h2>
         <div className="breadcrumbBox">
-          <Link href="/">
-            <a>トップ</a>
-          </Link>
+          <a href="/">トップ</a>
           <div><img src="/top/breadcrumb.svg" alt=">" /></div>
           <p>マイページ</p>
         </div>
         {user?.account_type > 2 ?
-          <Link href="/admin/user_list">
-            <a className={styles.adminBtn}>管理者</a>
-          </Link>
+          <a href="/admin/user_list" className={styles.adminBtn}>管理者</a>
         : null}
         <div className={styles.smallMenuBox}>
           {user?.account_type > 0 ?
-            <Link href={`/mypage/plan/${user?.id}`}>
-              <a>
-                <div className={styles.iconBox}>
-                  <img src="/top/plan_check.svg" alt="プラン確認のアイコン" />
-                </div>
-                <div className={styles.txtBox}>
-                  <p className={styles.big}>プラン確認</p>
-                  <p className={styles.sm}>こちらで現在お客様がご加入中のプランをご確認・ご変更いただけます。</p>
-                </div>
-              </a>
-            </Link>
-          : null}
-          <Link href={`/mypage/option/${user?.id}`}>
-            <a>
+            <a href={`/mypage/plan/${user?.id}`}>
               <div className={styles.iconBox}>
-                <img src="/top/option.svg" alt="オプションのアイコン" />
+                <img src="/top/plan_check.svg" alt="プラン確認のアイコン" />
               </div>
               <div className={styles.txtBox}>
-                <p className={styles.big}>サスティナブルオプション</p>
-                <p className={styles.sm}>社会貢献活動の一環として募金ができます。</p>
+                <p className={styles.big}>プラン確認</p>
+                <p className={styles.sm}>こちらで現在お客様がご加入中のプランをご確認・ご変更いただけます。</p>
               </div>
             </a>
-          </Link>
+          : null}
+          <a href={`/mypage/option/${user?.id}`}>
+            <div className={styles.iconBox}>
+              <img src="/top/option.svg" alt="オプションのアイコン" />
+            </div>
+            <div className={styles.txtBox}>
+              <p className={styles.big}>サスティナブルオプション</p>
+              <p className={styles.sm}>社会貢献活動の一環として募金ができます。</p>
+            </div>
+          </a>
         </div>
         <div className={styles.menuBox}>
-          <Link href="/corapura">
-            <a>
-              <div className={styles.imgBox}>
-                <img src="/top/mypage_c.svg" alt="CORAPURA" />
-              </div>
-              <div className={styles.nameBox}>
-                <img src="/top/corapura-logo.svg" alt="CORAPURA" />
-              </div>
-            </a>
-          </Link>
-          <Link href="/liondor">
-            <a>
-              <div className={styles.imgBox}>
-                <img src="/top/mypage_l.svg" alt="LIONDOR" />
-              </div>
-              <div className={styles.nameBox}>
-                <img src="/top/liondor-logo.svg" alt="LIONDOR" />
-              </div>
-            </a>
-          </Link>
-          <Link href="/dellamall">
-            <a>
-              <div className={styles.imgBox}>
-                <img src="/top/mypage_d.svg" alt="Della Mall" />
-              </div>
-              <div className={styles.nameBox}>
-                <img src="/top/della-logo.svg" alt="Della Mall" />
-              </div>
-            </a>
-          </Link>
+          <a href="/corapura">
+            <div className={styles.imgBox}>
+              <img src="/top/mypage_c.svg" alt="CORAPURA" />
+            </div>
+            <div className={styles.nameBox}>
+              <img src="/top/corapura-logo.svg" alt="CORAPURA" />
+            </div>
+          </a>
+          <a href="/liondor">
+            <div className={styles.imgBox}>
+              <img src="/top/mypage_l.svg" alt="LIONDOR" />
+            </div>
+            <div className={styles.nameBox}>
+              <img src="/top/liondor-logo.svg" alt="LIONDOR" />
+            </div>
+          </a>
+          <a href="/dellamall">
+            <div className={styles.imgBox}>
+              <img src="/top/mypage_d.svg" alt="Della Mall" />
+            </div>
+            <div className={styles.nameBox}>
+              <img src="/top/della-logo.svg" alt="Della Mall" />
+            </div>
+          </a>
           <a href="https://marche-dor.jp/" target="_blank" rel="noopener noreferrer">
             <div className={styles.imgBox}>
               <img src="/top/mypage_m.svg" alt="Marche Dor" />

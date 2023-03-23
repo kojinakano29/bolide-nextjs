@@ -1,5 +1,4 @@
 import styles from '@/styles/top/components/form.module.scss'
-import Link from 'next/link';
 import { useRouter } from 'next/router';
 import { useCallback } from 'react';
 import { useFormContext } from 'react-hook-form';
@@ -143,9 +142,7 @@ const InputAd = () => {
             <p className={styles.require}>必須</p>
             <p className={styles.txt}>
               必ず「
-              <Link href="/privacy">
-                <a>個人情報の取扱いについて</a>
-              </Link>
+              <a href="/privacy">個人情報の取扱いについて</a>
               」をご確認いただき、
               <br/>ご同意のうえ、送信してください。
             </p>

@@ -7,7 +7,6 @@ import { Elements } from '@stripe/react-stripe-js';
 import { loadStripe } from '@stripe/stripe-js';
 import { useRouter } from 'next/router';
 import { useEffect } from 'react';
-import Link from 'next/link';
 
 export const getServerSideProps = async ({params}) => {
   const res = await fetch(`${process.env.NEXT_PUBLIC_BACKEND_URL}/api/subscription/${params.id}`)
@@ -55,9 +54,7 @@ const Payment = ({posts}) => {
         <Container small900>
           <h2 className="ttl2">決済画面</h2>
           <div className="breadcrumbBox">
-              <Link href="/">
-              <a>トップ</a>
-              </Link>
+              <a href="/">トップ</a>
               <div><img src="/top/breadcrumb.svg" alt=">" /></div>
               <p>決済画面</p>
           </div>

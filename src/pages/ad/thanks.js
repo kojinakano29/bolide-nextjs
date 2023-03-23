@@ -1,7 +1,6 @@
 import styles from '@/styles/top/components/form.module.scss'
 import PageLayoutTop from "@/components/Layouts/pageLayoutTop";
 import Container from "@/components/top/Layout/container";
-import Link from "next/link";
 import { useRouter } from "next/router";
 import { useEffect } from "react";
 import { Btn1 } from '@/components/top';
@@ -26,9 +25,7 @@ const BjcAdThanks = () => {
       <Container small900>
         <h2 className="ttl2">広告掲載について</h2>
         <div className="breadcrumbBox">
-          <Link href="/">
-            <a>トップ</a>
-          </Link>
+          <a href="/">トップ</a>
           <div><img src="/top/breadcrumb.svg" alt=">" /></div>
           <p>広告掲載について</p>
         </div>

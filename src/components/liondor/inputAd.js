@@ -2,7 +2,6 @@ import styles from '@/styles/liondor/components/form.module.scss'
 import { useRouter } from "next/router"
 import { useCallback } from "react"
 import { useFormContext } from "react-hook-form"
-import Link from 'next/link'
 
 const InputAd = () => {
   const router = useRouter()
@@ -151,7 +150,7 @@ const InputAd = () => {
           </dl>
           <div className={styles.descBox}>
             <p>※携帯電話メールアドレスをご利用の場合は、必ず送信前に『携帯メールフィルタの解除』を行ってください。</p>
-            <p>※お問い合わせ前に「<Link href="/privacy"><a>個人情報保護方針</a></Link>」についてご確認の上、送信をお願いいたします。</p>
+            <p>※お問い合わせ前に「<a href="/privacy" target="_blank">個人情報保護方針</a>」についてご確認の上、送信をお願いいたします。</p>
           </div>
           <button type="submit" className="btn3 noto">内容を確認する</button>
         </article>

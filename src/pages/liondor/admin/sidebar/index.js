@@ -4,7 +4,6 @@ import { DateFormat, PageTitle } from '@/components/liondor'
 import { useAuth } from '@/hooks/auth'
 import axios from '@/lib/axios'
 import styles from '@/styles/liondor/components/adminList.module.scss'
-import Link from 'next/link'
 import { useRouter } from 'next/router'
 import { useEffect, useState } from 'react'
 
@@ -62,21 +61,15 @@ const AdminSidebar = ({posts}) => {
       <PageTitle title="サイドバー一覧" />
       {user?.account_type > 2 ?
         <Container small900>
-          <Link href="/liondor/sidebar/create">
-            <a className={`btn2 ${styles.create}`}>新規作成</a>
-          </Link>
+          <a href="/liondor/sidebar/create" className={`btn2 ${styles.create}`}>新規作成</a>
           <article className={styles.article}>
             <ul>
               {posts?.map((item, index) => (
                 <li key={index}>
                   <p className={styles.time}><DateFormat dateString={item.updated_at} /></p>
-                  <Link href={`/liondor/sidebar/edit/${item.id}`}>
-                    <a className={styles.ttl}>{item.title}</a>
-                  </Link>
+                  <a href={`/liondor/sidebar/edit/${item.id}`} className={styles.ttl}>{item.title}</a>
                   <div className={styles.btnBox}>
-                    <Link href={`/liondor/sidebar/edit/${item.id}`}>
-                      <a className={styles.edit}>編集</a>
-                    </Link>
+                    <a href={`/liondor/sidebar/edit/${item.id}`} className={styles.edit}>編集</a>
                     <button className={styles.delete} onClick={() => onClickDelete(item)} disabled={disabled}>削除</button>
                   </div>
                 </li>

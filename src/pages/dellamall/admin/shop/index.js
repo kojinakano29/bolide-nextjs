@@ -2,7 +2,6 @@ import styles from '@/styles/dellamall/components/adminList.module.scss'
 import Container from "@/components/dellamall/Layouts/container";
 import PageLayoutDellamall from "@/components/Layouts/PageLayoutDellamall";
 import { useAuth } from "@/hooks/auth";
-import Link from 'next/link';
 import { useEffect, useState } from 'react';
 import axios from '@/lib/axios';
 import { Loader } from '@/components/dellamall';
@@ -65,21 +64,13 @@ const AdminShop = () => {
           <article className={styles.listBox}>
             {createShop?.map((shop, index) => (
               <div className={styles.list} key={index}>
-                <Link href={`/dellamall/shop/${shop.id}`}>
-                  <a className={styles.link}>{shop.name}</a>
-                </Link>
+                <a href={`/dellamall/shop/${shop.id}`} className={styles.link}>{shop.name}</a>
                 <div className={styles.btnBox}>
-                  <Link href={`/dellamall/admin/shop/edit/${shop.id}`}>
-                    <a className={`${styles.btn} hoverEffect`}>基本情報</a>
-                  </Link>
+                  <a href={`/dellamall/admin/shop/edit/${shop.id}`} className={`${styles.btn} hoverEffect`}>基本情報</a>
                   {shop.official_user_id ?
                     <>
-                      <Link href={`/dellamall/admin/shop/official/${shop.id}`}>
-                        <a className={`${styles.btn} hoverEffect`}>公式情報</a>
-                      </Link>
-                      <Link href={`/dellamall/admin/shop/comment/${shop.id}`}>
-                        <a className={`${styles.btn} hoverEffect`}>コメント</a>
-                      </Link>
+                      <a href={`/dellamall/admin/shop/official/${shop.id}`} className={`${styles.btn} hoverEffect`}>公式情報</a>
+                      <a href={`/dellamall/admin/shop/comment/${shop.id}`} className={`${styles.btn} hoverEffect`}>コメント</a>
                     </>
                   : null}
                   <button

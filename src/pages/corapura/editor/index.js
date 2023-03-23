@@ -3,7 +3,6 @@ import PageLayoutCorapura from "@/components/Layouts/pageLayoutCorapura";
 import Container from '@/components/corapura/Layout/container';
 import { useAuth } from '@/hooks/auth';
 import { Btn, Follow, Loader } from '@/components/corapura';
-import Link from 'next/link';
 import icon1 from '@/images/corapura/common/linkIcon1.svg'
 import icon2 from '@/images/corapura/common/linkIcon2.svg'
 import icon3 from '@/images/corapura/common/linkIcon3.svg'
@@ -81,88 +80,74 @@ const EditorMyPage = () => {
             <article className={`${styles.navFlex} ${user?.account_type === 0 ? styles.column2 : null}`}>
               {user?.c_profile_id ?
                 <>
-                  <Link href={`/corapura/editor/${user?.account_type > 0 ? "company" : "user"}/${user?.c_profile_id}`}>
-                    <a className={`${styles.linkBox} ${styles.green}`}>
-                      <div className={styles.block}>
-                        <p>基本情報設定</p>
-                      </div>
-                      <div className={styles.iconBox}>
-                        <img src={icon1.src} alt="基本情報設定アイコン" />
-                      </div>
-                    </a>
-                  </Link>
-                  <Link href={`/corapura/editor/matter`}>
-                    <a className={`${styles.linkBox} ${styles.orange}`}>
-                      <div className={styles.block}>
-                        <p>案件一覧・作成</p>
-                      </div>
-                      <div className={styles.iconBox}>
-                        <img src={icon2.src} alt="案件一覧・作成アイコン" />
-                      </div>
-                    </a>
-                  </Link>
-                  <Link href={`/corapura/company/matter/bookmark/${user?.id}`}>
-                    <a className={`${styles.linkBox} ${styles.yellow}`}>
-                      <div className={styles.block}>
-                        <p>お気に入り一覧</p>
-                      </div>
-                      <div className={styles.iconBox}>
-                        <img src={icon3.src} alt="お気に入り一覧アイコン" />
-                      </div>
-                    </a>
-                  </Link>
+                  <a href={`/corapura/editor/${user?.account_type > 0 ? "company" : "user"}/${user?.c_profile_id}`} className={`${styles.linkBox} ${styles.green}`}>
+                    <div className={styles.block}>
+                      <p>基本情報設定</p>
+                    </div>
+                    <div className={styles.iconBox}>
+                      <img src={icon1.src} alt="基本情報設定アイコン" />
+                    </div>
+                  </a>
+                  <a href={`/corapura/editor/matter`} className={`${styles.linkBox} ${styles.orange}`}>
+                    <div className={styles.block}>
+                      <p>案件一覧・作成</p>
+                    </div>
+                    <div className={styles.iconBox}>
+                      <img src={icon2.src} alt="案件一覧・作成アイコン" />
+                    </div>
+                  </a>
+                  <a href={`/corapura/company/matter/bookmark/${user?.id}`} className={`${styles.linkBox} ${styles.yellow}`}>
+                    <div className={styles.block}>
+                      <p>お気に入り一覧</p>
+                    </div>
+                    <div className={styles.iconBox}>
+                      <img src={icon3.src} alt="お気に入り一覧アイコン" />
+                    </div>
+                  </a>
                   {user?.account_type !== 0 ?
                     <>
-                      <Link href={`/corapura/editor/press_release`}>
-                        <a className={`${styles.linkBox} ${styles.blue}`}>
-                          <div className={styles.block}>
-                            <p>
-                              プレスリリース
-                              <br />一覧・作成
-                            </p>
-                          </div>
-                          <div className={styles.iconBox}>
-                            <img src={icon4.src} alt="プレスリリース一覧・作成アイコン" />
-                          </div>
-                        </a>
-                      </Link>
-                      <Link href={`/corapura/editor/salon`}>
-                        <a className={`${styles.linkBox} ${styles.pink}`}>
-                          <div className={styles.block}>
-                            <p>
-                              オンラインサロン
-                              <br/>一覧・作成
-                            </p>
-                          </div>
-                          <div className={styles.iconBox}>
-                            <img src={icon5.src} alt="オンラインサロン一覧・作成アイコン" />
-                          </div>
-                        </a>
-                      </Link>
+                      <a href={`/corapura/editor/press_release`} className={`${styles.linkBox} ${styles.blue}`}>
+                        <div className={styles.block}>
+                          <p>
+                            プレスリリース
+                            <br />一覧・作成
+                          </p>
+                        </div>
+                        <div className={styles.iconBox}>
+                          <img src={icon4.src} alt="プレスリリース一覧・作成アイコン" />
+                        </div>
+                      </a>
+                      <a href={`/corapura/editor/salon`} className={`${styles.linkBox} ${styles.pink}`}>
+                        <div className={styles.block}>
+                          <p>
+                            オンラインサロン
+                            <br/>一覧・作成
+                          </p>
+                        </div>
+                        <div className={styles.iconBox}>
+                          <img src={icon5.src} alt="オンラインサロン一覧・作成アイコン" />
+                        </div>
+                      </a>
                     </>
                   : null}
-                  <Link href={`/corapura/editor/comment/${user?.id}`}>
-                    <a className={`${styles.linkBox} ${styles.blue2}`}>
-                      <div className={styles.block}>
-                        <p>応募・完了した案件</p>
-                      </div>
-                      <div className={styles.iconBox}>
-                        <img src={icon6.src} alt="応募・完了した案件アイコン" />
-                      </div>
-                    </a>
-                  </Link>
+                  <a href={`/corapura/editor/comment/${user?.id}`} className={`${styles.linkBox} ${styles.blue2}`}>
+                    <div className={styles.block}>
+                      <p>応募・完了した案件</p>
+                    </div>
+                    <div className={styles.iconBox}>
+                      <img src={icon6.src} alt="応募・完了した案件アイコン" />
+                    </div>
+                  </a>
                 </>
               :
-              <Link href={`/corapura/editor/create`}>
-                <a className={`${styles.linkBox} ${styles.green}`}>
-                  <div className={styles.block}>
-                    <p>基本情報設定</p>
-                  </div>
-                  <div className={styles.iconBox}>
-                    <img src={icon1.src} alt="基本情報設定アイコン" />
-                  </div>
-                </a>
-              </Link>
+              <a href={`/corapura/editor/create`} className={`${styles.linkBox} ${styles.green}`}>
+                <div className={styles.block}>
+                  <p>基本情報設定</p>
+                </div>
+                <div className={styles.iconBox}>
+                  <img src={icon1.src} alt="基本情報設定アイコン" />
+                </div>
+              </a>
               }
             </article>
             {user?.account_type === 0 ?
@@ -172,9 +157,7 @@ const EditorMyPage = () => {
               </div>
             : null}
             <div className={styles.privacyArea}>
-              <Link href="/corapura/terms">
-                <a>利用規約</a>
-              </Link>
+              <a href="/corapura/terms">利用規約</a>
               <p>※2023年2月22日時点</p>
             </div>
             <button
