@@ -65,6 +65,19 @@ const InputOption = ({user}) => {
           </div>
           {errors.option && <p className={`red ${styles.error}`}>金額が選択されておりません</p>}
         </div>
+        <div className={styles.privacyCheck}>
+          <p className={styles.txt}>
+            ※当日決済されます
+            <br/>※変更前に確認事項をご確認ください
+            <br/>※退会の場合はサブスクの解除を先に行って下さい
+          </p>
+          <label>
+            <p className={styles.require}>必須</p>
+            <input type="checkbox" {...register("privacy", {required: true})} />
+            上記確認した方はチェックを押してください
+          </label>
+          {errors.privacy && <p className={`red ${styles.error}`}>この項目は必須です</p>}
+      </div>
         <div className={styles.btnFlex}>
           <div className={styles.type2}>
             <Btn1 txt="マイページへ戻る" link="/mypage" />

@@ -169,7 +169,7 @@ const InputContact = () => {
             <label>
               <span className={styles.require}>必須</span>
               <input type="checkbox" {...register("check", {required: true})} />
-              個人情報保護方針に同意する
+              <a href="/privacy" target="_blank">プライバシーポリシー</a>に同意する
             </label>
             {errors.check && <p className={`orange ${styles.error} ${styles.error2}`}>※こちらの項目は入力必須です</p>}
           </div>

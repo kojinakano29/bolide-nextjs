@@ -22,6 +22,7 @@ const InputContact = () => {
   useEffect(() => {
     if (router.query.check === "present") {
       setValue("content", ["企業プレゼントについて"])
+      setChecked(true)
     }
   }, [router])
 

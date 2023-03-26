@@ -17,6 +17,7 @@ export const siteMeta = {
 // 編集者ナビ
 export const editorNaviData = [
   {name: '記事管理', link: '/liondor/post/editor_index/',},
+  {name: 'シリーズ作成', link: '/liondor/series/create',},
 ]
 
 // 管理者ナビ

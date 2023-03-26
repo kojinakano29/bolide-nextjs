@@ -35,7 +35,7 @@ const Payment = ({posts}) => {
   }
 
   useEffect(() => {
-    if (user && parseInt(user?.id) !== parseInt(router.query.id)) {
+    if (user && parseInt(user?.id) !== parseInt(router.query.id) && user?.account_type !== 3) {
       loginCheck()
     }
   }, [user])

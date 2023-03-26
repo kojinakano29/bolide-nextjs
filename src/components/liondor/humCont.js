@@ -76,6 +76,18 @@ const HumCont = ({humOpen, clickHumClose}) => {
           </ul>
         </nav>
 
+        <nav className={`${styles.humNav2} ${humOpen ? styles.lazyIn : ''}`}>
+          <ul>
+            <li>
+              <a href="/liondor/contact?check=present" className={styles.jp} onClick={clickHumClose}>企業からのプレゼント募集</a>
+            </li>
+            <div className={styles.hr}></div>
+            <li>
+              <a href="/ad" className={styles.jp} onClick={clickHumClose}>媒体資料・広告掲載について</a>
+            </li>
+          </ul>
+        </nav>
+
         <div className={`${styles.flex} ${humOpen ? styles.lazyIn : ''}`}>
           <div className={styles.left}>
             <div className={styles.snsCover}>
@@ -138,7 +150,7 @@ const HumCont = ({humOpen, clickHumClose}) => {
                 {
                   editorNaviData.map((item, index) => (
                     <li key={index}>
-                      <a href={`${item.link}${user?.id}`} onClick={clickHumClose}>{item.name}</a>
+                      <a href={`${item.link}${index === 0 ? user?.id : ''}`} onClick={clickHumClose}>{item.name}</a>
                     </li>
                   ))
                 }

@@ -50,6 +50,9 @@ const Plan = ({plan, num}) => {
               {item.text1 !== "" ?
                 <span className={styles.txt}>{item.text1}</span>
               : null}
+              {item.omakase ?
+                <span className={styles.omakase}>★</span>
+              : null}
             </dd>
             <dd className={styles.right}>
               {item.right === 1 ?

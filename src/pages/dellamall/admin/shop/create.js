@@ -114,7 +114,7 @@ const CreateShop = () => {
                   </dt>
                   <dd>
                     <div className={styles.imgBox}>
-                      {preview ? <img src={preview} alt="プレビュー画像" /> : <div className={styles.imgNone}>ショップのキャプチャが入ります</div>}
+                      {preview ? <img src={preview} alt="プレビュー画像" /> : <div className={styles.imgNone}>ショップオーナーからの申請が無い場合はキャプチャ画像は表示されません。ショップオーナーにキャプチャ画像が表示されるようにみんなで依頼しましょう！</div>}
                     </div>
                   </dd>
                 </dl>
@@ -166,7 +166,11 @@ const CreateShop = () => {
                     <GuidePopup txt={`●タグとは？\nそのショップの特徴やサービスなどに沿ったタグを付与できる機能です。\n検索時に同じタグが付いたショップを探すことも可能です。\n\n例えばアパレルショップであれば、「アパレル」「メンズ」「カジュアル」など…\n\n●タグの入力方法\n「タグ①,タグ②,タグ③」のようなかたちで入力可能です。\n↓\n「例）愛知県,ご飯,フレンチ」\n※タグ同士を区切る時は必ず、半角カンマ「,」でお願いします。\n\n●タグの数制限\n公式ショップは無制限で設定できますが、それ以外のショップは\n最大3つまでしか反映されません。`} />
                   </dt>
                   <dd>
-                    <textarea id="tag" {...register("tag")}></textarea>
+                    <textarea
+                      id="tag"
+                      {...register("tag")}
+                      placeholder="関連タグが自動反映されない場合は、タグを３つ入力してください"
+                    ></textarea>
                   </dd>
                 </dl>
                 <dl>
@@ -177,7 +181,7 @@ const CreateShop = () => {
                     <textarea
                       id="desc"
                       {...register("description")}
-                      placeholder="ショップの紹介をしてください！&#10;「○○がおいしい洋菓子店」「オンライン限定商品も豊富」など"
+                      placeholder={officialCheck ? '公式ショップオーナー以外は記載ができません。自動反映されない場合は、空白で作成ボタンを押してください' : 'ショップの紹介をしてください！「○○がおいしい洋菓子店」「オンライン限定商品も豊富」など'}
                       disabled={officialCheck}
                     ></textarea>
                   </dd>
