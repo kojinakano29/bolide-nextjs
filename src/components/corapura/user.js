@@ -20,7 +20,7 @@ const User = ({data, detail = false}) => {
               </a>
             ))}
           </article>
-          <Btn txt="インフルエンサー一覧" link="/corapura/influencer" />
+          <Btn txt="ユーザー/インフルエンサーマッチング" link="/corapura/influencer" />
         </>
       :
         <>

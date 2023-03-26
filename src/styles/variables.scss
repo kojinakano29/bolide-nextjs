@@ -906,19 +906,19 @@ $breakpoints: (
 
 @mixin bjcCourse {
   @include flex(center, left);
-  @include gap(32px, 32px, 16px);
+  @include gap(32px, 16px, 16px);
 
   .courseBtn {
-    @include width(208px, calc(100% * 1/3 - 32px * 2/3), 100%);
-    @include height(144px, 144px, unset);
+    @include width(calc(100% * 1/3 - 32px * 2/3), calc(100% * 1/3 - 16px * 2/3), 100%);
+    @include height(160px, 160px, unset);
   }
 
   label {
     width: 100%;
     height: 100%;
-    @include flex(center, flex-end);
-    @include gap(0, 0, 15px);
-    @include p(0 0 16px, 0 0 16px, 16px);
+    @include flex(center, center);
+    @include gap(16px, 12px);
+    @include p(0, 0, 16px);
     flex-direction: column;
     background-color: $g13;
     border-radius: 10px;
@@ -947,7 +947,7 @@ $breakpoints: (
     font-weight: bold;
     color: $g11;
     text-align: center;
-    @include height(55px, 55px, unset);
+    @include height(64px, 64px, unset);
     @include flex(center, center);
   }
 

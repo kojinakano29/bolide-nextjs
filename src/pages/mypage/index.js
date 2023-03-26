@@ -19,17 +19,15 @@ const BjcMypage = () => {
           <a href="/admin/user_list" className={styles.adminBtn}>管理者</a>
         : null}
         <div className={styles.smallMenuBox}>
-          {user?.account_type > 0 ?
-            <a href={`/mypage/plan/${user?.id}`}>
-              <div className={styles.iconBox}>
-                <img src="/top/plan_check.svg" alt="プラン確認のアイコン" />
-              </div>
-              <div className={styles.txtBox}>
-                <p className={styles.big}>プラン確認</p>
-                <p className={styles.sm}>こちらで現在お客様がご加入中のプランをご確認・ご変更いただけます。</p>
-              </div>
-            </a>
-          : null}
+          <a href={`/mypage/plan/${user?.id}`}>
+            <div className={styles.iconBox}>
+              <img src="/top/plan_check.svg" alt="プラン確認のアイコン" />
+            </div>
+            <div className={styles.txtBox}>
+              <p className={styles.big}>プラン確認</p>
+              <p className={styles.sm}>こちらで現在お客様がご加入中のプランをご確認・ご変更いただけます。</p>
+            </div>
+          </a>
           <a href={`/mypage/option/${user?.id}`}>
             <div className={styles.iconBox}>
               <img src="/top/option.svg" alt="オプションのアイコン" />

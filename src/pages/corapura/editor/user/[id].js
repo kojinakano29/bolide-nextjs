@@ -408,6 +408,7 @@ const EditUser = ({posts}) => {
                         type="url"
                         id="brand"
                         {...register("brand")}
+                        placeholder="URLをご入力ください"
                       />
                       {errors.brand && <p className={styles.error}>必須項目を入力してください</p>}
                     </dd>

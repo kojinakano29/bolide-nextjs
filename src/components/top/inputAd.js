@@ -142,7 +142,7 @@ const InputAd = () => {
             <p className={styles.require}>必須</p>
             <p className={styles.txt}>
               必ず「
-              <a href="/privacy">個人情報の取扱いについて</a>
+              <a href="/privacy">プライバシーポリシー</a>
               」をご確認いただき、
               <br/>ご同意のうえ、送信してください。
             </p>

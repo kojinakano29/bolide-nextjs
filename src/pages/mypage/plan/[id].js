@@ -53,10 +53,6 @@ const PlanCheckChange = (posts) => {
     if (user) {
       onLoadCheck()
     }
-
-    if (user && user?.account_type === 0) {
-      router.push('/mypage')
-    }
   }, [user])
 
   return (

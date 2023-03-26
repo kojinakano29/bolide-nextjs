@@ -201,11 +201,26 @@
 
     label {
       @include flex(center, center);
-      @include gap(16px);
       @include fs(20px, 18px);
       font-weight: 500;
       width: fit-content;
       margin: auto;
+
+      .require {
+        @include mr(8px);
+      }
+
+      input {
+        @include mr(8px);
+      }
+
+      a {
+        text-decoration: underline;
+
+        &:hover {
+          text-decoration: none;
+        }
+      }
     }
   }
 }

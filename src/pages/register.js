@@ -199,12 +199,19 @@ const Register = () => {
                                 <dt>
                                     コース選択
                                     <span className={styles.require}>必須</span>
+                                    <p className={styles.desc2}>※有料プランを選択した場合は次の段階で詳細コースを再度選択いただきます。</p>
                                 </dt>
                                 <dd className={styles.courseArea}>
                                     <div className={styles.courseBtn}>
                                         <input id="account_type1" type="radio" value="1" {...register("account_type", {required: true})} />
                                         <label htmlFor="account_type1">
-                                            <p className={styles.planName}>企業・団体</p>
+                                            <p className={styles.planName}>
+                                                ビジネスユーザー・企業・団体
+                                                <br/>/フリーランス・専門家・個人事業主
+                                                <br/>・一般ユーザー(プレミアム)
+                                                <br/>/メディア・地方自治体
+                                                <br/>
+                                            </p>
                                             <div className={styles.planPrice}>
                                                 <span className={`${styles.medium} en`}>￥</span>
                                                 <span className={`${styles.big} en`}>~11,000</span>
@@ -247,7 +254,7 @@ const Register = () => {
                                 <p className={styles.require}>必須</p>
                                 <p className={styles.txt}>
                                 必ず「
-                                <a href="/privacy" target="_blank">個人情報の取扱いについて</a>
+                                <a href="/privacy" target="_blank">プライバシーポリシー</a>
                                 」をご確認いただき、
                                 <br/>ご同意のうえ、送信してください。
                                 </p>

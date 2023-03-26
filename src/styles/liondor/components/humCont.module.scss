@@ -68,6 +68,10 @@
         letter-spacing: 0;
         transition: .2s ease-out;
 
+        &.jp {
+          font-size: var(--fs16-14);
+        }
+
         &:hover {
           opacity: .5;
         }

@@ -66,7 +66,7 @@ const Corapura = ({posts}) => {
 
       <section className={styles.matchArea}>
         <Container small>
-          <h2 className="ttl2">ビジネスマッチング</h2>
+          <h2 className="ttl2">マッチング（案件一覧）</h2>
           <p className={styles.desc}>案件を掲載して自由にやり取りが可能。新たなビジネスパートナーやクライアント・インフルエンサーを見つけたり、個人ユーザーとのマッチングでスクール会員や趣味仲間などを見つけることができます。攻めの姿勢で活躍の場拡大につながります。</p>
           {matterLimit.length !== 0 ?
             <>
@@ -104,12 +104,12 @@ const Corapura = ({posts}) => {
 
       <section className={styles.userArea}>
         <Container small>
-          <h2 className="ttl2">ユーザー/インフルエンサーマッチング</h2>
+          <h2 className="ttl2">おすすめのユーザー/インフルエンサー</h2>
           {/* <p className={styles.desc}></p> */}
           {users.length !== 0 ?
             <User data={users} />
             :
-            <p className={styles.noneLength}>ユーザー/インフルエンサーマッチングがありません</p>
+            <p className={styles.noneLength}>おすすめのユーザー/インフルエンサーがありません</p>
           }
         </Container>
       </section>

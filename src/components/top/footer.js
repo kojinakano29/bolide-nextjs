@@ -50,7 +50,7 @@ const Footer = () => {
             </li>
             <li className="pc">|</li>
             <li className="hoverEffect">
-              <a href="/ad">広告掲載費について</a>
+              <a href="/ad">媒体資料・広告掲載について</a>
             </li>
             <li className="pc">|</li>
             <li className="hoverEffect">

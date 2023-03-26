@@ -137,3 +137,51 @@
     }
   }
 }
+
+.privacyCheck {
+  text-align: center;
+  @include mb(40px, 32px);
+
+  .require {
+    width: fit-content;
+    @include fs(13px, 12px);
+    font-weight: bold;
+    @include p(0 4px);
+    color: $r1;
+    border: 1px solid $r1;
+  }
+
+  .txt {
+    @include fs(16px, 14px);
+    font-weight: 500;
+    margin: auto;
+    @include mb(24px, 16px);
+    width: fit-content;
+    text-align: left;
+
+    a {
+      color: $b14;
+      text-decoration: underline;
+
+      &:hover {
+        text-decoration: none;
+      }
+    }
+  }
+
+  label {
+    width: fit-content;
+    @include flex(center, center);
+    @include gap(8px);
+    margin: auto;
+    @include fs(16px, 14px);
+    font-weight: bold;
+    cursor: pointer;
+
+    input[type="checkbox"] {
+      @include width(16px, 14px);
+      @include height(16px, 14px);
+      cursor: pointer;
+    }
+  }
+}

@@ -60,7 +60,6 @@
       @include gap(16px, 8px);
 
       &:nth-of-type(even) {
-
         dt,
         dd {
           background-color: $g13;
@@ -79,6 +78,7 @@
 
       dd {
         @include flex(center, center);
+        flex-direction: column;;
         position: relative;
       }
 
@@ -97,10 +97,13 @@
       .txt {
         @include fs(14px, 12px);
         font-weight: 500;
+      }
+
+      .omakase {
         position: absolute;
-        top: 50%;
-        @include left(56%);
-        transform: translateY(-50%);
+        @include top(50%);
+        @include left(58%);
+        @include ty(-50%);
       }
     }
 

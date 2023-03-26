@@ -35,6 +35,9 @@ const InputPlan = ({planInfo, user, plans}) => {
       <div className={styles.planChangeTop}>
         <p className={styles.desc}>お客様が現在ご選択中のプラン内容</p>
         <NowPlan user={user} planInfo={planInfo} plans={plans} />
+        {user && user?.account_type === 0 ?
+          <p className={styles.caution}>※一度ログアウトいただかないと有料プランは登録できません</p>
+        : null}
         {planInfo && user ?
           <>
             <div className={styles.btnCover} onClick={handleClickCancel}>
@@ -43,7 +46,12 @@ const InputPlan = ({planInfo, user, plans}) => {
             <h3 className={styles.planChange}>プランを変更する</h3>
             <p className={styles.txt}>もっと自由に使いたい、自分の目的にあったプランへ変更したい...など選択するプランを途中で変更する場合には下記より選択いただき変更手続きが可能です。</p>
             <div className={styles.checkTxt}>
-              <p>※変更前に確認事項をご確認ください</p>
+              <p>
+                ※変更前に確認事項をご確認ください
+                <br/>※当日決済されます
+                <br/>※引き落としはカード会社によります
+                <br/>※退会の場合はサブスクの解除を先に行って下さい
+              </p>
               <p>
                 ・プラン変更後即時決済が行われます。
                 <br/>・フリープランから有料プランへの移行は、こちらの画面ではできません。
@@ -169,7 +177,7 @@ const InputPlan = ({planInfo, user, plans}) => {
               <p className={styles.require}>必須</p>
               <p className={styles.txt}>
                 必ず「
-                <a href="/privacy" target="_blank">個人情報の取扱いについて</a>
+                <a href="/privacy" target="_blank">プライバシーポリシー</a>
                 」をご確認いただき、
                 <br/>ご同意のうえ、送信してください。
               </p>

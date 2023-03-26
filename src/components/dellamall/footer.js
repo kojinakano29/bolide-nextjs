@@ -106,7 +106,7 @@ const Footer = () => {
             <a href="/dellamall/terms" className="hoverEffect">利用規約</a>
             <a href="/privacy" className="hoverEffect">プライバシーポリシー</a>
             <a href="/tokushoho" className="hoverEffect">特定商取引法に基づく表示</a>
-            <a href="/ad" className="hoverEffect">広告掲載費について</a>
+            <a href="/ad" className="hoverEffect">媒体資料・広告掲載について</a>
             <a href="/dellamall/contact" className="hoverEffect">お問い合わせ</a>
           </div>
           <div className={styles.footer__text}>

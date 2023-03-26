@@ -36,9 +36,9 @@ const BlogPattern7 = ({pattern}) => {
           />
         </a>
       </div>
-      <p className={`${styles.fortuneType} ivy sp`}>monthly</p>
+      <p className={`${styles.fortuneType} ivy sp`}>Monthly</p>
       <div className={styles.fortuneBox}>
-        <p className={`${styles.fortuneType} ivy pc`}>monthly</p>
+        <p className={`${styles.fortuneType} ivy pc`}>Monthly</p>
         <a href={`/liondor/post/show/${monthlies?.[0]?.id}`} className={styles.blogLink}>
           <div className={styles.imgBox}>
             <img src={monthlies?.[0]?.thumbs ? `${process.env.NEXT_PUBLIC_BACKEND_URL}/storage/${monthlies?.[0].thumbs}` : dummy.src} alt="記事のサムネイル画像" />
