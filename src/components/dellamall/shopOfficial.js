@@ -112,8 +112,8 @@ const shopOfficial = ({info, salon}) => {
                   <div className={styles.right}>
                     <p className={styles.ttl}>{salon.title}</p>
                     <p className={styles.desc}>
-                      {salon.content.replace(/<[^>]+>/g, '').replace(/&nbsp;/g, '').substring(0, 123)}
-                      {salon.content.replace(/<[^>]+>/g, '').replace(/&nbsp;/g, '').length > 123 ?
+                      {salon.content?.replace(/<[^>]+>/g, '').replace(/&nbsp;/g, '').substring(0, 123)}
+                      {salon.content?.replace(/<[^>]+>/g, '').replace(/&nbsp;/g, '').length > 123 ?
                         "..."
                       : null}
                     </p>

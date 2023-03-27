@@ -186,7 +186,7 @@ const CreatePost = ({posts}) => {
                   </dt>
                   <dd className={styles.dd}>
                     <input id="thumb" type="file" accept="image/*" {...register("thumbs", { required: state })} onChange={handleChangeFile} />
-                    <img src={preview} alt="プレビュー画像" />
+                    {preview ? <img src={preview} alt="プレビュー画像" /> : null}
                     {errors.thumbs && <p className={`red ${styles.error}`}>必須項目を入力してください</p>}
                   </dd>
                 </dl>
@@ -196,7 +196,7 @@ const CreatePost = ({posts}) => {
                   </dt>
                   <dd className={styles.dd}>
                     <input id="mv" type="file" accept="image/*" {...register("mv")} onChange={handleChangeFile2} />
-                    <img src={preview2} alt="プレビュー画像" />
+                    {preview2 ? <img src={preview2} alt="プレビュー画像" /> : null}
                   </dd>
                 </dl>
               </div>

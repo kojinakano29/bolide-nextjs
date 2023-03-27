@@ -21,6 +21,7 @@ export const getServerSideProps = async ({params}) => {
 }
 
 const PostEdit = ({posts}) => {
+  // console.log(posts)
   const csrf = () => axios.get('/sanctum/csrf-cookie')
 
   const router = useRouter()
@@ -122,7 +123,7 @@ const PostEdit = ({posts}) => {
   }, [])
 
   const defaultThumbsPreview = `${process.env.NEXT_PUBLIC_BACKEND_URL}/storage/${post.thumbs}`
-  const [preview, setPreview] = useState(defaultThumbsPreview)
+  const [preview, setPreview] = useState(post.thumbs ? defaultThumbsPreview : null)
   const handleChangeFile = useCallback((e) => {
     const { files } = e.target
 
@@ -133,7 +134,7 @@ const PostEdit = ({posts}) => {
   }, [])
 
   const defaultMvPreview = `${process.env.NEXT_PUBLIC_BACKEND_URL}/storage/${post.mv}`
-  const [preview2, setPreview2] = useState(defaultMvPreview)
+  const [preview2, setPreview2] = useState(post.mv ? defaultMvPreview : null)
   const handleChangeFile2 = useCallback((e) => {
     const { files } = e.target
 
@@ -196,7 +197,7 @@ const PostEdit = ({posts}) => {
                   </dt>
                   <dd className={styles.dd}>
                     <input id="thumb" type="file" accept="image/*" {...register("thumbs")} onChange={handleChangeFile} />
-                    <img src={preview} alt="プレビュー画像" />
+                    {preview ? <img src={preview} alt="プレビュー画像" />: null}
                   </dd>
                 </dl>
                 <dl className={styles.dl}>
@@ -205,7 +206,7 @@ const PostEdit = ({posts}) => {
                   </dt>
                   <dd className={styles.dd}>
                     <input id="mv" type="file" accept="image/*" {...register("mv")} onChange={handleChangeFile2} />
-                    <img src={preview2} alt="プレビュー画像" />
+                    {preview2 ? <img src={preview2} alt="プレビュー画像" /> : null}
                   </dd>
                 </dl>
               </div>
