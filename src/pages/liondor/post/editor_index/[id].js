@@ -180,7 +180,7 @@ const PostList = ({posts}) => {
                   {list.state === 0 ?
                     <p  className={styles.iconP}>下書き</p>
                   : null}
-                  <p className={styles.time}><DateFormat dateString={list.view_date} />{list.view_date.substr(11, 5).replace(":", "時")}分</p>
+                  <p className={styles.time}><DateFormat dateString={list.view_date} />{list.view_date?.substr(11, 5)?.replace(":", "時")}分</p>
                   <a href={`/liondor/post/show/${list.id}`} className={styles.ttl}>{list.title ? list.title : "タイトル未入力"}</a>
                   <div className={styles.btnBox}>
                     <a href={`/liondor/post/edit/${list.id}`} className={styles.edit}>編集</a>

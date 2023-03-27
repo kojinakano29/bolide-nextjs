@@ -93,7 +93,7 @@ const CheckoutForm = ({user}) => {
         router.query.plan === "option1000"
       ) {
         sessionStorage.setItem('optionChange', true)
-        alert(`社会貢献活動に参加しました(￥${router.query.plan.substring(6)}/月)`)
+        alert(`社会貢献活動に参加しました(￥${router.query.plan?.substring(6)}/月)`)
         router.push('/mypage/option/thanks')
       }
     }).catch((e) => {
@@ -123,7 +123,7 @@ const CheckoutForm = ({user}) => {
         router.query.plan === "option1000"
       ) {
         sessionStorage.setItem('optionChange', true)
-        alert(`社会貢献活動に参加しました(￥${router.query.plan.substring(6)}/月)`)
+        alert(`社会貢献活動に参加しました(￥${router.query.plan?.substring(6)}/月)`)
         router.push('/mypage/option/thanks')
       }
     }).catch(e => console.error(e))

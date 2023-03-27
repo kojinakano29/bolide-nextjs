@@ -41,7 +41,7 @@ const PresentEdit = ({posts}) => {
   const [disabled, setDisabled] = useState(false)
 
   const formatDate = useCallback((date) => {
-    return date.substr(0, 10)
+    return date?.substr(0, 10)
   }, [])
 
   const { register, handleSubmit, formState: { errors } } = useForm({

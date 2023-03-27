@@ -8,7 +8,7 @@ import { faLink } from '@fortawesome/free-solid-svg-icons'
 import { faCircleCheck } from '@fortawesome/free-solid-svg-icons'
 
 const StoreCard = ({item, swiper = false, none = false}) => {
-    const url = `${item.url.substring(0, 11)}...`
+    const url = `${item.url?.substring(0, 11)}...`
 
     return (
         <div className={`${styles.cardBox} ${swiper ? styles.swiper : ""}`}>
@@ -28,7 +28,7 @@ const StoreCard = ({item, swiper = false, none = false}) => {
                 }
                 {item.image_permission === 0 ?
                     <div className={`${styles.card} ${styles.default}`}>
-                        <p className={styles.name}>{item.name.substring(0, 30)}{item.name.length > 29 ? '...' : ''}</p>
+                        <p className={styles.name}>{item.name?.substring(0, 30)}{item.name.length > 29 ? '...' : ''}</p>
                         <p className={styles.sub}>
                             ショップオーナーHPキャプチャ画像
                             <br/>無料掲載はこちら
@@ -62,7 +62,7 @@ const StoreCard = ({item, swiper = false, none = false}) => {
                     </div>
                 : null}
                 <div className={`${styles.card} ${styles.onMouse}`}>
-                    <p className={styles.name}>{item.name.substring(0, 30)}{item.name.length > 29 ? '...' : ''}</p>
+                    <p className={styles.name}>{item.name?.substring(0, 30)}{item.name.length > 29 ? '...' : ''}</p>
                     {item.image_permission === 0 && !item.official_user_id ?
                         <div className={`${styles.btnArea} ${styles.btnArea1}`}>
                             <p>ショップオーナーHP<br className="sp" />キャプチャ画像</p>
@@ -112,7 +112,7 @@ const StoreCard = ({item, swiper = false, none = false}) => {
             </a>
             {none ?
                 null :
-                <p className={styles.title}>{item.name.substring(0, 50)}{item.name.length > 49 ? '...' : ''}</p>
+                <p className={styles.title}>{item.name?.substring(0, 50)}{item.name.length > 49 ? '...' : ''}</p>
             }
         </div>
     );

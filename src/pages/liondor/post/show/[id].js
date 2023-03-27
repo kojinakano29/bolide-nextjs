@@ -62,7 +62,7 @@ const DetailPage = ({posts}) => {
   const [pickupState, setPickupState] = useState(false)
 
   useEffect(() => {
-    if (bookmark.includes(user?.id)) {
+    if (bookmark?.includes(user?.id)) {
       setBookmarkState(true)
     } else {
       setBookmarkState(false)

@@ -138,7 +138,7 @@ const DetailTabUser = ({cards, likes, matters, userInfo}) => {
                               <img src={match.thumbs ? `${process.env.NEXT_PUBLIC_BACKEND_URL}/storage/${match.thumbs}` : dummy.src} alt="案件の画像" />
                             </div>
                             <p className={styles.ttl}>{match.title}</p>
-                            <p className={styles.desc}>{match.content.replace(/<[^>]+>/g, '').replace(/&nbsp;/g, '').substring(0, 38)}...</p>
+                            <p className={styles.desc}>{match.content?.replace(/<[^>]+>/g, '')?.replace(/&nbsp;/g, '')?.substring(0, 38)}...</p>
                           </a>
                         ))}
                       </div>

@@ -27,7 +27,7 @@ const MatterCard = ({matter, bookmarkList, detail = false, list = false}) => {
     setDisabled(true)
     await csrf()
 
-    if (bookmark.includes(matter?.id)) {
+    if (bookmark?.includes(matter?.id)) {
       await axios.delete('/api/corapura/post_bookmark/delete', {
         data: {
           user_id: user?.id,
@@ -74,7 +74,7 @@ const MatterCard = ({matter, bookmarkList, detail = false, list = false}) => {
             </div>
             <p className={styles.ttl}>{matter?.title}</p>
             <p className={styles.desc}>
-              {matter?.content.replace(/<[^>]+>/g, '').replace(/&nbsp;/g, '').substring(0, 50)}
+              {matter?.content?.replace(/<[^>]+>/g, '')?.replace(/&nbsp;/g, '')?.substring(0, 50)}
             </p>
             {matter?.created_at ?
               <p className={styles.iconBox}>
@@ -85,7 +85,7 @@ const MatterCard = ({matter, bookmarkList, detail = false, list = false}) => {
             {matter?.limite_date ?
               <p className={styles.iconBox}>
                 <span className={styles.icon}>募集終了日</span>
-                {matter?.limite_date.replace(/-/g, '.')}
+                {matter?.limite_date?.replace(/-/g, '.')}
               </p>
             : null}
             <div className={styles.company}>
@@ -100,7 +100,7 @@ const MatterCard = ({matter, bookmarkList, detail = false, list = false}) => {
             className={`${styles.bookmarkBtn} hoverEffect`}
             onClick={handleClickBookmark}
           >
-            <img src={bookmark.includes(matter?.id) ? starA.src : starB.src} alt="ブックマークのアイコン" />
+            <img src={bookmark?.includes(matter?.id) ? starA.src : starB.src} alt="ブックマークのアイコン" />
           </button>
         </article>
       :
@@ -112,7 +112,7 @@ const MatterCard = ({matter, bookmarkList, detail = false, list = false}) => {
             <p className={styles.tag}>{matter?.c_cat?.name}</p>
             <p className={styles.ttl}>{matter?.title}</p>
             <p className={styles.desc}>
-              {matter?.content.replace(/<[^>]+>/g, '').replace(/&nbsp;/g, '').substring(0, 50)}
+              {matter?.content?.replace(/<[^>]+>/g, '')?.replace(/&nbsp;/g, '')?.substring(0, 50)}
             </p>
             {matter?.created_at ?
               <p className={styles.iconBox}>
@@ -123,7 +123,7 @@ const MatterCard = ({matter, bookmarkList, detail = false, list = false}) => {
             {matter?.limite_date ?
               <p className={styles.iconBox}>
                 <span className={styles.icon}>募集終了日</span>
-                {matter?.limite_date.replace(/-/g, '.')}
+                {matter?.limite_date?.replace(/-/g, '.')}
               </p>
             : null}
             {detail ? null :
@@ -141,7 +141,7 @@ const MatterCard = ({matter, bookmarkList, detail = false, list = false}) => {
               className={`${styles.bookmarkBtn} hoverEffect`}
               onClick={handleClickBookmark}
             >
-              <img src={bookmark.includes(matter?.id) ? starA.src : starB.src} alt="ブックマークのアイコン" />
+              <img src={bookmark?.includes(matter?.id) ? starA.src : starB.src} alt="ブックマークのアイコン" />
             </button>
           : null}
         </article>

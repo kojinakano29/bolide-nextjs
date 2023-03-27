@@ -51,7 +51,7 @@ const OnlineSalonDetail = ({posts}) => {
       user_id: user?.id,
     }).then((res) => {
       // console.log(res)
-      if (res.data.includes(salon.id)) {
+      if (res.data?.includes(salon.id)) {
         setFollowCheck(true)
       }
     }).catch((e) => {
@@ -63,7 +63,7 @@ const OnlineSalonDetail = ({posts}) => {
       c_salon_id: salon.id,
     }).then((res) => {
       // console.log(res)
-      if (res.data.includes(salon.id)) {
+      if (res.data?.includes(salon.id)) {
         setPlanCheck(true)
       }
     }).catch(e => console.error(e))

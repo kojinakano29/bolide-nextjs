@@ -82,7 +82,7 @@ const Mypage = ({posts}) => {
       user_id: profile.id,
     }).then((res) => {
       // console.log(res)
-      if (res.data.includes(user?.id)) {
+      if (res.data?.includes(user?.id)) {
         setFollow(true)
       }
     }).catch((e) => {

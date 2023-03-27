@@ -25,7 +25,7 @@ const CompanyCard = ({data}) => {
         </div>
       </div>
       <div className={styles.company__bottom}>
-        {data?.c_profile?.profile.substring(0, 62)}
+        {data?.c_profile?.profile?.substring(0, 62)}
         {data?.c_profile?.profile.length > 63 ? "..." : null}
       </div>
     </a>

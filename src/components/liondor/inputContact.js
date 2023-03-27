@@ -65,7 +65,7 @@ const InputContact = () => {
                 <input type="checkbox" value="その他" {...register("content", {required: true})} />
                 その他
               </label>
-              {getValues('content').includes('企業プレゼントについて') || checked ?
+              {getValues('content')?.includes('企業プレゼントについて') || checked ?
                 <div className={styles.toggleBox}>
                   <p>企業プレゼントに関する資料はこちら</p>
                   <a href="/liondor/files/liondor_ad.pdf" target="_blank">PDFをダウンロード</a>
