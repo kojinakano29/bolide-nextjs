@@ -7,7 +7,7 @@ const ModalCosmeticBrand = ({show, close, cosmetics, setCosmetics}) => {
   const { register } = useFormContext()
 
   const handleCheckCosmeBrand = useCallback((e) => {
-    if(cosmetics.includes(e.target.value)) {
+    if(cosmetics?.includes(e.target.value)) {
       setCosmetics(
         cosmetics.filter((item) => (item !== e.target.value))
       )
@@ -48,7 +48,7 @@ const ModalCosmeticBrand = ({show, close, cosmetics, setCosmetics}) => {
                           value={gr.name}
                           {...register("cosmetic", {required: true})}
                           onChange={handleCheckCosmeBrand}
-                          checked={cosmetics.includes(gr.name)}
+                          checked={cosmetics?.includes(gr.name)}
                         />
                         {gr.name}
                       </label>

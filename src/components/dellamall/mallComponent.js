@@ -135,16 +135,16 @@ const MallComponent = ({item, user, save = false}) => {
               <p className={styles.saveTxt}>保存：{mall.d_mall_in?.length}件</p>
               {user && mall.lock === 0 ?
                 <button
-                  className={`${styles.saveBtn} ${saveMallState.includes(mall.id) ? styles.on : null}`}
+                  className={`${styles.saveBtn} ${saveMallState?.includes(mall.id) ? styles.on : null}`}
                   type="button"
                   onClick={() => {
-                    if (saveMallState.includes(mall.id)) {
+                    if (saveMallState?.includes(mall.id)) {
                       handleClickSaveMallDelete(mall.id)
                     } else {
                       handleClickSaveMallAdd(mall.id)
                     }
                   }}
-                >{saveMallState.includes(mall.id) ? "モールの保存解除" : "モールを保存"}</button>
+                >{saveMallState?.includes(mall.id) ? "モールの保存解除" : "モールを保存"}</button>
               : null}
             </div>
             {save ?

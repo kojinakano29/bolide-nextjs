@@ -16,7 +16,7 @@ const BlogPattern6 = ({salons}) => {
           <div className={styles.singleTxt}>
             <h3>{salon?.title}</h3>
             <p>
-              {salon?.content.replace(/<[^>]+>/g, '').replace(/&nbsp;/g, '').substring(0, 45)}
+              {salon?.content?.replace(/<[^>]+>/g, '')?.replace(/&nbsp;/g, '')?.substring(0, 45)}
             </p>
           </div>
         </a>

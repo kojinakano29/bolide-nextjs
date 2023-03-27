@@ -30,7 +30,7 @@ const DetailAreaRight = ({influencer = false}) => {
       user_id: user?.id,
     }).then((res) => {
       // console.log(res)
-      if (res.data.includes(userInfo.id)) {
+      if (res.data?.includes(userInfo.id)) {
         setFollowCheck(true)
       }
     }).catch((e) => {
@@ -127,7 +127,7 @@ const DetailAreaRight = ({influencer = false}) => {
             {profileMore ?
               profile.profile
             :
-              profile.profile.substr(0, 60)
+              profile.profile?.substr(0, 60)
             }
           </p>
           {profileMore ? null:
@@ -233,7 +233,7 @@ const DetailAreaRight = ({influencer = false}) => {
             {profileMore ?
               profile.profile
             :
-              profile.profile.substr(0, 60)
+              profile.profile?.substr(0, 60)
             }
           </p>
           {profileMore ? null:

@@ -380,7 +380,7 @@ const CompanyList = ({posts}) => {
                   </div>
                   <p className={styles.catch}>{comp.title}</p>
                   <p className={styles.name}>{comp.nicename}</p>
-                  <p className={styles.desc}>{comp.profile.substring(0, 35)}...</p>
+                  <p className={styles.desc}>{comp.profile?.substring(0, 35)}...</p>
                 </a>
               ))}
             </article>

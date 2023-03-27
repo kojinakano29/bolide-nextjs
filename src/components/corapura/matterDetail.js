@@ -47,7 +47,7 @@ const MatterDetail = ({posts}) => {
       user_id: user?.id,
     }).then((res) => {
       // console.log(res)
-      if (res.data.includes(posts.id)) {
+      if (res.data?.includes(posts.id)) {
         setCheck(true)
       }
     }).catch(e => {
@@ -124,7 +124,7 @@ const MatterDetail = ({posts}) => {
     setDisabled(true)
     await csrf()
 
-    if (bookmark.includes(posts.id)) {
+    if (bookmark?.includes(posts.id)) {
       await axios.delete('/api/corapura/post_bookmark/delete', {
         data: {
           user_id: user?.id,
@@ -203,7 +203,7 @@ const MatterDetail = ({posts}) => {
                 className={`${styles.bookmarkBtn} hoverEffect`}
                 onClick={handleClickBookmark}
               >
-                <img src={bookmark.includes(posts.id) ? starA.src : starB.src} alt="ブックマークのアイコン" />
+                <img src={bookmark?.includes(posts.id) ? starA.src : starB.src} alt="ブックマークのアイコン" />
               </button>
             </div>
             <div className={styles.headRight}>

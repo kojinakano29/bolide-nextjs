@@ -47,7 +47,7 @@ const SaveMall = () => {
     processing.current = true
     await csrf()
 
-    if (mallIn.includes(mallId)) {
+    if (mallIn?.includes(mallId)) {
       await axios.delete('/api/dellamall/mall_in/delete', {
         data: {
           d_mall_id: mallId,
@@ -94,7 +94,7 @@ const SaveMall = () => {
             {mallList ?
               mallList?.map((list, index) => (
                 <button
-                  className={`${styles.saveMallBox__btn} ${mallIn.includes(list.id) ? styles.saveOn : null}`}
+                  className={`${styles.saveMallBox__btn} ${mallIn?.includes(list.id) ? styles.saveOn : null}`}
                   key={index}
                   onClick={() => handleClickSaveMallToggle(list.id, list.name)}
                 >

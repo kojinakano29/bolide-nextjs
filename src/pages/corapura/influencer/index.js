@@ -341,7 +341,7 @@ const InfluencerList = ({posts}) => {
                   </div>
                   <p className={styles.catch}>{item.title}</p>
                   <p className={styles.name}>{item.nicename}</p>
-                  <p className={styles.desc}>{item.profile.substring(0, 35)}...</p>
+                  <p className={styles.desc}>{item.profile?.substring(0, 35)}...</p>
                 </a>
               ))}
             </article>

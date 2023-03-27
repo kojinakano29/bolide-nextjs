@@ -7,7 +7,7 @@ const ModalBrand = ({show, close, brands, setBrands}) => {
   const { register } = useFormContext()
 
   const handleCheckBrand = useCallback((e) => {
-    if(brands.includes(e.target.value)) {
+    if(brands?.includes(e.target.value)) {
       setBrands(
         brands.filter((item) => (item !== e.target.value))
       )
@@ -48,7 +48,7 @@ const ModalBrand = ({show, close, brands, setBrands}) => {
                           value={gr.name}
                           {...register("brand", {required: true})}
                           onChange={handleCheckBrand}
-                          checked={brands.includes(gr.name)}
+                          checked={brands?.includes(gr.name)}
                         />
                         {gr.name}
                       </label>
