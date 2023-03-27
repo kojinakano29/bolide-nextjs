@@ -21,7 +21,9 @@ const AdminShop = () => {
       user_id: user?.id,
     }).then((res) => {
       // console.log(res)
-      setCreateShop(res.data)
+      setCreateShop(res.data.filter((shop) => {
+        return !shop.official_user_id || shop.official_user_id === user?.id
+      }))
     }).catch((e) => {
       console.error(e)
     })
@@ -50,12 +52,6 @@ const AdminShop = () => {
     await setProcessing(false)
   }
 
-  // const [check, setCheck] = useState(false)
-
-  // const handleClickCheck = (e) => {
-  //   setCheck(e.target.checked)
-  // }
-
   return (
     <section className="cont1">
       <Container small>
@@ -83,28 +79,6 @@ const AdminShop = () => {
             ))}
           </article>
         : <Loader />}
-
-
-
-
-
-        {/* <dl>
-          <dt>
-            <label htmlFor="permission">キャプチャの表示・非表示</label>
-          </dt>
-          <dd>
-            <label htmlFor="permission" className={`${styles.checkBtn} ${check ? styles.on : null}`}>
-              <span>表示</span>
-              <span>非表示</span>
-              <input
-                type="checkbox"
-                id="permission"
-                {...register("image_permission")}
-                onClick={handleClickCheck}
-              />
-            </label>
-          </dd>
-        </dl> */}
       </Container>
     </section>
   );

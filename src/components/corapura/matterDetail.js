@@ -238,7 +238,7 @@ const MatterDetail = ({posts}) => {
                   <Btn txt="この案件を完了する" />
                 </div>
               : null}
-              {appList.length !== 0 && posts.state !== 1 ?
+              {appList.length !== 0 ?
                 <div className={styles.myMatterBox}>
                   <h3 className={styles.ttl2}>この案件に応募した企業・<br className="sp" />ユーザーステータス状況</h3>
                   {appList.map((list, index) => (

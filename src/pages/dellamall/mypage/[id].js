@@ -311,7 +311,7 @@ const Mypage = ({posts}) => {
                         作成したショップがありません
                       </p>
                     }
-                    {user && user?.id === profile.id && createShop.length !== 0 ?
+                    {user && user?.id === profile.id ?
                       <Btn01 fa={faGear} txt="ショップを編集する" link="/dellamall/admin/shop" />
                     : null}
                   </article>

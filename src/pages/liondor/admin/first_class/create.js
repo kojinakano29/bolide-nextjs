@@ -151,7 +151,7 @@ const CreateFirstClass = ({posts}) => {
                   </dt>
                   <dd className={styles.dd}>
                     <input id="thumb" type="file" accept="image/*" {...register("thumbs", { required: true })} onChange={handleChangeFile} />
-                    <img src={preview} alt="プレビュー画像" />
+                    {preview ? <img src={preview} alt="プレビュー画像" /> : null}
                     {errors.thumbs && <p className={`red ${styles.error}`}>必須項目を入力してください</p>}
                   </dd>
                 </dl>

@@ -47,7 +47,11 @@ const EditShop = ({posts}) => {
         setOfficialCheck(false)
       }
 
-      if (user?.id !== posts.user_id && user?.account_type < 3) {
+      if (posts?.official_user_id) {
+        if (parseInt(user?.id) !== parseInt(posts?.official_user_id)) {
+          router.push(`/dellamall/mypage/${user?.id}`)
+        }
+      } else if (user?.id !== posts.user_id && user?.account_type < 3) {
         router.push(`/dellamall/mypage/${user?.id}`)
       }
     }
@@ -103,7 +107,7 @@ const EditShop = ({posts}) => {
     <section className={`${styles.adminForm} cont1`}>
       <Container small>
         <h2 className="ttl2">ショップ編集</h2>
-        {user?.id === posts.user_id || user?.account_type > 2 ?
+        {user?.id === posts.user_id || user?.account_type > 2 || user?.id === posts.official_user_id ?
           <form onSubmit={handleSubmit(onSubmit)}>
             <h3 className={styles.infoTtl}>基本情報</h3>
             <p className={styles.desc}>
