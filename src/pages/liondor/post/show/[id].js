@@ -151,7 +151,7 @@ const DetailPage = ({posts}) => {
     <>
       <section className={styles.headline}>
         <Container>
-          {post.mv ?
+          {post.mv && post.mv !== 'null' ?
             <div className={styles.headlineMv}>
               <img src={`${process.env.NEXT_PUBLIC_BACKEND_URL}/storage/${post.mv}`} alt="記事のメインビジュアル" />
             </div>
@@ -168,14 +168,14 @@ const DetailPage = ({posts}) => {
               <p className={styles.desc}>{desc}</p>
               <div className={styles.series}>
                 {
-                  seriesPrevPost !== null
+                  seriesPrevPost !== null && seriesPrevPost.l_series_id !== 0
                   ?
                   <a href={`/liondor/post/show/${seriesPrevPost.id}`} className={styles.seriesLink}>{seriesPrevPost.title ? seriesPrevPost.title : "タイトル未入力"}</a>
                   :
                   ''
                 }
                 {
-                  seriesNextPost !== null
+                  seriesNextPost !== null && seriesNextPost.l_series_id !== 0
                   ?
                   <a href={`/liondor/post/show/${seriesNextPost.id}`} className={styles.seriesLink}>{seriesNextPost.title ? seriesNextPost.title : "タイトル未入力"}</a>
                   :
