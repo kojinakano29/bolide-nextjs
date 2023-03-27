@@ -4,7 +4,6 @@ import { SearchIcon, HeaderNav } from "@/components/dellamall/index";
 import Container from "./Layouts/container";
 import logo from '@/images/dellamall/top/kasou_logo.svg'
 import Image from "next/image";
-import Link from "next/link";
 import { useAuth } from "@/hooks/auth";
 import { useCallback, useEffect, useState } from "react";
 import axios from "@/lib/axios";
