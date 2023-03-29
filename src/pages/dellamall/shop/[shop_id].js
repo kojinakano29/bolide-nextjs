@@ -56,7 +56,11 @@ const ShopDetail = ({posts}) => {
         <section className={styles.connectionShop}>
           <Container>
             <h2 className="ttl1 center">関連ショップ</h2>
-            <MasonryGridComponent item={connection} />
+            {connection.length !== 0 ?
+              <MasonryGridComponent item={connection} />
+              :
+              <p className={styles.noneText}>関連ショップがありません</p>
+            }
           </Container>
         </section>
       : null}

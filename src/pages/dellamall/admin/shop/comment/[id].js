@@ -27,7 +27,7 @@ const CommentList = ({posts}) => {
 
   const onLoadCheck = async () => {
     if (posts[0]?.d_shop?.official_user_id) {
-      if (parseInt(user?.id) !== parseInt(posts[0]?.d_shop?.official_user_id)) {
+      if (parseInt(user?.id) !== parseInt(posts[0]?.d_shop?.official_user_id) && user?.account_type < 3) {
         router.push('/dellamall/admin/shop')
       }
     } else if (parseInt(user?.id) !== parseInt(posts[0]?.d_shop?.user_id) && user?.account_type < 3) {

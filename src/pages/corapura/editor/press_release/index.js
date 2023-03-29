@@ -8,6 +8,8 @@ import axios from '@/lib/axios';
 import { DateFormat, Loader } from '@/components/corapura';
 import dummy from '@/images/corapura/common/dummy1.svg'
 import { useRouter } from 'next/router';
+import prev from '@/images/corapura/common/prev.svg'
+import next from '@/images/corapura/common/next.svg'
 
 const AdminPressReleaseList = () => {
   const csrf = () => axios.get('/sanctum/csrf-cookie')

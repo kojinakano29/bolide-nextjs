@@ -31,11 +31,10 @@ const Mypage = ({posts}) => {
   const { user, logout } = useAuth({middleware: 'auth', type: 'dellamall'})
   const profile = posts.profile
   const dProfile = profile.d_profile
-  const create_shop = posts.create_shop
   const [processing, setProcessing] = useState(false)
   const [tabState, setTabState] = useState(1)
   const [popupOpen, setPopupOpen] = useState(false)
-  const [createShop, setCreateShop] = useState(create_shop)
+  const [createShop, setCreateShop] = useState([])
   const [createMall, setCreateMall] = useState([])
   const [saveShop, setSaveShop] = useState([])
   const [saveMall, setSaveMall] = useState([])
@@ -69,9 +68,13 @@ const Mypage = ({posts}) => {
   ]
 
   useEffect(() => {
-    if (user && router.query.state === "4") {
-      handleClickTab(4)
-      handleClickTabShow(4)
+    if (user) {
+      if (router.query.state === "4") {
+        handleClickTab(4)
+        handleClickTabShow(4)
+      } else {
+        handleClickTabShow(1)
+      }
     }
   }, [user, router.query.state])
 
@@ -146,7 +149,9 @@ const Mypage = ({posts}) => {
         user_id: profile.id
       }).then((res) => {
         // console.log(res)
-        setCreateShop(res.data)
+        setCreateShop(res.data.filter((shop) => {
+          return !shop.official_user_id || shop.official_user_id === user?.id
+        }))
       }).catch((e) => {
         console.error(e)
       })
@@ -211,7 +216,7 @@ const Mypage = ({posts}) => {
             <div className={styles.user__info__name}>{dProfile?.nicename}</div>
             {/* <div className={styles.user__info__id}>{profile.name}</div> */}
             <ul className={styles.user__info__follow}>
-              <li>投稿 {create_shop.length} 件</li>
+              <li>投稿 {createShop.length} 件</li>
               <li>
                 <button
                   type="button"
@@ -311,7 +316,7 @@ const Mypage = ({posts}) => {
                         作成したショップがありません
                       </p>
                     }
-                    {user && user?.id === profile.id ?
+                    {user && user?.id === profile.id && createShop.length !== 0 ?
                       <Btn01 fa={faGear} txt="ショップを編集する" link="/dellamall/admin/shop" />
                     : null}
                   </article>

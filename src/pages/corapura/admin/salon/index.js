@@ -7,6 +7,8 @@ import { useRouter } from "next/router";
 import { useCallback, useEffect, useState } from "react";
 import { useForm } from "react-hook-form";
 import searchIcon from '@/images/corapura/common/search.svg'
+import prev from '@/images/corapura/common/prev.svg'
+import next from '@/images/corapura/common/next.svg'
 import { DateFormat, Loader } from '@/components/corapura';
 
 export const getServerSideProps = async () => {
