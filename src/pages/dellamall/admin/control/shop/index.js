@@ -8,6 +8,8 @@ import { useCallback, useEffect, useState } from "react";
 import { useForm } from "react-hook-form";
 import searchIcon from '@/images/corapura/common/search.svg'
 import { Btn01, DateFormat, Loader } from '@/components/dellamall';
+import prev from '@/images/corapura/common/prev.svg'
+import next from '@/images/corapura/common/next.svg'
 
 const AdminShopList = () => {
   const csrf = () => axios.get('/sanctum/csrf-cookie')
@@ -65,7 +67,7 @@ const AdminShopList = () => {
     setDisabled(true)
     await csrf()
 
-    await axios.post(`/api/dellamall/shop/search/${page}/new/all`, {
+    await axios.post(`/api/dellamall/shop/search/1/new/all`, {
       s: data.s ? data.s : "",
     }).then((res) => {
       // console.log(res)
@@ -83,7 +85,6 @@ const AdminShopList = () => {
     setNowPage,
     setMaxPage,
     setSearch,
-    page,
   ])
 
   const handleClickDeleteShop = async (id) => {
@@ -144,9 +145,9 @@ const AdminShopList = () => {
                       {shop.official_user_id ?
                         <>
                           <a className={`${styles.btn} hoverEffect`} href={`/dellamall/admin/shop/official/${shop.id}`}>公式情報編集</a>
-                          <a className={`${styles.btn} hoverEffect`} href={`/dellamall/admin/shop/comment/${shop.id}`}>コメント</a>
                         </>
                       : null}
+                      <a className={`${styles.btn} hoverEffect`} href={`/dellamall/admin/shop/comment/${shop.id}`}>コメント</a>
                       <button
                         type="button"
                         onClick={() => handleClickDeleteShop(shop.id)}

@@ -7,6 +7,8 @@ import { useCallback, useEffect, useState } from 'react';
 import axios from '@/lib/axios';
 import { DateFormat, Loader } from '@/components/corapura';
 import dummy from '@/images/corapura/common/dummy1.svg'
+import prev from '@/images/corapura/common/prev.svg'
+import next from '@/images/corapura/common/next.svg'
 import { useRouter } from 'next/router';
 
 const AdminSalonList = () => {

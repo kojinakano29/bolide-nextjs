@@ -18,3 +18,9 @@
   @include p(64px 0);
   background-color: $g6;
 }
+
+.noneText {
+  @include fs(16px, 14px);
+  font-weight: 500;
+  text-align: center;
+}
