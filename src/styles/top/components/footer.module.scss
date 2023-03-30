@@ -1,7 +1,7 @@
 @import '../../variables.scss';
 
 .footer {
-  @include p(32px 20px 40px, 32px 20px);
+  @include p(32px 20px 40px, 32px 20px, 32px 20px 100px);
   background-color: $g13;
 
   .logo {
@@ -42,6 +42,11 @@
   right: 8px;
   opacity: 0;
   transition: .2s ease;
+  z-index: 10;
+
+  &.top {
+    @include bottom(136px, 136px, 22vw);
+  }
 
   &.active {
     opacity: 1;

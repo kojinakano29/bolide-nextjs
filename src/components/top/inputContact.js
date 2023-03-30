@@ -1,18 +1,24 @@
 import styles from '@/styles/top/components/form.module.scss'
 import { useRouter } from 'next/router';
-import { useCallback } from 'react';
+import { useCallback, useEffect } from 'react';
 import { useFormContext } from 'react-hook-form';
 import { Btn1 } from '@/components/top/';
 
 const InputContact = () => {
   const router = useRouter()
 
-  const { register, handleSubmit, formState: { errors, isValid } } = useFormContext()
+  const { register, handleSubmit, setValue, formState: { errors, isValid } } = useFormContext()
 
   const onSubmit = useCallback(async (data) => {
     // console.log(data)
 
     router.push("/contact/?confirm=1")
+  }, [router])
+
+  useEffect(() => {
+    if (router.query.type === "request") {
+      setValue("content", ["資料請求"])
+    }
   }, [router])
 
   return (
@@ -33,6 +39,10 @@ const InputContact = () => {
               <label>
                 <input type="checkbox" value="掲載希望について" {...register("content", {required: true})} />
                 掲載希望について
+              </label>
+              <label>
+                <input type="checkbox" value="資料請求" {...register("content", {required: true})} />
+                資料請求
               </label>
               <label>
                 <input type="checkbox" value="その他" {...register("content", {required: true})} />

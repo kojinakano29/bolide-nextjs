@@ -171,6 +171,11 @@ const Header = () => {
             <p className={`en ${styles.en}`}>About Of CORAPURA</p>
           </a>
         </li>
+        <li>
+          <a href="/ad" onClick={handleClickHum}>
+            <p className={styles.jp}>媒体資料・広告掲載について</p>
+          </a>
+        </li>
         {user?.account_type === 3 ?
           <li>
             <a href="/corapura/admin/control" onClick={handleClickHum}>

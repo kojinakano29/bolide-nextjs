@@ -181,7 +181,7 @@ const CreateShop = () => {
                     <textarea
                       id="desc"
                       {...register("description")}
-                      placeholder={officialCheck ? '公式ショップオーナー以外は記載ができません。自動反映されない場合は、空白で作成ボタンを押してください' : 'ショップの紹介をしてください！「○○がおいしい洋菓子店」「オンライン限定商品も豊富」など'}
+                      placeholder="公式ショップオーナー以外は記載ができません。自動反映されない場合は、空白で作成ボタンを押してください"
                       disabled={officialCheck}
                     ></textarea>
                   </dd>

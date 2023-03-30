@@ -109,11 +109,11 @@
 
 .bodyFlex {
   @include flex(stretch);
-  @include gap(0 64px, 64px, 48px);
+  @include gap(0 32px, 64px, 48px);
 }
 
 .editorBody {
-  @include width(calc(100% - (320px + 64px)), 100%);
+  @include width(calc(100% - (320px + 32px)), 100%);
 }
 
 .recoCont {
