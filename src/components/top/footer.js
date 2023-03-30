@@ -2,8 +2,11 @@ import styles from '@/styles/top/components/footer.module.scss'
 import { useCallback, useEffect, useState } from 'react';
 import Container from './Layout/container';
 import { animateScroll as scroll } from "react-scroll";
+import { useRouter } from 'next/router';
 
 const Footer = () => {
+  const router = useRouter()
+
   const scrollTop = useCallback(() => {
     scroll.scrollToTop()
   }, [])
@@ -67,7 +70,7 @@ const Footer = () => {
 
       <button
         type="button"
-        className={`${styles.topBtn} ${show ? styles.active : null} hoverEffect`}
+        className={`${styles.topBtn} ${show ? styles.active : null} ${router.pathname === '/' ? styles.top : null} hoverEffect`}
         onClick={scrollTop}
       >
         <img src="/top/pagetop.svg" alt="TOPへ戻るアイコン" />

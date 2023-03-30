@@ -7,6 +7,13 @@ import { plans } from '@/lib/top/constants';
 const BolideTop = () => {
   return (
     <>
+      <div className={styles.fixed_btn}>
+        <a className="hoverEffect" href="/contact/?type=request">
+          <img className="pc" src="/top/fixed_btn.webp" alt="無料で確認　BJについて資料はコチラ" />
+          <img className="sp" src="/top/fixed_btn_sp.webp" alt="無料で確認　BJについて資料はコチラ" />
+        </a>
+      </div>
+
       <section className={styles.mv}>
         <div className={styles.mvBox}>
           <img className="pc" src="/top/mv-text.svg" alt="つながりを強化する新世代SNSBolide's Japan　自らの攻めが生きる”連鎖型SNS”という選択" />

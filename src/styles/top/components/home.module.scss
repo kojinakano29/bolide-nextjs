@@ -1,5 +1,27 @@
 @import '../../variables.scss';
 
+.fixed_btn {
+  @include width(120px, 120px, 100%);
+  @include height(120px, 120px, auto);
+  border-radius: 50%;
+  overflow: hidden;
+  position: fixed;
+  @include bottom(8px, 8px, 0);
+  @include right(8px, 8px, 0);
+  isolation: isolate;
+  z-index: 10;
+
+  @media screen and (max-width: $sp) {
+    border-radius: unset;
+  }
+
+  a {
+    display: block;
+    width: 100%;
+    height: 100%;
+  }
+}
+
 .mv {
   @include pt(128px, 108px);
 
