@@ -32,7 +32,9 @@ const AdminShop = () => {
   }
 
   useEffect(() => {
-    onLoadList()
+    if (user) {
+      onLoadList()
+    }
   }, [user])
 
   const handleClickDelete = async (id) => {
