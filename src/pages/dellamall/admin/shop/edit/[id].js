@@ -48,7 +48,7 @@ const EditShop = ({posts}) => {
       }
 
       if (posts?.official_user_id) {
-        if (parseInt(user?.id) !== parseInt(posts?.official_user_id)) {
+        if (parseInt(user?.id) !== parseInt(posts?.official_user_id) && user?.account_type < 3) {
           router.push(`/dellamall/mypage/${user?.id}`)
         }
       } else if (user?.id !== posts.user_id && user?.account_type < 3) {
@@ -147,7 +147,8 @@ const EditShop = ({posts}) => {
                     <br/>
                     <span>
                       ※必ずサイトTOPページのURLを入力ください！
-                      <br/>※公式ショップ登録したい方で、URLが登録できない場合にはお問合せください。(お問合せがリンク)
+                      <br/>※公式ショップ登録したい方で、URLが登録できない場合にはお問合せください。
+                      <br/>(<a href="/dellamall/contact">お問合せにリンク</a>)
                     </span>
                   </dt>
                   <dd>

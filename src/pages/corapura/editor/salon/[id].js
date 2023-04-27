@@ -181,6 +181,7 @@ const EditSalon = ({posts}) => {
                         type="text"
                         id="plan"
                         {...register("plan", {required: true})}
+                        disabled
                       />
                       {errors.plan && <p className={styles.error}>必須項目を入力してください</p>}
                     </dd>
@@ -219,6 +220,19 @@ const EditSalon = ({posts}) => {
                   </dd>
                 </dl>
               </article>
+
+              <div className={styles.checkArea}>
+                <label>
+                  <input
+                    type="checkbox"
+                    {...register("check", {required: true})}
+                  />
+                  <p className={styles.txt}>
+                    <a href={`/corapura/terms`} target="_blank">利用規約</a>に同意します
+                  </p>
+                </label>
+                {errors.check && <p className={styles.error}>チェック必須項目です</p>}
+              </div>
 
               <div className={styles.submitFlex}>
                 <button className={`${styles.submitBtn2} hoverEffect`} disabled={disabled}>

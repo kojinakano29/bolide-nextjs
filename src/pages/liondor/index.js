@@ -40,7 +40,7 @@ export default function Home({posts}) {
                     {firstClassData.length !== 0 ?
                         <FirstClass firstClassData={firstClassData[0]} />
                         :
-                        <p className={`${styles.noneLength} ivy`}>FIRST CLASSの記事がありません</p>
+                        <p className={`${styles.noneLength} ivy`}>coming soon</p>
                     }
                 </Container>
             </section>
@@ -51,7 +51,7 @@ export default function Home({posts}) {
                     {specialData.length !== 0 ?
                         <BlogPattern1 pattern={specialData} route2 pickup />
                         :
-                        <p className={`${styles.noneLength} ivy`}>SPECIALの記事がありません</p>
+                        <p className={`${styles.noneLength} ivy`}>coming soon</p>
                     }
                 </Container>
             </section>
@@ -62,7 +62,7 @@ export default function Home({posts}) {
                     {fashionData.l_post.length !== 0 ?
                         <BlogPattern2 pattern={fashionData} />
                         :
-                        <p className={`${styles.noneLength} ivy`}>FASHIONの記事がありません</p>
+                        <p className={`${styles.noneLength} ivy`}>coming soon</p>
                     }
                 </Container>
             </section>
@@ -73,7 +73,7 @@ export default function Home({posts}) {
                     {collectionData.length !== 0 ?
                         <BlogPattern3 pattern={collectionData[0]} />
                         :
-                        <p className={`${styles.noneLength} ivy`}>COLLECTIONの記事がありません</p>
+                        <p className={`${styles.noneLength} ivy`}>coming soon</p>
                     }
                 </Container>
             </section>
@@ -84,7 +84,7 @@ export default function Home({posts}) {
                     {beautyData.l_post.length !== 0 ?
                         <BlogPattern1 pattern={beautyData} />
                         :
-                        <p className={`${styles.noneLength} ivy`}>BEAUTYの記事がありません</p>
+                        <p className={`${styles.noneLength} ivy`}>coming soon</p>
                     }
                 </Container>
             </section>
@@ -95,7 +95,7 @@ export default function Home({posts}) {
                     {trendData.l_post.length !== 0 ?
                         <BlogPattern4 pattern={trendData} />
                         :
-                        <p className={`${styles.noneLength} ivy`}>TRENDの記事がありません</p>
+                        <p className={`${styles.noneLength} ivy`}>coming soon</p>
                     }
                 </Container>
             </section>
@@ -106,7 +106,7 @@ export default function Home({posts}) {
                     {lifestyleData.l_post.length !== 0 ?
                         <BlogPattern1 pattern={lifestyleData} />
                         :
-                        <p className={`${styles.noneLength} ivy`}>LIFE STYLEの記事がありません</p>
+                        <p className={`${styles.noneLength} ivy`}>LIFE coming soon</p>
                     }
                 </Container>
             </section>
@@ -117,7 +117,7 @@ export default function Home({posts}) {
                     {weddingData.l_post.length !== 0 ?
                         <BlogPattern4 pattern={weddingData} mode2 />
                         :
-                        <p className={`${styles.noneLength} ivy`}>WEDDINGの記事がありません</p>
+                        <p className={`${styles.noneLength} ivy`}>coming soon</p>
                     }
                 </Container>
             </section>
@@ -128,7 +128,7 @@ export default function Home({posts}) {
                     {topleaderData.l_post.length !== 0 ?
                         <BlogPattern1 pattern={topleaderData} column3None />
                         :
-                        <p className={`${styles.noneLength} ivy`}>TOP LEADERの記事がありません</p>
+                        <p className={`${styles.noneLength} ivy`}>TOP coming soon</p>
                     }
                 </Container>
             </section>
@@ -139,7 +139,7 @@ export default function Home({posts}) {
                     {fortuneData.l_post.length !== 0 ?
                         <BlogPattern7 pattern={fortuneData} />
                         :
-                        <p className={`${styles.noneLength} ivy`}>FORTUNEの記事がありません</p>
+                        <p className={`${styles.noneLength} ivy`}>coming soon</p>
                     }
                 </Container>
             </section>
@@ -150,7 +150,7 @@ export default function Home({posts}) {
                     {videoData.l_post.length !== 0 ?
                         <BlogPattern5 pattern={videoData} />
                         :
-                        <p className={`${styles.noneLength} ivy`}>VIDEOの記事がありません</p>
+                        <p className={`${styles.noneLength} ivy`}>coming soon</p>
                     }
                 </Container>
             </section>
@@ -164,7 +164,7 @@ export default function Home({posts}) {
                             <Button2 link={`/corapura/salon`} name="view all" />
                         </>
                     :
-                    <p className={`${styles.noneLength} ivy`}>ON-LINE SALONの記事がありません</p>
+                    <p className={`${styles.noneLength} ivy`}>coming soon</p>
                     }
                 </Container>
             </section>
@@ -185,7 +185,7 @@ export default function Home({posts}) {
                     {presentData.length !== 0 ?
                         <BlogPattern9 pattern={presentData} />
                         :
-                        <p className={`${styles.noneLength} ivy`}>PRESENTがありません</p>
+                        <p className={`${styles.noneLength} ivy`}>coming soon</p>
                     }
                     {presentData.length > 3 ?
                     <Button2 link="/liondor/present" name="view all" />

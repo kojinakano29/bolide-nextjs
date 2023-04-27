@@ -72,6 +72,7 @@ const MatterCard = ({matter, bookmarkList, detail = false, list = false}) => {
                 : null
               }
             </div>
+            <p className={styles.tag}>{matter?.c_cat?.name}</p>
             <p className={styles.ttl}>{matter?.title}</p>
             <p className={styles.desc}>
               {matter?.content?.replace(/<[^>]+>/g, '')?.replace(/&nbsp;/g, '')?.substring(0, 50)}
@@ -88,12 +89,12 @@ const MatterCard = ({matter, bookmarkList, detail = false, list = false}) => {
                 {matter?.limite_date?.replace(/-/g, '.')}
               </p>
             : null}
-            <div className={styles.company}>
-              <div className={styles.logoBox}>
-                {matter?.user?.c_profile?.thumbs ? <img src={`${process.env.NEXT_PUBLIC_BACKEND_URL}/storage/${matter?.user?.c_profile?.thumbs}`} alt="プロフィール画像" /> : null}
-              </div>
-              {matter?.user?.c_profile?.nicename}
+          </a>
+          <a href={`/corapura/${matter?.user?.account_type === 0 ? 'influencer' : 'company'}/${matter?.user?.id}`} className={`${styles.company} hoverEffect`}>
+            <div className={styles.logoBox}>
+              {matter?.user?.c_profile?.thumbs ? <img src={`${process.env.NEXT_PUBLIC_BACKEND_URL}/storage/${matter?.user?.c_profile?.thumbs}`} alt="プロフィール画像" /> : null}
             </div>
+            {matter?.user?.c_profile?.nicename}
           </a>
           <button
             type="button"
@@ -126,15 +127,15 @@ const MatterCard = ({matter, bookmarkList, detail = false, list = false}) => {
                 {matter?.limite_date?.replace(/-/g, '.')}
               </p>
             : null}
-            {detail ? null :
-              <div className={styles.company}>
-                <div className={styles.logoBox}>
-                  {matter?.user?.c_profile?.thumbs ? <img src={`${process.env.NEXT_PUBLIC_BACKEND_URL}/storage/${matter?.user?.c_profile?.thumbs}`} alt="プロフィール画像" /> : null}
-                </div>
-                {matter?.user?.c_profile?.nicename}
-              </div>
-            }
           </a>
+          {detail ? null :
+            <a href={`/corapura/${matter?.user?.account_type === 0 ? 'influencer' : 'company'}/${matter?.user?.id}`} className={`${styles.company} hoverEffect`}>
+              <div className={styles.logoBox}>
+                {matter?.user?.c_profile?.thumbs ? <img src={`${process.env.NEXT_PUBLIC_BACKEND_URL}/storage/${matter?.user?.c_profile?.thumbs}`} alt="プロフィール画像" /> : null}
+              </div>
+              {matter?.user?.c_profile?.nicename}
+            </a>
+          }
           {detail ?
             <button
               type="button"

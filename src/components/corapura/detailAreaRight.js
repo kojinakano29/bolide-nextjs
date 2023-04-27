@@ -146,7 +146,7 @@ const DetailAreaRight = ({influencer = false}) => {
               <dd>{profile.c_company_profile.president}</dd>
             </dl>
             <dl>
-              <dt>上場・非上場・自治体</dt>
+              <dt>設立</dt>
               <dd>{profile.c_company_profile.maked}</dd>
             </dl>
             <dl>
@@ -183,7 +183,7 @@ const DetailAreaRight = ({influencer = false}) => {
           </div>
           <a href={`mailto:${userInfo.email}`} className={styles.btn}>
             <img src={mail.src} alt="メールのアイコン" />
-            <span>この企業にメッセージを送る</span>
+            <span>このユーザーにメッセージを送る</span>
           </a>
         </div>
       :
@@ -252,7 +252,7 @@ const DetailAreaRight = ({influencer = false}) => {
           : null}
           <a href={`mailto:${userInfo.email}`} className={styles.btn}>
             <img src={mail.src} alt="メールのアイコン" />
-            <span>このインフルエンサーに<br className="sp" />メッセージを送る</span>
+            <span>このユーザーに<br className="sp" />メッセージを送る</span>
           </a>
         </div>
       }

@@ -94,7 +94,7 @@ const Registration = () => {
                 ボリードジャパンの
                 <br/>すべての機能が使える
               </p>
-              <a href="https://bolides.co.jp/about/" target="_blank" rel="noopener noreferrer" className={styles.link}>ボリードジャパンとは</a>
+              <a href="/" target="_blank" rel="noopener noreferrer" className={styles.link}>ボリードジャパンとは</a>
             </div>
           </div>
         </div>

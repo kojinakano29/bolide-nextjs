@@ -75,10 +75,10 @@
         @include tag;
       }
     }
+  }
 
-    .company {
-      @include companyNicename(12px);
-    }
+  .company {
+    @include companyNicename(12px);
   }
 
   .bookmarkBtn {

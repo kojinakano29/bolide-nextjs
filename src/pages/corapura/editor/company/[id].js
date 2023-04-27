@@ -523,6 +523,7 @@ const EditCompany = ({posts}) => {
                       <select {...register("jojo")}>
                         <option value="非上場">非上場</option>
                         <option value="上場">上場</option>
+                        <option value="自治体">自治体</option>
                       </select>
                     </dd>
                   </dl>

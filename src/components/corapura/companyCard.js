@@ -8,13 +8,13 @@ const CompanyCard = ({data}) => {
     <a href={`/corapura/company/${data?.id}`} className={`hoverEffect ${styles.companyBox}`}>
       <div className={styles.company__top}>
         <div className={styles.company__topLeft}>
-          <img src={data?.c_profile?.image1 ? `${process.env.NEXT_PUBLIC_BACKEND_URL}/storage/${data?.c_profile?.image1}` : dummy.src} alt="会社のイメージ画像" />
+          <img src={data?.c_profile?.image1 ? `${process.env.NEXT_PUBLIC_BACKEND_URL}/storage/${data?.c_profile?.thumbs}` : dummy.src} alt="プロフィール画像" />
         </div>
         <div className={styles.company__topRight}>
           <div className={styles.companyInfo2}>
-            <div className={styles.logoBox}>
+            {/* <div className={styles.logoBox}>
               {data?.c_profile?.thumbs ? <img src={`${process.env.NEXT_PUBLIC_BACKEND_URL}/storage/${data?.c_profile?.thumbs}`} alt="プロフィール画像" /> : null}
-            </div>
+            </div> */}
             {data?.c_profile?.nicename}
           </div>
           <div className={styles.company__topRightList}>

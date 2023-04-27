@@ -182,11 +182,11 @@ const DetailPage = ({posts}) => {
                   ''
                 }
               </div>
-              <p className={styles.name}>
+              {/* <p className={styles.name}>
                 <span className="en">BY</span>
                 <span className="space"></span>
                 <span className="en">{userName}</span>
-              </p>
+              </p> */}
               <p className={`en ${styles.time}`}><DateFormat dateString={createAt} /></p>
               <div className={styles.snsShare}>
                 <FacebookShareButton url={`${process.env.NEXT_PUBLIC_FRONTEND_URL}/${router.asPath}`}>
@@ -243,7 +243,7 @@ const DetailPage = ({posts}) => {
             </div>
             <Sidebar posts={posts.posts} />
           </div>
-          <Button2 link={`/liondor/post/${slug}`} name="back to list" left />
+          <Button2 link={`/liondor/post/${parentSlug ? parentSlug : slug}`} name="back to list" left />
         </Container>
       </section>
 

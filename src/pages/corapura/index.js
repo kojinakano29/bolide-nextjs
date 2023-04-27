@@ -94,7 +94,7 @@ const Corapura = ({posts}) => {
                   </SwiperSlide>
                 ))}
               </SwiperType2>
-              <Btn2 txt="企業/ビジネスユーザー/自治体一覧" link="/corapura/company" />
+              <Btn txt="企業/ビジネスユーザー/自治体一覧" link="/corapura/company" />
             </>
             :
             <p className={styles.noneLength}>おすすめの企業/ビジネスユーザー/自治体がありません</p>
@@ -127,7 +127,7 @@ const Corapura = ({posts}) => {
                   </SwiperSlide>
                 ))}
               </SwiperType2>
-              <Btn2 txt="プレスリリース一覧へ" link="/corapura/press_release" />
+              <Btn txt="プレスリリース一覧へ" link="/corapura/press_release" />
             </>
             :
             <p className={styles.noneLength}>プレスリリースがありません</p>
@@ -169,7 +169,7 @@ const Corapura = ({posts}) => {
             <p className={styles.noneLength}>注目のオンラインサロンがありません</p>
           }
           {salons.length > 4 ?
-            <Btn2 txt="オンラインサロン一覧へ" link="/corapura/salon" />
+            <Btn txt="オンラインサロン一覧へ" link="/corapura/salon" />
           : null}
         </Container>
       </section>

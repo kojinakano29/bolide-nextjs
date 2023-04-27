@@ -23,6 +23,8 @@ const CreateMatter = ({posts}) => {
   // console.log(posts)
   const csrf = () => axios.get('/sanctum/csrf-cookie')
 
+  const rewardRegExp = /^[0-9]*$/
+
   const router = useRouter()
   const { user } = useAuth({middleware: 'auth', type: 'corapura'})
   const [disabled, setDisabled] = useState(false)
@@ -30,6 +32,7 @@ const CreateMatter = ({posts}) => {
   const [required, setRequired] = useState(true)
   const { register, handleSubmit, reset, formState: { errors } } = useForm({
     mode: "onChange",
+    criteriaMode: "all",
   })
   const [preview, setPreview] = useState()
   const [editorContent, setEditorContent] = useState("")
@@ -232,15 +235,25 @@ const CreateMatter = ({posts}) => {
                   <dl>
                     <dt>
                       <label htmlFor="reward">謝礼</label>
-                      <GuidePopup txt={`■報酬について\n金額での記入の場合は必ず半角数字のみでご記入ください。\n※半角出なかった場合報酬での検索機能にかからなくなります\n\nお金以外の報酬の場合は、ご自由にご記入ください。\n例）Amazonギフト券、自社商品プレゼント、お食事券、仮想通貨など`} />
+                      <GuidePopup txt={`■報酬について\n金額での記入の場合は必ず半角数字のみでご記入ください。\n※半角でなかった場合報酬での検索機能にかからなくなります\n\nお金以外の報酬の場合は、ご自由にご記入ください。\n例）Amazonギフト券、自社商品プレゼント、お食事券、仮想通貨など`} />
                     </dt>
                     <dd>
                       <input
                         type="text"
                         id="reward"
-                        {...register("reward", {required: required})}
+                        {...register("reward", {
+                          required: {
+                            value: required,
+                            message: '必須項目を入力してください',
+                          },
+                          pattern: {
+                            value: rewardRegExp,
+                            message: '半角でご入力ください',
+                          }
+                        })}
                       />
-                      {errors.reward && <p className={styles.error}>必須項目を入力してください</p>}
+                      {errors.reward?.types.required && <p className={styles.error}>{errors.reward.types.required}</p>}
+                      {errors.reward?.types.pattern && <p className={styles.error}>{errors.reward.types.pattern}</p>}
                     </dd>
                   </dl>
                   : null

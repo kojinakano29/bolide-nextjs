@@ -4,7 +4,7 @@
   @include flex();
   @include gap(0 40px, 0 32px, 0);
 
-  .link {
+  .infoItem {
     @include width(calc(50% - 40px * 1/2), calc(50% - 32px * 1/2), 100%);
     @include p(16px 0);
     border-bottom: 2px solid $g3;
@@ -22,26 +22,30 @@
         border-top: 2px solid $g3;
       }
     }
+  }
 
-    .date {
-      @include mb(8px);
+  .date {
+    @include mb(8px);
 
-      time {
-        @include fs(16px, 14px);
-        font-weight: 500;
-        color: $g1;
-        font-family: $Poppins;
-      }
-    }
-
-    .ttl {
+    time {
       @include fs(16px, 14px);
       font-weight: 500;
+      color: $g1;
+      font-family: $Poppins;
     }
+  }
 
-    .company {
-      @include companyNicename(12px);
-      @include mt(16px);
+  .ttl {
+    @include fs(16px, 14px);
+    font-weight: 500;
+
+    &:hover {
+      text-decoration: underline;
     }
+  }
+
+  .company {
+    @include companyNicename(12px);
+    @include mt(16px);
   }
 }

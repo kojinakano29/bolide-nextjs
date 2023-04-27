@@ -96,7 +96,7 @@ export const catNavData = {
     {name: "Career", slug: "career", link: "/liondor/post/career"},
   ],
   fortune: [
-    {name: "All Topics", slug: "fortune", link: "/liondor/post/fortune"},
+    // {name: "All Topics", slug: "fortune", link: "/liondor/post/fortune"},
     {name: "Daily", slug: "daily", link: "/liondor/post/daily"},
     {name: "Monthly", slug: "monthly", link: "/liondor/post/monthly"},
     {name: "Yealy", slug: "yealy", link: "/liondor/post/yealy"},
@@ -691,6 +691,7 @@ export const zip = [
 ]
 
 export const workTypes = [
+  "経営者",
   "正社員",
   "契約社員",
   "派遣労働者",

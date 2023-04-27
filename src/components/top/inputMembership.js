@@ -1,13 +1,19 @@
 import styles from '@/styles/top/components/form.module.scss'
 import { useRouter } from "next/router";
-import { useCallback } from "react";
+import { useCallback, useEffect } from "react";
 import { useFormContext } from "react-hook-form";
 import { Btn1 } from '@/components/top/';
 
-const InputMembership = () => {
+const InputMembership = ({user}) => {
   const router = useRouter()
 
-  const { register, handleSubmit, formState: { errors, isValid } } = useFormContext()
+  const { register, handleSubmit, setValue, formState: { errors, isValid } } = useFormContext()
+
+  useEffect(() => {
+    if (user) {
+      setValue('email', user?.email)
+    }
+  }, [user])
 
   const onSubmit = useCallback((data) => {
     // console.log(data)

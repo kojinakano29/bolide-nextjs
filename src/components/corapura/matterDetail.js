@@ -216,12 +216,12 @@ const MatterDetail = ({posts}) => {
                   </li>
                 ))}
               </ul>
-              <div className={styles.company}>
+              <a href={`/corapura/${posts.user.account_type === 0 ? 'influencer' : 'company'}/${posts.user.id}`} className={`${styles.company} hoverEffect`}>
                 <div className={styles.logoBox}>
                   {posts.user.c_profile.thumbs ? <img src={`${process.env.NEXT_PUBLIC_BACKEND_URL}/storage/${posts.user.c_profile.thumbs}`} alt="プロフィール画像" /> : null}
                 </div>
                 {posts.user.c_profile.nicename}
-              </div>
+              </a>
             </div>
           </div>
 
