@@ -60,7 +60,11 @@ const Home = ({posts}) => {
 
   const isEmpty = data?.[0]?.length === 0
   const isReachingEnd = isEmpty || (data?.[data?.length - 1]?.length < limit)
-  if (error) return "failed"
+  if (error) {
+    processing.current = true
+  } else {
+    processing.current = false
+  }
   const pics = data?.flat()
 
   const handleClickMore = async () => {
@@ -80,13 +84,15 @@ const Home = ({posts}) => {
         <img className={`sp ${styles.bg_mv_sp}`} src={mv__sp.src} alt="mv" />
         <Container small>
           <h1 className={styles.sitename}>
-            <Image
-              src={fv_text}
-              alt="della mall"
-              layout="responsive"
-              sizes="416px"
-              priority
-            />
+            <a href="/dellamall" className="hoverEffect">
+              <Image
+                src={fv_text}
+                alt="della mall"
+                layout="responsive"
+                sizes="416px"
+                priority
+              />
+            </a>
           </h1>
           <div className={styles.mvTxtBox}>
             <p className={styles.sm}>日本中の素敵なECサイトを集めた<br className="sp" />新世代マーケットでお買い物！</p>
@@ -121,6 +127,7 @@ const Home = ({posts}) => {
             </Container>
           }
           {/* 代替案 */}
+
           {/* 初期 */}
           {/* {popular.length !== 0 ?
             <>

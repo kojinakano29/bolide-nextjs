@@ -96,11 +96,11 @@ const AdminSalonList = () => {
                   <p className={styles.ttl}>{salon.title}</p>
                   <div className={styles.btnFlex}>
                     <a href={`/corapura/editor/salon/${salon.id}`} className={`${styles.btn} hoverEffect`}>編集する</a>
-                    <button
+                    {/* <button
                       type="button"
                       className={`${styles.btn} ${styles.finishBtn} hoverEffect`}
                       onClick={() => handleClickDelete(salon.id)}
-                    >削除</button>
+                    >削除</button> */}
                   </div>
                 </div>
               ))}

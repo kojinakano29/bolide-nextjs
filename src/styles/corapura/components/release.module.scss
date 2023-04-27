@@ -43,13 +43,13 @@
     gap: 8px;
   }
 
-  .company {
-    @include companyNicename(12px);
-    @include mt(8px);
-  }
-
   .tag {
     @include tag2;
     @include mt(10px);
   }
+}
+
+.company {
+  @include companyNicename(12px);
+  @include mt(8px);
 }

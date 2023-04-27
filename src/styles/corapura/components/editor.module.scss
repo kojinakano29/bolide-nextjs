@@ -423,6 +423,10 @@
     }
 
     dd {
+      input:disabled {
+        color: $g3;
+      }
+
       input[type="text"],
       input[type="url"] {
         @include input(100%);

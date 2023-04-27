@@ -31,6 +31,10 @@ const Mypage = ({posts}) => {
   const { user, logout } = useAuth({middleware: 'auth', type: 'dellamall'})
   const profile = posts.profile
   const dProfile = profile.d_profile
+  const createShops = posts.create_shop
+  const filterCreateShops = createShops.filter((shop) => {
+    return !shop.official_user_id || shop.official_user_id === parseInt(profile.id)
+  })
   const [processing, setProcessing] = useState(false)
   const [tabState, setTabState] = useState(1)
   const [popupOpen, setPopupOpen] = useState(false)
@@ -216,7 +220,7 @@ const Mypage = ({posts}) => {
             <div className={styles.user__info__name}>{dProfile?.nicename}</div>
             {/* <div className={styles.user__info__id}>{profile.name}</div> */}
             <ul className={styles.user__info__follow}>
-              <li>投稿 {createShop.length} 件</li>
+              <li>投稿 {filterCreateShops.length} 件</li>
               <li>
                 <button
                   type="button"

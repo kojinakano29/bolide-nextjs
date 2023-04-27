@@ -35,9 +35,13 @@
   @include gap(64px 32px, 48px 16px, 40px 16px);
   @include mb(96px, 80px, 48px);
 
+  .prItem {
+    @include width(calc(100% * 1/4 - 32px * 3/4), calc(100% * 1/4 - 16px * 3/4), calc(100% * 1/2 - 16px * 1/2));
+  }
+
   a {
     display: block;
-    @include width(calc(100% * 1/4 - 32px * 3/4), calc(100% * 1/4 - 16px * 3/4), calc(100% * 1/2 - 16px * 1/2));
+    width: 100%;
 
     &:hover {
       & > .imgBox {
@@ -76,11 +80,6 @@
       @include mb(4px);
     }
 
-    .company {
-      @include companyNicename(12px);
-      @include mb(10px);
-    }
-
     .tags {
       @include flex(center, left);
       @include gap(8px);
@@ -94,6 +93,11 @@
         font-weight: 500;
       }
     }
+  }
+
+  .company {
+    @include companyNicename(12px);
+    @include mt(10px);
   }
 }
 

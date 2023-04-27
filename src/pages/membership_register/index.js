@@ -51,7 +51,7 @@ const MembershipRegister = () => {
       <section className={styles.formArea}>
         <Container small900>
           <FormProvider {...methods}>
-            {!isConfirm ? <InputMembership /> : <ConfirmMembership user={user} />}
+            {!isConfirm ? <InputMembership user={user} /> : <ConfirmMembership user={user} />}
           </FormProvider>
         </Container>
       </section>

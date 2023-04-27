@@ -116,7 +116,7 @@ const PressReleaseDetail = ({posts}) => {
             <p className={styles.midashi}>新着プレスリリース</p>
             <article className={styles.newRelease}>
               {newRelease.map((release, index) => (
-                <a href={`/corapura/press_release/${release.id}`} key={index}>
+                <a className="hoverEffect" href={`/corapura/press_release/${release.id}`} key={index}>
                   <div className={styles.thumbsBox}>
                     <img src={release.thumbs ? `${process.env.NEXT_PUBLIC_BACKEND_URL}/storage/${release.thumbs}` : dummy2.src} alt="プレスリリースのサムネイル画像" />
                   </div>

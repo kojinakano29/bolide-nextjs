@@ -82,7 +82,7 @@ const InputContact = () => {
               </label>
             </dt>
             <dd>
-              <input type="text" id="name" {...register("name", {required: true})} placeholder="山田 太郎" />
+              <input type="text" id="name" {...register("name")} placeholder="山田 太郎" />
               {errors.name && <p className={`red ${styles.error}`}>必須項目を入力してください。</p>}
             </dd>
           </dl>
@@ -130,7 +130,7 @@ const InputContact = () => {
               </label>
             </dt>
             <dd>
-              <input type="text" id="storeName" {...register("storeName", {required: true})} placeholder="株式会社サンプル" />
+              <input type="text" id="storeName" {...register("storeName")} placeholder="株式会社サンプル" />
               {errors.storeName && <p className={`red ${styles.error}`}>必須項目を入力してください。</p>}
             </dd>
           </dl>

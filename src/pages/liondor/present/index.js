@@ -72,7 +72,7 @@ const Present = ({posts}) => {
           : null}
         </Container>
         :
-        <p className={`${styles.noneLength} ivy`}>PRESENTがありません</p>
+        <p className={`${styles.noneLength} ivy`}>coming soon</p>
       }
     </section>
   );

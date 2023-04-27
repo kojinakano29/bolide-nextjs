@@ -99,6 +99,14 @@
 
       span {
         @include fs(14px, 12px);
+
+        a {
+          text-decoration: underline;
+
+          &:hover {
+            text-decoration: none;
+          }
+        }
       }
     }
 

@@ -215,27 +215,29 @@ const PressReleaseList = ({posts}) => {
           <>
             <article className={styles.prList}>
               {releases.map((release, index) => (
-                <a href={`/corapura/press_release/${release.id}`} key={index}>
-                  <div className={styles.imgBox}>
-                    <img src={release.thumbs ? `${process.env.NEXT_PUBLIC_BACKEND_URL}/storage/${release.thumbs}` : dummy.src} alt="プレスリリースのサムネイル画像" />
-                  </div>
-                  <p className={styles.ttl}>{release.title}</p>
-                  <div className={`${styles.view} en`}>
-                    <img src={view.src} alt="アイコン" />
-                    {release.c_pr_counts_count}view
-                  </div>
-                  <div className={styles.company}>
+                <div className={styles.prItem}>
+                  <a href={`/corapura/press_release/${release.id}`} key={index}>
+                    <div className={styles.imgBox}>
+                      <img src={release.thumbs ? `${process.env.NEXT_PUBLIC_BACKEND_URL}/storage/${release.thumbs}` : dummy.src} alt="プレスリリースのサムネイル画像" />
+                    </div>
+                    <p className={styles.ttl}>{release.title}</p>
+                    <div className={`${styles.view} en`}>
+                      <img src={view.src} alt="アイコン" />
+                      {release.c_pr_counts_count}view
+                    </div>
+                    <div className={styles.tags}>
+                      {release.c_tags.map((tag, index) => (
+                        <p className={styles.tag} key={index}>{tag.name}</p>
+                      ))}
+                    </div>
+                  </a>
+                  <a href={`/corapura/${release.user.account_type === 0 ? 'influencer' : 'company'}/${release.user.id}`} className={`${styles.company} hoverEffect`}>
                     <div className={styles.logoBox}>
                       {release.user.c_profile.thumbs ? <img src={`${process.env.NEXT_PUBLIC_BACKEND_URL}/storage/${release.user.c_profile.thumbs}`} alt="プロフィール画像" /> : null}
                     </div>
                     {release.user.c_profile.nicename}
-                  </div>
-                  <div className={styles.tags}>
-                    {release.c_tags.map((tag, index) => (
-                      <p className={styles.tag} key={index}>{tag.name}</p>
-                    ))}
-                  </div>
-                </a>
+                  </a>
+                </div>
               ))}
             </article>
             {parseInt(maxPage) > 1 ?

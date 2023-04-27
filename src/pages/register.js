@@ -235,6 +235,11 @@ const Register = () => {
                             </dl>
                             <div className={styles.privacyArea}>
                                 <p>
+                                    Bolide's Japanの
+                                    <a href="/terms" target="_blank" rel="noopener noreferrer">利用規約</a>
+                                    はこちら
+                                </p>
+                                <p>
                                     LIONDORの
                                     <a href="/liondor/terms" target="_blank" rel="noopener noreferrer">利用規約</a>
                                     はこちら
@@ -246,7 +251,7 @@ const Register = () => {
                                 </p>
                                 <p>
                                     Corapuraの
-                                    <a href="/dellamall/terms" target="_blank" rel="noopener noreferrer">利用規約</a>
+                                    <a href="/corapura/terms" target="_blank" rel="noopener noreferrer">利用規約</a>
                                     はこちら
                                 </p>
                             </div>

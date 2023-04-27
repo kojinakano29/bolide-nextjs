@@ -50,11 +50,11 @@ const BlogTxt = (
       }>
         {ttl}
       </h3>
-      <p className={styles.name}>
+      {/* <p className={styles.name}>
         <span className="en">BY</span>
         <span className="space"></span>
         <span className="en">{name ? name : "未設定"}</span>
-      </p>
+      </p> */}
       <p className={`en ${styles.time}`}><DateFormat dateString={time} /></p>
     </div>
   );

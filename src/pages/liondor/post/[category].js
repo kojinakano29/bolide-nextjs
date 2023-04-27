@@ -112,7 +112,7 @@ const Post = ({posts}) => {
           : null}
         </section>
         :
-        <p className={`${styles.noneLength} ivy`}>記事がありません</p>
+        <p className={`${styles.noneLength} ivy`}>coming soon</p>
       }
     </>
   );

@@ -122,6 +122,8 @@ const OnlineSalonDetail = ({posts}) => {
     await csrf()
 
     if (planCheck) {
+      alert('click')
+
       await axios.delete(`/api/corapura/salon_app/delete`, {
         data: {
           user_id: user?.id,

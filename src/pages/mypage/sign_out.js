@@ -24,7 +24,7 @@ const SignOut = () => {
       db_name: "corporate",
     }).then((res) => {
       // console.log(res)
-      if (res.data) {
+      if (!res.data) {
         setC_check(false)
       }
     }).catch(e => console.error(e))
@@ -34,7 +34,7 @@ const SignOut = () => {
       db_name: "option",
     }).then((res) => {
       // console.log(res)
-      if (res.data) {
+      if (!res.data) {
         setO_check(false)
       }
     }).catch(e => console.error(e))
