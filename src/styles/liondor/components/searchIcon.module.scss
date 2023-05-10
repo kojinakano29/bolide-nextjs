@@ -1,42 +1,42 @@
 @import '../../variables.scss';
 
 .iconBox {
-  position: relative;
-  z-index: 999;
-  cursor: pointer;
-  transition: .2s ease-out;
+    position: relative;
+    z-index: 999;
+    cursor: pointer;
+    transition: 0.2s ease-out;
 
-  &.hidden {
-    @include media1(sp) {
-      display: none;
+    &.hidden {
+        @include media1(sp) {
+            display: none;
+        }
     }
-  }
 }
 
 .searchBtn {
-  display: flex;
-  align-items: center;
-  gap: 8px;
-  cursor: pointer;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    cursor: pointer;
 
-  input {
-    display: block;
-    padding: 0;
-    border: none;
-    width: 0;
-    background-color: transparent;
-    transition: .2s ease-out;
-    outline: none !important;
-    font-size: var(--fs14-12);
-    letter-spacing: 0;
+    input {
+        display: block;
+        padding: 0;
+        border: none;
+        width: 0;
+        background-color: transparent;
+        transition: 0.2s ease-out;
+        outline: none !important;
+        font-size: var(--fs14-12);
+        letter-spacing: 0;
 
-    &:focus {
-      @include width(174px);
-      @include height(24px);
+        &:focus {
+            @include width(174px);
+            @include height(24px);
+        }
+
+        &.open {
+            color: $w1;
+        }
     }
-
-    &.open {
-      color: $w1;
-    }
-  }
 }

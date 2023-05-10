@@ -1,46 +1,46 @@
 @import '../../variables.scss';
 
 .followBox {
-  p {
-    font-size: 14px;
-    color: $w1;
-    @include mb(8px);
-
-    &.textRight {
-      text-align: right;
-    }
-  }
-
-  .flex {
-    display: flex;
-    align-items: center;
-    @include gap(16px);
-
-    a {
-      @include width(32px);
-      @include height(32px);
-      border-radius: 50%;
-      border: 2px solid $g1;
-      @include flex(center, center);
-      transition: .2s ease-out;
-
-      &:hover {
-        opacity: .5;
-      }
-
-      svg {
+    p {
+        font-size: 14px;
         color: $w1;
-      }
-    }
+        @include mb(8px);
 
-    &.gray {
-      a {
-        border: 1px solid $g1;
-
-        svg {
-          color: $g1;
+        &.textRight {
+            text-align: right;
         }
-      }
     }
-  }
+
+    .flex {
+        display: flex;
+        align-items: center;
+        @include gap(16px);
+
+        a {
+            @include width(32px);
+            @include height(32px);
+            border-radius: 50%;
+            border: 2px solid $g1;
+            @include flex(center, center);
+            transition: 0.2s ease-out;
+
+            &:hover {
+                opacity: 0.5;
+            }
+
+            svg {
+                color: $w1;
+            }
+        }
+
+        &.gray {
+            a {
+                border: 1px solid $g1;
+
+                svg {
+                    color: $g1;
+                }
+            }
+        }
+    }
 }

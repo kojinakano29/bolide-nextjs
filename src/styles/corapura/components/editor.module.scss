@@ -1,541 +1,557 @@
 @import '../../variables.scss';
 
 .profileFlex {
-  @include flex();
-  @include gap(64, 40px);
+    @include flex();
+    @include gap(64, 40px);
 
-  .profileLeft {
-    @include width(496px, 300px, 100%);
-  }
-
-  .profileRight {
-    @include width(calc(100% - (496px + 64px)), calc(100% - (300px + 40px)), 100%);
-  }
-
-  .imgBox {
-    @include height(496px, 300px, calc(100vw - (20px * 2 + 16px)));
-    border-radius: 10px;
-    background-color: $g3;
-    overflow: hidden;
-    @include mb(16px);
-
-    &.user {
-      border-radius: 50%;
-      isolation: isolate;
+    .profileLeft {
+        @include width(496px, 300px, 100%);
     }
 
-    img {
-      width: 100%;
-      height: 100%;
-      object-fit: cover;
-      object-position: top center;
-    }
-  }
-
-  .iconFlex {
-    @include flex(center, left);
-    @include gap(32px, 24px, 16px);
-    @include mb(40px);
-
-    label {
-      @include mb(0);
-    }
-  }
-
-  .iconBox {
-    @include width(86px);
-    @include height(86px);
-    border-radius: 50%;
-    background-color: $g3;
-    box-shadow: 0 3px 6px rgba(0, 0, 0, .16);
-    overflow: hidden;
-    isolation: isolate;
-
-    img {
-      width: 100%;
-      height: 100%;
-      object-fit: cover;
-      object-position: center;
-    }
-  }
-
-  .fileBtn {
-    cursor: pointer;
-    @include fs(16px, 14px);
-    font-weight: 900;
-    @include mb(48px, 40px);
-    @include flex(center, center);
-    @include gap(8px);
-
-    span {
-      @include p(2px 16px);
-      background-color: $b8;
-      color: $w1;
-      border-radius: 16px;
-      @include fs(14px, 12px);
+    .profileRight {
+        @include width(
+            calc(100% - (496px + 64px)),
+            calc(100% - (300px + 40px)),
+            100%
+        );
     }
 
-    input[type="file"] {
-      opacity: 0;
-      width: 0;
-      height: 0;
-    }
-  }
+    .imgBox {
+        @include height(496px, 300px, calc(100vw - (20px * 2 + 16px)));
+        border-radius: 10px;
+        background-color: $g3;
+        overflow: hidden;
+        @include mb(16px);
 
-  dl {
-    @include mb(40px, 32px);
+        &.user {
+            border-radius: 50%;
+            isolation: isolate;
+        }
 
-    &:last-of-type {
-      margin-bottom: 0;
-    }
-
-    dt {
-      @include fs(16px, 14px);
-      font-weight: 900;
-      @include mb(12px);
-
-      label {
-        cursor: pointer;
-      }
+        img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            object-position: top center;
+        }
     }
 
-    dd {
-      input[type="text"],
-      input[type="url"] {
-        @include input(100%);
-      }
-
-      input[type="number"],
-      input[type="tel"],
-      input[type="date"] {
-        @include input(240px);
-      }
-
-      textarea {
-        @include textarea(100%);
-      }
-
-      select {
-        @include select(240px);
-        cursor: pointer;
-      }
-
-      &.skillScroll {
+    .iconFlex {
         @include flex(center, left);
-        @include gap(16px);
-        @include height(200px);
-        overflow-y: scroll;
+        @include gap(32px, 24px, 16px);
+        @include mb(40px);
 
         label {
-          @include flex(center, left);
-          @include gap(8px);
-          @include fs(14px, 12px);
-          font-weight: 500;
+            @include mb(0);
         }
-      }
     }
-  }
-}
 
-.submitFlex {
-  @include flex(center, center);
-  @include gap(24px);
-  @include mt(40px);
+    .iconBox {
+        @include width(86px);
+        @include height(86px);
+        border-radius: 50%;
+        background-color: $g3;
+        box-shadow: 0 3px 6px rgba(0, 0, 0, 0.16);
+        overflow: hidden;
+        isolation: isolate;
 
-  .submitBtn {
-    @include p(4px 32px);
-    background-color: $b8;
-    color: $w1;
-    @include fs(16px);
-    font-weight: bold;
-    border-radius: 8px;
-  }
-
-  .submitBtn2 {
-    label {
-      @include p(4px 32px);
-      background-color: $b8;
-      color: $w1;
-      @include fs(16px);
-      font-weight: bold;
-      border-radius: 8px;
-      cursor: pointer;
-
-      input[type="radio"] {
-        display: none;
-      }
+        img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            object-position: center;
+        }
     }
-  }
 
-  .submitBtn3 {
-    label {
-      background-color: $g3;
-      color: $b3;
-    }
-  }
-}
+    .fileBtn {
+        cursor: pointer;
+        @include fs(16px, 14px);
+        font-weight: 900;
+        @include mb(48px, 40px);
+        @include flex(center, center);
+        @include gap(8px);
 
-.editDesc {
-  text-align: center;
-  @include fs(14px);
-  @include mt(16px);
-}
+        span {
+            @include p(2px 16px);
+            background-color: $b8;
+            color: $w1;
+            border-radius: 16px;
+            @include fs(14px, 12px);
+        }
 
-.error {
-  color: $r1;
-  @include mt(8px);
-}
-
-.listBox {
-  .list {
-    @include p(20px, 16px);
-    border: 1px solid $g3;
-    border-radius: 17px;
-    @include mb(24px);
-    @include flex(center);
-    @include gap(16px);
-
-    @include media1(sp) {
-      flex-direction: column;
-      align-items: flex-start;
-    }
-  }
-}
-
-.btnBox {
-  @include flex(center, right);
-  @include gap(16px);
-}
-
-.btn {
-  @include p(4px 8px);
-  @include fs(14px, 12px);
-  font-weight: 500;
-  background-color: $o1;
-  color: $w1;
-  border-radius: 8px;
-}
-
-.delete {
-  color: $r1;
-  text-decoration: underline;
-  @include fs(14px, 12px);
-  font-weight: 500;
-
-  &:hover {
-    text-decoration: none;
-  }
-}
-
-.editorArea {
-  @include pt(80px, 64px);
-
-  .editorBox {
-    @include mb(64px);
-  }
-
-  .ttl {
-    @include fs(24px, 20px, 18px);
-    font-weight: 500;
-    text-align: center;
-    @include pb(24px);
-    border-bottom: 1px solid $g3;
-    @include mb(40px);
-  }
-
-  .ttlFlex {
-    @include flex(center);
-    @include pb(16px);
-    border-bottom: 1px solid $g3;
-    @include mb(16px);
-
-    .btn {
-      @include p(4px 16px);
-      @include fs(16px, 14px);
-    }
-  }
-
-  .ttl2 {
-    @include fs(24px, 20px, 18px);
-    font-weight: 900;
-  }
-}
-
-.txt {
-  @include fs(16px, 14px);
-  font-weight: 500;
-  text-align: center;
-}
-
-.popupArea {
-  @include modalBox;
-  overflow-y: scroll;
-  @include scrollHidden;
-
-  .popupBox {
-    @include min-height(calc(100vh - 80px * 2), calc(100vh - 64px * 2), calc(100vh - 40px * 2));
-    @include p(40px 40px 64px, 32px 32px 64px, 20px 20px 64px);
-    background-color: $w1;
-    border-radius: 20px;
-    cursor: auto;
-    position: relative;
-
-    .midashi {
-      @include fs(24px, 20px, 18px);
-      font-weight: 500;
-      text-align: center;
-      @include mb(32px);
+        input[type='file'] {
+            opacity: 0;
+            width: 0;
+            height: 0;
+        }
     }
 
     dl {
-      @include mb(32px);
+        @include mb(40px, 32px);
 
-      dt {
-        @include fs(16px, 14px);
+        &:last-of-type {
+            margin-bottom: 0;
+        }
+
+        dt {
+            @include fs(16px, 14px);
+            font-weight: 900;
+            @include mb(12px);
+
+            label {
+                cursor: pointer;
+            }
+        }
+
+        dd {
+            input[type='text'],
+            input[type='url'] {
+                @include input(100%);
+            }
+
+            input[type='number'],
+            input[type='tel'],
+            input[type='date'] {
+                @include input(240px);
+            }
+
+            textarea {
+                @include textarea(100%);
+            }
+
+            select {
+                @include select(240px);
+                cursor: pointer;
+            }
+
+            &.skillScroll {
+                @include flex(center, left);
+                @include gap(16px);
+                @include height(200px);
+                overflow-y: scroll;
+
+                label {
+                    @include flex(center, left);
+                    @include gap(8px);
+                    @include fs(14px, 12px);
+                    font-weight: 500;
+                }
+            }
+        }
+    }
+}
+
+.submitFlex {
+    @include flex(center, center);
+    @include gap(24px);
+    @include mt(40px);
+
+    .submitBtn {
+        @include p(4px 32px);
+        background-color: $b8;
+        color: $w1;
+        @include fs(16px);
         font-weight: bold;
-        @include mb(8px);
+        border-radius: 8px;
+    }
 
+    .submitBtn2 {
         label {
-          cursor: pointer;
+            @include p(4px 32px);
+            background-color: $b8;
+            color: $w1;
+            @include fs(16px);
+            font-weight: bold;
+            border-radius: 8px;
+            cursor: pointer;
+
+            input[type='radio'] {
+                display: none;
+            }
         }
-      }
+    }
 
-      dd {
-        input[type="text"],
-        input[type="url"] {
-          @include input(100%);
+    .submitBtn3 {
+        label {
+            background-color: $g3;
+            color: $b3;
         }
+    }
+}
 
-        input[type="number"],
-        input[type="tel"],
-        input[type="date"] {
-          @include input(240px);
+.editDesc {
+    text-align: center;
+    @include fs(14px);
+    @include mt(16px);
+}
+
+.error {
+    color: $r1;
+    @include mt(8px);
+}
+
+.listBox {
+    .list {
+        @include p(20px, 16px);
+        border: 1px solid $g3;
+        border-radius: 17px;
+        @include mb(24px);
+        @include flex(center);
+        @include gap(16px);
+
+        @include media1(sp) {
+            flex-direction: column;
+            align-items: flex-start;
         }
+    }
+}
 
-        textarea {
-          @include textarea(100%);
+.btnBox {
+    @include flex(center, right);
+    @include gap(16px);
+}
+
+.btn {
+    @include p(4px 8px);
+    @include fs(14px, 12px);
+    font-weight: 500;
+    background-color: $o1;
+    color: $w1;
+    border-radius: 8px;
+}
+
+.delete {
+    color: $r1;
+    text-decoration: underline;
+    @include fs(14px, 12px);
+    font-weight: 500;
+
+    &:hover {
+        text-decoration: none;
+    }
+}
+
+.editorArea {
+    @include pt(80px, 64px);
+
+    .editorBox {
+        @include mb(64px);
+    }
+
+    .ttl {
+        @include fs(24px, 20px, 18px);
+        font-weight: 500;
+        text-align: center;
+        @include pb(24px);
+        border-bottom: 1px solid $g3;
+        @include mb(40px);
+    }
+
+    .ttlFlex {
+        @include flex(center);
+        @include pb(16px);
+        border-bottom: 1px solid $g3;
+        @include mb(16px);
+
+        .btn {
+            @include p(4px 16px);
+            @include fs(16px, 14px);
         }
+    }
 
-        select {
-          @include select(240px);
-          cursor: pointer;
-        }
+    .ttl2 {
+        @include fs(24px, 20px, 18px);
+        font-weight: 900;
+    }
+}
 
-        input[type="checkbox"] {
-          cursor: pointer;
-        }
+.txt {
+    @include fs(16px, 14px);
+    font-weight: 500;
+    text-align: center;
+}
 
-        .imgBox {
-          @include width(184px);
-          max-height: 184px;
-          border: 1px solid $g1;
-          border-radius: 20px;
-          overflow: hidden;
-          @include mb(16px);
+.popupArea {
+    @include modalBox;
+    overflow-y: scroll;
+    @include scrollHidden;
 
-          .imgNone {
-            height: 184px;
-            background-color: $g2;
-            @include flex(center, center);
-            @include fs(12px);
+    @include media1(sp) {
+        padding-bottom: 120px;
+    }
+
+    .popupBox {
+        @include min-height(
+            calc(100vh - 80px * 2),
+            calc(100vh - 64px * 2),
+            calc(100vh - 40px * 2)
+        );
+        @include p(40px 40px 64px, 32px 32px 64px, 20px 20px 64px);
+        background-color: $w1;
+        border-radius: 20px;
+        cursor: auto;
+        position: relative;
+
+        .midashi {
+            @include fs(24px, 20px, 18px);
             font-weight: 500;
-            color: $g1;
-          }
-
-          img {
-            width: 100%;
-            object-fit: cover;
-            object-position: top;
-          }
+            text-align: center;
+            @include mb(32px);
         }
-      }
-    }
 
-    .btn {
-      position: absolute;
-      @include bottom(40px, 32px, 20px);
-      left: 50%;
-      transform: translateX(-50%);
+        dl {
+            @include mb(32px);
+
+            dt {
+                @include fs(16px, 14px);
+                font-weight: bold;
+                @include mb(8px);
+
+                label {
+                    cursor: pointer;
+                }
+            }
+
+            dd {
+                input[type='text'],
+                input[type='url'] {
+                    @include input(100%);
+                }
+
+                input[type='number'],
+                input[type='tel'],
+                input[type='date'] {
+                    @include input(240px);
+                }
+
+                textarea {
+                    @include textarea(100%);
+                }
+
+                select {
+                    @include select(240px);
+                    cursor: pointer;
+                }
+
+                input[type='checkbox'] {
+                    cursor: pointer;
+                }
+
+                .imgBox {
+                    @include width(184px);
+                    max-height: 184px;
+                    border: 1px solid $g1;
+                    border-radius: 20px;
+                    overflow: hidden;
+                    @include mb(16px);
+
+                    .imgNone {
+                        height: 184px;
+                        background-color: $g2;
+                        @include flex(center, center);
+                        @include fs(12px);
+                        font-weight: 500;
+                        color: $g1;
+                    }
+
+                    img {
+                        width: 100%;
+                        object-fit: cover;
+                        object-position: top;
+                    }
+                }
+            }
+        }
+
+        .btn {
+            position: absolute;
+            @include bottom(40px, 32px, 20px);
+            left: 50%;
+            transform: translateX(-50%);
+        }
     }
-  }
 }
 
 .reco_size {
-  @include fs(16px, 14px);
-  font-weight: 500;
-  @include mt(8px);
-  @include mb(16px);
+    @include fs(16px, 14px);
+    font-weight: 500;
+    @include mt(8px);
+    @include mb(16px);
 }
 
 .matterFlex {
-  @include flex();
-  @include gap(32px, 24px, 16px);
-  @include mb(32px);
+    @include flex();
+    @include gap(32px, 24px, 16px);
+    @include mb(32px);
 
-  .matterLeft {
-    @include width(352px, 300px, 100%);
-  }
-
-  .matterRight {
-    @include width(calc(100% - (352px + 32px)), calc(100% - (300px + 24px)), 100%);
-  }
-
-  .fileBox {
-    @include flex(center, center);
-    width: 100%;
-    @include height(352px, 300px, calc(100vw - (20px * 2 + 17px)));
-    background-color: $g3;
-    border-radius: 10px;
-    overflow: hidden;
-    @include fs(16px, 14px);
-    font-weight: 500;
-    cursor: pointer;
-
-    img {
-      width: 100%;
-      height: 100%;
-      object-fit: cover;
-      object-position: top center;
+    .matterLeft {
+        @include width(352px, 300px, 100%);
     }
 
-    input[type="file"] {
-      width: 0;
-      height: 0;
-      opacity: 0;
-    }
-  }
-
-  dl {
-    @include mb(40px, 32px);
-
-    &:last-of-type {
-      margin-bottom: 0;
+    .matterRight {
+        @include width(
+            calc(100% - (352px + 32px)),
+            calc(100% - (300px + 24px)),
+            100%
+        );
     }
 
-    dt {
-      @include fs(16px, 14px);
-      font-weight: 900;
-      @include mb(12px);
-
-      label {
+    .fileBox {
+        @include flex(center, center);
+        width: 100%;
+        @include height(352px, 300px, calc(100vw - (20px * 2 + 17px)));
+        background-color: $g3;
+        border-radius: 10px;
+        overflow: hidden;
+        @include fs(16px, 14px);
+        font-weight: 500;
         cursor: pointer;
-      }
+
+        img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            object-position: top center;
+        }
+
+        input[type='file'] {
+            width: 0;
+            height: 0;
+            opacity: 0;
+        }
     }
 
-    dd {
-      input:disabled {
-        color: $g3;
-      }
+    dl {
+        @include mb(40px, 32px);
 
-      input[type="text"],
-      input[type="url"] {
-        @include input(100%);
-      }
+        &:last-of-type {
+            margin-bottom: 0;
+        }
 
-      input[type="number"],
-      input[type="tel"],
-      input[type="date"] {
-        @include input(240px);
-      }
+        dt {
+            @include fs(16px, 14px);
+            font-weight: 900;
+            @include mb(12px);
 
-      textarea {
-        @include textarea(100%);
-      }
+            label {
+                cursor: pointer;
+            }
+        }
 
-      select {
-        @include select(100%);
-      }
+        dd {
+            input:disabled {
+                color: $g3;
+            }
+
+            input[type='text'],
+            input[type='url'] {
+                @include input(100%);
+            }
+
+            input[type='number'],
+            input[type='tel'],
+            input[type='date'] {
+                @include input(240px);
+            }
+
+            textarea {
+                @include textarea(100%);
+            }
+
+            select {
+                @include select(100%);
+            }
+        }
     }
-  }
 }
 
 .selectorArea {
-  dl {
-    @include mb(40px, 32px);
+    dl {
+        @include mb(40px, 32px);
 
-    &:last-of-type {
-      margin-bottom: 0;
+        &:last-of-type {
+            margin-bottom: 0;
+        }
+
+        dt {
+            @include fs(16px, 14px);
+            font-weight: 900;
+            @include mb(12px);
+
+            label {
+                cursor: pointer;
+            }
+        }
+
+        dd {
+            input[type='text'],
+            input[type='url'],
+            input[type='number'],
+            input[type='tel'],
+            input[type='date'] {
+                @include input(240px);
+            }
+        }
     }
-
-    dt {
-      @include fs(16px, 14px);
-      font-weight: 900;
-      @include mb(12px);
-
-      label {
-        cursor: pointer;
-      }
-    }
-
-    dd {
-      input[type="text"],
-      input[type="url"],
-      input[type="number"],
-      input[type="tel"],
-      input[type="date"] {
-        @include input(240px);
-      }
-    }
-  }
 }
 
 .editArea {
-  @include mt(40px, 32px);
+    @include mt(40px, 32px);
 
-  dl {
-    dt {
-      @include fs(16px, 14px);
-      font-weight: 900;
-      @include mb(12px);
+    dl {
+        dt {
+            @include fs(16px, 14px);
+            font-weight: 900;
+            @include mb(12px);
 
-      label {
-        cursor: pointer;
-      }
+            label {
+                cursor: pointer;
+            }
 
-      .txt2 {
-        @include fs(14px, 12px);
-        font-weight: 500;
-        @include mt(8px);
-      }
+            .txt2 {
+                @include fs(14px, 12px);
+                font-weight: 500;
+                @include mt(8px);
+            }
+        }
+
+        dd {
+            &.lock {
+                pointer-events: none;
+            }
+        }
     }
-
-    dd {
-      &.lock {
-        pointer-events: none;
-      }
-    }
-  }
 }
 
 .checkArea {
-  @include pt(64px, 48px);
+    @include pt(64px, 48px);
 
-  label {
-    @include flex(center, center);
-    @include gap(8px);
-    width: fit-content;
-    margin: auto;
-    cursor: pointer;
+    label {
+        @include flex(center, center);
+        @include gap(8px);
+        width: fit-content;
+        margin: auto;
+        cursor: pointer;
 
-    .txt {
-      @include fs(16px, 14px);
-      font-weight: 500;
+        .txt {
+            @include fs(16px, 14px);
+            font-weight: 500;
 
-      a {
-        text-decoration: underline;
+            a {
+                text-decoration: underline;
 
-        &:hover {
-          text-decoration: none;
+                &:hover {
+                    text-decoration: none;
+                }
+            }
         }
-      }
+
+        * {
+            cursor: pointer;
+        }
     }
 
-    * {
-      cursor: pointer;
+    .error {
+        text-align: center;
     }
-  }
-
-  .error {
-    text-align: center;
-  }
 }

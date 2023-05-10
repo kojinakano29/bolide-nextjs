@@ -74,7 +74,11 @@ export const useAuth = ({ middleware, redirectIfAuthenticated, type } = {}) => {
 
         axios
             .post('/reset-password', { token: router.query.token, ...props })
-            .then(response => router.push('/liondor/login?reset=' + btoa(response.data.status)))
+            .then(response =>
+                router.push(
+                    '/liondor/login?reset=' + btoa(response.data.status),
+                ),
+            )
             .catch(error => {
                 if (error.response.status !== 422) throw error
 
@@ -89,10 +93,8 @@ export const useAuth = ({ middleware, redirectIfAuthenticated, type } = {}) => {
     }
 
     const logout = async () => {
-        if (! error) {
-            await axios
-                .post('/logout')
-                .then(() => mutate())
+        if (!error) {
+            await axios.post('/logout').then(() => mutate())
         }
 
         if (type === 'liondor') {
@@ -109,8 +111,13 @@ export const useAuth = ({ middleware, redirectIfAuthenticated, type } = {}) => {
     }
 
     useEffect(() => {
-        if (middleware === 'guest' && redirectIfAuthenticated && user) router.push(redirectIfAuthenticated)
-        if (window.location.pathname === "/verify-email" && user?.email_verified_at) router.push(redirectIfAuthenticated)
+        if (middleware === 'guest' && redirectIfAuthenticated && user)
+            router.push(redirectIfAuthenticated)
+        if (
+            window.location.pathname === '/verify-email' &&
+            user?.email_verified_at
+        )
+            router.push(redirectIfAuthenticated)
         if (middleware === 'auth' && error) {
             logout()
         }

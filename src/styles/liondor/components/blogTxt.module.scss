@@ -1,107 +1,107 @@
 @import '../../variables.scss';
 
 .cat {
-  composes: cat from './parts.scss';
+    composes: cat from './parts.scss';
 }
 
 .hr {
-  composes: hr from './parts.scss';
+    composes: hr from './parts.scss';
 }
 
 .singleTtl {
-  font-size: var(--fs18-16);
-  font-weight: 500;
-  @include mb(16px);
+    font-size: var(--fs18-16);
+    font-weight: 500;
+    @include mb(16px);
 }
 
 .name {
-  composes: name from './parts.scss';
+    composes: name from './parts.scss';
 }
 
 .time {
-  composes: time from './parts.scss';
+    composes: time from './parts.scss';
 }
 
 .white {
-  * {
-    color: $w1 !important;
-  }
-
-  .cat {
-    .hr {
-      background-color: $w1;
+    * {
+        color: $w1 !important;
     }
-  }
+
+    .cat {
+        .hr {
+            background-color: $w1;
+        }
+    }
 }
 
 .tac {
-  text-align: center;
+    text-align: center;
 
-  .cat {
-    justify-content: center;
-  }
+    .cat {
+        justify-content: center;
+    }
 }
 
 .smallMb {
-  .cat {
-    @include mb(8px);
-  }
-
-  .singleTtl {
-    @include mb(8px);
-  }
-
-  .name {
-    @include mb(2px);
-  }
-}
-
-.mb0 {
-  .cat {
-    margin-bottom: 0;
-  }
-
-  .singleTtl {
-    margin-bottom: 0;
-  }
-
-  .name {
-    margin-bottom: 0;
-  }
-}
-
-.blogTxt {
-  &.fs24 {
-    .singleTtl {
-      font-size: var(--fs24-18);
-    }
-  }
-
-  &.fs22 {
-    .singleTtl {
-      font-size: var(--fs22-18);
-    }
-  }
-
-  &.fs14 {
     .cat {
-      span {
-        font-size: 12px;
-      }
+        @include mb(8px);
     }
 
     .singleTtl {
-      font-size: var(--fs14-12);
+        @include mb(8px);
     }
 
     .name {
-      span {
-        font-size: 12px;
-      }
+        @include mb(2px);
+    }
+}
+
+.mb0 {
+    .cat {
+        margin-bottom: 0;
     }
 
-    .time {
-      font-size: 10px;
+    .singleTtl {
+        margin-bottom: 0;
     }
-  }
+
+    .name {
+        margin-bottom: 0;
+    }
+}
+
+.blogTxt {
+    &.fs24 {
+        .singleTtl {
+            font-size: var(--fs24-18);
+        }
+    }
+
+    &.fs22 {
+        .singleTtl {
+            font-size: var(--fs22-18);
+        }
+    }
+
+    &.fs14 {
+        .cat {
+            span {
+                font-size: 12px;
+            }
+        }
+
+        .singleTtl {
+            font-size: var(--fs14-12);
+        }
+
+        .name {
+            span {
+                font-size: 12px;
+            }
+        }
+
+        .time {
+            font-size: 10px;
+        }
+    }
 }

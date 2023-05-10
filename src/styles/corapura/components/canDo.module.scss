@@ -1,75 +1,82 @@
 @import '../../variables.scss';
 
 .cont2__flex {
-  @include flex(center);
-  @include gap(64px, 16px);
+    @include flex(center);
+    @include gap(64px, 16px);
 
-  @include media1(sp) {
-    flex-direction: column;
-  }
-
-  .cont2__flexLeft {
-    @include width(560px, 480px, 100%);
-
-    .cont2__ttl {
-      @include corapuraTtl;
+    @include media1(sp) {
+        flex-direction: column;
     }
-  }
+
+    .cont2__flexLeft {
+        @include width(560px, 480px, 100%);
+
+        .cont2__ttl {
+            @include corapuraTtl;
+        }
+    }
 }
 
 .cont2__right {
-  display: none;
-  @include width(calc(100% - (560px + 64px)), calc(100% - (480px + 16px)), 100%);
+    display: none;
+    @include width(
+        calc(100% - (560px + 64px)),
+        calc(100% - (480px + 16px)),
+        100%
+    );
 
-  &.current {
-    display: block;
-  }
+    &.current {
+        display: block;
+    }
 }
 
 .cont2__list {
-  @include flex();
-
-  .listBox {
-    @include width(280px, 240px, 100%);
-  }
-
-  .cont2__item {
     @include flex();
-    width: 100%;
-    @include gap(10px, 8px);
-    @include p(16px, 12px);
-    border-radius: 10px;
 
-    &.current {
-      background-color: $b9;
-
-      .cont2__item__name {
-        color: $b10;
-      }
+    .listBox {
+        @include width(280px, 240px, 100%);
     }
 
-    .cont2__item__left {
-      max-width: 20px;
-      height: 24px;
-      @include flex(center, center);
+    .cont2__item {
+        @include flex();
+        width: 100%;
+        @include gap(10px, 8px);
+        @include p(16px, 12px);
+        border-radius: 10px;
+
+        &.current {
+            background-color: $b9;
+
+            .cont2__item__name {
+                color: $b10;
+            }
+        }
+
+        .cont2__item__left {
+            max-width: 20px;
+            height: 24px;
+            @include flex(center, center);
+        }
+
+        .cont2__item__right {
+            @include width(
+                calc(100% - (20px + 10px)),
+                calc(100% - (20px + 8px))
+            );
+            text-align: left;
+
+            .cont2__item__name {
+                @include fs(14px, 13px);
+                @include lh(24px);
+                font-weight: bold;
+            }
+
+            .cont2__item__desc {
+                @include fs(14px, 13px);
+                font-weight: 500;
+                color: $g4;
+                @include mt(8px);
+            }
+        }
     }
-
-    .cont2__item__right {
-      @include width(calc(100% - (20px + 10px)), calc(100% - (20px + 8px)));
-      text-align: left;
-
-      .cont2__item__name {
-        @include fs(14px, 13px);
-        @include lh(24px);
-        font-weight: bold;
-      }
-
-      .cont2__item__desc {
-        @include fs(14px, 13px);
-        font-weight: 500;
-        color: $g4;
-        @include mt(8px);
-      }
-    }
-  }
 }

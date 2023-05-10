@@ -1,41 +1,41 @@
 @import '../../variables.scss';
 
 .ttl {
-  padding: 0;
-  border: none;
-  text-align: center;
-  border: none !important;
+    padding: 0;
+    border: none;
+    text-align: center;
+    border: none !important;
 }
 
 .flex {
-  @include flex();
-  @include gap(0, 0, 32px);
+    @include flex();
+    @include gap(0, 0, 32px);
 }
 
 .blogLink {
-  composes: blogLink from './parts.scss';
-  @include width(412px, calc(100% * 1/3 - 16px * 2/3), 100%);
-  @include flex();
+    composes: blogLink from './parts.scss';
+    @include width(412px, calc(100% * 1 / 3 - 16px * 2 / 3), 100%);
+    @include flex();
 
-  @include media1(sp) {
-    padding-bottom: 32px;
-    border-bottom: 1px solid $g2;
-  }
+    @include media1(sp) {
+        padding-bottom: 32px;
+        border-bottom: 1px solid $g2;
+    }
 }
 
 .imgBox {
-  @include width(124px, 100px);
-  aspect-ratio: 1 / 1;
-  overflow: hidden;
+    @include width(124px, 100px);
+    aspect-ratio: 1 / 1;
+    overflow: hidden;
 
-  img {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-    object-position: center;
-  }
+    img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        object-position: center;
+    }
 }
 
 .txtBox {
-  @include width(calc(100% - (124px + 24px)), calc(100% - (100px + 16px)));
+    @include width(calc(100% - (124px + 24px)), calc(100% - (100px + 16px)));
 }

@@ -1,432 +1,432 @@
 @import '../../variables.scss';
 
 .presentTtl {
-  font-size: var(--fs24-18);
-  font-weight: 500;
-  text-align: center;
-  @include mb(40px, 32px);
-}
-
-.termsBox {
-  border: 1px solid $g4;
-  @include p(24px 24px 32px, 16px);
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-
-  * {
-    font-weight: 500;
-  }
-
-  .termsTxt {
-    font-size: var(--fs20-18);
-    letter-spacing: 0;
-    @include mb(24px);
-  }
-
-  .txt {
-    font-size: var(--fs16-14);
-    letter-spacing: 0;
-    @include mb(16px);
-  }
-
-  .addon {
-    font-size: var(--fs18-16);
-    text-decoration: underline;
-    color: $g1;
-    @include mb(32px, 24px);
-
-    &:hover {
-      text-decoration: none;
-    }
-  }
-
-  div p {
-    display: none;
-  }
-}
-
-.cont2 {
-  @include pt(48px, 32px);
-}
-
-.form {
-  .desc {
-    font-size: var(--fs16-14);
-    font-weight: 500;
-    letter-spacing: 0;
-    text-align: center;
-    @include mb(64px, 48px);
-
-    button {
-      text-decoration: underline;
-    }
-  }
-}
-
-.popupArea {
-  @include modalBox;
-  overflow-y: scroll;
-  @include scrollHidden;
-  @include flex(center, center);
-
-  .popupBox {
-    width: fit-content;
-    @include max-width(720px, 720px, calc(100% - 20px * 2));
-    @include p(40px, 32px, 20px);
-    background-color: $w1;
-    border-radius: 20px;
-    cursor: auto;
-  }
-}
-
-.formContent {
-  input[type="text"],
-  input[type="email"],
-  input[type="tel"],
-  textarea,
-  select {
-    display: block;
-    width: 100%;
-    @include height(56px);
-    @include p(16px);
-    border: 1px solid $g3;
-    font-size: var(--fs16-14);
-  }
-
-  textarea {
-    @include height(240px);
-  }
-
-  .dl {
-    @include mb(48px);
-    @include flex(stretch, left);
-
-    &:last-of-type {
-      @include mb(64px);
-    }
-
-    dt {
-      @include width(200px, 100%);
-      font-size: var(--fs16-14);
-      font-weight: 500;
-      @include mb(0, 12px);
-
-      &.inputDt {
-        @include lh(56px, 1);
-      }
-
-      &.brandDt {
-        @include lh(36px, 1);
-      }
-    }
-
-    dd {
-      @include width(calc(100% - 200px), 100%);
-
-      .supplement {
-        font-size: var(--fs16-14);
-        font-weight: 500;
-        letter-spacing: 0;
-        color: $g1;
-      }
-
-      &.radioArea {
-        @include flex(center, left);
-        @include gap(32px);
-
-        label {
-          font-size: var(--fs16-14);
-          font-weight: 500;
-          @include flex(center, left);
-          @include gap(8px);
-        }
-      }
-
-      &.selectArea {
-        @include width(240px);
-
-        select {
-          font-weight: 300;
-        }
-      }
-
-      &.checkArea {
-        @include flex(center, left);
-        @include gap(12px 32px);
-
-        label {
-          @include flex(center, left);
-          @include gap(8px);
-          font-size: var(--fs16-14);
-          font-weight: 500;
-        }
-      }
-
-      &.hobbyArea {
-        .inDl {
-          align-items: stretch;
-
-          dd {
-            @include flex(center, left);
-            @include gap(16px 32px);
-
-            label {
-              @include flex(center, left);
-              @include gap(8px);
-
-              font-weight: 300;
-            }
-          }
-        }
-      }
-    }
-  }
-
-  .inDl {
-    @include flex(center);
-    @include mb(32px);
-
-    &:last-of-type {
-      @include mb(16px);
-    }
-
-    dt {
-      @include width(160px, 120px);
-    }
-
-    dd {
-      @include width(calc(100% - 160px), calc(100% - 120px));
-    }
-  }
-
-  .descBox {
-    @include mb(64px);
-
-    p {
-      font-size: var(--fs14-12);
-      font-weight: 500;
-      @include lh(30px);
-
-      a {
-        text-decoration: underline;
-
-        &:hover {
-          text-decoration: none;
-        }
-      }
-    }
-  }
-
-  .desc2 {
-    font-size: var(--fs16-14);
-    font-weight: 500;
-    text-align: center;
-    @include mb(24px);
-  }
-
-  .consentArea {
-    @include mb(64px);
-
-    label {
-      @include flex(center, center);
-      @include gap(16px);
-      font-size: var(--fs16-14);
-      font-weight: 500;
-      width: fit-content;
-      margin: auto;
-
-      input {
-        @include ty(1px);
-      }
-    }
-
-    .error {
-      text-align: center;
-    }
-  }
-
-  button[type="submit"]:disabled {
-    background-color: $g3;
-
-    &:hover {
-      opacity: 1;
-    }
-  }
-
-  input::placeholder,
-  textarea::placeholder {
-    color: $g3;
-  }
-}
-
-.lastError {
-  text-align: center;
-}
-
-.popupBtn {
-  @include p(8px 18px);
-  background-color: $g2;
-  @include flex(center, center);
-  @include gap(0 20px);
-  transition: .2s ease-out;
-  @include mb(24px);
-
-  span {
-    @include fs(13px);
-    font-weight: 500;
-
-    &.arrow {
-      @include fs(20px);
-      line-height: 1;
-      @include ty(-2px);
-    }
-  }
-
-  &:hover {
-    opacity: .5;
-  }
-}
-
-.selectBrand {
-  @include flex(center, left);
-  @include gap(16px);
-
-  label {
-    @include p(14px 18px);
-    border: 1px solid $g3;
-    @include flex(center, center);
-    @include gap(10px);
-    transition: .2s ease-out;
-
-    &:hover {
-      opacity: .5;
-    }
-
-    span {
-      display: block;
-
-      &.brandName {
-        font-size: var(--fs16-14);
-        font-weight: 500;
-      }
-
-      &.brandDelete {
-        @include width(20px);
-        @include height(20px);
-        border-radius: 50%;
-        background-color: $g1;
-        color: $w1;
-        @include flex(center, center);
-        line-height: 1;
-        font-weight: bold;
-        @include fs(12px);
-      }
-    }
-  }
-}
-
-.confirmContent {
-  .dl {
-    @include mb(32px);
-    @include pb(32px);
-    border-bottom: 1px solid $g3;
-
-    &:first-of-type {
-      @include pt(32px);
-      border-top: 1px solid $g3;
-    }
-  }
-
-  .ul {
-    @include flex(center, left);
-    @include gap(12px 48px);
-
-    li {
-      font-size: var(--fs16-14);
-      font-weight: 300;
-    }
-  }
-
-  .btnFlex {
-    @include flex(center, center);
-    flex-direction: column-reverse;
-    @include gap(32px, 24px);
-
-    button {
-      margin: 0;
-
-      &:first-of-type {
-        background-color: $g1;
-      }
-    }
-  }
-}
-
-.thanksBox {
-  .txt {
     font-size: var(--fs24-18);
     font-weight: 500;
     text-align: center;
-  }
+    @include mb(40px, 32px);
+}
 
-  .txt2 {
-    font-size: var(--fs16-14);
-    font-weight: 300;
+.termsBox {
+    border: 1px solid $g4;
+    @include p(24px 24px 32px, 16px);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+    * {
+        font-weight: 500;
+    }
+
+    .termsTxt {
+        font-size: var(--fs20-18);
+        letter-spacing: 0;
+        @include mb(24px);
+    }
+
+    .txt {
+        font-size: var(--fs16-14);
+        letter-spacing: 0;
+        @include mb(16px);
+    }
+
+    .addon {
+        font-size: var(--fs18-16);
+        text-decoration: underline;
+        color: $g1;
+        @include mb(32px, 24px);
+
+        &:hover {
+            text-decoration: none;
+        }
+    }
+
+    div p {
+        display: none;
+    }
+}
+
+.cont2 {
+    @include pt(48px, 32px);
+}
+
+.form {
+    .desc {
+        font-size: var(--fs16-14);
+        font-weight: 500;
+        letter-spacing: 0;
+        text-align: center;
+        @include mb(64px, 48px);
+
+        button {
+            text-decoration: underline;
+        }
+    }
+}
+
+.popupArea {
+    @include modalBox;
+    overflow-y: scroll;
+    @include scrollHidden;
+    @include flex(center, center);
+
+    .popupBox {
+        width: fit-content;
+        @include max-width(720px, 720px, calc(100% - 20px * 2));
+        @include p(40px, 32px, 20px);
+        background-color: $w1;
+        border-radius: 20px;
+        cursor: auto;
+    }
+}
+
+.formContent {
+    input[type='text'],
+    input[type='email'],
+    input[type='tel'],
+    textarea,
+    select {
+        display: block;
+        width: 100%;
+        @include height(56px);
+        @include p(16px);
+        border: 1px solid $g3;
+        font-size: var(--fs16-14);
+    }
+
+    textarea {
+        @include height(240px);
+    }
+
+    .dl {
+        @include mb(48px);
+        @include flex(stretch, left);
+
+        &:last-of-type {
+            @include mb(64px);
+        }
+
+        dt {
+            @include width(200px, 100%);
+            font-size: var(--fs16-14);
+            font-weight: 500;
+            @include mb(0, 12px);
+
+            &.inputDt {
+                @include lh(56px, 1);
+            }
+
+            &.brandDt {
+                @include lh(36px, 1);
+            }
+        }
+
+        dd {
+            @include width(calc(100% - 200px), 100%);
+
+            .supplement {
+                font-size: var(--fs16-14);
+                font-weight: 500;
+                letter-spacing: 0;
+                color: $g1;
+            }
+
+            &.radioArea {
+                @include flex(center, left);
+                @include gap(32px);
+
+                label {
+                    font-size: var(--fs16-14);
+                    font-weight: 500;
+                    @include flex(center, left);
+                    @include gap(8px);
+                }
+            }
+
+            &.selectArea {
+                @include width(240px);
+
+                select {
+                    font-weight: 300;
+                }
+            }
+
+            &.checkArea {
+                @include flex(center, left);
+                @include gap(12px 32px);
+
+                label {
+                    @include flex(center, left);
+                    @include gap(8px);
+                    font-size: var(--fs16-14);
+                    font-weight: 500;
+                }
+            }
+
+            &.hobbyArea {
+                .inDl {
+                    align-items: stretch;
+
+                    dd {
+                        @include flex(center, left);
+                        @include gap(16px 32px);
+
+                        label {
+                            @include flex(center, left);
+                            @include gap(8px);
+
+                            font-weight: 300;
+                        }
+                    }
+                }
+            }
+        }
+    }
+
+    .inDl {
+        @include flex(center);
+        @include mb(32px);
+
+        &:last-of-type {
+            @include mb(16px);
+        }
+
+        dt {
+            @include width(160px, 120px);
+        }
+
+        dd {
+            @include width(calc(100% - 160px), calc(100% - 120px));
+        }
+    }
+
+    .descBox {
+        @include mb(64px);
+
+        p {
+            font-size: var(--fs14-12);
+            font-weight: 500;
+            @include lh(30px);
+
+            a {
+                text-decoration: underline;
+
+                &:hover {
+                    text-decoration: none;
+                }
+            }
+        }
+    }
+
+    .desc2 {
+        font-size: var(--fs16-14);
+        font-weight: 500;
+        text-align: center;
+        @include mb(24px);
+    }
+
+    .consentArea {
+        @include mb(64px);
+
+        label {
+            @include flex(center, center);
+            @include gap(16px);
+            font-size: var(--fs16-14);
+            font-weight: 500;
+            width: fit-content;
+            margin: auto;
+
+            input {
+                @include ty(1px);
+            }
+        }
+
+        .error {
+            text-align: center;
+        }
+    }
+
+    button[type='submit']:disabled {
+        background-color: $g3;
+
+        &:hover {
+            opacity: 1;
+        }
+    }
+
+    input::placeholder,
+    textarea::placeholder {
+        color: $g3;
+    }
+}
+
+.lastError {
     text-align: center;
-    @include mt(24px);
-  }
+}
 
-  a {
-    @include mt(64px !important);
-  }
+.popupBtn {
+    @include p(8px 18px);
+    background-color: $g2;
+    @include flex(center, center);
+    @include gap(0 20px);
+    transition: 0.2s ease-out;
+    @include mb(24px);
+
+    span {
+        @include fs(13px);
+        font-weight: 500;
+
+        &.arrow {
+            @include fs(20px);
+            line-height: 1;
+            @include ty(-2px);
+        }
+    }
+
+    &:hover {
+        opacity: 0.5;
+    }
+}
+
+.selectBrand {
+    @include flex(center, left);
+    @include gap(16px);
+
+    label {
+        @include p(14px 18px);
+        border: 1px solid $g3;
+        @include flex(center, center);
+        @include gap(10px);
+        transition: 0.2s ease-out;
+
+        &:hover {
+            opacity: 0.5;
+        }
+
+        span {
+            display: block;
+
+            &.brandName {
+                font-size: var(--fs16-14);
+                font-weight: 500;
+            }
+
+            &.brandDelete {
+                @include width(20px);
+                @include height(20px);
+                border-radius: 50%;
+                background-color: $g1;
+                color: $w1;
+                @include flex(center, center);
+                line-height: 1;
+                font-weight: bold;
+                @include fs(12px);
+            }
+        }
+    }
+}
+
+.confirmContent {
+    .dl {
+        @include mb(32px);
+        @include pb(32px);
+        border-bottom: 1px solid $g3;
+
+        &:first-of-type {
+            @include pt(32px);
+            border-top: 1px solid $g3;
+        }
+    }
+
+    .ul {
+        @include flex(center, left);
+        @include gap(12px 48px);
+
+        li {
+            font-size: var(--fs16-14);
+            font-weight: 300;
+        }
+    }
+
+    .btnFlex {
+        @include flex(center, center);
+        flex-direction: column-reverse;
+        @include gap(32px, 24px);
+
+        button {
+            margin: 0;
+
+            &:first-of-type {
+                background-color: $g1;
+            }
+        }
+    }
+}
+
+.thanksBox {
+    .txt {
+        font-size: var(--fs24-18);
+        font-weight: 500;
+        text-align: center;
+    }
+
+    .txt2 {
+        font-size: var(--fs16-14);
+        font-weight: 300;
+        text-align: center;
+        @include mt(24px);
+    }
+
+    a {
+        @include mt(64px !important);
+    }
 }
 
 .adBox {
-  @include mb(72px, 64px);
-  text-align: center;
+    @include mb(72px, 64px);
+    text-align: center;
 
-  .adTxt {
-    font-size: var(--fs18-16);
-    font-weight: 500;
-    @include mb(32px);
-  }
-
-  .adTxt2 {
-    font-size: var(--fs16-14);
-    font-weight: 500;
-
-    &.gray {
-      @include mb(48px);
-      color: $g4;
+    .adTxt {
+        font-size: var(--fs18-16);
+        font-weight: 500;
+        @include mb(32px);
     }
-  }
 
-  a {
-    @include mt(16px);
-    font-family: $nsj;
-  }
+    .adTxt2 {
+        font-size: var(--fs16-14);
+        font-weight: 500;
+
+        &.gray {
+            @include mb(48px);
+            color: $g4;
+        }
+    }
+
+    a {
+        @include mt(16px);
+        font-family: $nsj;
+    }
 }
 
 .toggleBox {
-  margin: auto;
-  text-align: center;
+    margin: auto;
+    text-align: center;
 
-  p {
-    @include fs(16px, 14px);
-    font-weight: 500;
-    @include mb(12px);
-  }
-
-  a {
-    @include p(4px 16px);
-    display: inline-block;
-    border: 1px solid $b1;
-    transition: .3s ease;
-
-    &:hover {
-      background-color: $b1;
-      color: $w1;
+    p {
+        @include fs(16px, 14px);
+        font-weight: 500;
+        @include mb(12px);
     }
-  }
+
+    a {
+        @include p(4px 16px);
+        display: inline-block;
+        border: 1px solid $b1;
+        transition: 0.3s ease;
+
+        &:hover {
+            background-color: $b1;
+            color: $w1;
+        }
+    }
 }

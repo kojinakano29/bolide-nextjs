@@ -1,53 +1,53 @@
 @import '../../variables.scss';
 
 .sortBox {
-  @include flex(flex-start, left);
-  @include gap(40px, 32px);
-  @include mb(32px);
+    @include flex(flex-start, left);
+    @include gap(40px, 32px);
+    @include mb(32px);
 
-  .sort {
-    position: relative;
+    .sort {
+        position: relative;
 
-    .btn {
-      @include flex(center, left);
-      @include gap(16px, 16px, 8px);
+        .btn {
+            @include flex(center, left);
+            @include gap(16px, 16px, 8px);
 
-      .icon {
-        @include width(20px, 20px, 18px);
-      }
+            .icon {
+                @include width(20px, 20px, 18px);
+            }
 
-      .state {
-        @include fs(16px, 14px);
-        font-weight: bold;
-        letter-spacing: 0;
-      }
-    }
-
-    .box {
-      position: absolute;
-      @include top(32px);
-      left: 0;
-      @include width(160px);
-      border: 1px solid $g4;
-      border-radius: 10px;
-      background-color: $w1;
-      overflow: hidden;
-      z-index: 3;
-
-      button {
-        display: block;
-        width: 100%;
-        text-align: left;
-        @include p(10px 16px);
-        @include fs(16px, 14px);
-        font-weight: bold;
-        letter-spacing: 0;
-
-        &.current {
-          background-color: $g4;
-          color: $w1;
+            .state {
+                @include fs(16px, 14px);
+                font-weight: bold;
+                letter-spacing: 0;
+            }
         }
-      }
+
+        .box {
+            position: absolute;
+            @include top(32px);
+            left: 0;
+            @include width(160px);
+            border: 1px solid $g4;
+            border-radius: 10px;
+            background-color: $w1;
+            overflow: hidden;
+            z-index: 3;
+
+            button {
+                display: block;
+                width: 100%;
+                text-align: left;
+                @include p(10px 16px);
+                @include fs(16px, 14px);
+                font-weight: bold;
+                letter-spacing: 0;
+
+                &.current {
+                    background-color: $g4;
+                    color: $w1;
+                }
+            }
+        }
     }
-  }
 }

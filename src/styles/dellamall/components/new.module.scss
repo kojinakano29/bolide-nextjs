@@ -1,24 +1,28 @@
 @import '../../variables.scss';
 
 .new {
-  @include pt(112px, 80px);
+    @include pt(112px, 80px);
 
-  &.top {
-    @include pt(56px, 40px);
-    @include mt(56px, 40px);
-    border-top: 1px solid $g3;
-  }
-
-  .login__newList {
-    @include flex(center);
-
-    @include media1(sp) {
-      flex-direction: column;
-      gap: 24px;
+    &.top {
+        @include pt(56px, 40px);
+        @include mt(56px, 40px);
+        border-top: 1px solid $g3;
     }
 
-    .login__newItem {
-      @include btn4(calc(100% * 1/3 - 16px), calc(100% * 1/3 - 10px), 320px)
+    .login__newList {
+        @include flex(center);
+
+        @include media1(sp) {
+            flex-direction: column;
+            gap: 24px;
+        }
+
+        .login__newItem {
+            @include btn4(
+                calc(100% * 1 / 3 - 16px),
+                calc(100% * 1 / 3 - 10px),
+                320px
+            );
+        }
     }
-  }
 }

@@ -1,128 +1,128 @@
 @import '../../variables.scss';
 
 .mypageFlex {
-  @include flex();
+    @include flex();
 }
 
 .mypageForm {
-  @include width(755px, 100%);
+    @include width(755px, 100%);
 
-  .dl {
-    @include mb(40px, 32px);
-
-    &:last-of-type {
-      @include mb(64px, 48px);
-    }
-
-    dt {
-      font-size: var(--fs16-14);
-      font-weight: 500;
-      @include mb(16px, 10px);
-    }
-
-    dd {
-      input[type="text"],
-      input[type="number"],
-      select {
-        display: block;
-        width: 100%;
-        @include height(56px);
-        @include p(16px);
-        border: 1px solid $g3;
-        font-size: var(--fs16-14);
-      }
-
-      &.nameArea,
-      &.industryArea,
-      &.occupationArea {
-        @include width(480px);
-      }
-
-      &.zipArea,
-      &.ageArea,
-      &.workArea {
-        @include width(240px);
-      }
-
-      &.radioArea {
-        @include flex(center, left);
-        @include gap(12px 32px);
-
-        label {
-          @include flex(center, left);
-          @include gap(8px);
-          font-size: var(--fs16-14);
-          font-weight: 500;
-        }
-      }
-
-      &.thumbArea {
-        @include flex(center, left);
-        @include gap(56px, 40px);
-
-        .thumbBox {
-          border-radius: 50%;
-          overflow: hidden;
-          isolation: isolate;
-          @include width(144px);
-          @include height(144px);
-
-          img {
-            object-fit: cover;
-            width: 100%;
-            height: 100%;
-          }
-        }
-
-        label {
-          @include p(8px 18px);
-          font-size: var(--fs14-12);
-          font-weight: 500;
-          background-color: $g2;
-          cursor: pointer;
-          transition: .2s ease-out;
-
-          &:hover {
-            opacity: .5;
-          }
-        }
-
-        input {
-          width: 0;
-          height: 0;
-          opacity: 0;
-        }
-      }
-
-      .inDl {
-        @include mb(16px);
+    .dl {
+        @include mb(40px, 32px);
 
         &:last-of-type {
-          margin-bottom: 0;
+            @include mb(64px, 48px);
         }
 
         dt {
-          font-size: var(--fs14-12);
-          @include mb(10px);
+            font-size: var(--fs16-14);
+            font-weight: 500;
+            @include mb(16px, 10px);
         }
-      }
+
+        dd {
+            input[type='text'],
+            input[type='number'],
+            select {
+                display: block;
+                width: 100%;
+                @include height(56px);
+                @include p(16px);
+                border: 1px solid $g3;
+                font-size: var(--fs16-14);
+            }
+
+            &.nameArea,
+            &.industryArea,
+            &.occupationArea {
+                @include width(480px);
+            }
+
+            &.zipArea,
+            &.ageArea,
+            &.workArea {
+                @include width(240px);
+            }
+
+            &.radioArea {
+                @include flex(center, left);
+                @include gap(12px 32px);
+
+                label {
+                    @include flex(center, left);
+                    @include gap(8px);
+                    font-size: var(--fs16-14);
+                    font-weight: 500;
+                }
+            }
+
+            &.thumbArea {
+                @include flex(center, left);
+                @include gap(56px, 40px);
+
+                .thumbBox {
+                    border-radius: 50%;
+                    overflow: hidden;
+                    isolation: isolate;
+                    @include width(144px);
+                    @include height(144px);
+
+                    img {
+                        object-fit: cover;
+                        width: 100%;
+                        height: 100%;
+                    }
+                }
+
+                label {
+                    @include p(8px 18px);
+                    font-size: var(--fs14-12);
+                    font-weight: 500;
+                    background-color: $g2;
+                    cursor: pointer;
+                    transition: 0.2s ease-out;
+
+                    &:hover {
+                        opacity: 0.5;
+                    }
+                }
+
+                input {
+                    width: 0;
+                    height: 0;
+                    opacity: 0;
+                }
+            }
+
+            .inDl {
+                @include mb(16px);
+
+                &:last-of-type {
+                    margin-bottom: 0;
+                }
+
+                dt {
+                    font-size: var(--fs14-12);
+                    @include mb(10px);
+                }
+            }
+        }
     }
-  }
 }
 
 .logout {
-  @include mt(32px !important, 24px !important);
+    @include mt(32px !important, 24px !important);
 }
 
 .sideBox {
-  @include width(calc(100% - (755px + 64px)), 100%);
-  @include mt(0, 64px);
+    @include width(calc(100% - (755px + 64px)), 100%);
+    @include mt(0, 64px);
 
-  .sideWrap {
-    @include mb(96px, 80px, 64px);
+    .sideWrap {
+        @include mb(96px, 80px, 64px);
 
-    &:last-of-type {
-      margin-bottom: 0;
+        &:last-of-type {
+            margin-bottom: 0;
+        }
     }
-  }
 }

@@ -9,82 +9,105 @@ import { useEffect, useState } from 'react'
 
 // SSR
 export const getServerSideProps = async () => {
-  const res = await fetch(`${process.env.NEXT_PUBLIC_API_LIONDOR}/admin/sidebar`)
-  const data = await res.json()
+    const res = await fetch(
+        `${process.env.NEXT_PUBLIC_API_LIONDOR}/admin/sidebar`,
+    )
+    const data = await res.json()
 
-  return {
-    props: {
-      posts: data
+    return {
+        props: {
+            posts: data,
+        },
     }
-  }
 }
 
-const AdminSidebar = ({posts}) => {
-  // console.log(posts)
-  const csrf = () => axios.get('/sanctum/csrf-cookie')
+const AdminSidebar = ({ posts }) => {
+    // console.log(posts)
+    const csrf = () => axios.get('/sanctum/csrf-cookie')
 
-  const router = useRouter()
-  const { user } = useAuth({middleware: 'auth', type: 'liondor'})
-  const [disabled, setDisabled] = useState(false)
+    const router = useRouter()
+    const { user } = useAuth({ middleware: 'auth', type: 'liondor' })
+    const [disabled, setDisabled] = useState(false)
 
-  useEffect(() => {
-    onLoadCheck()
-  }, [user])
+    useEffect(() => {
+        onLoadCheck()
+    }, [user])
 
-  const onLoadCheck = () => {
-    if (user?.account_type < 3) {
-      alert("このページにはアクセスできません。")
-      router.push(`/liondor`)
+    const onLoadCheck = () => {
+        if (user?.account_type < 3) {
+            alert('このページにはアクセスできません。')
+            router.push(`/liondor`)
+        }
     }
-  }
 
-  const onClickDelete = async (post) => {
-    setDisabled(true)
-    await csrf()
+    const onClickDelete = async post => {
+        setDisabled(true)
+        await csrf()
 
-    await axios.delete(`/api/liondor/sidebar/delete/${post.id}`)
-    .then((res) => {
-      // console.log(res)
-      alert("サイドバーを削除しました。")
-      router.reload()
-    })
-    .catch((e) => {
-      console.error(e)
-      alert("サイドバーの削除に失敗しました。")
-    })
+        await axios
+            .delete(`/api/liondor/sidebar/delete/${post.id}`)
+            .then(res => {
+                // console.log(res)
+                alert('サイドバーを削除しました。')
+                router.reload()
+            })
+            .catch(e => {
+                console.error(e)
+                alert('サイドバーの削除に失敗しました。')
+            })
 
-    await setDisabled(false)
-  }
+        await setDisabled(false)
+    }
 
-  return (
-    <section className="cont1">
-      <PageTitle title="サイドバー一覧" />
-      {user?.account_type > 2 ?
-        <Container small900>
-          <a href="/liondor/sidebar/create" className={`btn2 ${styles.create}`}>新規作成</a>
-          <article className={styles.article}>
-            <ul>
-              {posts?.map((item, index) => (
-                <li key={index}>
-                  <p className={styles.time}><DateFormat dateString={item.updated_at} /></p>
-                  <a href={`/liondor/sidebar/edit/${item.id}`} className={styles.ttl}>{item.title}</a>
-                  <div className={styles.btnBox}>
-                    <a href={`/liondor/sidebar/edit/${item.id}`} className={styles.edit}>編集</a>
-                    <button className={styles.delete} onClick={() => onClickDelete(item)} disabled={disabled}>削除</button>
-                  </div>
-                </li>
-              ))}
-            </ul>
-          </article>
-        </Container>
-        : null
-      }
-    </section>
-  );
+    return (
+        <section className="cont1">
+            <PageTitle title="サイドバー一覧" />
+            {user?.account_type > 2 ? (
+                <Container small900>
+                    <a
+                        href="/liondor/sidebar/create"
+                        className={`btn2 ${styles.create}`}>
+                        新規作成
+                    </a>
+                    <article className={styles.article}>
+                        <ul>
+                            {posts?.map((item, index) => (
+                                <li key={index}>
+                                    <p className={styles.time}>
+                                        <DateFormat
+                                            dateString={item.updated_at}
+                                        />
+                                    </p>
+                                    <a
+                                        href={`/liondor/sidebar/edit/${item.id}`}
+                                        className={styles.ttl}>
+                                        {item.title}
+                                    </a>
+                                    <div className={styles.btnBox}>
+                                        <a
+                                            href={`/liondor/sidebar/edit/${item.id}`}
+                                            className={styles.edit}>
+                                            編集
+                                        </a>
+                                        <button
+                                            className={styles.delete}
+                                            onClick={() => onClickDelete(item)}
+                                            disabled={disabled}>
+                                            削除
+                                        </button>
+                                    </div>
+                                </li>
+                            ))}
+                        </ul>
+                    </article>
+                </Container>
+            ) : null}
+        </section>
+    )
 }
 
-export default AdminSidebar;
+export default AdminSidebar
 
 AdminSidebar.getLayout = function getLayout(page) {
-  return <PageLayoutLiondor>{page}</PageLayoutLiondor>
+    return <PageLayoutLiondor>{page}</PageLayoutLiondor>
 }

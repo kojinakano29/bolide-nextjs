@@ -1,26 +1,23 @@
-import PageLayoutCorapura from "@/components/Layouts/pageLayoutCorapura";
-import { MatterList } from '@/components/corapura';
+import PageLayoutCorapura from '@/components/Layouts/pageLayoutCorapura'
+import { MatterList } from '@/components/corapura'
 
 export const getServerSideProps = async () => {
-  const res = await fetch(`${process.env.NEXT_PUBLIC_API_CORAPURA}/post`)
-  const data = await res.json()
+    const res = await fetch(`${process.env.NEXT_PUBLIC_API_CORAPURA}/post`)
+    const data = await res.json()
 
-  return {
-    props: {
-      posts: data
+    return {
+        props: {
+            posts: data,
+        },
     }
-  }
 }
 
-const MatterListCompany = ({posts}) => {
-
-  return (
-    <MatterList posts={posts} />
-  );
+const MatterListCompany = ({ posts }) => {
+    return <MatterList posts={posts} />
 }
 
-export default MatterListCompany;
+export default MatterListCompany
 
 MatterListCompany.getLayout = function getLayout(page) {
-  return <PageLayoutCorapura>{page}</PageLayoutCorapura>
+    return <PageLayoutCorapura>{page}</PageLayoutCorapura>
 }

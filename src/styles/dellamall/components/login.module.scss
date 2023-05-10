@@ -1,135 +1,135 @@
 @import '../../variables.scss';
 
 .loginBox {
-  text-align: center;
+    text-align: center;
 
-  .inputBox {
-    @include mb(24px);
+    .inputBox {
+        @include mb(24px);
 
-    &:last-of-type {
-      @include mb(40px);
+        &:last-of-type {
+            @include mb(40px);
+        }
+
+        input {
+            width: 100%;
+            @include input(672px, 100%);
+            margin: auto;
+            @include pl(56px, 48px);
+            background-repeat: no-repeat;
+            background-position: 24px center;
+
+            @include media1(tab1) {
+                background-position: 16px center;
+            }
+
+            &.email {
+                background-image: url(../../../images/dellamall/login/mail.svg);
+            }
+
+            &.password {
+                background-image: url(../../../images/dellamall/login/password.svg);
+            }
+
+            &::placeholder {
+                font-family: $Montserrat;
+            }
+        }
+
+        .passwordBox {
+            @include width(672px, 100%);
+            margin: auto;
+            position: relative;
+
+            .view {
+                @include fs(14px, 12px);
+                font-weight: bold;
+                cursor: pointer;
+                position: absolute;
+                top: 50%;
+                @include right(16px, 12px);
+                transform: translateY(-50%);
+            }
+        }
     }
 
-    input {
-      width: 100%;
-      @include input(672px, 100%);
-      margin: auto;
-      @include pl(56px, 48px);
-      background-repeat: no-repeat;
-      background-position: 24px center;
+    .forgot {
+        @include fs(16px, 14px);
+        font-weight: 500;
+        color: $g1;
+        @include mt(24px);
 
-      @include media1(tab1) {
-        background-position: 16px center;
-      }
+        a {
+            @include fs(16px, 14px);
+            font-weight: 500;
+            color: $b3;
+            text-decoration: underline;
 
-      &.email {
-        background-image: url(../../../images/dellamall/login/mail.svg);
-      }
-
-      &.password {
-        background-image: url(../../../images/dellamall/login/password.svg);
-      }
-
-      &::placeholder {
-        font-family: $Montserrat;
-      }
+            &:hover {
+                text-decoration: none;
+            }
+        }
     }
-
-    .passwordBox {
-      @include width(672px, 100%);
-      margin: auto;
-      position: relative;
-
-      .view {
-        @include fs(14px, 12px);
-        font-weight: bold;
-        cursor: pointer;
-        position: absolute;
-        top: 50%;
-        @include right(16px, 12px);
-        transform: translateY(-50%);
-      }
-    }
-  }
-
-  .forgot {
-    @include fs(16px, 14px);
-    font-weight: 500;
-    color: $g1;
-    @include mt(24px);
-
-    a {
-      @include fs(16px, 14px);
-      font-weight: 500;
-      color: $b3;
-      text-decoration: underline;
-
-      &:hover {
-        text-decoration: none;
-      }
-    }
-  }
 }
 
 .bjcArea {
-  @include pt(80px);
-  text-align: center;
+    @include pt(80px);
+    text-align: center;
 
-  h3 {
-    @include fs(32px, 24px);
-    font-weight: 500;
-    @include mb(16px);
-  }
-
-  .desc {
-    @include fs(16px, 14px);
-    font-weight: 500;
-    @include mb(24px, 16px);
-  }
-
-  .bjcLink {
-    @include width(533px, 400px);
-    border-radius: 10px;
-    box-shadow: 6px 6px rgba($b1, .1);
-    overflow: hidden;
-    transition: .3s ease;
-
-    &:hover {
-      box-shadow: unset;
-      transform: translate(6px, 6px);
+    h3 {
+        @include fs(32px, 24px);
+        font-weight: 500;
+        @include mb(16px);
     }
-  }
+
+    .desc {
+        @include fs(16px, 14px);
+        font-weight: 500;
+        @include mb(24px, 16px);
+    }
+
+    .bjcLink {
+        @include width(533px, 400px);
+        border-radius: 10px;
+        box-shadow: 6px 6px rgba($b1, 0.1);
+        overflow: hidden;
+        transition: 0.3s ease;
+
+        &:hover {
+            box-shadow: unset;
+            transform: translate(6px, 6px);
+        }
+    }
 }
 
 .downloadArea {
-  @include pt(80px);
+    @include pt(80px);
 
-  h3 {
-    @include fs(32px, 24px);
-    font-weight: 500;
-    @include mb(16px);
-    text-align: center;
-  }
-
-  .downloadBtn {
-    @include width(360px);
-    @include height(90px);
-    @include flex(center, center);
-    @include fs(20px, 18px, 16px);
-    font-weight: 500;
-    color: $o1;
-    border: 3px solid $o1;
-    border-radius: 20px;
-    margin: auto;
-    background-image: url(../../../../public/dellamall/download_icon.svg);
-    background-repeat: no-repeat;
-    background-position: calc(100% - 32px) center;
-    transition: .3s ease;
-
-    &:hover {
-      background-color: $o1;
-      color: $w1;
-      background-image: url(../../../../public/dellamall/download_icon_w.svg);
+    h3 {
+        @include fs(32px, 24px);
+        font-weight: 500;
+        @include mb(16px);
+        text-align: center;
     }
-  }
+
+    .downloadBtn {
+        @include width(360px);
+        @include height(90px);
+        @include flex(center, center);
+        @include fs(20px, 18px, 16px);
+        font-weight: 500;
+        color: $o1;
+        border: 3px solid $o1;
+        border-radius: 20px;
+        margin: auto;
+        background-image: url(../../../../public/dellamall/download_icon.svg);
+        background-repeat: no-repeat;
+        background-position: calc(100% - 32px) center;
+        transition: 0.3s ease;
+
+        &:hover {
+            background-color: $o1;
+            color: $w1;
+            background-image: url(../../../../public/dellamall/download_icon_w.svg);
+        }
+    }
 }

@@ -1,120 +1,120 @@
 @import '../../variables.scss';
 
 .plus {
-  background: $o1;
-  @include width(32px);
-  @include height(32px);
-  border-radius: 50%;
-  position: relative;
-  opacity: 0;
-  transition: .2s ease-out;
+    background: $o1;
+    @include width(32px);
+    @include height(32px);
+    border-radius: 50%;
+    position: relative;
+    opacity: 0;
+    transition: 0.2s ease-out;
 
-  .line1,
-  .line2 {
-    @include width(16px);
-    @include height(4px);
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    border-radius: 50px;
-    background: $w1;
-  }
+    .line1,
+    .line2 {
+        @include width(16px);
+        @include height(4px);
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        border-radius: 50px;
+        background: $w1;
+    }
 
-  .line2 {
-    transform: translate(-50%, -50%) rotateZ(90deg);
-  }
+    .line2 {
+        transform: translate(-50%, -50%) rotateZ(90deg);
+    }
 }
 
 .saveMallBox {
-  @include activeBox(320px);
-  @include height(410px, 399px);
+    @include activeBox(320px);
+    @include height(410px, 399px);
 
-  .saveMallBox__title {
-    @include fs(18px, 16px);
-    font-weight: bold;
-    text-align: center;
-    @include mb(16px);
-  }
-
-  .saveMallBox__cont {
-    overflow-y: scroll;
-    @include height(270px);
-    @include pl(16px);
-
-    .saveMallBox__text {
-      font-size: 10px;
-      font-weight: 500;
+    .saveMallBox__title {
+        @include fs(18px, 16px);
+        font-weight: bold;
+        text-align: center;
+        @include mb(16px);
     }
 
-    .saveMallBox__btn {
-      @include width(calc(100% - 12px));
-      @include flex(center);
-      @include gap(8px);
-      @include p(8px 12px);
-      @include mb(16px);
-      border-radius: 5px;
-      transition: .2s ease-out;
+    .saveMallBox__cont {
+        overflow-y: scroll;
+        @include height(270px);
+        @include pl(16px);
 
-      &.saveOn {
-        background-color: rgba($b3, .1);
-
-        .plus {
-          opacity: 1;
-
-          .line2 {
-            display: none;
-          }
+        .saveMallBox__text {
+            font-size: 10px;
+            font-weight: 500;
         }
-      }
 
-      &:hover {
-        background-color: rgba($b3, .1);
+        .saveMallBox__btn {
+            @include width(calc(100% - 12px));
+            @include flex(center);
+            @include gap(8px);
+            @include p(8px 12px);
+            @include mb(16px);
+            border-radius: 5px;
+            transition: 0.2s ease-out;
 
-        .plus {
-          opacity: 1;
+            &.saveOn {
+                background-color: rgba($b3, 0.1);
+
+                .plus {
+                    opacity: 1;
+
+                    .line2 {
+                        display: none;
+                    }
+                }
+            }
+
+            &:hover {
+                background-color: rgba($b3, 0.1);
+
+                .plus {
+                    opacity: 1;
+                }
+            }
+
+            .imgBox {
+                border: 1px solid $g3;
+                border-radius: 5px;
+                @include width(40px);
+                aspect-ratio: 1 / 1;
+                overflow: hidden;
+                background-color: $g3;
+
+                img {
+                    width: 100%;
+                    height: 100%;
+                    object-fit: cover;
+                    object-position: center;
+                }
+            }
+
+            .saveMallBox__name {
+                @include width(calc(100% - (40px + 32px + 8px * 2)));
+                @include fs(16px, 14px);
+                font-weight: bold;
+            }
         }
-      }
+    }
 
-      .imgBox {
-        border: 1px solid $g3;
-        border-radius: 5px;
-        @include width(40px);
-        aspect-ratio: 1 / 1;
-        overflow: hidden;
-        background-color: $g3;
-
-        img {
-          width: 100%;
-          height: 100%;
-          object-fit: cover;
-          object-position: center;
-        }
-      }
-
-      .saveMallBox__name {
-        @include width(calc(100% - (40px + 32px + 8px * 2)));
+    .saveMallBox__create {
+        @include p(16px 24px, 16px);
         @include fs(16px, 14px);
         font-weight: bold;
-      }
-    }
-  }
+        border-top: 3px solid $g3;
+        @include flex(center, left);
+        gap: 8px;
+        transition: 0.2s ease-out;
 
-  .saveMallBox__create {
-    @include p(16px 24px, 16px);
-    @include fs(16px, 14px);
-    font-weight: bold;
-    border-top: 3px solid $g3;
-    @include flex(center, left);
-    gap: 8px;
-    transition: .2s ease-out;
+        .plus {
+            opacity: 1;
+        }
 
-    .plus {
-      opacity: 1;
+        &:hover {
+            background-color: rgba($b3, 0.1);
+        }
     }
-
-    &:hover {
-      background-color: rgba($b3, .1);
-    }
-  }
 }

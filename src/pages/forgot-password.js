@@ -27,7 +27,9 @@ const ForgotPassword = () => {
                     <h2 className="ttl2">パスワード忘れた方</h2>
                     <div className="breadcrumbBox">
                         <a href="/">トップ</a>
-                        <div><img src="/top/breadcrumb.svg" alt=">" /></div>
+                        <div>
+                            <img src="/top/breadcrumb.svg" alt=">" />
+                        </div>
                         <p>パスワード忘れた方</p>
                     </div>
                 </Container>
@@ -35,29 +37,38 @@ const ForgotPassword = () => {
 
             <section className={styles.cont2}>
                 <Container small900>
-                <p className={styles.desc}>パスワードをリセットするには、ご登録のメールアドレスを入力してください。 </p>
+                    <p className={styles.desc}>
+                        パスワードをリセットするには、ご登録のメールアドレスを入力してください。{' '}
+                    </p>
 
-                {/* Session Status */}
-                <AuthSessionStatus className="mb-4" status={status} />
+                    {/* Session Status */}
+                    <AuthSessionStatus className="mb-4" status={status} />
 
-                <form onSubmit={submitForm}>
-                    <article className={styles.loginBox}>
-                        <div className={styles.inputBox}>
-                            <label htmlFor="email" className="en">Email</label>
-                            <input
-                                id="email"
-                                type="email"
-                                name="email"
-                                className={styles.email}
-                                onChange={event => setEmail(event.target.value)}
-                                required
-                                autoFocus
-                            />
-                            <InputError messages={errors.email} className="mt-2" />
-                        </div>
-                        <Btn1 txt="送信する" submit />
-                    </article>
-                </form>
+                    <form onSubmit={submitForm}>
+                        <article className={styles.loginBox}>
+                            <div className={styles.inputBox}>
+                                <label htmlFor="email" className="en">
+                                    Email
+                                </label>
+                                <input
+                                    id="email"
+                                    type="email"
+                                    name="email"
+                                    className={styles.email}
+                                    onChange={event =>
+                                        setEmail(event.target.value)
+                                    }
+                                    required
+                                    autoFocus
+                                />
+                                <InputError
+                                    messages={errors.email}
+                                    className="mt-2"
+                                />
+                            </div>
+                            <Btn1 txt="送信する" submit />
+                        </article>
+                    </form>
                 </Container>
             </section>
         </>

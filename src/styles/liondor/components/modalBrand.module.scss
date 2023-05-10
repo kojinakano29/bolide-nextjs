@@ -1,147 +1,151 @@
 @import '../../variables.scss';
 
 .modalWrap {
-  composes: modalWrap from './parts.scss';
+    composes: modalWrap from './parts.scss';
 
-  * {
-    font-family: "平成明朝 Std";
-  }
+    * {
+        font-family: '平成明朝 Std';
+    }
 
-  &.open {
-    opacity: 1;
-    pointer-events: all;
-  }
+    &.open {
+        opacity: 1;
+        pointer-events: all;
+    }
 }
 
 .modalBox {
-  width: 100%;
-  padding: 0 20px;
-  @include max-width(780px);
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
+    width: 100%;
+    padding: 0 20px;
+    @include max-width(780px);
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
 }
 
 .topFlex {
-  @include flex(center);
+    @include flex(center);
 
-  .name {
-    font-size: var(--fs20-18);
-    font-weight: 500;
-    color: $w1;
-  }
+    .name {
+        font-size: var(--fs20-18);
+        font-weight: 500;
+        color: $w1;
+    }
 
-  .close {
-    @include width(56px, 40px);
-    @include height(56px, 40px);
-    @include flex(center, center);
-    @include fs(32px, 24px);
-    font-weight: bold;
-    color: $w1;
-    cursor: pointer;
-  }
+    .close {
+        @include width(56px, 40px);
+        @include height(56px, 40px);
+        @include flex(center, center);
+        @include fs(32px, 24px);
+        font-weight: bold;
+        color: $w1;
+        cursor: pointer;
+    }
 }
 
 .modalArticle {
-  background-color: $g2;
-  @include p(32px, 16px);
+    background-color: $g2;
+    @include p(32px, 16px);
 }
 
 .modalCont {
-  @include p(0 18px 12px);
-  border: 2px solid $g1;
-  @include height(330px);
-  overflow-y: scroll;
-  background-color: $w1;
-  position: relative;
+    @include p(0 18px 12px);
+    border: 2px solid $g1;
+    @include height(330px);
+    overflow-y: scroll;
+    background-color: $w1;
+    position: relative;
 }
 
 .modalNav {
-  position: sticky;
-  top: 0;
-  @include pt(12px);
-  background-color: $w1;
+    position: sticky;
+    top: 0;
+    @include pt(12px);
+    background-color: $w1;
 
-  ul {
-    @include flex(center, left);
+    ul {
+        @include flex(center, left);
 
-    li {
-      display: flex;
-      align-items: center;
+        li {
+            display: flex;
+            align-items: center;
 
-      a {
-        @include fs(14px, 12px);
-        font-weight: 700;
-        @include p(0 6px);
-        transition: .2s ease-out;
+            a {
+                @include fs(14px, 12px);
+                font-weight: 700;
+                @include p(0 6px);
+                transition: 0.2s ease-out;
 
-        &:hover {
-          opacity: .5;
+                &:hover {
+                    opacity: 0.5;
+                }
+            }
+
+            .hr {
+                width: 1px;
+                @include height(14px);
+                background-color: $g1;
+            }
+
+            &:last-of-type {
+                a {
+                    padding-right: 0;
+                }
+
+                .hr {
+                    display: none;
+                }
+            }
+
+            &:first-of-type {
+                a {
+                    padding-left: 0;
+                }
+            }
         }
-      }
-
-      .hr {
-        width: 1px;
-        @include height(14px);
-        background-color: $g1;
-      }
-
-      &:last-of-type {
-        a {
-          padding-right: 0;
-        }
-
-        .hr {
-          display: none;
-        }
-      }
-
-      &:first-of-type {
-        a {
-          padding-left: 0;
-        }
-      }
     }
-  }
 }
 
 .brandList {
-  li {
-    @include pt(32px);
+    li {
+        @include pt(32px);
 
-    h4 {
-      font-size: var(--fs24-16);
-      font-weight: 700;
-      @include mb(12px);
-      border-bottom: 1px solid $g5;
-    }
-
-    .brandInputBox {
-      @include flex(stretch, left);
-      @include gap(12px 24px);
-
-      label {
-        @include width(calc(100% / 3 - 16px), calc(100% / 3 - 16px), calc(100% * 1/2 - 16px));
-        @include pb(12px);
-        border-bottom: 1px solid $g3;
-        @include flex(center, left);
-        @include gap(8px);
-        cursor: pointer;
-        transition: .2s ease-out;
-
-        &:hover {
-          opacity: .5;
+        h4 {
+            font-size: var(--fs24-16);
+            font-weight: 700;
+            @include mb(12px);
+            border-bottom: 1px solid $g5;
         }
 
-        input {
-          color: $b1;
-          border-radius: 50%;
-          @include width(20px, 18px);
-          @include height(20px, 18px);
-          cursor: pointer;
+        .brandInputBox {
+            @include flex(stretch, left);
+            @include gap(12px 24px);
+
+            label {
+                @include width(
+                    calc(100% / 3 - 16px),
+                    calc(100% / 3 - 16px),
+                    calc(100% * 1 / 2 - 16px)
+                );
+                @include pb(12px);
+                border-bottom: 1px solid $g3;
+                @include flex(center, left);
+                @include gap(8px);
+                cursor: pointer;
+                transition: 0.2s ease-out;
+
+                &:hover {
+                    opacity: 0.5;
+                }
+
+                input {
+                    color: $b1;
+                    border-radius: 50%;
+                    @include width(20px, 18px);
+                    @include height(20px, 18px);
+                    cursor: pointer;
+                }
+            }
         }
-      }
     }
-  }
 }

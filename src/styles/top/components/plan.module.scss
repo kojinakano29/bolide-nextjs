@@ -1,118 +1,124 @@
 @import '../../variables.scss';
 
 .item {
-  @include p(0 16px, 0 8px);
-  @include mb(16px, 8px);
+    @include p(0 16px, 0 8px);
+    @include mb(16px, 8px);
 
-  &:last-of-type {
-    @include mb(32px, 24px);
-  }
-
-  &.corapura {
-    background-color: $y2;
-  }
-
-  &.della {
-    background-color: $p2;
-  }
-
-  &.liondor {
-    background-color: $o5;
-  }
-
-  &.marche {
-    background-color: $b13;
-  }
-
-  &.bj {
-    background-color: $g3;
-  }
-
-  button {
-    width: 100%;
-    @include flex(center, left);
-    @include gap(24px, 8px);
-    @include p(16px 8px, 8px 0);
-
-    div {
-      @include flex(center, center);
-      @include width(40px, 32px);
-      aspect-ratio: 1 / 1;
-      background-color: $g13;
-      border-radius: 50%;
-      font-weight: 900;
-      @include fs(20px);
+    &:last-of-type {
+        @include mb(32px, 24px);
     }
 
-    span {
-      @include fs(12px);
-      font-weight: 500;
-      color: $g1;
+    &.corapura {
+        background-color: $y2;
     }
-  }
 
-  .graphBox {
-    height: 0;
-    overflow: hidden;
+    &.della {
+        background-color: $p2;
+    }
 
-    dl {
-      @include flex(stretch);
-      @include gap(16px, 8px);
+    &.liondor {
+        background-color: $o5;
+    }
 
-      &:nth-of-type(even) {
-        dt,
-        dd {
-          background-color: $g13;
+    &.marche {
+        background-color: $b13;
+    }
+
+    &.bj {
+        background-color: $g3;
+    }
+
+    button {
+        width: 100%;
+        @include flex(center, left);
+        @include gap(24px, 8px);
+        @include p(16px 8px, 8px 0);
+
+        div {
+            @include flex(center, center);
+            @include width(40px, 32px);
+            aspect-ratio: 1 / 1;
+            background-color: $g13;
+            border-radius: 50%;
+            font-weight: 900;
+            @include fs(20px);
         }
-      }
 
-      dt,
-      dd {
-        @include p(16px, 8px);
-        @include fs(15px, 13px);
-        font-weight: 500;
-        white-space: pre-wrap;
-        background-color: $w1;
-        @include lh(32px, 28px);
-      }
-
-      dd {
-        @include flex(center, center);
-        flex-direction: column;;
-        position: relative;
-      }
-
-      .left {
-        @include width(288px, 30%);
-      }
-
-      .center {
-        @include width(calc((100% - (288px + 16px)) * 2/3 - 16px * 1/2), calc((100% - (30% + 8px)) * 2/3 - 8px * 1/2));
-      }
-
-      .right {
-        @include width(calc((100% - (288px + 16px)) * 1/3 - 16px * 1/2), calc((100% - (30% + 8px)) * 1/3 - 8px * 1/2));
-      }
-
-      .txt {
-        @include fs(14px, 12px);
-        font-weight: 500;
-      }
-
-      .omakase {
-        position: absolute;
-        @include top(50%);
-        @include left(58%);
-        @include ty(-50%);
-      }
+        span {
+            @include fs(12px);
+            font-weight: 500;
+            color: $g1;
+        }
     }
 
-    .note {
-      @include fs(16px, 14px);
-      color: $w1;
-      font-weight: 500;
-      text-align: right;
-      @include mt(16px);
+    .graphBox {
+        height: 0;
+        overflow: hidden;
+
+        dl {
+            @include flex(stretch);
+            @include gap(16px, 8px);
+
+            &:nth-of-type(even) {
+                dt,
+                dd {
+                    background-color: $g13;
+                }
+            }
+
+            dt,
+            dd {
+                @include p(16px, 8px);
+                @include fs(15px, 13px);
+                font-weight: 500;
+                white-space: pre-wrap;
+                background-color: $w1;
+                @include lh(32px, 28px);
+            }
+
+            dd {
+                @include flex(center, center);
+                flex-direction: column;
+                position: relative;
+            }
+
+            .left {
+                @include width(288px, 30%);
+            }
+
+            .center {
+                @include width(
+                    calc((100% - (288px + 16px)) * 2 / 3 - 16px * 1 / 2),
+                    calc((100% - (30% + 8px)) * 2 / 3 - 8px * 1 / 2)
+                );
+            }
+
+            .right {
+                @include width(
+                    calc((100% - (288px + 16px)) * 1 / 3 - 16px * 1 / 2),
+                    calc((100% - (30% + 8px)) * 1 / 3 - 8px * 1 / 2)
+                );
+            }
+
+            .txt {
+                @include fs(14px, 12px);
+                font-weight: 500;
+            }
+
+            .omakase {
+                position: absolute;
+                @include top(50%);
+                @include left(58%);
+                @include ty(-50%);
+            }
+        }
+
+        .note {
+            @include fs(16px, 14px);
+            color: $w1;
+            font-weight: 500;
+            text-align: right;
+            @include mt(16px);
+        }
     }
-  }
 }

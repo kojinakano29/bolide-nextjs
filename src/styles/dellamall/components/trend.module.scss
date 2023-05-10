@@ -1,40 +1,40 @@
 @import '../../variables.scss';
 
 .title {
-  font-weight: 400;
-  @include fs(24px, 22px, 24px);
-  text-align: center;
-  font-family: $Montserrat;
-  @include mb(16px);
+    font-weight: 400;
+    @include fs(24px, 22px, 24px);
+    text-align: center;
+    font-family: $Montserrat;
+    @include mb(16px);
 
-  &.mb40 {
-    @include mb(40px);
-  }
+    &.mb40 {
+        @include mb(40px);
+    }
 }
 
 .sp_slide {
-  @include media1(sp) {
-    overflow-x: scroll;
-    @include scrollHidden;
-  }
+    @include media1(sp) {
+        overflow-x: scroll;
+        @include scrollHidden;
+    }
 }
 
 .trend__list {
-  @include flex(flex-start, left);
-  @include gap(24px 12px, 16px 12px, 8px);
+    @include flex(flex-start, left);
+    @include gap(24px 12px, 16px 12px, 8px);
 
-  @include media1(sp) {
-    flex-wrap: nowrap;
-    padding: 0 29px;
-    max-width: unset;
-    width: fit-content;
-  }
+    @include media1(sp) {
+        flex-wrap: nowrap;
+        padding: 0 29px;
+        max-width: unset;
+        width: fit-content;
+    }
 }
 
 .keyWord__item {
-  @include trendIcon;
+    @include trendIcon;
 
-  button {
-    white-space: pre;
-  }
+    button {
+        white-space: pre;
+    }
 }

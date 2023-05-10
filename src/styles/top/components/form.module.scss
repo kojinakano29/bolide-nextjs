@@ -1,343 +1,343 @@
 @import '../../variables.scss';
 
 .freeBox {
-  @include mt(64px, 56px, 48px);
+    @include mt(64px, 56px, 48px);
 }
 
 .caution {
-  @include fs(16px, 14px);
-  font-weight: 500;
-  text-align: center;
-  @include mt(24px);
-  color: $g1;
+    @include fs(16px, 14px);
+    font-weight: 500;
+    text-align: center;
+    @include mt(24px);
+    color: $g1;
 }
 
 .catch {
-  @include fs(18px, 16px);
-  font-weight: bold;
+    @include fs(18px, 16px);
+    font-weight: bold;
 }
 
 .adTop {
-  text-align: center;
-  @include mb(80px, 64px, 48px);
+    text-align: center;
+    @include mb(80px, 64px, 48px);
 
-  .catch {
-    @include mb(32px, 24px);
-  }
+    .catch {
+        @include mb(32px, 24px);
+    }
 
-  .desc {
-    @include fs(14px);
-    @include mb(40px, 32px);
-  }
+    .desc {
+        @include fs(14px);
+        @include mb(40px, 32px);
+    }
 
-  .desc2 {
-    @include fs(14px);
-    font-weight: bold;
-    @include mb(16px);
-  }
+    .desc2 {
+        @include fs(14px);
+        font-weight: bold;
+        @include mb(16px);
+    }
 }
 
 .adFlex {
-  @include flex(center, center);
-  @include gap(24px);
-  @include mt(24px);
+    @include flex(center, center);
+    @include gap(24px);
+    @include mt(24px);
 
-  .adLinkBox {
-    .adTtl {
-      @include fs(16px, 14px);
-      font-weight: 500;
-      text-align: center;
-      @include mb(16px, 12px);
+    .adLinkBox {
+        .adTtl {
+            @include fs(16px, 14px);
+            font-weight: 500;
+            text-align: center;
+            @include mb(16px, 12px);
+        }
     }
-  }
 }
 
 .planChangeTop {
-  .desc {
-    @include fs(18px, 16px);
-    font-weight: bold;
-    text-align: center;
-    @include mb(32px, 24px);
-  }
-
-  .planChange {
-    @include fs(18px, 16px);
-    font-weight: bold;
-    text-align: center;
-    @include pt(80px, 64px);
-    @include mb(12px);
-  }
-
-  .txt {
-    @include fs(16px, 14px);
-    @include mb(56px, 40px);
-  }
-
-  .checkTxt {
-    @include mb(64px, 56px);
-
-    p {
-      @include fs(16px, 14px);
+    .desc {
+        @include fs(18px, 16px);
+        font-weight: bold;
+        text-align: center;
+        @include mb(32px, 24px);
     }
-  }
+
+    .planChange {
+        @include fs(18px, 16px);
+        font-weight: bold;
+        text-align: center;
+        @include pt(80px, 64px);
+        @include mb(12px);
+    }
+
+    .txt {
+        @include fs(16px, 14px);
+        @include mb(56px, 40px);
+    }
+
+    .checkTxt {
+        @include mb(64px, 56px);
+
+        p {
+            @include fs(16px, 14px);
+        }
+    }
 }
 
 .planChangeForm {
-  .catch {
-    text-align: center;
-    @include mb(48px, 40px);
-  }
+    .catch {
+        text-align: center;
+        @include mb(48px, 40px);
+    }
 }
 
 .formArea {
-  @include pb(80px, 64px);
+    @include pb(80px, 64px);
 
-  .catch {
-    text-align: center;
-    @include mb(48px, 40px, 32px);
-  }
+    .catch {
+        text-align: center;
+        @include mb(48px, 40px, 32px);
+    }
 }
 
 .formContent {
-  dl {
-    @include mb(48px, 40px);
+    dl {
+        @include mb(48px, 40px);
 
-    dt {
-      @include flex(center, left);
-      @include gap(8px);
-      @include mb(16px);
-      @include fs(16px, 14px);
-      font-weight: bold;
+        dt {
+            @include flex(center, left);
+            @include gap(8px);
+            @include mb(16px);
+            @include fs(16px, 14px);
+            font-weight: bold;
 
-      span {
-        @include fs(13px, 12px);
-        font-weight: bold;
-        @include p(0 4px);
+            span {
+                @include fs(13px, 12px);
+                font-weight: bold;
+                @include p(0 4px);
 
-        &.require {
-          color: $r1;
-          border: 1px solid $r1;
+                &.require {
+                    color: $r1;
+                    border: 1px solid $r1;
+                }
+
+                &.any {
+                    color: $g1;
+                    border: 1px solid $g1;
+                }
+            }
+
+            .desc2 {
+                @include fs(14px, 12px);
+                width: 100%;
+                font-weight: 500;
+                color: $g1;
+            }
         }
 
-        &.any {
-          color: $g1;
-          border: 1px solid $g1;
-        }
-      }
+        dd {
+            white-space: pre-wrap;
 
-      .desc2 {
-        @include fs(14px, 12px);
-        width: 100%;
-        font-weight: 500;
-        color: $g1;
-      }
+            input[type='text'],
+            input[type='email'],
+            input[type='tel'],
+            input[type='password'] {
+                @include bjcInput(100%);
+            }
+
+            .passwordBox {
+                position: relative;
+
+                .view {
+                    @include fs(14px, 12px);
+                    font-weight: bold;
+                    cursor: pointer;
+                    position: absolute;
+                    top: 50%;
+                    @include right(16px, 12px);
+                    transform: translateY(-50%);
+                }
+            }
+
+            textarea {
+                @include bjcTextarea;
+            }
+
+            &.checkbox {
+                @include bjcCheckbox;
+            }
+
+            &.inputFlex {
+                @include flex();
+
+                input[type='text'] {
+                    @include width(calc(100% * 1 / 2 - 20px * 1 / 2));
+                }
+            }
+
+            &.nameArea {
+                @include flex(center);
+                @include gap(10px);
+
+                input[type='text'] {
+                    @include bjcInput(calc(50% - 20px * 1 / 2));
+                }
+
+                .error {
+                    @include width(calc(50% - 20px * 1 / 2));
+                }
+            }
+
+            &.courseArea {
+                @include bjcCourse;
+            }
+
+            .small {
+                @include fs(12px);
+                color: $g1;
+                @include mt(8px);
+            }
+        }
     }
-
-    dd {
-      white-space: pre-wrap;
-
-      input[type="text"],
-      input[type="email"],
-      input[type="tel"],
-      input[type="password"] {
-        @include bjcInput(100%);
-      }
-
-      .passwordBox {
-        position: relative;
-
-        .view {
-          @include fs(14px, 12px);
-          font-weight: bold;
-          cursor: pointer;
-          position: absolute;
-          top: 50%;
-          @include right(16px, 12px);
-          transform: translateY(-50%);
-        }
-      }
-
-      textarea {
-        @include bjcTextarea;
-      }
-
-      &.checkbox {
-        @include bjcCheckbox;
-      }
-
-      &.inputFlex {
-        @include flex();
-
-        input[type="text"] {
-          @include width(calc(100% * 1/2 - 20px * 1/2));
-        }
-      }
-
-      &.nameArea {
-        @include flex(center);
-        @include gap(10px);
-
-        input[type="text"] {
-          @include bjcInput(calc(50% - 20px * 1/2));
-        }
-
-        .error {
-          @include width(calc(50% - 20px * 1/2));
-        }
-      }
-
-      &.courseArea {
-        @include bjcCourse;
-      }
-
-      .small {
-        @include fs(12px);
-        color: $g1;
-        @include mt(8px);
-      }
-    }
-  }
 }
 
 .paymentArea {
-  @include width(580px);
-  margin: auto;
+    @include width(580px);
+    margin: auto;
 
-  .paymentDl {
-    @include mt(24px);
+    .paymentDl {
+        @include mt(24px);
 
-    input {
-      height: 50px !important;
+        input {
+            height: 50px !important;
+        }
     }
-  }
 }
 
 .privacyArea {
-  p {
-    @include fs(16px, 14px);
-    font-weight: 500;
-    @include mb(8px);
+    p {
+        @include fs(16px, 14px);
+        font-weight: 500;
+        @include mb(8px);
 
-    a {
-      color: $b14;
-      text-decoration: underline;
+        a {
+            color: $b14;
+            text-decoration: underline;
 
-      &:hover {
-        text-decoration: none;
-      }
+            &:hover {
+                text-decoration: none;
+            }
+        }
     }
-  }
 }
 
 .privacyCheck {
-  text-align: center;
-  @include mb(40px, 32px);
+    text-align: center;
+    @include mb(40px, 32px);
 
-  .require {
-    width: fit-content;
-    @include fs(13px, 12px);
-    font-weight: bold;
-    @include p(0 4px);
-    color: $r1;
-    border: 1px solid $r1;
-    margin: auto;
-    @include mb(8px);
-  }
-
-  .txt {
-    @include fs(16px, 14px);
-    font-weight: 500;
-    @include mb(24px, 16px);
-
-    a {
-      color: $b14;
-      text-decoration: underline;
-
-      &:hover {
-        text-decoration: none;
-      }
+    .require {
+        width: fit-content;
+        @include fs(13px, 12px);
+        font-weight: bold;
+        @include p(0 4px);
+        color: $r1;
+        border: 1px solid $r1;
+        margin: auto;
+        @include mb(8px);
     }
-  }
 
-  label {
-    width: fit-content;
-    @include flex(center, center);
-    @include gap(8px);
-    margin: auto;
-    @include fs(16px, 14px);
-    font-weight: bold;
-    cursor: pointer;
+    .txt {
+        @include fs(16px, 14px);
+        font-weight: 500;
+        @include mb(24px, 16px);
 
-    input[type="checkbox"] {
-      @include width(16px, 14px);
-      @include height(16px, 14px);
-      cursor: pointer;
+        a {
+            color: $b14;
+            text-decoration: underline;
+
+            &:hover {
+                text-decoration: none;
+            }
+        }
     }
-  }
+
+    label {
+        width: fit-content;
+        @include flex(center, center);
+        @include gap(8px);
+        margin: auto;
+        @include fs(16px, 14px);
+        font-weight: bold;
+        cursor: pointer;
+
+        input[type='checkbox'] {
+            @include width(16px, 14px);
+            @include height(16px, 14px);
+            cursor: pointer;
+        }
+    }
 }
 
 .btnFlex {
-  @include flex(center, center);
-  @include gap(16px);
-  flex-direction: column-reverse;
+    @include flex(center, center);
+    @include gap(16px);
+    flex-direction: column-reverse;
 
-  div {
-    width: fit-content;
+    div {
+        width: fit-content;
 
-    &.type2 {
-      button,
-      a {
-        @include width(200px, 160px);
-        @include height(40px);
-        background-color: $w1;
-        border: 2px solid $b6;
-        color: $b6;
-      }
+        &.type2 {
+            button,
+            a {
+                @include width(200px, 160px);
+                @include height(40px);
+                background-color: $w1;
+                border: 2px solid $b6;
+                color: $b6;
+            }
+        }
     }
-  }
 
-  .registered {
-    @include fs(16px, 14px);
+    .registered {
+        @include fs(16px, 14px);
 
-    &:hover {
-      text-decoration: underline;
+        &:hover {
+            text-decoration: underline;
+        }
     }
-  }
 }
 
 .thanksBox {
-  text-align: center;
-  @include pb(80px, 64px);
+    text-align: center;
+    @include pb(80px, 64px);
 
-  .catch {
-    @include mb(32px, 24px);
-  }
+    .catch {
+        @include mb(32px, 24px);
+    }
 
-  .txt {
-    @include fs(16px, 14px);
-    font-weight: 500;
-    @include mb(48px, 40px, 32px);
-  }
+    .txt {
+        @include fs(16px, 14px);
+        font-weight: 500;
+        @include mb(48px, 40px, 32px);
+    }
 
-  .txt2 {
-    @include fs(14px);
-    font-weight: bold;
-    @include mb(40px, 32px);
-  }
+    .txt2 {
+        @include fs(14px);
+        font-weight: bold;
+        @include mb(40px, 32px);
+    }
 
-  .txt3 {
-    @include fs(14px);
-    @include mb(48px, 40px, 32px);
-  }
+    .txt3 {
+        @include fs(14px);
+        @include mb(48px, 40px, 32px);
+    }
 }
 
 .error {
-  width: 100%;
-  margin-top: 4px;
+    width: 100%;
+    margin-top: 4px;
 }
 
 .btnCover {
-  width: fit-content;
-  margin: auto;
-  @include mt(40px);
+    width: fit-content;
+    margin: auto;
+    @include mt(40px);
 }

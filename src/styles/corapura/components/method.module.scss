@@ -1,230 +1,242 @@
 @import '../../variables.scss';
 
 .ttl {
-  @include fs(32px, 24px);
-  font-weight: 900;
-  text-align: center;
-  @include mb(48px, 32px);
+    @include fs(32px, 24px);
+    font-weight: 900;
+    text-align: center;
+    @include mb(48px, 32px);
 }
 
 .methodArea {
-  @include p(64px 0);
-  background-color: $o3;
+    @include p(64px 0);
+    background-color: $o3;
 
-  .methodFlex {
-    @include flex(stretch);
+    .methodFlex {
+        @include flex(stretch);
 
-    .left,
-    .right {
-      @include width(calc(100% * 1/2 - 5px), calc(100% * 1/2 - 5px), calc(100% * 1/2 - 2px));
+        .left,
+        .right {
+            @include width(
+                calc(100% * 1 / 2 - 5px),
+                calc(100% * 1 / 2 - 5px),
+                calc(100% * 1 / 2 - 2px)
+            );
+        }
+
+        .center {
+            @include width(10px, 10px, 4px);
+            background-color: $g8;
+        }
+
+        .iconBoxSm {
+            @include flex(center, left);
+            @include gap(16px, 8px);
+            @include mb(16px);
+
+            img {
+                @include width(48px, 40px, 28px);
+            }
+
+            p {
+                @include fs(24px, 18px, 14px);
+                font-weight: 900;
+            }
+        }
+
+        .putOn__item,
+        .find__item {
+            @include width(
+                calc(100% - (34px + 24px)),
+                calc(100% - (34px + 16px)),
+                calc(100% - (10px + 8px))
+            );
+            @include p(24px, 16px, 8px);
+            border-radius: 10px;
+            background-color: $w1;
+            @include flex(center, left);
+            @include gap(16px, 8px, 4px);
+            position: relative;
+            @include mb(24px, 16px, 10px);
+
+            &:last-of-type {
+                margin-bottom: 0;
+            }
+
+            &::after {
+                content: '';
+                width: 0;
+                height: 0;
+                border-style: solid;
+                border-width: 15px 0 15px 34px;
+                border-color: transparent transparent transparent $w1;
+                position: absolute;
+                top: 50%;
+                @include right(-34px, -34px, -10px);
+                transform: translateY(-50%);
+
+                @include media1(sp) {
+                    border-width: 4px 0 4px 10px;
+                }
+            }
+
+            .imgBox {
+                @include width(96px, 56px, 100%);
+                @include flex(center, left);
+                @include gap(4px);
+                @include mb(0, 0, 8px);
+
+                img {
+                    @include width(100%, 100%, 40px);
+                }
+            }
+
+            .txtBox {
+                @include width(
+                    calc(100% - (96px + 16px)),
+                    calc(100% - (56px + 8px)),
+                    100%
+                );
+            }
+
+            p {
+                @include fs(24px, 18px, 14px);
+                font-weight: 900;
+                @include mb(8px, 8px, 0);
+            }
+
+            span {
+                @include fs(14px, 12px);
+                font-weight: 500;
+                color: $g1;
+
+                a {
+                    color: $b10;
+                    text-decoration: underline;
+
+                    &:hover {
+                        text-decoration: none;
+                    }
+                }
+            }
+        }
+
+        .right {
+            .iconBoxSm {
+                justify-content: right;
+                flex-direction: row-reverse;
+            }
+
+            .find__item {
+                justify-content: space-between;
+                flex-direction: row-reverse;
+                margin-left: auto;
+
+                &::after {
+                    right: unset;
+                    @include left(-34px, -34px, -10px);
+                    border-width: 15px 34px 15px 0;
+                    border-color: transparent $w1 transparent transparent;
+                }
+
+                .imgBox {
+                    justify-content: space-between;
+                    flex-direction: row-reverse;
+                }
+            }
+        }
     }
 
-    .center {
-      @include width(10px, 10px, 4px);
-      background-color: $g8;
-    }
-
-    .iconBoxSm {
-      @include flex(center, left);
-      @include gap(16px, 8px);
-      @include mb(16px);
-
-      img {
-        @include width(48px, 40px, 28px);
-      }
-
-      p {
-        @include fs(24px, 18px, 14px);
-        font-weight: 900;
-      }
-    }
-
-    .putOn__item,
-    .find__item {
-      @include width(calc(100% - (34px + 24px)), calc(100% - (34px + 16px)), calc(100% - (10px + 8px)));
-      @include p(24px, 16px, 8px);
-      border-radius: 10px;
-      background-color: $w1;
-      @include flex(center, left);
-      @include gap(16px, 8px, 4px);
-      position: relative;
-      @include mb(24px, 16px, 10px);
-
-      &:last-of-type {
-        margin-bottom: 0;
-      }
-
-      &::after {
-        content: "";
-        width: 0;
-        height: 0;
-        border-style: solid;
-        border-width: 15px 0 15px 34px;
-        border-color: transparent transparent transparent $w1;
-        position: absolute;
-        top: 50%;
-        @include right(-34px, -34px, -10px);
-        transform: translateY(-50%);
+    .methodBox {
+        @include p(12px, 8px, 4px);
+        border: 10px solid $g8;
+        background-color: $w1;
+        border-radius: 10px;
+        @include flex(center);
 
         @include media1(sp) {
-          border-width: 4px 0 4px 10px;
-        }
-      }
-
-      .imgBox {
-        @include width(96px, 56px, 100%);
-        @include flex(center, left);
-        @include gap(4px);
-        @include mb(0, 0, 8px);
-
-        img {
-          @include width(100%, 100%, 40px);
-        }
-      }
-
-      .txtBox {
-        @include width(calc(100% - (96px + 16px)), calc(100% - (56px + 8px)), 100%);
-      }
-
-      p {
-        @include fs(24px, 18px, 14px);
-        font-weight: 900;
-        @include mb(8px, 8px, 0);
-      }
-
-      span {
-        @include fs(14px, 12px);
-        font-weight: 500;
-        color: $g1;
-
-        a {
-          color: $b10;
-          text-decoration: underline;
-
-          &:hover {
-            text-decoration: none;
-          }
-        }
-      }
-    }
-
-    .right {
-      .iconBoxSm {
-        justify-content: right;
-        flex-direction: row-reverse;
-      }
-
-      .find__item {
-        justify-content: space-between;
-        flex-direction: row-reverse;
-        margin-left: auto;
-
-        &::after {
-          right: unset;
-          @include left(-34px, -34px, -10px);
-          border-width: 15px 34px 15px 0;
-          border-color: transparent $w1 transparent transparent;
+            border: 4px solid $g8;
         }
 
-        .imgBox {
-          justify-content: space-between;
-          flex-direction: row-reverse;
+        .left,
+        .right {
+            @include width(96px, 56px, 40px);
         }
-      }
-    }
-  }
 
-  .methodBox {
-    @include p(12px, 8px, 4px);
-    border: 10px solid $g8;
-    background-color: $w1;
-    border-radius: 10px;
-    @include flex(center);
+        .center {
+            text-align: center;
 
-    @include media1(sp) {
-      border: 4px solid $g8;
-    }
+            p {
+                @include fs(24px, 18px, 14px);
+                font-weight: 900;
+                @include mb(8px);
+            }
 
-    .left,
-    .right {
-      @include width(96px, 56px, 40px);
+            span {
+                @include fs(14px, 12px);
+                font-weight: 500;
+                color: $g1;
+            }
+        }
     }
 
-    .center {
-      text-align: center;
-
-      p {
-        @include fs(24px, 18px, 14px);
-        font-weight: 900;
-        @include mb(8px);
-      }
-
-      span {
-        @include fs(14px, 12px);
-        font-weight: 500;
-        color: $g1;
-      }
-    }
-  }
-
-  .chain {
-    @include width(10px, 10px, 4px);
-    @include height(24px, 24px, 10px);
-    background-color: $g8;
-    margin: auto;
-  }
-
-  .mt72 {
-    @include mt(72px, 64px);
-  }
-
-  .mt96 {
-    @include mt(96px, 64px);
-  }
-
-  .mt264 {
-    @include mt(264px, 198px);
-  }
-
-  .linkArea {
-    @include p(40px, 48px 16px 32px);
-    background-color: $r2;
-    border-radius: 10px;
-    text-align: center;
-    @include mt(56px);
-    position: relative;
-
-    & > img {
-      @include width(unset, 140px, 120px);
-      position: absolute;
-      @include top(-32px);
-
-      &.parts1 {
-        @include left(24px);
-      }
-
-      &.parts2 {
-        right: 0;
-      }
+    .chain {
+        @include width(10px, 10px, 4px);
+        @include height(24px, 24px, 10px);
+        background-color: $g8;
+        margin: auto;
     }
 
-    p {
-      color: $w1;
-      @include fs(20px, 18px);
-      font-weight: 900;
-
-      span {
-        color: $w1;
-        text-decoration: underline;
-        text-decoration-thickness: 8px;
-        text-decoration-color: rgba(255, 255, 255, .3);
-        text-underline-offset: -6px;
-      }
+    .mt72 {
+        @include mt(72px, 64px);
     }
 
-    .btn {
-      @include btn;
-      @include width(560px);
+    .mt96 {
+        @include mt(96px, 64px);
     }
-  }
+
+    .mt264 {
+        @include mt(264px, 198px);
+    }
+
+    .linkArea {
+        @include p(40px, 48px 16px 32px);
+        background-color: $r2;
+        border-radius: 10px;
+        text-align: center;
+        @include mt(56px);
+        position: relative;
+
+        & > img {
+            @include width(unset, 140px, 120px);
+            position: absolute;
+            @include top(-32px);
+
+            &.parts1 {
+                @include left(24px);
+            }
+
+            &.parts2 {
+                right: 0;
+            }
+        }
+
+        p {
+            color: $w1;
+            @include fs(20px, 18px);
+            font-weight: 900;
+
+            span {
+                color: $w1;
+                text-decoration: underline;
+                text-decoration-thickness: 8px;
+                text-decoration-color: rgba(255, 255, 255, 0.3);
+                text-underline-offset: -6px;
+            }
+        }
+
+        .btn {
+            @include btn;
+            @include width(560px);
+        }
+    }
 }

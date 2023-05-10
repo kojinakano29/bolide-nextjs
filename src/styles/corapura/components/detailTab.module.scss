@@ -1,163 +1,175 @@
 @import '../../variables.scss';
 
 .tabArea {
-  @include mt(120px, 80px, 48px);
+    @include mt(120px, 80px, 48px);
 }
 
 .noneText {
-  @include fs(16px, 14px);
-  font-weight: 500;
+    @include fs(16px, 14px);
+    font-weight: 500;
 }
 
 .tabBtnBox {
-  @include flex(center);
+    @include flex(center);
 
-  button {
-    width: 50%;
-    @include height(80px);
-    @include flex(center, center);
-    @include fs(24px, 18px, 16px);
-    font-weight: 900;
-    background-color: $w1;
-    color: $b8;
-    border: 4px solid $o3;
-
-    &.tabOn {
-      background-color: $o3;
-    }
-  }
-
-  &.five {
     button {
-      width: 20%;
-      @include fs(18px, 12px);
+        width: 50%;
+        @include height(80px);
+        @include flex(center, center);
+        @include fs(24px, 18px, 16px);
+        font-weight: 900;
+        background-color: $w1;
+        color: $b8;
+        border: 4px solid $o3;
+
+        &.tabOn {
+            background-color: $o3;
+        }
     }
-  }
+
+    &.five {
+        button {
+            width: 20%;
+            @include fs(18px, 12px);
+        }
+    }
 }
 
 .tabBox {
-  background-color: $o3;
-  @include p(56px 0 64px, 48px 0, 40px 0);
+    background-color: $o3;
+    @include p(56px 0 64px, 48px 0, 40px 0);
 
-  .column3 {
-    @include column3;
-  }
-
-  .column4 {
-    @include flex(stretch, left);
-    @include gap(32px 24px, 32px 16px);
-
-    @include media1(sp) {
-      justify-content: center;
+    .column3 {
+        @include column3;
     }
-  }
+
+    .column4 {
+        @include flex(stretch, left);
+        @include gap(32px 24px, 32px 16px);
+
+        @include media1(sp) {
+            justify-content: center;
+        }
+    }
 }
 
 .presidentBox {
-  @include flex(center);
-  @include gap(48px, 32px);
+    @include flex(center);
+    @include gap(48px, 32px);
 
-  .imgBox {
-    @include width(352px, 300px, 100%);
-    border-radius: 10px;
-    overflow: hidden;
-  }
-
-  .right {
-    @include width(calc(100% - (352px + 48px)), calc(100% - (300px + 32px)), 100%);
-
-    .ttl {
-      @include fs(24px, 18px);
-      font-weight: bold;
-      @include mb(24px, 16px);
+    .imgBox {
+        @include width(352px, 300px, 100%);
+        border-radius: 10px;
+        overflow: hidden;
     }
-  }
+
+    .right {
+        @include width(
+            calc(100% - (352px + 48px)),
+            calc(100% - (300px + 32px)),
+            100%
+        );
+
+        .ttl {
+            @include fs(24px, 18px);
+            font-weight: bold;
+            @include mb(24px, 16px);
+        }
+    }
 }
 
 .presidentDesc {
-  @include fs(16px, 14px);
-  font-weight: 500;
-  white-space: pre-wrap;
+    @include fs(16px, 14px);
+    font-weight: 500;
+    white-space: pre-wrap;
 
-  &:last-of-type {
-    @include mt(24px);
-  }
+    &:last-of-type {
+        @include mt(24px);
+    }
 }
 
 .matteredBox {
-  @include width(calc(100% * 1/4 - 24px * 3/4), calc(100% * 1/4 - 16px * 3/4), calc(100% * 1/2 - 16px * 1/2));
-  display: block;
+    @include width(
+        calc(100% * 1 / 4 - 24px * 3 / 4),
+        calc(100% * 1 / 4 - 16px * 3 / 4),
+        calc(100% * 1 / 2 - 16px * 1 / 2)
+    );
+    display: block;
 
-  &:hover {
+    &:hover {
+        .imgBox {
+            img {
+                transform: scale(1.1);
+            }
+        }
+    }
+
     .imgBox {
-      img {
-        transform: scale(1.1);
-      }
+        aspect-ratio: 1 / 1;
+        border-radius: 10px;
+        overflow: hidden;
+        @include mb(16px);
+
+        img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            object-position: top center;
+            transition: 0.3s ease;
+        }
     }
-  }
 
-  .imgBox {
-    aspect-ratio: 1 / 1;
-    border-radius: 10px;
-    overflow: hidden;
-    @include mb(16px);
-
-    img {
-      width: 100%;
-      height: 100%;
-      object-fit: cover;
-      object-position: top center;
-      transition: .3s ease;
+    .ttl {
+        @include fs(18px, 16px);
+        font-weight: bold;
+        @include mb(8px);
     }
-  }
 
-  .ttl {
-    @include fs(18px, 16px);
-    font-weight: bold;
-    @include mb(8px);
-  }
-
-  .desc {
-    @include fs(12px);
-    font-weight: 500;
-  }
+    .desc {
+        @include fs(12px);
+        font-weight: 500;
+    }
 }
 
 .salonBox {
-  display: block;
-  @include width(calc(100% * 1/3 - 32px * 2/3), calc(100% * 1/3 - 24px * 2/3), 100%);
+    display: block;
+    @include width(
+        calc(100% * 1 / 3 - 32px * 2 / 3),
+        calc(100% * 1 / 3 - 24px * 2 / 3),
+        100%
+    );
 
-  &:hover {
-    img {
-      transform: scale(1.1);
+    &:hover {
+        img {
+            transform: scale(1.1);
+        }
     }
-  }
 
-  .imgBox {
-    aspect-ratio: 352 / 285;
-    border-radius: 10px;
-    overflow: hidden;
-    @include mb(8px);
+    .imgBox {
+        aspect-ratio: 352 / 285;
+        border-radius: 10px;
+        overflow: hidden;
+        @include mb(8px);
 
-    img {
-      width: 100%;
-      height: 100%;
-      object-fit: cover;
-      object-position: top center;
-      transition: .3s ease;
+        img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            object-position: top center;
+            transition: 0.3s ease;
+        }
     }
-  }
 
-  .ttl {
-    @include fs(20px, 16px);
-    font-weight: bold;
-    @include mb(10px);
-  }
+    .ttl {
+        @include fs(20px, 16px);
+        font-weight: bold;
+        @include mb(10px);
+    }
 
-  .desc {
-    @include fs(14px, 12px);
-    font-weight: 500;
-    color: $g1;
-    @include mb(16px);
-  }
+    .desc {
+        @include fs(14px, 12px);
+        font-weight: 500;
+        color: $g1;
+        @include mb(16px);
+    }
 }

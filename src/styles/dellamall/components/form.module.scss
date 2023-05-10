@@ -1,301 +1,301 @@
 @import '../../variables.scss';
 
 .currentCircle__list {
-  @include flex(center, center);
-  @include gap(80px, 80px, 20px);
-  @include m(48px 0);
-
-  .currentCircle__item {
-    @include width(120px, 120px, 80px);
-    @include height(120px, 120px, 80px);
     @include flex(center, center);
-    flex-direction: column;
-    @include fs(22px, 20px, 18px);
-    border-radius: 50%;
-    font-weight: bold;
-    border: 4px solid $g3;
-    text-align: center;
+    @include gap(80px, 80px, 20px);
+    @include m(48px 0);
 
-    span {
-      display: block;
-      @include fs(16px, 16px, 14px);
-      @include mb(4px);
-      font-weight: 600;
+    .currentCircle__item {
+        @include width(120px, 120px, 80px);
+        @include height(120px, 120px, 80px);
+        @include flex(center, center);
+        flex-direction: column;
+        @include fs(22px, 20px, 18px);
+        border-radius: 50%;
+        font-weight: bold;
+        border: 4px solid $g3;
+        text-align: center;
+
+        span {
+            display: block;
+            @include fs(16px, 16px, 14px);
+            @include mb(4px);
+            font-weight: 600;
+        }
+
+        &:nth-of-type(2) {
+            position: relative;
+
+            &::after {
+                content: '';
+                position: absolute;
+                top: 50%;
+                @include left(-85px, -85px, -25px);
+                transform: translateY(-50%);
+                @include width(81px, 81px, 21px);
+                @include height(4px);
+                background: $b3;
+            }
+
+            &::before {
+                content: '';
+                position: absolute;
+                top: 50%;
+                @include right(-85px, -85px, -25px);
+                transform: translateY(-50%);
+                @include width(81px, 81px, 21px);
+                @include height(4px);
+                background: $g3;
+            }
+        }
+
+        &.is_active {
+            background: $b3;
+            color: $w1;
+            border: 4px solid $b3;
+
+            span {
+                color: $w1;
+            }
+
+            &::before {
+                background: $b3;
+            }
+        }
     }
-
-    &:nth-of-type(2) {
-      position: relative;
-
-      &::after {
-        content: "";
-          position: absolute;
-          top: 50%;
-          @include left(-85px, -85px, -25px);
-          transform: translateY(-50%);
-          @include width(81px, 81px, 21px);
-          @include height(4px);
-          background: $b3;
-      }
-
-      &::before {
-        content: "";
-          position: absolute;
-          top: 50%;
-          @include right(-85px, -85px, -25px);
-          transform: translateY(-50%);
-          @include width(81px, 81px, 21px);
-          @include height(4px);
-          background: $g3;
-      }
-    }
-
-    &.is_active {
-      background: $b3;
-      color: $w1;
-      border: 4px solid $b3;
-
-      span {
-        color: $w1;
-      }
-
-      &::before {
-        background: $b3;
-      }
-    }
-  }
 }
 
 .desc {
-  @include mb(64px, 48px);
-  text-align: center;
+    @include mb(64px, 48px);
+    text-align: center;
 
-  .big {
-    @include fs(18px, 16px);
-    font-weight: bold;
-  }
+    .big {
+        @include fs(18px, 16px);
+        font-weight: bold;
+    }
 
-  .sm {
-    @include fs(16px, 14px);
-    font-weight: 500;
-    margin: auto;
-    @include mt(16px);
-  }
+    .sm {
+        @include fs(16px, 14px);
+        font-weight: 500;
+        margin: auto;
+        @include mt(16px);
+    }
 }
 
 .require,
 .any {
-  @include fs(14px, 12px);
-  color: $w1;
-  font-weight: 500;
-  background-color: $o1;
-  @include p(2px 6px);
-  border-radius: 4px;
+    @include fs(14px, 12px);
+    color: $w1;
+    font-weight: 500;
+    background-color: $o1;
+    @include p(2px 6px);
+    border-radius: 4px;
 }
 
 .any {
-  background-color: $g3;
+    background-color: $g3;
 }
 
 // 入力画面
 .formContent {
-  input[type="checkbox"],
-  input[type="radio"] {
-    cursor: pointer;
-  }
-
-  .dl {
-    @include mb(32px);
-    @include flex(stretch, left);
-
-    &:last-of-type {
-      @include mb(48px);
+    input[type='checkbox'],
+    input[type='radio'] {
+        cursor: pointer;
     }
-
-    dt {
-      @include width(280px, 100%);
-      @include fs(16px, 14px);
-      @include flex(center, left);
-      @include gap(16px);
-      font-weight: 500;
-      @include mb(0, 16px);
-
-      &.dt2 {
-        align-self: start;
-      }
-    }
-
-    dd {
-      @include width(calc(100% - 280px), 100%);
-
-      input[type="text"],
-      input[type="email"],
-      input[type="tel"] {
-        @include input(496px, 100%)
-      }
-
-      &.long {
-        input {
-          @include input(100%);
-        }
-      }
-
-      textarea {
-        @include textarea(100%);
-      }
-
-      &.radioArea {
-        @include flex(center, left);
-        @include gap(20px 40px, 16px 24px);
-
-        label {
-          @include fs(16px, 14px);
-          font-weight: 500;
-          @include flex(center, left);
-          @include gap(16px, 8px);
-        }
-      }
-
-      &.selectArea {
-        select {
-          @include select(496px, 100%);
-        }
-      }
-
-      &.checkArea {
-        @include flex(center, left);
-        @include gap(20px 40px, 16px 24px);
-
-        label {
-          @include flex(center, left);
-          @include gap(16px, 8px);
-          @include fs(16px, 14px);
-          font-weight: 500;
-        }
-      }
-    }
-  }
-
-  .ttl {
-    @include m(64px 0 40px, 48px 0 32px);
-    @include fs(24px, 20px);
-    font-weight: bold;
-    letter-spacing: 0;
-    @include pb(4px);
-    border-bottom: 1px solid $g3;
-  }
-
-  .otherAddress {
-    @include p(48px, 32px, 24px);
-    background-color: $g2;
-    @include mb(32px);
 
     .dl {
-      &:last-of-type {
-        margin-bottom: 0;
-      }
-    }
-  }
+        @include mb(32px);
+        @include flex(stretch, left);
 
-  .check {
-    @include mb(64px, 48px);
-
-    label {
-      @include flex(center, center);
-      @include fs(20px, 18px);
-      font-weight: 500;
-      width: fit-content;
-      margin: auto;
-
-      .require {
-        @include mr(8px);
-      }
-
-      input {
-        @include mr(8px);
-      }
-
-      a {
-        text-decoration: underline;
-
-        &:hover {
-          text-decoration: none;
+        &:last-of-type {
+            @include mb(48px);
         }
-      }
+
+        dt {
+            @include width(280px, 100%);
+            @include fs(16px, 14px);
+            @include flex(center, left);
+            @include gap(16px);
+            font-weight: 500;
+            @include mb(0, 16px);
+
+            &.dt2 {
+                align-self: start;
+            }
+        }
+
+        dd {
+            @include width(calc(100% - 280px), 100%);
+
+            input[type='text'],
+            input[type='email'],
+            input[type='tel'] {
+                @include input(496px, 100%);
+            }
+
+            &.long {
+                input {
+                    @include input(100%);
+                }
+            }
+
+            textarea {
+                @include textarea(100%);
+            }
+
+            &.radioArea {
+                @include flex(center, left);
+                @include gap(20px 40px, 16px 24px);
+
+                label {
+                    @include fs(16px, 14px);
+                    font-weight: 500;
+                    @include flex(center, left);
+                    @include gap(16px, 8px);
+                }
+            }
+
+            &.selectArea {
+                select {
+                    @include select(496px, 100%);
+                }
+            }
+
+            &.checkArea {
+                @include flex(center, left);
+                @include gap(20px 40px, 16px 24px);
+
+                label {
+                    @include flex(center, left);
+                    @include gap(16px, 8px);
+                    @include fs(16px, 14px);
+                    font-weight: 500;
+                }
+            }
+        }
     }
-  }
+
+    .ttl {
+        @include m(64px 0 40px, 48px 0 32px);
+        @include fs(24px, 20px);
+        font-weight: bold;
+        letter-spacing: 0;
+        @include pb(4px);
+        border-bottom: 1px solid $g3;
+    }
+
+    .otherAddress {
+        @include p(48px, 32px, 24px);
+        background-color: $g2;
+        @include mb(32px);
+
+        .dl {
+            &:last-of-type {
+                margin-bottom: 0;
+            }
+        }
+    }
+
+    .check {
+        @include mb(64px, 48px);
+
+        label {
+            @include flex(center, center);
+            @include fs(20px, 18px);
+            font-weight: 500;
+            width: fit-content;
+            margin: auto;
+
+            .require {
+                @include mr(8px);
+            }
+
+            input {
+                @include mr(8px);
+            }
+
+            a {
+                text-decoration: underline;
+
+                &:hover {
+                    text-decoration: none;
+                }
+            }
+        }
+    }
 }
 // 入力画面
 
 .error {
-  @include fs(14px, 12px);
-  font-weight: bold;
-  width: 100%;
-  @include mt(8px);
+    @include fs(14px, 12px);
+    font-weight: bold;
+    width: 100%;
+    @include mt(8px);
 }
 
 .error2 {
-  text-align: center;
+    text-align: center;
 }
 
 // 確認画面
 .confirmContent {
-  .dl {
-    margin-bottom: 0;
-    @include p(40px 0, 24px 0);
-    border-bottom: 1px solid $g3;
-    align-items: start;
+    .dl {
+        margin-bottom: 0;
+        @include p(40px 0, 24px 0);
+        border-bottom: 1px solid $g3;
+        align-items: start;
 
-    &:first-of-type {
-      border-top: 1px solid $g3;
+        &:first-of-type {
+            border-top: 1px solid $g3;
+        }
+
+        dt {
+            @include width(264px, 100%);
+        }
+
+        dd {
+            @include width(calc(100% - 264px), 100%);
+        }
     }
 
-    dt {
-      @include width(264px, 100%);
+    .ul {
+        li {
+            @include fs(16px, 14px);
+        }
     }
 
-    dd {
-      @include width(calc(100% - 264px), 100%);
-    }
-  }
+    .backBtn {
+        @include btn1(240px, 200px);
+        @include height(54px, 40px);
+        background-color: $g1;
+        box-shadow: 4px 4px $g4;
+        margin: auto;
+        @include mt(32px);
 
-  .ul {
-    li {
-      @include fs(16px, 14px);
+        &:hover {
+            transform: translate(4px, 4px);
+        }
     }
-  }
-
-  .backBtn {
-    @include btn1(240px, 200px);
-    @include height(54px, 40px);
-    background-color: $g1;
-    box-shadow: 4px 4px $g4;
-    margin: auto;
-    @include mt(32px);
-
-    &:hover {
-      transform: translate(4px, 4px);
-    }
-  }
 }
 // 確認画面
 
 // 完了画面
 .thanksBox {
-  .txt {
-    font-size: var(--fs24-18);
-    font-weight: 500;
-    text-align: center;
-  }
+    .txt {
+        font-size: var(--fs24-18);
+        font-weight: 500;
+        text-align: center;
+    }
 
-  .txt2 {
-    font-size: var(--fs16-14);
-    font-weight: 300;
-    text-align: center;
-    @include mt(24px);
-  }
+    .txt2 {
+        font-size: var(--fs16-14);
+        font-weight: 300;
+        text-align: center;
+        @include mt(24px);
+    }
 
-  a {
-    @include mt(64px);
-  }
+    a {
+        @include mt(64px);
+    }
 }
 // 完了画面

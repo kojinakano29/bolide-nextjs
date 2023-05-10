@@ -1,37 +1,37 @@
 @import '../../variables.scss';
 
 .btn01 {
-  @include flex(center, center);
-  @include width(320px, 240px);
-  @include gap(16px);
-  @include fs(20px, 14px);
-  @include p(24px, 16px);
-  margin: auto;
-  @include mt(40px, 32px);
-  font-weight: 500;
-  border-radius: 50px;
-  color: $w1;
-  background: $b4;
-  box-shadow: 4px 4px $b3;
-  transition: .3s ease-out;
+    @include flex(center, center);
+    @include width(320px, 240px);
+    @include gap(16px);
+    @include fs(20px, 14px);
+    @include p(24px, 16px);
+    margin: auto;
+    @include mt(40px, 32px);
+    font-weight: 500;
+    border-radius: 50px;
+    color: $w1;
+    background: $b4;
+    box-shadow: 4px 4px $b3;
+    transition: 0.3s ease-out;
 
-  &.right {
-    @include mr(0, 0, auto);
-  }
+    &.right {
+        @include mr(0, 0, auto);
+    }
 
-  .logo {
-      @include media1(sp) {
-          width: 20px;
-          height: 20px;
-      }
+    .logo {
+        @include media1(sp) {
+            width: 20px;
+            height: 20px;
+        }
 
-      * {
-        color: $w1;
-      }
-  }
+        * {
+            color: $w1;
+        }
+    }
 
-  &:hover {
-    box-shadow: 0 0 $b3;
-    transform: translate(4px, 4px);
-  }
+    &:hover {
+        box-shadow: 0 0 $b3;
+        transform: translate(4px, 4px);
+    }
 }

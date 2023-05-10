@@ -1,51 +1,55 @@
 @import '../../variables.scss';
 
 .modalWrap {
-  composes: modalWrap from './parts.scss';
-  @include p(80px 0, 64px 20px);
-  overflow: auto;
-  @include scrollHidden;
+    composes: modalWrap from './parts.scss';
+    @include p(80px 0, 64px 20px);
+    overflow: auto;
+    @include scrollHidden;
 
-  &.open {
-    opacity: 1;
-    pointer-events: all;
-  }
+    &.open {
+        opacity: 1;
+        pointer-events: all;
+    }
 }
 
 .modalBox {
-  width: 100%;
-  @include max-width(1140px);
-  margin: auto;
-  background-color: $w1;
-  @include p(32px, 16px);
+    width: 100%;
+    @include max-width(1140px);
+    margin: auto;
+    background-color: $w1;
+    @include p(32px, 16px);
 }
 
 .ttl {
-  text-align: center;
-  @include mb(32px);
+    text-align: center;
+    @include mb(32px);
 
-  span {
-    display: block;
+    span {
+        display: block;
 
-    &.big {
-      font-size: var(--fs32-18);
-      letter-spacing: 0;
+        &.big {
+            font-size: var(--fs32-18);
+            letter-spacing: 0;
+        }
+
+        &.sm {
+            font-size: var(--fs16-14);
+            font-weight: 500;
+            color: $g1;
+        }
     }
-
-    &.sm {
-      font-size: var(--fs16-14);
-      font-weight: 500;
-      color: $g1;
-    }
-  }
 }
 
 .article {
-  @include flex(center, left);
-  @include gap(40px 24px, 32px 24px, 20px);
+    @include flex(center, left);
+    @include gap(40px 24px, 32px 24px, 20px);
 
-  a {
-    margin-bottom: 0 !important;
-    @include width(calc(100% * 1/3 - 24px * 2/3), calc(100% * 1/3 - 24px * 2/3), 100%);
-  }
+    a {
+        margin-bottom: 0 !important;
+        @include width(
+            calc(100% * 1 / 3 - 24px * 2 / 3),
+            calc(100% * 1 / 3 - 24px * 2 / 3),
+            100%
+        );
+    }
 }

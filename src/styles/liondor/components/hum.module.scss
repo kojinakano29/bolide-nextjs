@@ -1,35 +1,35 @@
 @import '../../variables.scss';
 
 .humBtn {
-  padding: 12px;
-  @include flex(center, center);
-  flex-direction: column;
-  position: relative;
-  z-index: 999;
+    padding: 12px;
+    @include flex(center, center);
+    flex-direction: column;
+    position: relative;
+    z-index: 999;
 
-  span {
-    display: block;
-    width: 32px;
-    height: 1px;
-    background-color: $b1;
-    transition: .5s ease-out;
-
-    &:nth-child(1) {
-      margin-bottom: 4.5px;
-    }
-  }
-
-  &.open {
     span {
-      background-color: $w1;
+        display: block;
+        width: 32px;
+        height: 1px;
+        background-color: $b1;
+        transition: 0.5s ease-out;
 
-      &:nth-child(1) {
-        transform: translateY(3px) rotate(192deg);
-      }
-
-      &:nth-child(2) {
-        transform: translateY(-3px) rotate(-192deg);
-      }
+        &:nth-child(1) {
+            margin-bottom: 4.5px;
+        }
     }
-  }
+
+    &.open {
+        span {
+            background-color: $w1;
+
+            &:nth-child(1) {
+                transform: translateY(3px) rotate(192deg);
+            }
+
+            &:nth-child(2) {
+                transform: translateY(-3px) rotate(-192deg);
+            }
+        }
+    }
 }

@@ -1,54 +1,54 @@
 @import '../../variables.scss';
 
 .footer {
-  @include p(32px 20px 40px, 32px 20px, 32px 20px 100px);
-  background-color: $g13;
+    @include p(32px 20px 40px, 32px 20px, 32px 20px 100px);
+    background-color: $g13;
 
-  .logo {
-    display: block;
-    @include width(198px);
-    margin: auto;
-    @include mb(24px, 16px);
-  }
-
-  .listFlex {
-    @include flex(center, center);
-    @include gap(24px, 16px);
-    @include mb(24px, 16px);
-
-    @include media1(sp) {
-      flex-direction: column
+    .logo {
+        display: block;
+        @include width(198px);
+        margin: auto;
+        @include mb(24px, 16px);
     }
 
-    li {
-      @include fs(14px);
-    }
-  }
+    .listFlex {
+        @include flex(center, center);
+        @include gap(24px, 16px);
+        @include mb(24px, 16px);
 
-  .copy {
-    @include fs(12px);
-    font-weight: 600;
-    color: $g3;
-    text-align: center;
-  }
+        @include media1(sp) {
+            flex-direction: column;
+        }
+
+        li {
+            @include fs(14px);
+        }
+    }
+
+    .copy {
+        @include fs(12px);
+        font-weight: 600;
+        color: $g3;
+        text-align: center;
+    }
 }
 
 .topBtn {
-  @include width(40px);
-  aspect-ratio: 1 / 1;
-  display: block;
-  position: fixed;
-  bottom: 8px;
-  right: 8px;
-  opacity: 0;
-  transition: .2s ease;
-  z-index: 10;
+    @include width(40px);
+    aspect-ratio: 1 / 1;
+    display: block;
+    position: fixed;
+    bottom: 8px;
+    right: 8px;
+    opacity: 0;
+    transition: 0.2s ease;
+    z-index: 10;
 
-  &.top {
-    @include bottom(136px, 136px, 22vw);
-  }
+    &.top {
+        @include bottom(136px, 136px, 22vw);
+    }
 
-  &.active {
-    opacity: 1;
-  }
+    &.active {
+        opacity: 1;
+    }
 }

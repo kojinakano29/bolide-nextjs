@@ -1,69 +1,72 @@
 @import '../../variables.scss';
 
 .faqArea {
-  @include pt(96px, 80px, 48px);
+    @include pt(96px, 80px, 48px);
 
-  .faqBox {
-    border-top: 2px solid $g12;
+    .faqBox {
+        border-top: 2px solid $g12;
 
-    dl {
-      border-bottom: 2px solid $g12;
-      @include p(24px 16px, 16px 8px);
-      transition: .3s ease;
+        dl {
+            border-bottom: 2px solid $g12;
+            @include p(24px 16px, 16px 8px);
+            transition: 0.3s ease;
 
-      dt {
-        @include flex(center);
-        @include gap(16px, 8px);
-        cursor: pointer;
+            dt {
+                @include flex(center);
+                @include gap(16px, 8px);
+                cursor: pointer;
 
-        span {
-          @include fs(24px, 20px);
-          font-weight: 600;
-          color: $b13;
+                span {
+                    @include fs(24px, 20px);
+                    font-weight: 600;
+                    color: $b13;
+                }
+
+                p {
+                    @include fs(18px, 14px);
+                    font-weight: bold;
+                    @include width(
+                        calc(100% - (24px + 40px + 16px * 2)),
+                        calc(100% - (20px + 32px + 8px * 2))
+                    );
+                }
+
+                div {
+                    @include width(40px, 32px);
+                    aspect-ratio: 1 / 1;
+                    @include fs(24px);
+                    @include flex(center, center);
+                    border-radius: 50%;
+                    background-color: $g13;
+                    font-weight: 900;
+                }
+            }
+
+            dd {
+                @include fs(16px, 14px, 13px);
+                @include pl(calc(24px + 16px), calc(20px + 8px));
+                font-weight: 500;
+                color: $g1;
+                opacity: 0;
+                transition: 0.3s ease;
+
+                a {
+                    text-decoration: underline;
+
+                    &:hover {
+                        text-decoration: none;
+                    }
+                }
+            }
+
+            &.on {
+                background-color: $g13;
+
+                dd {
+                    @include mt(16px, 8px);
+                    opacity: 1;
+                }
+            }
         }
-
-        p {
-          @include fs(18px, 14px);
-          font-weight: bold;
-          @include width(calc(100% - (24px + 40px + 16px * 2)), calc(100% - (20px + 32px + 8px * 2)));
-        }
-
-        div {
-          @include width(40px, 32px);
-          aspect-ratio: 1 / 1;
-          @include fs(24px);
-          @include flex(center, center);
-          border-radius: 50%;
-          background-color: $g13;
-          font-weight: 900;
-        }
-      }
-
-      dd {
-        @include fs(16px, 14px, 13px);
-        @include pl(calc(24px + 16px), calc(20px + 8px));
-        font-weight: 500;
-        color: $g1;
-        opacity: 0;
-        transition: .3s ease;
-
-        a {
-          text-decoration: underline;
-
-          &:hover {
-            text-decoration: none;
-          }
-        }
-      }
-
-      &.on {
-        background-color: $g13;
-
-        dd {
-          @include mt(16px, 8px);
-          opacity: 1;
-        }
-      }
     }
-  }
 }

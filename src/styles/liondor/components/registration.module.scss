@@ -1,91 +1,91 @@
 @import '../../variables.scss';
 
 .ttl {
-  @include mb(24px);
-  text-align: center;
+    @include mb(24px);
+    text-align: center;
 
-  span {
-    display: block;
+    span {
+        display: block;
 
-    &.sm {
-      font-size: var(--fs14-12);
-      color: $g1;
+        &.sm {
+            font-size: var(--fs14-12);
+            color: $g1;
+        }
+
+        &.big {
+            font-size: var(--fs24-16);
+            font-weight: 500;
+        }
     }
-
-    &.big {
-      font-size: var(--fs24-16);
-      font-weight: 500;
-    }
-  }
 }
 
 .ttl2 {
-  font-size: var(--fs32-18);
-  font-weight: bold;
-  width: fit-content;
-  @include m(0 auto 24px);
-  background-image: linear-gradient(transparent 80%, $g2 20%);
+    font-size: var(--fs32-18);
+    font-weight: bold;
+    width: fit-content;
+    @include m(0 auto 24px);
+    background-image: linear-gradient(transparent 80%, $g2 20%);
 }
 
 .txt {
-  font-size: var(--fs16-14);
-  font-weight: 500;
-  text-align: center;
+    font-size: var(--fs16-14);
+    font-weight: 500;
+    text-align: center;
 }
 
 .txt2 {
-  text-align: center;
-  @include mt(24px);
-  font-size: var(--fs24-16);
-  font-weight: 500;
+    text-align: center;
+    @include mt(24px);
+    font-size: var(--fs24-16);
+    font-weight: 500;
 }
 
 .merit {
-  @include p(112px 0 96px, 80px 0, 64px 0);
+    @include p(112px 0 96px, 80px 0, 64px 0);
 
-  .ttl {
-    @include mb(80px, 80px, 64px);
-  }
+    .ttl {
+        @include mb(80px, 80px, 64px);
+    }
 }
 
 .flex {
-  @include flex(stretch, center);
-  @include gap(105px 136px, 80px 64px, 80px);
+    @include flex(stretch, center);
+    @include gap(105px 136px, 80px 64px, 80px);
 }
 
 .box {
-  @include width(440px, calc(100% * 1/2 - 64px * 1/2), 90%);
-  position: relative;
+    @include width(440px, calc(100% * 1 / 2 - 64px * 1 / 2), 90%);
+    position: relative;
 
-  .num {
-    @include fs(64px, 56px);
-    position: absolute;
-    @include top(-48px);
-    @include left(-32px);
-    z-index: 1;
-  }
-
-  .imgBox {
-    @include mb(24px, 16px);
-  }
-
-  .name {
-    font-size: var(--fs20-18);
-    font-weight: 500;
-    text-align: center;
-  }
-
-  .link {
-    display: block;
-    @include m(16px auto 0);
-    font-size: var(--fs16-14);
-    font-weight: 500;
-    color: $g1;
-    text-decoration: underline;
-    width: fit-content;
-
-    &:hover {
-      text-decoration: none;
+    .num {
+        @include fs(64px, 56px);
+        position: absolute;
+        @include top(-48px);
+        @include left(-32px);
+        z-index: 1;
     }
-  }
+
+    .imgBox {
+        @include mb(24px, 16px);
+    }
+
+    .name {
+        font-size: var(--fs20-18);
+        font-weight: 500;
+        text-align: center;
+    }
+
+    .link {
+        display: block;
+        @include m(16px auto 0);
+        font-size: var(--fs16-14);
+        font-weight: 500;
+        color: $g1;
+        text-decoration: underline;
+        width: fit-content;
+
+        &:hover {
+            text-decoration: none;
+        }
+    }
 }

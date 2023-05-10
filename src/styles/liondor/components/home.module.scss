@@ -1,18 +1,18 @@
 @import '../../variables.scss';
 
 .cont2 {
-  @include pt(96px, 64px);
+    @include pt(96px, 64px);
 }
 
 .cont13 {
-  .wrapper {
-    border-top: 1px solid $g3;
-    border-bottom: 1px solid $g3;
-    @include p(40px 0 64px, 32px 0);
-  }
+    .wrapper {
+        border-top: 1px solid $g3;
+        border-bottom: 1px solid $g3;
+        @include p(40px 0 64px, 32px 0);
+    }
 }
 
 .noneLength {
-  @include fs(16px, 14px);
-  font-weight: 500;
+    @include fs(16px, 14px);
+    font-weight: 500;
 }

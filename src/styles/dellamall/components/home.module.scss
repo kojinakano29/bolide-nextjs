@@ -1,78 +1,79 @@
 @import '../../variables.scss';
 
 .mv {
-  // @include height(620px, 620px, unset);
-  background: url(../../../images/dellamall/top/fv_bk.webp) no-repeat center center / cover;
+    // @include height(620px, 620px, unset);
+    background: url(../../../images/dellamall/top/fv_bk.webp) no-repeat center
+        center / cover;
 
-  @include media1(sp) {
-    background: none;
-  }
+    @include media1(sp) {
+        background: none;
+    }
 
-  .bg_mv_sp {
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    z-index: -1;
-  }
+    .bg_mv_sp {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        z-index: -1;
+    }
 }
 
 .sitename {
-  @include width(400px, 400px, 274px);
-  @include pt(180px, 180px, 238px);
+    @include width(400px, 400px, 274px);
+    @include pt(180px, 180px, 238px);
 
-  a {
-    width: 100%;
-    display: block;
-  }
+    a {
+        width: 100%;
+        display: block;
+    }
 }
 
 .mvTxtBox {
-  @include pt(48px);
+    @include pt(48px);
 
-  .sm {
-    @include fs(16px, 16px, 14px);
-    font-weight: bold;
-  }
-
-  .big {
-    @include fs(28px, 26px, 24px);
-    font-weight: bold;
-    color: $b1;
-
-    span {
-      @include fs(20px, 18px, 16px);
-      font-weight: bold;
+    .sm {
+        @include fs(16px, 16px, 14px);
+        font-weight: bold;
     }
-  }
+
+    .big {
+        @include fs(28px, 26px, 24px);
+        font-weight: bold;
+        color: $b1;
+
+        span {
+            @include fs(20px, 18px, 16px);
+            font-weight: bold;
+        }
+    }
 }
 
 .trend {
-  @include pt(120px);
+    @include pt(120px);
 
-  & > div {
-    max-width: 100%;
-    @include p(0 64px, 0 40px, 0);
-  }
+    & > div {
+        max-width: 100%;
+        @include p(0 64px, 0 40px, 0);
+    }
 }
 
 .popular {
-  @include pt(64px, 64px, 48px);
+    @include pt(64px, 64px, 48px);
 
-  .popularWrap {
-    overflow: hidden;
-  }
+    .popularWrap {
+        overflow: hidden;
+    }
 }
 
 .pickup {
-  @include pt(48px);
+    @include pt(48px);
 }
 
 .storeList {
-  @include pt(72px, 64px, 48px);
+    @include pt(72px, 64px, 48px);
 }
 
 .banner {
-  @include mt(64px);
-  display: block;
+    @include mt(64px);
+    display: block;
 }

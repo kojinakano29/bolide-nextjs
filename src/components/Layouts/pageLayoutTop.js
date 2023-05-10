@@ -1,24 +1,22 @@
-import { Footer, Header, Meta } from "@/components/top";
-import { useRouter } from "next/router";
+import { Footer, Header, Meta } from '@/components/top'
+import { useRouter } from 'next/router'
 
-const PageLayoutTop = ({children}) => {
-  const router = useRouter()
+const PageLayoutTop = ({ children }) => {
+    const router = useRouter()
 
-  return (
-    <>
-      <Meta />
+    return (
+        <>
+            <Meta />
 
-      <div className={`bolide_top bjc_page`}>
-        <Header />
+            <div className={`bolide_top bjc_page`}>
+                <Header />
 
-        <main>
-          {children}
-        </main>
+                <main>{children}</main>
 
-        <Footer />
-      </div>
-    </>
-  );
+                <Footer />
+            </div>
+        </>
+    )
 }
 
-export default PageLayoutTop;
+export default PageLayoutTop

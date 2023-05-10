@@ -1,51 +1,51 @@
 @import '../../variables.scss';
 
 .ttl {
-  @include mb(48px !important);
+    @include mb(48px !important);
 }
 
 .ul {
-  @include mt(35px);
+    @include mt(35px);
 
-  li {
-    @include mb(48px);
+    li {
+        @include mb(48px);
 
-    h3 {
-      font-weight: bold;
-      @include fs(24px, 22px);
-      @include mb(16px);
-    }
-
-    p {
-      font-weight: 500;
-      @include fs(16px, 14px);
-    }
-  }
-
-  dl {
-    @include p(24px 0, 16px 0);
-    border-bottom: 2px solid $g2;
-    @include flex(stretch);
-    @include gap(0, 0, 12px);
-
-    dt {
-      @include width(240px, 200px, 100%);
-      @include fs(16px, 14x);
-      font-weight: bold;
-    }
-
-    dd {
-      @include width(calc(100% - 240px), calc(100% - 200px), 100%);
-      @include fs(16px, 14px);
-
-      a {
-        text-decoration: underline;
-        color: $b5;
-
-        &:hover {
-          text-decoration: none;
+        h3 {
+            font-weight: bold;
+            @include fs(24px, 22px);
+            @include mb(16px);
         }
-      }
+
+        p {
+            font-weight: 500;
+            @include fs(16px, 14px);
+        }
     }
-  }
+
+    dl {
+        @include p(24px 0, 16px 0);
+        border-bottom: 2px solid $g2;
+        @include flex(stretch);
+        @include gap(0, 0, 12px);
+
+        dt {
+            @include width(240px, 200px, 100%);
+            @include fs(16px, 14x);
+            font-weight: bold;
+        }
+
+        dd {
+            @include width(calc(100% - 240px), calc(100% - 200px), 100%);
+            @include fs(16px, 14px);
+
+            a {
+                text-decoration: underline;
+                color: $b5;
+
+                &:hover {
+                    text-decoration: none;
+                }
+            }
+        }
+    }
 }

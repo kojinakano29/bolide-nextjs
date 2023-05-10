@@ -1,331 +1,353 @@
 @import '../../variables.scss';
 
 .topArea {
-  @include pb(64px);
+    @include pb(64px);
 }
 
 .cont1__what {
-  @include fs(28px, 24px, 20px);
-  font-weight: bold;
-  text-align: center;
-  @include mt(56px, 40px);
-  @include mb(40px);
+    @include fs(28px, 24px, 20px);
+    font-weight: bold;
+    text-align: center;
+    @include mt(56px, 40px);
+    @include mb(40px);
 
-  span {
-    @include fs(37px, 35px);
-    font-weight: 600;
-  }
+    span {
+        @include fs(37px, 35px);
+        font-weight: 600;
+    }
 }
 
 .cont1__text {
-  @include fs(16px, 14px);
-  font-weight: 500;
-  max-width: 672px;
-  margin: auto;
-  text-align: center;
-  @include mb(80px, 64px);
+    @include fs(16px, 14px);
+    font-weight: 500;
+    max-width: 672px;
+    margin: auto;
+    text-align: center;
+    @include mb(80px, 64px);
 }
 
 .cont1__who {
-  @include fs(20px, 18px, 16px);
-  font-weight: bold;
-  text-align: center;
-  @include mb(48px);
+    @include fs(20px, 18px, 16px);
+    font-weight: bold;
+    text-align: center;
+    @include mb(48px);
 }
 
 .cont1__for {
-  @include flex();
-  @include mb(48px);
+    @include flex();
+    @include mb(48px);
 
-  button {
-    @include width(50%);
-    @include height(56px);
-    @include fs(20px, 18px, 16px);
-    @include flex(center, center);
-    display: block;
-    font-weight: bold;
-    color: $b3;
-    border: 1px solid $b3;
-    position: relative;
+    button {
+        @include width(50%);
+        @include height(56px);
+        @include fs(20px, 18px, 16px);
+        @include flex(center, center);
+        display: block;
+        font-weight: bold;
+        color: $b3;
+        border: 1px solid $b3;
+        position: relative;
 
-    &:nth-of-type(1) {
-      border-right: none;
+        &:nth-of-type(1) {
+            border-right: none;
+        }
+
+        &.isActive {
+            background: $b3;
+            color: $w1;
+
+            &::after {
+                content: '';
+                position: absolute;
+                bottom: -10px;
+                left: 50%;
+                transform: translateX(-50%) rotateZ(180deg);
+                width: 0;
+                height: 0;
+                border-style: solid;
+                border-width: 0 10px 10px 10px;
+                border-color: transparent transparent $b3 transparent;
+            }
+        }
     }
-
-    &.isActive {
-      background: $b3;
-      color: $w1;
-
-      &::after {
-        content: "";
-        position: absolute;
-        bottom: -10px;
-        left: 50%;
-        transform: translateX(-50%) rotateZ(180deg);
-        width: 0;
-        height: 0;
-        border-style: solid;
-        border-width: 0 10px 10px 10px;
-        border-color: transparent transparent $b3 transparent;
-      }
-    }
-  }
 }
 
 .cont1__tabArea {
-  .cont1__meritList {
-    @include flex();
+    .cont1__meritList {
+        @include flex();
 
-    @include media1(sp) {
-      gap: 32px;
-    }
-
-    .cont1__meritItem {
-      @include width(calc(100% * 1/3 - 20px), calc(100% * 1/3 - 16px), 100%);
-
-      .imgBox {
-        @include mb(20px, 16px);
-      }
-
-      .cont1__meritItem__forte {
-        @include fs(18px, 16px);
-        font-weight: bold;
-        text-align: center;
-        @include mb(16px);
-      }
-
-      .cont1__meritItem__text {
-        @include fs(14px, 12px);
-        font-weight: 500;
-      }
-
-      .cont1__meritItem__link {
-        @include fs(14px, 12px);
-        font-weight: 500;
-
-        a {
-          @include fs(14px, 12px);
-          font-weight: 500;
-          color: $b5;
-          text-decoration: underline;
-
-          &:hover {
-            text-decoration: none;
-          }
+        @include media1(sp) {
+            gap: 32px;
         }
-      }
+
+        .cont1__meritItem {
+            @include width(
+                calc(100% * 1 / 3 - 20px),
+                calc(100% * 1 / 3 - 16px),
+                100%
+            );
+
+            .imgBox {
+                @include mb(20px, 16px);
+            }
+
+            .cont1__meritItem__forte {
+                @include fs(18px, 16px);
+                font-weight: bold;
+                text-align: center;
+                @include mb(16px);
+            }
+
+            .cont1__meritItem__text {
+                @include fs(14px, 12px);
+                font-weight: 500;
+            }
+
+            .cont1__meritItem__link {
+                @include fs(14px, 12px);
+                font-weight: 500;
+
+                a {
+                    @include fs(14px, 12px);
+                    font-weight: 500;
+                    color: $b5;
+                    text-decoration: underline;
+
+                    &:hover {
+                        text-decoration: none;
+                    }
+                }
+            }
+        }
     }
-  }
 }
 
 .bkText {
-  @include fs(108px, 80px, 56px);
-  font-weight: 500;
-  position: absolute;
-  @include top(40px);
-  left: 0px;
-  color: $w1;
-  z-index: -1;
+    @include fs(108px, 80px, 56px);
+    font-weight: 500;
+    position: absolute;
+    @include top(40px);
+    left: 0px;
+    color: $w1;
+    z-index: -1;
 }
 
 .section__text {
-  @include fs(16px, 14px);
-  font-weight: 500;
-  text-align: center;
-  max-width: 512px;
-  margin: auto;
-  @include mb(48px, 40px);
+    @include fs(16px, 14px);
+    font-weight: 500;
+    text-align: center;
+    max-width: 512px;
+    margin: auto;
+    @include mb(48px, 40px);
 }
 
 .shopCreate {
-  @include p(64px 0);
-  background-color: $g6;
-  position: relative;
-  z-index: 2;
+    @include p(64px 0);
+    background-color: $g6;
+    position: relative;
+    z-index: 2;
 
-  .bkText {
-    @include top(40px);
-    color: $w1;
-  }
-
-  .cont2__methodList {
-    @include flex(stretch, center);
-    @include gap(50px 90px, 40px 30px);
-
-    .cont2__methodItem {
-      @include width(calc(100% * 1/3 - 60px), calc(100% * 1/3 - 20px), 100%);
-
-      .imgBox {
-        @include mb(16px);
-      }
-
-      .cont2__methodItem__forte {
-          @include fs(20px, 18px);
-          font-weight: bold;
-          text-align: center;
-          @include mb(16px);
-      }
-
-      .cont2__methodItem__text {
-          @include fs(14px, 12px);
-          font-weight: 500;
-      }
+    .bkText {
+        @include top(40px);
+        color: $w1;
     }
-  }
+
+    .cont2__methodList {
+        @include flex(stretch, center);
+        @include gap(50px 90px, 40px 30px);
+
+        .cont2__methodItem {
+            @include width(
+                calc(100% * 1 / 3 - 60px),
+                calc(100% * 1 / 3 - 20px),
+                100%
+            );
+
+            .imgBox {
+                @include mb(16px);
+            }
+
+            .cont2__methodItem__forte {
+                @include fs(20px, 18px);
+                font-weight: bold;
+                text-align: center;
+                @include mb(16px);
+            }
+
+            .cont2__methodItem__text {
+                @include fs(14px, 12px);
+                font-weight: 500;
+            }
+        }
+    }
 }
 
 .shopSave {
-  @include p(80px 0, 64px 0);
-  position: relative;
-  z-index: 2;
+    @include p(80px 0, 64px 0);
+    position: relative;
+    z-index: 2;
 
-  .bkText {
-    @include top(64px, 40px);
-    color: rgba($color: $o1, $alpha: 0.1)
-  }
-
-  .cont3__main {
-    @include flex(center);
-    @include gap(64px, 40px);
-
-  .cont3__mainLeft {
-    @include width(420px, 300px, 100%);
-  }
-
-  .cont3__mainRight {
-    @include width(calc(100% - (420px + 64px)), calc(100% - (300px + 40px)), 100%);
-
-    li {
-      counter-increment: num 1;
-      @include flex(center);
-      @include mb(32px, 24px);
-      @include gap(16px, 12px);
-
-      .cont3__mainRight__num {
-        background: url(../../../images/dellamall/guide/orenge-bk.svg) no-repeat center center / contain;
-        @include flex(center, center);
-        position: relative;
-        @include width(40px);
-        @include height(40px);
-
-        &::after {
-          position: absolute;
-          content: counter(num);
-          left: 50%;
-          top: 50%;
-          transform: translate(-50%, -50%);
-          @include fs(20px, 18px);
-          font-weight: 600;
-          font-family: $Montserrat;
-          color: $w1;
-        }
-      }
-
-      .cont3__mainRight__text {
-        @include fs(18px, 16px);
-        font-weight: bold;
-        @include width(calc(100% - (40px + 16px)), calc(100% - (40px + 12px)));
-
-          p {
-            @include fs(14px, 12px);
-            font-weight: 500;
-          }
-        }
-      }
+    .bkText {
+        @include top(64px, 40px);
+        color: rgba($color: $o1, $alpha: 0.1);
     }
-  }
+
+    .cont3__main {
+        @include flex(center);
+        @include gap(64px, 40px);
+
+        .cont3__mainLeft {
+            @include width(420px, 300px, 100%);
+        }
+
+        .cont3__mainRight {
+            @include width(
+                calc(100% - (420px + 64px)),
+                calc(100% - (300px + 40px)),
+                100%
+            );
+
+            li {
+                counter-increment: num 1;
+                @include flex(center);
+                @include mb(32px, 24px);
+                @include gap(16px, 12px);
+
+                .cont3__mainRight__num {
+                    background: url(../../../images/dellamall/guide/orenge-bk.svg)
+                        no-repeat center center / contain;
+                    @include flex(center, center);
+                    position: relative;
+                    @include width(40px);
+                    @include height(40px);
+
+                    &::after {
+                        position: absolute;
+                        content: counter(num);
+                        left: 50%;
+                        top: 50%;
+                        transform: translate(-50%, -50%);
+                        @include fs(20px, 18px);
+                        font-weight: 600;
+                        font-family: $Montserrat;
+                        color: $w1;
+                    }
+                }
+
+                .cont3__mainRight__text {
+                    @include fs(18px, 16px);
+                    font-weight: bold;
+                    @include width(
+                        calc(100% - (40px + 16px)),
+                        calc(100% - (40px + 12px))
+                    );
+
+                    p {
+                        @include fs(14px, 12px);
+                        font-weight: 500;
+                    }
+                }
+            }
+        }
+    }
 }
 
 .mallCreate {
-  @include p(64px 0 80px, 64px 0);
-  background-color: $g6;
-  position: relative;
-  z-index: 2;
-
-  .cont4__mallWhat {
-    @include p(24px 48px, 16px 24px, 16px);
-    border: 2px solid $o1;
-    background: $w1;
-    border-radius: 20px;
-    text-align: center;
-    @include mb(40px);
-  }
-
-  .cont4__mallWhat__title {
-    @include fs(18px, 16px);
-    font-weight: bold;
-    color: $o1;
-    @include mb(12px);
-  }
-
-  .cont4__mallWhat__text {
-    @include fs(14px, 12px);
-    font-weight: 500;
-    max-width: 800px;
-    margin: auto;
-  }
-
-  .section__text {
-    @include mb(48px);
-  }
-
-  .cont4__mallMethodList {
-    @include flex();
-    @include gap(20px, 15px, 32px);
+    @include p(64px 0 80px, 64px 0);
+    background-color: $g6;
     position: relative;
+    z-index: 2;
 
-    &::before {
-      content: "";
-      position: absolute;
-      background: url(../../../images/dellamall/guide/cont4_bk.svg) no-repeat center center / contain;
-      width: 100%;
-      @include width(100%, 95%);
-      height: 4px;
-      top: 20px;
-      left: 50%;
-      transform: translateX(-50%);
-
-      @include media1(sp) {
-        display: none;
-      }
+    .cont4__mallWhat {
+        @include p(24px 48px, 16px 24px, 16px);
+        border: 2px solid $o1;
+        background: $w1;
+        border-radius: 20px;
+        text-align: center;
+        @include mb(40px);
     }
 
-    .cont4__mallMethodItem {
-      @include width(calc(100% * 1/5 - 16px), calc(100% * 1/5 - 12px), 100%);
-      counter-increment: num 1;
-
-      .cont4__mallMethodItem__num {
-        position: relative;
-        background: url(../../../images/dellamall/guide/cont4__num.svg) no-repeat center center / contain;
-        @include width(40px);
-        @include height(40px);
-        margin: auto;
-        @include mb(24px, 16px);
-
-        &:after {
-          position: absolute;
-          content: counter(num);
-          top: 50%;
-          left: 50%;
-          transform: translate(-50%, -50%);
-          @include fs(20px, 18px);
-          font-weight: 600;
-          color: $o1;
-        }
-      }
-
-      .cont4__mallMethodItem__forte {
-        @include fs(15px, 12px, 16px);
+    .cont4__mallWhat__title {
+        @include fs(18px, 16px);
         font-weight: bold;
-        text-align: center;
-        @include height(70px, 60px, unset);
-        @include mb(10px);
-      }
+        color: $o1;
+        @include mb(12px);
+    }
 
-      .cont4__mallMethodItem__text {
+    .cont4__mallWhat__text {
         @include fs(14px, 12px);
         font-weight: 500;
-      }
+        max-width: 800px;
+        margin: auto;
     }
-  }
+
+    .section__text {
+        @include mb(48px);
+    }
+
+    .cont4__mallMethodList {
+        @include flex();
+        @include gap(20px, 15px, 32px);
+        position: relative;
+
+        &::before {
+            content: '';
+            position: absolute;
+            background: url(../../../images/dellamall/guide/cont4_bk.svg)
+                no-repeat center center / contain;
+            width: 100%;
+            @include width(100%, 95%);
+            height: 4px;
+            top: 20px;
+            left: 50%;
+            transform: translateX(-50%);
+
+            @include media1(sp) {
+                display: none;
+            }
+        }
+
+        .cont4__mallMethodItem {
+            @include width(
+                calc(100% * 1 / 5 - 16px),
+                calc(100% * 1 / 5 - 12px),
+                100%
+            );
+            counter-increment: num 1;
+
+            .cont4__mallMethodItem__num {
+                position: relative;
+                background: url(../../../images/dellamall/guide/cont4__num.svg)
+                    no-repeat center center / contain;
+                @include width(40px);
+                @include height(40px);
+                margin: auto;
+                @include mb(24px, 16px);
+
+                &:after {
+                    position: absolute;
+                    content: counter(num);
+                    top: 50%;
+                    left: 50%;
+                    transform: translate(-50%, -50%);
+                    @include fs(20px, 18px);
+                    font-weight: 600;
+                    color: $o1;
+                }
+            }
+
+            .cont4__mallMethodItem__forte {
+                @include fs(15px, 12px, 16px);
+                font-weight: bold;
+                text-align: center;
+                @include height(70px, 60px, unset);
+                @include mb(10px);
+            }
+
+            .cont4__mallMethodItem__text {
+                @include fs(14px, 12px);
+                font-weight: 500;
+            }
+        }
+    }
 }

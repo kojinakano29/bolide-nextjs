@@ -1,209 +1,221 @@
 @import '../../variables.scss';
 
 .desc {
-  @include fs(16px, 14px);
-  font-weight: 500;
-  @include mb(32px, 16px);
+    @include fs(16px, 14px);
+    font-weight: 500;
+    @include mb(32px, 16px);
 }
 
 .mv {
-  .mvBox {
-    width: 100%;
-  }
+    .mvBox {
+        width: 100%;
+    }
 }
 
 .canDo {
-  @include width(calc(100% - ((100% - 1120px) * 1/2)), calc(100% - ((100% - 720px) * 1/2)), 100%);
-  @include p(96px 0 0, 80px 0 0, 48px 20px 0);
-  @include ml(auto, auto, 0);
+    @include width(
+        calc(100% - ((100% - 1120px) * 1 / 2)),
+        calc(100% - ((100% - 720px) * 1 / 2)),
+        100%
+    );
+    @include p(96px 0 0, 80px 0 0, 48px 20px 0);
+    @include ml(auto, auto, 0);
 }
 
 .matchArea {
-  @include side($o3);
-  @include mt(128px, 80px, 48px);
-  @include pt(102px, 80px, 48px);
-  background-color: $o3;
-  overflow: hidden;
+    @include side($o3);
+    @include mt(128px, 80px, 48px);
+    @include pt(102px, 80px, 48px);
+    background-color: $o3;
+    overflow: hidden;
 }
 
 .companyArea {
-  @include side($o3);
-  @include pt(128px, 80px, 48px);
-  background-color: $o3;
-  overflow: hidden;
+    @include side($o3);
+    @include pt(128px, 80px, 48px);
+    background-color: $o3;
+    overflow: hidden;
 }
 
 .userArea {
-  @include side($o3);
-  background-color: $o3;
-  overflow: hidden;
-  @include p(128px 0, 80px 0, 48px 0);
+    @include side($o3);
+    background-color: $o3;
+    overflow: hidden;
+    @include p(128px 0, 80px 0, 48px 0);
 }
 
 .releaseArea {
-  @include side($w1);
-  overflow: hidden;
-  @include pt(96px, 80px, 48px);
+    @include side($w1);
+    overflow: hidden;
+    @include pt(96px, 80px, 48px);
 }
 
 .salonArea {
-  @include pt(128px, 80px, 48px);
-  @include side($w1);
+    @include pt(128px, 80px, 48px);
+    @include side($w1);
 
-  .salonBox {
-    @include flex(stretch);
-    @include gap(16px);
-    @include mb(40px, 32px);
+    .salonBox {
+        @include flex(stretch);
+        @include gap(16px);
+        @include mb(40px, 32px);
 
-    .imgBox {
-      position: relative;
-      border-radius: 10px;
-      overflow: hidden;
+        .imgBox {
+            position: relative;
+            border-radius: 10px;
+            overflow: hidden;
 
-      &:hover {
-        img {
-          transform: scale(1.1);
+            &:hover {
+                img {
+                    transform: scale(1.1);
+                }
+            }
+
+            img {
+                width: 100%;
+                height: 100%;
+                object-fit: cover;
+                object-position: center;
+                transition: 0.3s ease;
+            }
+
+            .contBox {
+                position: absolute;
+                left: 0;
+
+                p {
+                    @include p(2px 10px);
+                    background-color: $w1;
+                    width: fit-content;
+
+                    &.salonName {
+                        @include fs(20px, 16px);
+                        font-weight: bold;
+                    }
+
+                    &.salonDesc {
+                        @include fs(12px);
+                        font-weight: 500;
+                        @include mt(4px);
+                    }
+                }
+            }
         }
-      }
 
-      img {
-        width: 100%;
-        height: 100%;
-        object-fit: cover;
-        object-position: center;
-        transition: .3s ease;
-      }
+        .left {
+            .imgBox {
+                display: block;
+                @include width(496px, 340px, 100%);
+                aspect-ratio: 1 / 1;
 
-      .contBox {
-        position: absolute;
-        left: 0;
+                img {
+                    width: 100%;
+                    height: 100%;
+                    object-fit: cover;
+                }
 
-        p {
-          @include p(2px 10px);
-          background-color: $w1;
-          width: fit-content;
-
-          &.salonName {
-            @include fs(20px, 16px);
-            font-weight: bold;
-          }
-
-          &.salonDesc {
-            @include fs(12px);
-            font-weight: 500;
-            @include mt(4px);
-          }
+                .contBox {
+                    @include p(0 16px, 0 8px);
+                    @include bottom(20px, 16px, 8px);
+                }
+            }
         }
-      }
+
+        .right {
+            @include width(
+                calc(100% - (496px + 16px)),
+                calc(100% - (340px + 16px)),
+                100%
+            );
+            @include flex();
+            @include gap(16px);
+
+            .imgBox {
+                display: block;
+                @include width(calc(100% * 1 / 2 - 8px));
+                @include height(
+                    calc(496px * 1 / 2 - 16px * 1 / 2),
+                    calc(340px * 1 / 2 - 16px * 1 / 2),
+                    unset
+                );
+
+                @include media1(sp) {
+                    aspect-ratio: 37 / 30;
+                }
+
+                img {
+                    width: 100%;
+                    height: 100%;
+                    object-fit: cover;
+                }
+
+                .contBox {
+                    @include p(0 8px);
+                    @include bottom(8px);
+                }
+            }
+        }
     }
-
-    .left {
-      .imgBox {
-        display: block;
-        @include width(496px, 340px, 100%);
-        aspect-ratio: 1 / 1;
-
-        img {
-          width: 100%;
-          height: 100%;
-          object-fit: cover;
-        }
-
-        .contBox {
-          @include p(0 16px, 0 8px);
-          @include bottom(20px, 16px, 8px);
-        }
-      }
-    }
-
-    .right {
-      @include width(calc(100% - (496px + 16px)), calc(100% - (340px + 16px)), 100%);
-      @include flex();
-      @include gap(16px);
-
-      .imgBox {
-        display: block;
-        @include width(calc(100% * 1/2 - 8px));
-        @include height(calc(496px * 1/2 - 16px * 1/2), calc(340px * 1/2 - 16px * 1/2), unset);
-
-        @include media1(sp) {
-          aspect-ratio: 37 / 30;
-        }
-
-        img {
-          width: 100%;
-          height: 100%;
-          object-fit: cover;
-        }
-
-        .contBox {
-          @include p(0 8px);
-          @include bottom(8px);
-        }
-      }
-    }
-  }
 }
 
 .couponArea {
-  overflow: hidden;
-  @include pt(128px, 80px, 48px);
-  @include side($w1);
+    overflow: hidden;
+    @include pt(128px, 80px, 48px);
+    @include side($w1);
 }
 
 .presidentArea {
-  overflow: hidden;
-  @include pt(128px, 80px, 48px);
-  @include side($w1);
+    overflow: hidden;
+    @include pt(128px, 80px, 48px);
+    @include side($w1);
 }
 
 .infoArea {
-  @include pt(128px, 80px, 48px);
-  @include side($w1);
+    @include pt(128px, 80px, 48px);
+    @include side($w1);
 }
 
 .nameCardArea {
-  overflow: hidden;
-  @include pt(128px, 80px, 48px);
-  @include side($w1);
+    overflow: hidden;
+    @include pt(128px, 80px, 48px);
+    @include side($w1);
 }
 
 .nftArea {
-  overflow: hidden;
-  @include pt(128px, 80px, 48px);
-  @include side($w1);
+    overflow: hidden;
+    @include pt(128px, 80px, 48px);
+    @include side($w1);
 }
 
 .sdgsArea {
-  overflow: hidden;
-  @include pt(128px, 80px, 48px);
-  @include side($w1);
+    overflow: hidden;
+    @include pt(128px, 80px, 48px);
+    @include side($w1);
 }
 
 .sponsorArea {
-  @include pt(128px, 80px, 48px);
-  @include side($w1);
+    @include pt(128px, 80px, 48px);
+    @include side($w1);
 }
 
 .hobbyArea {
-  @include pt(128px, 80px, 48px);
-  @include side($w1);
+    @include pt(128px, 80px, 48px);
+    @include side($w1);
 }
 
 .btnFlex {
-  @include flex(center, center);
-  @include gap(24px);
-  @include mt(48px);
+    @include flex(center, center);
+    @include gap(24px);
+    @include mt(48px);
 
-  a {
-    margin: 0;
+    a {
+        margin: 0;
 
-    @include media1(tab1) {
-      width: calc(50% - 24px / 1/2);
+        @include media1(tab1) {
+            width: calc(50% - 24px / 1 / 2);
+        }
+
+        @include media1(sp) {
+            width: 384px;
+        }
     }
-
-    @include media1(sp) {
-      width: 384px;
-    }
-  }
 }

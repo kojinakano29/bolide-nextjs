@@ -1,51 +1,55 @@
 @import '../../variables.scss';
 
 .infoBox {
-  @include flex();
-  @include gap(0 40px, 0 32px, 0);
+    @include flex();
+    @include gap(0 40px, 0 32px, 0);
 
-  .infoItem {
-    @include width(calc(50% - 40px * 1/2), calc(50% - 32px * 1/2), 100%);
-    @include p(16px 0);
-    border-bottom: 2px solid $g3;
+    .infoItem {
+        @include width(
+            calc(50% - 40px * 1 / 2),
+            calc(50% - 32px * 1 / 2),
+            100%
+        );
+        @include p(16px 0);
+        border-bottom: 2px solid $g3;
 
-    &:nth-of-type(-n+2) {
-      border-top: 2px solid $g3;
+        &:nth-of-type(-n + 2) {
+            border-top: 2px solid $g3;
 
-      @include media1(sp) {
-        border-top: initial;
-      }
+            @include media1(sp) {
+                border-top: initial;
+            }
+        }
+
+        &:nth-of-type(1) {
+            @include media1(sp) {
+                border-top: 2px solid $g3;
+            }
+        }
     }
 
-    &:nth-of-type(1) {
-      @include media1(sp) {
-        border-top: 2px solid $g3;
-      }
+    .date {
+        @include mb(8px);
+
+        time {
+            @include fs(16px, 14px);
+            font-weight: 500;
+            color: $g1;
+            font-family: $Poppins;
+        }
     }
-  }
 
-  .date {
-    @include mb(8px);
+    .ttl {
+        @include fs(16px, 14px);
+        font-weight: 500;
 
-    time {
-      @include fs(16px, 14px);
-      font-weight: 500;
-      color: $g1;
-      font-family: $Poppins;
+        &:hover {
+            text-decoration: underline;
+        }
     }
-  }
 
-  .ttl {
-    @include fs(16px, 14px);
-    font-weight: 500;
-
-    &:hover {
-      text-decoration: underline;
+    .company {
+        @include companyNicename(12px);
+        @include mt(16px);
     }
-  }
-
-  .company {
-    @include companyNicename(12px);
-    @include mt(16px);
-  }
 }

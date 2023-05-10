@@ -2,136 +2,199 @@ import styles from '@/styles/liondor/components/blogScrollBox.module.scss'
 import { BlogTxt } from '@/components/liondor'
 import dummy from '@/images/liondor/cms/dummy.webp'
 
-const BlogScrollBox = ({patternData, route2 = false, pickup = false}) => {
-  const dataOdd = route2 ? patternData?.filter((e, index) => {
-    return index !== 0 && index % 2 === 1 && index < 8
-  }) : patternData?.l_post?.filter((e, index) => {
-    return index !== 0 && index % 2 === 1 && index < 8
-  })
+const BlogScrollBox = ({ patternData, route2 = false, pickup = false }) => {
+    const dataOdd = route2
+        ? patternData?.filter((e, index) => {
+              return index !== 0 && index % 2 === 1 && index < 8
+          })
+        : patternData?.l_post?.filter((e, index) => {
+              return index !== 0 && index % 2 === 1 && index < 8
+          })
 
-  const dataEven = route2 ? patternData?.filter((e, index) => {
-    return index !== 0 && index % 2 === 0 && index < 9
-  }) : patternData?.l_post?.filter((e, index) => {
-    return index !== 0 && index % 2 === 0 && index < 9
-  })
+    const dataEven = route2
+        ? patternData?.filter((e, index) => {
+              return index !== 0 && index % 2 === 0 && index < 9
+          })
+        : patternData?.l_post?.filter((e, index) => {
+              return index !== 0 && index % 2 === 0 && index < 9
+          })
 
-  const dataSp = route2 ? patternData?.filter((e, index) => {
-    return index !== 0 && index < 5
-  }) : patternData?.l_post?.filter((e, index) => {
-    return index !== 0 && index < 5
-  })
+    const dataSp = route2
+        ? patternData?.filter((e, index) => {
+              return index !== 0 && index < 5
+          })
+        : patternData?.l_post?.filter((e, index) => {
+              return index !== 0 && index < 5
+          })
 
-  return (
-    <>
-      <div className={`${styles.scrollBox} pc`}>
-        <div className={`${styles.scrollOdd} ${styles.scrollCont}`}>
-          {dataOdd?.map((item) => (
-            <a href={`/liondor/post/show/${pickup ? item?.l_post_id : item?.id}`} key={item?.id} className={styles.blogLink}>
-              <div className={styles.imgBox}>
-                {route2 ?
-                  <img src={item?.l_post?.thumbs ? `${process.env.NEXT_PUBLIC_BACKEND_URL}/storage/${item?.l_post?.thumbs}` : dummy.src} alt="記事のサムネイル画像" />
-                :
-                  <img src={item?.thumbs ? `${process.env.NEXT_PUBLIC_BACKEND_URL}/storage/${item?.thumbs}` : dummy.src} alt="記事のサムネイル画像" />
-                }
-              </div>
-              {
-                route2
-                ?
-                <BlogTxt
-                  smallMb
-                  cat={item?.l_post?.l_category?.parent_slug?.toUpperCase()}
-                  cat2={item?.l_post?.l_category?.name}
-                  ttl={item?.l_post?.title}
-                  name={item?.l_post?.user?.l_profile?.nicename}
-                  time={item?.l_post?.view_date}
-                />
-                :
-                <BlogTxt
-                  smallMb
-                  cat={item?.l_category?.parent_slug?.toUpperCase()}
-                  cat2={item?.l_category?.name}
-                  ttl={item?.title}
-                  name={item?.user?.l_profile?.nicename}
-                  time={item?.view_date}
-                />
-              }
-            </a>
-          ))}
-        </div>
-        <div className={`${styles.scrollEven} ${styles.scrollCont}`}>
-          {dataEven?.map((item) => (
-            <a href={`/liondor/post/show/${pickup ? item?.l_post_id : item?.id}`} key={item?.id} className={styles.blogLink}>
-              <div className={styles.imgBox}>
-                {route2 ?
-                  <img src={item?.l_post?.thumbs ? `${process.env.NEXT_PUBLIC_BACKEND_URL}/storage/${item?.l_post?.thumbs}` : dummy.src} alt="記事のサムネイル画像" />
-                :
-                  <img src={item?.thumbs ? `${process.env.NEXT_PUBLIC_BACKEND_URL}/storage/${item?.thumbs}` : dummy.src} alt="記事のサムネイル画像" />
-                }
-              </div>
-              {
-                route2
-                ?
-                <BlogTxt
-                  smallMb
-                  cat={item?.l_post?.l_category?.parent_slug?.toUpperCase()}
-                  cat2={item?.l_post?.l_category?.name}
-                  ttl={item?.l_post?.title}
-                  name={item?.l_post?.user?.l_profile?.nicename}
-                  time={item?.l_post?.view_date}
-                />
-                :
-                <BlogTxt
-                  smallMb
-                  cat={item?.l_category?.parent_slug?.toUpperCase()}
-                  cat2={item?.l_category?.name}
-                  ttl={item?.title}
-                  name={item?.user?.l_profile?.nicename}
-                  time={item?.view_date}
-                />
-              }
-            </a>
-          ))}
-        </div>
-      </div>
+    return (
+        <>
+            <div className={`${styles.scrollBox} pc`}>
+                <div className={`${styles.scrollOdd} ${styles.scrollCont}`}>
+                    {dataOdd?.map(item => (
+                        <a
+                            href={`/liondor/post/show/${
+                                pickup ? item?.l_post_id : item?.id
+                            }`}
+                            key={item?.id}
+                            className={styles.blogLink}>
+                            <div className={styles.imgBox}>
+                                {route2 ? (
+                                    <img
+                                        src={
+                                            item?.l_post?.thumbs
+                                                ? `${process.env.NEXT_PUBLIC_BACKEND_URL}/storage/${item?.l_post?.thumbs}`
+                                                : dummy.src
+                                        }
+                                        alt="記事のサムネイル画像"
+                                    />
+                                ) : (
+                                    <img
+                                        src={
+                                            item?.thumbs
+                                                ? `${process.env.NEXT_PUBLIC_BACKEND_URL}/storage/${item?.thumbs}`
+                                                : dummy.src
+                                        }
+                                        alt="記事のサムネイル画像"
+                                    />
+                                )}
+                            </div>
+                            {route2 ? (
+                                <BlogTxt
+                                    smallMb
+                                    cat={item?.l_post?.l_category?.parent_slug?.toUpperCase()}
+                                    cat2={item?.l_post?.l_category?.name}
+                                    ttl={item?.l_post?.title}
+                                    name={
+                                        item?.l_post?.user?.l_profile?.nicename
+                                    }
+                                    time={item?.l_post?.view_date}
+                                />
+                            ) : (
+                                <BlogTxt
+                                    smallMb
+                                    cat={item?.l_category?.parent_slug?.toUpperCase()}
+                                    cat2={item?.l_category?.name}
+                                    ttl={item?.title}
+                                    name={item?.user?.l_profile?.nicename}
+                                    time={item?.view_date}
+                                />
+                            )}
+                        </a>
+                    ))}
+                </div>
+                <div className={`${styles.scrollEven} ${styles.scrollCont}`}>
+                    {dataEven?.map(item => (
+                        <a
+                            href={`/liondor/post/show/${
+                                pickup ? item?.l_post_id : item?.id
+                            }`}
+                            key={item?.id}
+                            className={styles.blogLink}>
+                            <div className={styles.imgBox}>
+                                {route2 ? (
+                                    <img
+                                        src={
+                                            item?.l_post?.thumbs
+                                                ? `${process.env.NEXT_PUBLIC_BACKEND_URL}/storage/${item?.l_post?.thumbs}`
+                                                : dummy.src
+                                        }
+                                        alt="記事のサムネイル画像"
+                                    />
+                                ) : (
+                                    <img
+                                        src={
+                                            item?.thumbs
+                                                ? `${process.env.NEXT_PUBLIC_BACKEND_URL}/storage/${item?.thumbs}`
+                                                : dummy.src
+                                        }
+                                        alt="記事のサムネイル画像"
+                                    />
+                                )}
+                            </div>
+                            {route2 ? (
+                                <BlogTxt
+                                    smallMb
+                                    cat={item?.l_post?.l_category?.parent_slug?.toUpperCase()}
+                                    cat2={item?.l_post?.l_category?.name}
+                                    ttl={item?.l_post?.title}
+                                    name={
+                                        item?.l_post?.user?.l_profile?.nicename
+                                    }
+                                    time={item?.l_post?.view_date}
+                                />
+                            ) : (
+                                <BlogTxt
+                                    smallMb
+                                    cat={item?.l_category?.parent_slug?.toUpperCase()}
+                                    cat2={item?.l_category?.name}
+                                    ttl={item?.title}
+                                    name={item?.user?.l_profile?.nicename}
+                                    time={item?.view_date}
+                                />
+                            )}
+                        </a>
+                    ))}
+                </div>
+            </div>
 
-      <div className={`${styles.scrollBox} sp`}>
-        <div className={`${styles.scrollCont}`}>
-          {dataSp?.map((item) => (
-            <a href={`/liondor/post/show/${pickup ? item?.l_post_id : item?.id}`} key={item?.id} className={styles.blogLink}>
-              <div className={styles.imgBox}>
-                {route2 ?
-                  <img src={item?.l_post?.thumbs ? `${process.env.NEXT_PUBLIC_BACKEND_URL}/storage/${item?.l_post?.thumbs}` : dummy.src} alt="記事のサムネイル画像" />
-                :
-                  <img src={item?.thumbs ? `${process.env.NEXT_PUBLIC_BACKEND_URL}/storage/${item?.thumbs}` : dummy.src} alt="記事のサムネイル画像" />
-                }
-              </div>
-              {
-                route2
-                ?
-                <BlogTxt
-                  smallMb
-                  cat={item?.l_post?.l_category?.parent_slug?.toUpperCase()}
-                  cat2={item?.l_post?.l_category?.name}
-                  ttl={item?.l_post?.title}
-                  name={item?.l_post?.user?.l_profile?.nicename}
-                  time={item?.l_post?.view_date}
-                />
-                :
-                <BlogTxt
-                  smallMb
-                  cat={item?.l_category?.parent_slug?.toUpperCase()}
-                  cat2={item?.l_category?.name}
-                  ttl={item?.title}
-                  name={item?.user?.l_profile?.nicename}
-                  time={item?.view_date}
-                />
-              }
-            </a>
-          ))}
-        </div>
-      </div>
-    </>
-  );
+            <div className={`${styles.scrollBox} sp`}>
+                <div className={`${styles.scrollCont}`}>
+                    {dataSp?.map(item => (
+                        <a
+                            href={`/liondor/post/show/${
+                                pickup ? item?.l_post_id : item?.id
+                            }`}
+                            key={item?.id}
+                            className={styles.blogLink}>
+                            <div className={styles.imgBox}>
+                                {route2 ? (
+                                    <img
+                                        src={
+                                            item?.l_post?.thumbs
+                                                ? `${process.env.NEXT_PUBLIC_BACKEND_URL}/storage/${item?.l_post?.thumbs}`
+                                                : dummy.src
+                                        }
+                                        alt="記事のサムネイル画像"
+                                    />
+                                ) : (
+                                    <img
+                                        src={
+                                            item?.thumbs
+                                                ? `${process.env.NEXT_PUBLIC_BACKEND_URL}/storage/${item?.thumbs}`
+                                                : dummy.src
+                                        }
+                                        alt="記事のサムネイル画像"
+                                    />
+                                )}
+                            </div>
+                            {route2 ? (
+                                <BlogTxt
+                                    smallMb
+                                    cat={item?.l_post?.l_category?.parent_slug?.toUpperCase()}
+                                    cat2={item?.l_post?.l_category?.name}
+                                    ttl={item?.l_post?.title}
+                                    name={
+                                        item?.l_post?.user?.l_profile?.nicename
+                                    }
+                                    time={item?.l_post?.view_date}
+                                />
+                            ) : (
+                                <BlogTxt
+                                    smallMb
+                                    cat={item?.l_category?.parent_slug?.toUpperCase()}
+                                    cat2={item?.l_category?.name}
+                                    ttl={item?.title}
+                                    name={item?.user?.l_profile?.nicename}
+                                    time={item?.view_date}
+                                />
+                            )}
+                        </a>
+                    ))}
+                </div>
+            </div>
+        </>
+    )
 }
 
-export default BlogScrollBox;
+export default BlogScrollBox

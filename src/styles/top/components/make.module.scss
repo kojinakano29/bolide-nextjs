@@ -1,37 +1,37 @@
 @import '../../variables.scss';
 
 .makeArea {
-  @include p(96px 0, 80px 0, 48px 0 0);
-  background-image: url(../../../../public/top/use-back.webp);
-  background-size: 100%;
-  background-repeat: no-repeat;
-  background-position: center bottom;
+    @include p(96px 0, 80px 0, 48px 0 0);
+    background-image: url(../../../../public/top/use-back.webp);
+    background-size: 100%;
+    background-repeat: no-repeat;
+    background-position: center bottom;
 
-  @include media1(sp) {
-    background-position: center 100px;
-  }
+    @include media1(sp) {
+        background-position: center 100px;
+    }
 
-  .midashiBox {
-    @include width(320px);
-    margin: auto;
-    @include mb(32px, 16px);
-  }
+    .midashiBox {
+        @include width(320px);
+        margin: auto;
+        @include mb(32px, 16px);
+    }
 
-  h2 {
-    margin: auto;
-  }
+    h2 {
+        margin: auto;
+    }
 
-  .desc {
-    @include fs(16px, 14px, 13px);
-    font-weight: 500;
-    text-align: center;
-    @include mb(48px, 24px);
-  }
+    .desc {
+        @include fs(16px, 14px, 13px);
+        font-weight: 500;
+        text-align: center;
+        @include mb(48px, 24px);
+    }
 
-  .ttl {
-    @include fs(32px, 24px);
-    font-weight: 900;
-    text-align: center;
-    @include mb(32px);
-  }
+    .ttl {
+        @include fs(32px, 24px);
+        font-weight: 900;
+        text-align: center;
+        @include mb(32px);
+    }
 }

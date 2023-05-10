@@ -1,86 +1,86 @@
 @import '../../variables.scss';
 
 .desc {
-  @include fs(18px, 16px);
-  font-weight: 500;
-  text-align: center;
-  @include mb(48px, 40px, 32px);
+    @include fs(18px, 16px);
+    font-weight: 500;
+    text-align: center;
+    @include mb(48px, 40px, 32px);
 }
 
 .loginBox {
-  @include width(900px);
-  @include p(56px 40px 64px);
-  border-radius: 10px;
-  background-color: $w1;
-  box-shadow: 0 3px 6px rgba(0, 0, 0, .16);
-  margin: auto;
-
-  .inputBox {
-    @include width(544px);
+    @include width(900px);
+    @include p(56px 40px 64px);
+    border-radius: 10px;
+    background-color: $w1;
+    box-shadow: 0 3px 6px rgba(0, 0, 0, 0.16);
     margin: auto;
-    @include mb(24px);
 
-    &:last-of-type {
-      @include mb(40px, 32px);
+    .inputBox {
+        @include width(544px);
+        margin: auto;
+        @include mb(24px);
+
+        &:last-of-type {
+            @include mb(40px, 32px);
+        }
+
+        label {
+            @include fs(18px, 16px);
+            font-weight: bold;
+            @include flex(center, left);
+            @include gap(24px, 16px);
+            @include mb(10px);
+
+            &::before {
+                content: '';
+                display: block;
+                width: 3px;
+                @include height(18px, 16px);
+                background-color: $b13;
+            }
+        }
+
+        input {
+            @include bjcInput(100%);
+        }
+
+        .passwordBox {
+            position: relative;
+
+            .view {
+                @include fs(14px, 12px);
+                font-weight: bold;
+                cursor: pointer;
+                position: absolute;
+                top: 50%;
+                @include right(16px, 12px);
+                transform: translateY(-50%);
+            }
+        }
     }
 
-    label {
-      @include fs(18px, 16px);
-      font-weight: bold;
-      @include flex(center, left);
-      @include gap(24px, 16px);
-      @include mb(10px);
+    .forgot {
+        @include fs(16px, 14px);
+        font-weight: 500;
+        text-align: center;
+        color: $g1;
 
-      &::before {
-        content: "";
-        display: block;
-        width: 3px;
-        @include height(18px, 16px);
-        background-color: $b13;
-      }
+        a {
+            color: $b13;
+            text-decoration: underline;
+            @include mt(24px);
+
+            &:hover {
+                text-decoration: none;
+            }
+        }
     }
-
-    input {
-      @include bjcInput(100%);
-    }
-
-    .passwordBox {
-      position: relative;
-
-      .view {
-        @include fs(14px, 12px);
-        font-weight: bold;
-        cursor: pointer;
-        position: absolute;
-        top: 50%;
-        @include right(16px, 12px);
-        transform: translateY(-50%);
-      }
-    }
-  }
-
-  .forgot {
-    @include fs(16px, 14px);
-    font-weight: 500;
-    text-align: center;
-    color: $g1;
-
-    a {
-      color: $b13;
-      text-decoration: underline;
-      @include mt(24px);
-
-      &:hover {
-        text-decoration: none;
-      }
-    }
-  }
 }
 
 .bottomArea {
-  @include p(80px 0, 64px 0);
+    @include p(80px 0, 64px 0);
 }
 
 .cont2 {
-  @include pb(80px, 64px);
+    @include pb(80px, 64px);
 }

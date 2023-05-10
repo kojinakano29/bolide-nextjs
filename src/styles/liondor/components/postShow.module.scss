@@ -1,124 +1,124 @@
 @import '../../variables.scss';
 
 .headline {
-  @include p(32px 0 96px, 32px 0);
-  border-bottom: 1px solid $g3;
+    @include p(32px 0 96px, 32px 0);
+    border-bottom: 1px solid $g3;
 }
 
 .headlineMv {
-  position: relative;
-  width: 100%;
-  @include mb(48px, 24px);
+    position: relative;
+    width: 100%;
+    @include mb(48px, 24px);
 
-  img {
-    margin: auto;
-  }
+    img {
+        margin: auto;
+    }
 }
 
 .headlineWrap {
-  position: relative;
+    position: relative;
 
-  .button {
-    position: absolute;
-    right: 0;
+    .button {
+        position: absolute;
+        right: 0;
 
-    svg {
-      @include width(24px, 20px);
-      height: auto;
+        svg {
+            @include width(24px, 20px);
+            height: auto;
+        }
+
+        &.bookmarkBtn {
+            top: 0;
+        }
+
+        &.pickupBtn {
+            @include top(64px, 48px);
+        }
     }
-
-    &.bookmarkBtn {
-      top: 0;
-    }
-
-    &.pickupBtn {
-      @include top(64px, 48px);
-    }
-  }
 }
 
 .headlineBox {
-  text-align: center;
-  @include max-width(608px);
-  margin: auto;
+    text-align: center;
+    @include max-width(608px);
+    margin: auto;
 }
 
 .snsShare {
-  @include flex(center, center);
-  @include gap(24px);
+    @include flex(center, center);
+    @include gap(24px);
 }
 
 .cat {
-  composes: cat from './parts.scss';
-  justify-content: center;
-  @include mb(24px, 16px);
+    composes: cat from './parts.scss';
+    justify-content: center;
+    @include mb(24px, 16px);
 }
 
 .hr {
-  composes: hr from './parts.scss';
+    composes: hr from './parts.scss';
 }
 
 .ttl {
-  font-size: var(--fs32-18);
-  @include mb(40px, 24px);
-  font-weight: 500;
+    font-size: var(--fs32-18);
+    @include mb(40px, 24px);
+    font-weight: 500;
 }
 
 .subTtl {
-  font-size: var(--fs24-16);
-  font-weight: 500;
-  @include mb(16px);
+    font-size: var(--fs24-16);
+    font-weight: 500;
+    @include mb(16px);
 }
 
 .desc {
-  font-size: var(--fs14-12);
-  font-weight: 300;
-  @include mb(24px, 16px);
+    font-size: var(--fs14-12);
+    font-weight: 300;
+    @include mb(24px, 16px);
 }
 
 .series {
-  @include mb(24px, 16px);
+    @include mb(24px, 16px);
 
-  .seriesLink {
-    @include fs(11px);
-    font-weight: 500;
-    color: $g3;
-    text-decoration: underline;
-    display: block;
-    margin-bottom: 8px;
+    .seriesLink {
+        @include fs(11px);
+        font-weight: 500;
+        color: $g3;
+        text-decoration: underline;
+        display: block;
+        margin-bottom: 8px;
 
-    &:hover {
-      text-decoration: none;
+        &:hover {
+            text-decoration: none;
+        }
     }
-  }
 }
 
 .name {
-  composes: name from './parts.scss';
-  @include mb(4px);
+    composes: name from './parts.scss';
+    @include mb(4px);
 }
 
 .time {
-  composes: time from './parts.scss';
-  @include mb(32px, 16px);
+    composes: time from './parts.scss';
+    @include mb(32px, 16px);
 }
 
 .showBody {
-  @include pt(40px, 32px);
+    @include pt(40px, 32px);
 }
 
 .bodyFlex {
-  @include flex(stretch);
-  @include gap(0 32px, 64px, 48px);
+    @include flex(stretch);
+    @include gap(0 32px, 64px, 48px);
 }
 
 .editorBody {
-  @include width(calc(100% - (320px + 32px)), 100%);
+    @include width(calc(100% - (320px + 32px)), 100%);
 }
 
 .recoCont {
-  @include mt(112px, 80px, 64px);
-  @include p(56px 0 96px, 64px 0 80px);
-  background-color: $g2;
-  overflow: hidden;
+    @include mt(112px, 80px, 64px);
+    @include p(56px 0 96px, 64px 0 80px);
+    background-color: $g2;
+    overflow: hidden;
 }

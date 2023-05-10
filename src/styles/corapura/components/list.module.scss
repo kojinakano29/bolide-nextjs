@@ -1,366 +1,370 @@
 @import '../../variables.scss';
 
 .midashi {
-  @include fs(16px, 14px);
-  font-weight: bold;
-  margin-bottom: 8px;
+    @include fs(16px, 14px);
+    font-weight: bold;
+    margin-bottom: 8px;
 }
 
 .searchBox {
-  @include searchBox;
+    @include searchBox;
 }
 
 .sortFlex {
-  @include mb(64px, 48px, 40px);
-  @include flex(center, left);
-  @include gap(24px);
+    @include mb(64px, 48px, 40px);
+    @include flex(center, left);
+    @include gap(24px);
 
-  .sort {
-    @include m(0);
-  }
+    .sort {
+        @include m(0);
+    }
 }
 
 .sort {
-  @include sort;
+    @include sort;
 }
 
 .finishDisplay {
-  @include flex(center, left);
-  @include gap(8px);
-  @include fs(16px, 14px);
-  font-weight: bold;
-  cursor: pointer;
+    @include flex(center, left);
+    @include gap(8px);
+    @include fs(16px, 14px);
+    font-weight: bold;
+    cursor: pointer;
 }
 
 .selectBox {
-  @include mb(16px);
+    @include mb(16px);
 
-  .selectFlex {
-    @include flex(center, left);
-    @include gap(8px 16px);
-  }
+    .selectFlex {
+        @include flex(center, left);
+        @include gap(8px 16px);
+    }
 
-  select {
-    @include width(180px);
-    @include height(40px);
-    border-radius: 20px;
-    border: 2px solid $b8;
-    @include fs(12px);
-    font-weight: bold;
-  }
+    select {
+        @include width(180px);
+        @include height(40px);
+        border-radius: 20px;
+        border: 2px solid $b8;
+        @include fs(12px);
+        font-weight: bold;
+    }
 }
 
 .checkSortBox {
-  @include flex(center, left);
-  @include gap(8px);
-  @include mb(32px);
+    @include flex(center, left);
+    @include gap(8px);
+    @include mb(32px);
 
-  button {
-    display: block;
+    button {
+        display: block;
 
-    label {
-      display: block;
-      @include p(2px 10px);
-      @include fs(13px, 12px);
-      font-weight: bold;
-      color: $b8;
-      border: 2px solid $b8;
-      border-radius: 12px;
-      cursor: pointer;
-      transition: .2s ease;
+        label {
+            display: block;
+            @include p(2px 10px);
+            @include fs(13px, 12px);
+            font-weight: bold;
+            color: $b8;
+            border: 2px solid $b8;
+            border-radius: 12px;
+            cursor: pointer;
+            transition: 0.2s ease;
 
-      &:hover,
-      &.current {
-        color: $w1;
-        background-color: $b8;
-      }
+            &:hover,
+            &.current {
+                color: $w1;
+                background-color: $b8;
+            }
 
-      input[type="checkbox"] {
-        display: none;
-      }
+            input[type='checkbox'] {
+                display: none;
+            }
+        }
     }
-  }
 }
 
 .rewardRange {
-  @include mb(32px);
+    @include mb(32px);
 
-  input[type="range"] {
-    -webkit-appearance: none;
-    appearance: none;
-    cursor: pointer;
-    @include width(240px);
-    @include height(6px);
-    background-color: $g2;
-    border-radius: 10px;
-    @include mb(24px);
+    input[type='range'] {
+        -webkit-appearance: none;
+        appearance: none;
+        cursor: pointer;
+        @include width(240px);
+        @include height(6px);
+        background-color: $g2;
+        border-radius: 10px;
+        @include mb(24px);
 
-    &::-webkit-slider-thumb {
-      -webkit-appearance: none;
-      background-color: $w1;
-      width: 16px;
-      height: 16px;
-      border-radius: 50%;
-      border: 2px solid $g3
-    }
-  }
-
-  .rewardFlex {
-    @include flex(center, left);
-    @include gap(8px);
-    @include fs(14px, 12px);
-    font-weight: bold;
-
-    input[type="number"] {
-      display: block;
-      @include width(80px);
-      @include height(24px);
-      border: 1px solid $g4;
-      text-align: right;
-      padding: 0;
-      @include fs(13px, 12px);
-      font-weight: bold;
+        &::-webkit-slider-thumb {
+            -webkit-appearance: none;
+            background-color: $w1;
+            width: 16px;
+            height: 16px;
+            border-radius: 50%;
+            border: 2px solid $g3;
+        }
     }
 
-    button {
-      display: block;
-      @include p(2px 12px);
-      @include fs(13px, 12px);
-      font-weight: bold;
-      border: 2px solid $b8;
-      border-radius: 12px;
-      color: $b8;
+    .rewardFlex {
+        @include flex(center, left);
+        @include gap(8px);
+        @include fs(14px, 12px);
+        font-weight: bold;
+
+        input[type='number'] {
+            display: block;
+            @include width(80px);
+            @include height(24px);
+            border: 1px solid $g4;
+            text-align: right;
+            padding: 0;
+            @include fs(13px, 12px);
+            font-weight: bold;
+        }
+
+        button {
+            display: block;
+            @include p(2px 12px);
+            @include fs(13px, 12px);
+            font-weight: bold;
+            border: 2px solid $b8;
+            border-radius: 12px;
+            color: $b8;
+        }
     }
-  }
 }
 
 .tagBtnBox {
-  @include mb(32px);
-  @include flex(center, left);
-  @include gap(8px);
+    @include mb(32px);
+    @include flex(center, left);
+    @include gap(8px);
 
-  .tagBtn {
-    display: block;
-    @include p(2px 16px);
-    @include fs(13px, 12px);
-    font-weight: bold;
-    border-radius: 12px;
-    background-color: $o3;
-    transition: .2s ease;
-    cursor: pointer;
+    .tagBtn {
+        display: block;
+        @include p(2px 16px);
+        @include fs(13px, 12px);
+        font-weight: bold;
+        border-radius: 12px;
+        background-color: $o3;
+        transition: 0.2s ease;
+        cursor: pointer;
 
-    input[type="radio"] {
-      display: none;
+        input[type='radio'] {
+            display: none;
+        }
+
+        &.current,
+        &:hover {
+            background-color: $b1;
+            color: $w1;
+        }
     }
-
-    &.current,
-    &:hover {
-      background-color: $b1;
-      color: $w1;
-    }
-  }
 }
 
 .list {
-  @include flex(flex-start, left);
-  @include gap(64px 20px, 48px 16px, 40px 16px);
-  @include mb(96px, 80px, 48px);
+    @include flex(flex-start, left);
+    @include gap(64px 20px, 48px 16px, 40px 16px);
+    @include mb(96px, 80px, 48px);
 
-  &.influencerList {
-    .imgBox {
-      border-radius: 50%;
+    &.influencerList {
+        .imgBox {
+            border-radius: 50%;
+        }
+
+        .catch,
+        .name {
+            text-align: center;
+        }
     }
 
-    .catch,
-    .name {
-      text-align: center;
+    a {
+        display: block;
+        @include width(
+            calc(100% * 1 / 4 - 20px * 3 / 4),
+            calc(100% * 1 / 4 - 16px * 3 / 4),
+            calc(100% * 1 / 2 - 16px * 1 / 2)
+        );
+
+        &:hover {
+            img {
+                transform: scale(1.1);
+            }
+        }
+
+        .imgBox {
+            aspect-ratio: 1 / 1;
+            border-radius: 10px;
+            overflow: hidden;
+            @include mb(16px);
+
+            img {
+                width: 100%;
+                height: 100%;
+                object-fit: cover;
+                object-position: top center;
+                transition: 0.3s ease;
+            }
+        }
+
+        .catch {
+            @include fs(13px, 12px);
+            color: $g1;
+            @include mb(2px);
+        }
+
+        .name {
+            @include fs(20px, 16px);
+            font-weight: bold;
+            @include mb(8px);
+        }
+
+        .desc {
+            @include fs(14px, 12px);
+            font-weight: 500;
+            color: $g4;
+        }
     }
-  }
-
-  a {
-    display: block;
-    @include width(calc(100% * 1/4 - 20px * 3/4), calc(100% * 1/4 - 16px * 3/4), calc(100% * 1/2 - 16px * 1/2));
-
-    &:hover {
-      img {
-        transform: scale(1.1);
-      }
-    }
-
-    .imgBox {
-      aspect-ratio: 1 / 1;
-      border-radius: 10px;
-      overflow: hidden;
-      @include mb(16px);
-
-      img {
-        width: 100%;
-        height: 100%;
-        object-fit: cover;
-        object-position: top center;
-        transition: .3s ease;
-      }
-    }
-
-    .catch {
-      @include fs(13px, 12px);
-      color: $g1;
-      @include mb(2px);
-    }
-
-    .name {
-      @include fs(20px, 16px);
-      font-weight: bold;
-      @include mb(8px);
-    }
-
-    .desc {
-      @include fs(14px, 12px);
-      font-weight: 500;
-      color: $g4;
-    }
-  }
 }
 
 .matterList {
-  @include flex(flex-start, left);
-  @include gap(64px 32px, 48px 16px, 40px 16px);
-  @include mb(96px, 80px, 48px);
+    @include flex(flex-start, left);
+    @include gap(64px 32px, 48px 16px, 40px 16px);
+    @include mb(96px, 80px, 48px);
 }
 
 .adminList {
-  @include mb(96px, 80px, 48px);
+    @include mb(96px, 80px, 48px);
 
-  ul {
-    border-top: 1px solid $g3;
+    ul {
+        border-top: 1px solid $g3;
 
-    li {
-      @include p(24px);
-      border-bottom: 1px solid $g3;
+        li {
+            @include p(24px);
+            border-bottom: 1px solid $g3;
 
-      &.delete {
-        background-color: $g2;
+            &.delete {
+                background-color: $g2;
 
-        * {
-          pointer-events: none;
+                * {
+                    pointer-events: none;
+                }
+
+                button {
+                    pointer-events: all;
+                }
+            }
+
+            .flex,
+            .btnFlex {
+                @include flex(center, left);
+                @include gap(16px);
+                @include mb(4px);
+            }
+
+            .btnFlex {
+                @include mb(0);
+                @include mt(8px);
+
+                button {
+                    @include fs(14px, 12px);
+                    font-weight: 500;
+                    color: $r1;
+                    text-decoration: underline;
+
+                    &:hover {
+                        text-decoration: none;
+                    }
+                }
+            }
+
+            .date {
+                @include fs(16px, 14px);
+                font-weight: 500;
+
+                time {
+                    color: $g1;
+                }
+            }
+
+            .state {
+                @include p(2px 16px);
+                @include fs(12px);
+                background-color: $b1;
+                color: $w1;
+                font-weight: bold;
+                border-radius: 10px;
+            }
+
+            .txt {
+                @include fs(16px, 14px);
+                font-weight: 500;
+
+                a {
+                    text-decoration: underline;
+
+                    &:hover {
+                        text-decoration: none;
+                    }
+                }
+            }
+
+            .btn {
+                @include p(2px 16px);
+                @include fs(14px, 12px);
+                background-color: $o1;
+                color: $w1;
+                font-weight: bold;
+                border-radius: 10px;
+            }
         }
-
-        button {
-          pointer-events: all;
-        }
-      }
-
-      .flex,
-      .btnFlex {
-        @include flex(center, left);
-        @include gap(16px);
-        @include mb(4px);
-      }
-
-      .btnFlex {
-        @include mb(0);
-        @include mt(8px);
-
-        button {
-          @include fs(14px, 12px);
-          font-weight: 500;
-          color: $r1;
-          text-decoration: underline;
-
-          &:hover {
-            text-decoration: none;
-          }
-        }
-      }
-
-      .date {
-        @include fs(16px, 14px);
-        font-weight: 500;
-
-        time {
-          color: $g1;
-        }
-      }
-
-      .state {
-        @include p(2px 16px);
-        @include fs(12px);
-        background-color: $b1;
-        color: $w1;
-        font-weight: bold;
-        border-radius: 10px;
-      }
-
-      .txt {
-        @include fs(16px, 14px);
-        font-weight: 500;
-
-        a {
-          text-decoration: underline;
-
-          &:hover {
-            text-decoration: none;
-          }
-        }
-      }
-
-      .btn {
-        @include p(2px 16px);
-        @include fs(14px, 12px);
-        background-color: $o1;
-        color: $w1;
-        font-weight: bold;
-        border-radius: 10px;
-      }
     }
-  }
 }
 
 .pager {
-  @include pager;
+    @include pager;
 }
 
 .popupArea {
-  @include modalBox;
-  overflow-y: scroll;
-  @include scrollHidden;
-  @include flex(center, center);
+    @include modalBox;
+    overflow-y: scroll;
+    @include scrollHidden;
+    @include flex(center, center);
 
-  .popupBox {
-    width: fit-content;
-    @include max-width(fit-content, fit-content, calc(100% - 20px * 2));
-    @include p(40px 64px, 32px 40px, 24px);
-    background-color: $w1;
-    border-radius: 10px;
-    cursor: auto;
-
-    .check_ttl {
-      @include fs(20px, 18px, 16px);
-      font-weight: bold;
-      text-align: center;
-      @include mb(40px, 32px);
-    }
-
-    .btnFlex2 {
-      @include flex(center, center);
-      @include gap(16px);
-
-      button {
-        @include width(200px);
-        @include height(40px);
-        @include flex(center, center);
+    .popupBox {
+        width: fit-content;
+        @include max-width(fit-content, fit-content, calc(100% - 20px * 2));
+        @include p(40px 64px, 32px 40px, 24px);
+        background-color: $w1;
         border-radius: 10px;
-        @include fs(16px, 14px);
-        font-weight: 500;
-        color: $b8;
-        border: 2px solid $b8;
-        transition: .3s ease;
+        cursor: auto;
 
-        &:hover {
-          background-color: $b8;
-          color: $w1;
+        .check_ttl {
+            @include fs(20px, 18px, 16px);
+            font-weight: bold;
+            text-align: center;
+            @include mb(40px, 32px);
         }
-      }
+
+        .btnFlex2 {
+            @include flex(center, center);
+            @include gap(16px);
+
+            button {
+                @include width(200px);
+                @include height(40px);
+                @include flex(center, center);
+                border-radius: 10px;
+                @include fs(16px, 14px);
+                font-weight: 500;
+                color: $b8;
+                border: 2px solid $b8;
+                transition: 0.3s ease;
+
+                &:hover {
+                    background-color: $b8;
+                    color: $w1;
+                }
+            }
+        }
     }
-  }
 }

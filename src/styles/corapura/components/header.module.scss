@@ -1,210 +1,210 @@
 @import '../../variables.scss';
 
 .header {
-  @include width(100%);
-  @include p(0 32px 0 16px, 0 20px 0 0);
-  position: fixed;
-  z-index: 100;
-  transition: .3s ease;
+    @include width(100%);
+    @include p(0 32px 0 16px, 0 20px 0 0);
+    position: fixed;
+    z-index: 100;
+    transition: 0.3s ease;
 
-  &.active {
-    background-color: $w1;
-    box-shadow: 0 3px 6px rgba(0, 0, 0, .08);
-  }
-
-  .flex {
-    @include height(56px);
-    @include flex(center);
-
-    .left {
-      @include flex(center, left);
-      @include gap(24px, 16px)
-    }
-  }
-
-  .humBtn {
-    @include width(56px);
-    height: 56px;
-    @include flex(center, center);
-    flex-direction: column;
-    position: relative;
-    z-index: 400;
-
-    span {
-      display: block;
-      width: 24px;
-      height: 3px;
-      background-color: $b6;
-      transition: .3s ease;
-      @include mb(6px);
-
-      &:last-child {
-        margin-bottom: 0;
-      }
+    &.active {
+        background-color: $w1;
+        box-shadow: 0 3px 6px rgba(0, 0, 0, 0.08);
     }
 
-    &.is_active {
-      span {
-        &:nth-child(1) {
-          transform: translateY(9px) rotate(30deg);
+    .flex {
+        @include height(56px);
+        @include flex(center);
+
+        .left {
+            @include flex(center, left);
+            @include gap(24px, 16px);
         }
-
-        &:nth-child(2) {
-          opacity: 0;
-        }
-
-        &:nth-child(3) {
-          transform: translateY(-9px) rotate(-30deg);
-        }
-      }
-    }
-  }
-
-  h1 {
-    a {
-      display: block;
-      @include width(160px);
-    }
-  }
-
-  .right {
-    @include flex(center, right);
-    gap: 8px;
-
-    .btn {
-      @include flex(center, center);
-      gap: 4px;
-      @include p(4px 12px, 4px 12px, 8px);
-      border-radius: 17px;
-
-      .iconBox {
-        @include width(16px);
-      }
-
-      span {
-        @include fs(13px);
-        font-weight: bold;
-        color: $w1;
-      }
-
-      &.login {
-        background-color: $b8;
-      }
-
-      &.signUp,
-      &.mypage {
-        background-image: $gr1;
-      }
-
-      &.bookmark {
-        span {
-          color: $b8;
-        }
-      }
-    }
-  }
-
-  .hum__container {
-    position: absolute;
-    top: 0;
-    left: 0;
-    z-index: 200;
-    transition: .3s ease-in;
-    opacity: 0;
-    pointer-events: none;
-    width: 100%;
-    height: 100vh;
-    background: $w1;
-    cursor: pointer;
-
-    &.is_active {
-      opacity: .8;
-      pointer-events: all;
-    }
-  }
-
-  .hum__container_list {
-    @include width(320px, 320px, 100%);
-    @include p(104px 24px 80px);
-    height: 100vh;
-    background-color: $g7;
-    position: absolute;
-    top: 0;
-    left: 0;
-    transform: translateX(-320px);
-    @include tx(-320px, -320px, -100%);
-    transition: .4s ease;
-    overflow-y: scroll;
-    @include scrollHidden;
-    cursor: auto;
-    z-index: 300;
-
-    &.is_active {
-      transition: .4s .4s ease;
-      transform: translateX(0%);
     }
 
-    li {
-      @include mb(32px, 24px);
-
-      &:last-of-type {
-        margin-bottom: 0;
-      }
-
-      a {
-        display: block;
-        width: 100%;
-        @include pb(32px, 24px);
+    .humBtn {
+        @include width(56px);
+        height: 56px;
+        @include flex(center, center);
+        flex-direction: column;
         position: relative;
+        z-index: 400;
 
-        p {
-          &.jp {
-            @include fs(16px, 14px);
-            font-weight: 900;
-            transition: .3s ease;
-          }
+        span {
+            display: block;
+            width: 24px;
+            height: 3px;
+            background-color: $b6;
+            transition: 0.3s ease;
+            @include mb(6px);
 
-          &.en {
-            @include mt(4px);
-            font-weight: 600;
-            @include fs(10px);
-            color: $w1;
-          }
+            &:last-child {
+                margin-bottom: 0;
+            }
         }
 
-        &::before,
-        &::after {
-          content: "";
-          width: 100%;
-          height: 1px;
-          display: block;
-          position: absolute;
-          bottom: 0;
-          left: 0;
-        }
+        &.is_active {
+            span {
+                &:nth-child(1) {
+                    transform: translateY(9px) rotate(30deg);
+                }
 
-        &::before {
-          background-color: $g3;
-        }
+                &:nth-child(2) {
+                    opacity: 0;
+                }
 
-        &::after {
-          transition: .3s ease;
-          transform: scaleX(0);
-          transform-origin: left;
-          background-image: $gr1;
-          z-index: 1;
+                &:nth-child(3) {
+                    transform: translateY(-9px) rotate(-30deg);
+                }
+            }
         }
-
-        &:hover {
-          .jp {
-            opacity: .5;
-          }
-
-          &::after {
-            transform: scaleX(1);
-          }
-        }
-      }
     }
-  }
+
+    h1 {
+        a {
+            display: block;
+            @include width(160px);
+        }
+    }
+
+    .right {
+        @include flex(center, right);
+        gap: 8px;
+
+        .btn {
+            @include flex(center, center);
+            gap: 4px;
+            @include p(4px 12px, 4px 12px, 8px);
+            border-radius: 17px;
+
+            .iconBox {
+                @include width(16px);
+            }
+
+            span {
+                @include fs(13px);
+                font-weight: bold;
+                color: $w1;
+            }
+
+            &.login {
+                background-color: $b8;
+            }
+
+            &.signUp,
+            &.mypage {
+                background-image: $gr1;
+            }
+
+            &.bookmark {
+                span {
+                    color: $b8;
+                }
+            }
+        }
+    }
+
+    .hum__container {
+        position: absolute;
+        top: 0;
+        left: 0;
+        z-index: 200;
+        transition: 0.3s ease-in;
+        opacity: 0;
+        pointer-events: none;
+        width: 100%;
+        height: 100vh;
+        background: $w1;
+        cursor: pointer;
+
+        &.is_active {
+            opacity: 0.8;
+            pointer-events: all;
+        }
+    }
+
+    .hum__container_list {
+        @include width(320px, 320px, 100%);
+        @include p(104px 24px 80px);
+        height: 100vh;
+        background-color: $g7;
+        position: absolute;
+        top: 0;
+        left: 0;
+        transform: translateX(-320px);
+        @include tx(-320px, -320px, -100%);
+        transition: 0.4s ease;
+        overflow-y: scroll;
+        @include scrollHidden;
+        cursor: auto;
+        z-index: 300;
+
+        &.is_active {
+            transition: 0.4s 0.4s ease;
+            transform: translateX(0%);
+        }
+
+        li {
+            @include mb(32px, 24px);
+
+            &:last-of-type {
+                margin-bottom: 0;
+            }
+
+            a {
+                display: block;
+                width: 100%;
+                @include pb(32px, 24px);
+                position: relative;
+
+                p {
+                    &.jp {
+                        @include fs(16px, 14px);
+                        font-weight: 900;
+                        transition: 0.3s ease;
+                    }
+
+                    &.en {
+                        @include mt(4px);
+                        font-weight: 600;
+                        @include fs(10px);
+                        color: $w1;
+                    }
+                }
+
+                &::before,
+                &::after {
+                    content: '';
+                    width: 100%;
+                    height: 1px;
+                    display: block;
+                    position: absolute;
+                    bottom: 0;
+                    left: 0;
+                }
+
+                &::before {
+                    background-color: $g3;
+                }
+
+                &::after {
+                    transition: 0.3s ease;
+                    transform: scaleX(0);
+                    transform-origin: left;
+                    background-image: $gr1;
+                    z-index: 1;
+                }
+
+                &:hover {
+                    .jp {
+                        opacity: 0.5;
+                    }
+
+                    &::after {
+                        transform: scaleX(1);
+                    }
+                }
+            }
+        }
+    }
 }
