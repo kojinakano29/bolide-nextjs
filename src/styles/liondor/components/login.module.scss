@@ -1,97 +1,97 @@
 @import '../../variables.scss';
 
 .desc {
-  font-size: var(--fs18-16);
-  font-weight: 500;
-  text-align: center;
-  @include mb(48px, 32px);
+    font-size: var(--fs18-16);
+    font-weight: 500;
+    text-align: center;
+    @include mb(48px, 32px);
 
-  &.desc2 {
-    @include mb(24px);
-  }
+    &.desc2 {
+        @include mb(24px);
+    }
 }
 
 .register {
-  @include flex(center, center);
-  @include gap(16px);
-  @include mb(96px, 64px, 48px);
+    @include flex(center, center);
+    @include gap(16px);
+    @include mb(96px, 64px, 48px);
 }
 
 .loginBox {
-  @include width(672px);
-  @include p(48px 64px);
-  border: 1px solid $g3;
-  margin: auto;
+    @include width(672px);
+    @include p(48px 64px);
+    border: 1px solid $g3;
+    margin: auto;
 
-  .dl {
-    @include mb(32px);
+    .dl {
+        @include mb(32px);
 
-    &:last-of-type {
-      @include mb(48px);
-    }
-
-    dt {
-      @include mb(16px);
-      @include flex(center, left);
-      @include gap(24px);
-
-      span {
-        display: block;
-        width: 2px;
-        @include height(18px);
-        background-color: $b1;
-      }
-
-      label {
-        font-size: var(--fs16-14);
-        line-height: 1;
-      }
-    }
-
-    dd {
-      input {
-        width: 100%;
-        @include height(56px);
-        border: 1px solid $g3;
-      }
-
-      .passwordBox {
-        position: relative;
-
-        .view {
-          @include fs(14px, 12px);
-          font-weight: bold;
-          cursor: pointer;
-          position: absolute;
-          top: 50%;
-          @include right(16px, 12px);
-          transform: translateY(-50%);
+        &:last-of-type {
+            @include mb(48px);
         }
-      }
+
+        dt {
+            @include mb(16px);
+            @include flex(center, left);
+            @include gap(24px);
+
+            span {
+                display: block;
+                width: 2px;
+                @include height(18px);
+                background-color: $b1;
+            }
+
+            label {
+                font-size: var(--fs16-14);
+                line-height: 1;
+            }
+        }
+
+        dd {
+            input {
+                width: 100%;
+                @include height(56px);
+                border: 1px solid $g3;
+            }
+
+            .passwordBox {
+                position: relative;
+
+                .view {
+                    @include fs(14px, 12px);
+                    font-weight: bold;
+                    cursor: pointer;
+                    position: absolute;
+                    top: 50%;
+                    @include right(16px, 12px);
+                    transform: translateY(-50%);
+                }
+            }
+        }
     }
-  }
 
-  button {
-    @include mb(16px);
-    font-family: $nsj;
-    font-weight: 500;
-  }
-
-  .forgot {
-    font-size: var(--fs16-14);
-    font-weight: 500;
-    letter-spacing: 0;
-    color: $g1;
-    text-align: center;
-    @include mt(16px);
-
-    a {
-      color: $b1;
-      text-decoration: underline;
-
-      &:hover {
-        text-decoration: none;
-      }
+    button {
+        @include mb(16px);
+        font-family: $nsj;
+        font-weight: 500;
     }
-  }
+
+    .forgot {
+        font-size: var(--fs16-14);
+        font-weight: 500;
+        letter-spacing: 0;
+        color: $g1;
+        text-align: center;
+        @include mt(16px);
+
+        a {
+            color: $b1;
+            text-decoration: underline;
+
+            &:hover {
+                text-decoration: none;
+            }
+        }
+    }
 }

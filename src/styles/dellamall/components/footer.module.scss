@@ -1,83 +1,87 @@
 @import '../../variables.scss';
 
 .footer {
-  text-align: center;
-  @include p(40px 0, 20px 0);
-  border-top: 1px solid $g1;
-  @include mt(64px, 64px, 48px);
+    text-align: center;
+    @include p(40px 0, 20px 0);
+    border-top: 1px solid $g1;
+    @include mt(64px, 64px, 48px);
 
-  .logo {
-    @include width(144px);
-  }
-
-  .footer__listPage {
-    @include flex(center, center);
-    @include gap(16px 40px);
-    @include mt(32px, 24px);
-
-    @include media1(sp) {
-        display: block;
+    .logo {
+        @include width(144px);
     }
 
-    a {
-      display: block;
-      @include fs(14px);
-      @include mt(0, 0, 24px);
-    }
-  }
+    .footer__listPage {
+        @include flex(center, center);
+        @include gap(16px 40px);
+        @include mt(32px, 24px);
 
-  .footer__listCompany {
-    @include flex(center);
-    @include mt(32px, 24px);
-    @include gap(16px 0, 16px 0, 16px);
+        @include media1(sp) {
+            display: block;
+        }
 
-    .footer__listCompany__text {
-      width: 100%;
-      text-align: center;
-      @include fs(18px, 16px);
-      font-weight: bold;
+        a {
+            display: block;
+            @include fs(14px);
+            @include mt(0, 0, 24px);
+        }
     }
 
-    a {
-      @include width(calc(100% / 4 - 6px), calc(100% / 4 - 6px), calc(100% / 2 - 8px));
+    .footer__listCompany {
+        @include flex(center);
+        @include mt(32px, 24px);
+        @include gap(16px 0, 16px 0, 16px);
+
+        .footer__listCompany__text {
+            width: 100%;
+            text-align: center;
+            @include fs(18px, 16px);
+            font-weight: bold;
+        }
+
+        a {
+            @include width(
+                calc(100% / 4 - 6px),
+                calc(100% / 4 - 6px),
+                calc(100% / 2 - 8px)
+            );
+        }
     }
-  }
 
-  .footer__text {
-    font-weight: 500;
-    font-size: 12px;
-    color: $g1;
-    @include mt(32px, 24px);
+    .footer__text {
+        font-weight: 500;
+        font-size: 12px;
+        color: $g1;
+        @include mt(32px, 24px);
 
-    a {
-      text-decoration: underline;
+        a {
+            text-decoration: underline;
 
-      &:hover {
-        text-decoration: none;
-      }
+            &:hover {
+                text-decoration: none;
+            }
+        }
     }
-  }
 
-  .copy {
-      font-weight: bold;
-      font-size: 12px;
-      @include mt(16px, 16px, 32px);
-  }
+    .copy {
+        font-weight: bold;
+        font-size: 12px;
+        @include mt(16px, 16px, 32px);
+    }
 }
 
 .topBtn {
-  @include width(80px);
-  @include height(80px);
-  border-radius: 50%;
-  position: fixed;
-  @include bottom(16px, 12px);
-  @include right(16px, 12px);
-  opacity: 0;
-  pointer-events: none;
-  z-index: 1;
+    @include width(80px);
+    @include height(80px);
+    border-radius: 50%;
+    position: fixed;
+    @include bottom(16px, 12px);
+    @include right(16px, 12px);
+    opacity: 0;
+    pointer-events: none;
+    z-index: 1;
 
-  &.active {
-    opacity: 1;
-    pointer-events: all;
-  }
+    &.active {
+        opacity: 1;
+        pointer-events: all;
+    }
 }

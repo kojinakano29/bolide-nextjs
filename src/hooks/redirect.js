@@ -1,20 +1,20 @@
-import { useRouter } from "next/router";
+import { useRouter } from 'next/router'
 
 const useRedirect = () => {
-  const router = useRouter()
+    const router = useRouter()
 
-  const loginCheck = (user, url, message) => {
-    if (!user) {
-      alert(message)
-      router.push({
-        pathname: url,
-      })
+    const loginCheck = (user, url, message) => {
+        if (!user) {
+            alert(message)
+            router.push({
+                pathname: url,
+            })
+        }
     }
-  }
 
-  return {
-    loginCheck,
-  }
+    return {
+        loginCheck,
+    }
 }
 
-export default useRedirect;
+export default useRedirect

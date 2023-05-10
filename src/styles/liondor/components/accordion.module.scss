@@ -1,47 +1,47 @@
 @import '../../variables.scss';
 
 .accordionBox {
-  border-top: 1px solid $g3;
+    border-top: 1px solid $g3;
 
-  dl {
-    border-bottom: 1px solid $g3;
-    overflow: hidden;
+    dl {
+        border-bottom: 1px solid $g3;
+        overflow: hidden;
 
-    dt {
-      @include p(24px 16px);
-      @include flex(center, left);
-      @include gap(16px);
-      cursor: pointer;
+        dt {
+            @include p(24px 16px);
+            @include flex(center, left);
+            @include gap(16px);
+            cursor: pointer;
 
-      .icon {
-        font-size: var(--fs22-18);
-        font-weight: 600;
-        @include width(20px);
-      }
+            .icon {
+                font-size: var(--fs22-18);
+                font-weight: 600;
+                @include width(20px);
+            }
 
-      .qs {
-        font-size: var(--fs18-16);
-        font-weight: 500;
-        @include width(calc(100% - (20px + 24px + 16px * 2)));
-      }
+            .qs {
+                font-size: var(--fs18-16);
+                font-weight: 500;
+                @include width(calc(100% - (20px + 24px + 16px * 2)));
+            }
 
-      .state {
-        @include fs(24px);
-        @include width(24px);
-      }
+            .state {
+                @include fs(24px);
+                @include width(24px);
+            }
+        }
+
+        dd {
+            transition: 0.5s ease-out;
+
+            .as {
+                @include p(16px 32px);
+                @include mb(16px);
+                @include ml(16px);
+                font-size: var(--fs16-14);
+                font-weight: 300;
+                background-color: $g2;
+            }
+        }
     }
-
-    dd {
-      transition: .5s ease-out;
-
-      .as {
-        @include p(16px 32px);
-        @include mb(16px);
-        @include ml(16px);
-        font-size: var(--fs16-14);
-        font-weight: 300;
-        background-color: $g2;
-      }
-    }
-  }
 }

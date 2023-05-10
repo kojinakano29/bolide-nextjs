@@ -1,187 +1,187 @@
 @import '../../variables.scss';
 
 .optionArea {
-  @include mb(80px, 64px);
+    @include mb(80px, 64px);
 
-  .midashi {
-    @include fs(18px, 16px);
-    font-weight: bold;
-    text-align: center;
-    @include mb(32px, 24px);
-  }
-
-  .optionBox {
-    @include width(496px);
-    margin: auto;
-    border-radius: 10px;
-    box-shadow: 0 3px 6px rgba(0, 0, 0, .16);
-    background-color: $w1;
-    @include flex(center);
-    @include gap(16px, 8px);
-    @include p(24px, 16px 24px, 16px);
-    @include mb(80px);
-
-    .optionName {
-      @include fs(20px, 18px, 16px);
-      font-weight: bold;
-    }
-
-    .optionPrice {
-      span {
+    .midashi {
+        @include fs(18px, 16px);
         font-weight: bold;
-
-        &.sm {
-          @include fs(30px, 24px, 20px);
-        }
-
-        &.big {
-          @include fs(38px, 28px, 24px);
-        }
-
-        &.jp {
-          @include fs(22px, 18px, 16px);
-        }
-      }
+        text-align: center;
+        @include mb(32px, 24px);
     }
-  }
+
+    .optionBox {
+        @include width(496px);
+        margin: auto;
+        border-radius: 10px;
+        box-shadow: 0 3px 6px rgba(0, 0, 0, 0.16);
+        background-color: $w1;
+        @include flex(center);
+        @include gap(16px, 8px);
+        @include p(24px, 16px 24px, 16px);
+        @include mb(80px);
+
+        .optionName {
+            @include fs(20px, 18px, 16px);
+            font-weight: bold;
+        }
+
+        .optionPrice {
+            span {
+                font-weight: bold;
+
+                &.sm {
+                    @include fs(30px, 24px, 20px);
+                }
+
+                &.big {
+                    @include fs(38px, 28px, 24px);
+                }
+
+                &.jp {
+                    @include fs(22px, 18px, 16px);
+                }
+            }
+        }
+    }
 }
 
 .optionContent {
-  h3 {
-    @include fs(18px, 16px);
-    font-weight: bold;
-    text-align: center;
-    @include mb(32px, 24px);
-  }
-
-  .desc {
-    @include fs(16px, 14px);
-    text-align: center;
-    @include mb(40px, 32px);
-  }
-
-  .catch {
-    @include fs(20px, 18px, 16px);
-    font-weight: bold;
-    text-align: center;
-    @include mb(40px, 32px);
-  }
-
-  .linkBox {
-    @include mb(80px, 64px);
-
-    .txt {
-      @include fs(16px, 14px);
-      font-weight: bold;
-      text-align: center;
-      @include mb(16px);
+    h3 {
+        @include fs(18px, 16px);
+        font-weight: bold;
+        text-align: center;
+        @include mb(32px, 24px);
     }
-  }
 
-  .courseArea {
-    @include bjcCourse;
-    justify-content: center;
-    @include mb(64px, 56px);
+    .desc {
+        @include fs(16px, 14px);
+        text-align: center;
+        @include mb(40px, 32px);
+    }
 
-    .courseBtn {
-      @include height(118px, 118px, unset);
+    .catch {
+        @include fs(20px, 18px, 16px);
+        font-weight: bold;
+        text-align: center;
+        @include mb(40px, 32px);
+    }
 
-      label {
+    .linkBox {
+        @include mb(80px, 64px);
+
+        .txt {
+            @include fs(16px, 14px);
+            font-weight: bold;
+            text-align: center;
+            @include mb(16px);
+        }
+    }
+
+    .courseArea {
+        @include bjcCourse;
         justify-content: center;
-        @include p(0, 0, 32px);
-      }
-    }
-  }
+        @include mb(64px, 56px);
 
-  .optionDl {
-    @include mb(64px, 56px);
+        .courseBtn {
+            @include height(118px, 118px, unset);
 
-    dt {
-      @include fs(16px, 14px);
-      font-weight: bold;
-      @include mb(12px);
+            label {
+                justify-content: center;
+                @include p(0, 0, 32px);
+            }
+        }
     }
 
-    dd {
-      @include fs(16px, 14px);
-      font-weight: 500;
+    .optionDl {
+        @include mb(64px, 56px);
+
+        dt {
+            @include fs(16px, 14px);
+            font-weight: bold;
+            @include mb(12px);
+        }
+
+        dd {
+            @include fs(16px, 14px);
+            font-weight: 500;
+        }
     }
-  }
 }
 
 .btnFlex {
-  @include flex(center, center);
-  @include gap(16px);
-  flex-direction: column-reverse;
+    @include flex(center, center);
+    @include gap(16px);
+    flex-direction: column-reverse;
 
-  div {
-    width: fit-content;
+    div {
+        width: fit-content;
 
-    &.type2 {
-      button,
-      a {
-        @include width(200px, 160px);
-        @include height(40px);
-        background-color: $w1;
-        border: 2px solid $b6;
-        color: $b6;
-      }
+        &.type2 {
+            button,
+            a {
+                @include width(200px, 160px);
+                @include height(40px);
+                background-color: $w1;
+                border: 2px solid $b6;
+                color: $b6;
+            }
+        }
     }
-  }
 
-  .registered {
-    @include fs(16px, 14px);
+    .registered {
+        @include fs(16px, 14px);
 
-    &:hover {
-      text-decoration: underline;
+        &:hover {
+            text-decoration: underline;
+        }
     }
-  }
 }
 
 .privacyCheck {
-  text-align: center;
-  @include mb(40px, 32px);
+    text-align: center;
+    @include mb(40px, 32px);
 
-  .require {
-    width: fit-content;
-    @include fs(13px, 12px);
-    font-weight: bold;
-    @include p(0 4px);
-    color: $r1;
-    border: 1px solid $r1;
-  }
-
-  .txt {
-    @include fs(16px, 14px);
-    font-weight: 500;
-    margin: auto;
-    @include mb(24px, 16px);
-    width: fit-content;
-    text-align: left;
-
-    a {
-      color: $b14;
-      text-decoration: underline;
-
-      &:hover {
-        text-decoration: none;
-      }
+    .require {
+        width: fit-content;
+        @include fs(13px, 12px);
+        font-weight: bold;
+        @include p(0 4px);
+        color: $r1;
+        border: 1px solid $r1;
     }
-  }
 
-  label {
-    width: fit-content;
-    @include flex(center, center);
-    @include gap(8px);
-    margin: auto;
-    @include fs(16px, 14px);
-    font-weight: bold;
-    cursor: pointer;
+    .txt {
+        @include fs(16px, 14px);
+        font-weight: 500;
+        margin: auto;
+        @include mb(24px, 16px);
+        width: fit-content;
+        text-align: left;
 
-    input[type="checkbox"] {
-      @include width(16px, 14px);
-      @include height(16px, 14px);
-      cursor: pointer;
+        a {
+            color: $b14;
+            text-decoration: underline;
+
+            &:hover {
+                text-decoration: none;
+            }
+        }
     }
-  }
+
+    label {
+        width: fit-content;
+        @include flex(center, center);
+        @include gap(8px);
+        margin: auto;
+        @include fs(16px, 14px);
+        font-weight: bold;
+        cursor: pointer;
+
+        input[type='checkbox'] {
+            @include width(16px, 14px);
+            @include height(16px, 14px);
+            cursor: pointer;
+        }
+    }
 }

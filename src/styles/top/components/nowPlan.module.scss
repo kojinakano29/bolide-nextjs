@@ -1,36 +1,36 @@
 @import '../../variables.scss';
 
 .planBox {
-  @include width(496px);
-  margin: auto;
-  border-radius: 10px;
-  box-shadow: 0 3px 6px rgba(0, 0, 0, .16);
-  background-color: $w1;
-  @include flex(center);
-  @include gap(16px, 8px);
-  @include p(24px, 16px 24px, 16px);
+    @include width(496px);
+    margin: auto;
+    border-radius: 10px;
+    box-shadow: 0 3px 6px rgba(0, 0, 0, 0.16);
+    background-color: $w1;
+    @include flex(center);
+    @include gap(16px, 8px);
+    @include p(24px, 16px 24px, 16px);
 
-  .planName {
-    @include fs(20px, 18px, 16px);
-    font-weight: bold;
-    white-space: pre-wrap;
-  }
-
-  .planPrice {
-    span {
-      font-weight: bold;
-
-      &.sm {
-        @include fs(30px, 24px, 20px);
-      }
-
-      &.big {
-        @include fs(38px, 28px, 24px);
-      }
-
-      &.jp {
-        @include fs(22px, 18px, 16px);
-      }
+    .planName {
+        @include fs(20px, 18px, 16px);
+        font-weight: bold;
+        white-space: pre-wrap;
     }
-  }
+
+    .planPrice {
+        span {
+            font-weight: bold;
+
+            &.sm {
+                @include fs(30px, 24px, 20px);
+            }
+
+            &.big {
+                @include fs(38px, 28px, 24px);
+            }
+
+            &.jp {
+                @include fs(22px, 18px, 16px);
+            }
+        }
+    }
 }

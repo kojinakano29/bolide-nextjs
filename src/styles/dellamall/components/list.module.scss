@@ -1,85 +1,85 @@
 @import '../../variables.scss';
 
 .searchBox {
-  @include searchBox;
+    @include searchBox;
 }
 
 .adminList {
-  @include mb(96px, 80px, 48px);
+    @include mb(96px, 80px, 48px);
 
-  ul {
-    border-top: 1px solid $g3;
+    ul {
+        border-top: 1px solid $g3;
 
-    li {
-      @include p(24px 0);
-      border-bottom: 1px solid $g3;
+        li {
+            @include p(24px 0);
+            border-bottom: 1px solid $g3;
 
-      .flex,
-      .btnFlex {
-        @include flex(center, left);
-        @include gap(16px);
-        @include mb(4px);
-      }
+            .flex,
+            .btnFlex {
+                @include flex(center, left);
+                @include gap(16px);
+                @include mb(4px);
+            }
 
-      .btnFlex {
-        @include mb(0);
-        @include mt(8px);
+            .btnFlex {
+                @include mb(0);
+                @include mt(8px);
 
-        button {
-          @include fs(14px, 12px);
-          font-weight: 500;
-          color: $r1;
-          text-decoration: underline;
+                button {
+                    @include fs(14px, 12px);
+                    font-weight: 500;
+                    color: $r1;
+                    text-decoration: underline;
 
-          &:hover {
-            text-decoration: none;
-          }
+                    &:hover {
+                        text-decoration: none;
+                    }
+                }
+            }
+
+            .date {
+                @include fs(16px, 14px);
+                font-weight: 500;
+
+                time {
+                    color: $g1;
+                }
+            }
+
+            .state {
+                @include p(2px 16px);
+                @include fs(12px);
+                background-color: $b1;
+                color: $w1;
+                font-weight: bold;
+                border-radius: 10px;
+            }
+
+            .txt {
+                @include fs(16px, 14px);
+                font-weight: 500;
+
+                a {
+                    text-decoration: underline;
+
+                    &:hover {
+                        text-decoration: none;
+                    }
+                }
+            }
+
+            .btn {
+                @include p(2px 16px);
+                @include fs(14px, 12px);
+                background-color: $o1;
+                color: $w1;
+                font-weight: bold;
+                border-radius: 10px;
+            }
         }
-      }
-
-      .date {
-        @include fs(16px, 14px);
-        font-weight: 500;
-
-        time {
-          color: $g1;
-        }
-      }
-
-      .state {
-        @include p(2px 16px);
-        @include fs(12px);
-        background-color: $b1;
-        color: $w1;
-        font-weight: bold;
-        border-radius: 10px;
-      }
-
-      .txt {
-        @include fs(16px, 14px);
-        font-weight: 500;
-
-        a {
-          text-decoration: underline;
-
-          &:hover {
-            text-decoration: none;
-          }
-        }
-      }
-
-      .btn {
-        @include p(2px 16px);
-        @include fs(14px, 12px);
-        background-color: $o1;
-        color: $w1;
-        font-weight: bold;
-        border-radius: 10px;
-      }
     }
-  }
 }
 
 .pager {
-  @include pager;
+    @include pager;
 }

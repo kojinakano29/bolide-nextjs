@@ -5,35 +5,35 @@ import { useForm } from 'react-hook-form'
 import { useCallback } from 'react'
 import { useRouter } from 'next/router'
 
-const SearchIcon = ({setSearchActive}) => {
-  const router = useRouter()
+const SearchIcon = ({ setSearchActive }) => {
+    const router = useRouter()
 
-  const { register, handleSubmit } = useForm()
+    const { register, handleSubmit } = useForm()
 
-  const onSubmit = (data) => {
-    // console.log(data)
+    const onSubmit = data => {
+        // console.log(data)
 
-    window.location.href = `/dellamall/search/?s=${data.search}`
-  }
+        window.location.href = `/dellamall/search/?s=${data.search}`
+    }
 
-  return (
-    <div className={styles.iconBox}>
-      <form onSubmit={handleSubmit(onSubmit)}>
-        <label className={styles.searchBtn}>
-          <div className={styles.icon}>
-            <FontAwesomeIcon icon={faMagnifyingGlass} />
-          </div>
-          <input
-            type="text"
-            {...register("search")}
-            placeholder="SEARCH FOR INSPIRATION"
-            onFocus={() => setSearchActive(true)}
-            onBlur={() => setSearchActive(false)}
-          />
-        </label>
-      </form>
-    </div>
-  );
+    return (
+        <div className={styles.iconBox}>
+            <form onSubmit={handleSubmit(onSubmit)}>
+                <label className={styles.searchBtn}>
+                    <div className={styles.icon}>
+                        <FontAwesomeIcon icon={faMagnifyingGlass} />
+                    </div>
+                    <input
+                        type="text"
+                        {...register('search')}
+                        placeholder="SEARCH FOR INSPIRATION"
+                        onFocus={() => setSearchActive(true)}
+                        onBlur={() => setSearchActive(false)}
+                    />
+                </label>
+            </form>
+        </div>
+    )
 }
 
-export default SearchIcon;
+export default SearchIcon

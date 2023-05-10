@@ -1,60 +1,60 @@
 @import '../../variables.scss';
 
 .header {
-  width: 100%;
-  position: fixed;
-  top: 0;
-  left: 0;
-  z-index: 999;
-  transition: .3s ease;
-
-  @include media1(sp) {
-    position: absolute;
-  }
-
-  &.kasou {
-    background-color: $w1;
-    box-shadow: 0 3px 6px rgba(0, 0, 0, .08);
-  }
-
-  &.spHeader {
-    background-color: $w1;
+    width: 100%;
     position: fixed;
-    top: unset;
-    bottom: 0;
-    opacity: 0;
-    pointer-events: none;
-    transition: .3s ease;
+    top: 0;
+    left: 0;
+    z-index: 999;
+    transition: 0.3s ease;
+
+    @include media1(sp) {
+        position: absolute;
+    }
+
+    &.kasou {
+        background-color: $w1;
+        box-shadow: 0 3px 6px rgba(0, 0, 0, 0.08);
+    }
+
+    &.spHeader {
+        background-color: $w1;
+        position: fixed;
+        top: unset;
+        bottom: 0;
+        opacity: 0;
+        pointer-events: none;
+        transition: 0.3s ease;
+
+        &.active {
+            opacity: 1;
+            pointer-events: all;
+        }
+    }
 
     &.active {
-      opacity: 1;
-      pointer-events: all;
+        background-color: $w1;
+        box-shadow: 0 3px 6px rgba(0, 0, 0, 0.08);
     }
-  }
 
-  &.active {
-    background-color: $w1;
-    box-shadow: 0 3px 6px rgba(0, 0, 0, .08);
-  }
-
-  & > div {
-    @include media1(tab1) {
-      max-width: 100%;
-      padding: 0 20px;
+    & > div {
+        @include media1(tab1) {
+            max-width: 100%;
+            padding: 0 20px;
+        }
     }
-  }
 }
 
 .flex {
-  @include height(96px, 96px, 64px);
-  @include flex(center);
+    @include height(96px, 96px, 64px);
+    @include flex(center);
 }
 
 .left {
-  @include flex(center, left);
-  @include gap(30px);
+    @include flex(center, left);
+    @include gap(30px);
 }
 
 .logo {
-  @include width(150px);
+    @include width(150px);
 }

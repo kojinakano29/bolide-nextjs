@@ -1,95 +1,99 @@
 @import '../../variables.scss';
 
 .cont1__title {
-  @include fs(28px, 24px);
-  font-weight: 500;
-  text-align: center;
-  @include mt(64px, 48px);
-  @include mb(32px);
+    @include fs(28px, 24px);
+    font-weight: 500;
+    text-align: center;
+    @include mt(64px, 48px);
+    @include mb(32px);
 }
 
 .cont1__list {
-  @include flex();
-  @include gap(30px, 24px);
+    @include flex();
+    @include gap(30px, 24px);
 
-  .cont1__item {
-    @include width(calc(100% * 1/3 - 20px), calc(100% * 1/3 - 16px), 100%);
+    .cont1__item {
+        @include width(
+            calc(100% * 1 / 3 - 20px),
+            calc(100% * 1 / 3 - 16px),
+            100%
+        );
 
-    .imgBox {
-      @include mb(24px, 16px);
+        .imgBox {
+            @include mb(24px, 16px);
+        }
+
+        .cont1__item__text {
+            @include fs(22px, 18px);
+            font-weight: bold;
+            text-align: center;
+
+            @include media1(sp) {
+                text-align: left;
+            }
+        }
     }
-
-    .cont1__item__text {
-      @include fs(22px, 18px);
-      font-weight: bold;
-      text-align: center;
-
-      @include media1(sp) {
-        text-align: left;
-      }
-    }
-  }
 }
 
 .plan {
-  @include pt(64px);
+    @include pt(64px);
 
-  .cont2__title {
-    @include fs(28px, 24px);
-    font-weight: bold;
-    text-align: center;
-    @include mb(24px, 16px);
-  }
-
-  .cont2__text {
-    @include fs(16px, 14px);
-    font-weight: 500;
-    text-align: center;
-    max-width: 500px;
-    margin: auto;
-    @include mb(48px);
-  }
-
-  .imgBox {
-    @include media1(sp) {
-      overflow-x: scroll;
-
-      & > span {
-        width: 400px !important;
-        max-width: unset;
-      }
+    .cont2__title {
+        @include fs(28px, 24px);
+        font-weight: bold;
+        text-align: center;
+        @include mb(24px, 16px);
     }
-  }
+
+    .cont2__text {
+        @include fs(16px, 14px);
+        font-weight: 500;
+        text-align: center;
+        max-width: 500px;
+        margin: auto;
+        @include mb(48px);
+    }
+
+    .imgBox {
+        @include media1(sp) {
+            overflow-x: scroll;
+
+            & > span {
+                width: 400px !important;
+                max-width: unset;
+            }
+        }
+    }
 }
 
 .btnArea {
-  @include pt(64px);
+    @include pt(64px);
 
-  .cont3__title {
-    @include fs(24px, 24px, 16px);
-    font-weight: bold;
-    position: relative;
-    width: fit-content;
-    margin: auto;
+    .cont3__title {
+        @include fs(24px, 24px, 16px);
+        font-weight: bold;
+        position: relative;
+        width: fit-content;
+        margin: auto;
 
-    &::before,
-    &::after {
-      content: "";
-      @include width(20px, 20px, 15px);
-      height: 2px;
-      background: $b3;
-      position: absolute;
-      top: 50%;
+        &::before,
+        &::after {
+            content: '';
+            @include width(20px, 20px, 15px);
+            height: 2px;
+            background: $b3;
+            position: absolute;
+            top: 50%;
+        }
+
+        &:before {
+            transform: translateY(-50%) rotateZ(45deg);
+            left: -25px;
+        }
+
+        &::after {
+            transform: translateY(-50%) rotateZ(-45deg);
+            right: -25px;
+        }
     }
-
-    &:before {
-      transform: translateY(-50%) rotateZ(45deg);
-      left: -25px;
-    }
-
-    &::after {
-      transform: translateY(-50%) rotateZ(-45deg);
-      right: -25px;
-    }
-  }
 }

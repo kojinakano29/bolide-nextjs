@@ -1,61 +1,65 @@
 @import '../../variables.scss';
 
 .slideWrap {
-  @include width(calc(100vw - ((100vw - 1300px) / 2)), calc(100vw - ((100vw - 720px) / 2)), calc(100vw - 20px));
-  max-width: unset;
+    @include width(
+        calc(100vw - ((100vw - 1300px) / 2)),
+        calc(100vw - ((100vw - 720px) / 2)),
+        calc(100vw - 20px)
+    );
+    max-width: unset;
 
-  div {
     div {
-      div {
-        @include width(300px !important);
-      }
+        div {
+            div {
+                @include width(300px !important);
+            }
+        }
     }
-  }
 }
 
 .imgBox {
-  @include mb(16px);
-  aspect-ratio: 1 / 1;
-  overflow: hidden;
+    @include mb(16px);
+    aspect-ratio: 1 / 1;
+    overflow: hidden;
 
-  img {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-    object-position: center;
-  }
+    img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        object-position: center;
+    }
 }
 
 .blogLink {
-  composes: blogLink from './parts.scss';
-  @include width(300px);
+    composes: blogLink from './parts.scss';
+    @include width(300px);
 }
 
 .slideNav {
-  position: relative;
+    position: relative;
 
-  button {
-    color: $b1;
-    width: unset;
-    height: unset;
-    @include top(60px, 48px);
+    button {
+        color: $b1;
+        width: unset;
+        height: unset;
+        @include top(60px, 48px);
 
-    &::after {
-      @include fs(24px, 16px);
+        &::after {
+            @include fs(24px, 16px);
+        }
     }
-  }
 
-  .prev {
-    @include right(calc(48px));
-    left: unset;
-  }
+    .prev {
+        @include right(calc(48px));
+        left: unset;
+    }
 
-  .next {
-    right: 0;
-  }
+    .next {
+        right: 0;
+    }
 }
 
 .noneLength {
-  @include fs(16px, 14px);
-  font-weight: 500;
+    @include fs(16px, 14px);
+    font-weight: 500;
 }

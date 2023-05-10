@@ -1,56 +1,60 @@
 @import '../../variables.scss';
 
 .column3 {
-  @include column3;
+    @include column3;
 }
 
 .noneText {
-  @include fs(16px, 14px);
-  font-weight: 500;
+    @include fs(16px, 14px);
+    font-weight: 500;
 }
 
 .commentArea {
-  @include pt(128px, 80px, 48px);
+    @include pt(128px, 80px, 48px);
 }
 
 .appealArea {
-  @include pt(128px, 80px, 48px);
+    @include pt(128px, 80px, 48px);
 
-  .appealBox {
-    @include flex(center);
-    @include gap(32px, 24px, 32px);
-    @include p(32px 72px, 24px 40px, 20px);
-    background-color: $o3;
-    border-radius: 10px;
+    .appealBox {
+        @include flex(center);
+        @include gap(32px, 24px, 32px);
+        @include p(32px 72px, 24px 40px, 20px);
+        background-color: $o3;
+        border-radius: 10px;
 
-    .left {
-      @include width(calc(100% - (352px + 32px)), calc(100% - (300px + 24px)), 100%);
+        .left {
+            @include width(
+                calc(100% - (352px + 32px)),
+                calc(100% - (300px + 24px)),
+                100%
+            );
 
-      .ttl {
-        @include fs(24px, 18px);
-        font-weight: 900;
-        @include mb(24px, 16px);
-      }
+            .ttl {
+                @include fs(24px, 18px);
+                font-weight: 900;
+                @include mb(24px, 16px);
+            }
 
-      .desc {
-        @include fs(16px, 14px);
-        font-weight: 500;
-        white-space: pre-wrap;
-      }
+            .desc {
+                @include fs(16px, 14px);
+                font-weight: 500;
+                white-space: pre-wrap;
+            }
+        }
+
+        .imgBox {
+            @include width(352px, 300px, 100%);
+            border-radius: 10px;
+            overflow: hidden;
+        }
     }
-
-    .imgBox {
-      @include width(352px, 300px, 100%);
-      border-radius: 10px;
-      overflow: hidden;
-    }
-  }
 }
 
 .cardArea {
-  @include pt(128px, 80px, 48px);
+    @include pt(128px, 80px, 48px);
 }
 
 .likeArea {
-  @include pt(128px, 80px, 48px);
+    @include pt(128px, 80px, 48px);
 }

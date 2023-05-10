@@ -1,55 +1,55 @@
 @import '../../variables.scss';
 
 .releaseLink {
-  @include width(352px, calc(100% * 1/3 - 24px * 2/3), 352px);
+    @include width(352px, calc(100% * 1 / 3 - 24px * 2 / 3), 352px);
 
-  &.swiper {
-    width: 352px;
-  }
+    &.swiper {
+        width: 352px;
+    }
 
-  &:hover {
+    &:hover {
+        .imgBox {
+            img {
+                transform: scale(1.1);
+            }
+        }
+    }
+
     .imgBox {
-      img {
-        transform: scale(1.1);
-      }
+        aspect-ratio: 22 / 17;
+        @include mb(16px);
+        border-radius: 10px;
+        overflow: hidden;
+
+        img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            object-position: top center;
+            transition: 0.2s ease;
+        }
     }
-  }
 
-  .imgBox {
-    aspect-ratio: 22 / 17;
-    @include mb(16px);
-    border-radius: 10px;
-    overflow: hidden;
-
-    img {
-      width: 100%;
-      height: 100%;
-      object-fit: cover;
-      object-position: top center;
-      transition: .2s ease
+    .ttl {
+        @include fs(16px, 14px);
+        font-weight: bold;
+        @include mb(16px);
     }
-  }
 
-  .ttl {
-    @include fs(16px, 14px);
-    font-weight: bold;
-    @include mb(16px);
-  }
+    .view {
+        @include fs(13px);
+        font-weight: 600;
+        @include flex(center, left);
+        gap: 8px;
+    }
 
-  .view {
-    @include fs(13px);
-    font-weight: 600;
-    @include flex(center, left);
-    gap: 8px;
-  }
-
-  .tag {
-    @include tag2;
-    @include mt(10px);
-  }
+    .tag {
+        @include tag2;
+        @include mt(10px);
+    }
 }
 
 .company {
-  @include companyNicename(12px);
-  @include mt(8px);
+    @include companyNicename(12px);
+    @include mt(8px);
 }

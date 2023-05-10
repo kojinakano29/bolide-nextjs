@@ -1,46 +1,46 @@
 @import '../../variables.scss';
 
 .bottomArea {
-  @include flex(stretch);
-  @include gap(0, 0, 32px);
+    @include flex(stretch);
+    @include gap(0, 0, 32px);
 }
 
 .imgBox {
-  @include mb(16px);
-  aspect-ratio: 103 / 76;
-  overflow: hidden;
+    @include mb(16px);
+    aspect-ratio: 103 / 76;
+    overflow: hidden;
 
-  @include media1(sp) {
-    aspect-ratio: 1 / 1;
-  }
+    @include media1(sp) {
+        aspect-ratio: 1 / 1;
+    }
 
-  img {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-    object-position: center;
-  }
+    img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        object-position: center;
+    }
 }
 
 .blogLink {
-  composes: blogLink from './parts.scss';
-  @include width(412px, calc(100% * 1/3 - 16px * 2/3), 100%);
+    composes: blogLink from './parts.scss';
+    @include width(412px, calc(100% * 1 / 3 - 16px * 2 / 3), 100%);
 
-  @include media1(sp) {
-    border-bottom: 1px solid $g2;
-    padding-bottom: 32px;
-  }
-
-  &:not(:first-of-type) {
     @include media1(sp) {
-      display: flex;
-      gap: 16px;
+        border-bottom: 1px solid $g2;
+        padding-bottom: 32px;
+        display: flex;
+        gap: 16px;
 
-      .imgBox {
-        min-width: 100px;
-        max-width: 100px;
-        max-height: 100px;
-      }
+        .imgBox {
+            min-width: 100px;
+            max-width: 100px;
+            max-height: 100px;
+        }
     }
-  }
+
+    &:not(:first-of-type) {
+        @include media1(sp) {
+        }
+    }
 }

@@ -2,23 +2,23 @@
 
 /* 変数設定 */
 :root {
-  /* タイポグラフィ（フォントサイズ） */
-  --fs56-38: clamp(2.375rem, 1.0929rem + 2.6746vw, 3.5rem); /* 38-56 */
-  --fs40-24: clamp(1.5rem, 0.3603rem + 2.3774vw, 2.5rem); /* 24-40 */
-  --fs32-24: clamp(1.5rem, 1.1674rem + 0.6938vw, 2rem); /* 24-32 */
-  --fs32-18: clamp(1.125rem, 0.1278rem + 2.0802vw, 2rem); /* 18-32 */
-  --fs24-22: clamp(1.375rem, 1.2325rem + 0.2972vw, 1.5rem); /* 22-24 */
-  --fs24-18: clamp(1.125rem, 0.6976rem + 0.8915vw, 1.5rem); /* 18-24 */
-  --fs24-16: clamp(1rem, 0.6674rem + 0.6938vw, 1.5rem); /* 16-24 */
-  --fs22-18: clamp(1.125rem, 0.8401rem + 0.5944vw, 1.375rem); /* 18-22 */
-  --fs20-18: clamp(1.125rem, 1.0418rem + 0.1735vw, 1.25rem); /* 18-20 */
-  --fs18-16: clamp(1rem, 0.8575rem + 0.2972vw, 1.125rem); /* 16-18 */
-  --fs16-14: clamp(0.875rem, 0.7918rem + 0.1735vw, 1rem); /* 14-16 */
-  --fs14-12: clamp(0.75rem, 0.6075rem + 0.2972vw, 0.875rem); /* 12-14 */
-  --fs12-10: clamp(0.625rem, 0.4825rem + 0.2972vw, 0.75rem); /* 10-12 */
+    /* タイポグラフィ（フォントサイズ） */
+    --fs56-38: clamp(2.375rem, 1.0929rem + 2.6746vw, 3.5rem); /* 38-56 */
+    --fs40-24: clamp(1.5rem, 0.3603rem + 2.3774vw, 2.5rem); /* 24-40 */
+    --fs32-24: clamp(1.5rem, 1.1674rem + 0.6938vw, 2rem); /* 24-32 */
+    --fs32-18: clamp(1.125rem, 0.1278rem + 2.0802vw, 2rem); /* 18-32 */
+    --fs24-22: clamp(1.375rem, 1.2325rem + 0.2972vw, 1.5rem); /* 22-24 */
+    --fs24-18: clamp(1.125rem, 0.6976rem + 0.8915vw, 1.5rem); /* 18-24 */
+    --fs24-16: clamp(1rem, 0.6674rem + 0.6938vw, 1.5rem); /* 16-24 */
+    --fs22-18: clamp(1.125rem, 0.8401rem + 0.5944vw, 1.375rem); /* 18-22 */
+    --fs20-18: clamp(1.125rem, 1.0418rem + 0.1735vw, 1.25rem); /* 18-20 */
+    --fs18-16: clamp(1rem, 0.8575rem + 0.2972vw, 1.125rem); /* 16-18 */
+    --fs16-14: clamp(0.875rem, 0.7918rem + 0.1735vw, 1rem); /* 14-16 */
+    --fs14-12: clamp(0.75rem, 0.6075rem + 0.2972vw, 0.875rem); /* 12-14 */
+    --fs12-10: clamp(0.625rem, 0.4825rem + 0.2972vw, 0.75rem); /* 10-12 */
 
-  /* スペース（余白・間隔） */
-  --sp24-16: clamp(1rem, 0.6674rem + 0.6938vw, 1.5rem); /* 16-24 */
+    /* スペース（余白・間隔） */
+    --sp24-16: clamp(1rem, 0.6674rem + 0.6938vw, 1.5rem); /* 16-24 */
 }
 /* 変数設定 */
 
@@ -26,16 +26,16 @@
 *,
 *::before,
 *::after {
-  max-width: 100%;
-  outline: none;
-  box-sizing: border-box;
-  padding: 0;
-  margin: 0;
-  word-break: break-all;
+    max-width: 100%;
+    outline: none;
+    box-sizing: border-box;
+    padding: 0;
+    margin: 0;
+    word-break: break-all;
 }
 
 html {
-  scroll-behavior: smooth;
+    scroll-behavior: smooth;
 }
 
 a,
@@ -53,28 +53,28 @@ strong,
 textarea,
 ::before,
 ::after {
-  display: inline-block;
-  color: inherit;
-  font: inherit;
+    display: inline-block;
+    color: inherit;
+    font: inherit;
 }
 
 a,
 button,
-input[type="button"],
-input[type="submit"] {
-  cursor: pointer;
-  text-decoration: none;
+input[type='button'],
+input[type='submit'] {
+    cursor: pointer;
+    text-decoration: none;
 }
 
 img,
 video {
-  height: auto;
-  display: block;
+    height: auto;
+    display: block;
 }
 
 ol,
 ul {
-  list-style: none;
+    list-style: none;
 }
 /* リセット */
 
@@ -89,532 +89,535 @@ a,
 span,
 dt,
 dd {
-  letter-spacing: .6px;
+    letter-spacing: 0.6px;
 }
 
 span > img {
-  transition: .2s;
+    transition: 0.2s;
 }
 
 *.red {
-  color: $r1 !important;
+    color: $r1 !important;
 }
 
 *.orange {
-  color: $o1 !important;
+    color: $o1 !important;
 }
 
 .bigPc {
-  @include media1(bigPc) {
-    display: none !important;
-  }
+    @include media1(bigPc) {
+        display: none !important;
+    }
 }
 
 .smPc {
-  @include media2(smPc) {
-    display: none !important;
-  }
+    @include media2(smPc) {
+        display: none !important;
+    }
 }
 
 .pc {
-  @include media1(sp) {
-    display: none !important;
-  }
+    @include media1(sp) {
+        display: none !important;
+    }
 }
 
 .tab {
-  @include media2(pc) {
-    display: none !important;
-  }
+    @include media2(pc) {
+        display: none !important;
+    }
 }
 
 .sp {
-  @include media2(tab2) {
-    display: none !important;
-  }
+    @include media2(tab2) {
+        display: none !important;
+    }
 }
 
 .space {
-  width: .5em;
+    width: 0.5em;
 }
 
 .none {
-  display: none !important;
+    display: none !important;
 }
 
 .fill {
-  position: relative;
+    position: relative;
 }
 
 .hoverNone {
-  pointer-events: none;
+    pointer-events: none;
 }
 
 .btnCover {
-  width: fit-content;
-  margin: auto;
+    width: fit-content;
+    margin: auto;
 }
 
 .loader-icon {
-  text-align: center;
+    text-align: center;
 }
 
 .hoverEffect {
-  transition: all .2s ease-out;
+    transition: all 0.2s ease-out;
 
-  &:hover {
-      opacity: .5;
-  }
+    &:hover {
+        opacity: 0.5;
+    }
 }
 
 .modalArea {
-  @include modalBox;
+    @include modalBox;
 }
 /* 共通部分 */
 
 /* 3サイトトップ */
 .bolide_top {
-  *,
-  *::before,
-  *::after {
-    font-family: $nsj;
-    color: $b6;
-  }
-
-  .en {
-    font-family: $Poppins;
-  }
-
-  &.bjc_page {
-    background-image: url(../../public/top/back.svg);
-    background-position: center -258px;
-    width: 100%;
-
-    @include media1(sp) {
-      background-image: url(../../public/top/back__sp.svg);
-      background-position: center -120px;
-    }
-  }
-
-  .cont1 {
-    @include pt(176px, 120px, 80px);
-  }
-
-  .ttl1 {
-    @include flex(center, center);
-    @include mb(32px, 24px);
-    width: fit-content;
-
-    &.center {
-      @include m(0 auto 32px, 0 auto 24px);
+    *,
+    *::before,
+    *::after {
+        font-family: $nsj;
+        color: $b6;
     }
 
-    &.bottom {
-      .sm.en {
-        @include ty(6px, 2px);
-      }
+    .en {
+        font-family: $Poppins;
     }
 
-    &.bg_line {
-      background-image: url(../../public/top/color__bar.svg);
-      background-repeat: no-repeat;
-      background-size: 100%;
-      background-position: center bottom;
-      @include pb(16px);
-    }
+    &.bjc_page {
+        background-image: url(../../public/top/back.svg);
+        background-position: center -258px;
+        width: 100%;
 
-    span {
-      display: block;
-
-      &.big {
-        @include fs(40px, 28px);
-        font-weight: bold;
-      }
-
-      &.sm {
-        @include fs(32px, 24px);
-        font-weight: 900;
-
-        &.en {
-          @include fs(16px, 14px, 13px);
-          font-weight: bold;
+        @include media1(sp) {
+            background-image: url(../../public/top/back__sp.svg);
+            background-position: center -120px;
         }
-      }
-    }
-  }
-
-  .ttl2 {
-    @include fs(48px, 40px, 32px);
-    font-weight: 900;
-    @include mb(32px, 24px);
-  }
-
-  .btn1 {
-    @include width(200px);
-    @include height(40px);
-    border-radius: 36px;
-    border: 2px solid $b1;
-    @include flex(center, center);
-    background-color: $w1;
-    @include fs(14px);
-    font-weight: bold;
-    transition: .3s ease;
-
-    &.btn2 {
-      background-color: $b1;
-      color: $w1;
-      @include mt(10px);
     }
 
-    &:hover {
-      opacity: .5;
-    }
-  }
-
-  .breadcrumbBox {
-    @include flex(center, left);
-    @include gap(10px);
-    @include mb(48px, 40px, 32px);
-
-    * {
-      @include fs(12px);
-      font-weight: 500;
+    .cont1 {
+        @include pt(176px, 120px, 80px);
     }
 
-    a {
-      color: $g3;
+    .ttl1 {
+        @include flex(center, center);
+        @include mb(32px, 24px);
+        width: fit-content;
 
-      &:hover {
-        text-decoration: underline;
-      }
+        &.center {
+            @include m(0 auto 32px, 0 auto 24px);
+        }
+
+        &.bottom {
+            .sm.en {
+                @include ty(6px, 2px);
+            }
+        }
+
+        &.bg_line {
+            background-image: url(../../public/top/color__bar.svg);
+            background-repeat: no-repeat;
+            background-size: 100%;
+            background-position: center bottom;
+            @include pb(16px);
+        }
+
+        span {
+            display: block;
+
+            &.big {
+                @include fs(40px, 28px);
+                font-weight: bold;
+            }
+
+            &.sm {
+                @include fs(32px, 24px);
+                font-weight: 900;
+
+                &.en {
+                    @include fs(16px, 14px, 13px);
+                    font-weight: bold;
+                }
+            }
+        }
     }
-  }
+
+    .ttl2 {
+        @include fs(48px, 40px, 32px);
+        font-weight: 900;
+        @include mb(32px, 24px);
+    }
+
+    .btn1 {
+        @include width(200px);
+        @include height(40px);
+        border-radius: 36px;
+        border: 2px solid $b1;
+        @include flex(center, center);
+        background-color: $w1;
+        @include fs(14px);
+        font-weight: bold;
+        transition: 0.3s ease;
+
+        &.btn2 {
+            background-color: $b1;
+            color: $w1;
+            @include mt(10px);
+        }
+
+        &:hover {
+            opacity: 0.5;
+        }
+    }
+
+    .breadcrumbBox {
+        @include flex(center, left);
+        @include gap(10px);
+        @include mb(48px, 40px, 32px);
+
+        * {
+            @include fs(12px);
+            font-weight: 500;
+        }
+
+        a {
+            color: $g3;
+
+            &:hover {
+                text-decoration: underline;
+            }
+        }
+    }
 }
 /* 3サイトトップ */
 
-
 /* リオンドール共通部分 */
 .liondor {
-  *,
-  *::before,
-  *::after {
-    font-family: $nsj;
-  }
-
-  .en {
-    font-family: $prompt;
-  }
-
-  .ivy {
-    font-family: $ivy;
-  }
-
-  .cont {
-    @include pt(152px, 80px, 64px);
-  }
-
-  .cont1 {
-    @include pt(64px);
-  }
-
-  .ttl1 {
-    @include p(8px 0);
-    font-size: var(--fs32-18);
-    font-weight: 300;
-    border-top: 1px solid $g3;
-    border-bottom: 1px solid $g3;
-    @include mb(24px, 16px);
-  }
-
-  .btn2 {
-    @include width(160px);
-    @include height(40px);
-    @include flex(center, center);
-    background-color: $b1;
-    color: $w1;
-    border-radius: 4px;
-    @include mb(40px, 32px);
-    transition: .2s ease-out;
-
-    &:hover {
-      opacity: .5;
-    }
-  }
-
-  .btn3 {
-    @include width(260px, 200px);
-    @include height(64px, 48px);
-    @include flex(center, center);
-    background-color: $b1;
-    color: $w1;
-    font-family: "平成明朝 Std", sans-serif;
-    margin: auto;
-    transition: .2s ease-out;
-
-    &.noto {
-      font-family: $nsj;
-      font-weight: 500;
+    *,
+    *::before,
+    *::after {
+        font-family: $nsj;
     }
 
-    &.bold {
-      font-weight: bold;
+    .en {
+        font-family: $prompt;
     }
 
-    &:hover {
-      opacity: .5;
+    .ivy {
+        font-family: $ivy;
     }
 
-    &.btn3_2 {
-      @include width(200px, 160px);
-      @include height(48px, 40px);
-      background-color: $g2 !important;
-      @include fs(16px, 14px);
-      color: $b1;
-    }
-  }
-
-  .btn4 {
-    font-size: var(--fs20-18);
-    font-weight: 500;
-    color: $w1;
-    background-color: $b1;
-    @include width(412px, 320px);
-    @include height(110px, 64px);
-    @include flex(center, center);
-    margin: auto;
-    transition: .2s ease-out;
-
-    &:hover {
-      opacity: .5;
-    }
-  }
-
-  .btn5 {
-    @include width(328px, calc(100% * 1/2 - 16px), 328px);
-    @include height(100px, 80px);
-    @include flex(center, center);
-    background-color: $b1;
-    color: $w1;
-    font-size: var(--fs16-14);
-    font-weight: 500;
-    transition: .2s ease-out;
-
-    &:hover {
-      opacity: .5;
-    }
-  }
-
-  /* リオンドールページャー部分 */
-  .pagerBox {
-    @include flex(center, center);
-    @include gap(40px, 24px);
-    @include mt(96px, 64px, 48px);
-
-    .pagerBtn {
-      @include width(80px, 64px, 40px);
-      @include height(80px, 64px, 40px);
-      border: 1px solid $g3;
-      border-radius: 50%;
-      background-position: center;
-      background-repeat: no-repeat;
-      transition: .2s ease-out;
-
-      &.pagerPrev {
-        background-image: url(../images/liondor/common/pagerPrev.svg);
-      }
-
-      &.pagerNext {
-        background-image: url(../images/liondor/common/pagerNext.svg);
-      }
-
-      &:hover {
-        opacity: .5;
-      }
+    .cont {
+        @include pt(152px, 80px, 64px);
     }
 
-    .pagerCurrent {
-      font-size: var(--fs18-16);
+    .cont1 {
+        @include pt(64px);
     }
-  }
-  /* リオンドールページャー部分 */
+
+    .ttl1 {
+        @include p(8px 0);
+        font-size: var(--fs32-18);
+        font-weight: 300;
+        border-top: 1px solid $g3;
+        border-bottom: 1px solid $g3;
+        @include mb(24px, 16px);
+    }
+
+    .btn2 {
+        @include width(160px);
+        @include height(40px);
+        @include flex(center, center);
+        background-color: $b1;
+        color: $w1;
+        border-radius: 4px;
+        @include mb(40px, 32px);
+        transition: 0.2s ease-out;
+
+        &:hover {
+            opacity: 0.5;
+        }
+    }
+
+    .btn3 {
+        @include width(260px, 200px);
+        @include height(64px, 48px);
+        @include flex(center, center);
+        background-color: $b1;
+        color: $w1;
+        font-family: '平成明朝 Std', sans-serif;
+        margin: auto;
+        transition: 0.2s ease-out;
+
+        &.noto {
+            font-family: $nsj;
+            font-weight: 500;
+        }
+
+        &.bold {
+            font-weight: bold;
+        }
+
+        &:hover {
+            opacity: 0.5;
+        }
+
+        &.btn3_2 {
+            @include width(200px, 160px);
+            @include height(48px, 40px);
+            background-color: $g2 !important;
+            @include fs(16px, 14px);
+            color: $b1;
+        }
+    }
+
+    .btn4 {
+        font-size: var(--fs20-18);
+        font-weight: 500;
+        color: $w1;
+        background-color: $b1;
+        @include width(412px, 320px);
+        @include height(110px, 64px);
+        @include flex(center, center);
+        margin: auto;
+        transition: 0.2s ease-out;
+
+        &:hover {
+            opacity: 0.5;
+        }
+    }
+
+    .btn5 {
+        @include width(328px, calc(100% * 1 / 2 - 16px), 328px);
+        @include height(100px, 80px);
+        @include flex(center, center);
+        background-color: $b1;
+        color: $w1;
+        font-size: var(--fs16-14);
+        font-weight: 500;
+        transition: 0.2s ease-out;
+
+        &:hover {
+            opacity: 0.5;
+        }
+    }
+
+    /* リオンドールページャー部分 */
+    .pagerBox {
+        @include flex(center, center);
+        @include gap(40px, 24px);
+        @include mt(96px, 64px, 48px);
+
+        .pagerBtn {
+            @include width(80px, 64px, 40px);
+            @include height(80px, 64px, 40px);
+            border: 1px solid $g3;
+            border-radius: 50%;
+            background-position: center;
+            background-repeat: no-repeat;
+            transition: 0.2s ease-out;
+
+            &.pagerPrev {
+                background-image: url(../images/liondor/common/pagerPrev.svg);
+            }
+
+            &.pagerNext {
+                background-image: url(../images/liondor/common/pagerNext.svg);
+            }
+
+            &:hover {
+                opacity: 0.5;
+            }
+        }
+
+        .pagerCurrent {
+            font-size: var(--fs18-16);
+        }
+    }
+    /* リオンドールページャー部分 */
 }
 /* リオンドール共通部分 */
 
 /* デラモール共通部分 */
 .dellamall {
-  *,
-  *::before,
-  *::after {
-    font-family: $YuGothic;
-    color: $b3;
-  }
-
-  .en {
-    font-family: $Montserrat;
-  }
-
-  .cont1 {
-    @include pt(160px, 130px, 108px);
-  }
-
-  .ttl1 {
-    font-size: var(--fs32-24);
-    font-weight: 500;
-    letter-spacing: 0;
-    @include mb(16px);
-
-    &.center {
-      text-align: center;
-      @include mb(24px);
+    *,
+    *::before,
+    *::after {
+        font-family: $YuGothic;
+        color: $b3;
     }
 
-    &.mb40 {
-      @include mb(40px);
+    .en {
+        font-family: $Montserrat;
     }
-  }
 
-  .ttl2 {
-    font-size: var(--fs40-24);
-    font-weight: 500;
-    letter-spacing: 0;
-    text-align: center;
-    @include mb(24px);
-  }
-
-  .ttl3 {
-    @include fs(28px, 24px);
-    font-weight: bold;
-    position: relative;
-    text-align: center;
-    @include mb(40px);
-
-    &::after {
-      content: "";
-      position: absolute;
-      bottom: -12px;
-      left: 50%;
-      transform: translateX(-50%);
-      @include width(40px);
-      @include height(2px);
-      background: $b3;
+    .cont1 {
+        @include pt(160px, 130px, 108px);
     }
-  }
 
-  .btn4 {
-    @include btn4;
-  }
+    .ttl1 {
+        font-size: var(--fs32-24);
+        font-weight: 500;
+        letter-spacing: 0;
+        @include mb(16px);
 
-  .popularBox {
-    width: 100vw;
-    max-width: unset;
+        &.center {
+            text-align: center;
+            @include mb(24px);
+        }
 
-    .swiper-slide {
-      @include width(320px !important, calc(240px - 11px) !important, 240px !important);
+        &.mb40 {
+            @include mb(40px);
+        }
     }
-  }
 
-  .curtain {
-    width: 100vw;
-    height: 100vh;
-    position: fixed;
-    top: 0;
-    left: 0;
-    cursor: pointer;
-    z-index: 2;
-  }
+    .ttl2 {
+        font-size: var(--fs40-24);
+        font-weight: 500;
+        letter-spacing: 0;
+        text-align: center;
+        @include mb(24px);
+    }
+
+    .ttl3 {
+        @include fs(28px, 24px);
+        font-weight: bold;
+        position: relative;
+        text-align: center;
+        @include mb(40px);
+
+        &::after {
+            content: '';
+            position: absolute;
+            bottom: -12px;
+            left: 50%;
+            transform: translateX(-50%);
+            @include width(40px);
+            @include height(2px);
+            background: $b3;
+        }
+    }
+
+    .btn4 {
+        @include btn4;
+    }
+
+    .popularBox {
+        width: 100vw;
+        max-width: unset;
+
+        .swiper-slide {
+            @include width(
+                320px !important,
+                calc(240px - 11px) !important,
+                240px !important
+            );
+        }
+    }
+
+    .curtain {
+        width: 100vw;
+        height: 100vh;
+        position: fixed;
+        top: 0;
+        left: 0;
+        cursor: pointer;
+        z-index: 2;
+    }
 }
 /* デラモール共通部分 */
 
 /* コラプラ共通部分 */
 .corapura {
-  *,
-  *::before,
-  *::after {
-    font-family: $nsj;
-    color: $b6;
-  }
-
-  .en {
-    font-family: $Poppins;
-  }
-
-  &.topPage {
-    background: url(../images/corapura/common/grid.svg) round;
-    height: auto;
-    width: 100%;
-  }
-
-  .cont1 {
-    @include pt(120px, 80px);
-  }
-
-  .ttl1 {
-    @include fs(40px, 32px, 24px);
-    font-weight: bold;
-    text-align: center;
-    @include mb(48px, 32px);
-
-    span {
-      @include fs(48px, 40px, 32px);
-      font-weight: bold;
+    *,
+    *::before,
+    *::after {
+        font-family: $nsj;
+        color: $b6;
     }
-  }
 
-  .ttl2 {
-    @include fs(32px, 24px);
-    font-weight: 900;
-    @include mb(32px, 24px);
-  }
-
-  .swiper-wrapper {
-    display: flex;
-  }
-
-  .swiper-pagination {
-    @include flex(center, center);
-    @include gap(24px, 16px, 12px);
-    @include mt(56px, 48px, 24px);
-
-    .swiper-pagination-bullet {
-      width: 8px;
-      height: 8px;
-      border-radius: 50%;
-      background-color: $g3;
-      cursor: pointer;
-
-      &.swiper-pagination-bullet-active {
-        background-color: $b8;
-      }
+    .en {
+        font-family: $Poppins;
     }
-  }
 
-  .swiperType1 {
-    .swiper-slide {
-      min-width: 392px;
-      @include mr(16px, 16px, 24px);
-
-      .matterThumbs {
-        transition-duration: .3s;
-        transform-origin: left bottom;
-      }
-
-      @include media1(tab1) {
-        min-width: 320px;
-      }
-
-      @include media1(sp) {
-        min-width: 200px;
-      }
-
-      // &.swiper-slide-active {
-      //   @include mr(94px, 80px, 64px);
-
-      //   .matterThumbs {
-      //     transform: scale(1.2);
-      //   }
-      // }
+    &.topPage {
+        background: url(../images/corapura/common/grid.svg) round;
+        height: auto;
+        width: 100%;
     }
-  }
+
+    .cont1 {
+        @include pt(120px, 80px);
+    }
+
+    .ttl1 {
+        @include fs(40px, 32px, 24px);
+        font-weight: bold;
+        text-align: center;
+        @include mb(48px, 32px);
+
+        span {
+            @include fs(48px, 40px, 32px);
+            font-weight: bold;
+        }
+    }
+
+    .ttl2 {
+        @include fs(32px, 24px);
+        font-weight: 900;
+        @include mb(32px, 24px);
+    }
+
+    .swiper-wrapper {
+        display: flex;
+    }
+
+    .swiper-pagination {
+        @include flex(center, center);
+        @include gap(24px, 16px, 12px);
+        @include mt(56px, 48px, 24px);
+
+        .swiper-pagination-bullet {
+            width: 8px;
+            height: 8px;
+            border-radius: 50%;
+            background-color: $g3;
+            cursor: pointer;
+
+            &.swiper-pagination-bullet-active {
+                background-color: $b8;
+            }
+        }
+    }
+
+    .swiperType1 {
+        .swiper-slide {
+            min-width: 392px;
+            @include mr(16px, 16px, 24px);
+
+            .matterThumbs {
+                transition-duration: 0.3s;
+                transform-origin: left bottom;
+            }
+
+            @include media1(tab1) {
+                min-width: 320px;
+            }
+
+            @include media1(sp) {
+                min-width: 200px;
+            }
+
+            // &.swiper-slide-active {
+            //   @include mr(94px, 80px, 64px);
+
+            //   .matterThumbs {
+            //     transform: scale(1.2);
+            //   }
+            // }
+        }
+    }
 }
 /* コラプラ共通部分 */
 
@@ -625,303 +628,303 @@ span > img {
  * For more information, check out https://ckeditor.com/docs/ckeditor5/latest/installation/advanced/content-styles.html
  */
 :root {
-  --ck-color-image-caption-background: hsl(0, 0%, 97%);
-  --ck-color-image-caption-text: hsl(0, 0%, 20%);
-  --ck-color-table-caption-background: hsl(0, 0%, 97%);
-  --ck-color-table-caption-text: hsl(0, 0%, 20%);
-  --ck-image-style-spacing: 1.5em;
-  --ck-inline-image-style-spacing: calc(var(--ck-image-style-spacing) / 2);
+    --ck-color-image-caption-background: hsl(0, 0%, 97%);
+    --ck-color-image-caption-text: hsl(0, 0%, 20%);
+    --ck-color-table-caption-background: hsl(0, 0%, 97%);
+    --ck-color-table-caption-text: hsl(0, 0%, 20%);
+    --ck-image-style-spacing: 1.5em;
+    --ck-inline-image-style-spacing: calc(var(--ck-image-style-spacing) / 2);
 }
 
 /* ckeditor5-font/theme/fontsize.css */
 .ck-content .text-tiny {
-  font-size: .7em;
+    font-size: 0.7em;
 }
 /* ckeditor5-font/theme/fontsize.css */
 .ck-content .text-small {
-  font-size: .85em;
+    font-size: 0.85em;
 }
 /* ckeditor5-font/theme/fontsize.css */
 .ck-content .text-big {
-  font-size: 1.4em;
+    font-size: 1.4em;
 }
 /* ckeditor5-font/theme/fontsize.css */
 .ck-content .text-huge {
-  font-size: 1.8em;
+    font-size: 1.8em;
 }
 /* ckeditor5-image/theme/image.css */
 .ck-content .image {
-  display: table;
-  clear: both;
-  text-align: center;
-  margin: 0.9em auto;
-  min-width: 50px;
+    display: table;
+    clear: both;
+    text-align: center;
+    margin: 0.9em auto;
+    min-width: 50px;
 }
 /* ckeditor5-image/theme/image.css */
 .ck-content .image img {
-  display: block;
-  margin: 0 auto;
-  max-width: 100%;
-  min-width: 100%;
+    display: block;
+    margin: 0 auto;
+    max-width: 100%;
+    min-width: 100%;
 }
 /* ckeditor5-image/theme/image.css */
 .ck-content .image-inline {
-  /*
+    /*
     * Normally, the .image-inline would have "display: inline-block" and "img { width: 100% }" (to follow the wrapper while resizing).;
     * Unfortunately, together with "srcset", it gets automatically stretched up to the width of the editing root.
     * This strange behavior does not happen with inline-flex.
     */
-  display: inline-flex;
-  max-width: 100%;
-  align-items: flex-start;
+    display: inline-flex;
+    max-width: 100%;
+    align-items: flex-start;
 }
 /* ckeditor5-image/theme/image.css */
 .ck-content .image-inline picture {
-  display: flex;
+    display: flex;
 }
 /* ckeditor5-image/theme/image.css */
 .ck-content .image-inline picture,
 .ck-content .image-inline img {
-  flex-grow: 1;
-  flex-shrink: 1;
-  max-width: 100%;
+    flex-grow: 1;
+    flex-shrink: 1;
+    max-width: 100%;
 }
 /* ckeditor5-image/theme/imagecaption.css */
 .ck-content .image > figcaption {
-  display: table-caption;
-  caption-side: bottom;
-  word-break: break-word;
-  color: var(--ck-color-image-caption-text);
-  background-color: var(--ck-color-image-caption-background);
-  padding: .6em;
-  font-size: .75em;
-  outline-offset: -1px;
+    display: table-caption;
+    caption-side: bottom;
+    word-break: break-word;
+    color: var(--ck-color-image-caption-text);
+    background-color: var(--ck-color-image-caption-background);
+    padding: 0.6em;
+    font-size: 0.75em;
+    outline-offset: -1px;
 }
 /* ckeditor5-image/theme/imageresize.css */
 .ck-content .image.image_resized {
-  max-width: 100%;
-  display: block;
-  box-sizing: border-box;
+    max-width: 100%;
+    display: block;
+    box-sizing: border-box;
 }
 /* ckeditor5-image/theme/imageresize.css */
 .ck-content .image.image_resized img {
-  width: 100%;
+    width: 100%;
 }
 /* ckeditor5-image/theme/imageresize.css */
 .ck-content .image.image_resized > figcaption {
-  display: block;
+    display: block;
 }
 /* ckeditor5-image/theme/imagestyle.css */
 .ck-content .image-style-block-align-left,
 .ck-content .image-style-block-align-right {
-  max-width: calc(100% - var(--ck-image-style-spacing));
+    max-width: calc(100% - var(--ck-image-style-spacing));
 }
 /* ckeditor5-image/theme/imagestyle.css */
 .ck-content .image-style-align-left,
 .ck-content .image-style-align-right {
-  clear: none;
+    clear: none;
 }
 /* ckeditor5-image/theme/imagestyle.css */
 .ck-content .image-style-side {
-  float: right;
-  margin-left: var(--ck-image-style-spacing);
-  max-width: 50%;
+    float: right;
+    margin-left: var(--ck-image-style-spacing);
+    max-width: 50%;
 }
 /* ckeditor5-image/theme/imagestyle.css */
 .ck-content .image-style-align-left {
-  float: left;
-  margin-right: var(--ck-image-style-spacing);
+    float: left;
+    margin-right: var(--ck-image-style-spacing);
 }
 /* ckeditor5-image/theme/imagestyle.css */
 .ck-content .image-style-align-center {
-  margin-left: auto;
-  margin-right: auto;
+    margin-left: auto;
+    margin-right: auto;
 }
 /* ckeditor5-image/theme/imagestyle.css */
 .ck-content .image-style-align-right {
-  float: right;
-  margin-left: var(--ck-image-style-spacing);
+    float: right;
+    margin-left: var(--ck-image-style-spacing);
 }
 /* ckeditor5-image/theme/imagestyle.css */
 .ck-content .image-style-block-align-right {
-  margin-right: 0;
-  margin-left: auto;
+    margin-right: 0;
+    margin-left: auto;
 }
 /* ckeditor5-image/theme/imagestyle.css */
 .ck-content .image-style-block-align-left {
-  margin-left: 0;
-  margin-right: auto;
+    margin-left: 0;
+    margin-right: auto;
 }
 /* ckeditor5-image/theme/imagestyle.css */
 .ck-content p + .image-style-align-left,
 .ck-content p + .image-style-align-right,
 .ck-content p + .image-style-side {
-  margin-top: 0;
+    margin-top: 0;
 }
 /* ckeditor5-image/theme/imagestyle.css */
 .ck-content .image-inline.image-style-align-left,
 .ck-content .image-inline.image-style-align-right {
-  margin-top: var(--ck-inline-image-style-spacing);
-  margin-bottom: var(--ck-inline-image-style-spacing);
+    margin-top: var(--ck-inline-image-style-spacing);
+    margin-bottom: var(--ck-inline-image-style-spacing);
 }
 /* ckeditor5-image/theme/imagestyle.css */
 .ck-content .image-inline.image-style-align-left {
-  margin-right: var(--ck-inline-image-style-spacing);
+    margin-right: var(--ck-inline-image-style-spacing);
 }
 /* ckeditor5-image/theme/imagestyle.css */
 .ck-content .image-inline.image-style-align-right {
-  margin-left: var(--ck-inline-image-style-spacing);
+    margin-left: var(--ck-inline-image-style-spacing);
 }
 /* ckeditor5-media-embed/theme/mediaembed.css */
 .ck-content .media {
-  clear: both;
-  margin: 0.9em 0;
-  display: block;
-  min-width: 15em;
+    clear: both;
+    margin: 0.9em 0;
+    display: block;
+    min-width: 15em;
 }
 /* ckeditor5-table/theme/tablecaption.css */
 .ck-content .table > figcaption {
-  display: table-caption;
-  caption-side: top;
-  word-break: break-word;
-  text-align: center;
-  color: var(--ck-color-table-caption-text);
-  background-color: var(--ck-color-table-caption-background);
-  padding: .6em;
-  font-size: .75em;
-  outline-offset: -1px;
+    display: table-caption;
+    caption-side: top;
+    word-break: break-word;
+    text-align: center;
+    color: var(--ck-color-table-caption-text);
+    background-color: var(--ck-color-table-caption-background);
+    padding: 0.6em;
+    font-size: 0.75em;
+    outline-offset: -1px;
 }
 /* ckeditor5-table/theme/table.css */
 .ck-content .table {
-  margin: 0.9em auto;
-  display: table;
+    margin: 0.9em auto;
+    display: table;
 }
 /* ckeditor5-table/theme/table.css */
 .ck-content .table table {
-  border-collapse: collapse;
-  border-spacing: 0;
-  width: 100%;
-  height: 100%;
-  border: 1px double hsl(0, 0%, 70%);
+    border-collapse: collapse;
+    border-spacing: 0;
+    width: 100%;
+    height: 100%;
+    border: 1px double hsl(0, 0%, 70%);
 }
 /* ckeditor5-table/theme/table.css */
 .ck-content .table table td,
 .ck-content .table table th {
-  min-width: 2em;
-  padding: .4em;
-  border: 1px solid hsl(0, 0%, 75%);
+    min-width: 2em;
+    padding: 0.4em;
+    border: 1px solid hsl(0, 0%, 75%);
 }
 /* ckeditor5-table/theme/table.css */
 .ck-content .table table th {
-  font-weight: bold;
-  background: hsla(0, 0%, 0%, 5%);
+    font-weight: bold;
+    background: hsla(0, 0%, 0%, 5%);
 }
 /* ckeditor5-table/theme/table.css */
-.ck-content[dir="rtl"] .table th {
-  text-align: right;
+.ck-content[dir='rtl'] .table th {
+    text-align: right;
 }
 /* ckeditor5-table/theme/table.css */
-.ck-content[dir="ltr"] .table th {
-  text-align: left;
+.ck-content[dir='ltr'] .table th {
+    text-align: left;
 }
 /* ckeditor5-table/theme/tablecolumnresize.css */
 .ck-content .table .ck-table-resized {
-  table-layout: fixed;
+    table-layout: fixed;
 }
 /* ckeditor5-table/theme/tablecolumnresize.css */
 .ck-content .table table {
-  overflow: hidden;
+    overflow: hidden;
 }
 /* ckeditor5-table/theme/tablecolumnresize.css */
 .ck-content .table td,
 .ck-content .table th {
-  position: relative;
+    position: relative;
 }
 
 .ck-editor {
-  border: none;
+    border: none;
 }
 
 .ck-editor__main .ck-content,
 .ck-source-editing-area {
-  min-height: 400px;
+    min-height: 400px;
 }
 
 .ck.ck-editor__editable > .ck-placeholder::before {
-  color: $g14;
-  white-space: pre-wrap;
+    color: $g14;
+    white-space: pre-wrap;
 }
 
 .ck-content {
-  * {
-    font-family: inherit;
-  }
-
-  img {
-    display: inline-block;
-    transition: .3s ease;
-  }
-
-  strong {
-    font-weight: bold;
-  }
-
-  p,
-  strong,
-  td,
-  th,
-  span,
-  h2,
-  h3,
-  h4 {
-    color: $g4;
-  }
-
-  h2 {
-    @include p(2px 4px);
-    background-color: $g3;
-    width: fit-content;
-    font-weight: 500;
-  }
-
-  h3 {
-    @include p(8px 0);
-    width: fit-content;
-    border-top: 1px solid $g3;
-    border-bottom: 1px solid $g3;
-    font-weight: 500;
-  }
-
-  h4 {
-    @include pb(4px);
-    border-bottom: 1px solid $b1;
-    width: fit-content;
-  }
-
-  a {
-    text-decoration: underline;
-
-    &:hover {
-      text-decoration: none;
-
-      img {
-        opacity: .5;
-      }
+    * {
+        font-family: inherit;
     }
-  }
 
-  li {
-    margin-left: 1.5em;
-  }
-
-  img {
-    @include media1(sp) {
-      width: 100% !important;
+    img {
+        display: inline-block;
+        transition: 0.3s ease;
     }
-  }
 
-  i {
-    font-style: italic;
-  }
+    strong {
+        font-weight: bold;
+    }
+
+    p,
+    strong,
+    td,
+    th,
+    span,
+    h2,
+    h3,
+    h4 {
+        color: $g4;
+    }
+
+    h2 {
+        @include p(2px 4px);
+        background-color: $g3;
+        width: fit-content;
+        font-weight: 500;
+    }
+
+    h3 {
+        @include p(8px 0);
+        width: fit-content;
+        border-top: 1px solid $g3;
+        border-bottom: 1px solid $g3;
+        font-weight: 500;
+    }
+
+    h4 {
+        @include pb(4px);
+        border-bottom: 1px solid $b1;
+        width: fit-content;
+    }
+
+    a {
+        text-decoration: underline;
+
+        &:hover {
+            text-decoration: none;
+
+            img {
+                opacity: 0.5;
+            }
+        }
+    }
+
+    li {
+        margin-left: 1.5em;
+    }
+
+    img {
+        @include media1(sp) {
+            width: 100% !important;
+        }
+    }
+
+    i {
+        font-style: italic;
+    }
 }
 /* エディター部分 */

@@ -1,136 +1,136 @@
 @import '../../variables.scss';
 
 .listBox {
-  .listItem {
-    @include mb(32px);
-    @include flex(center);
-    @include gap(16px);
-    @include p(24px, 16px);
-    border: 1px solid $g3;
-    border-radius: 20px;
+    .listItem {
+        @include mb(32px);
+        @include flex(center);
+        @include gap(16px);
+        @include p(24px, 16px);
+        border: 1px solid $g3;
+        border-radius: 20px;
 
-    @include media1(sp) {
-      flex-direction: column;
-      align-items: start;
+        @include media1(sp) {
+            flex-direction: column;
+            align-items: start;
+        }
+
+        .itemLeft {
+            @include flex(center, left);
+            @include gap(16px);
+        }
+
+        .ttl {
+            @include fs(16px, 14px);
+            font-weight: 500;
+            text-decoration: underline;
+
+            &:hover {
+                text-decoration: none;
+            }
+        }
+
+        .state {
+            @include fs(14px, 12px);
+            font-weight: 500;
+            background-color: $b1;
+            color: $w1;
+            @include p(2px 12px);
+            border-radius: 10px;
+        }
     }
-
-    .itemLeft {
-      @include flex(center, left);
-      @include gap(16px);
-    }
-
-    .ttl {
-      @include fs(16px, 14px);
-      font-weight: 500;
-      text-decoration: underline;
-
-      &:hover {
-        text-decoration: none;
-      }
-    }
-
-    .state {
-      @include fs(14px, 12px);
-      font-weight: 500;
-      background-color: $b1;
-      color: $w1;
-      @include p(2px 12px);
-      border-radius: 10px;
-    }
-  }
 }
 
 .btn {
-  @include fs(16px, 14px);
-  @include p(4px 16px);
-  background-color: $o1;
-  color: $w1;
-  border-radius: 4px;
-  font-weight: bold;
+    @include fs(16px, 14px);
+    @include p(4px 16px);
+    background-color: $o1;
+    color: $w1;
+    border-radius: 4px;
+    font-weight: bold;
 }
 
 .modalArea {
-  @include modalBox;
+    @include modalBox;
 
-  .modalBox {
-    @include height(calc(100vh - 160px), calc(100vh - 128px), 500px);
-    background-color: $w1;
-    border-radius: 20px;
-    @include p(40px, 32px 20px);
-    cursor: auto;
-    overflow-y: scroll;
-    @include scrollHidden;
-    position: relative;
+    .modalBox {
+        @include height(calc(100vh - 160px), calc(100vh - 128px), 500px);
+        background-color: $w1;
+        border-radius: 20px;
+        @include p(40px, 32px 20px);
+        cursor: auto;
+        overflow-y: scroll;
+        @include scrollHidden;
+        position: relative;
 
-    dl {
-      @include mb(32px);
+        dl {
+            @include mb(32px);
 
-      dt {
-        @include fs(16px, 14px);
-        font-weight: bold;
-        @include mb(8px);
+            dt {
+                @include fs(16px, 14px);
+                font-weight: bold;
+                @include mb(8px);
 
-        label {
-          cursor: pointer;
+                label {
+                    cursor: pointer;
+                }
+            }
+
+            dd {
+                input[type='text'],
+                input[type='url'] {
+                    @include input(100%);
+                }
+
+                input[type='number'],
+                input[type='tel'],
+                input[type='date'] {
+                    @include input(240px);
+                }
+
+                textarea {
+                    @include textarea(100%);
+                }
+
+                select {
+                    @include select(240px);
+                    cursor: pointer;
+                }
+
+                input[type='checkbox'] {
+                    cursor: pointer;
+                }
+
+                .imgBox {
+                    @include width(184px);
+                    max-height: 184px;
+                    border: 1px solid $g1;
+                    border-radius: 20px;
+                    overflow: hidden;
+                    @include mb(16px);
+
+                    .imgNone {
+                        height: 184px;
+                        background-color: $g2;
+                        @include flex(center, center);
+                        @include fs(12px);
+                        font-weight: 500;
+                        color: $g1;
+                    }
+
+                    img {
+                        width: 100%;
+                        object-fit: cover;
+                        object-position: top;
+                    }
+                }
+            }
         }
-      }
 
-      dd {
-        input[type="text"],
-        input[type="url"] {
-          @include input(100%);
+        .btn {
+            position: absolute;
+            @include bottom(40px, 32px, 20px);
+            left: 50%;
+            transform: translateX(-50%);
         }
-
-        input[type="number"],
-        input[type="tel"],
-        input[type="date"] {
-          @include input(240px);
-        }
-
-        textarea {
-          @include textarea(100%);
-        }
-
-        select {
-          @include select(240px);
-          cursor: pointer;
-        }
-
-        input[type="checkbox"] {
-          cursor: pointer;
-        }
-
-        .imgBox {
-          @include width(184px);
-          max-height: 184px;
-          border: 1px solid $g1;
-          border-radius: 20px;
-          overflow: hidden;
-          @include mb(16px);
-
-          .imgNone {
-            height: 184px;
-            background-color: $g2;
-            @include flex(center, center);
-            @include fs(12px);
-            font-weight: 500;
-            color: $g1;
-          }
-
-          img {
-            width: 100%;
-            object-fit: cover;
-            object-position: top;
-          }
-        }
-      }
     }
-
-    .btn {
-      position: absolute;
-      @include bottom(40px, 32px, 20px);
-      left: 50%;
-      transform: translateX(-50%);
-    }
-  }
 }

@@ -1,40 +1,40 @@
 @import '../../variables.scss';
 
 .pickUp {
-  @include width(612px, 450px, 100%);
-  position: sticky;
-  top: 0;
-
-  @include media1(sp) {
-    position: unset;
-    margin-bottom: 64px;
-  }
-
-  .imgBox {
-    width: 100%;
-    @include height(100vh, unset);
-    aspect-ratio: 2 / 3;
-    @include mb(0, 0, 16px);
-    overflow: hidden;
+    @include width(612px, 450px, 100%);
+    position: sticky;
+    top: 0;
 
     @include media1(sp) {
-      aspect-ratio: 1 / 1;
+        position: unset;
+        margin-bottom: 64px;
     }
 
-    img {
-      width: 100%;
-      height: 100%;
-      object-fit: cover;
-      object-position: center;
+    .imgBox {
+        width: 100%;
+        @include height(100vh, unset);
+        aspect-ratio: 2 / 3;
+        @include mb(0, 0, 16px);
+        overflow: hidden;
+
+        @include media1(sp) {
+            aspect-ratio: 1 / 1;
+        }
+
+        img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            object-position: center;
+        }
     }
-  }
 }
 
 .txtBox {
-  composes: txtBox from './parts.scss';
-  @include p(80px 80px 40px, 40px, 24px);
+    composes: txtBox from './parts.scss';
+    @include p(80px 80px 40px, 40px, 24px);
 }
 
 .blogLink {
-  composes: blogLink from './parts.scss';
+    composes: blogLink from './parts.scss';
 }

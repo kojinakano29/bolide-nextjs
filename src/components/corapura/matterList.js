@@ -1,385 +1,437 @@
 import styles from '@/styles/corapura/components/list.module.scss'
-import { useCallback, useEffect, useState } from 'react';
-import { useForm } from 'react-hook-form';
-import axios from '@/lib/axios';
-import Container from '@/components/corapura/Layout/container';
+import { useCallback, useEffect, useState } from 'react'
+import { useForm } from 'react-hook-form'
+import axios from '@/lib/axios'
+import Container from '@/components/corapura/Layout/container'
 import prev from '@/images/corapura/common/prev.svg'
 import next from '@/images/corapura/common/next.svg'
 import sortIcon from '@/images/corapura/common/sort.svg'
-import { Loader, MatterCard } from '@/components/corapura';
-import { zips } from '@/lib/corapura/constants';
-import { useAuth } from '@/hooks/auth';
+import { Loader, MatterCard } from '@/components/corapura'
+import { zips } from '@/lib/corapura/constants'
+import { useAuth } from '@/hooks/auth'
 import searchIcon from '@/images/corapura/common/search.svg'
-import { useRouter } from 'next/router';
+import { useRouter } from 'next/router'
 
-const MatterList = ({posts, influencer = false}) => {
-  // console.log(posts)
-  const csrf = () => axios.get('/sanctum/csrf-cookie')
+const MatterList = ({ posts, influencer = false }) => {
+    // console.log(posts)
+    const csrf = () => axios.get('/sanctum/csrf-cookie')
 
-  const sorts = [
-    {name: "登録日の新しい順", value: "new"},
-    {name: "登録日の古い順", value: "old"},
-    {name: "報酬順", value: "reward"},
-    {name: "締切日が近い順", value: "limit_asc"},
-    {name: "締切日が遠い順", value: "limit_desc"},
-  ]
+    const sorts = [
+        { name: '登録日の新しい順', value: 'new' },
+        { name: '登録日の古い順', value: 'old' },
+        { name: '報酬順', value: 'reward' },
+        { name: '締切日が近い順', value: 'limit_asc' },
+        { name: '締切日が遠い順', value: 'limit_desc' },
+    ]
 
-  const router = useRouter()
-  const { user } = useAuth()
-  const tagList = posts.tag_list
-  const tagFilter = tagList.filter((tag, index) => {
-    return index < 20 || parseInt(router.query.tag_id) === parseInt(tag.id)
-  })
-  const cats = posts.cat_list
-  const [disabled, setDisabled] = useState(false)
-  const [matters, setMatters] = useState([])
-  const [nowPage, setNowPage] = useState(posts.now_page)
-  const [maxPage, setMaxPage] = useState(posts.page_max)
-  const [search, setSearch] = useState("")
-  const [zip, setZip] = useState("")
-  const [cat, setCat] = useState("")
-  const [reward, setReward] = useState(0)
-  const [tag, setTag] = useState("")
-  const [sort, setSort] = useState("new")
-  const [state, setState] = useState()
-  const [page, setPage] = useState(1)
-  const [openSort, setOpenSort] = useState(false)
-  const [bookmarkList, setBookmarkList] = useState([])
-  const { handleSubmit, register } = useForm()
-
-  const onLoadCheck = async () => {
-    await csrf()
-
-    await axios.post('/api/corapura/post_bookmark/check', {
-      user_id: user?.id,
-    }).then((res) => {
-      // console.log(res)
-      setBookmarkList(res.data)
-    }).catch((e) => {
-      console.error(e)
+    const router = useRouter()
+    const { user } = useAuth()
+    const tagList = posts.tag_list
+    const tagFilter = tagList.filter((tag, index) => {
+        return index < 20 || parseInt(router.query.tag_id) === parseInt(tag.id)
     })
-  }
+    const cats = posts.cat_list
+    const [disabled, setDisabled] = useState(false)
+    const [matters, setMatters] = useState([])
+    const [nowPage, setNowPage] = useState(posts.now_page)
+    const [maxPage, setMaxPage] = useState(posts.page_max)
+    const [search, setSearch] = useState('')
+    const [zip, setZip] = useState('')
+    const [cat, setCat] = useState('')
+    const [reward, setReward] = useState(0)
+    const [tag, setTag] = useState('')
+    const [sort, setSort] = useState('new')
+    const [state, setState] = useState()
+    const [page, setPage] = useState(1)
+    const [openSort, setOpenSort] = useState(false)
+    const [bookmarkList, setBookmarkList] = useState([])
+    const { handleSubmit, register } = useForm()
 
-  const onLoadSelectTag = async () => {
-    const nowTag = tagFilter.filter((tag) => {
-      return parseInt(tag.id) === parseInt(router.query.tag_id)
-    })
-    setTag(nowTag?.[0]?.id)
-  }
+    const onLoadCheck = async () => {
+        await csrf()
 
-  useEffect(() => {
-    if (router) {
-      onLoadSelectTag()
+        await axios
+            .post('/api/corapura/post_bookmark/check', {
+                user_id: user?.id,
+            })
+            .then(res => {
+                // console.log(res)
+                setBookmarkList(res.data)
+            })
+            .catch(e => {
+                console.error(e)
+            })
     }
-  }, [router])
 
-  const handleSort = useCallback(async () => {
-    await csrf()
-
-    await axios.post(`/api/corapura/${influencer ? "user_post" : "post"}`, {
-      s: search,
-      zip: zip !== "都道府県" ? zip : "",
-      cat: cat,
-      reward: parseInt(reward),
-      tag: tag,
-      sort: sort,
-      state: state ? 1 : 0,
-      page: parseInt(page),
-    }).then((res) => {
-      // console.log(res)
-      setMatters(res.data.post)
-      setNowPage(res.data.now_page)
-      setMaxPage(res.data.page_max)
-    }).catch((e) => {
-      console.error(e)
-    })
-
-  }, [
-    setMatters,
-    setNowPage,
-    setMaxPage,
-    search,
-    zip,
-    cat,
-    reward,
-    tag,
-    sort,
-    state,
-    page,
-  ])
-
-  useEffect(async () => {
-    if (user) {
-      await onLoadCheck()
+    const onLoadSelectTag = async () => {
+        const nowTag = tagFilter.filter(tag => {
+            return parseInt(tag.id) === parseInt(router.query.tag_id)
+        })
+        setTag(nowTag?.[0]?.id)
     }
-  }, [user])
 
-  useEffect(async () => {
-    // if (disabled) return
-    setDisabled(true)
-    setOpenSort(false)
+    useEffect(() => {
+        if (router) {
+            onLoadSelectTag()
+        }
+    }, [router])
 
-    await onLoadCheck()
-    await handleSort()
+    const handleSort = useCallback(async () => {
+        await csrf()
 
-    await setDisabled(false)
-  }, [
-    zip,
-    cat,
-    reward,
-    tag,
-    sort,
-    state,
-    page,
-  ])
+        await axios
+            .post(`/api/corapura/${influencer ? 'user_post' : 'post'}`, {
+                s: search,
+                zip: zip !== '都道府県' ? zip : '',
+                cat: cat,
+                reward: parseInt(reward),
+                tag: tag,
+                sort: sort,
+                state: state ? 1 : 0,
+                page: parseInt(page),
+            })
+            .then(res => {
+                // console.log(res)
+                setMatters(res.data.post)
+                setNowPage(res.data.now_page)
+                setMaxPage(res.data.page_max)
+            })
+            .catch(e => {
+                console.error(e)
+            })
+    }, [
+        setMatters,
+        setNowPage,
+        setMaxPage,
+        search,
+        zip,
+        cat,
+        reward,
+        tag,
+        sort,
+        state,
+        page,
+    ])
 
-  const handleChangeZip = useCallback(async (e) => {
-    setZip(e.target.value)
-  }, [setZip])
+    useEffect(async () => {
+        if (user) {
+            await onLoadCheck()
+        }
+    }, [user])
 
-  const handleChangeCategory = useCallback(async (e) => {
-    setCat(e.target.value)
-  }, [setCat])
+    useEffect(async () => {
+        // if (disabled) return
+        setDisabled(true)
+        setOpenSort(false)
 
-  const handleChangeReward = useCallback(async (e) => {
-    setReward(e.target.value)
-  }, [setReward])
+        await onLoadCheck()
+        await handleSort()
 
-  const handleClickRangeClear = useCallback(async () => {
-    setReward(0)
-  }, [setReward])
+        await setDisabled(false)
+    }, [zip, cat, reward, tag, sort, state, page])
 
-  const handleClickTag = useCallback(async (e) => {
-    if (parseInt(tag) === parseInt(e.target.value)) {
-      setTag(null)
-      return
-    }
-    setTag(e.target.value)
-  }, [tag, setTag])
+    const handleChangeZip = useCallback(
+        async e => {
+            setZip(e.target.value)
+        },
+        [setZip],
+    )
 
-  const handleClickSort = useCallback(async (e) => {
-    setSort(e.currentTarget.value)
-  }, [setSort])
+    const handleChangeCategory = useCallback(
+        async e => {
+            setCat(e.target.value)
+        },
+        [setCat],
+    )
 
-  const handleClickOpenSort = useCallback(async () => {
-    setOpenSort(prevState => !prevState)
-  }, [])
+    const handleChangeReward = useCallback(
+        async e => {
+            setReward(e.target.value)
+        },
+        [setReward],
+    )
 
-  const handleChangeState = useCallback(async (e) => {
-    setState(e.target.checked)
-  }, [setState])
+    const handleClickRangeClear = useCallback(async () => {
+        setReward(0)
+    }, [setReward])
 
-  const handleClickPage = useCallback(async (e) => {
-    setPage(e.currentTarget.value)
-  }, [setPage])
+    const handleClickTag = useCallback(
+        async e => {
+            if (parseInt(tag) === parseInt(e.target.value)) {
+                setTag(null)
+                return
+            }
+            setTag(e.target.value)
+        },
+        [tag, setTag],
+    )
 
-  const onSortForm = useCallback(async (data) => {
-    if (disabled) return
-    setDisabled(true)
-    setOpenSort(false)
-    await csrf()
+    const handleClickSort = useCallback(
+        async e => {
+            setSort(e.currentTarget.value)
+        },
+        [setSort],
+    )
 
-    await axios.post(`/api/corapura/${influencer ? "user_post" : "post"}`, {
-      s: data.s ? data.s : "",
-      zip: zip !== "都道府県" ? zip : "",
-      cat: cat,
-      reward: parseInt(reward),
-      tag: tag,
-      sort: sort,
-      state: state ? 1 : 0,
-      page: parseInt(page),
-    })
-    .then((res) => {
-      // console.log(res)
-      setMatters(res.data.post)
-      setNowPage(res.data.now_page)
-      setMaxPage(res.data.page_max)
-    }).catch((e) => {
-      console.error(e)
-    })
+    const handleClickOpenSort = useCallback(async () => {
+        setOpenSort(prevState => !prevState)
+    }, [])
 
-    setSearch(data.s)
-    await setDisabled(false)
-  }, [
-    disabled,
-    setDisabled,
-    setMatters,
-    setNowPage,
-    setMaxPage,
-    zip,
-    cat,
-    reward,
-    tag,
-    sort,
-    state,
-    page,
-    setSearch,
-  ])
+    const handleChangeState = useCallback(
+        async e => {
+            setState(e.target.checked)
+        },
+        [setState],
+    )
 
-  return (
-    <section className="cont1">
-      <Container small>
-        <h2 className="ttl1">{influencer ? "インフルエンサー/ユーザー" : "企業/ビジネスユーザー/自治体"}案件一覧</h2>
-        <form onSubmit={handleSubmit(onSortForm)}>
-          <div className={styles.searchBox}>
-            <input
-              type="text"
-              {...register("s")}
-              placeholder="気になるワードを検索"
-            />
-            <button>
-              <img src={searchIcon.src} alt="検索アイコン" />
-            </button>
-          </div>
-        </form>
+    const handleClickPage = useCallback(
+        async e => {
+            setPage(e.currentTarget.value)
+        },
+        [setPage],
+    )
 
-        <div className={styles.selectBox}>
-          <p className={styles.midashi}>さらに絞り込む</p>
-          <div className={styles.selectFlex}>
-            <select onChange={handleChangeZip}>
-              {zips.map((zip, index) => (
-                <option value={zip} key={index}>{zip}</option>
-              ))}
-            </select>
-            <select onChange={handleChangeCategory}>
-              <option value="">案件カテゴリ</option>
-              {cats.map((cat, index) => (
-                <option value={cat.id} key={index}>{cat.name}</option>
-              ))}
-            </select>
-          </div>
-        </div>
+    const onSortForm = useCallback(
+        async data => {
+            if (disabled) return
+            setDisabled(true)
+            setOpenSort(false)
+            await csrf()
 
-        <div className={styles.rewardRange}>
-          <p className={styles.midashi}>報酬</p>
-          <input
-            type="range"
-            min={0}
-            max={1000000}
-            step={100000}
-            value={reward}
-            onChange={handleChangeReward}
-          />
-          <div className={styles.rewardFlex}>
-            <input
-              type="number"
-              value={reward}
-              disabled
-            />
-            円～
-            <button type="button" className="hoverEffect" onClick={handleClickRangeClear}>クリア</button>
-          </div>
-        </div>
+            await axios
+                .post(`/api/corapura/${influencer ? 'user_post' : 'post'}`, {
+                    s: data.s ? data.s : '',
+                    zip: zip !== '都道府県' ? zip : '',
+                    cat: cat,
+                    reward: parseInt(reward),
+                    tag: tag,
+                    sort: sort,
+                    state: state ? 1 : 0,
+                    page: parseInt(page),
+                })
+                .then(res => {
+                    // console.log(res)
+                    setMatters(res.data.post)
+                    setNowPage(res.data.now_page)
+                    setMaxPage(res.data.page_max)
+                })
+                .catch(e => {
+                    console.error(e)
+                })
 
-        <div className={styles.tagBtnArea}>
-          <p className={styles.midashi}>タグから探す</p>
-          <div className={styles.tagBtnBox}>
-            {tagFilter.map((item, index) => (
-              <button
-                value={item.id}
-                className={`${styles.tagBtn} ${item.id === parseInt(tag) ? styles.current : null}`}
-                onClick={handleClickTag}
-                key={index}
-              >{item.name}</button>
-            ))}
-          </div>
-        </div>
+            setSearch(data.s)
+            await setDisabled(false)
+        },
+        [
+            disabled,
+            setDisabled,
+            setMatters,
+            setNowPage,
+            setMaxPage,
+            zip,
+            cat,
+            reward,
+            tag,
+            sort,
+            state,
+            page,
+            setSearch,
+        ],
+    )
 
-        <div className={styles.sortFlex}>
-          <div className={styles.sort}>
-            <button
-              type="button"
-              className={styles.btn}
-              onClick={handleClickOpenSort}
-            >
-              <div className={styles.icon}>
-                <img src={sortIcon.src} alt="並び替えのアイコン" />
-              </div>
-              並べ替え
-            </button>
-            {openSort ?
-              <div className={styles.box}>
-                {sorts.map((item, index) => (
-                  <button
-                    value={item.value}
-                    className={sort === item.value ? styles.current : null}
-                    onClick={handleClickSort}
-                    key={index}
-                  >{item.name}</button>
-                ))}
-              </div>
-            : null}
-          </div>
+    return (
+        <section className="cont1">
+            <Container small>
+                <h2 className="ttl1">
+                    {influencer
+                        ? 'インフルエンサー/ユーザー'
+                        : '企業/ビジネスユーザー/自治体'}
+                    案件一覧
+                </h2>
+                <form onSubmit={handleSubmit(onSortForm)}>
+                    <div className={styles.searchBox}>
+                        <input
+                            type="text"
+                            {...register('s')}
+                            placeholder="気になるワードを検索"
+                        />
+                        <button>
+                            <img src={searchIcon.src} alt="検索アイコン" />
+                        </button>
+                    </div>
+                </form>
 
-          <button>
-            <label className={styles.finishDisplay}>
-              <input
-                type="checkbox"
-                onChange={handleChangeState}
-              />
-              募集中のみ表示
-            </label>
-          </button>
-        </div>
-
-        {!disabled ?
-          <>
-            <article className={`${styles.matterList}`}>
-              {matters.map((matter, index) => (
-                <MatterCard matter={matter} bookmarkList={bookmarkList} list key={index} />
-              ))}
-            </article>
-
-            {parseInt(maxPage) > 1 ?
-              <div className={styles.pager}>
-                {parseInt(nowPage) > 1 ?
-                  <button
-                    className={styles.btn}
-                    value={nowPage-1}
-                    onClick={handleClickPage}
-                  >
-                    <img src={prev.src} alt="アイコン" />
-                    <span>前のページへ</span>
-                  </button>
-                : null}
-                <div className={styles.pagerBtn}>
-                  {parseInt(nowPage) > 1 ?
-                    <button
-                      className="hoverEffect"
-                      value={nowPage-1}
-                      onClick={handleClickPage}
-                    >
-                      {nowPage-1}
-                    </button>
-                  : null}
-                  <button type="button" className={styles.current}>{nowPage}</button>
-                  {parseInt(maxPage) !== parseInt(nowPage) ?
-                    <button
-                      className="hoverEffect"
-                      value={nowPage+1}
-                      onClick={handleClickPage}
-                    >
-                      {nowPage+1}
-                    </button>
-                  : null}
+                <div className={styles.selectBox}>
+                    <p className={styles.midashi}>さらに絞り込む</p>
+                    <div className={styles.selectFlex}>
+                        <select onChange={handleChangeZip}>
+                            {zips.map((zip, index) => (
+                                <option value={zip} key={index}>
+                                    {zip}
+                                </option>
+                            ))}
+                        </select>
+                        <select onChange={handleChangeCategory}>
+                            <option value="">案件カテゴリ</option>
+                            {cats.map((cat, index) => (
+                                <option value={cat.id} key={index}>
+                                    {cat.name}
+                                </option>
+                            ))}
+                        </select>
+                    </div>
                 </div>
-                {parseInt(nowPage) !== parseInt(maxPage) ?
-                  <button
-                    className={styles.btn}
-                    value={nowPage+1}
-                    onClick={handleClickPage}
-                  >
-                    <img src={next.src} alt="アイコン" />
-                    <span>次のページへ</span>
-                  </button>
-                : null}
-              </div>
-            : null}
-          </>
-        : <Loader />}
-      </Container>
-    </section>
-  );
+
+                <div className={styles.rewardRange}>
+                    <p className={styles.midashi}>報酬</p>
+                    <input
+                        type="range"
+                        min={0}
+                        max={1000000}
+                        step={100000}
+                        value={reward}
+                        onChange={handleChangeReward}
+                    />
+                    <div className={styles.rewardFlex}>
+                        <input type="number" value={reward} disabled />
+                        円～
+                        <button
+                            type="button"
+                            className="hoverEffect"
+                            onClick={handleClickRangeClear}>
+                            クリア
+                        </button>
+                    </div>
+                </div>
+
+                <div className={styles.tagBtnArea}>
+                    <p className={styles.midashi}>タグから探す</p>
+                    <div className={styles.tagBtnBox}>
+                        {tagFilter.map((item, index) => (
+                            <button
+                                value={item.id}
+                                className={`${styles.tagBtn} ${
+                                    item.id === parseInt(tag)
+                                        ? styles.current
+                                        : null
+                                }`}
+                                onClick={handleClickTag}
+                                key={index}>
+                                {item.name}
+                            </button>
+                        ))}
+                    </div>
+                </div>
+
+                <div className={styles.sortFlex}>
+                    <div className={styles.sort}>
+                        <button
+                            type="button"
+                            className={styles.btn}
+                            onClick={handleClickOpenSort}>
+                            <div className={styles.icon}>
+                                <img
+                                    src={sortIcon.src}
+                                    alt="並び替えのアイコン"
+                                />
+                            </div>
+                            並べ替え
+                        </button>
+                        {openSort ? (
+                            <div className={styles.box}>
+                                {sorts.map((item, index) => (
+                                    <button
+                                        value={item.value}
+                                        className={
+                                            sort === item.value
+                                                ? styles.current
+                                                : null
+                                        }
+                                        onClick={handleClickSort}
+                                        key={index}>
+                                        {item.name}
+                                    </button>
+                                ))}
+                            </div>
+                        ) : null}
+                    </div>
+
+                    <button>
+                        <label className={styles.finishDisplay}>
+                            <input
+                                type="checkbox"
+                                onChange={handleChangeState}
+                            />
+                            募集中のみ表示
+                        </label>
+                    </button>
+                </div>
+
+                {!disabled ? (
+                    <>
+                        <article className={`${styles.matterList}`}>
+                            {matters.map((matter, index) => (
+                                <MatterCard
+                                    matter={matter}
+                                    bookmarkList={bookmarkList}
+                                    list
+                                    key={index}
+                                />
+                            ))}
+                        </article>
+
+                        {parseInt(maxPage) > 1 ? (
+                            <div className={styles.pager}>
+                                {parseInt(nowPage) > 1 ? (
+                                    <button
+                                        className={styles.btn}
+                                        value={nowPage - 1}
+                                        onClick={handleClickPage}>
+                                        <img src={prev.src} alt="アイコン" />
+                                        <span>前のページへ</span>
+                                    </button>
+                                ) : null}
+                                <div className={styles.pagerBtn}>
+                                    {parseInt(nowPage) > 1 ? (
+                                        <button
+                                            className="hoverEffect"
+                                            value={nowPage - 1}
+                                            onClick={handleClickPage}>
+                                            {nowPage - 1}
+                                        </button>
+                                    ) : null}
+                                    <button
+                                        type="button"
+                                        className={styles.current}>
+                                        {nowPage}
+                                    </button>
+                                    {parseInt(maxPage) !== parseInt(nowPage) ? (
+                                        <button
+                                            className="hoverEffect"
+                                            value={nowPage + 1}
+                                            onClick={handleClickPage}>
+                                            {nowPage + 1}
+                                        </button>
+                                    ) : null}
+                                </div>
+                                {parseInt(nowPage) !== parseInt(maxPage) ? (
+                                    <button
+                                        className={styles.btn}
+                                        value={nowPage + 1}
+                                        onClick={handleClickPage}>
+                                        <img src={next.src} alt="アイコン" />
+                                        <span>次のページへ</span>
+                                    </button>
+                                ) : null}
+                            </div>
+                        ) : null}
+                    </>
+                ) : (
+                    <Loader />
+                )}
+            </Container>
+        </section>
+    )
 }
 
-export default MatterList;
+export default MatterList

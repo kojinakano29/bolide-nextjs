@@ -1,202 +1,202 @@
 @import '../../variables.scss';
 
 .humBox {
-  width: 100%;
-  height: 100vh;
-  @include p(110px 0 56px, 80px 0 32px);
-  position: fixed;
-  top: -100vh;
-  left: 0;
-  background-color: $b1;
-  opacity: 0;
-  pointer-events: none;
-  transition: .5s ease-in;
-  overflow: auto;
-  @include scrollHidden;
-  z-index: 2;
+    width: 100%;
+    height: 100vh;
+    @include p(110px 0 56px, 80px 0 32px);
+    position: fixed;
+    top: -100vh;
+    left: 0;
+    background-color: $b1;
+    opacity: 0;
+    pointer-events: none;
+    transition: 0.5s ease-in;
+    overflow: auto;
+    @include scrollHidden;
+    z-index: 2;
 
-  &.slideIn {
-    top: 0;
-    opacity: 1;
-    pointer-events: all;
-  }
+    &.slideIn {
+        top: 0;
+        opacity: 1;
+        pointer-events: all;
+    }
 }
 
 .humNav {
-  display: flex;
-  flex-wrap: wrap;
-  @include gap(120px, 32px);
-  @include pb(64px, 32px);
-  @include mb(32px, 24px);
-  border-bottom: 1px solid $g4;
+    display: flex;
+    flex-wrap: wrap;
+    @include gap(120px, 32px);
+    @include pb(64px, 32px);
+    @include mb(32px, 24px);
+    border-bottom: 1px solid $g4;
 }
 
 .humUl {
-  display: flex;
-  flex-direction: column;
-  @include gap(40px, 32px);
+    display: flex;
+    flex-direction: column;
+    @include gap(40px, 32px);
 
-  @include media1(sp) {
-    width: 100%;
-  }
-
-  li {
-    a {
-      @include fs(56px, 38px);
-      color: $w1;
-      letter-spacing: 0;
-      transition: .2s ease-out;
-
-      &:hover {
-        opacity: .5;
-      }
+    @include media1(sp) {
+        width: 100%;
     }
-  }
+
+    li {
+        a {
+            @include fs(56px, 38px);
+            color: $w1;
+            letter-spacing: 0;
+            transition: 0.2s ease-out;
+
+            &:hover {
+                opacity: 0.5;
+            }
+        }
+    }
 }
 
 .humNav2 {
-  @include mb(32px, 24px);
+    @include mb(32px, 24px);
 
-  ul {
-    @include flex(center, left);
-    @include gap(16px);
+    ul {
+        @include flex(center, left);
+        @include gap(16px);
 
-    li {
-      a {
-        font-size: var(--fs24-22);
-        color: $g1;
-        letter-spacing: 0;
-        transition: .2s ease-out;
+        li {
+            a {
+                font-size: var(--fs24-22);
+                color: $g1;
+                letter-spacing: 0;
+                transition: 0.2s ease-out;
 
-        &.jp {
-          font-size: var(--fs16-14);
+                &.jp {
+                    font-size: var(--fs16-14);
+                }
+
+                &:hover {
+                    opacity: 0.5;
+                }
+            }
         }
 
-        &:hover {
-          opacity: .5;
+        .hr {
+            width: 1px;
+            height: var(--fs24-22);
+            background-color: $g1;
+            transform: rotate(20deg);
         }
-      }
     }
-
-    .hr {
-      width: 1px;
-      height: var(--fs24-22);
-      background-color: $g1;
-      transform: rotate(20deg);
-    }
-  }
 }
 
 .flex {
-  @include flex(flex-end);
-  @include gap(40px, 40px, 24px);
-  @include pb(64px, 40px);
-  border-bottom: 1px solid $g4;
+    @include flex(flex-end);
+    @include gap(40px, 40px, 24px);
+    @include pb(64px, 40px);
+    border-bottom: 1px solid $g4;
 
-  .left {
-    @include width(unset, unset, 100%);
+    .left {
+        @include width(unset, unset, 100%);
 
-    .snsCover {
-      @include mb(32px, 32px, 24px);
+        .snsCover {
+            @include mb(32px, 32px, 24px);
 
-      @include media1(sp) {
-        div {
-          justify-content: center;
+            @include media1(sp) {
+                div {
+                    justify-content: center;
+                }
+
+                p {
+                    text-align: center;
+                }
+            }
         }
 
         p {
-          text-align: center;
+            font-size: 16px;
+            font-weight: 300;
+            color: $w1;
+            letter-spacing: 0;
+            @include mb(8px);
         }
-      }
-    }
 
-    p {
-      font-size: 16px;
-      font-weight: 300;
-      color: $w1;
-      letter-spacing: 0;
-      @include mb(8px);
-    }
+        .bannarBox {
+            @include flex(center, left);
+            @include gap(16px, 12px);
+            @include mb(16px, 12px);
 
-    .bannarBox {
-      @include flex(center, left);
-      @include gap(16px, 12px);
-      @include mb(16px, 12px);
+            &:last-of-type {
+                margin-bottom: 0;
+            }
 
-      &:last-of-type {
-        margin-bottom: 0;
-      }
+            a {
+                @include width(228px, 162px, calc(100% * 1 / 2 - 12px * 1 / 2));
+                display: block;
+                transition: 0.2s ease-out;
 
-      a {
-        @include width(228px, 162px, calc(100% * 1/2 - 12px * 1/2));
-        display: block;
-        transition: .2s ease-out;
-
-        &:hover {
-          opacity: .5;
+                &:hover {
+                    opacity: 0.5;
+                }
+            }
         }
-      }
     }
-  }
 
-  .bannerFlex {
-    @include flex(center, right);
-    @include gap(16px);
+    .bannerFlex {
+        @include flex(center, right);
+        @include gap(16px);
 
-    a {
-      display: block;
-      @include width(320px, calc(100% * 1/2 - 16px * 1/2), 100%);
+        a {
+            display: block;
+            @include width(320px, calc(100% * 1 / 2 - 16px * 1 / 2), 100%);
+        }
     }
-  }
 }
 
 .userBox {
-  @include mt(64px, 40px);
+    @include mt(64px, 40px);
 
-  * {
-    color: $w1;
-  }
-
-  h3 {
-    font-size: var(--fs24-18);
-    font-weight: 500;
-    @include pb(12px);
-    border-bottom: 1px solid $g4;
-    @include mb(24px);
-  }
-
-  nav {
-    ul {
-      @include flex(center, left);
-      @include gap(12px 32px);
-
-      li {
-        @include width(unset, unset, 100%);
-        a {
-          font-size: var(--fs16-14);
-          transition: .2s ease-out;
-
-          &:hover {
-            opacity: .5;
-          }
-        }
-      }
+    * {
+        color: $w1;
     }
-  }
+
+    h3 {
+        font-size: var(--fs24-18);
+        font-weight: 500;
+        @include pb(12px);
+        border-bottom: 1px solid $g4;
+        @include mb(24px);
+    }
+
+    nav {
+        ul {
+            @include flex(center, left);
+            @include gap(12px 32px);
+
+            li {
+                @include width(unset, unset, 100%);
+                a {
+                    font-size: var(--fs16-14);
+                    transition: 0.2s ease-out;
+
+                    &:hover {
+                        opacity: 0.5;
+                    }
+                }
+            }
+        }
+    }
 }
 
 .humNav,
 .humNav2,
 .flex,
 .userBox {
-  opacity: 0;
-  pointer-events: none;
-  transform: translateY(40px);
+    opacity: 0;
+    pointer-events: none;
+    transform: translateY(40px);
 
-  &.lazyIn {
-    opacity: 1;
-    pointer-events: all;
-    transform: translateY(0);
-    transition: .4s .55s ease-in;
-  }
+    &.lazyIn {
+        opacity: 1;
+        pointer-events: all;
+        transform: translateY(0);
+        transition: 0.4s 0.55s ease-in;
+    }
 }

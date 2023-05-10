@@ -1,60 +1,78 @@
 @import '../../variables.scss';
 
 .createSection {
-  @include p(64px 0);
+    @include p(64px 0);
 }
 
 .flex {
-  @include flex();
-  @include gap(64px);
-  position: relative;
+    @include flex();
+    @include gap(64px);
+    position: relative;
 
-  .left {
-    @include width(800px, 100%);
-  }
+    .left {
+        @include width(800px, 100%);
+    }
 
-  .right {
-    @include width(calc(100% - (800px + 64px)), 100%);
-    height: 100vh;
-    position: sticky;
-    top: 0;
-    overflow-y: scroll;
-    @include pb(40px);
-  }
+    .right {
+        @include width(calc(100% - (800px + 64px)), 100%);
+        @include height(100vh, 100vh, unset);
+        position: sticky;
+        top: 0;
+        overflow-y: scroll;
+        @include pb(40px);
+    }
 }
 
 .dl {
-  @include mb(40px);
+    @include mb(40px);
 
-  .dt {
-    font-size: var(--fs18-16);
-    font-weight: 500;
-    @include mb(12px);
-  }
-
-  .dd {
-    & > input,
-    select {
-      width: 100%;
-      height: 40px;
-      display: block;
+    .dt {
+        font-size: var(--fs18-16);
+        font-weight: 500;
+        @include mb(12px);
     }
 
-    & > textarea {
-      width: 100%;
-      @include height(200px);
-      display: block;
-    }
+    .dd {
+        & > input,
+        select {
+            width: 100%;
+            height: 40px;
+            display: block;
+        }
 
-    .error {
-      font-size: var(--fs16-14);
-      font-weight: 500;
+        & > textarea {
+            width: 100%;
+            @include height(200px);
+            display: block;
+        }
+
+        .error {
+            font-size: var(--fs16-14);
+            font-weight: 500;
+        }
     }
-  }
+}
+
+.previewBox {
+    position: relative;
+
+    .imgDelete {
+        position: absolute;
+        @include top(8px);
+        @include right(8px);
+        @include width(32px);
+        @include height(32px);
+        @include flex(center, center);
+        @include fs(20px);
+        font-weight: bold;
+        background-color: $r1;
+        color: $w1;
+        border-radius: 50%;
+    }
 }
 
 .hr {
-  height: 1px;
-  background-color: $g3;
-  @include mb(40px);
+    height: 1px;
+    background-color: $g3;
+    @include mb(40px);
 }

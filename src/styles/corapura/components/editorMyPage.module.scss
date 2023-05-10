@@ -1,191 +1,195 @@
 @import '../../variables.scss';
 
 .mv {
-  @include pt(56px);
+    @include pt(56px);
 
-  .area {
-    @include p(64px 0);
-    background-color: $o3;
+    .area {
+        @include p(64px 0);
+        background-color: $o3;
 
-    .ttl {
-      text-align: center;
+        .ttl {
+            text-align: center;
 
-      span {
-        display: block;
-        font-weight: bold;
+            span {
+                display: block;
+                font-weight: bold;
 
-        &.sm {
-          @include fs(14px, 12px);
+                &.sm {
+                    @include fs(14px, 12px);
+                }
+
+                &.big {
+                    @include fs(48px, 40px 32px);
+                }
+            }
         }
-
-        &.big {
-          @include fs(48px, 40px 32px);
-        }
-      }
     }
-  }
 }
 
 .cont {
-  @include p(64px 0, 48px 0);
+    @include p(64px 0, 48px 0);
 
-  .hello {
-    text-align: center;
-    @include fs(24px, 20px, 16px);
-    @include mb(40px);
-  }
+    .hello {
+        text-align: center;
+        @include fs(24px, 20px, 16px);
+        @include mb(40px);
+    }
 }
 
 .followArea {
-  @include flex(center, center);
-  @include gap(24px, 16px);
-  @include mb(40px);
+    @include flex(center, center);
+    @include gap(24px, 16px);
+    @include mb(40px);
 
-  button {
-    @include width(160px, 120px);
-    @include height(40px);
-    background-color: $b4;
-    color: $w1;
-    border-radius: 8px;
-    font-weight: bold;
-    @include fs(16px, 14px);
-  }
+    button {
+        @include width(160px, 120px);
+        @include height(40px);
+        background-color: $b4;
+        color: $w1;
+        border-radius: 8px;
+        font-weight: bold;
+        @include fs(16px, 14px);
+    }
 }
 
 .navFlex {
-  @include flex(center, center);
-  @include gap(32px);
-
-  .linkBox {
-    @include width(calc(100% * 1/3 - 32px * 2/3), calc(100% * 1/3 - 32px * 2/3), 100%);
-    @include flex(flex-end);
-    aspect-ratio: 16 / 13;
-    border-radius: 10px;
-    overflow: hidden;
-    box-shadow: 0 3px 6px rgba(0, 0, 0, .16);
-    position: relative;
-
-    &.green {
-      background-color: $g10;
-    }
-
-    &.orange {
-      background-color: $o4;
-    }
-
-    &.yellow {
-      background-color: $y1;
-    }
-
-    &.blue {
-      background-color: $b8;
-    }
-
-    &.pink {
-      background-color: $p1;
-    }
-
-    &.blue2 {
-      background-color: $b10;
-    }
-
-    .block {
-      @include flex(center, center);
-      @include pt(72px, 40px, 64px);
-      width: 100%;
-      max-height: 50%;
-      height: 100%;
-      background-color: $w1;
-      border-radius: 10px;
-      text-align: center;
-      transition: .3s ease;
-
-      p {
-        @include fs(20px, 14px, 16px);
-        font-weight: bold;
-      }
-    }
-
-    .iconBox {
-      @include width(150px, 80px, 120px);
-      aspect-ratio: 1 / 1;
-      border-radius: 50%;
-      overflow: hidden;
-      isolation: isolate;
-      background-color: $w1;
-      @include flex(center, center);
-      position: absolute;
-      top: 50%;
-      left: 50%;
-      transform: translate(-50%, -50%);
-      transition: .3s ease;
-      transform-origin: center center;
-
-      img {
-        @include width(unset, 40px);
-      }
-    }
-
-    &:hover {
-      .block {
-        max-height: 4em;
-        @include pt(0);
-      }
-
-      .iconBox {
-        transform: translate(-50%, -50%) scale(1.1);
-      }
-    }
-  }
-
-  &.column2 {
-    @include width(900px);
-    margin: auto;
+    @include flex(center, center);
+    @include gap(32px);
 
     .linkBox {
-      @include width(352px, calc(100% * 1/2 - 32px * 1/2), 100%);
+        @include width(
+            calc(100% * 1 / 3 - 32px * 2 / 3),
+            calc(100% * 1 / 3 - 32px * 2 / 3),
+            100%
+        );
+        @include flex(flex-end);
+        aspect-ratio: 16 / 13;
+        border-radius: 10px;
+        overflow: hidden;
+        box-shadow: 0 3px 6px rgba(0, 0, 0, 0.16);
+        position: relative;
+
+        &.green {
+            background-color: $g10;
+        }
+
+        &.orange {
+            background-color: $o4;
+        }
+
+        &.yellow {
+            background-color: $y1;
+        }
+
+        &.blue {
+            background-color: $b8;
+        }
+
+        &.pink {
+            background-color: $p1;
+        }
+
+        &.blue2 {
+            background-color: $b10;
+        }
+
+        .block {
+            @include flex(center, center);
+            @include pt(72px, 40px, 64px);
+            width: 100%;
+            max-height: 50%;
+            height: 100%;
+            background-color: $w1;
+            border-radius: 10px;
+            text-align: center;
+            transition: 0.3s ease;
+
+            p {
+                @include fs(20px, 14px, 16px);
+                font-weight: bold;
+            }
+        }
+
+        .iconBox {
+            @include width(150px, 80px, 120px);
+            aspect-ratio: 1 / 1;
+            border-radius: 50%;
+            overflow: hidden;
+            isolation: isolate;
+            background-color: $w1;
+            @include flex(center, center);
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            transition: 0.3s ease;
+            transform-origin: center center;
+
+            img {
+                @include width(unset, 40px);
+            }
+        }
+
+        &:hover {
+            .block {
+                max-height: 4em;
+                @include pt(0);
+            }
+
+            .iconBox {
+                transform: translate(-50%, -50%) scale(1.1);
+            }
+        }
     }
-  }
+
+    &.column2 {
+        @include width(900px);
+        margin: auto;
+
+        .linkBox {
+            @include width(352px, calc(100% * 1 / 2 - 32px * 1 / 2), 100%);
+        }
+    }
 }
 
 .userBtnFlex {
-  @include flex(center, center);
-  @include gap(32px);
-  @include mt(80px, 64px);
+    @include flex(center, center);
+    @include gap(32px);
+    @include mt(80px, 64px);
 
-  a {
-    @include width(352px, calc(100% * 1/2 - 32px * 1/2), 100%);
-    margin: 0;
-  }
+    a {
+        @include width(352px, calc(100% * 1 / 2 - 32px * 1 / 2), 100%);
+        margin: 0;
+    }
 }
 
 .privacyArea {
-  text-align: right;
-  @include mt(32px);
+    text-align: right;
+    @include mt(32px);
 
-  p,
-  a {
-    @include fs(12px, 10px);
-  }
-
-  a {
-    color: $b14;
-    text-decoration: underline;
-
-    &:hover {
-      text-decoration: none;
+    p,
+    a {
+        @include fs(12px, 10px);
     }
-  }
+
+    a {
+        color: $b14;
+        text-decoration: underline;
+
+        &:hover {
+            text-decoration: none;
+        }
+    }
 }
 
 .logout {
-  @include width(240px);
-  @include height(40px);
-  @include flex(center, center);
-  @include fs(14px);
-  font-weight: bold;
-  background-color: $g3;
-  border-radius: 20px;
-  margin: auto;
-  @include mt(40px);
+    @include width(240px);
+    @include height(40px);
+    @include flex(center, center);
+    @include fs(14px);
+    font-weight: bold;
+    background-color: $g3;
+    border-radius: 20px;
+    margin: auto;
+    @include mt(40px);
 }

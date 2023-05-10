@@ -7,31 +7,39 @@ import { faBookmark } from '@fortawesome/free-solid-svg-icons'
 import { faLink } from '@fortawesome/free-solid-svg-icons'
 import { faCircleCheck } from '@fortawesome/free-solid-svg-icons'
 
-const StoreCard = ({item, swiper = false, none = false}) => {
+const StoreCard = ({ item, swiper = false, none = false }) => {
     const url = `${item.url?.substring(0, 11)}...`
 
     return (
-        <div className={`${styles.cardBox} ${swiper ? styles.swiper : ""}`}>
+        <div className={`${styles.cardBox} ${swiper ? styles.swiper : ''}`}>
             <a href={`/dellamall/shop/${item.id}`} className={styles.item}>
-                {item.image_permission === 0 ?
+                {item.image_permission === 0 ? (
                     <img
                         className={styles.shopImg}
                         src={dummyDefault.src}
                         alt="ショップの画像（未設定時）"
                     />
-                :
+                ) : (
                     <img
                         className={styles.shopImg}
-                        src={item.thumbs ? `${process.env.NEXT_PUBLIC_BACKEND_URL}/storage/${item.thumbs}` : dummyDefault.src}
+                        src={
+                            item.thumbs
+                                ? `${process.env.NEXT_PUBLIC_BACKEND_URL}/storage/${item.thumbs}`
+                                : dummyDefault.src
+                        }
                         alt="ショップの画像"
                     />
-                }
-                {item.image_permission === 0 ?
+                )}
+                {item.image_permission === 0 ? (
                     <div className={`${styles.card} ${styles.default}`}>
-                        <p className={styles.name}>{item.name?.substring(0, 30)}{item.name.length > 29 ? '...' : ''}</p>
+                        <p className={styles.name}>
+                            {item.name?.substring(0, 30)}
+                            {item.name.length > 29 ? '...' : ''}
+                        </p>
                         <p className={styles.sub}>
                             ショップオーナーHPキャプチャ画像
-                            <br/>無料掲載はこちら
+                            <br />
+                            無料掲載はこちら
                         </p>
                         <div className={styles.flex}>
                             <p className={`${styles.link} en`}>
@@ -43,45 +51,62 @@ const StoreCard = ({item, swiper = false, none = false}) => {
                                     <button className={styles.icon}>
                                         <FontAwesomeIcon icon={faComment} />
                                     </button>
-                                    <p className={`${styles.counter} en`}>{item.d_comments_count}</p>
+                                    <p className={`${styles.counter} en`}>
+                                        {item.d_comments_count}
+                                    </p>
                                 </div>
                                 <div className={styles.box}>
                                     <button className={styles.icon}>
                                         <FontAwesomeIcon icon={faHeart} />
                                     </button>
-                                    <p className={`${styles.counter} en`}>{item.d_goods_count}</p>
+                                    <p className={`${styles.counter} en`}>
+                                        {item.d_goods_count}
+                                    </p>
                                 </div>
                                 <div className={styles.box}>
                                     <button className={styles.icon}>
                                         <FontAwesomeIcon icon={faBookmark} />
                                     </button>
-                                    <p className={`${styles.counter} en`}>{item.d_malls_count}</p>
+                                    <p className={`${styles.counter} en`}>
+                                        {item.d_malls_count}
+                                    </p>
                                 </div>
                             </div>
                         </div>
                     </div>
-                : null}
+                ) : null}
                 <div className={`${styles.card} ${styles.onMouse}`}>
-                    <p className={styles.name}>{item.name?.substring(0, 30)}{item.name.length > 29 ? '...' : ''}</p>
-                    {item.image_permission === 0 && !item.official_user_id ?
+                    <p className={styles.name}>
+                        {item.name?.substring(0, 30)}
+                        {item.name.length > 29 ? '...' : ''}
+                    </p>
+                    {item.image_permission === 0 && !item.official_user_id ? (
                         <div className={`${styles.btnArea} ${styles.btnArea1}`}>
-                            <p>ショップオーナーHP<br className="sp" />キャプチャ画像</p>
+                            <p>
+                                ショップオーナーHP
+                                <br className="sp" />
+                                キャプチャ画像
+                            </p>
                             <p className={styles.type1}>無料掲載はこちら</p>
                         </div>
-                    : null}
-                    {item.image_permission !== 0 && !item.official_user_id ?
+                    ) : null}
+                    {item.image_permission !== 0 && !item.official_user_id ? (
                         <div className={`${styles.btnArea} ${styles.btnArea2}`}>
-                            <p className={styles.type1}>公式ショップ申請は<br className="sp" />こちら</p>
+                            <p className={styles.type1}>
+                                公式ショップ申請は
+                                <br className="sp" />
+                                こちら
+                            </p>
                         </div>
-                    : null}
-                    {item.official_user_id ?
+                    ) : null}
+                    {item.official_user_id ? (
                         <div className={`${styles.btnArea} ${styles.btnArea3}`}>
                             <p className={styles.type2}>
                                 <FontAwesomeIcon icon={faCircleCheck} />
                                 公式ページ
                             </p>
                         </div>
-                    : null}
+                    ) : null}
                     <div className={styles.flex}>
                         <p className={`${styles.link} en`}>
                             <FontAwesomeIcon icon={faLink} />
@@ -92,30 +117,38 @@ const StoreCard = ({item, swiper = false, none = false}) => {
                                 <button className={styles.icon}>
                                     <FontAwesomeIcon icon={faComment} />
                                 </button>
-                                <p className={`${styles.counter} en`}>{item.d_comments_count}</p>
+                                <p className={`${styles.counter} en`}>
+                                    {item.d_comments_count}
+                                </p>
                             </div>
                             <div className={styles.box}>
                                 <button className={styles.icon}>
                                     <FontAwesomeIcon icon={faHeart} />
                                 </button>
-                                <p className={`${styles.counter} en`}>{item.d_goods_count}</p>
+                                <p className={`${styles.counter} en`}>
+                                    {item.d_goods_count}
+                                </p>
                             </div>
                             <div className={styles.box}>
                                 <button className={styles.icon}>
                                     <FontAwesomeIcon icon={faBookmark} />
                                 </button>
-                                <p className={`${styles.counter} en`}>{item.d_malls_count}</p>
+                                <p className={`${styles.counter} en`}>
+                                    {item.d_malls_count}
+                                </p>
                             </div>
                         </div>
                     </div>
                 </div>
             </a>
-            {none ?
-                null :
-                <p className={styles.title}>{item.name?.substring(0, 50)}{item.name.length > 49 ? '...' : ''}</p>
-            }
+            {none ? null : (
+                <p className={styles.title}>
+                    {item.name?.substring(0, 50)}
+                    {item.name.length > 49 ? '...' : ''}
+                </p>
+            )}
         </div>
-    );
+    )
 }
 
-export default StoreCard;
+export default StoreCard

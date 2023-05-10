@@ -1,8 +1,7 @@
 import styles from '@/styles/liondor/components/blogTxt.module.scss'
 import { DateFormat } from '@/components/liondor'
 
-const BlogTxt = (
-  {
+const BlogTxt = ({
     cat,
     cat2,
     ttl,
@@ -15,49 +14,53 @@ const BlogTxt = (
     tac = false,
     smallMb = false,
     mb0 = false,
-  }
-) => {
-  const upperCat2 = cat2?.toUpperCase()
+}) => {
+    const upperCat2 = cat2?.toUpperCase()
 
-  return (
-    <div className={
-      `
-        ${styles.blogTxt}
-        ${white ? styles.white : ''}
-        ${tac ? styles.tac : ''}
-        ${smallMb ? styles.smallMb : ''}
-        ${mb0 ? styles.mb0 : ''}
-        ${fs24 ? styles.fs24 : ''}
-        ${fs22 ? styles.fs22 : ''}
-        ${fs14 ? styles.fs14 : ''}
-      `
-    }>
-      {
-        cat2 === undefined
-        ?
-        ''
-        :
-        <p className={styles.cat}>
-          <span className={`en ${cat === undefined ? 'none' : ''}`}>{cat}</span>
-          <span className={cat === undefined ? 'none' : styles.hr}></span>
-          <span className="en">{cat === undefined ? upperCat2 : cat2}</span>
-        </p>
-      }
-      <h3 className={
-        `
-          ${styles.singleTtl}
-        `
-      }>
-        {ttl}
-      </h3>
-      {/* <p className={styles.name}>
-        <span className="en">BY</span>
-        <span className="space"></span>
-        <span className="en">{name ? name : "未設定"}</span>
-      </p> */}
-      <p className={`en ${styles.time}`}><DateFormat dateString={time} /></p>
-    </div>
-  );
+    return (
+        <div
+            className={`
+				${styles.blogTxt}
+				${white ? styles.white : ''}
+				${tac ? styles.tac : ''}
+				${smallMb ? styles.smallMb : ''}
+				${mb0 ? styles.mb0 : ''}
+				${fs24 ? styles.fs24 : ''}
+				${fs22 ? styles.fs22 : ''}
+				${fs14 ? styles.fs14 : ''}
+			`}>
+            {cat2 === undefined ? (
+                ''
+            ) : (
+                <p className={styles.cat}>
+                    <span className={`en ${cat === undefined ? 'none' : ''}`}>
+                        {cat}
+                    </span>
+                    <span
+                        className={
+                            cat === undefined ? 'none' : styles.hr
+                        }></span>
+                    <span className="en">
+                        {cat === undefined ? upperCat2 : cat2}
+                    </span>
+                </p>
+            )}
+            <h3
+                className={`
+					${styles.singleTtl}
+				`}>
+                {ttl}
+            </h3>
+            {/* <p className={styles.name}>
+				<span className="en">BY</span>
+				<span className="space"></span>
+				<span className="en">{name ? name : "未設定"}</span>
+			</p> */}
+            <p className={`en ${styles.time}`}>
+                <DateFormat dateString={time} />
+            </p>
+        </div>
+    )
 }
 
-export default BlogTxt;
+export default BlogTxt

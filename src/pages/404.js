@@ -1,4 +1,4 @@
-import PageLayoutTop from "@/components/Layouts/pageLayoutTop"
+import PageLayoutTop from '@/components/Layouts/pageLayoutTop'
 
 const NotFoundPage = () => (
     <div className="relative flex items-top justify-center min-h-screen sm:items-center sm:pt-0">

@@ -51,12 +51,19 @@ const Login = () => {
             <Container small900>
                 <p className={styles.desc}>
                     ログインすると、好きな記事を保存することができる他、便利な機能を使って
-                    <br/>LIONDORをあなた専用にカスタマイズできます。
+                    <br />
+                    LIONDORをあなた専用にカスタマイズできます。
                 </p>
-                <p className={`${styles.desc} ${styles.desc2}`}>まだ登録がお済みでない方はこちら</p>
+                <p className={`${styles.desc} ${styles.desc2}`}>
+                    まだ登録がお済みでない方はこちら
+                </p>
                 <div className={styles.register}>
-                    <a href="/register" className="btn5">企業様はこちら</a>
-                    <a href="/register" className="btn5">一般ユーザーの方はこちら</a>
+                    <a href="/register" className="btn5">
+                        企業様はこちら
+                    </a>
+                    <a href="/register" className="btn5">
+                        一般ユーザーの方はこちら
+                    </a>
                 </div>
                 {/* Session Status */}
                 <AuthSessionStatus className="mb-4" status={status} />
@@ -64,34 +71,52 @@ const Login = () => {
                     <article className={styles.loginBox}>
                         {/* Email Address */}
                         <dl className={styles.dl}>
-                            <dt><span></span><label className="ivy" htmlFor="email">Email</label></dt>
+                            <dt>
+                                <span></span>
+                                <label className="ivy" htmlFor="email">
+                                    Email
+                                </label>
+                            </dt>
                             <dd>
                                 <input
                                     id="email"
                                     type="email"
-                                    onChange={event => setEmail(event.target.value)}
+                                    onChange={event =>
+                                        setEmail(event.target.value)
+                                    }
                                     required
                                     autoFocus
                                 />
-                                <InputError messages={errors.email} className="mt-2" />
+                                <InputError
+                                    messages={errors.email}
+                                    className="mt-2"
+                                />
                             </dd>
                         </dl>
                         {/* Password */}
                         <dl className={styles.dl}>
-                            <dt><span></span><label className="ivy" htmlFor="password">Password</label></dt>
+                            <dt>
+                                <span></span>
+                                <label className="ivy" htmlFor="password">
+                                    Password
+                                </label>
+                            </dt>
                             <dd>
                                 <div className={styles.passwordBox}>
                                     <input
                                         id="password"
-                                        type={view ? "text" : "password"}
-                                        onChange={event => setPassword(event.target.value)}
+                                        type={view ? 'text' : 'password'}
+                                        onChange={event =>
+                                            setPassword(event.target.value)
+                                        }
                                         required
                                         autoComplete="current-password"
                                     />
                                     <p
                                         className={styles.view}
-                                        onClick={handleClickView}
-                                    >{view ? "非表示" : "表示"}</p>
+                                        onClick={handleClickView}>
+                                        {view ? '非表示' : '表示'}
+                                    </p>
                                 </div>
                                 <InputError
                                     messages={errors.password}

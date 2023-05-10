@@ -1,11 +1,11 @@
 @import '../../variables.scss';
 
 .stickyArea {
-  position: relative;
-  @include flex();
-  @include mb(120px, 64px);
+    position: relative;
+    @include flex();
+    @include mb(120px, 64px);
 
-  &.mbNone {
-    margin-bottom: 0;
-  }
+    &.mbNone {
+        margin-bottom: 0;
+    }
 }

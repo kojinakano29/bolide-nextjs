@@ -1,21 +1,19 @@
-import { Footer, Header, Meta } from "@/components/dellamall";
+import { Footer, Header, Meta } from '@/components/dellamall'
 
-const PageLayoutDellamall = ({children}) => {
-  return (
-    <>
-      <Meta />
+const PageLayoutDellamall = ({ children }) => {
+    return (
+        <>
+            <Meta />
 
-      <div className="dellamall">
-        <Header />
+            <div className="dellamall">
+                <Header />
 
-        <main>
-          {children}
-        </main>
+                <main>{children}</main>
 
-        <Footer />
-      </div>
-    </>
-  );
+                <Footer />
+            </div>
+        </>
+    )
 }
 
-export default PageLayoutDellamall;
+export default PageLayoutDellamall

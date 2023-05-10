@@ -1,21 +1,19 @@
-import {Header, Footer, Meta} from "@/components/liondor";
+import { Header, Footer, Meta } from '@/components/liondor'
 
-const PageLayoutLiondor = ({children}) => {
-  return (
-    <>
-      <Meta />
+const PageLayoutLiondor = ({ children }) => {
+    return (
+        <>
+            <Meta />
 
-      <div className="liondor">
-        <Header />
+            <div className="liondor">
+                <Header />
 
-        <main>
-          {children}
-        </main>
+                <main>{children}</main>
 
-        <Footer />
-      </div>
-    </>
-  );
+                <Footer />
+            </div>
+        </>
+    )
 }
 
-export default PageLayoutLiondor;
+export default PageLayoutLiondor

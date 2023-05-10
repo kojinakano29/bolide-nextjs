@@ -1,62 +1,62 @@
 @import '../../variables.scss';
 
 .pageHeader {
-  position: sticky;
-  top: 0;
-  width: 100%;
-  background-color: $w1;
-  z-index: 999;
-  transition: .5s ease-out;
-
-  &.headerHidden {
-    @include top(-178px, -178px, 0);
-    transition: .3s ease-in;
-  }
-
-  &.headerFixed {
+    position: sticky;
     top: 0;
-  }
+    width: 100%;
+    background-color: $w1;
+    z-index: 999;
+    transition: 0.5s ease-out;
 
-  &.stickyNone {
-    position: unset;
-  }
-
-  .topArea {
-    @include p(32px 0 8px, 12px 0);
-    position: relative;
-    border-bottom: 1px solid $g3;
-  }
-
-  .bottomArea {
-    border-bottom: 1px solid $g3;
-  }
-
-  h1 {
-    @include width(240px, 160px);
-    margin: auto;
-
-    .logo {
-      display: block;
-      transition: .3s ease-out;
-
-      &:hover {
-        opacity: .5;
-      }
+    &.headerHidden {
+        @include top(-178px, -178px, 0);
+        transition: 0.3s ease-in;
     }
-  }
 
-  .leftAbs {
-    position: absolute;
-    @include top(24px, 19px);
-    @include left(40px, 0);
-    @include flex(center);
-    @include gap(40px, 16px);
-  }
+    &.headerFixed {
+        top: 0;
+    }
 
-  .rightAbs {
-    position: absolute;
-    @include top(24px, 19px);
-    @include right(40px, 20px);
-    z-index: 2;
-  }
+    &.stickyNone {
+        position: unset;
+    }
+
+    .topArea {
+        @include p(32px 0 8px, 12px 0);
+        position: relative;
+        border-bottom: 1px solid $g3;
+    }
+
+    .bottomArea {
+        border-bottom: 1px solid $g3;
+    }
+
+    h1 {
+        @include width(240px, 160px);
+        margin: auto;
+
+        .logo {
+            display: block;
+            transition: 0.3s ease-out;
+
+            &:hover {
+                opacity: 0.5;
+            }
+        }
+    }
+
+    .leftAbs {
+        position: absolute;
+        @include top(24px, 19px);
+        @include left(40px, 0);
+        @include flex(center);
+        @include gap(40px, 16px);
+    }
+
+    .rightAbs {
+        position: absolute;
+        @include top(24px, 19px);
+        @include right(40px, 20px);
+        z-index: 2;
+    }
 }

@@ -1,24 +1,25 @@
-import { Footer, Header, Meta } from "@/components/corapura";
-import { useRouter } from "next/router";
+import { Footer, Header, Meta } from '@/components/corapura'
+import { useRouter } from 'next/router'
 
-const PageLayoutCorapura = ({children}) => {
-  const router = useRouter()
+const PageLayoutCorapura = ({ children }) => {
+    const router = useRouter()
 
-  return (
-    <>
-      <Meta />
+    return (
+        <>
+            <Meta />
 
-      <div className={`corapura ${router.route === "/corapura" ? "topPage" : null}`}>
-        <Header />
+            <div
+                className={`corapura ${
+                    router.route === '/corapura' ? 'topPage' : null
+                }`}>
+                <Header />
 
-        <main>
-          {children}
-        </main>
+                <main>{children}</main>
 
-        <Footer />
-      </div>
-    </>
-  );
+                <Footer />
+            </div>
+        </>
+    )
 }
 
-export default PageLayoutCorapura;
+export default PageLayoutCorapura

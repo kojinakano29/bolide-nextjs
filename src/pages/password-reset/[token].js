@@ -44,10 +44,12 @@ const PasswordReset = () => {
         <>
             <section className="cont1">
                 <Container small900>
-                <h2 className="ttl2">パスワード再設定</h2>
+                    <h2 className="ttl2">パスワード再設定</h2>
                     <div className="breadcrumbBox">
                         <a href="/">トップ</a>
-                        <div><img src="/top/breadcrumb.svg" alt=">" /></div>
+                        <div>
+                            <img src="/top/breadcrumb.svg" alt=">" />
+                        </div>
                         <p>パスワード再設定</p>
                     </div>
                 </Container>
@@ -61,33 +63,45 @@ const PasswordReset = () => {
                     <form onSubmit={submitForm}>
                         <article className={styles.loginBox}>
                             <div className={styles.inputBox}>
-                                <label htmlFor="email" className="en">Email</label>
+                                <label htmlFor="email" className="en">
+                                    Email
+                                </label>
                                 <input
                                     id="email"
                                     type="email"
                                     value={email}
                                     className={styles.email}
-                                    onChange={event => setEmail(event.target.value)}
+                                    onChange={event =>
+                                        setEmail(event.target.value)
+                                    }
                                     required
                                     autoFocus
                                 />
-                                <InputError messages={errors.email} className="mt-2" />
+                                <InputError
+                                    messages={errors.email}
+                                    className="mt-2"
+                                />
                             </div>
                             <div className={styles.inputBox}>
-                                <label htmlFor="password" className="en">Password</label>
+                                <label htmlFor="password" className="en">
+                                    Password
+                                </label>
                                 <div className={styles.passwordBox}>
                                     <input
                                         id="password"
-                                        type={view ? "text" : "password"}
+                                        type={view ? 'text' : 'password'}
                                         className={styles.password}
-                                        onChange={event => setPassword(event.target.value)}
+                                        onChange={event =>
+                                            setPassword(event.target.value)
+                                        }
                                         required
                                         autoComplete="current-password"
                                     />
                                     <p
                                         className={styles.view}
-                                        onClick={handleClickView}
-                                    >{view ? "非表示" : "表示"}</p>
+                                        onClick={handleClickView}>
+                                        {view ? '非表示' : '表示'}
+                                    </p>
                                 </div>
                                 <InputError
                                     messages={errors.password}
@@ -95,19 +109,28 @@ const PasswordReset = () => {
                                 />
                             </div>
                             <div className={styles.inputBox}>
-                                <label htmlFor="passwordConfirmation" className="en">Confirm Password</label>
+                                <label
+                                    htmlFor="passwordConfirmation"
+                                    className="en">
+                                    Confirm Password
+                                </label>
                                 <div className={styles.passwordBox}>
                                     <input
                                         id="passwordConfirmation"
-                                        type={view ? "text" : "password"}
+                                        type={view ? 'text' : 'password'}
                                         className={styles.password}
-                                        onChange={event => setPasswordConfirmation(event.target.value)}
+                                        onChange={event =>
+                                            setPasswordConfirmation(
+                                                event.target.value,
+                                            )
+                                        }
                                         required
                                     />
                                     <p
                                         className={styles.view}
-                                        onClick={handleClickView}
-                                    >{view ? "非表示" : "表示"}</p>
+                                        onClick={handleClickView}>
+                                        {view ? '非表示' : '表示'}
+                                    </p>
                                 </div>
                                 <InputError
                                     messages={errors.passwordConfirmation}

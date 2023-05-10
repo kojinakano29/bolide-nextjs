@@ -1,222 +1,244 @@
 @import '../../variables.scss';
 
 .fixed_btn {
-  @include width(120px, 120px, 100%);
-  @include height(120px, 120px, auto);
-  border-radius: 50%;
-  overflow: hidden;
-  position: fixed;
-  @include bottom(8px, 8px, 0);
-  @include right(8px, 8px, 0);
-  isolation: isolate;
-  z-index: 10;
+    @include width(120px, 120px, 100%);
+    @include height(120px, 120px, auto);
+    border-radius: 50%;
+    overflow: hidden;
+    position: fixed;
+    @include bottom(8px, 8px, 0);
+    @include right(8px, 8px, 0);
+    isolation: isolate;
+    z-index: 10;
 
-  @media screen and (max-width: $sp) {
-    border-radius: unset;
-  }
+    @media screen and (max-width: $sp) {
+        border-radius: unset;
+    }
 
-  a {
-    display: block;
-    width: 100%;
-    height: 100%;
-  }
+    a {
+        display: block;
+        width: 100%;
+        height: 100%;
+    }
 }
 
 .mv {
-  @include pt(128px, 108px);
+    @include pt(128px, 108px);
 
-  .mvBox {
-    @include height(514px);
-    width: 100%;
-    background-image: url(../../../../public/top/mv-icons.svg);
-    background-position: center;
-    @include flex(center, center);
+    .mvBox {
+        @include height(514px);
+        width: 100%;
+        background-image: url(../../../../public/top/mv-icons.svg);
+        background-position: center;
+        @include flex(center, center);
 
-    @include media1(sp) {
-      height: unset;
-      background-image: none;
-      margin-bottom: 32px;
+        @include media1(sp) {
+            height: unset;
+            background-image: none;
+            margin-bottom: 32px;
+        }
     }
-  }
 
-  .mvBottom {
-    img {
-      width: 100%;
+    .mvBottom {
+        img {
+            width: 100%;
+        }
     }
-  }
 }
 
 .aboutArea {
-  @include pt(64px);
+    @include pt(64px);
 
-  .desc {
-    text-align: center;
-    @include fs(16px, 14px, 13px);
-    font-weight: 500;
-    @include lh(32px, 26px);
-    @include mb(40px, 32px, 16px);
+    .desc {
+        text-align: center;
+        @include fs(16px, 14px, 13px);
+        font-weight: 500;
+        @include lh(32px, 26px);
+        @include mb(40px, 32px, 16px);
 
-    span {
-      @include fs(24px, 18px);
-      font-weight: bold;
+        span {
+            @include fs(24px, 18px);
+            font-weight: bold;
+        }
     }
-  }
 
-  .imgBox {
-    img {
-      width: 100%;
+    .imgBox {
+        img {
+            width: 100%;
+        }
     }
-  }
 }
 
 .bjcArea {
-  .flexType1 {
-    @include flex(center);
-    @include gap(64px, 32px, 16px);
-    @include pt(100px, 64px, 48px);
+    .flexType1 {
+        @include flex(center);
+        @include gap(64px, 32px, 16px);
+        @include pt(100px, 64px, 48px);
 
-    .left {
-      @include width(calc(100% - (240px + 64px)), calc(100% - (200px + 32px)), 100%);
+        .left {
+            @include width(
+                calc(100% - (240px + 64px)),
+                calc(100% - (200px + 32px)),
+                100%
+            );
+        }
+
+        .right {
+            @include width(240px, 200px);
+            @include m(0, 0, auto);
+        }
     }
 
-    .right {
-      @include width(240px, 200px);
-      @include m(0, 0, auto);
+    .flexType2 {
+        @include flex(center);
+        @include gap(40px, 24px, 16px);
+        @include pt(100px, 64px 32px);
+
+        @include media1(sp) {
+            flex-direction: column-reverse;
+        }
+
+        &:nth-of-type(even) {
+            flex-direction: row-reverse;
+
+            @include media1(sp) {
+                flex-direction: column-reverse;
+            }
+        }
+
+        .left {
+            @include width(
+                calc(100% - (520px + 40px)),
+                calc(100% - (340px + 24px)),
+                100%
+            );
+        }
+
+        .right {
+            @include width(520px, 340px, 100%);
+        }
     }
-  }
 
-  .flexType2 {
-    @include flex(center);
-    @include gap(40px, 24px, 16px);
-    @include pt(100px, 64px 32px);
-
-    @include media1(sp) {
-      flex-direction: column-reverse;
+    h2 {
+        @include mb(16px !important, 10px !important);
     }
 
-    &:nth-of-type(even) {
-      flex-direction: row-reverse;
-
-      @include media1(sp) {
-        flex-direction: column-reverse;
-      }
+    .desc {
+        @include fs(16px, 14px, 13px);
+        font-weight: 500;
     }
 
-    .left {
-      @include width(calc(100% - (520px + 40px)), calc(100% - (340px + 24px)), 100%);
+    .feature {
+        @include fs(18px, 16px);
+        font-weight: 900;
+        color: $g11;
     }
 
-    .right {
-      @include width(520px, 340px, 100%);
+    .midashi {
+        @include fs(18px, 16px);
+        font-weight: bold;
+        @include mb(16px, 10px);
     }
-  }
-
-  h2 {
-    @include mb(16px !important, 10px !important);
-  }
-
-  .desc {
-    @include fs(16px, 14px, 13px);
-    font-weight: 500;
-  }
-
-  .feature {
-    @include fs(18px, 16px);
-    font-weight: 900;
-    color: $g11;
-  }
-
-  .midashi {
-    @include fs(18px, 16px);
-    font-weight: bold;
-    @include mb(16px, 10px);
-  }
 }
 
 .planArea {
-  @include pt(64px, 56px);
+    @include pt(64px, 56px);
 
-  & > div {
-    @include max-width(1120px, 100%, 800px);
-    @include p(0, 0 20px, 0);
-  }
-
-  .planSlide {
-    @include media1(sp) {
-      overflow-x: scroll;
-      @include scrollHidden;
-      padding: 0 20px;
-
-      .planCard,
-      .planBox {
-        width: 820px;
-        max-width: unset;
-      }
+    & > div {
+        @include max-width(1120px, 100%, 800px);
+        @include p(0, 0 20px, 0);
     }
 
-    .planCard {
-      @include p(0 16px, 0 8px);
-      @include flex(center, right);
-      @include gap(16px, 8px);
+    .planSlide {
+        @include media1(sp) {
+            overflow-x: scroll;
+            @include scrollHidden;
+            padding: 0 20px;
 
-      img {
-        -webkit-filter: drop-shadow(0 3px 6px rgba(0, 0, 0, .16));
-        filter: drop-shadow(0 3px 6px rgba(0, 0, 0, .16));
-
-        @include media1(tab1) {
-          &:nth-child(1) {
-            @include width(calc((100% - (288px + 16px)) * 2/3 - 16px * 1/2), calc((100% - (30% + 8px)) * 2/3 - 8px * 1/2));
-          }
-
-          &:nth-child(2) {
-            @include width(calc((100% - (288px + 16px)) * 1/3 - 16px * 1/2), calc((100% - (30% + 8px)) * 1/3 - 8px * 1/2));
-          }
+            .planCard,
+            .planBox {
+                width: 820px;
+                max-width: unset;
+            }
         }
-      }
-    }
 
-    .planBox {
-      @include mt(-32px, -40px);
+        .planCard {
+            @include p(0 16px, 0 8px);
+            @include flex(center, right);
+            @include gap(16px, 8px);
+
+            img {
+                -webkit-filter: drop-shadow(0 3px 6px rgba(0, 0, 0, 0.16));
+                filter: drop-shadow(0 3px 6px rgba(0, 0, 0, 0.16));
+
+                @include media1(tab1) {
+                    &:nth-child(1) {
+                        @include width(
+                            calc(
+                                (100% - (288px + 16px)) * 2 / 3 - 16px * 1 / 2
+                            ),
+                            calc((100% - (30% + 8px)) * 2 / 3 - 8px * 1 / 2)
+                        );
+                    }
+
+                    &:nth-child(2) {
+                        @include width(
+                            calc(
+                                (100% - (288px + 16px)) * 1 / 3 - 16px * 1 / 2
+                            ),
+                            calc((100% - (30% + 8px)) * 1 / 3 - 8px * 1 / 2)
+                        );
+                    }
+                }
+            }
+        }
+
+        .planBox {
+            @include mt(-32px, -40px);
+        }
     }
-  }
 }
 
 .brandArea {
-  @include pt(6px, 24px, 48px);
-  @include pb(64px, 48px);
+    @include pt(6px, 24px, 48px);
+    @include pb(64px, 48px);
 
-  .flex {
-    @include flex(center);
-    @include gap(56px, 24px, 32px 20px);
+    .flex {
+        @include flex(center);
+        @include gap(56px, 24px, 32px 20px);
 
-    a {
-      @include width(calc(100% * 1/4 - 56px * 3/4), calc(100% * 1/4 - 24px * 3/4), calc(100% * 1/2 - 32px * 1/2));
+        a {
+            @include width(
+                calc(100% * 1 / 4 - 56px * 3 / 4),
+                calc(100% * 1 / 4 - 24px * 3 / 4),
+                calc(100% * 1 / 2 - 32px * 1 / 2)
+            );
 
-      &:hover {
-        img {
-          box-shadow: 0 3px 6px rgba(0, 0, 0, .3);
+            &:hover {
+                img {
+                    box-shadow: 0 3px 6px rgba(0, 0, 0, 0.3);
+                }
+            }
+
+            img {
+                @include mb(16px, 8px);
+                transition: 0.3s ease;
+                width: 100%;
+            }
+
+            p {
+                text-align: center;
+                font-weight: bold;
+
+                &.eName {
+                    @include fs(18px, 16px);
+                }
+
+                &.jName {
+                    @include fs(12px, 10px);
+                    color: $g12;
+                }
+            }
         }
-      }
-
-      img {
-        @include mb(16px, 8px);
-        transition: .3s ease;
-        width: 100%;
-      }
-
-      p {
-        text-align: center;
-        font-weight: bold;
-
-        &.eName {
-          @include fs(18px, 16px);
-        }
-
-        &.jName {
-          @include fs(12px, 10px);
-          color: $g12;
-        }
-      }
     }
-  }
 }

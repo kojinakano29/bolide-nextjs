@@ -1,164 +1,164 @@
 @import '../../variables.scss';
 
 .header {
-  width: 100%;
-  position: fixed;
-  top: 0;
-  left: 0;
-  z-index: 999;
-  transition: .3s ease;
+    width: 100%;
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: 999;
+    transition: 0.3s ease;
 
-  &.active {
-    background-color: rgba($w1, .9);
-    box-shadow: 0 3px 5px rgba($b1, .16);
-  }
+    &.active {
+        background-color: rgba($w1, 0.9);
+        box-shadow: 0 3px 5px rgba($b1, 0.16);
+    }
 }
 
 .humBox {
-  @include p(16px 0, 10px 0, 4px 0);
-  width: calc(100% - 8px * 2);
-  margin: auto;
-  transition: .3s ease;
-  border-radius: 5px;
+    @include p(16px 0, 10px 0, 4px 0);
+    width: calc(100% - 8px * 2);
+    margin: auto;
+    transition: 0.3s ease;
+    border-radius: 5px;
 
-  @include media1(sp) {
-    margin-top: 4px;
-  }
-
-  & > div {
-    @include media1(tab1) {
-      max-width: 100%;
-      padding: 0 12px;
+    @include media1(sp) {
+        margin-top: 4px;
     }
-  }
 
-  .humNav {
-    opacity: 0;
-    pointer-events: none;
-    max-height: 0;
-    transition: .3s ease;
-    overflow: hidden;
-
-    li {
-      margin-top: 24px;
-
-      a {
-        font-size: 16px;
-        font-weight: bold;
-        display: block;
-        width: fit-content;
-      }
+    & > div {
+        @include media1(tab1) {
+            max-width: 100%;
+            padding: 0 12px;
+        }
     }
-  }
-
-  &.active {
-    background-color: $w1;
-    box-shadow: 0 6px 12px rgba(0, 0, 0, .24);
 
     .humNav {
-      opacity: 1;
-      pointer-events: all;
-      padding: 0 20px 40px;
-      max-height: 100%;
-    }
+        opacity: 0;
+        pointer-events: none;
+        max-height: 0;
+        transition: 0.3s ease;
+        overflow: hidden;
 
-    .type3 {
-      button {
-        span {
-          &:nth-child(1) {
-            transform: translateY(9px) rotate(30deg);
-          }
+        li {
+            margin-top: 24px;
 
-          &:nth-child(2) {
-            transform: scale(0);
-          }
-
-          &:nth-child(3) {
-            transform: translateY(-9px) rotate(-30deg);
-          }
+            a {
+                font-size: 16px;
+                font-weight: bold;
+                display: block;
+                width: fit-content;
+            }
         }
-      }
     }
-  }
+
+    &.active {
+        background-color: $w1;
+        box-shadow: 0 6px 12px rgba(0, 0, 0, 0.24);
+
+        .humNav {
+            opacity: 1;
+            pointer-events: all;
+            padding: 0 20px 40px;
+            max-height: 100%;
+        }
+
+        .type3 {
+            button {
+                span {
+                    &:nth-child(1) {
+                        transform: translateY(9px) rotate(30deg);
+                    }
+
+                    &:nth-child(2) {
+                        transform: scale(0);
+                    }
+
+                    &:nth-child(3) {
+                        transform: translateY(-9px) rotate(-30deg);
+                    }
+                }
+            }
+        }
+    }
 }
 
 .headerFlex {
-  @include flex(center);
+    @include flex(center);
 
-  .logo {
-    @include width(230px, 200px, 164px);
+    .logo {
+        @include width(230px, 200px, 164px);
 
-    a {
-      display: block;
-    }
-  }
-
-  .nav {
-    @include flex(center, right);
-    @include gap(40px, 16px, 4px);
-
-    .type1 {
-      @include fs(14px, 12px);
-      font-weight: bold;
+        a {
+            display: block;
+        }
     }
 
-    .type2 {
-      @include flex(center, right);
-      @include gap(16px, 8px);
+    .nav {
+        @include flex(center, right);
+        @include gap(40px, 16px, 4px);
 
-      .btn {
-        @include width(160px, 40px, 32px);
-        @include height(40px, 40px, 32px);
-        border-radius: 5px;
-        @include flex(center, center);
-        @include gap(8px);
-        background-color: $y2;
-
-        &.color1 {
-          background-color: $o5;
+        .type1 {
+            @include fs(14px, 12px);
+            font-weight: bold;
         }
 
-        &.color2 {
-          background-color: $b13;
+        .type2 {
+            @include flex(center, right);
+            @include gap(16px, 8px);
 
-          span {
-            color: $w1;
-          }
+            .btn {
+                @include width(160px, 40px, 32px);
+                @include height(40px, 40px, 32px);
+                border-radius: 5px;
+                @include flex(center, center);
+                @include gap(8px);
+                background-color: $y2;
+
+                &.color1 {
+                    background-color: $o5;
+                }
+
+                &.color2 {
+                    background-color: $b13;
+
+                    span {
+                        color: $w1;
+                    }
+                }
+
+                span {
+                    @include fs(14px, 12px);
+                    font-weight: bold;
+
+                    @include media1(tab1) {
+                        display: none;
+                    }
+                }
+            }
         }
 
-        span {
-          @include fs(14px, 12px);
-          font-weight: bold;
+        .type3 {
+            button {
+                width: 40px;
+                height: 40px;
+                @include flex(center, center);
+                flex-direction: column;
+                cursor: pointer;
 
-          @include media1(tab1) {
-            display: none;
-          }
+                span {
+                    display: block;
+                    width: 26px;
+                    height: 3px;
+                    background-color: $b6;
+                    margin-bottom: 6px;
+                    transform-origin: center;
+                    transition: 0.3s ease;
+
+                    &:last-child {
+                        margin-bottom: 0;
+                    }
+                }
+            }
         }
-      }
     }
-
-    .type3 {
-      button {
-        width: 40px;
-        height: 40px;
-        @include flex(center, center);
-        flex-direction: column;
-        cursor: pointer;
-
-        span {
-          display: block;
-          width: 26px;
-          height: 3px;
-          background-color: $b6;
-          margin-bottom: 6px;
-          transform-origin: center;
-          transition: .3s ease;
-
-          &:last-child {
-            margin-bottom: 0;
-          }
-        }
-      }
-    }
-  }
 }

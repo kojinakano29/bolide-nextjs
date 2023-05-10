@@ -1,113 +1,117 @@
 @import '../../variables.scss';
 
 .desc {
-  @include fs(18px, 16px);
-  font-weight: 500;
-  text-align: center;
-  @include m(72px 0 120px, 64px 0, 48px 0);
-}
-
-.loginBox {
-  @include width(672px, 100%);
-  border: 1px solid $g3;
-  @include p(48px 64px, 40px, 32px);
-  margin: auto;
-
-  .inputBox {
-    @include mb(40px);
-
-    label {
-      @include fs(16px, 14px);
-      position: relative;
-      @include flex(center, left);
-      @include gap(24px);
-      @include mb(16px);
-
-      &::before {
-        content: "";
-        width: 2px;
-        @include height(16px);
-        background-color: $b1;
-        display: block;
-      }
-    }
-
-    input {
-      width: 100%;
-      @include height(56px);
-      display: block;
-      border: 1px solid $g3;
-    }
-
-    .passwordBox {
-      position: relative;
-
-      .view {
-        @include fs(14px, 12px);
-        font-weight: bold;
-        cursor: pointer;
-        position: absolute;
-        top: 50%;
-        @include right(16px, 12px);
-        transform: translateY(-50%);
-      }
-    }
-  }
-
-  .forgot {
-    @include fs(16px, 14px);
-    font-weight: 500;
-    text-align: center;
-    color: $g1;
-    @include mt(16px);
-
-    a {
-      color: $b1;
-      text-decoration: underline;
-
-      &:hover {
-        text-decoration: none;
-      }
-    }
-  }
-}
-
-.new {
-  @include pt(64px);
-  @include width(672px, 100%);
-  margin: auto;
-
-  .txt {
     @include fs(18px, 16px);
     font-weight: 500;
     text-align: center;
-    @include mb(32px);
-  }
+    @include m(72px 0 120px, 64px 0, 48px 0);
+}
 
-  .login__newList {
-    @include flex(stretch);
-    @include gap(20px);
+.loginBox {
+    @include width(672px, 100%);
+    border: 1px solid $g3;
+    @include p(48px 64px, 40px, 32px);
+    margin: auto;
 
-    a {
-      @include width(calc(100% * 1/2 - 10px), calc(100% * 1/2 - 10px), 100%);
-      @include height(100px);
-      border: 1px solid $r2;
-      border-radius: 10px;
-      @include flex(center, center);
-      @include gap(16px);
+    .inputBox {
+        @include mb(40px);
 
-      p {
-        @include fs(20px, 18px);
-        font-weight: 900;
-        color: $r2;
-      }
+        label {
+            @include fs(16px, 14px);
+            position: relative;
+            @include flex(center, left);
+            @include gap(24px);
+            @include mb(16px);
 
-      &.rev {
-        background-image: $gr2;
-        p {
-          color: $w1;
+            &::before {
+                content: '';
+                width: 2px;
+                @include height(16px);
+                background-color: $b1;
+                display: block;
+            }
         }
-      }
+
+        input {
+            width: 100%;
+            @include height(56px);
+            display: block;
+            border: 1px solid $g3;
+        }
+
+        .passwordBox {
+            position: relative;
+
+            .view {
+                @include fs(14px, 12px);
+                font-weight: bold;
+                cursor: pointer;
+                position: absolute;
+                top: 50%;
+                @include right(16px, 12px);
+                transform: translateY(-50%);
+            }
+        }
     }
-  }
+
+    .forgot {
+        @include fs(16px, 14px);
+        font-weight: 500;
+        text-align: center;
+        color: $g1;
+        @include mt(16px);
+
+        a {
+            color: $b1;
+            text-decoration: underline;
+
+            &:hover {
+                text-decoration: none;
+            }
+        }
+    }
+}
+
+.new {
+    @include pt(64px);
+    @include width(672px, 100%);
+    margin: auto;
+
+    .txt {
+        @include fs(18px, 16px);
+        font-weight: 500;
+        text-align: center;
+        @include mb(32px);
+    }
+
+    .login__newList {
+        @include flex(stretch);
+        @include gap(20px);
+
+        a {
+            @include width(
+                calc(100% * 1 / 2 - 10px),
+                calc(100% * 1 / 2 - 10px),
+                100%
+            );
+            @include height(100px);
+            border: 1px solid $r2;
+            border-radius: 10px;
+            @include flex(center, center);
+            @include gap(16px);
+
+            p {
+                @include fs(20px, 18px);
+                font-weight: 900;
+                color: $r2;
+            }
+
+            &.rev {
+                background-image: $gr2;
+                p {
+                    color: $w1;
+                }
+            }
+        }
+    }
 }

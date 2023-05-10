@@ -1,85 +1,90 @@
 @import '../../variables.scss';
 
 .desc {
-  @include fs(18px, 16px);
-  font-weight: 500;
-  text-align: center;
-  @include mb(64px);
+    @include fs(18px, 16px);
+    font-weight: 500;
+    text-align: center;
+    @include mb(64px);
 }
 
 .ttl {
-  @include fs(32px, 24px);
-  font-weight: 900;
-  text-align: center;
-  @include mb(48px, 32px);
+    @include fs(32px, 24px);
+    font-weight: 900;
+    text-align: center;
+    @include mb(48px, 32px);
 }
 
 .methodArea {
-  @include p(56px 0 96px, 48px 0);
-  background-color: $o3;
+    @include p(56px 0 96px, 48px 0);
+    background-color: $o3;
 
-  .list {
-    @include flex(stretch);
-    @include gap(40px);
+    .list {
+        @include flex(stretch);
+        @include gap(40px);
 
-    @include media1(sp) {
-      flex-direction: column;
-      align-items: center;
-    }
-
-    li {
-      @include width(calc(25% - 40px * 3/4), calc(25% - 40px * 3/4), 100%);
-      background: $w1;
-      @include p(24px, 16px);
-      position: relative;
-
-      &:not(:nth-last-of-type(1)) {
-        &::after {
-          content: "";
-          position: absolute;
-          @include top(50%, 50%, initial);
-          @include right(-35px, -35px, initial);
-          transform: translateY(-50%);
-          background: url(../../../images/corapura/openOnlineSalon/triangle.svg) no-repeat center center / contain;
-          width: 25px;
-          height: 20px;
-
-          @include media1(sp) {
-            bottom: -30px;
-            left: 50%;
-            transform: translateX(-50%) rotate(90deg);
-          }
+        @include media1(sp) {
+            flex-direction: column;
+            align-items: center;
         }
-      }
 
-      .imgBox {
-        @include width(96px, 64px, 96px);
-        @include height(96px, 64px, 96px);
-        margin: auto;
-        @include mb(16px, 8px);
-      }
+        li {
+            @include width(
+                calc(25% - 40px * 3 / 4),
+                calc(25% - 40px * 3 / 4),
+                100%
+            );
+            background: $w1;
+            @include p(24px, 16px);
+            position: relative;
 
-      .item_num {
-        @include fs(22px, 14px);
-        font-weight: 900;
-        text-align: center;
-        @include mb(8px);
+            &:not(:nth-last-of-type(1)) {
+                &::after {
+                    content: '';
+                    position: absolute;
+                    @include top(50%, 50%, initial);
+                    @include right(-35px, -35px, initial);
+                    transform: translateY(-50%);
+                    background: url(../../../images/corapura/openOnlineSalon/triangle.svg)
+                        no-repeat center center / contain;
+                    width: 25px;
+                    height: 20px;
 
-        span {
-          @include fs(28px, 18px);
-          font-weight: bold;
+                    @include media1(sp) {
+                        bottom: -30px;
+                        left: 50%;
+                        transform: translateX(-50%) rotate(90deg);
+                    }
+                }
+            }
+
+            .imgBox {
+                @include width(96px, 64px, 96px);
+                @include height(96px, 64px, 96px);
+                margin: auto;
+                @include mb(16px, 8px);
+            }
+
+            .item_num {
+                @include fs(22px, 14px);
+                font-weight: 900;
+                text-align: center;
+                @include mb(8px);
+
+                span {
+                    @include fs(28px, 18px);
+                    font-weight: bold;
+                }
+            }
+
+            p {
+                @include fs(14px, 12px);
+                font-weight: 500;
+                color: $g1;
+            }
         }
-      }
-
-      p {
-        @include fs(14px, 12px);
-        font-weight: 500;
-        color: $g1;
-      }
     }
-  }
 }
 
 .faqArea {
-  @include pt(64px);
+    @include pt(64px);
 }

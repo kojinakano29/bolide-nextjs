@@ -1,26 +1,26 @@
 @import '../../variables.scss';
 
 .article {
-  @include mb(120px, 64px);
+    @include mb(120px, 64px);
 }
 
 .imgBox {
-  @include mb(16px);
-  aspect-ratio: 65 / 36;
-  overflow: hidden;
+    @include mb(16px);
+    aspect-ratio: 65 / 36;
+    overflow: hidden;
 
-  @include media1(sp) {
-    aspect-ratio: 1 / 1;
-  }
+    @include media1(sp) {
+        aspect-ratio: 1 / 1;
+    }
 
-  img {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-    object-position: center;
-  }
+    img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        object-position: center;
+    }
 }
 
 .blogLink {
-  composes: blogLink from './parts.scss';
+    composes: blogLink from './parts.scss';
 }

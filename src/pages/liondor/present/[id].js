@@ -1,49 +1,56 @@
 import styles from '@/styles/liondor/components/form.module.scss'
-import { ConfirmPresent, InputPresent, PageTitle, SnsFollow } from "@/components/liondor";
-import { FormProvider, useForm } from 'react-hook-form';
-import Container from "@/components/liondor/Layouts/container";
-import PageLayoutLiondor from "@/components/Layouts/PageLayoutLiondor";
-import { useRouter } from 'next/router';
-import { useAuth } from '@/hooks/auth';
+import {
+    ConfirmPresent,
+    InputPresent,
+    PageTitle,
+    SnsFollow,
+} from '@/components/liondor'
+import { FormProvider, useForm } from 'react-hook-form'
+import Container from '@/components/liondor/Layouts/container'
+import PageLayoutLiondor from '@/components/Layouts/PageLayoutLiondor'
+import { useRouter } from 'next/router'
+import { useAuth } from '@/hooks/auth'
 
 // SSR
-export const getServerSideProps = async ({params}) => {
-  const res = await fetch(`${process.env.NEXT_PUBLIC_API_LIONDOR}/present/${params.id}`)
-  const data = await res.json()
+export const getServerSideProps = async ({ params }) => {
+    const res = await fetch(
+        `${process.env.NEXT_PUBLIC_API_LIONDOR}/present/${params.id}`,
+    )
+    const data = await res.json()
 
-  return {
-    props: {
-      posts: data
+    return {
+        props: {
+            posts: data,
+        },
     }
-  }
 }
 
-const PresentForm = (posts) => {
-  const { user } = useAuth({middleware: 'auth', type: 'liondor'})
+const PresentForm = posts => {
+    const { user } = useAuth({ middleware: 'auth', type: 'liondor' })
 
-  const present = posts.posts.presents
-  const router = useRouter()
-  const isConfirm = router.query.confirm
+    const present = posts.posts.presents
+    const router = useRouter()
+    const isConfirm = router.query.confirm
 
-  const methods = useForm({
-    defaultValues: {
-      facebook: "",
-      insta: "",
-      twitter: "",
-      brand: [],
-      cosmetic: [],
-    },
-    mode: "onChange",
-    criteriaMode: "all",
-  })
+    const methods = useForm({
+        defaultValues: {
+            facebook: '',
+            insta: '',
+            twitter: '',
+            brand: [],
+            cosmetic: [],
+        },
+        mode: 'onChange',
+        criteriaMode: 'all',
+    })
 
-  return (
-    <>
-      <section className="cont1">
-        <PageTitle title="PRESENT" ivy />
-        <Container small900>
-          <h3 className={styles.presentTtl}>{present?.title}</h3>
-          {
+    return (
+        <>
+            <section className="cont1">
+                <PageTitle title="PRESENT" ivy />
+                <Container small900>
+                    <h3 className={styles.presentTtl}>{present?.title}</h3>
+                    {/* {
             !isConfirm && !user ?
               <div className={styles.termsBox}>
                 <p className={styles.termsTxt}>応募条件</p>
@@ -53,29 +60,33 @@ const PresentForm = (posts) => {
                 <SnsFollow gray />
               </div>
             : null
-          }
-        </Container>
-      </section>
+          } */}
+                </Container>
+            </section>
 
-      <section className={styles.cont2}>
-        {
-          user ?
-          <Container small900>
-            <div className={styles.form}>
-              <FormProvider {...methods}>
-                {!isConfirm ? <InputPresent present={present} /> : <ConfirmPresent present={present} />}
-              </FormProvider>
-            </div>
-          </Container>
-          : null
-        }
-      </section>
-    </>
-  );
+            <section className={styles.cont2}>
+                {/* {
+          user ? */}
+                <Container small900>
+                    <div className={styles.form}>
+                        <FormProvider {...methods}>
+                            {!isConfirm ? (
+                                <InputPresent present={present} />
+                            ) : (
+                                <ConfirmPresent present={present} />
+                            )}
+                        </FormProvider>
+                    </div>
+                </Container>
+                {/* : null
+        } */}
+            </section>
+        </>
+    )
 }
 
-export default PresentForm;
+export default PresentForm
 
 PresentForm.getLayout = function getLayout(page) {
-  return <PageLayoutLiondor>{page}</PageLayoutLiondor>
+    return <PageLayoutLiondor>{page}</PageLayoutLiondor>
 }

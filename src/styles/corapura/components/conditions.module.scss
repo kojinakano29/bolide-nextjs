@@ -1,33 +1,37 @@
 @import '../../variables.scss';
 
 .conditionsBox {
-  @include flex(stretch, left);
-  @include gap(8px);
+    @include flex(stretch, left);
+    @include gap(8px);
 
-  .cont {
-    @include width(calc(100% * 1/4 - 8px * 3/4), calc(100% * 1/4 - 8px * 3/4), calc(100% * 1/2 - 8px * 1/2));
-    @include p(24px);
-    @include flex(center, center);
-    flex-direction: column;
-    background-color: $o3;
-    text-align: center;
+    .cont {
+        @include width(
+            calc(100% * 1 / 4 - 8px * 3 / 4),
+            calc(100% * 1 / 4 - 8px * 3 / 4),
+            calc(100% * 1 / 2 - 8px * 1 / 2)
+        );
+        @include p(24px);
+        @include flex(center, center);
+        flex-direction: column;
+        background-color: $o3;
+        text-align: center;
 
-    .cat {
-      @include flex(center, center);
-      @include gap(8px);
-      @include fs(14px, 12px);
-      font-weight: bold;
-      color: $g1;
-      @include mb(8px);
+        .cat {
+            @include flex(center, center);
+            @include gap(8px);
+            @include fs(14px, 12px);
+            font-weight: bold;
+            color: $g1;
+            @include mb(8px);
 
-      * {
-        color: $g1;
-      }
+            * {
+                color: $g1;
+            }
+        }
+
+        .txt {
+            @include fs(18px, 16px);
+            font-weight: bold;
+        }
     }
-
-    .txt {
-      @include fs(18px, 16px);
-      font-weight: bold;
-    }
-  }
 }

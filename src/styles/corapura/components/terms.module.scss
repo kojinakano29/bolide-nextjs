@@ -1,94 +1,94 @@
 @import '../../variables.scss';
 
 .tabBtnFlex {
-  @include flex(center, center);
-  @include gap(16px);
-  border-bottom: 1px solid $b8;
-  @include mb(48px, 40px);
-
-  .tabBtn {
-    @include width(160px, 160px, calc(100% * 1/2 - 16px * 1/2));
-    @include height(40px);
-    border: 1px solid $b8;
-    border-bottom: none;
-    color: $b8;
     @include flex(center, center);
-    @include fs(16px, 14px);
-    font-weight: 900;
+    @include gap(16px);
+    border-bottom: 1px solid $b8;
+    @include mb(48px, 40px);
 
-    &.on {
-      background-color: $b8;
-      color: $w1;
+    .tabBtn {
+        @include width(160px, 160px, calc(100% * 1 / 2 - 16px * 1 / 2));
+        @include height(40px);
+        border: 1px solid $b8;
+        border-bottom: none;
+        color: $b8;
+        @include flex(center, center);
+        @include fs(16px, 14px);
+        font-weight: 900;
+
+        &.on {
+            background-color: $b8;
+            color: $w1;
+        }
     }
-  }
 }
 
 .block {
-  @include mb(48px);
-
-  &:last-of-type {
-    margin-bottom: 0;
-  }
-
-  h3 {
-    @include fs(24px, 20px);
-    font-weight: 500;
-    @include mb(16px);
-  }
-
-  p,
-  li,
-  dd {
-    @include fs(16px, 14px);
-    font-weight: 500;
-    @include lh(28px, 26px 24px);
-
-    a {
-      text-decoration: underline;
-      color: $b5;
-
-      &:hover {
-        text-decoration: none;
-      }
-    }
-  }
-
-  dl {
-    @include p(24px 0, 16px 0);
-    border-bottom: 2px solid $g2;
-    @include flex(stretch);
-    @include gap(0, 0, 12px);
+    @include mb(48px);
 
     &:last-of-type {
-      @include mb(40px);
+        margin-bottom: 0;
     }
 
-    dt {
-      @include width(240px, 200px, 100%);
-      @include fs(16px, 14x);
-      font-weight: bold;
+    h3 {
+        @include fs(24px, 20px);
+        font-weight: 500;
+        @include mb(16px);
     }
 
+    p,
+    li,
     dd {
-      @include width(calc(100% - 240px), calc(100% - 200px), 100%);
-      @include fs(16px, 14px);
+        @include fs(16px, 14px);
+        font-weight: 500;
+        @include lh(28px, 26px 24px);
+
+        a {
+            text-decoration: underline;
+            color: $b5;
+
+            &:hover {
+                text-decoration: none;
+            }
+        }
     }
-  }
 
-  ul {
-    padding-left: 1.3em;
-    @include mb(32px, 24px);
+    dl {
+        @include p(24px 0, 16px 0);
+        border-bottom: 2px solid $g2;
+        @include flex(stretch);
+        @include gap(0, 0, 12px);
 
-    &.ol {
-      list-style: decimal;
+        &:last-of-type {
+            @include mb(40px);
+        }
+
+        dt {
+            @include width(240px, 200px, 100%);
+            @include fs(16px, 14x);
+            font-weight: bold;
+        }
+
+        dd {
+            @include width(calc(100% - 240px), calc(100% - 200px), 100%);
+            @include fs(16px, 14px);
+        }
     }
-  }
 
-  & > ul {
-    list-style: disc;
+    ul {
+        padding-left: 1.3em;
+        @include mb(32px, 24px);
 
-    li > ul {
-      list-style: circle;
+        &.ol {
+            list-style: decimal;
+        }
     }
-  }
+
+    & > ul {
+        list-style: disc;
+
+        li > ul {
+            list-style: circle;
+        }
+    }
 }

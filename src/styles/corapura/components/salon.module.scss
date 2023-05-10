@@ -1,202 +1,210 @@
 @import '../../variables.scss';
 
 .searchBox {
-  @include searchBox;
+    @include searchBox;
 }
 
 .salonList {
-  @include column3;
-  @include mb(96px, 80px, 48px);
+    @include column3;
+    @include mb(96px, 80px, 48px);
 
-  a {
-    display: block;
-    @include width(calc(100% * 1/3 - 32px * 2/3), calc(100% * 1/3 - 24px * 2/3), 100%);
+    a {
+        display: block;
+        @include width(
+            calc(100% * 1 / 3 - 32px * 2 / 3),
+            calc(100% * 1 / 3 - 24px * 2 / 3),
+            100%
+        );
 
-    &:hover {
-      img {
-        transform: scale(1.1);
-      }
+        &:hover {
+            img {
+                transform: scale(1.1);
+            }
+        }
+
+        .imgBox {
+            aspect-ratio: 352 / 285;
+            border-radius: 10px;
+            overflow: hidden;
+            @include mb(8px);
+
+            img {
+                width: 100%;
+                height: 100%;
+                object-fit: cover;
+                object-position: top center;
+                transition: 0.3s ease;
+            }
+        }
+
+        .ttl {
+            @include fs(20px, 16px);
+            font-weight: bold;
+            @include mb(10px);
+        }
+
+        .desc {
+            @include fs(14px, 12px);
+            font-weight: 500;
+            color: $g1;
+            @include mb(16px);
+        }
     }
-
-    .imgBox {
-      aspect-ratio: 352 / 285;
-      border-radius: 10px;
-      overflow: hidden;
-      @include mb(8px);
-
-      img {
-        width: 100%;
-        height: 100%;
-        object-fit: cover;
-        object-position: top center;
-        transition: .3s ease;
-      }
-    }
-
-    .ttl {
-      @include fs(20px, 16px);
-      font-weight: bold;
-      @include mb(10px);
-    }
-
-    .desc {
-      @include fs(14px, 12px);
-      font-weight: 500;
-      color: $g1;
-      @include mb(16px);
-    }
-  }
 }
 
 .tags {
-  @include flex(center, left);
-  @include gap(8px);
+    @include flex(center, left);
+    @include gap(8px);
 
-  .tag {
-    @include p(2px 8px);
-    border-radius: 12px;
-    border: 1px solid $r2;
-    color: $r2;
-    @include fs(14px, 12px);
-    font-weight: 500;
-  }
+    .tag {
+        @include p(2px 8px);
+        border-radius: 12px;
+        border: 1px solid $r2;
+        color: $r2;
+        @include fs(14px, 12px);
+        font-weight: 500;
+    }
 }
 
 .pager {
-  @include pager;
+    @include pager;
 }
 
 .detailFlex {
-  @include flex();
-  @include gap(64px, 32px);
+    @include flex();
+    @include gap(64px, 32px);
 
-  .detailLeft {
-    @include width(720px, 100%);
+    .detailLeft {
+        @include width(720px, 100%);
 
-    h2 {
-      @include mb(16px);
-    }
-
-    .headFlex {
-      @include flex(center);
-      @include mb(24px, 16px);
-
-      button {
-        @include width(176px, 160px);
-        @include height(40px);
-        @include flex(center, center);
-        @include fs(16px, 14px);
-        font-weight: 500;
-        border-radius: 5px;
-        border: 1px solid $b8;
-        color: $b8;
-
-        &.on {
-          background-color: $b8;
-          color: $w1;
-        }
-      }
-    }
-
-    .imgBox {
-      border-radius: 10px;
-      overflow: hidden;
-      @include mb(40px, 32px);
-    }
-
-    .conditions {
-      @include flex();
-      @include gap(8px);
-
-      .block {
-        @include width(calc(100% * 1/3 - 8px * 2/3), calc(100% * 1/3 - 8px * 2/3), 100%);
-        @include p(24px);
-        background-color: $o3;
-        text-align: center;
-
-        .cat {
-          @include flex(center, center);
-          @include gap(8px);
-          @include fs(14px, 12px);
-          font-weight: bold;
-          color: $g1;
-          @include mb(8px);
-
-          * {
-            color: $g1;
-          }
+        h2 {
+            @include mb(16px);
         }
 
-        .txt {
-          @include fs(20px, 16px);
-          font-weight: bold;
+        .headFlex {
+            @include flex(center);
+            @include mb(24px, 16px);
+
+            button {
+                @include width(176px, 160px);
+                @include height(40px);
+                @include flex(center, center);
+                @include fs(16px, 14px);
+                font-weight: 500;
+                border-radius: 5px;
+                border: 1px solid $b8;
+                color: $b8;
+
+                &.on {
+                    background-color: $b8;
+                    color: $w1;
+                }
+            }
         }
-      }
-    }
-  }
 
-  .detailRight {
-    position: sticky;
-    top: 56px;
-    @include width(calc(100% - (720px + 64px)), 100%);
-    @include height(calc(100vh - 56px), calc(100vh - 56px), unset);
-    overflow-y: scroll;
-    @include scrollHidden;
-
-    .userBox {
-      @include p(32px, 24px);
-      background-color: $o3;
-      border-radius: 10px;
-
-      .ttl {
-        @include fs(20px, 16px);
-        font-weight: 900;
-        @include mb(16px);
-      }
-
-      .name {
-        @include fs(26px, 20px, 18px);
-        font-weight: bold;
-        @include mb(16px);
-      }
-
-      .profile {
-        @include fs(16px, 14px);
-        font-weight: 500;
-        @include mb(40px, 32px);
-        white-space: pre-wrap;
-      }
-
-      a {
-        @include fs(16px, 14px);
-        font-weight: 500;
-        @include mb(8px);
-
-        &:hover {
-          text-decoration: underline;
+        .imgBox {
+            border-radius: 10px;
+            overflow: hidden;
+            @include mb(40px, 32px);
         }
-      }
+
+        .conditions {
+            @include flex();
+            @include gap(8px);
+
+            .block {
+                @include width(
+                    calc(100% * 1 / 3 - 8px * 2 / 3),
+                    calc(100% * 1 / 3 - 8px * 2 / 3),
+                    100%
+                );
+                @include p(24px);
+                background-color: $o3;
+                text-align: center;
+
+                .cat {
+                    @include flex(center, center);
+                    @include gap(8px);
+                    @include fs(14px, 12px);
+                    font-weight: bold;
+                    color: $g1;
+                    @include mb(8px);
+
+                    * {
+                        color: $g1;
+                    }
+                }
+
+                .txt {
+                    @include fs(20px, 16px);
+                    font-weight: bold;
+                }
+            }
+        }
     }
-  }
+
+    .detailRight {
+        position: sticky;
+        top: 56px;
+        @include width(calc(100% - (720px + 64px)), 100%);
+        @include height(calc(100vh - 56px), calc(100vh - 56px), unset);
+        overflow-y: scroll;
+        @include scrollHidden;
+
+        .userBox {
+            @include p(32px, 24px);
+            background-color: $o3;
+            border-radius: 10px;
+
+            .ttl {
+                @include fs(20px, 16px);
+                font-weight: 900;
+                @include mb(16px);
+            }
+
+            .name {
+                @include fs(26px, 20px, 18px);
+                font-weight: bold;
+                @include mb(16px);
+            }
+
+            .profile {
+                @include fs(16px, 14px);
+                font-weight: 500;
+                @include mb(40px, 32px);
+                white-space: pre-wrap;
+            }
+
+            a {
+                @include fs(16px, 14px);
+                font-weight: 500;
+                @include mb(8px);
+
+                &:hover {
+                    text-decoration: underline;
+                }
+            }
+        }
+    }
 }
 
 .editArea {
-  @include pt(40px, 32px);
+    @include pt(40px, 32px);
 }
 
 .btnCover {
-  @include mt(56px, 48px);
+    @include mt(56px, 48px);
 
-  a {
-    @include m(0, 0, auto);
-  }
+    a {
+        @include m(0, 0, auto);
+    }
 }
 
 .btn {
-  @include btn;
+    @include btn;
 
-  &.on {
-    background-image: unset;
-    background-color: $g3;
-  }
+    &.on {
+        background-image: unset;
+        background-color: $g3;
+    }
 }

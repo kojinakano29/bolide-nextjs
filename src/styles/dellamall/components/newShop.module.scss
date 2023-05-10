@@ -1,49 +1,49 @@
 @import '../../variables.scss';
 
 .modalArea {
-  @include modalBox;
-  background-color: transparent;
-  @include pt(96px, 96px, 64px);
+    @include modalBox;
+    background-color: transparent;
+    @include pt(96px, 96px, 64px);
 
-  .modalBox {
-    @include width(400px, 380px, 320px);
-    @include height(calc(100vh - 120px), calc(100vh - 120px), 500px);
-    background-color: $w1;
-    border-radius: 20px;
-    margin-left: auto;
-    margin-right: 10px;
-    margin-top: 10px;
-    box-shadow: 0 0 10px rgba(0, 0, 0, .4);
-    @include p(32px 20px);
-    cursor: auto;
-    overflow-y: scroll;
-    @include scrollHidden;
+    .modalBox {
+        @include width(400px, 380px, 320px);
+        @include height(calc(100vh - 120px), calc(100vh - 120px), 500px);
+        background-color: $w1;
+        border-radius: 20px;
+        margin-left: auto;
+        margin-right: 10px;
+        margin-top: 10px;
+        box-shadow: 0 0 10px rgba(0, 0, 0, 0.4);
+        @include p(32px 20px);
+        cursor: auto;
+        overflow-y: scroll;
+        @include scrollHidden;
 
-    .ttl {
-      @include fs(24px, 18px);
-      font-weight: bold;
-      text-align: center;
-      @include mb(16px);
-    }
-
-    .newLink {
-      @include p(16px 0);
-      border-bottom: 1px solid $g3;
-      display: block;
-
-      .content {
-        @include fs(16px, 14px);
-        font-weight: 500;
-        @include mb(4px);
-      }
-
-      .time {
-        time {
-          @include fs(14px, 12px);
-          font-weight: 500;
-          color: $g3;
+        .ttl {
+            @include fs(24px, 18px);
+            font-weight: bold;
+            text-align: center;
+            @include mb(16px);
         }
-      }
+
+        .newLink {
+            @include p(16px 0);
+            border-bottom: 1px solid $g3;
+            display: block;
+
+            .content {
+                @include fs(16px, 14px);
+                font-weight: 500;
+                @include mb(4px);
+            }
+
+            .time {
+                time {
+                    @include fs(14px, 12px);
+                    font-weight: 500;
+                    color: $g3;
+                }
+            }
+        }
     }
-  }
 }
