@@ -29,7 +29,7 @@ import useRedirect from '@/hooks/redirect'
 export const SaveMallContext = createContext()
 
 const ShopDetailArea = ({ data, user }) => {
-    // console.log(data)
+    console.log(data)
     const csrf = () => axios.get('/sanctum/csrf-cookie')
 
     const { loginCheck } = useRedirect()
@@ -572,6 +572,45 @@ const ShopDetailArea = ({ data, user }) => {
                     <p className={styles.cont1__flexRight__middleText}>
                         {shop.description}
                     </p>
+                    <a
+                        className={`${styles.cont1__flexRight__profile} hoverEffect`}
+                        href={`/dellamall/mypage/${
+                            shop.official_user_id
+                                ? shop.official_user_id
+                                : shop.user.id
+                        }`}>
+                        <div className={styles.iconBox}>
+                            {shop.official_user_id &&
+                            shop?.d_official?.d_profile.thumbs ? (
+                                <img
+                                    src={`${process.env.NEXT_PUBLIC_BACKEND_URL}/storage/${shop?.d_official?.d_profile.thumbs}`}
+                                    alt="プロフィール画像"
+                                />
+                            ) : (
+                                <img
+                                    src={notSet.src}
+                                    alt="プロフィール画像未設定"
+                                />
+                            )}
+                            {!shop.official_user_id &&
+                            shop.user.d_profile.thumbs ? (
+                                <img
+                                    src={`${process.env.NEXT_PUBLIC_BACKEND_URL}/storage/${shop.user.d_profile.thumbs}`}
+                                    alt="プロフィール画像"
+                                />
+                            ) : (
+                                <img
+                                    src={notSet.src}
+                                    alt="プロフィール画像未設定"
+                                />
+                            )}
+                        </div>
+                        <p className={styles.pName}>
+                            {shop.official_user_id
+                                ? shop?.d_official?.d_profile.nicename
+                                : shop.user.d_profile.nicename}
+                        </p>
+                    </a>
                     <div className={styles.cont1__flexRight__middleComment}>
                         <p className={styles.total}>
                             コメント：<span>{data.comments_count}</span>件

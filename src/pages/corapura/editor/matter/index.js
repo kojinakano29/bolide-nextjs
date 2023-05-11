@@ -27,6 +27,8 @@ const AdminMatterList = () => {
     const [nowPage, setNowPage] = useState(1)
     const [maxPage, setMaxPage] = useState(1)
     const [page, setPage] = useState(1)
+    const [popup, setPopup] = useState(false)
+    const [targetId, setTargetId] = useState()
 
     const handleSort = useCallback(async () => {
         await csrf()
@@ -88,7 +90,7 @@ const AdminMatterList = () => {
             })
             .then(res => {
                 // console.log(res)
-                alert('この案件を掲載終了しました')
+                alert('この案件を削除しました')
                 router.reload()
             })
             .catch(e => {
@@ -96,129 +98,174 @@ const AdminMatterList = () => {
             })
     }, [])
 
+    const handleClickPopup = useCallback(
+        async id => {
+            setPopup(prevState => !prevState)
+            setTargetId(id)
+        },
+        [setPopup, setTargetId],
+    )
+
     return (
-        <section className="cont1">
-            <Container small>
-                <h2 className="ttl1">作成した案件一覧</h2>
-                <a
-                    href={`/corapura/editor/matter/create`}
-                    className={styles.createLink}>
-                    <img src={plus.src} alt="アイコン" />
-                    案件を新規作成
-                </a>
-                {!disabled ? (
-                    <>
-                        <article className={styles.itemList}>
-                            {matters.map((matter, index) => (
-                                <div className={styles.itemBox} key={index}>
-                                    <a
-                                        href={`/corapura/matter/${matter.id}`}
-                                        className={styles.imgBox}>
-                                        <img
-                                            src={
-                                                matter.thumbs
-                                                    ? `${process.env.NEXT_PUBLIC_BACKEND_URL}/storage/${matter.thumbs}`
-                                                    : dummy.src
-                                            }
-                                            alt="案件のサムネイル画像"
-                                        />
-                                    </a>
-                                    <p className={styles.stateIcon}>
-                                        {matter.limite_date <= today &&
-                                        matter.state !== 1 &&
-                                        matter.state !== 4
-                                            ? '募集期限切れ'
-                                            : null}
-                                        {matter.state === 0 &&
-                                        matter.limite_date >= today
-                                            ? '募集中'
-                                            : null}
-                                        {matter.state === 1 ? '完了' : null}
-                                        {matter.state === 4 ? '下書き' : null}
-                                    </p>
-                                    <p className={styles.ttl}>{matter.title}</p>
-                                    <p className={styles.iconBox}>
-                                        <span className={styles.icon}>
-                                            更新日
-                                        </span>
-                                        <DateFormat
-                                            dateString={matter.updated_at}
-                                        />
-                                    </p>
-                                    <div className={styles.btnFlex}>
+        <>
+            <section className="cont1">
+                <Container small>
+                    <h2 className="ttl1">作成した案件一覧</h2>
+                    <a
+                        href={`/corapura/editor/matter/create`}
+                        className={styles.createLink}>
+                        <img src={plus.src} alt="アイコン" />
+                        案件を新規作成
+                    </a>
+                    {!disabled ? (
+                        <>
+                            <article className={styles.itemList}>
+                                {matters.map((matter, index) => (
+                                    <div className={styles.itemBox} key={index}>
                                         <a
-                                            href={`/corapura/editor/matter/${matter.id}`}
-                                            className={`${styles.btn} hoverEffect`}>
-                                            編集する
+                                            href={`/corapura/matter/${matter.id}`}
+                                            className={styles.imgBox}>
+                                            <img
+                                                src={
+                                                    matter.thumbs
+                                                        ? `${process.env.NEXT_PUBLIC_BACKEND_URL}/storage/${matter.thumbs}`
+                                                        : dummy.src
+                                                }
+                                                alt="案件のサムネイル画像"
+                                            />
                                         </a>
-                                        {/* <button
-                      type="button"
-                      className={`${styles.btn} ${styles.finishBtn} hoverEffect`}
-                      onClick={() => handleClickFinish(matter.id)}
-                    >完了に変更</button> */}
-                                        <button
-                                            type="button"
-                                            className={`${styles.btn} ${styles.finishBtn} hoverEffect`}
-                                            onClick={() =>
-                                                handleClickDelete(matter.id)
-                                            }>
-                                            削除
-                                        </button>
+                                        <p className={styles.stateIcon}>
+                                            {matter.limite_date <= today &&
+                                            matter.state !== 1 &&
+                                            matter.state !== 4
+                                                ? '募集期限切れ'
+                                                : null}
+                                            {matter.state === 0 &&
+                                            matter.limite_date >= today
+                                                ? '募集中'
+                                                : null}
+                                            {matter.state === 1 ? '完了' : null}
+                                            {matter.state === 4
+                                                ? '下書き'
+                                                : null}
+                                        </p>
+                                        <p className={styles.ttl}>
+                                            {matter.title}
+                                        </p>
+                                        <p className={styles.iconBox}>
+                                            <span className={styles.icon}>
+                                                更新日
+                                            </span>
+                                            <DateFormat
+                                                dateString={matter.updated_at}
+                                            />
+                                        </p>
+                                        <div className={styles.btnFlex}>
+                                            <a
+                                                href={`/corapura/editor/matter/${matter.id}`}
+                                                className={`${styles.btn} hoverEffect`}>
+                                                編集する
+                                            </a>
+                                            {/* <button
+										type="button"
+										className={`${styles.btn} ${styles.finishBtn} hoverEffect`}
+										onClick={() => handleClickFinish(matter.id)}
+										>完了に変更</button> */}
+                                            <button
+                                                type="button"
+                                                className={`${styles.btn} ${styles.finishBtn} hoverEffect`}
+                                                onClick={() =>
+                                                    handleClickPopup(matter.id)
+                                                }>
+                                                削除
+                                            </button>
+                                        </div>
                                     </div>
-                                </div>
-                            ))}
-                        </article>
-                        {parseInt(maxPage) > 1 ? (
-                            <div className={styles.pager}>
-                                {parseInt(nowPage) > 1 ? (
-                                    <button
-                                        className={styles.btn}
-                                        value={nowPage - 1}
-                                        onClick={handleClickPage}>
-                                        <img src={prev.src} alt="アイコン" />
-                                        <span>前のページへ</span>
-                                    </button>
-                                ) : null}
-                                <div className={styles.pagerBtn}>
+                                ))}
+                            </article>
+                            {parseInt(maxPage) > 1 ? (
+                                <div className={styles.pager}>
                                     {parseInt(nowPage) > 1 ? (
                                         <button
-                                            className="hoverEffect"
+                                            className={styles.btn}
                                             value={nowPage - 1}
                                             onClick={handleClickPage}>
-                                            {nowPage - 1}
+                                            <img
+                                                src={prev.src}
+                                                alt="アイコン"
+                                            />
+                                            <span>前のページへ</span>
                                         </button>
                                     ) : null}
-                                    <button
-                                        type="button"
-                                        className={styles.current}>
-                                        {nowPage}
-                                    </button>
-                                    {parseInt(maxPage) !== parseInt(nowPage) ? (
+                                    <div className={styles.pagerBtn}>
+                                        {parseInt(nowPage) > 1 ? (
+                                            <button
+                                                className="hoverEffect"
+                                                value={nowPage - 1}
+                                                onClick={handleClickPage}>
+                                                {nowPage - 1}
+                                            </button>
+                                        ) : null}
                                         <button
-                                            className="hoverEffect"
+                                            type="button"
+                                            className={styles.current}>
+                                            {nowPage}
+                                        </button>
+                                        {parseInt(maxPage) !==
+                                        parseInt(nowPage) ? (
+                                            <button
+                                                className="hoverEffect"
+                                                value={nowPage + 1}
+                                                onClick={handleClickPage}>
+                                                {nowPage + 1}
+                                            </button>
+                                        ) : null}
+                                    </div>
+                                    {parseInt(nowPage) !== parseInt(maxPage) ? (
+                                        <button
+                                            className={styles.btn}
                                             value={nowPage + 1}
                                             onClick={handleClickPage}>
-                                            {nowPage + 1}
+                                            <img
+                                                src={next.src}
+                                                alt="アイコン"
+                                            />
+                                            <span>次のページへ</span>
                                         </button>
                                     ) : null}
                                 </div>
-                                {parseInt(nowPage) !== parseInt(maxPage) ? (
-                                    <button
-                                        className={styles.btn}
-                                        value={nowPage + 1}
-                                        onClick={handleClickPage}>
-                                        <img src={next.src} alt="アイコン" />
-                                        <span>次のページへ</span>
-                                    </button>
-                                ) : null}
-                            </div>
-                        ) : null}
-                    </>
-                ) : (
-                    <Loader />
-                )}
-            </Container>
-        </section>
+                            ) : null}
+                        </>
+                    ) : (
+                        <Loader />
+                    )}
+                </Container>
+            </section>
+
+            {popup ? (
+                <div
+                    className={styles.popupArea}
+                    onClick={() => handleClickPopup(null)}>
+                    <div
+                        className={styles.popupBox}
+                        onClick={e => e.stopPropagation()}>
+                        <h3>本当に削除しますか？</h3>
+                        <div className={styles.btnBox}>
+                            <button
+                                type="button"
+                                onClick={() => handleClickDelete(targetId)}>
+                                はい
+                            </button>
+                            <button
+                                type="button"
+                                onClick={() => handleClickPopup(null)}>
+                                いいえ
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            ) : null}
+        </>
     )
 }
 

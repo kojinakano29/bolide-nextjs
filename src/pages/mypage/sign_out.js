@@ -15,6 +15,7 @@ const SignOut = () => {
     const [disabled, setDisabled] = useState(false)
     const [c_check, setC_check] = useState(true)
     const [o_check, setO_check] = useState(true)
+    const [popup, setPopup] = useState(false)
 
     const onLoadCheck = async () => {
         csrf()
@@ -71,85 +72,113 @@ const SignOut = () => {
         await setDisabled(false)
     }, [user, disabled, setDisabled])
 
+    const handleClickPopup = useCallback(async () => {
+        setPopup(prevState => !prevState)
+    }, [setPopup])
+
     return (
-        <section className="cont1">
-            <Container small900>
-                <h2 className="ttl2">退会申請</h2>
-                <div className="breadcrumbBox">
-                    <a href="/">トップ</a>
-                    <div>
-                        <img src="/top/breadcrumb.svg" alt=">" />
-                    </div>
-                    <a href="/mypage">マイページ</a>
-                    <div>
-                        <img src="/top/breadcrumb.svg" alt=">" />
-                    </div>
-                    <p>退会申請</p>
-                </div>
-                <div className={styles.signOutBox}>
-                    <div className={styles.signOutIcon}>
-                        <img src="/top/sign_out.svg" alt="注意アイコン" />
-                    </div>
-                    <p className={styles.desc}>
-                        退会手続きを実行します。
-                        <br />
-                        注意事項をよくご確認の上、退会をお願いします。
-                    </p>
-                    <div className={styles.txtBox}>
-                        <div>ご注意</div>
-                        <dl>
-                            <dt className="en">1</dt>
-                            <dd>
-                                退会手続き後、Bolide's Japan
-                                IDでご利用されているすべてのサービスの利用停止を行います。
-                                <br />
-                                有料登録をされている場合は、「
-                                <a href={`/mypage/plan/${user?.id}`}>
-                                    プラン確認
-                                </a>
-                                」画面より先にサブスクリプションの解約を行ってください。「
-                                <a href={`/mypage/option/${user?.id}`}>募金</a>
-                                」のサブスクリプションにも登録している方は「
-                                <a href={`/mypage/option/${user?.id}`}>募金</a>
-                                」画面よりサブスクリプションの解約を行ってください。
-                                <br />
-                                サブスクリプションの解約を行わないまま、本ページで退会手続きを行うとサブスクリプション契約が継続された状態となってしまいます。
-                            </dd>
-                            <dt className="en">2</dt>
-                            <dd>
-                                ご申請いただいた情報は、有料サービスのお申込みをされているご本人様からの申請であることを確認するために利用します。ほかの目的で利用することはありません。
-                                <br />
-                                ご入力いただく前に、安全のため、本フォームのURLが「https://bolides-japan.com/」で始まることをご確認ください。
-                            </dd>
-                            <dt className="en">3</dt>
-                            <dd>
-                                JSを有効にして申請フォームをご利用下さい。無効になっていますとスマホでの申請フォームがご利用できません。
-                            </dd>
-                        </dl>
-                    </div>
-                    <p className={styles.desc2}>
-                        下記、退会ボタンを推す前に再度サブスクリプションの解約確認をお願いします。
-                        <br />
-                        下記ボタンを押すと退会手続きを実行します。
-                        <br />
-                        お客様の情報は<span>すべて削除</span>
-                        されますがよろしいでしょうか？
-                    </p>
-                    <div className={styles.btnBox}>
-                        <div
-                            className={`btnCover ${
-                                c_check || o_check ? styles.hold : null
-                            }`}
-                            onClick={handleClickSignOut}>
-                            <Btn1 txt="はい、退会します" />
+        <>
+            <section className="cont1">
+                <Container small900>
+                    <h2 className="ttl2">退会申請</h2>
+                    <div className="breadcrumbBox">
+                        <a href="/">トップ</a>
+                        <div>
+                            <img src="/top/breadcrumb.svg" alt=">" />
                         </div>
-                        <a href="/mypage" className={`btn1 ${styles.btn}`}>
-                            いいえ、退会しません
-                        </a>
+                        <a href="/mypage">マイページ</a>
+                        <div>
+                            <img src="/top/breadcrumb.svg" alt=">" />
+                        </div>
+                        <p>退会申請</p>
+                    </div>
+                    <div className={styles.signOutBox}>
+                        <div className={styles.signOutIcon}>
+                            <img src="/top/sign_out.svg" alt="注意アイコン" />
+                        </div>
+                        <p className={styles.desc}>
+                            退会手続きを実行します。
+                            <br />
+                            注意事項をよくご確認の上、退会をお願いします。
+                        </p>
+                        <div className={styles.txtBox}>
+                            <div>ご注意</div>
+                            <dl>
+                                <dt className="en">1</dt>
+                                <dd>
+                                    退会手続き後、Bolide's Japan
+                                    IDでご利用されているすべてのサービスの利用停止を行います。
+                                    <br />
+                                    有料登録をされている場合は、「
+                                    <a href={`/mypage/plan/${user?.id}`}>
+                                        プラン確認
+                                    </a>
+                                    」画面より先にサブスクリプションの解約を行ってください。「
+                                    <a href={`/mypage/option/${user?.id}`}>
+                                        募金
+                                    </a>
+                                    」のサブスクリプションにも登録している方は「
+                                    <a href={`/mypage/option/${user?.id}`}>
+                                        募金
+                                    </a>
+                                    」画面よりサブスクリプションの解約を行ってください。
+                                    <br />
+                                    サブスクリプションの解約を行わないまま、本ページで退会手続きを行うとサブスクリプション契約が継続された状態となってしまいます。
+                                </dd>
+                                <dt className="en">2</dt>
+                                <dd>
+                                    ご申請いただいた情報は、有料サービスのお申込みをされているご本人様からの申請であることを確認するために利用します。ほかの目的で利用することはありません。
+                                    <br />
+                                    ご入力いただく前に、安全のため、本フォームのURLが「https://bolides-japan.com/」で始まることをご確認ください。
+                                </dd>
+                                <dt className="en">3</dt>
+                                <dd>
+                                    JSを有効にして申請フォームをご利用下さい。無効になっていますとスマホでの申請フォームがご利用できません。
+                                </dd>
+                            </dl>
+                        </div>
+                        <p className={styles.desc2}>
+                            下記、退会ボタンを推す前に再度サブスクリプションの解約確認をお願いします。
+                            <br />
+                            下記ボタンを押すと退会手続きを実行します。
+                            <br />
+                            お客様の情報は<span>すべて削除</span>
+                            されますがよろしいでしょうか？
+                        </p>
+                        <div className={styles.btnBox}>
+                            <div
+                                className={`btnCover ${
+                                    c_check || o_check ? styles.hold : null
+                                }`}
+                                onClick={handleClickPopup}>
+                                <Btn1 txt="はい、退会します" />
+                            </div>
+                            <a href="/mypage" className={`btn1 ${styles.btn}`}>
+                                いいえ、退会しません
+                            </a>
+                        </div>
+                    </div>
+                </Container>
+            </section>
+
+            {popup ? (
+                <div className={styles.popupArea} onClick={handleClickPopup}>
+                    <div
+                        className={styles.popupBox}
+                        onClick={e => e.stopPropagation()}>
+                        <h3>本当に退会しますか？</h3>
+                        <div className={styles.btnBox}>
+                            <button type="button" onClick={handleClickSignOut}>
+                                はい
+                            </button>
+                            <button type="button" onClick={handleClickPopup}>
+                                いいえ
+                            </button>
+                        </div>
                     </div>
                 </div>
-            </Container>
-        </section>
+            ) : null}
+        </>
     )
 }
 
