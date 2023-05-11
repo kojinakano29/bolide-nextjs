@@ -38,7 +38,7 @@ const Header = () => {
 
     useEffect(() => {
         if (user) {
-            // onLoadStripeCheck()
+            onLoadStripeCheck()
 
             if (!user?.c_profile_id && user?.account_type !== 3) {
                 router.push('/corapura/editor/create')
