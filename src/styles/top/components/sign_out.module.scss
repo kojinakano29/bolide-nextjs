@@ -89,3 +89,48 @@
         }
     }
 }
+
+.popupArea {
+    @include modalBox;
+    overflow-y: scroll;
+    @include scrollHidden;
+    @include flex(center, center);
+
+    .popupBox {
+        @include width(600px, 400px, calc(100% - 20px * 2));
+        @include p(40px 40px 64px, 32px 32px 64px, 20px 20px 64px);
+        background-color: $w1;
+        border-radius: 20px;
+        cursor: auto;
+        position: relative;
+
+        h3 {
+            @include fs(24px, 20px, 18px);
+            font-weight: 500;
+            text-align: center;
+            @include mb(40px, 32px);
+        }
+
+        .btnBox {
+            @include flex(center, center);
+            @include gap(16px);
+        }
+
+        button {
+            @include width(80px);
+            @include height(32px);
+            @include flex(center, center);
+            @include fs(16px, 14px);
+            font-weight: 500;
+            border: 1px solid $b8;
+            border-radius: 20px;
+            transition: 0.3s ease;
+            color: $b8;
+
+            &:hover {
+                background-color: $b8;
+                color: $w1;
+            }
+        }
+    }
+}

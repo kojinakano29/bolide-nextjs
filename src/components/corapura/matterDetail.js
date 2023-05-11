@@ -30,6 +30,7 @@ const MatterDetail = ({ posts }) => {
     const [state, setState] = useState([])
     const [check, setCheck] = useState(false)
     const [popup, setPopup] = useState(false)
+    const [type, setType] = useState()
 
     const onLoadCheck = async () => {
         await csrf()
@@ -228,9 +229,13 @@ const MatterDetail = ({ posts }) => {
         [setAppList, setState],
     )
 
-    const handleClickPopup = useCallback(async () => {
-        setPopup(prevState => !prevState)
-    }, [setPopup])
+    const handleClickPopup = useCallback(
+        async type => {
+            setPopup(prevState => !prevState)
+            setType(type)
+        },
+        [setPopup, setType],
+    )
 
     return (
         <>
@@ -309,7 +314,7 @@ const MatterDetail = ({ posts }) => {
                             {posts.state < 1 ? (
                                 <div
                                     className="btnCover"
-                                    onClick={handleClickPopup}>
+                                    onClick={() => handleClickPopup('finish')}>
                                     <Btn txt="この案件を完了する" />
                                 </div>
                             ) : null}
@@ -396,7 +401,9 @@ const MatterDetail = ({ posts }) => {
                                         className={`${styles.btn} ${
                                             check ? styles.check : null
                                         }`}
-                                        onClick={handleClickMatterAdd}>
+                                        onClick={() =>
+                                            handleClickPopup('application')
+                                        }>
                                         <img
                                             src={mail.src}
                                             alt="メールのアイコン"
@@ -426,16 +433,33 @@ const MatterDetail = ({ posts }) => {
             {popup ? (
                 <section
                     className={styles.popupArea}
-                    onClick={handleClickPopup}>
+                    onClick={() => handleClickPopup(null)}>
                     <div
                         className={styles.popupBox}
                         onClick={e => e.stopPropagation()}>
-                        <p>本当にこの案件を完了にしていいですか？</p>
+                        <p>
+                            本当にこの案件
+                            {type === 'finish'
+                                ? 'を完了にしていいですか？'
+                                : 'に応募しますか？'}
+                        </p>
                         <div className={styles.buttonFlex}>
-                            <button type="button" onClick={handleClickFinish}>
-                                はい
-                            </button>
-                            <button type="button" onClick={handleClickPopup}>
+                            {type === 'finish' ? (
+                                <button
+                                    type="button"
+                                    onClick={handleClickFinish}>
+                                    はい
+                                </button>
+                            ) : (
+                                <button
+                                    type="button"
+                                    onClick={handleClickMatterAdd}>
+                                    はい
+                                </button>
+                            )}
+                            <button
+                                type="button"
+                                onClick={() => handleClickPopup(null)}>
                                 いいえ
                             </button>
                         </div>

@@ -224,7 +224,34 @@
 .cont1__flexRight__middleText {
     @include fs(16px, 14px);
     font-weight: 500;
-    @include mb(28px, 24px);
+    @include mb(24px);
+}
+
+.cont1__flexRight__profile {
+    @include flex(center, left);
+    @include gap(16px);
+    width: fit-content;
+    @include mb(24px);
+
+    .iconBox {
+        @include width(40px);
+        @include height(40px);
+        border-radius: 50%;
+        overflow: hidden;
+        isolation: isolate;
+
+        img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            object-position: center;
+        }
+    }
+
+    .pName {
+        @include fs(16px, 14px);
+        font-weight: 500;
+    }
 }
 
 .cont1__flexRight__middleComment {
