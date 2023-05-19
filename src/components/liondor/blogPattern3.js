@@ -1,12 +1,14 @@
 import styles from '@/styles/liondor/components/blogPattern3.module.scss'
 import { BlogTxt } from '@/components/liondor'
 
-const BlogPattern3 = ({ pattern }) => {
+const BlogPattern3 = ({ pattern, user }) => {
     // console.log(pattern)
 
     return (
         <article className={styles.article}>
-            <a href={pattern?.url} className={styles.blogLink}>
+            <a
+                href={user ? pattern?.url : '/liondor/login'}
+                className={styles.blogLink}>
                 <div className={styles.imgFlex}>
                     <div className={styles.imgBox}>
                         <img

@@ -1,7 +1,7 @@
 import styles from '@/styles/liondor/components/sidebar.module.scss'
 import { SidebarPost, ShowEditor } from '@/components/liondor'
 
-const Sidebar = ({ posts }) => {
+const Sidebar = ({ posts, user }) => {
     const pickUp = posts.pickups
 
     return (
@@ -12,7 +12,9 @@ const Sidebar = ({ posts }) => {
                           <ShowEditor key={index} value={sidebar.content} />
                       ))
                     : null}
-                {pickUp.length !== 0 ? <SidebarPost pickUp={pickUp} /> : null}
+                {pickUp.length !== 0 ? (
+                    <SidebarPost pickUp={pickUp} user={user} />
+                ) : null}
             </div>
         </article>
     )

@@ -5,7 +5,7 @@ import plus from '@/images/corapura/parts/plus.svg'
 import minus from '@/images/corapura/parts/minus.svg'
 import { Btn } from '@/components/corapura'
 
-const Faq = ({ faqs }) => {
+const Faq = ({ faqs, kasou = false }) => {
     const [current, setCurrent] = useState()
     const [more, setMore] = useState(false)
 
@@ -86,10 +86,13 @@ const Faq = ({ faqs }) => {
                           ))
                         : null}
                 </div>
-                {!more ? (
+                {!more && faqs.length > 4 && kasou ? (
                     <div className="btnCover" onClick={handleClickMore}>
                         <Btn txt="さらに見る" />
                     </div>
+                ) : null}
+                {!kasou ? (
+                    <Btn link={'/corapura/faq'} txt="さらに見る" />
                 ) : null}
             </Container>
         </article>

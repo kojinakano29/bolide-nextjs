@@ -2,7 +2,7 @@ import styles from '@/styles/liondor/components/sidebarPost.module.scss'
 import dummy from '@/images/liondor/cms/dummy.webp'
 import { BlogTxt } from '@/components/liondor'
 
-const SidebarPost = ({ pickUp }) => {
+const SidebarPost = ({ pickUp, user }) => {
     const data = pickUp.filter((item, index) => {
         return index < 4
     })
@@ -13,7 +13,11 @@ const SidebarPost = ({ pickUp }) => {
             <article className={styles.article}>
                 {data.map((item, index) => (
                     <a
-                        href={`/liondor/post/show/${item.id}`}
+                        href={
+                            user
+                                ? `/liondor/post/show/${item.id}`
+                                : '/liondor/login'
+                        }
                         key={index}
                         className={styles.blogLink}>
                         <div className={styles.imgBox}>

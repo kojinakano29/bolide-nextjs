@@ -2,16 +2,20 @@ import styles from '@/styles/liondor/components/articleColumn.module.scss'
 import dummy from '@/images/liondor/cms/dummy.webp'
 import { BlogTxt, DateFormat } from '@/components/liondor'
 
-const ArticleColumn = ({ sort, present = false, today }) => {
+const ArticleColumn = ({ sort, user, present = false, today }) => {
     // console.log(sort)
 
     return (
         <article className={styles.article}>
             {sort.map(item => (
                 <a
-                    href={`/liondor/${present ? 'present' : 'post/show'}/${
-                        item?.id
-                    }`}
+                    href={
+                        user
+                            ? `/liondor/${present ? 'present' : 'post/show'}/${
+                                  item?.id
+                              }`
+                            : '/liondor/login'
+                    }
                     key={item?.id}
                     className={`${styles.blogLink} ${
                         present && today > item?.limit ? styles.over : null
@@ -36,7 +40,7 @@ const ArticleColumn = ({ sort, present = false, today }) => {
                             <h3 className={styles.ttl}>{item?.title}</h3>
                             <p className={styles.limit}>
                                 応募期限：
-                                <DateFormat dateString={item?.created_at} />
+                                <DateFormat dateString={item?.limit} />
                             </p>
                             <p className={styles.date}>
                                 入稿日：

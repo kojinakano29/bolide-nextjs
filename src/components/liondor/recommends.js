@@ -5,7 +5,7 @@ import { Pagination, Navigation } from 'swiper'
 import dummy from '@/images/liondor/cms/dummy.webp'
 import { BlogTxt } from '@/components/liondor'
 
-const Recommends = ({ posts }) => {
+const Recommends = ({ posts, user }) => {
     const pickup = posts.pickups
 
     return (
@@ -27,7 +27,11 @@ const Recommends = ({ posts }) => {
                                 <SwiperSlide key={index}>
                                     <div className={styles.slideBox}>
                                         <a
-                                            href={`/liondor/post/show/${item.id}`}
+                                            href={
+                                                user
+                                                    ? `/liondor/post/show/${item.id}`
+                                                    : '/liondor/login'
+                                            }
                                             className={styles.blogLink}>
                                             <div className={styles.imgBox}>
                                                 <img

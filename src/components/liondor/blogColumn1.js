@@ -2,8 +2,8 @@ import styles from '@/styles/liondor/components/blogColumn1.module.scss'
 import dummy from '@/images/liondor/cms/dummy.webp'
 import { BlogTxt } from '@/components/liondor'
 
-const BlogColumn1 = ({ patternData }) => {
-    const data = patternData?.l_post?.filter((e, index) => {
+const BlogColumn1 = ({ patternData, user }) => {
+    const data = patternData?.filter((e, index) => {
         return index === 0
     })
 
@@ -11,7 +11,11 @@ const BlogColumn1 = ({ patternData }) => {
         <article className={styles.article}>
             {data?.map(item => (
                 <a
-                    href={`/liondor/post/show/${item?.id}`}
+                    href={
+                        user
+                            ? `/liondor/post/show/${item?.id}`
+                            : '/liondor/login'
+                    }
                     key={item?.id}
                     className={styles.blogLink}>
                     <div className={styles.imgBox}>

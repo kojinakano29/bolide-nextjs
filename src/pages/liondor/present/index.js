@@ -3,6 +3,7 @@ import Container from '@/components/liondor/Layouts/container'
 import PageLayoutLiondor from '@/components/Layouts/PageLayoutLiondor'
 import styles from '@/styles/liondor/components/present.module.scss'
 import { useRouter } from 'next/router'
+import { useAuth } from '@/hooks/auth'
 
 export const getServerSideProps = async ({ query }) => {
     let page = null
@@ -25,6 +26,8 @@ export const getServerSideProps = async ({ query }) => {
 
 const Present = ({ posts }) => {
     const router = useRouter(null)
+
+    const { user } = useAuth()
 
     let current = null
     if (router.query.page) {
@@ -61,8 +64,13 @@ const Present = ({ posts }) => {
                 <Container>
                     <article className={styles.section}>
                         <div className={styles.flex}>
-                            <ArticleColumn sort={sort1} present today={today} />
-                            <Sidebar posts={posts} />
+                            <ArticleColumn
+                                sort={sort1}
+                                user={user}
+                                present
+                                today={today}
+                            />
+                            <Sidebar posts={posts} user={user} />
                         </div>
                     </article>
                     {posts.page_max > 0 ? (

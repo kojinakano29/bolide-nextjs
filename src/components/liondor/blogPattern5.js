@@ -2,8 +2,8 @@ import styles from '@/styles/liondor/components/blogPattern5.module.scss'
 import dummy from '@/images/liondor/cms/dummy.webp'
 import { BlogTxt } from '@/components/liondor'
 
-const BlogPattern5 = ({ pattern }) => {
-    const data = pattern?.l_post?.filter((e, index) => {
+const BlogPattern5 = ({ pattern, user }) => {
+    const data = pattern?.filter((e, index) => {
         return index < 6
     })
 
@@ -11,7 +11,11 @@ const BlogPattern5 = ({ pattern }) => {
         <article className={styles.article}>
             {data?.map(item => (
                 <a
-                    href={`/liondor/post/show/${item?.id}`}
+                    href={
+                        user
+                            ? `/liondor/post/show/${item?.id}`
+                            : '/liondor/login'
+                    }
                     key={item?.id}
                     className={styles.blogLink}>
                     <div className={styles.imgBox}>

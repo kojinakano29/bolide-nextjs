@@ -282,7 +282,7 @@ const DetailPage = ({ posts }) => {
                         <div className={styles.editorBody}>
                             <ShowEditor value={post.content} />
                         </div>
-                        <Sidebar posts={posts.posts} />
+                        <Sidebar posts={posts.posts} user={user} />
                     </div>
                     <Button2
                         link={`/liondor/post/${parentSlug ? parentSlug : slug}`}
@@ -294,7 +294,7 @@ const DetailPage = ({ posts }) => {
 
             <section className={styles.recoCont}>
                 <Container>
-                    <Recommends posts={posts.posts} />
+                    <Recommends posts={posts.posts} user={user} />
                 </Container>
             </section>
         </>
