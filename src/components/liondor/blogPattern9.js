@@ -2,7 +2,7 @@ import styles from '@/styles/liondor/components/blogPattern9.module.scss'
 import { BlogTxt } from '@/components/liondor'
 import dummy from '@/images/liondor/cms/dummy.webp'
 
-const BlogPattern9 = ({ pattern }) => {
+const BlogPattern9 = ({ pattern, user }) => {
     const data = pattern?.filter((e, index) => {
         return index < 4
     })
@@ -11,7 +11,9 @@ const BlogPattern9 = ({ pattern }) => {
         <article className={styles.article}>
             {data?.map(item => (
                 <a
-                    href={`/liondor/present/${item?.id}`}
+                    href={
+                        user ? `/liondor/present/${item?.id}` : '/liondor/login'
+                    }
                     key={item?.id}
                     className={styles.blogLink}>
                     <div className={styles.imgBox}>

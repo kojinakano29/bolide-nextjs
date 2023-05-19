@@ -1,10 +1,12 @@
 import styles from '@/styles/liondor/components/firstClass.module.scss'
 import { BlogTxt } from '@/components/liondor'
 
-const FirstClass = ({ firstClassData }) => {
+const FirstClass = ({ firstClassData, user }) => {
     return (
         <article className={styles.article}>
-            <a href={firstClassData?.url} className={styles.blogLink}>
+            <a
+                href={user ? firstClassData?.url : '/liondor/login'}
+                className={styles.blogLink}>
                 <div className={styles.imgBox}>
                     <img
                         src={`${process.env.NEXT_PUBLIC_BACKEND_URL}/storage/${firstClassData?.thumbs}`}

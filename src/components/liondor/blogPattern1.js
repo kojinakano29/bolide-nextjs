@@ -1,29 +1,21 @@
 import styles from '@/styles/liondor/components/blogPattern1.module.scss'
 import { BlogColumn3, BlogPickup, BlogScrollBox } from '@/components/liondor'
 
-const BlogPattern1 = ({ column3None, pattern, route2, pickup = false }) => {
+const BlogPattern1 = ({ column3None, pattern, user }) => {
     return (
         <>
             <article
                 className={`${styles.stickyArea} ${
                     column3None ? styles.mbNone : ''
                 }`}>
-                <BlogPickup
-                    patternData={pattern}
-                    route2={route2}
-                    pickup={pickup}
-                />
-                <BlogScrollBox
-                    patternData={pattern}
-                    route2={route2}
-                    pickup={pickup}
-                />
+                <BlogPickup patternData={pattern} user={user} />
+                <BlogScrollBox patternData={pattern} user={user} />
             </article>
 
             {column3None ? (
                 ''
             ) : (
-                <BlogColumn3 patternData={pattern} route2={route2} />
+                <BlogColumn3 patternData={pattern} user={user} />
             )}
         </>
     )

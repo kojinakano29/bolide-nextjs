@@ -2,18 +2,18 @@ import styles from '@/styles/liondor/components/blogPattern7.module.scss'
 import { BlogTxt } from '@/components/liondor'
 import dummy from '@/images/liondor/cms/dummy.webp'
 
-const BlogPattern7 = ({ pattern }) => {
+const BlogPattern7 = ({ pattern, user }) => {
     // console.log(pattern)
 
-    const dailies = pattern?.l_post?.filter(daily => {
+    const dailies = pattern?.filter(daily => {
         return daily.l_category.slug === 'daily'
     })
 
-    const monthlies = pattern?.l_post?.filter(month => {
+    const monthlies = pattern?.filter(month => {
         return month.l_category.slug === 'monthly'
     })
 
-    const yearlies = pattern?.l_post?.filter(year => {
+    const yearlies = pattern?.filter(year => {
         return year.l_category.slug === 'yealy'
     })
 
@@ -23,7 +23,11 @@ const BlogPattern7 = ({ pattern }) => {
             <div className={styles.fortuneBox}>
                 <p className={`${styles.fortuneType} ivy pc`}>Daily</p>
                 <a
-                    href={`/liondor/post/show/${dailies?.[0]?.id}`}
+                    href={
+                        user
+                            ? `/liondor/post/show/${dailies?.[0]?.id}`
+                            : '/liondor/login'
+                    }
                     className={styles.blogLink}>
                     <div className={styles.imgBox}>
                         <img
@@ -49,7 +53,11 @@ const BlogPattern7 = ({ pattern }) => {
             <div className={styles.fortuneBox}>
                 <p className={`${styles.fortuneType} ivy pc`}>Monthly</p>
                 <a
-                    href={`/liondor/post/show/${monthlies?.[0]?.id}`}
+                    href={
+                        user
+                            ? `/liondor/post/show/${monthlies?.[0]?.id}`
+                            : '/liondor/login'
+                    }
                     className={styles.blogLink}>
                     <div className={styles.imgBox}>
                         <img
@@ -75,7 +83,11 @@ const BlogPattern7 = ({ pattern }) => {
             <div className={styles.fortuneBox}>
                 <p className={`${styles.fortuneType} ivy pc`}>Yealy</p>
                 <a
-                    href={`/liondor/post/show/${yearlies?.[0]?.id}`}
+                    href={
+                        user
+                            ? `/liondor/post/show/${yearlies?.[0]?.id}`
+                            : '/liondor/login'
+                    }
                     className={styles.blogLink}>
                     <div className={styles.imgBox}>
                         <img

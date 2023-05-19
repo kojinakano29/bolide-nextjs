@@ -228,10 +228,9 @@ const PressReleaseList = ({ posts }) => {
                     <>
                         <article className={styles.prList}>
                             {releases.map((release, index) => (
-                                <div className={styles.prItem}>
+                                <div className={styles.prItem} key={index}>
                                     <a
-                                        href={`/corapura/press_release/${release.id}`}
-                                        key={index}>
+                                        href={`/corapura/press_release/${release.id}`}>
                                         <div className={styles.imgBox}>
                                             <img
                                                 src={

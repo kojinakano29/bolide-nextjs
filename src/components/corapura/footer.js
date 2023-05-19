@@ -184,6 +184,10 @@ const Footer = () => {
                         </li>
                         <li
                             className={`${styles.footer__cont3Item} hoverEffect`}>
+                            <a href="/corapura/faq">FAQ</a>
+                        </li>
+                        <li
+                            className={`${styles.footer__cont3Item} hoverEffect`}>
                             <a href="/contact">お問い合わせ</a>
                         </li>
                     </ul>

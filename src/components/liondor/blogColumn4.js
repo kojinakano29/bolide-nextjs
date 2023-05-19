@@ -2,8 +2,13 @@ import styles from '@/styles/liondor/components/blogColumn4.module.scss'
 import { BlogTxt } from '@/components/liondor'
 import dummy from '@/images/liondor/cms/dummy.webp'
 
-const BlogColumn4 = ({ patternData, part2 = false, portrait = false }) => {
-    const data = patternData?.l_post?.filter((e, index) => {
+const BlogColumn4 = ({
+    patternData,
+    user,
+    part2 = false,
+    portrait = false,
+}) => {
+    const data = patternData?.filter((e, index) => {
         return part2 ? index > 3 && index < 8 : index !== 0 && index < 5
     })
 
@@ -11,7 +16,11 @@ const BlogColumn4 = ({ patternData, part2 = false, portrait = false }) => {
         <article className={styles.article}>
             {data?.map(item => (
                 <a
-                    href={`/liondor/post/show/${item?.id}`}
+                    href={
+                        user
+                            ? `/liondor/post/show/${item?.id}`
+                            : '/liondor/login'
+                    }
                     key={item?.id}
                     className={styles.blogLink}>
                     <div

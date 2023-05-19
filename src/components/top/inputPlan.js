@@ -1,6 +1,6 @@
 import styles from '@/styles/top/components/form.module.scss'
 import { useRouter } from 'next/router'
-import { useCallback } from 'react'
+import { useCallback, useState } from 'react'
 import { useFormContext } from 'react-hook-form'
 import { Btn1, NowPlan } from '@/components/top'
 import axios from '@/lib/axios'
@@ -10,6 +10,7 @@ const InputPlan = ({ planInfo, user, plans }) => {
 
     const router = useRouter()
 
+    const [popup, setPopup] = useState(false)
     const {
         register,
         handleSubmit,
@@ -40,6 +41,10 @@ const InputPlan = ({ planInfo, user, plans }) => {
             .catch(e => console.error(e))
     }
 
+    const handleClickPopup = useCallback(async () => {
+        setPopup(prevState => !prevState)
+    }, [setPopup])
+
     return (
         <>
             <div className={styles.planChangeTop}>
@@ -54,7 +59,7 @@ const InputPlan = ({ planInfo, user, plans }) => {
                     <>
                         <div
                             className={styles.btnCover}
-                            onClick={handleClickCancel}>
+                            onClick={handleClickPopup}>
                             <Btn1 txt="解約する" />
                         </div>
                         <h3 className={styles.planChange}>プランを変更する</h3>
@@ -379,6 +384,24 @@ const InputPlan = ({ planInfo, user, plans }) => {
                     <Btn1 txt="マイページへ戻る" link="/mypage" />
                 </div>
             )}
+
+            {popup ? (
+                <div className={styles.popupArea} onClick={handleClickPopup}>
+                    <div
+                        className={styles.popupBox}
+                        onClick={e => e.stopPropagation()}>
+                        <h3>本当に解約しますか？</h3>
+                        <div className={styles.btnBox}>
+                            <button type="button" onClick={handleClickCancel}>
+                                はい
+                            </button>
+                            <button type="button" onClick={handleClickPopup}>
+                                いいえ
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            ) : null}
         </>
     )
 }

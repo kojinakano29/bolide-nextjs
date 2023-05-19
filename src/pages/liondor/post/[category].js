@@ -9,6 +9,7 @@ import {
 } from '@/components/liondor'
 import styles from '@/styles/liondor/components/pageSingle.module.scss'
 import { useRouter } from 'next/router'
+import { useAuth } from '@/hooks/auth'
 
 // SSR
 export const getServerSideProps = async ({ params, query }) => {
@@ -34,6 +35,9 @@ const Post = ({ posts }) => {
     // console.log(posts)
 
     const router = useRouter(null)
+
+    const { user } = useAuth()
+
     let current = null
     if (router.query.page) {
         current = parseInt(router.query.page)
@@ -82,8 +86,8 @@ const Post = ({ posts }) => {
                     <Container>
                         <article className={styles.section}>
                             <div className={styles.flex}>
-                                <ArticleColumn sort={sort1} />
-                                <Sidebar posts={posts} />
+                                <ArticleColumn sort={sort1} user={user} />
+                                <Sidebar posts={posts} user={user} />
                             </div>
                         </article>
                     </Container>
@@ -91,7 +95,11 @@ const Post = ({ posts }) => {
                         <article className={styles.section2}>
                             <div className={styles.wrapper}>
                                 <Container>
-                                    <BlogPattern8 pattern={pickupData} must />
+                                    <BlogPattern8
+                                        pattern={pickupData}
+                                        user={user}
+                                        must
+                                    />
                                 </Container>
                             </div>
                         </article>
@@ -100,8 +108,8 @@ const Post = ({ posts }) => {
                         <Container>
                             <article className={styles.section3}>
                                 <div className={styles.flex}>
-                                    <ArticleColumn sort={sort2} />
-                                    <Sidebar posts={posts} />
+                                    <ArticleColumn sort={sort2} user={user} />
+                                    <Sidebar posts={posts} user={user} />
                                 </div>
                             </article>
                         </Container>
@@ -110,7 +118,11 @@ const Post = ({ posts }) => {
                         <article className={styles.section2}>
                             <div className={styles.wrapper}>
                                 <Container>
-                                    <BlogPattern8 pattern={pickupData} must />
+                                    <BlogPattern8
+                                        pattern={pickupData}
+                                        user={user}
+                                        must
+                                    />
                                 </Container>
                             </div>
                         </article>

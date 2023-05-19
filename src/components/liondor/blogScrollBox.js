@@ -2,30 +2,18 @@ import styles from '@/styles/liondor/components/blogScrollBox.module.scss'
 import { BlogTxt } from '@/components/liondor'
 import dummy from '@/images/liondor/cms/dummy.webp'
 
-const BlogScrollBox = ({ patternData, route2 = false, pickup = false }) => {
-    const dataOdd = route2
-        ? patternData?.filter((e, index) => {
-              return index !== 0 && index % 2 === 1 && index < 8
-          })
-        : patternData?.l_post?.filter((e, index) => {
-              return index !== 0 && index % 2 === 1 && index < 8
-          })
+const BlogScrollBox = ({ patternData, user }) => {
+    const dataOdd = patternData?.filter((e, index) => {
+        return index !== 0 && index % 2 === 1 && index < 8
+    })
 
-    const dataEven = route2
-        ? patternData?.filter((e, index) => {
-              return index !== 0 && index % 2 === 0 && index < 9
-          })
-        : patternData?.l_post?.filter((e, index) => {
-              return index !== 0 && index % 2 === 0 && index < 9
-          })
+    const dataEven = patternData?.filter((e, index) => {
+        return index !== 0 && index % 2 === 0 && index < 9
+    })
 
-    const dataSp = route2
-        ? patternData?.filter((e, index) => {
-              return index !== 0 && index < 5
-          })
-        : patternData?.l_post?.filter((e, index) => {
-              return index !== 0 && index < 5
-          })
+    const dataSp = patternData?.filter((e, index) => {
+        return index !== 0 && index < 5
+    })
 
     return (
         <>
@@ -33,106 +21,62 @@ const BlogScrollBox = ({ patternData, route2 = false, pickup = false }) => {
                 <div className={`${styles.scrollOdd} ${styles.scrollCont}`}>
                     {dataOdd?.map(item => (
                         <a
-                            href={`/liondor/post/show/${
-                                pickup ? item?.l_post_id : item?.id
-                            }`}
+                            href={
+                                user
+                                    ? `/liondor/post/show/${item?.id}`
+                                    : '/liondor/login'
+                            }
                             key={item?.id}
                             className={styles.blogLink}>
                             <div className={styles.imgBox}>
-                                {route2 ? (
-                                    <img
-                                        src={
-                                            item?.l_post?.thumbs
-                                                ? `${process.env.NEXT_PUBLIC_BACKEND_URL}/storage/${item?.l_post?.thumbs}`
-                                                : dummy.src
-                                        }
-                                        alt="記事のサムネイル画像"
-                                    />
-                                ) : (
-                                    <img
-                                        src={
-                                            item?.thumbs
-                                                ? `${process.env.NEXT_PUBLIC_BACKEND_URL}/storage/${item?.thumbs}`
-                                                : dummy.src
-                                        }
-                                        alt="記事のサムネイル画像"
-                                    />
-                                )}
-                            </div>
-                            {route2 ? (
-                                <BlogTxt
-                                    smallMb
-                                    cat={item?.l_post?.l_category?.parent_slug?.toUpperCase()}
-                                    cat2={item?.l_post?.l_category?.name}
-                                    ttl={item?.l_post?.title}
-                                    name={
-                                        item?.l_post?.user?.l_profile?.nicename
+                                <img
+                                    src={
+                                        item?.thumbs
+                                            ? `${process.env.NEXT_PUBLIC_BACKEND_URL}/storage/${item?.thumbs}`
+                                            : dummy.src
                                     }
-                                    time={item?.l_post?.view_date}
+                                    alt="記事のサムネイル画像"
                                 />
-                            ) : (
-                                <BlogTxt
-                                    smallMb
-                                    cat={item?.l_category?.parent_slug?.toUpperCase()}
-                                    cat2={item?.l_category?.name}
-                                    ttl={item?.title}
-                                    name={item?.user?.l_profile?.nicename}
-                                    time={item?.view_date}
-                                />
-                            )}
+                            </div>
+                            <BlogTxt
+                                smallMb
+                                cat={item?.l_category?.parent_slug?.toUpperCase()}
+                                cat2={item?.l_category?.name}
+                                ttl={item?.title}
+                                name={item?.user?.l_profile?.nicename}
+                                time={item?.view_date}
+                            />
                         </a>
                     ))}
                 </div>
                 <div className={`${styles.scrollEven} ${styles.scrollCont}`}>
                     {dataEven?.map(item => (
                         <a
-                            href={`/liondor/post/show/${
-                                pickup ? item?.l_post_id : item?.id
-                            }`}
+                            href={
+                                user
+                                    ? `/liondor/post/show/${item?.id}`
+                                    : '/liondor/login'
+                            }
                             key={item?.id}
                             className={styles.blogLink}>
                             <div className={styles.imgBox}>
-                                {route2 ? (
-                                    <img
-                                        src={
-                                            item?.l_post?.thumbs
-                                                ? `${process.env.NEXT_PUBLIC_BACKEND_URL}/storage/${item?.l_post?.thumbs}`
-                                                : dummy.src
-                                        }
-                                        alt="記事のサムネイル画像"
-                                    />
-                                ) : (
-                                    <img
-                                        src={
-                                            item?.thumbs
-                                                ? `${process.env.NEXT_PUBLIC_BACKEND_URL}/storage/${item?.thumbs}`
-                                                : dummy.src
-                                        }
-                                        alt="記事のサムネイル画像"
-                                    />
-                                )}
-                            </div>
-                            {route2 ? (
-                                <BlogTxt
-                                    smallMb
-                                    cat={item?.l_post?.l_category?.parent_slug?.toUpperCase()}
-                                    cat2={item?.l_post?.l_category?.name}
-                                    ttl={item?.l_post?.title}
-                                    name={
-                                        item?.l_post?.user?.l_profile?.nicename
+                                <img
+                                    src={
+                                        item?.thumbs
+                                            ? `${process.env.NEXT_PUBLIC_BACKEND_URL}/storage/${item?.thumbs}`
+                                            : dummy.src
                                     }
-                                    time={item?.l_post?.view_date}
+                                    alt="記事のサムネイル画像"
                                 />
-                            ) : (
-                                <BlogTxt
-                                    smallMb
-                                    cat={item?.l_category?.parent_slug?.toUpperCase()}
-                                    cat2={item?.l_category?.name}
-                                    ttl={item?.title}
-                                    name={item?.user?.l_profile?.nicename}
-                                    time={item?.view_date}
-                                />
-                            )}
+                            </div>
+                            <BlogTxt
+                                smallMb
+                                cat={item?.l_category?.parent_slug?.toUpperCase()}
+                                cat2={item?.l_category?.name}
+                                ttl={item?.title}
+                                name={item?.user?.l_profile?.nicename}
+                                time={item?.view_date}
+                            />
                         </a>
                     ))}
                 </div>
@@ -142,53 +86,31 @@ const BlogScrollBox = ({ patternData, route2 = false, pickup = false }) => {
                 <div className={`${styles.scrollCont}`}>
                     {dataSp?.map(item => (
                         <a
-                            href={`/liondor/post/show/${
-                                pickup ? item?.l_post_id : item?.id
-                            }`}
+                            href={
+                                user
+                                    ? `/liondor/post/show/${item?.id}`
+                                    : '/liondor/login'
+                            }
                             key={item?.id}
                             className={styles.blogLink}>
                             <div className={styles.imgBox}>
-                                {route2 ? (
-                                    <img
-                                        src={
-                                            item?.l_post?.thumbs
-                                                ? `${process.env.NEXT_PUBLIC_BACKEND_URL}/storage/${item?.l_post?.thumbs}`
-                                                : dummy.src
-                                        }
-                                        alt="記事のサムネイル画像"
-                                    />
-                                ) : (
-                                    <img
-                                        src={
-                                            item?.thumbs
-                                                ? `${process.env.NEXT_PUBLIC_BACKEND_URL}/storage/${item?.thumbs}`
-                                                : dummy.src
-                                        }
-                                        alt="記事のサムネイル画像"
-                                    />
-                                )}
-                            </div>
-                            {route2 ? (
-                                <BlogTxt
-                                    smallMb
-                                    cat={item?.l_post?.l_category?.parent_slug?.toUpperCase()}
-                                    cat2={item?.l_post?.l_category?.name}
-                                    ttl={item?.l_post?.title}
-                                    name={
-                                        item?.l_post?.user?.l_profile?.nicename
+                                <img
+                                    src={
+                                        item?.thumbs
+                                            ? `${process.env.NEXT_PUBLIC_BACKEND_URL}/storage/${item?.thumbs}`
+                                            : dummy.src
                                     }
-                                    time={item?.l_post?.view_date}
+                                    alt="記事のサムネイル画像"
                                 />
-                            ) : (
-                                <BlogTxt
-                                    smallMb
-                                    cat={item?.l_category?.parent_slug?.toUpperCase()}
-                                    cat2={item?.l_category?.name}
-                                    ttl={item?.title}
-                                    name={item?.user?.l_profile?.nicename}
-                                    time={item?.view_date}
-                                />
-                            )}
+                            </div>
+                            <BlogTxt
+                                smallMb
+                                cat={item?.l_category?.parent_slug?.toUpperCase()}
+                                cat2={item?.l_category?.name}
+                                ttl={item?.title}
+                                name={item?.user?.l_profile?.nicename}
+                                time={item?.view_date}
+                            />
                         </a>
                     ))}
                 </div>

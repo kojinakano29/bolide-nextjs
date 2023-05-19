@@ -28,7 +28,7 @@ export const getServerSideProps = async ({ query }) => {
 const Search = ({ posts }) => {
     // console.log(posts)
     const router = useRouter(null)
-    const { user } = useAuth({ middleware: 'auth', type: 'liondor' })
+    const { user } = useAuth()
 
     let current = null
     if (router.query.page) {
@@ -58,8 +58,8 @@ const Search = ({ posts }) => {
             <Container>
                 <article className={styles.section}>
                     <div className={styles.flex}>
-                        <ArticleColumn sort={sort3} />
-                        <Sidebar posts={posts} />
+                        <ArticleColumn sort={sort3} user={user} />
+                        <Sidebar posts={posts} user={user} />
                     </div>
                 </article>
                 <div className="pagerBox">

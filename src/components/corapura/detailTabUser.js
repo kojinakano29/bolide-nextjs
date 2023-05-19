@@ -63,7 +63,7 @@ const DetailTabUser = ({ cards, likes, matters, userInfo }) => {
         setFilterMatching(matching)
     }, [matching, setFilterMatching])
 
-    const handleClickTabBox1 = useCallback(async () => {
+    const handleClickTabBox1 = async () => {
         setDisabled(true)
         await csrf()
 
@@ -73,9 +73,9 @@ const DetailTabUser = ({ cards, likes, matters, userInfo }) => {
             })
             .then(res => {
                 // console.log(res)
-                setMatching(res.data.c_post_apps)
+                setMatching(res.data)
                 setFilterMatching(
-                    res.data.c_post_apps.filter((d, index) => {
+                    res.data.filter((d, index) => {
                         return index < 4
                     }),
                 )
@@ -85,26 +85,23 @@ const DetailTabUser = ({ cards, likes, matters, userInfo }) => {
             })
 
         await setDisabled(false)
-    }, [setMatching, setFilterMatching, setDisabled])
+    }
 
-    const handleClickTab1 = useCallback(
-        async num => {
-            setTab1(num)
+    const handleClickTab1 = async num => {
+        setTab1(num)
 
-            if (num === 0) {
-                setMatter(
-                    matters?.filter((m, index) => {
-                        return index < 3
-                    }),
-                )
-            }
+        if (num === 0) {
+            setMatter(
+                matters?.filter((m, index) => {
+                    return index < 3
+                }),
+            )
+        }
 
-            if (num === 1) {
-                handleClickTabBox1()
-            }
-        },
-        [setMatter, setTab1, handleClickTabBox1],
-    )
+        if (num === 1) {
+            handleClickTabBox1()
+        }
+    }
 
     return (
         <>

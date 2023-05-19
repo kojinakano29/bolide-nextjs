@@ -31,6 +31,7 @@ const MypageOption = ({ posts }) => {
     const [check, setCheck] = useState(false)
     const [optionPrice, setOptionPrice] = useState('')
     const [disabled, setDisabled] = useState(false)
+    const [popup, setPopup] = useState(false)
     const isConfirm = router.query.confirm
     const options = {
         option_100: process.env.NEXT_PUBLIC_SUBSCRIPTION_FUND_100,
@@ -105,6 +106,10 @@ const MypageOption = ({ posts }) => {
             })
     }, [user, router, disabled, setDisabled])
 
+    const handleClickPopup = useCallback(async () => {
+        setPopup(prevState => !prevState)
+    }, [setPopup])
+
     return (
         <>
             <section className="cont1">
@@ -165,7 +170,7 @@ const MypageOption = ({ posts }) => {
                                 </div>
                                 <div
                                     className="btnCover"
-                                    onClick={handleClickOptionCancel}>
+                                    onClick={handleClickPopup}>
                                     <Btn1 txt={'解約する'} />
                                 </div>
                             </div>
@@ -173,6 +178,26 @@ const MypageOption = ({ posts }) => {
                     )}
                 </Container>
             </section>
+
+            {popup ? (
+                <div className={styles.popupArea} onClick={handleClickPopup}>
+                    <div
+                        className={styles.popupBox}
+                        onClick={e => e.stopPropagation()}>
+                        <h3>本当に解約しますか？</h3>
+                        <div className={styles.btnBox}>
+                            <button
+                                type="button"
+                                onClick={handleClickOptionCancel}>
+                                はい
+                            </button>
+                            <button type="button" onClick={handleClickPopup}>
+                                いいえ
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            ) : null}
         </>
     )
 }

@@ -1,7 +1,7 @@
 import styles from '@/styles/liondor/components/blogPattern6.module.scss'
 import dummy from '@/images/liondor/cms/dummy.webp'
 
-const BlogPattern6 = ({ salons }) => {
+const BlogPattern6 = ({ salons, user }) => {
     const filter = salons?.filter((salon, index) => {
         return index < 4
     })
@@ -10,7 +10,11 @@ const BlogPattern6 = ({ salons }) => {
         <article className={styles.article}>
             {filter.map((salon, index) => (
                 <a
-                    href={`/corapura/salon/${salon?.id}`}
+                    href={
+                        user
+                            ? `/corapura/salon/${salon?.id}`
+                            : '/corapura/login'
+                    }
                     key={index}
                     className={styles.blogLink}>
                     <div className={styles.imgBox}>
